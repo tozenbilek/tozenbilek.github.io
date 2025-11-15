@@ -103,7 +103,7 @@ Bir sonraki bölümde, bu temel adımları bir araya getirerek güçlü ve moder
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Gradyan büyüklüğünü (gradient magnitude) hesaplarken `sqrt(Gx² + Gy²)` yerine `|Gx| + |Gy|` kullanmanın temel sebebi nedir?</p>
+  <p><b>Soru 2:</b> `Gradient magnitude`'ünü hesaplarken `sqrt(Gx² + Gy²)` yerine `|Gx| + |Gy|` kullanmanın temel sebebi nedir?</p>
   <div class="quiz-option">A) Daha doğru sonuçlar vermesi.</div>
   <div class="quiz-option">B) Renkli görüntülerde daha iyi çalışması.</div>
   <div class="quiz-option" data-correct="true">C) Hesaplama açısından daha verimli ve hızlı olması.</div>

@@ -7,11 +7,11 @@ nav_order: 2
 
 # Uygulama Alanları ve Sistem Bileşenleri
 
-Bilgisayarlı Görü, teorik bir alan olmanın ötesinde, günümüz teknolojisini şekillendiren sayısız pratik uygulamaya sahiptir. Bu bölümde, bu uygulamaların ana kategorilerini ve tipik bir Bilgisayarlı Görü sistemini oluşturan temel yapı taşlarını inceleyeceğiz.
+Computer Vision, teorik bir alan olmanın ötesinde, günümüz teknolojisini şekillendiren sayısız pratik uygulamaya sahiptir. Bu bölümde, bu uygulamaların ana kategorilerini ve tipik bir Computer Vision sistemini oluşturan temel yapı taşlarını inceleyeceğiz.
 
 ## Uygulama Kategorileri
 
-Bilgisayarlı Görü uygulamaları, çözdükleri problemin niteliğine göre genel olarak dört ana kategoriye ayrılabilir:
+Computer Vision uygulamaları, çözdükleri problemin niteliğine göre genel olarak dört ana kategoriye ayrılabilir:
 
 -   **Algılama ve İzleme (Detection & Tracking):** Belirli nesnelerin veya kişilerin bir görüntüdeki yerini bulma ve hareketlerini video boyunca takip etme.
     -   *Örnekler:* Güvenlik kameralarında kişi takibi, otonom araçlar için araç tespiti, spor analizlerinde oyuncu takibi.
@@ -22,12 +22,12 @@ Bilgisayarlı Görü uygulamaları, çözdükleri problemin niteliğine göre ge
 -   **Etkileşim ve Denetim (Interaction & Control):** Görsel girdiyi, bir sistemi kontrol etmek veya kullanıcıyla etkileşim kurmak için kullanma.
     -   *Örnekler:* Sanal gerçeklikte el takibi, jestlerle kontrol edilen kullanıcı arayüzleri, robotların engellerden kaçınması.
 
-![Computer Vision Pipeline](https://placehold.co/800x250/EEE/31343C?text=Sensör+->+Önişleme+->+Özellik+Çıkarımı+->+Karar+Verme)
-*<center>Tipik bir Bilgisayarlı Görü sisteminin genel akış şeması (pipeline).</center>*
+![Computer Vision Pipeline](https://via.placeholder.com/800x250.png?text=Sensör+->+Önişleme+->+Özellik+Çıkarımı+->+Karar+Verme)
+*<center>Tipik bir Computer Vision sisteminin genel akış şeması (pipeline).</center>*
 
-## Tipik Bir Bilgisayarlı Görü Sistemi
+## Tipik Bir Computer Vision Sistemi
 
-Bir Bilgisayarlı Görü uygulaması, genellikle "pipeline" (boru hattı) olarak adlandırılan bir dizi ardışık adımdan oluşur:
+Bir Computer Vision uygulaması, genellikle "pipeline" (boru hattı) olarak adlandırılan bir dizi ardışık adımdan oluşur:
 
 1.  **Görüntü Kaynağı (Input):** Verinin elde edildiği sensördür. Bu, standart bir kamera, bir derinlik sensörü (Kinect, LiDAR) veya tıbbi bir görüntüleme cihazı (MR, CT) olabilir.
 2.  **Önişleme (Preprocessing):** Ham görüntü verisini, sonraki adımlar için daha uygun hale getirme aşamasıdır.
@@ -53,7 +53,7 @@ Bir Bilgisayarlı Görü uygulaması, genellikle "pipeline" (boru hattı) olarak
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Bir Bilgisayarlı Görü "pipeline"ında, bir görüntünün bulanıklaştırılması genellikle hangi aşamada yapılır?</p>
+  <p><b>Soru 2:</b> Bir Computer Vision "pipeline"ında, bir görüntünün bulanıklaştırılması genellikle hangi aşamada yapılır?</p>
   <div class="quiz-option">A) Karar Verme / Yorumlama</div>
   <div class="quiz-option">B) Özellik Çıkarımı</div>
   <div class="quiz-option">C) Görüntü Kaynağı</div>

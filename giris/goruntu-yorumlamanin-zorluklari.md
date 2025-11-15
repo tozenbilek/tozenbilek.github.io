@@ -7,7 +7,7 @@ nav_order: 3
 
 # Görüntü Yorumlamanın Zorlukları
 
-Görüntülerdeki bilgi yüzeysel olarak net görünse de, fiziksel dünya ile sensörün ölçtüğü veriler arasındaki kopukluk, bilgisayarlı görü sistemleri için bir dizi temel zorluk oluşturur. Bu zorluklar genel olarak üç ana kategoride incelenebilir: fiziksel, algısal ve hesaplamaya dayalı.
+Görüntülerdeki bilgi yüzeysel olarak net görünse de, fiziksel dünya ile sensörün ölçtüğü veriler arasındaki kopukluk, Computer Vision sistemleri için bir dizi temel zorluk oluşturur. Bu zorluklar genel olarak üç ana kategoride incelenebilir: fiziksel, algısal ve hesaplamaya dayalı.
 
 ## Fiziksel Belirsizlikler
 
@@ -23,7 +23,7 @@ Görüntünün oluşum süreci, doğası gereği bilgi kaybına ve belirsizlikle
 
 -   **Görsel İllüzyonlar:** Adelson’un gölge illüzyonunda olduğu gibi, aslında aynı `intensity` değerine sahip olan iki farklı bölge, insan tarafından tamamen farklı algılanabilir. Bu, ham `pixel` verisine dayalı algoritmaların ne kadar yanıltıcı olabileceğini gösterir.
 -   **Bağlamsal Anlam:** İnsanlar, bir sahnedeki nesneleri ve ilişkileri (örneğin, bir masanın üzerinde duran bir vazo) anında yorumlayabilir. Bilgisayarların bu tür bağlamsal ipuçlarını bir modele dahil etmesi karmaşık bir problemdir.
--   **Ayrım (Segmentation):** Bir nesnenin nerede başlayıp nerede bittiğini belirlemek (şekil-zemin ayrımı), özellikle karmaşık ve örtüşen nesnelerin olduğu sahnelerde oldukça zordur.
+-   **Ayrım (`Segmentation`):** Bir nesnenin nerede başlayıp nerede bittiğini belirlemek (şekil-zemin ayrımı), özellikle karmaşık ve örtüşen nesnelerin olduğu sahnelerde oldukça zordur.
 
 ## Hesaplamaya Dayalı Zorluklar
 
@@ -39,7 +39,7 @@ Teorik olarak mükemmel çalışan bir model bile, pratik uygulamada ciddi engel
 
 <div class="quiz-question">
   <p><b>Soru 1:</b> Bir nesnenin yüzeyi kırmızı olmasına rağmen, bir fotoğrafta mavi görünüyorsa, bunun en olası fiziksel sebebi nedir?</p>
-  <div class="quiz-option">A) Kameranın lensinde bozulma olması.</div>
+  <div class="quiz-option">A) Kameranın lensinde `distortion` olması.</div>
   <div class="quiz-option" data-correct="true">B) Nesnenin üzerine mavi bir ışık düşmesi.</div>
   <div class="quiz-option">C) Görüntünün dijital olarak yanlış sıkıştırılması.</div>
   <div class="quiz-option">D) Kameranın sensörünün kırmızı rengi algılayamaması.</div>
@@ -52,7 +52,7 @@ Teorik olarak mükemmel çalışan bir model bile, pratik uygulamada ciddi engel
   <p><b>Soru 2:</b> Aşağıdakilerden hangisi, 3D bir dünyanın 2D bir görüntüye yansıtılması sırasında yaşanan temel bilgi kaybıdır?</p>
   <div class="quiz-option">A) Renk bilgisi</div>
   <div class="quiz-option" data-correct="true">B) Derinlik bilgisi</div>
-  <div class="quiz-option">C) Doku bilgisi</div>
+  <div class="quiz-option">C) Doku (`texture`) bilgisi</div>
   <div class="quiz-option">D) Şekil bilgisi</div>
   <div class="quiz-explanation">
     <p><b>Cevap: B) Derinlik bilgisi.</b> Projeksiyon işlemi, bir nesnenin kameraya olan uzaklığı bilgisini tek bir noktaya sıkıştırarak kaydeder. Diğer bilgiler (renk, doku, şekil) bozulsa da tamamen kaybolmaz.</p>
@@ -60,7 +60,7 @@ Teorik olarak mükemmel çalışan bir model bile, pratik uygulamada ciddi engel
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 3:</b> "Genelleme Problemi" (Generalization Problem) en iyi hangi senaryo ile açıklanır?</p>
+  <p><b>Soru 3:</b> "Genelleme Problemi" (`Generalization Problem`) en iyi hangi senaryo ile açıklanır?</p>
   <div class="quiz-option">A) Bir algoritmanın yüksek çözünürlüklü videolarda yavaş çalışması.</div>
   <div class="quiz-option" data-correct="true">B) Sadece gündüz çekilmiş fotoğraflarla eğitilmiş bir yaya tanıma sisteminin, gece çekilmiş bir fotoğraftaki yayayı tanıyamaması.</div>
   <div class="quiz-option">C) Milyonlarca kedi fotoğrafını etiketlemenin çok uzun sürmesi.</div>

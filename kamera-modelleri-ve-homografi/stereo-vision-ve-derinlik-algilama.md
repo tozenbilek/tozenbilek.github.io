@@ -89,7 +89,7 @@ Bu yaklaşımın bazı zorlukları vardır:
 ## Kavrama Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> İki kameralı bir stereo sistemde, kameralar arasındaki mesafe (`baseline`) artırılırsa, yakındaki bir nesne için ölçülen `disparity` (eşitsizlik) nasıl etkilenir?</p>
+  <p><b>Soru 1:</b> İki kameralı bir stereo sistemde, kameralar arasındaki mesafe (`baseline`) artırılırsa, yakındaki bir nesne için ölçülen `disparity` nasıl etkilenir?</p>
   <div class="quiz-option">A) `Disparity` azalır.</div>
   <div class="quiz-option" data-correct="true">B) `Disparity` artar.</div>
   <div class="quiz-option">C) `Disparity` değişmez.</div>
