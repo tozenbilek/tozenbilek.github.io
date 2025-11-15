@@ -9,10 +9,5 @@ remote_theme: just-the-docs/just-the-docs
 plugins:
   - jekyll-remote-theme
 
-# Aux links for the header
-aux_links:
-  "GitHub Repo":
-    - "https://github.com/tozenbilek/tozenbilek.github.io"
-
 # Enable search
 search_enabled: true
