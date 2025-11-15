@@ -66,17 +66,23 @@ Sonuç olarak, dijital bir `image`, tam sayı değerlerinden oluşan bir matris 
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Bir renkli görüntüyü matematiksel olarak nasıl ifade edersiniz ve bu ifadenin bileşenleri nelerdir?</summary>
-  <p>Bir renkli görüntü, üç kanaldan (Kırmızı, Yeşil, Mavi) oluştuğu için vektör değerli bir fonksiyon olarak ifade edilir: `I(x, y) = [R(x, y), G(x, y), B(x, y)]`. Her bir bileşen (R, G, B), o renge ait `intensity` değerini veren ayrı bir fonksiyondur.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Bir renkli görüntüyü matematiksel olarak nasıl ifade edersiniz ve bu ifadenin bileşenleri nelerdir?</p>
+  <div class="quiz-explanation">
+    <p>Bir renkli görüntü, üç kanaldan (Kırmızı, Yeşil, Mavi) oluştuğu için vektör değerli bir fonksiyon olarak ifade edilir: `I(x, y) = [R(x, y), G(x, y), B(x, y)]`. Her bir bileşen (R, G, B), o renge ait `intensity` değerini veren ayrı bir fonksiyondur.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Gaussian ve Salt and Pepper gürültüleri arasındaki temel görsel fark nedir?</summary>
-  <p>Gaussian gürültü, görüntünün tamamına yayılan, `pixel`'lerin orijinal değerlerini hafifçe değiştiren tanecikli bir yapıya sahiptir. Salt and Pepper gürültüsü ise görüntünün genel yapısını bozmaz, ancak belirli `pixel`'lerin değerlerini aşırı (tam siyah veya tam beyaz) değerlerle değiştirir ve rastgele noktacıklar olarak görünür.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Gaussian ve Salt and Pepper gürültüleri arasındaki temel görsel fark nedir?</p>
+  <div class="quiz-explanation">
+    <p>Gaussian gürültü, görüntünün tamamına yayılan, `pixel`'lerin orijinal değerlerini hafifçe değiştiren tanecikli bir yapıya sahiptir. Salt and Pepper gürültüsü ise görüntünün genel yapısını bozmaz, ancak belirli `pixel`'lerin değerlerini aşırı (tam siyah veya tam beyaz) değerlerle değiştirir ve rastgele noktacıklar olarak görünür.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> "Quantization" (Niceleme) işlemi neden gereklidir ve görüntü kalitesini nasıl etkiler?</summary>
-  <p>Quantization, her `pixel`'in alabileceği sonsuz sayıdaki `intensity` değerini, sınırlı sayıda ayrık seviyeye (örneğin 256) indirme işlemidir. Bilgisayarların veriyi dijital olarak saklayabilmesi için bu gereklidir. Kullanılan seviye sayısı çok düşük olursa, görüntüdeki yumuşak renk geçişleri kaybolur ve "posterization" adı verilen bantlanma etkileri görülür, bu da kaliteyi düşürür.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> "Quantization" (Niceleme) işlemi neden gereklidir ve görüntü kalitesini nasıl etkiler?</p>
+  <div class="quiz-explanation">
+    <p>Quantization, her `pixel`'in alabileceği sonsuz sayıdaki `intensity` değerini, sınırlı sayıda ayrık seviyeye (örneğin 256) indirme işlemidir. Bilgisayarların veriyi dijital olarak saklayabilmesi için bu gereklidir. Kullanılan seviye sayısı çok düşük olursa, görüntüdeki yumuşak renk geçişleri kaybolur ve "posterization" adı verilen bantlanma etkileri görülür, bu da kaliteyi düşürür.</p>
+  </div>
+</div>

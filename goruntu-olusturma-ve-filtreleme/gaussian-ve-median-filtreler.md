@@ -76,17 +76,23 @@ Sıralanmış hali: `[10, 12, 14, 15, **17**, 18, 20, 22, 255]`
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Salt and Pepper gürültüsü olan bir görüntüye neden Gaussian filtresi uygulamak iyi bir fikir değildir?</summary>
-  <p>Gaussian filtresi bir ortalama alma işlemidir. Görüntüdeki aşırı siyah (0) veya beyaz (255) `pixel`'ler, komşularının ortalamasını alırken bu ortalama değeri ciddi şekilde yukarı veya aşağı çeker. Sonuç olarak gürültü tamamen temizlenmez, sadece etrafa "bulaşır" ve görüntü daha da bulanıklaşır. Median filtresi ise bu aşırı değerleri sıralamanın bir parçası olarak gördüğü ve ortadaki değeri seçtiği için onlardan etkilenmez.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Salt and Pepper gürültüsü olan bir görüntüye neden Gaussian filtresi uygulamak iyi bir fikir değildir?</p>
+  <div class="quiz-explanation">
+    <p>Gaussian filtresi bir ortalama alma işlemidir. Görüntüdeki aşırı siyah (0) veya beyaz (255) `pixel`'ler, komşularının ortalamasını alırken bu ortalama değeri ciddi şekilde yukarı veya aşağı çeker. Sonuç olarak gürültü tamamen temizlenmez, sadece etrafa "bulaşır" ve görüntü daha da bulanıklaşır. Median filtresi ise bu aşırı değerleri sıralamanın bir parçası olarak gördüğü ve ortadaki değeri seçtiği için onlardan etkilenmez.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> `Median Filter` neden "non-linear" bir filtre olarak kabul edilir?</summary>
-  <p>Bir filtrenin `linear` (doğrusal) olması için `H(a*F1 + b*F2) = a*H(F1) + b*H(F2)` gibi toplamsallık ve ölçeklenme özelliklerini sağlaması gerekir. `Median` operasyonu bu kurala uymaz. Örneğin, iki görüntünün toplamının `median`'ı, o iki görüntünün ayrı ayrı `median`'larının toplamına eşit değildir. Bu yüzden `non-linear` bir filtredir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> `Median Filter` neden "non-linear" bir filtre olarak kabul edilir?</p>
+  <div class="quiz-explanation">
+    <p>Bir filtrenin `linear` (doğrusal) olması için `H(a*F1 + b*F2) = a*H(F1) + b*H(F2)` gibi toplamsallık ve ölçeklenme özelliklerini sağlaması gerekir. `Median` operasyonu bu kurala uymaz. Örneğin, iki görüntünün toplamının `median`'ı, o iki görüntünün ayrı ayrı `median`'larının toplamına eşit değildir. Bu yüzden `non-linear` bir filtredir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Gaussian filtresindeki `σ` (sigma) parametresini artırmanın sonucu ne olur? Bunun avantajı ve dezavantajı nedir?</summary>
-  <p>Sigma'yı artırmak, `smoothing` etkisini güçlendirir; yani görüntü daha fazla bulanıklaşır. **Avantajı:** Daha yoğun gürültüyü daha etkili bir şekilde bastırır. **Dezavantajı:** Görüntüdeki `edge`'ler ve ince detaylar da daha fazla bulanıklaşır ve kaybolur. Doğru `sigma` değeri, gürültüyü bastırma ile detayları koruma arasında bir denge kurmayı gerektirir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Gaussian filtresindeki `σ` (sigma) parametresini artırmanın sonucu ne olur? Bunun avantajı ve dezavantajı nedir?</p>
+  <div class="quiz-explanation">
+    <p>Sigma'yı artırmak, `smoothing` etkisini güçlendirir; yani görüntü daha fazla bulanıklaşır. <b>Avantajı:</b> Daha yoğun gürültüyü daha etkili bir şekilde bastırır. <b>Dezavantajı:</b> Görüntüdeki `edge`'ler ve ince detaylar da daha fazla bulanıklaşır ve kaybolur. Doğru `sigma` değeri, gürültüyü bastırma ile detayları koruma arasında bir denge kurmayı gerektirir.</p>
+  </div>
+</div>

@@ -37,28 +37,32 @@ Teorik olarak mükemmel çalışan bir model bile, pratik uygulamada ciddi engel
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Bir nesnenin renginin, kameranın yakaladığı görüntüdeki renkten farklı olmasının temel fiziksel sebebi nedir?</summary>
-  <p><b>Cevap:</b> Görüntüdeki renk sadece nesnenin yüzey özelliklerine değil, aynı zamanda üzerine düşen ışığın rengine ve açısına da bağlıdır. Beyaz bir nesne, kırmızı bir ışık altında kırmızı görünür. Bu, aydınlatma koşullarının yarattığı en temel belirsizliklerden biridir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Bir nesnenin renginin, kameranın yakaladığı görüntüdeki renkten farklı olmasının temel fiziksel sebebi nedir?</p>
+  <div class="quiz-explanation">
+    <p><b>Cevap:</b> Görüntüdeki renk sadece nesnenin yüzey özelliklerine değil, aynı zamanda üzerine düşen ışığın rengine ve açısına da bağlıdır. Beyaz bir nesne, kırmızı bir ışık altında kırmızı görünür. Bu, aydınlatma koşullarının yarattığı en temel belirsizliklerden biridir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Aşağıdakilerden hangisi, 3D bir dünyanın 2D bir görüntüye yansıtılması sırasında yaşanan temel bilgi kaybıdır?</summary>
-  <br>
-  A) Renk bilgisi <br>
-  B) Derinlik bilgisi <br>
-  C) Doku bilgisi <br>
-  D) Şekil bilgisi <br>
-  <p><b>Cevap: B) Derinlik bilgisi.</b> Projeksiyon işlemi, bir nesnenin kameraya olan uzaklığı bilgisini tek bir noktaya sıkıştırarak kaydeder. Diğer bilgiler (renk, doku, şekil) bozulsa da tamamen kaybolmaz.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Aşağıdakilerden hangisi, 3D bir dünyanın 2D bir görüntüye yansıtılması sırasında yaşanan temel bilgi kaybıdır?</p>
+  <div class="quiz-option">A) Renk bilgisi</div>
+  <div class="quiz-option" data-correct="true">B) Derinlik bilgisi</div>
+  <div class="quiz-option">C) Doku bilgisi</div>
+  <div class="quiz-option">D) Şekil bilgisi</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B) Derinlik bilgisi.</b> Projeksiyon işlemi, bir nesnenin kameraya olan uzaklığı bilgisini tek bir noktaya sıkıştırarak kaydeder. Diğer bilgiler (renk, doku, şekil) bozulsa da tamamen kaybolmaz.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> "Genelleme Problemi" (Generalization Problem) en iyi hangi senaryo ile açıklanır?</summary>
-  <br>
-  A) Bir algoritmanın yüksek çözünürlüklü videolarda yavaş çalışması.<br>
-  B) Sadece gündüz çekilmiş fotoğraflarla eğitilmiş bir yaya tanıma sisteminin, gece çekilmiş bir fotoğraftaki yayayı tanıyamaması.<br>
-  C) Milyonlarca kedi fotoğrafını etiketlemenin çok uzun sürmesi.<br>
-  D) Bir optik illüzyonun, bir kenar tespit algoritmasını yanıltması.<br>
-  <p><b>Cevap: B.</b> Genelleme problemi, bir modelin eğitim verisinin (gündüz fotoğrafları) dağılımı dışındaki test verilerinde (gece fotoğrafları) başarısız olmasıdır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> "Genelleme Problemi" (Generalization Problem) en iyi hangi senaryo ile açıklanır?</p>
+  <div class="quiz-option">A) Bir algoritmanın yüksek çözünürlüklü videolarda yavaş çalışması.</div>
+  <div class="quiz-option" data-correct="true">B) Sadece gündüz çekilmiş fotoğraflarla eğitilmiş bir yaya tanıma sisteminin, gece çekilmiş bir fotoğraftaki yayayı tanıyamaması.</div>
+  <div class="quiz-option">C) Milyonlarca kedi fotoğrafını etiketlemenin çok uzun sürmesi.</div>
+  <div class="quiz-option">D) Bir optik illüzyonun, bir kenar tespit algoritmasını yanıltması.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Genelleme problemi, bir modelin eğitim verisinin (gündüz fotoğrafları) dağılımı dışındaki test verilerinde (gece fotoğrafları) başarısız olmasıdır.</p>
+  </div>
+</div>
 
