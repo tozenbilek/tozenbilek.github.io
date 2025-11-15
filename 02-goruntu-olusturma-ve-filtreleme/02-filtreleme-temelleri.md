@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Filtering Temelleri
-parent: 2. Görüntü Oluşturma ve Filtreleme
+parent: 2. Image Formation ve Filtering
 nav_order: 2
 ---
 
@@ -9,7 +9,7 @@ nav_order: 2
 
 `Image`'lerdeki `noise`'u azaltmak veya belirli özellikleri (`edge`'ler gibi) vurgulamak için **filtering** kullanılır. Bu işlem, her bir `pixel`'in değerini, çevresindeki komşu `pixel`'lerin değerlerini kullanarak yeniden hesaplamaya dayanır.
 
-## Adım 1 – Moving Average Fikrini Anla
+## Moving Average Fikri
 
 `Noise` azaltma için en sezgisel yaklaşımlardan biri **moving average** filtresidir. Temel mantığı şudur:
 "Bir `pixel`'in gerçek değeri, komşularının değerlerine benzer olmalıdır. `Noise` ise genellikle rastgele ve bağımsızdır."
@@ -19,7 +19,7 @@ Bu varsayımlara dayanarak, her `pixel`'i, kendisi ve komşularını içeren bir
 - **1D Örnek:** `[... 5, 6, 100, 8, 7 ...]` gibi bir sinyalde `100` değeri bir `noise` olabilir. 3 birimlik bir pencere ile ortalama alırsak: `(6 + 100 + 8) / 3 ≈ 38`. `Noise`'un etkisi azalmış olur.
 - **2D Image:** Bu mantık 2D'ye genişletilir. Örneğin, bir `pixel`'i 3x3'lük bir penceredeki 9 `pixel`'in ortalamasıyla değiştiririz. Bu işleme **box filter** de denir.
 
-## Adım 2 – Correlation ve Convolution Kavramlarını Ayırt Et
+## Cross-Correlation ve Convolution
 
 `Filtering` işlemi matematiksel olarak **correlation** veya **convolution** operasyonları ile ifade edilir. Her ikisi de bir **kernel** veya **mask** adı verilen küçük bir matrisi `image` üzerinde kaydırma prensibine dayanır.
 
@@ -51,7 +51,7 @@ Bu, `filtering` için en doğrudan ve sezgisel uygulamadır.
 - **Asimetrik Kerneller:** `Edge detection` için kullanılan türev filtreleri gibi asimetrik `kernel`'lerde sonuç farklı olur.
 - **Matematiksel Özellikler:** `Convolution`, değişme (`commutative`) ve birleşme (`associative`) gibi önemli matematiksel özelliklere sahiptir. Bu, `(Filtre1 * Filtre2) * Image = Filtre1 * (Filtre2 * Image)` gibi optimizasyonlara olanak tanır.
 
-## Adım 3 – Lineer ve Shift-Invariant Sistemleri Anla
+## Linear Shift-Invariant (LSI) Sistemler
 
 `Filtering` operasyonları genellikle **Linear Shift-Invariant (LSI)** sistemler olarak kabul edilir.
 - **Linearity:** Sistemin iki temel özelliği sağlamasıdır:
@@ -63,7 +63,7 @@ Bu, `filtering` için en doğrudan ve sezgisel uygulamadır.
 
 Bu özellikler, `image filtering` analizini ve tasarımını büyük ölçüde basitleştirir.
 
-## Adım 4 – Boundary Issues (Sınır Problemleri) Değerlendir
+## Boundary Issues (Sınır Problemleri)
 
 Filtre `kernel`'i `image`'in kenarlarına geldiğinde, pencere `image`'in dışına taşar. Bu durumu yönetmek için farklı stratejiler vardır:
 

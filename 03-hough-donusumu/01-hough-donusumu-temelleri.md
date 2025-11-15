@@ -9,7 +9,7 @@ nav_order: 1
 
 Bir `image`'deki `edge` `pixel`'lerinden hangilerinin bir `line`'a ait olduğunu nasıl anlarız? Olası tüm `pixel` kombinasyonlarını deneyip bir `line`'a uyup uymadıklarını kontrol etmek hesaplama açısından çok maliyetlidir. `Hough Transform`, bu problemi zekice bir `voting` mekanizmasıyla çözer.
 
-## Adım 1 – Parametric Modelleri Anla
+## Parametric Modeller
 
 Bir **parametric model**, bir dizi `parameter` ile tanımlanabilen bir şekil sınıfıdır.
 - **Line:** `y = mx + b` denklemiyle ifade edilebilir. `Parameter`'ları: eğim (`m`) ve y-keseni (`b`).
@@ -17,7 +17,7 @@ Bir **parametric model**, bir dizi `parameter` ile tanımlanabilen bir şekil s�
 
 `Hough Transform`'un amacı, `image`'deki `pixel`'lerin hangi model `parameter`'larını "desteklediğini" bulmaktır.
 
-## Adım 2 – Image Space'ten Parameter Space'e Geçiş
+## Image Space'ten Parameter Space'e Geçiş
 
 `Hough Transform`'un temel fikri, problemi **image space**'ten, modellerin `parameter`'larının eksenleri oluşturduğu **parameter space**'e veya **Hough space**'e taşımaktır.
 
@@ -33,7 +33,7 @@ Peki ya `image`'deki tek bir `pixel`?
 - `Hough space`'teki bir nokta `(m, b)` -> `Image space`'te bir `line`.
 - `Image space`'te aynı `line` üzerinde bulunan birden fazla nokta -> `Hough space`'te **tek bir noktada kesişen** birden fazla `line`.
 
-## Adım 3 – Voting Mekanizmasını Kullan
+## Voting Mekanizması
 
 İşte `Hough Transform`'un sihirli kısmı burada devreye girer:
 1.  `Parameter space`'i ayrık "kutulara" veya "hücrelere" (`bins`) bölen bir **accumulator array** oluşturulur. Bu dizi başlangıçta sıfırlarla doldurulur.

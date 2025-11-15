@@ -9,7 +9,7 @@ nav_order: 2
 
 `y = mx + b` (`Cartesian`) parametrizasyonu, dikey `line`'lar için sorun yaratır çünkü bu durumda eğim (`m`) sonsuz olur ve `parameter space`'te temsil edilemez. Bu sorunu çözmek için `line`'ları ifade etmede daha sağlam bir yöntem olan **polar koordinatları** kullanırız.
 
-## Adım 1 – Polar Koordinat Parametrizasyonunu Anla
+## Polar Koordinat Parametrizasyonu
 
 Bir `line`, iki yeni `parameter` ile tanımlanabilir:
 - **`d` (veya `ρ` - rho):** `Line`'ın orijine olan dik mesafesi.
@@ -25,7 +25,7 @@ Bu gösterimin avantajı, `parameter space`'in (`d`, `θ`) sınırlı olmasıdı
 - **Image Space'teki bir `line`:** `Hough space`'te tek bir noktaya karşılık gelir.
 - **Aynı `line` üzerindeki noktalar:** `Hough space`'te aynı noktada kesişen sinüzoidal eğriler oluşturur.
 
-## Adım 2 – Hough Transform Algoritmasını Uygula
+## Hough Transform Algoritması
 
 1.  **`Accumulator`'ü Başlat:** `Hough space`'i temsil eden iki boyutlu bir `accumulator` matrisi `H[d, θ]` oluştur. Tüm değerleri sıfıra ayarla. `d` ve `θ`'nın aralıkları ve adımları (çözünürlüğü) önceden belirlenir.
 
@@ -38,7 +38,7 @@ Bu gösterimin avantajı, `parameter space`'in (`d`, `θ`) sınırlı olmasıdı
 
 4.  **`Line`'ları Çıkar:** Tespit edilen her zirvenin `(d, θ)` koordinatları, `image`'deki bir `line`'ı tanımlar.
 
-## Adım 3 – İyileştirmeler ve Pratik İpuçları
+## İyileştirmeler ve Pratik İpuçları
 
 Standart `Hough Transform`'u daha verimli ve doğru hale getirmek için bazı iyileştirmeler yapılabilir:
 

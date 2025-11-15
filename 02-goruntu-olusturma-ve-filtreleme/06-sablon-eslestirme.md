@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Template Matching
-parent: 2. Görüntü Oluşturma ve Filtreleme
+parent: 2. Image Formation ve Filtering
 nav_order: 6
 ---
 
@@ -9,7 +9,7 @@ nav_order: 6
 
 `Filter`'ları sadece `noise` azaltmak veya `derivative` almak için değil, aynı zamanda bir `image` içinde belirli bir deseni veya **template**'i bulmak için de kullanabiliriz. Bu işleme **template matching** denir ve temel olarak bir "bulmaca" oyununa benzer: küçük bir `image` (`template`), büyük bir `image`'in (sahne) neresinde olduğunu bulmaya çalışırız.
 
-## Adım 1 – Filter'ları Template Olarak Anla
+## Filter'ları Template Olarak Anlamak
 
 Bir `filter kernel`'i, aslında küçük bir `template`'dir. `Filtering` işlemi (`correlation`), bu `template`'i `image` üzerinde her pozisyonda gezdirerek o bölgenin `template`'e ne kadar "benzediğini" ölçer.
 - Yüksek bir `filter` çıktısı, `image`'deki o bölgenin `template` ile yüksek bir `correlation`'a sahip olduğunu, yani benzediğini gösterir.
@@ -17,7 +17,7 @@ Bir `filter kernel`'i, aslında küçük bir `template`'dir. `Filtering` işlemi
 
 Bu mantıkla, aradığımız nesneyi içeren küçük bir `image`'i (`template`) alıp, onu büyük `image` (sahne) üzerinde bir `filter` gibi gezdirerek nesnenin yerini bulabiliriz.
 
-## Adım 2 – Normalized Cross-Correlation
+## Normalized Cross-Correlation (NCC)
 
 Basit `cross-correlation`, aydınlatma değişikliklerine karşı çok hassastır. Örneğin, `image`'deki bir bölge `template` ile aynı desene sahip olsa bile, daha karanlık veya daha parlaksa, `correlation` skoru düşük çıkabilir.
 
@@ -27,7 +27,7 @@ Bu problemi çözmek için **Normalized Cross-Correlation (NCC)** kullanılır. 
 
 NCC uygulandığında, çıktı olarak bir **correlation map** elde edilir. Bu haritadaki her `pixel`'in değeri, `template`'in merkezinin o `pixel`'e yerleştirildiğinde elde edilen eşleşme skorunu gösterir. Aradığımız nesnenin konumu, bu haritadaki en yüksek tepe (`peak`) noktasının koordinatlarıdır.
 
-## Adım 3 – Template Matching'in Sınırlılıklarını Bil
+## Template Matching'in Sınırlılıkları
 
 `Template matching` basit ve etkili bir yöntem olmasına rağmen, önemli kısıtlamaları vardır:
 

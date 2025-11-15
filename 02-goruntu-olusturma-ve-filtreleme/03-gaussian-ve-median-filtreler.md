@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Gaussian ve Median Filtreler
-parent: 2. Görüntü Oluşturma ve Filtreleme
+title: Gaussian ve Median Filter'lar
+parent: 2. Image Formation ve Filtering
 nav_order: 3
 ---
 
-# Gaussian ve Median Filtreler
+# Gaussian ve Median Filter'lar
 
 Farklı `noise` türleriyle başa çıkmak için özelleşmiş `filter`'lar kullanırız. En yaygın ve güçlü iki `filter`, **Gaussian filter** ve **Median filter**'dır.
 
-## Adım 1 – Gaussian Filter'ı Anla
+## Gaussian Filter
 
 **Box filter**, yani basit ortalama alma, bazı dezavantajlara sahiptir. Penceredeki tüm `pixel`'lere eşit ağırlık verir ve bu da filtrelenmiş `image`'de bloklu yapılar oluşturabilir. Daha doğal bir `smoothing` için **Gaussian filter** kullanılır.
 
@@ -35,7 +35,7 @@ Bir `pixel`'in değerini hesaplarken, merkezdeki `pixel`'e daha yakın olan kom�
 
 > **Ne Zaman Kullanılır?** `Gaussian filter`, **Gaussian noise**'u gidermek için en etkili `linear filter`'dır. `Image smoothing` ve `preprocessing` adımlarında çok yaygın olarak kullanılır.
 
-## Adım 2 – Median Filter'ı Anla
+## Median Filter
 
 **Salt and Pepper** gibi, `image`'de aykırı ve aşırı değerlere sahip (0 veya 255 gibi) `noise` türleri için ortalama tabanlı `filter`'lar iyi çalışmaz. Çünkü bu aşırı değerler ortalamayı ciddi şekilde saptırır.
 

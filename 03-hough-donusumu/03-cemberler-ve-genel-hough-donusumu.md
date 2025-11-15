@@ -9,7 +9,7 @@ nav_order: 3
 
 `Hough Transform`'un gücü, sadece `line`'larla sınırlı değildir. Prensip, parametrik olarak ifade edilebilen herhangi bir şekle genişletilebilir. Bu bölümde `circle` (çember) tespitini ve ardından herhangi bir keyfi şekli bulabilen **Generalized Hough Transform**'u inceleyeceğiz.
 
-## Adım 1 – Circles için Hough Transform
+## Circles için Hough Transform
 
 Bir `circle`, üç parametre ile tanımlanır: merkez koordinatları `(a, b)` ve yarıçap `r`. Denklem: `(x - a)² + (y - b)² = r²`.
 Bu, `Hough space`'in artık 3 boyutlu `(a, b, r)` olacağı anlamına gelir.
@@ -32,7 +32,7 @@ Bu, `Hough space`'in artık 3 boyutlu `(a, b, r)` olacağı anlamına gelir.
         - Bu oylama, tüm olası `r` değerleri için yapılır.
     - Bu yöntem, arama uzayını 3D bir koniden 2D bir çizgiye indirgeyerek verimliliği büyük ölçüde artırır.
 
-## Adım 2 – Generalized Hough Transform (GHT)
+## Generalized Hough Transform (GHT)
 
 Peki ya bulmak istediğimiz şeklin (örneğin, bir araba, bir insan figürü) basit bir geometrik denklemi yoksa? İşte burada **Generalized Hough Transform (GHT)** devreye girer.
 

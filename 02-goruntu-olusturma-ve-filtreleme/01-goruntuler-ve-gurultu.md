@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Images ve Noise Modelleri
-parent: 2. Görüntü Oluşturma ve Filtreleme
+parent: 2. Image Formation ve Filtering
 nav_order: 1
 ---
 
@@ -9,7 +9,7 @@ nav_order: 1
 
 Bu bölümde, dijital `image`'lerin temelini, nasıl bir fonksiyon olarak ifade edilebileceğini ve pratikte karşılaşılan `noise` türlerini inceliyoruz.
 
-## Adım 1 – Image'i Bir Fonksiyon Olarak Anla
+## Image'i Bir Fonksiyon Olarak Anlamak
 
 Bir `image`'i matematiksel olarak iki boyutlu bir fonksiyon, `I(x, y)`, olarak düşünebiliriz. Bu fonksiyonda:
 - `(x, y)`: `Image` düzlemindeki bir koordinatı temsil eder.
@@ -28,7 +28,7 @@ Bilgisayarlar sürekli (analog) sinyallerle çalışamaz, bu yüzden `image`'ler
 
 Sonuç olarak, dijital bir `image`, tam sayı değerlerinden oluşan bir matris (veya renkli ise 3 matris) olarak temsil edilir.
 
-## Adım 2 – Yaygın Noise Türlerini Tanı
+## Yaygın Noise Türleri
 
 `Image` elde etme ve iletim süreçlerinde orijinal sinyale istenmeyen rastgele sinyaller eklenir. Buna **noise** denir. `Noise`, `I'(x, y) = I(x, y) + η(x, y)` şeklinde bir toplamsal modelle ifade edilebilir; burada `η(x, y)` `noise` fonksiyonudur.
 
