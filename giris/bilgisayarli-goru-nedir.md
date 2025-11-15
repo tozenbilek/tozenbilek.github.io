@@ -9,7 +9,7 @@ nav_order: 1
 
 **Bilgisayarlı Görü**, bilgisayarların ve sistemlerin dijital görüntülerden veya videolardan anlamlı bilgiler elde etmesini sağlayan bir bilim ve teknoloji alanıdır. Temel amaç, insan görsel sisteminin yapabildiği görevleri otomatikleştirmektir. Yani, "görmek" ve "anlamak" eylemlerini makinelere öğretmektir.
 
-![Seeing vs Understanding](https://via.placeholder.com/600x300.png?text=Görmek+(Piksel+Matrisi)+->+Anlamak+(Bu+bir+KEDİDİR))
+![Seeing vs Understanding](https://placehold.co/600x300/EEE/31343C?text=Görmek+(Piksel+Matrisi)+->+Anlamak+(Bu+bir+KEDİDİR))
 *<center>Bilgisayarlı Görü, sadece pikselleri görmekle kalmaz, aynı zamanda bu piksellerin ne anlama geldiğini yorumlar.</center>*
 
 ## Temel Amaç
@@ -23,7 +23,7 @@ Bu iki kavram sıkça karıştırılsa da aralarında önemli bir fark vardır:
 -   **Görüntü İşleme (Image Processing):** Genellikle bir görüntüyü girdi olarak alıp, başka bir görüntüyü çıktı olarak üreten operasyonlarla ilgilenir. Amaç genellikle görüntüyü iyileştirmek veya değiştirmektir (örneğin, bulanıklaştırma, netleştirme, renk düzeltme).
 -   **Bilgisayarlı Görü (Computer Vision):** Bir görüntüyü girdi olarak alır, ancak çıktısı genellikle bir görüntü değil, bir **bilgi** veya **yorumdur** (örneğin, "görüntüde 3 kedi var", "nesne 5 metre uzakta", "bu bir insan yüzü").
 
-![Image Processing vs Computer Vision](https://via.placeholder.com/800x300.png?text=Görüntü+İşleme+(Görüntü->Görüntü)+vs.+Bilgisayarlı+Görü+(Görüntü->Bilgi))
+![Image Processing vs Computer Vision](https://placehold.co/800x300/EEE/31343C?text=Görüntü+İşleme+(Görüntü->Görüntü)+vs.+CV+(Görüntü->Bilgi))
 *<center>Temel fark: Görüntü İşleme görüntüyü manipüle ederken, Bilgisayarlı Görü görüntüden anlam çıkarır.</center>*
 
 > Görüntü işleme operasyonları, genellikle Bilgisayarlı Görü algoritmalarının bir parçası olarak, ön işleme adımlarında sıklıkla kullanılır.

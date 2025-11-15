@@ -18,7 +18,7 @@ Bir `image`'deki küçük bir pencereyi (patch) düşünelim. Bu pencereyi hafif
 - **Bir pencere kenarında ("Edge" region):** Pencereyi kenar boyunca kaydırırsak içeriği pek değişmez, ama kenara dik yönde kaydırırsak içeriği aniden değişir. Bu bölge tek yönde ayırt edicidir.
 - **Bir pencere köşesinde ("Corner" region):** Pencereyi **hangi yöne** kaydırırsak kaydıralım, içeriği belirgin bir şekilde değişir. Bu bölge her yönde ayırt edicidir ve bu yüzden iyi bir `feature`'dır.
 
-![Harris Corner Detection Intuition](https://via.placeholder.com/800x300.png?text=Düz+Bölge+(Her+Yöne+Benzer)+|+Kenar+(1+Yön+Farklı)+|+Köşe+(Her+Yön+Farklı))
+![Harris Corner Detection Intuition](https://placehold.co/800x300/EEE/31343C?text=Düz+Bölge+(Her+Yöne+Benzer)+|+Kenar+(1+Yön+Farklı)+|+Köşe+(Her+Yön+Farklı))
 *<center>Harris Corner Detector'ın temel fikri: Pencereyi kaydırdığımızda oluşan değişimin analizi. Köşeler, her yönde büyük değişime neden olan bölgelerdir.</center>*
 
 ## Harris Detector Matematiği
@@ -47,7 +47,7 @@ Bu `M` matrisinin **özdeğerleri (eigenvalues)**, `λ₁` ve `λ₂`, bize penc
 - `k` ampirik bir sabittir (genellikle 0.04-0.06 arası).
 - `R`'nin değeri, bölgenin köşe olup olmadığını belirler.
 
-![Eigenvalues and Cornerness](https://via.placeholder.com/500x400.png?text=λ1+ve+λ2'ye+göre+Bölge+Tipi+(Düz,+Kenar,+Köşe))
+![Eigenvalues and Cornerness](https://placehold.co/500x400/EEE/31343C?text=λ1+ve+λ2'ye+göre+Bölge+Tipi+(Düz,+Kenar,+Köşe))
 *<center>M matrisinin özdeğerleri (λ1, λ2), bölgenin tipini belirler. İki özdeğer de büyükse, bu bir köşedir.</center>*
 
 ## Harris Corner Detector Algoritması

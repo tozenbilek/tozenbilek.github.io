@@ -11,7 +11,7 @@ nav_order: 1
 
 `Image segmentation`, bir `image`'in, `pixel`'lerin bir araya getirilerek anlamlı bölgelere ayrılması işlemidir. Amacımız, `image`'deki her `pixel`'e bir "etiket" atamaktır, öyle ki aynı etikete sahip `pixel`'ler belirli bir görsel özelliği (örneğin, aynı renk, aynı doku) paylaşsın.
 
-![Image Segmentation Goal](https://via.placeholder.com/600x300.png?text=Orijinal+Görüntü+->+Anlamlı+Bölgeler+(Segmentler))
+![Image Segmentation Goal](https://placehold.co/600x300/EEE/31343C?text=Orijinal+Görüntü+->+Segmentler)
 *<center>Segmentasyonun amacı, orijinal görüntüdeki her pikseli ait olduğu nesne veya bölgeye göre etiketlemektir.</center>*
 
 Segmentasyon, bir `classification` problemi olarak görülebilir: Her `pixel` için, "Hangi segmente aitsin?" sorusunu cevaplamaya çalışırız.
@@ -25,7 +25,7 @@ Segmentasyon, bir `classification` problemi olarak görülebilir: Her `pixel` i�
 
 K-Means, bu `feature vector`'larını `K` adet `cluster`'a ayırmak için en popüler `clustering` algoritmalarından biridir.
 
-![K-Means Clustering Steps](https://via.placeholder.com/800x300.png?text=1.+K+Merkez+Seç+->+2.+Noktaları+Ata+->+3.+Merkezleri+Güncelle+->+Tekrarla)
+![K-Means Clustering Steps](https://placehold.co/800x300/EEE/31343C?text=1.+K+Merkez+Seç+->+2.+Ata+->+3.+Güncelle+->+Tekrarla)
 *<center>K-Means algoritmasının adımları: Rastgele merkezler seçilir, her nokta en yakın merkeze atanır, merkezler atanan noktaların ortalamasına taşınır ve bu işlem yakınsayana kadar tekrarlanır.</center>*
 
 Algoritma adımları şunlardır:
@@ -41,7 +41,7 @@ Segmentasyon için `feature space`'i nasıl tanımladığımız, sonucun kalites
 -   **Sadece Renk:** `F = [R, G, B]`. Bu yaklaşım, `image`'in farklı yerlerinde bulunsalar bile, renk olarak birbirine benzeyen tüm `pixel`'leri aynı `cluster`'da toplar.
 -   **Renk + Konum:** `F = [R, G, B, x, y]`. Bu, hem renk olarak birbirine benzeyen hem de `image` üzerinde birbirine yakın olan `pixel`'leri bir araya getirmeye yardımcı olur.
 
-![K-Means with Different Feature Spaces](https://via.placeholder.com/800x400.png?text=Sadece+Renk+->+Renk+ve+Konum+Bilgisi)
+![K-Means with Different Feature Spaces](https://placehold.co/800x400/EEE/31343C?text=Sadece+Renk+vs.+Renk+ve+Konum)
 *<center>Solda: Sadece renk bilgisiyle yapılan segmentasyon, görüntüdeki farklı yerlerdeki benzer renkleri aynı grupta toplar (örneğin, gökyüzü ve su). Sağda: Renk ve konum bilgisi birlikte kullanıldığında, hem rengi benzeyen hem de birbirine yakın olan pikseller gruplanır ve daha anlamlı segmentler oluşur.</center>*
 
 ## K-Means'in Dezavantajları

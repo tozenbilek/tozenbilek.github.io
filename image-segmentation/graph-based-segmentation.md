@@ -44,7 +44,7 @@ N-Cut değerini minimize etmek, doğrudan çözülmesi zor bir problemdir. Ancak
 
 `pixel`'ler veya `pixel` grupları `node`'ları (`V`), bu `node`'lar arasındaki ilişki (benzerlik) ise `edge`'leri (`E`) oluşturur. Her `edge`'in bir ağırlığı (`weight`) vardır ve bu ağırlık, iki `node`'un birbirine ne kadar benzediğini gösterir.
 
-![Image to Graph Representation](https://via.placeholder.com/700x400.png?text=Pikseller+->+Node'lar,+Benzerlik+->+Edge+Ağırlıkları)
+![Image to Graph Representation](https://placehold.co/700x400/EEE/31343C?text=Pikseller+->+Node'lar,+Benzerlik+->+Edge+Ağırlıkları)
 *<center>Görüntünün grafa dönüştürülmesi: Her piksel bir düğüm (node) olur. Birbirine yakın ve benzer renkteki pikseller arasındaki kenarların (edge) ağırlığı yüksek olur.</center>*
 
 Bu `graph` yapısı üzerinde segmentasyon, `graph`'ı iki veya daha fazla alt gruba bölme (`graph cut`) problemine dönüşür. Amaç, alt gruplar arasındaki bağlantıları (yani `cut`'ları) minimuma indirmektir.
@@ -55,7 +55,7 @@ Ancak bu yaklaşım, `image`'den küçük ve izole bölgeleri (örneğin tek bir
 
 `N-Cut`'ın amacı, `cut`'ı minimize ederken aynı zamanda ortaya çıkan segmentlerin "boyutunu" da (`assoc(A,V)`) maksimize etmektir. Bu, `Minimum Cut`'ın küçük, izole segmentler üretme sorununu çözer ve daha dengeli, "makul" boyutta segmentler elde edilmesini sağlar.
 
-![Minimum Cut vs Normalized Cut](https://via.placeholder.com/800x400.png?text=Minimum+Cut+(Küçük+Bölgeleri+Ayırır)+vs.+Normalized+Cut+(Dengeli+Bölgeler+Oluşturur))
+![Minimum Cut vs Normalized Cut](https://placehold.co/800x400/EEE/31343C?text=Minimum+Cut+(Dengesiz)+vs.+Normalized+Cut+(Dengeli))
 *<center>Solda: Minimum Cut, toplam kesim ağırlığı en düşük olan küçük bir grubu ayırma eğilimindedir. Sağda: Normalized Cut, kesimin boyutunu segmentlerin toplam bağlantılarına oranlayarak daha dengeli ve algısal olarak anlamlı kesimler bulur.</center>*
 
 `N-Cut` problemini çözmek, doğrudan zor bir iştir. Ancak, bu problemin `generalized eigenvalue` problemine dönüştürülebileceği gösterilmiştir. `Graph`'ın `Laplacian` matrisinin özvektörleri (`eigenvectors`), `graph`'ı en iyi şekilde bölen `cut`'ları bulmak için kullanılır. Özellikle, ikinci en küçük özvektör (`second smallest eigenvector`), `graph`'ı ikiye bölmek için en iyi çözümü verir.

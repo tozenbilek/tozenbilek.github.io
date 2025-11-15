@@ -11,7 +11,7 @@ Bazı durumlarda, `pixel`'lerin sadece renk, parlaklık veya konum gibi basit `f
 
 **Doku**, bir yüzeyin `intensity` veya renk desenindeki tekrarlayan yapısal düzenlemeler olarak tanımlanabilir. Doku segmentasyonu, `image`'i farklı dokusal özelliklere sahip bölgelere ayırmayı amaçlar.
 
-![Texture Segmentation Goal](https://via.placeholder.com/600x300.png?text=Farklı+Desenlere+Sahip+Bölgeleri+Ayırma)
+![Texture Segmentation Goal](https://placehold.co/600x300/EEE/31343C?text=Farklı+Desenlere+Sahip+Bölgeleri+Ayırma)
 *<center>Doku segmentasyonu, çita (benekli) ve ot (çizgili) gibi farklı dokusal desenlere sahip bölgeleri birbirinden ayırır.</center>*
 
 ## Filter Bank ile Doku Özellikleri Çıkarma
@@ -36,7 +36,7 @@ Bu `feature vector`'leri, `K-Means` gibi bir `clustering` algoritması kullanıl
 
 Daha sonra, `image`'deki her `pixel`, kendisine en yakın `texton`'a atanarak bir **texton map** oluşturulur.
 
-![Texture Segmentation Pipeline](https://via.placeholder.com/800x250.png?text=Image+->+Filter+Bank+->+Feature+Vektörleri+->+Clustering+(Textons)+->+Texton+Map)
+![Texture Segmentation Pipeline](https://placehold.co/800x250/EEE/31343C?text=Image+->+Filter+Bank+->+Clustering+(Textons)+->+Texton+Map)
 *<center>Doku segmentasyonu süreci: Görüntü bir filtre bankasından geçirilir, her piksel için bir özellik vektörü oluşturulur, bu vektörler kümelenerek "texton"lar bulunur ve son olarak her piksel en yakın texton'a atanır.</center>*
 
 ## Texton Map Üzerinde Segmentasyon

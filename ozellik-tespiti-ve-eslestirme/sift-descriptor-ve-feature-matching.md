@@ -20,7 +20,7 @@ nav_order: 3
 
 Bu histogramdaki en yüksek tepe (peak), `keypoint`'in **ana yönünü (dominant orientation)** belirler. Bu ana yön, `descriptor` hesaplamasından önce `keypoint`'in koordinat sistemini "düzeltmek" için kullanılır. Bu sayede, `descriptor` rotasyona karşı değişmez hale gelir. Eğer ikinci bir tepe, birincinin %80'inden daha yüksekse, o yöne de sahip yeni bir `keypoint` oluşturulur.
 
-![SIFT Orientation Assignment](https://via.placeholder.com/600x400.png?text=Keypoint+Etrafında+Gradient+Yön+Histogramı+->+Dominant+Yön)
+![SIFT Orientation Assignment](https://placehold.co/600x400/EEE/31343C?text=Keypoint+Etrafında+Gradient+Yön+Histogramı)
 *<center>Yön ataması: Keypoint etrafındaki piksellerin gradient yönleri bir histogramda toplanır ve en yüksek tepe, keypoint'in ana yönünü belirler.</center>*
 
 ## SIFT Descriptor'ını Oluşturma
@@ -38,7 +38,7 @@ Bu histogramdaki en yüksek tepe (peak), `keypoint`'in **ana yönünü (dominant
 
 Bu 16 histogramın her birindeki 8'er değer art arda eklenerek `4x4x8 = 128` elemanlı bir **SIFT `descriptor` vektörü** oluşturulur. Bu vektör, `keypoint` etrafındaki lokal `gradient` bilgisinin zengin bir temsilidir. Vektör daha sonra aydınlatma değişimlerine karşı hassasiyeti azaltmak için normalize edilir.
 
-![SIFT Descriptor Grid](https://via.placeholder.com/600x450.png?text=16x16'lık+Bölge+->+4x4'lük+Grid+->+Her+Grid'de+8-bin+Histogram+->+128-boyutlu+Vektör)
+![SIFT Descriptor Grid](https://placehold.co/600x450/EEE/31343C?text=16x16'lık+Bölge+->+4x4'lük+Grid+->+128-boyutlu+Vektör)
 *<center>SIFT Descriptor: Keypoint etrafındaki 16x16'lık bölge, 4x4'lük bir grid'e ayrılır. Her bir hücre içinde 8 yönlü bir gradient histogramı oluşturulur. Bu 16 histogram birleştirilerek 128 boyutlu descriptor vektörü elde edilir.</center>*
 
 3.  **`Descriptor`'ı Normalize Etme:**
@@ -64,7 +64,7 @@ Ancak en yakın komşu her zaman doğru eşleşme olmayabilir. İkinci en yakın
 
 Eğer bu oran belirlenen `threshold`'dan küçükse, eşleşme kabul edilir. Aksi halde, eşleşme belirsiz (`ambiguous`) kabul edilerek reddedilir. Bu basit test, hatalı eşleşmelerin büyük bir kısmını etkili bir şekilde eler.
 
-![Feature Matching Ratio Test](https://via.placeholder.com/800x350.png?text=Soldaki+Feature+->+Sağdaki+En+Yakın+1+(d1)+ve+2+(d2)+->+d1/d2<Threshold?)
+![Feature Matching Ratio Test](https://placehold.co/800x350/EEE/31343C?text=Soldaki+Feature+->+Sağdaki+En+Yakın+1+(d1)+ve+2+(d2)+->+d1/d2<Threshold?)
 *<center>Ratio Test: Görüntü 1'deki bir feature için, Görüntü 2'deki en yakın ve ikinci en yakın komşular bulunur. Eğer en yakın mesafe (d1), ikinci en yakın mesafeye (d2) göre anlamlı ölçüde daha küçükse, eşleşme kabul edilir.</center>*
 
 ---
@@ -91,6 +91,4 @@ Eğer bu oran belirlenen `threshold`'dan küçükse, eşleşme kabul edilir. Aks
 </details>
 
 <details>
-  <summary><b>Soru 3:</b> `Ratio Test`'i kullanmamanın ve her zaman en yakın komşuyu en iyi eşleşme olarak kabul etmenin potansiyel dezavantajı nedir?</summary>
-  <p>Eğer `Ratio Test` kullanılmazsa, bir `feature` için her zaman bir "en iyi" eşleşme bulunur, bu eşleşme ne kadar kötü veya belirsiz olursa olsun. Özellikle tekrarlayan desenlere sahip (örneğin, bir binanın pencereleri, bir kumaşın deseni) görüntülerde, bir `feature`'ın birden fazla potansiyel doğru eşleşmesi olabilir. Bu durumda, en yakın komşu ile ikinci en yakın komşu arasındaki mesafe farkı çok az olur. `Ratio Test`, bu gibi "belirsiz" eşleşmeleri tespit edip eleyerek, nihai eşleşme setinin kalitesini ve güvenilirliğini önemli ölçüde artırır. Testi kullanmamak, çok sayıda hatalı eşleşmeye (`false positive`) yol açar.</p>
-</details>
+  <summary><b>Soru 3:</b> `Ratio Test`

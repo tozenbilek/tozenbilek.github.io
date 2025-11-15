@@ -19,7 +19,7 @@ Mean Shift, her bir veri noktasını (`pixel`'in `feature vector`'ü) alır ve o
 4.  **Kaydır (Shift):** Başlangıç noktası `x`'i, hesaplanan ağırlık merkezi `m`'ye kaydır.
 5.  **Tekrarla:** Yeni `x` noktası için 2-4 adımlarını, pencerenin merkezi artık değişmeyene (yani bir yoğunluk tepesine yakınsayana) kadar tekrarla.
 
-![Mean Shift Hill Climbing](https://via.placeholder.com/600x400.png?text=1.+Pencere+Seç+->+2.+Merkezi+Hesapla+->+3.+Merkeze+Kaydır+->+Tekrarla)
+![Mean Shift Hill Climbing](https://placehold.co/600x400/EEE/31343C?text=1.+Pencere+->+2.+Merkez+Hesapla+->+3.+Kaydır+->+Tekrarla)
 *<center>Mean Shift'in çalışma prensibi: Her bir nokta, etrafındaki komşuluğun yoğunluk merkezine doğru kaydırılır ve bu işlem, yoğunluğun tepe noktasına ulaşana kadar tekrarlanır.</center>*
 
 Bu işlem, `feature space`'teki tüm başlangıç noktaları için yapılır. Sonunda aynı tepe noktasına ulaşan tüm başlangıç noktaları, aynı `cluster`'a ait olarak kabul edilir.
@@ -30,7 +30,7 @@ Bu işlem, `feature space`'teki tüm başlangıç noktaları için yapılır. So
 - **Cluster:** Bir çekim havzasındaki tüm veri noktaları, tek bir `cluster` olarak kabul edilir.
 - **Segmentation:** Son adımda, aynı `cluster`'a ait olan tüm `pixel`'ler aynı `segment` olarak etiketlenir.
 
-![Mean Shift Segmentation Result](https://via.placeholder.com/600x300.png?text=Orijinal+Görüntü+->+Mean+Shift+ile+Segmentasyon)
+![Mean Shift Segmentation Result](https://placehold.co/600x300/EEE/31343C?text=Orijinal+Görüntü+->+Mean+Shift+Segmentasyon)
 *<center>Mean Shift segmentasyonunun tipik bir sonucu: Görüntü, algısal olarak anlamlı ve pürüzsüz sınırlara sahip bölgelere ayrılır.</center>*
 
 ## Mean Shift'in Artıları ve Eksileri

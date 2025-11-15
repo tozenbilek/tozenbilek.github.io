@@ -22,7 +22,7 @@ Bilgisayarlı Görü uygulamaları, çözdükleri problemin niteliğine göre ge
 -   **Etkileşim ve Denetim (Interaction & Control):** Görsel girdiyi, bir sistemi kontrol etmek veya kullanıcıyla etkileşim kurmak için kullanma.
     -   *Örnekler:* Sanal gerçeklikte el takibi, jestlerle kontrol edilen kullanıcı arayüzleri, robotların engellerden kaçınması.
 
-![Computer Vision Pipeline](https://via.placeholder.com/800x250.png?text=Sensör+->+Önişleme+->+Özellik+Çıkarımı+->+Karar+Verme)
+![Computer Vision Pipeline](https://placehold.co/800x250/EEE/31343C?text=Sensör+->+Önişleme+->+Özellik+Çıkarımı+->+Karar+Verme)
 *<center>Tipik bir Bilgisayarlı Görü sisteminin genel akış şeması (pipeline).</center>*
 
 ## Tipik Bir Bilgisayarlı Görü Sistemi

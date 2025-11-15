@@ -47,14 +47,14 @@ Bu adımlar sonucunda, `scale` değişimine karşı dayanıklı, stabil ve iyi l
 
 `σ` değeri, `smoothing` miktarını, dolayısıyla da tespit edilecek `feature`'ların "ölçeğini" belirler.
 
-![Scale Invariance Problem](https://via.placeholder.com/800x400.png?text=Yakın+Çekimde+Büyük+Pencere+İşe+Yarar,+Uzak+Çekimde+Küçük)
+![Scale Invariance Problem](https://placehold.co/800x400/EEE/31343C?text=Yakın+Çekimde+Büyük+Pencere+İşe+Yarar,+Uzak+Çekimde+Küçük)
 *<center>Ölçek problemi: Sabit boyutlu bir köşe dedektörü, yakın çekimde köşeyi bulurken, uzak çekimde (görüntü küçüldüğünde) aynı bölgeyi bir çizgi veya leke olarak görebilir.</center>*
 
 Bu sorunu çözmek için, `feature`'ları tek bir ölçekte aramak yerine, **tüm olası ölçeklerde** ararız. Bu konsept, **scale-space (ölçek uzayı)** olarak bilinir.
 
 Bu işlem, farklı `σ` değerlerine sahip Gaussian'larla `convolution` alınmış bir `image` piramidi oluşturur.
 
-![Gaussian Scale-Space Pyramid](https://via.placeholder.com/600x450.png?text=Görüntü+Piramidi+ve+Her+Seviyede+Artan+Bulanıklık+(σ))
+![Gaussian Scale-Space Pyramid](https://placehold.co/600x450/EEE/31343C?text=Görüntü+Piramidi+ve+Her+Seviyede+Artan+Bulanıklık+(σ))
 *<center>Gaussian ölçek uzayı: Görüntü tekrar tekrar alt örneklenir (piramit katmanları) ve her katmanda artan `σ` değerleriyle giderek daha fazla bulanıklaştırılır.</center>*
 
 ## 2. Laplacian of Gaussian (LoG) Yaklaşımı ve Farkı (DoG)
@@ -67,7 +67,7 @@ Ancak LoG hesaplama açısından maliyetlidir. SIFT'in yazarı David Lowe, LoG'n
 
 Bir `pixel`'in `keypoint` adayı olabilmesi için, sadece kendi 3x3 komşuluğunda değil, aynı zamanda **bir alttaki ve bir üstteki** DoG `image`'lerindeki 3x3 komşuluğunda da en yüksek veya en düşük değere sahip olması gerekir. Yani, bir aday `pixel`, 3x3x3'lük bir 27 `pixel`'lik komşulukta lokal bir `maximum` veya `minimum` olmalıdır.
 
-![Scale-Space Extrema Detection](https://via.placeholder.com/500x400.png?text=Aday+Piksel+(X),+Hem+Kendi+Katmanında+Hem+de+Alt/Üst+Katmanlarda+Ekstremum+Olmalı)
+![Scale-Space Extrema Detection](https://placehold.co/500x400/EEE/31343C?text=Aday+Piksel+(X),+Hem+Kendi+Katmanında+Hem+de+Alt/Üst+Katmanlarda+Ekstremum+Olmalı)
 *<center>Ölçek uzayında maksimum tespiti: Bir 'X' pikseli, sadece kendi 8 komşusuyla değil, aynı zamanda alt ve üst ölçeklerdeki 9+9=18 komşusuyla da karşılaştırılır.</center>*
 
 Bu adım, `keypoint` adaylarının sayısını önemli ölçüde azaltır.

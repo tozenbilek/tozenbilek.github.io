@@ -13,7 +13,7 @@ SIFT gibi `feature matching` algoritmaları, `Ratio Test` gibi filtreler kullans
 
 RANSAC'ın temel fikri oldukça basittir: Eğer verideki doğru noktaları (`inlier`'ları) tahmin edebilseydik, modeli kolayca bu noktalara uydurabilirdik. Bu yüzden RANSAC, rastgele bir şekilde veri noktalarından küçük alt kümeler seçer ve bu alt kümelerin "iyi" olduğunu varsayar.
 
-![RANSAC Intuition](https://via.placeholder.com/700x400.png?text=Tüm+veriye+uydurulan+yanlış+model+vs.+Rastgele+örneklemle+bulunan+doğru+model)
+![RANSAC Intuition](https://placehold.co/700x400/EEE/31343C?text=Tüm+veriye+uydurulan+yanlış+model+vs.+Doğru+model)
 *<center>Solda: Tüm veri noktalarına (inlier+outlier) uydurulan hatalı çizgi. Sağda: RANSAC, rastgele seçtiği iki noktanın (inlier) oluşturduğu doğru çizgiyi ve bu çizgiyle uyumlu diğer inlier'ları bulur.</center>*
 
 ## RANSAC Algoritması
@@ -26,7 +26,7 @@ RANSAC'ın temel fikri oldukça basittir: Eğer verideki doğru noktaları (`inl
 4.  **Repeat (Tekrar Et):** Bu işlemi `N` defa tekrar et. En çok `inlier`'a sahip olan modeli "en iyi" model olarak sakla.
 5.  **Refit (Yeniden Uydur):** En iyi modelin `inlier` setindeki **tüm** noktaları kullanarak modeli yeniden hesapla. Bu son adım, gürültüyü azaltır ve daha doğru bir sonuç verir.
 
-![RANSAC Algorithm Steps](https://via.placeholder.com/800x300.png?text=1.+Rastgele+Örneklem+Seç+->+2.+Model+Uydur+->+3.+Inlier'ları+Say)
+![RANSAC Algorithm Steps](https://placehold.co/800x300/EEE/31343C?text=1.+Rastgele+Örneklem+Seç+->+2.+Model+Uydur+->+3.+Inlier'ları+Say)
 *<center>RANSAC döngüsü: Rastgele bir alt küme seçilir, bir model uydurulur ve bu modelin kaç tane başka noktayı desteklediği (inlier) sayılır. Bu işlem, en çok desteği alan modeli bulana kadar tekrarlanır.</center>*
 
 ## RANSAC Parametreleri
