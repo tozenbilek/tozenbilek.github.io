@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Projective Geometry ve Kamera Modelleri
-parent: 4. Kamera Modelleri ve Homografi
+title: Projective Geometry ve Camera Models
+parent: 4. Camera Models ve Homography
 nav_order: 1
 ---
 
-# Projective Geometry ve Kamera Modelleri
+# Projective Geometry ve Camera Models
 
 `Image`'lerin nasıl oluştuğunu anlamak, 3D dünyayı 2D `image`'lere yansıtan geometrik süreci anlamakla başlar. Bu süreç **Projective Geometry** ile açıklanır ve en temel `camera` modeli olan **pinhole camera** ile basitleştirilir.
 
-## Adım 1 – Pinhole Camera Modelini Anla
+## Pinhole Camera Modeli
 
 En basit `camera` modeli, ışık geçirmez bir kutunun bir yüzündeki iğne deliğinden (`pinhole`) ışığın geçerek karşı yüzeye (görüntü düzlemi - `image plane`) ters bir `image` oluşturduğu **pinhole camera** modelidir.
 
@@ -24,7 +24,7 @@ En basit `camera` modeli, ışık geçirmez bir kutunun bir yüzündeki iğne de
 
 Bu denklemler, `perspective projection`'ın temelini oluşturur. Önemli bir özelliği, bir nesnenin `image`'deki boyutunun, `camera`'ya olan uzaklığı (`Z`) ile ters orantılı olmasıdır. Yani, uzaktaki nesneler küçük görünür.
 
-## Adım 2 – Homogeneous Coordinates (Homojen Koordinatlar)
+## Homogeneous Coordinates (Homojen Koordinatlar)
 
 `Perspective projection` denklemlerindeki `Z`'ye bölme işlemi, dönüşümü **non-linear** (doğrusal olmayan) yapar. Bu, matris çarpımlarıyla ifade etmeyi zorlaştırır. Bu sorunu çözmek için **homogeneous coordinates** kullanılır.
 
@@ -57,7 +57,7 @@ Z \\
 
 Bu matris çarpımı sonucunda `(dX, dY, Z)` elde edilir. Bunu kartezyen koordinatlara çevirmek için ilk iki bileşeni üçüncüye böleriz ve `(dX/Z, dY/Z)` `image` koordinatlarını buluruz.
 
-## Adım 3 – Vanishing Points (Ufuk Noktaları)
+## Vanishing Points (Ufuk Noktaları)
 
 `Projective geometry`'nin ilginç bir sonucu, 3D dünyada birbirine paralel olan çizgilerin `image`'de tek bir noktada kesişiyormuş gibi görünmesidir. Bu kesişim noktasına **vanishing point** denir.
 
@@ -66,7 +66,7 @@ Bu matris çarpımı sonucunda `(dX, dY, Z)` elde edilir. Bunu kartezyen koordin
 
 `Vanishing point`'ler, `image`'lerden 3D yapı hakkında bilgi çıkarmak (örneğin, kamera yönelimi, nesne boyutları) ve `image`'lerin perspektifini analiz etmek için kullanılır.
 
-## Adım 4 – Diğer Camera Modelleri
+## Diğer Camera Modelleri
 
 - **Orthographic Projection:** `Camera`'nın nesneden sonsuz uzakta olduğu varsayılan özel bir durumdur. Işınlar `COP`'de kesişmek yerine birbirine paralel olarak gelir. Bu modelde `Z`'ye bölme (derinlik etkisi) yoktur, `(X, Y, Z)` doğrudan `(X, Y)`'ye yansıtılır. `Perspective` bozulma olmaz. Genellikle mühendislik çizimleri veya haritalar için kullanılır.
 - **Weak Perspective Projection:** `Perspective projection`'a bir yaklaşımdır. Bir grup nesnenin yaklaşık olarak aynı derinlikte (`Z`) olduğu varsayılır. Bu durumda `Z`, sabit bir değer gibi davranır ve `projection` basit bir ölçekleme (`scaling`) haline gelir: `(x, y) = (s*X, s*Y)`.

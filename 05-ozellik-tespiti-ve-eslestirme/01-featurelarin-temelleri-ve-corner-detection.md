@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Feature'ların Temelleri ve Corner Detection
-parent: 5. Özellik Tespiti ve Eşleştirme
+parent: 5. Feature Detection ve Matching
 nav_order: 1
 ---
 
@@ -9,21 +9,21 @@ nav_order: 1
 
 `Image`'leri birleştirmek, nesneleri tanımak veya 3D yapı çıkarmak gibi görevler için `image`'ler arasında güvenilir eşleşmeler bulmamız gerekir. Bu eşleşmeleri, `image`'in tamamı yerine **local features** adı verilen küçük, ayırt edici bölgeler üzerinden yapmak çok daha etkilidir.
 
-## Adım 1 – İyi Bir Local Feature'ın Özellikleri
+## İyi Bir Local Feature'ın Özellikleri
 
 İyi bir `local feature`, aşağıdaki özelliklere sahip olmalıdır:
 1.  **Repeatability (Tekrarlanabilirlik):** Aynı 3D nokta, farklı bakış açılarından, aydınlatma koşullarından veya `scale`'lerden çekilmiş `image`'lerde tekrar tekrar tespit edilebilmelidir.
 2.  **Distinctiveness / Saliency (Ayırt Edicilik):** `Feature`'ın etrafındaki `image` bölgesi, diğer `feature`'lardan kolayca ayırt edilebilecek kadar zengin bir dokuya veya desene sahip olmalıdır. Düz bir duvardaki bir nokta kötü bir `feature` iken, bir nesnenin köşesi iyi bir `feature`'dır.
 3.  **Locality (Yerellik):** `Feature`, `image`'in küçük bir bölgesini kapsamalıdır. Bu, `occlusion` (nesnenin bir kısmının gizlenmesi) ve `clutter` (sahnedeki alakasız nesneler) gibi sorunlara karşı dayanıklılık sağlar.
 
-## Adım 2 – Feature Detection: Nereye Bakmalı?
+## Feature Detection: Nereye Bakmalı?
 
 `Image`'de en ayırt edici ve kolayca bulunabilen bölgeler, `intensity`'nin her yönde belirgin bir şekilde değiştiği yerlerdir.
 - **"Flat" (Düz) Bölgeler:** Her yönde `intensity` değişimi çok azdır. Kötü `feature`'lardır.
 - **"Edge" (Kenar) Bölgeleri:** `Edge` yönü boyunca `intensity` değişimi az, `edge`'e dik yönde ise değişim fazladır. Bu belirsizlikten (`aperture problem`) dolayı kısmen iyi `feature`'lardır.
 - **"Corner" (Köşe) Bölgeleri:** Her yönde `intensity` değişimi belirgindir. Bu nedenle, `corner`'lar mükemmel `feature` adaylarıdır.
 
-## Adım 3 – Harris Corner Detector
+## Harris Corner Detector
 
 `Corner`'ları matematiksel olarak bulmanın bir yolu, küçük bir pencereyi `image` üzerinde kaydırdığımızda pencere içindeki `pixel` `intensity`'lerinin ne kadar değiştiğini ölçmektir. Bu değişim, `Sum of Squared Differences (SSD)` ile formüle edilebilir:
 
@@ -53,7 +53,7 @@ Bu `M` matrisinin `eigenvalue`'ları (`λ₁`, `λ₂`), `gradient`'in iki ana y
 - `R`'nin büyük ve negatif olduğu yerler `edge`'dir.
 - `|R|`'nin küçük olduğu yerler `flat` bölgelerdir.
 
-## Adım 4 – Harris Corner Detector'ın Özellikleri
+## Harris Corner Detector'ın Özellikleri
 
 - **Rotation Invariance:** `Image` döndürüldüğünde, `M` matrisinin `eigenvalue`'ları değişmez. Bu nedenle, Harris `detector`, `rotation`'a karşı **dayanıklıdır**.
 - **Intensity Invariance:** `Image`'in parlaklığındaki değişimlere (`I -> I + b` veya `I -> a*I`) karşı büyük ölçüde **dayanıklıdır**, çünkü sadece `gradient`'lere (`derivative`'lere) dayanır.

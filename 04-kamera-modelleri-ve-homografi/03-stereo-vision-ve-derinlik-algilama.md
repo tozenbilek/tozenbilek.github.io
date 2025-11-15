@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Stereo Vision ve Derinlik Algılama
-parent: 4. Kamera Modelleri ve Homografi
+title: Stereo Vision ve Depth Perception
+parent: 4. Camera Models ve Homography
 nav_order: 3
 ---
 
-# Stereo Vision ve Derinlik Algılama
+# Stereo Vision ve Depth Perception
 
 Tek bir `image`, 3D dünya hakkında doğal bir belirsizlik içerir; farklı derinliklerdeki farklı boyutlu nesneler, `image`'de aynı görünebilir. İnsanların iki göze sahip olması gibi, iki `camera`'dan (`stereo`) alınan `image`'leri kullanarak bu belirsizliği çözebilir ve sahnenin derinlik yapısını yeniden oluşturabiliriz.
 
-## Adım 1 – Stereo Vision'ın Temel Prensibi
+## Stereo Vision'ın Temel Prensibi
 
 `Stereo vision`'ın temel fikri, 3D'deki aynı `P` noktasının iki farklı `camera`'dan (sol ve sağ) çekilen `image`'lerindeki konumlarını karşılaştırmaktır.
 - `P` noktasının sol `image`'deki `projection`'ı `p_L` ve sağ `image`'deki `projection`'ı `p_R` olsun.
@@ -25,7 +25,7 @@ Eğer `camera`'lar kalibre edilmişse (yani `focal length` `f` ve aralarındaki 
 
 `Depth (Z) = (B * f) / Disparity`
 
-## Adım 2 – Epipolar Geometry'yi Anla
+## Epipolar Geometry
 
 İki `image` arasında karşılık gelen noktaları (`correspondence`) bulmak, `stereo vision`'ın en zorlu adımıdır. Sol `image`'deki bir `p_L` noktası için, sağ `image`'in tamamını aramak yerine, arama alanını tek bir çizgiye indirgeyebiliriz. Bu kısıtlamaya **epipolar constraint** denir ve **epipolar geometry** ile açıklanır.
 
@@ -40,7 +40,7 @@ Bu kısıtlama, 2D bir arama problemini 1D bir arama problemine indirgeyerek `co
 **Özel Durum: Paralel Kameralar (`Rectified Images`)**
 Eğer iki `camera`'nın `image plane`'leri aynı düzlemdeyse ve `optical axis`'leri birbirine paralelse, tüm `epipolar line`'lar `image`'lerde yatay olur ve aynı satırda yer alır. Bu, `correspondence` aramasını daha da basitleştirir. `Camera`'lar bu ideal durumda değilse, `image`'ler matematiksel olarak bu hale getirelecek şekilde "düzeltilebilir" (`rectification`).
 
-## Adım 3 – Correspondence Problemi
+## Correspondence Problemi
 
 `Epipolar constraint` arama alanını daraltsa da, bir `epipolar line` üzerinde `p_L`'e benzeyen birden fazla `pixel` olabilir. Doğru eşleşmeyi bulmak için ek "yumuşak" kısıtlamalar kullanılır:
 

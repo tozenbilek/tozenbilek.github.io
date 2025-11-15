@@ -9,7 +9,7 @@ nav_order: 1
 
 `Image segmentation`'ın en sezgisel yollarından biri, benzer özelliklere sahip `pixel`'leri aynı grupta toplamaktır. Bu gruplama işlemi, `Unsupervised Machine Learning`'in temel konularından biri olan **clustering** ile gerçekleştirilebilir.
 
-## Adım 1 – Segmentation Problemini Clustering Olarak Düşün
+## Segmentation Problemini Clustering Olarak Düşünmek
 
 Bir `image`'deki her `pixel`'i, bir veya daha fazla `feature`'a sahip bir veri noktası olarak düşünebiliriz. Bu `feature`'lar şunlar olabilir:
 - **Intensity:** `Grayscale` bir `image` için `pixel`'in parlaklık değeri (1-boyutlu `feature space`).
@@ -19,7 +19,7 @@ Bir `image`'deki her `pixel`'i, bir veya daha fazla `feature`'a sahip bir veri n
 
 Amacımız, bu `feature space`'te birbirine yakın olan `pixel`'leri aynı `segment`'e atamaktır. Bu, tam olarak bir `clustering` problemidir.
 
-## Adım 2 – K-Means Clustering Algoritması
+## K-Means Clustering Algoritması
 
 **K-means**, `feature space`'teki veri noktalarını önceden belirlenmiş `K` adet `cluster`'a bölmek için en yaygın kullanılan algoritmalardan biridir. Amacı, her noktanın kendi `cluster` merkezine olan uzaklıklarının kareleri toplamını (`Sum of Squared Distances - SSD`) minimize etmektir.
 
@@ -31,12 +31,12 @@ Amacımız, bu `feature space`'te birbirine yakın olan `pixel`'leri aynı `segm
 
 **Örnek:** Sadece `intensity`'ye göre 3 `segment`'e ayırmak için, `K=3` seçilir. Algoritma, `image`'deki tüm `pixel` `intensity`'lerini en iyi temsil eden 3 ana `intensity` değerini (örneğin, "koyu gri", "orta gri", "açık gri") bulur ve her `pixel`'i bu üç gruptan birine atar.
 
-## Adım 3 – K-Means'in Feature Space Seçenekleri
+## K-Means için Feature Space Seçenekleri
 
 - **Color-based Segmentation:** `Feature space` olarak RGB renk değerleri kullanılır. `K-means`, `image`'deki `K` adet dominant rengi bulur ve `pixel`'leri bu renklere göre gruplar.
 - **Color + Position-based Segmentation:** Bazen aynı renkteki `pixel`'lerin `image`'in farklı yerlerinde olmasını ve ayrı `segment`'ler oluşturmasını isteriz. Bu durumda `feature space`'i `(R, G, B, x, y)` gibi 5-boyutlu bir uzay olarak tanımlayabiliriz. Bu, sadece rengi değil, konumu da benzeyen `pixel`'lerin aynı `cluster`'da toplanmasını sağlar.
 
-## Adım 4 – K-Means'in Artıları ve Eksileri
+## K-Means'in Artıları ve Eksileri
 
 **Artıları:**
 - **Basitlik:** Anlaşılması ve uygulanması çok kolaydır.
