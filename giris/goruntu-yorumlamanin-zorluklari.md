@@ -38,9 +38,13 @@ Teorik olarak mükemmel çalışan bir model bile, pratik uygulamada ciddi engel
 ## Kavrama Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Bir nesnenin renginin, kameranın yakaladığı görüntüdeki renkten farklı olmasının temel fiziksel sebebi nedir?</p>
+  <p><b>Soru 1:</b> Bir nesnenin yüzeyi kırmızı olmasına rağmen, bir fotoğrafta mavi görünüyorsa, bunun en olası fiziksel sebebi nedir?</p>
+  <div class="quiz-option">A) Kameranın lensinde bozulma olması.</div>
+  <div class="quiz-option" data-correct="true">B) Nesnenin üzerine mavi bir ışık düşmesi.</div>
+  <div class="quiz-option">C) Görüntünün dijital olarak yanlış sıkıştırılması.</div>
+  <div class="quiz-option">D) Kameranın sensörünün kırmızı rengi algılayamaması.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap:</b> Görüntüdeki renk sadece nesnenin yüzey özelliklerine değil, aynı zamanda üzerine düşen ışığın rengine ve açısına da bağlıdır. Beyaz bir nesne, kırmızı bir ışık altında kırmızı görünür. Bu, aydınlatma koşullarının yarattığı en temel belirsizliklerden biridir.</p>
+    <p><b>Cevap: B.</b> Görüntüdeki renk sadece nesnenin yüzey özelliklerine değil, aynı zamanda üzerine düşen ışığın rengine ve açısına da bağlıdır. Kırmızı bir yüzey, üzerine düşen mavi ışığı yansıttığında mavi görünebilir. Bu, aydınlatma koşullarının yarattığı en temel belirsizliklerden biridir.</p>
   </div>
 </div>
 

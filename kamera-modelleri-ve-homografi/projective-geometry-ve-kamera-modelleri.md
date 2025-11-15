@@ -105,17 +105,35 @@ Paralel çizgilerin `image` üzerinde birleştiği bu noktalara **vanishing poin
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Neden homojen koordinatları kullanma ihtiyacı duyarız? Standart Kartezyen koordinatların yetersiz kaldığı temel durum nedir?</summary>
-  <p>Kartezyen koordinatlarda, bir noktayı ötelemek (translation) için matris çarpımı (`y = M*x`) değil, vektör toplaması (`y = x + t`) kullanılır. Diğer tüm dönüşümler (rotasyon, ölçekleme) matris çarpımıyla yapılırken, ötelemenin farklı olması işlemleri birleştirmeyi zorlaştırır. Homojen koordinatlar, ötelemeyi de bir matris çarpımı olarak ifade etmemizi sağlayarak tüm dönüşümleri tek bir birleşik matris altında toplamamıza olanak tanır. Ayrıca, sonsuzdaki noktaları (ufuk noktaları gibi) matematiksel olarak temsil etmemizi sağlar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Geometrik dönüşümlerde homojen koordinat sistemini kullanmanın en temel avantajı nedir?</p>
+  <div class="quiz-option">A) 3D noktaları 2D'de göstermeyi sağlaması.</div>
+  <div class="quiz-option" data-correct="true">B) Öteleme (translation) dahil tüm afin ve projektif dönüşümlerin tek bir matris çarpımı ile ifade edilmesini sağlaması.</div>
+  <div class="quiz-option">C) Sadece rotasyon ve ölçekleme işlemlerini hızlandırması.</div>
+  <div class="quiz-option">D) Koordinatları tam sayılarla temsil ederek bellekten tasarruf etmesi.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Standart Kartezyen koordinatlarda, öteleme bir vektör toplaması iken, rotasyon ve ölçekleme matris çarpımıdır. Bu durum, dönüşümleri birleştirmeyi karmaşıklaştırır. Homojen koordinatlar, fazladan bir boyut ekleyerek ötelemeyi de bir matris çarpımı olarak formüle etmemize olanak tanır. Böylece tüm dönüşüm serileri tek bir matriste birleştirilebilir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Bir binanın fotoğrafını çektiğimizi düşünelim. Binanın çatısının ve zemininin paralel çizgileri, görüntüde iki farklı ufuk noktası oluşturur. Bu iki ufuk noktası, ufuk çizgisine göre nerede konumlanır?</summary>
-  <p>Eğer kamera yere paralel tutuluyorsa (eğik değilse), yer düzlemi ufuk çizgisini oluşturur. Çatı çizgileri ve zemin çizgileri bu düzleme paralel olduğu için, her iki grubun ufuk noktası da bu aynı ufuk çizgisi üzerinde yer alır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Bir fotoğraftaki "ufuk çizgisi" (horizon line) neyi temsil eder?</p>
+  <div class="quiz-option" data-correct="true">A) Kamera odak düzlemine paralel olan sonsuzdaki düzlemin (plane at infinity) görüntüdeki izdüşümünü.</div>
+  <div class="quiz-option">B) Görüntünün tam ortasından geçen yatay çizgiyi.</div>
+  <div class="quiz-option">C) Görüntüdeki en uzakta olan nesnenin konumunu.</div>
+  <div class="quiz-option">D) Kameranın optik ekseninin yere değdiği noktayı.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> 3D dünyada birbirine paralel olan tüm düzlemler (örneğin, yer düzlemi, binaların katları) sonsuzda kesişir. Bu "sonsuzdaki düzlemin" kamera tarafından görülen kısmı, görüntüde bir çizgi olarak belirir. Bu çizgiye ufuk çizgisi denir ve dünyadaki paralel çizgilerin izdüşümleri bu çizgi üzerindeki ufuk noktalarında birleşir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Bir kameranın `focal length`'ini (f) iki katına çıkarırsak, görüntüdeki nesnelerin boyutu nasıl değişir? Pinhole kamera modelinin denkleminden yola çıkarak açıklayın.</summary>
-  <p>`y' = -f * y / z` denklemine göre, görüntüdeki boyut (`y'`), `focal length` (`f`) ile doğru orantılıdır. `f` değerini iki katına çıkarmak, `y'` değerini de iki katına çıkarır. Bu, görüntüdeki nesnelerin iki kat daha büyük görünmesi anlamına gelir. Yani `focal length`'i artırmak, "zoom in" yapmakla aynı etkiyi yaratır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Bir pinhole kameranın `focal length` (odak uzaklığı) değerini artırırsak ne olur?</p>
+  <div class="quiz-option">A) Görüntü daha geniş bir açıyı görür (field of view artar).</div>
+  <div class="quiz-option">B) Görüntü daha karanlık olur.</div>
+  <div class="quiz-option" data-correct="true">C) Görüntüdeki nesneler büyür (zoom in etkisi).</div>
+  <div class="quiz-option">D) Görüntüde geometrik bozulma (distortion) artar.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Pinhole kamera projeksiyon denklemlerine (`y' = -f * Y / Z`) göre, görüntü düzlemindeki bir noktanın konumu (`y'`), odak uzaklığı (`f`) ile doğru orantılıdır. `f`'yi artırmak, `y'` değerini de artırır, bu da nesnelerin görüntüde daha büyük görünmesine neden olur. Bu, optik zoom yapmaya eşdeğer bir etkidir.</p>
+  </div>
+</div>

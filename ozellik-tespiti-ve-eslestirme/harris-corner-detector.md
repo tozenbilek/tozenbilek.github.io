@@ -73,17 +73,35 @@ Bu `M` matrisinin **özdeğerleri (eigenvalues)**, `λ₁` ve `λ₂`, bize penc
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Neden düz bölgeler veya düz kenarlar "iyi" `feature` olarak kabul edilmez?</summary>
-  <p>Düz bölgeler, `intensity`'leri neredeyse aynı olan `pixel`'lerden oluşur. Bu bölgeden alınan bir yama (patch), görüntünün başka bir yerindeki düz bir bölgeyle tamamen aynı görünebilir. Benzer şekilde, bir kenar boyunca alınan bir yama, o kenarın farklı bir noktasından alınan bir yamadan ayırt edilemez (aperture problemi). Bu belirsizlik, bu bölgelerin güvenilir bir şekilde eşleştirilmesini imkansız kılar. Köşeler ise iki yönde de belirgin `gradient`'lere sahip oldukları için bu belirsizlik sorununu yaşamazlar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Harris Corner Detector'da, `M` matrisinin iki özdeğerinin de (`λ₁`, `λ₂`) büyük ve birbirine yakın olması ne anlama gelir?</p>
+  <div class="quiz-option">A) Bölgenin düz ve homojen bir alana ait olduğu.</div>
+  <div class="quiz-option">B) Bölgede düz bir kenar (edge) olduğu.</div>
+  <div class="quiz-option" data-correct="true">C) Bölgede bir köşe (corner) olduğu.</div>
+  <div class="quiz-option">D) Bölgede gürültü olduğu.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> İki özdeğerin de büyük olması, küçük pencerenin her iki yönde de hareket ettirildiğinde görüntü yoğunluğunda büyük bir değişim olduğunu gösterir. Bu durum sadece köşeler için geçerlidir. Düz alanlarda her iki özdeğer de küçük, kenarlarda ise biri büyük diğeri küçük olur.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Harris Corner Detector'ın `k` parametresi (`R = det(M) - k*trace(M)²` denklemindeki) ne işe yarar ve değerini değiştirmek sonucu nasıl etkiler?</summary>
-  <p>`k`, ampirik olarak belirlenen bir hassasiyet parametresidir (genellikle 0.04-0.06 arası). `trace(M)²` terimi, `R` skorunun kenarlara karşı daha az hassas olmasını sağlar (çünkü kenarlarda bir özdeğer büyükken diğeri küçüktür, bu da `trace`'i `determinant`'a göre daha büyük yapar). `k` değerini artırmak, algoritmanın daha "köşe gibi" olan, yani iki özdeğerin de çok büyük olduğu daha keskin köşeleri bulmasını sağlar ve kenarlara verdiği tepkiyi azaltır. `k`'yi azaltmak ise daha yumuşak köşelerin de tespit edilmesine izin verir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Harris Corner Detector'ın aşağıdaki geometrik dönüşümlerden hangisine karşı `invariant` (değişmez) **olmadığı** söylenebilir?</p>
+  <div class="quiz-option">A) Görüntünün ötelenmesi (Translation).</div>
+  <div class="quiz-option">B) Görüntünün döndürülmesi (Rotation).</div>
+  <div class="quiz-option" data-correct="true">C) Görüntünün ölçeklenmesi (Scaling).</div>
+  <div class="quiz-option">D) Görüntünün parlaklığının değişmesi (Brightness change).</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Harris, sabit boyutlu bir pencere kullandığı için ölçek değişimlerine duyarlıdır. Görüntü büyütülürse, bir köşe artık bir kenar gibi görünebilir; görüntü küçültülürse, bir köşe tüm detayını kaybedebilir. Algoritma, rotasyon ve ötelemeye karşı değişmezdir. Parlaklık değişimlerine karşı da kısmen dayanıklıdır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Harris Corner Detector rotasyona karşı değişmez (invariant) midir? Neden?</summary>
-  <p>Evet, rotasyona karşı değişmezdir. Çünkü `M` matrisinin özdeğerleri (`λ₁` ve `λ₂`), matrisin temel aldığı koordinat sisteminin döndürülmesinden etkilenmez. Görüntüdeki bir köşe döndürüldüğünde, etrafındaki `gradient`lerin yönleri değişir, ancak `gradient` dağılımının ana eksenlerinin büyüklükleri (yani özdeğerler) aynı kalır. `R` skoru da sadece bu özdeğerlere bağlı olduğu için, sonuç rotasyondan etkilenmez.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Köşe yanıt fonksiyonu `R = det(M) - k * trace(M)²` denkleminde, `trace(M)²` teriminin rolü nedir?</p>
+  <div class="quiz-option">A) Köşelerin skorunu artırmak.</div>
+  <div class="quiz-option" data-correct="true">B) Kenarların (edges) köşe olarak algılanmasını bastırmak ve skorlarını düşürmek.</div>
+  <div class="quiz-option">C) Düz alanların skorunu artırmak.</div>
+  <div class="quiz-option">D) Algoritmanın hızını artırmak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Kenar bölgelerinde, özdeğerlerden biri büyük, diğeri ise çok küçüktür (`λ₁ >> λ₂ ≈ 0`). Bu durumda `det(M) = λ₁λ₂` küçük, ancak `trace(M) = λ₁+λ₂` büyük olur. `trace(M)²` terimi, bu durumu "cezalandırarak" kenarların köşe yanıt skorunu düşürür ve sadece her iki özdeğerin de büyük olduğu gerçek köşelerin yüksek skor almasını sağlar.</p>
+  </div>
+</div>

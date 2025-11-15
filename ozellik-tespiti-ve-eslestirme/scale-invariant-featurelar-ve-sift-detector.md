@@ -87,17 +87,35 @@ Bu adım, `keypoint` adaylarının sayısını önemli ölçüde azaltır.
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Harris Corner Detector ölçeğe karşı neden dayanıksızdır ve SIFT bu sorunu nasıl çözer?</summary>
-  <p>Harris Corner Detector, sabit boyutlu bir pencere (ve sabit bir `smoothing` `σ`'sı) kullanarak `gradient`'leri analiz eder. Görüntü küçüldüğünde, büyük bir pencereyle görülen bir "köşe", artık köşe gibi görünmeyebilir, detaylar kaybolur. SIFT bu sorunu, tek bir ölçekte arama yapmak yerine, görüntünün çok sayıda farklı ölçekteki versiyonundan oluşan bir "ölçek uzayı" yaratarak çözer. Böylece, bir `feature`'ın en belirgin olduğu "karakteristik ölçeği" de tespit edilmiş olur.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> SIFT algoritmasında, `Laplacian of Gaussian (LoG)` yerine `Difference of Gaussians (DoG)` kullanılmasının temel nedeni nedir?</p>
+  <div class="quiz-option" data-correct="true">A) DoG, `scale-space` piramidi oluşturulurken elde edilen görüntüleri yeniden kullandığı için hesaplama açısından çok daha verimlidir.</div>
+  <div class="quiz-option">B) DoG, LoG'dan daha doğru `keypoint`'ler bulur.</div>
+  <div class="quiz-option">C) DoG, gürültüye karşı LoG'dan daha dayanıklıdır.</div>
+  <div class="quiz-option">D) DoG, renkli görüntülerde daha iyi çalışır.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> DoG, farklı `sigma` değerleriyle `blur` edilmiş iki görüntünün basit bir farkıdır. SIFT, `scale-space` piramidini oluştururken bu `blur` edilmiş görüntüleri zaten hesaplar. Dolayısıyla, DoG'u hesaplamak neredeyse hiçbir ek maliyet getirmez. LoG ise ek bir `Laplacian` operatörü uygulamayı gerektirir. DoG, LoG'a çok iyi bir yaklaşım olduğu için bu verimlilik kazancı tercih edilir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> SIFT'te `Laplacian of Gaussian (LoG)` yerine neden `Difference of Gaussians (DoG)` kullanılır? Bu yaklaşımın avantajı nedir?</summary>
-  <p>LoG, `blob` (leke) tespiti için ideal bir operatördür, ancak hesaplaması yavaştır (önce Gaussian, sonra Laplacian). DoG ise, zaten ölçek uzayını oluşturmak için hesapladığımız Gaussian ile bulanıklaştırılmış görüntülerin farkını alarak elde edilir. Bu, LoG'ye çok iyi bir yaklaşım sunarken, ek bir `convolution` işlemi gerektirmediği için çok daha hızlı ve verimlidir. Temel avantajı hesaplama verimliliğidir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> SIFT `detector`'ı, bir `keypoint`'in "karakteristik ölçeğini" nasıl bulur?</p>
+  <div class="quiz-option">A) Görüntünün en keskin olduğu bölgeyi bularak.</div>
+  <div class="quiz-option">B) `Keypoint` etrafındaki gradyanların ortalamasını alarak.</div>
+  <div class="quiz-option" data-correct="true">C) `Scale-space`'te, `keypoint`'in hem uzaysal komşularından hem de komşu ölçeklerden daha güçlü bir tepkiye sahip olduğu noktayı bularak.</div>
+  <div class="quiz-option">D) Görüntüyü Fourier dönüşümüne geçirerek.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> SIFT, `scale-space`'in hem `(x, y)` uzayında hem de `σ` (ölçek) boyutunda bir `non-maximum suppression` uygular. Bu, bir `keypoint`'in sadece kendi görüntüsündeki komşularından değil, aynı zamanda daha `blur`'lu ve daha az `blur`'lu versiyonlarındaki komşularından da daha güçlü bir `extrema` (maksimum veya minimum) olması gerektiği anlamına gelir. Bu sayede, `feature`'ın en belirgin ve en kararlı olduğu ölçek tespit edilir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Ölçek uzayında bir `keypoint`'in komşu ölçeklerde de maksimum olması neden önemlidir? Sadece kendi ölçeğinde maksimum olması neden yeterli değildir?</summary>
-  <p>Bir noktanın sadece kendi ölçeğinde maksimum olması, o noktanın o ölçekteki gürültüden veya küçük bir `intensity` dalgalanmasından kaynaklanan rastgele bir tepe noktası olabileceği anlamına gelir. Komşu (daha bulanık ve daha az bulanık) ölçeklerde de bir maksimum olması, bu `feature`'ın ölçekler arasında "kararlı" olduğunu, yani rastgele bir gürültüden ziyade gerçek bir yapıya karşılık geldiğini gösterir. Bu, `keypoint`'lerin güvenilirliğini ve tekrarlanabilirliğini artıran çok önemli bir adımdır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> SIFT `detector`'ının bir `keypoint`'e bir "orientation" (yönelim) ataması, `descriptor`'ün hangi özelliğe sahip olmasını sağlar?</p>
+  <div class="quiz-option">A) Ölçek değişmezliği (Scale Invariance).</div>
+  <div class="quiz-option" data-correct="true">B) Rotasyon değişmezliği (Rotation Invariance).</div>
+  <div class="quiz-option">C) Aydınlatma değişmezliği (Illumination Invariance).</div>
+  <div class="quiz-option">D) Perspektif değişmezliği (Affine Invariance).</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `Keypoint` etrafındaki gradyanların yönelim histogramı kullanılarak baskın bir yön belirlenir. Sonraki `descriptor` hesaplama adımında, tüm gradyanlar bu ana yöne göre normalize edilir. Bu sayede, nesne görüntüde döndürülse bile, ana yön de onunla birlikte döner ve sonuçta ortaya çıkan `descriptor` vektörü aynı kalır. Bu, SIFT'e rotasyon değişmezliği kazandırır.</p>
+  </div>
+</div>

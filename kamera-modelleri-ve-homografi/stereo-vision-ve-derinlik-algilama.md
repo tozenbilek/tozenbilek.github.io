@@ -88,17 +88,35 @@ Bu yaklaşımın bazı zorlukları vardır:
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Stereo kamera sisteminde, iki kamera arasındaki mesafeyi (baseline, `B`) artırırsak, aynı mesafedeki bir nesne için `disparity` nasıl değişir? Bu durumun derinlik ölçüm hassasiyetine etkisi nedir?</summary>
-  <p>`Z = f * B / disparity` formülünü `disparity = f * B / Z` olarak düzenlersek, `disparity`'nin `baseline` (`B`) ile doğru orantılı olduğunu görürüz. `Baseline`'ı artırmak, aynı derinlikteki (`Z`) bir nesne için `disparity`'yi de artırır. Daha büyük `disparity` değerleri, `pixel` cinsinden daha kolay ve hassas bir şekilde ölçülebilir. Bu nedenle, `baseline`'ı artırmak, genellikle derinlik ölçümünün hassasiyetini ve doğruluğunu artırır, özellikle de uzaktaki nesneler için.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> İki kameralı bir stereo sistemde, kameralar arasındaki mesafe (`baseline`) artırılırsa, yakındaki bir nesne için ölçülen `disparity` (eşitsizlik) nasıl etkilenir?</p>
+  <div class="quiz-option">A) `Disparity` azalır.</div>
+  <div class="quiz-option" data-correct="true">B) `Disparity` artar.</div>
+  <div class="quiz-option">C) `Disparity` değişmez.</div>
+  <div class="quiz-option">D) `Disparity` nesnenin rengine bağlı olarak değişir.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `Z = f * B / disparity` formülüne göre `disparity`, `baseline` (`B`) ile doğru orantılıdır. Kameralar birbirinden uzaklaştıkça, aynı noktayı görmek için daha fazla "şaşı" bakmaları gerekir, bu da noktanın iki görüntüdeki konumları arasındaki piksel farkını, yani `disparity`'yi artırır. Bu durum, özellikle uzaktaki nesneler için derinlik ölçüm hassasiyetini artırır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Neden `correspondence` aramasını tüm görüntüde yapmak yerine `epipolar line` üzerinde yaparız? Bu kısıtlamanın temelindeki geometrik sebep nedir?</summary>
-  <p>Geometrik olarak, 3D'deki bir `P` noktası, birinci kamera merkezi `O` ve ikinci kamera merkezi `O'` her zaman bir düzlem oluşturur (epipolar düzlem). `P` noktasının birinci görüntüdeki yansıması olan `p`, `OP` doğrusu üzerindedir. İkinci görüntüdeki yansıması olan `p'` ise `O'P` doğrusu üzerindedir. Bu iki doğru da aynı epipolar düzlemde yer alır. Dolayısıyla, `p'` noktası, epipolar düzlemin ikinci görüntü düzlemiyle kesişimi olan `epipolar line` üzerinde yer almak zorundadır. Bu, arama uzayını 2D'den 1D'ye indirerek verimliliği muazzam şekilde artırır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Stereo eşleştirmede (correspondence) `epipolar` kısıtlamayı kullanmanın temel amacı nedir?</p>
+  <div class="quiz-option">A) Görüntülerdeki lens bozulmasını düzeltmek.</div>
+  <div class="quiz-option">B) Eşleşme aramasını 2D görüntü alanından 1D bir çizgiye indirgeyerek verimliliği artırmak.</div>
+  <div class="quiz-option">C) Farklı aydınlatma koşullarını normalize etmek.</div>
+  <div class="quiz-option">D) Hareketli nesneleri tespit etmek.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Epipolar geometri sayesinde, sol görüntüdeki bir noktanın eşleşmesinin, sağ görüntüde herhangi bir yerde değil, "epipolar çizgi" olarak adlandırılan belirli bir çizgi üzerinde olması gerektiğini biliriz. Bu, arama problemini tüm görüntü alanını (2D) aramaktan tek bir çizgiyi (1D) aramaya indirir, bu da eşleştirme sürecini çok büyük ölçüde hızlandırır ve belirsizliği azaltır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Doku (texture) olmayan, düz beyaz bir duvarın derinliğini stereo vision ile ölçmeye çalışırsak ne gibi bir sorunla karşılaşırız?</summary>
-  <p>Bu durumda `correspondence` problemiyle karşılaşırız. Düz beyaz bir duvarda, tüm `pixel`'ler aynı veya çok benzer `intensity` değerlerine sahiptir. Sol görüntüden aldığımız herhangi bir 5x5'lik pencere, sağ görüntüdeki `epipolar line` üzerindeki tüm pencerelerle neredeyse aynı `SSD` veya `NCC` skorunu verir. Ayırt edici bir desen veya doku olmadığı için, pencereleri güvenilir bir şekilde eşleştiremeyiz ve bu nedenle `disparity`'yi (ve dolayısıyla derinliği) hesaplayamayız. Bu, stereo algoritmalarının dokusuz yüzeylerde başarısız olmasının temel nedenidir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Aşağıdaki yüzeylerden hangisinin derinliğini stereo vision ile ölçmek en zordur?</p>
+  <div class="quiz-option">A) Üzerinde gazete yazıları olan bir masa.</div>
+  <div class="quiz-option">B) Çakıllı bir yol.</div>
+  <div class="quiz-option" data-correct="true">C) Düz, beyaz boyalı bir duvar.</div>
+  <div class="quiz-option">D) Bir ağacın yapraklı dalları.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Stereo vision, iki görüntü arasında ayırt edici desenleri ve dokuları eşleştirmeye dayanır. Düz beyaz bir duvarda hiçbir doku veya desen yoktur. Bu nedenle, sol görüntüden alınan bir pencerenin, sağ görüntüdeki epipolar çizgi üzerinde hangi pencereye karşılık geldiğini belirlemek imkansızdır, çünkü tüm pencereler birbirinin aynısı gibi görünür. Bu, "correspondence" probleminin çözülemediği bir durumdur.</p>
+  </div>
+</div>

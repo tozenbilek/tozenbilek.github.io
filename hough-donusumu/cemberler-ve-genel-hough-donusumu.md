@@ -87,17 +87,35 @@ GHT, `parameter space`'e ölçek (`scale`) ve dönme (`rotation`) `parameter`'la
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Çemberler için Hough Transform'u `gradient` bilgisini kullanmadan uygularsak, `accumulator` matrisinin boyutu ve hesaplama maliyeti nasıl olur?</summary>
-  <p>Her bir `edge pixel`'i, kendisinden geçebilecek tüm olası çemberler için oy vermek zorunda kalır. Bu, `parameter space`'te tam bir koni oluşturur. `Accumulator` matrisi 3 boyutlu (`x, y, r`) olur ve her `pixel` için tüm yarıçap (`r`) değerlerini taramak gerekir. Bu, hem bellek (3D matris) hem de hesaplama (her `pixel` için 2D bir yüzeye oy verme) açısından çok maliyetlidir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Çember tespiti için Hough Transform kullanılırken, kenar piksellerinin gradyan yönü bilgisi neden çok önemlidir?</p>
+  <div class="quiz-option">A) Görüntüyü renkliden siyaha çevirmek için gereklidir.</div>
+  <div class="quiz-option" data-correct="true">B) Arama uzayını 2D'den 1D'ye indirerek (her piksel için) oylama işlemini büyük ölçüde hızlandırır.</div>
+  <div class="quiz-option">C) Sadece tam çemberleri değil, elipsleri de bulmayı sağlar.</div>
+  <div class="quiz-option">D) Accumulator matrisinin boyutunu küçültür.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Gradyan, çemberin merkezine doğru yönelmiş bir vektör verir. Gradyan yönü olmadan, bir kenar pikseli, kendisinden `r` kadar uzaktaki tüm olası merkez adayları için (yani 3D parametre uzayında bir koni yüzeyi üzerinde) oy kullanmak zorundadır. Gradyan yönünü bildiğimizde ise, merkez adayı bu yön üzerinde `r` kadar uzakta olmalıdır. Bu, her piksel için arama problemini bir yüzeyden bir çizgiye indirir ve hesaplama maliyetini dramatik şekilde azaltır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Generalized Hough Transform (GHT), aranan nesnenin döndürülmüş veya farklı boyuttaki hallerini bulabilir mi? Standart haliyle neden bulamaz ve bulabilmesi için ne yapmak gerekir?</summary>
-  <p>Standart GHT, R-Tablosu'nu sabit bir yönelim ve ölçek için oluşturur, bu yüzden nesnenin döndürülmüş veya yeniden boyutlandırılmış hallerini bulamaz. Bu sorunu çözmek için `parameter space`'i genişletmek gerekir: Döndürmeyi de bulmak için `accumulator`'e bir rotasyon (`θ`) boyutu eklenir (4D olur: `x, y, θ, s`). Ölçeği bulmak için bir ölçek (`s`) boyutu eklenir. Bu, `accumulator`'ün boyutunu ve dolayısıyla hesaplama maliyetini önemli ölçüde artırır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Generalized Hough Transform'da (GHT) kullanılan R-Tablosu'nun içeriği nedir?</p>
+  <div class="quiz-option">A) Görüntüdeki tüm piksellerin renk değerleri.</div>
+  <div class="quiz-option">B) Görüntünün Fourier dönüşümü katsayıları.</div>
+  <div class="quiz-option" data-correct="true">C) Şablon görüntüdeki her gradyan yönü için, kenar piksellerinden referans noktasına giden vektörlerin bir listesi.</div>
+  <div class="quiz-option">D) Tespit edilecek nesnenin olası tüm konumları ve ölçekleri.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> R-Tablosu, bir şablon görüntüden önceden hesaplanan bir arama tablosudur. Tablonun her bir girişi, belirli bir gradyan yönüne (`φ`) karşılık gelir. Bu girişin içeriği, şablonda o gradyan yönüne sahip tüm kenar piksellerinden, önceden belirlenmiş bir referans noktasına (genellikle nesnenin merkezi) giden `(r, α)` vektörlerinin bir listesidir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Hough Transform'un en büyük dezavantajı nedir ve bu dezavantaj hangi durumlarda onu kullanışsız hale getirebilir?</summary>
-  <p>En büyük dezavantajı, modeldeki parametre sayısıyla üssel olarak artan hesaplama ve bellek maliyetidir ("curse of dimensionality"). Çizgiler (2 parametre) için çok verimli çalışırken, çemberler (3 parametre) için maliyet artar. Keyfi bir şeklin konumu, yönelimi ve ölçeğini (4+ parametre) bulmaya çalışmak, `accumulator` matrisini pratik olarak kullanılamayacak kadar büyütebilir. Bu nedenle, çok fazla parametreye sahip karmaşık modellerin tespiti için genellikle uygun değildir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Generalized Hough Transform (GHT), standart Hough Transform'a göre neden daha esnektir?</p>
+  <div class="quiz-option">A) Çok daha hızlı çalıştığı için.</div>
+  <div class="quiz-option">B) Daha az bellek kullandığı için.</div>
+  <div class="quiz-option" data-correct="true">C) Analitik bir denklemi olmayan keyfi şekilleri de tespit edebildiği için.</div>
+  <div class="quiz-option">D) Sadece renkli görüntülerde çalıştığı için.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Standart Hough Transform, çizgiler (`y = mx + b`) veya çemberler (`(x-a)² + (y-b)² = r²`) gibi analitik olarak ifade edilebilen şekillerle sınırlıdır. GHT ise bir R-Tablosu kullanarak şekli temsil eder. Bu, denklemi olmayan herhangi bir keyfi şeklin (örneğin, bir el, bir araba silüeti) bir şablon aracılığıyla tespit edilmesine olanak tanır, bu da onu çok daha esnek ve genel amaçlı hale getirir.</p>
+  </div>
+</div>

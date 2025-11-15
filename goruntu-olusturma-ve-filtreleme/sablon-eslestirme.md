@@ -56,17 +56,35 @@ Bu sınırlılıklardan dolayı, `template matching` en iyi, aranan nesnenin boy
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Normal `cross-correlation` yerine neden genellikle `Normalized Cross-Correlation (NCC)` tercih edilir?</summary>
-  <p>Normal `cross-correlation`, `pixel`'lerin ham `intensity` değerlerine dayandığı için aydınlatma değişimlerinden çok etkilenir. Bir bölge aranan desenle aynı olsa bile, daha karanlık veya parlaksa, `correlation` skoru düşük çıkar. NCC ise hem şablonu hem de görüntü bölgesini kendi ortalamalarına ve standart sapmalarına göre normalleştirdiği için bu tür aydınlatma ve kontrast değişimlerinden etkilenmez, bu da onu çok daha güvenilir bir eşleştirme metriği yapar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Şablon eşleştirme (template matching) için neden ham `cross-correlation` yerine `Normalized Cross-Correlation (NCC)` kullanmak genellikle daha iyidir?</p>
+  <div class="quiz-option">A) NCC hesaplama açısından daha hızlıdır.</div>
+  <div class="quiz-option">B) NCC, şablonun döndürülmüş hallerini bulabilir.</div>
+  <div class="quiz-option" data-correct="true">C) NCC, görüntüdeki aydınlatma ve kontrast değişikliklerine karşı daha dayanıklıdır.</div>
+  <div class="quiz-option">D) NCC, sadece renkli görüntülerde çalışır.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Ham `cross-correlation`, piksellerin mutlak parlaklık değerlerine duyarlıdır. Bu nedenle, görüntüdeki bir bölge şablonla aynı desene sahip olsa bile, daha aydınlık veya karanlıksa eşleşme skoru düşük çıkar. NCC, hem şablonu hem de görüntü bölgesini normalleştirerek bu parlaklık ve kontrast farklarını ortadan kaldırır, bu da onu çok daha güvenilir bir eşleştirme yöntemi yapar.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Bir `template matching` algoritması, aradığı nesnenin sahnede 90 derece dönmüş halini bulabilir mi? Neden?</summary>
-  <p>Genellikle bulamaz. `Template matching`, `pixel` `pixel`'e bir karşılaştırma yapar. Nesne döndürüldüğünde, `pixel` deseni tamamen değişir ve şablonla olan benzerlik (NCC skoru) dramatik bir şekilde düşer. Döndürülmüş nesneleri bulmak için ya şablonun döndürülmüş versiyonlarıyla da arama yapmak ya da SIFT gibi rotasyona dayanıklı `feature-based` yöntemler kullanmak gerekir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Standart bir şablon eşleştirme algoritmasının en büyük zayıflığı aşağıdakilerden hangisidir?</p>
+  <div class="quiz-option">A) Gürültülü görüntülerde çalışmaması.</div>
+  <div class="quiz-option" data-correct="true">B) Şablonun görüntüdeki ölçek (boyut) ve rotasyon (dönme) değişimlerine karşı hassas olması.</div>
+  <div class="quiz-option">C) Sadece küçük boyutlu şablonlarla çalışabilmesi.</div>
+  <div class="quiz-option">D) Yüksek hesaplama maliyetine sahip olması.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Standart şablon eşleştirme, pikselleri birebir karşılaştırır. Eğer görüntüdeki nesne, şablona göre farklı bir boyutta veya açıda ise, piksel desenleri eşleşmeyecek ve algoritma nesneyi bulamayacaktır. Bu sınırlamayı aşmak için şablonun farklı boyut ve açılardaki versiyonlarıyla arama yapmak veya SIFT gibi daha gelişmiş yöntemler kullanmak gerekir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> `Template matching`'in başarılı bir şekilde kullanılabileceği gerçek hayattan bir uygulama örneği verin.</summary>
-  <p>Bir üretim hattında, konveyör bandı üzerinde ilerleyen belirli bir ürünün (örneğin, bir vida veya elektronik çip) konumunu tespit etmek için kullanılabilir. Bu ortamda aydınlatma, nesnenin boyutu, yönelimi ve bakış açısı genellikle sabit ve kontrol altında olduğu için `template matching`'in sınırlılıkları bir sorun teşkil etmez ve hızlı ve güvenilir bir şekilde çalışır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Şablon eşleştirme (template matching) aşağıdaki senaryolardan hangisi için en uygun yöntemdir?</p>
+  <div class="quiz-option">A) Kalabalık bir caddedeki belirli bir insan yüzünü bulmak.</div>
+  <div class="quiz-option">B) Bir orman fotoğrafındaki tüm ağaçları saymak.</div>
+  <div class="quiz-option" data-correct="true">C) Bir üretim bandında, her zaman aynı konumda ve açıda görünen bir ürünün varlığını kontrol etmek.</div>
+  <div class="quiz-option">D) Bir belgedeki el yazısı metni okumak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Şablon eşleştirme, aranan nesnenin görünümünün (boyut, açı, aydınlatma) çok az değiştiği kontrollü ortamlarda en iyi sonucu verir. Bir üretim bandı bu koşulları sağladığı için ideal bir kullanım alanıdır. Diğer senaryolar, görünümde çok fazla değişkenlik içerdiği için şablon eşleştirmenin zayıf kalacağı durumlardır.</p>
+  </div>
+</div>

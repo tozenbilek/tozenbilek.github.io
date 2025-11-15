@@ -80,15 +80,35 @@ Eğer bu oran belirlenen `threshold`'dan küçükse, eşleşme kabul edilir. Aks
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Bir SIFT `keypoint`'ine neden birden fazla yön atanabilir? Bu ne anlama gelir?</summary>
-  <p>Eğer `gradient` yönü histogramında, en yüksek tepeye çok yakın yükseklikte (%80'inden fazla) başka bir tepe varsa, bu durum bölgede iki farklı baskın `gradient` yönü olduğunu gösterir. Örneğin, bir duvarın köşesi hem dikey hem de yatay olarak güçlü kenarlara sahiptir. Bu durumda, SIFT aynı konum ve ölçekte, ancak farklı yönlerde iki ayrı `keypoint` oluşturur. Bu, eşleştirme algoritmasının daha sağlam olmasına yardımcı olur.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> SIFT `descriptor` vektörünün hesaplandıktan sonra birim uzunluğa normalize edilmesinin temel amacı nedir?</p>
+  <div class="quiz-option">A) `Descriptor`'ün boyutunu küçülterek bellekte daha az yer kaplamasını sağlamak.</div>
+  <div class="quiz-option">B) `Descriptor`'ü rotasyon değişimlerine karşı dayanıklı hale getirmek.</div>
+  <div class="quiz-option" data-correct="true">C) Görüntüdeki parlaklık ve kontrast gibi aydınlatma değişimlerinin etkisini azaltmak.</div>
+  <div class="quiz-option">D) `Descriptor`'ün sadece tam sayılardan oluşmasını sağlamak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Bir görüntünün parlaklığı arttığında, piksellerin gradyan büyüklükleri de artar. Eğer `descriptor` bu ham gradyan değerlerini kullansaydı, aynı `feature`'ın parlak ve loş ışık altındaki `descriptor`'leri birbirinden çok farklı olurdu. Vektörü birim uzunluğa normalize etmek, gradyanların mutlak büyüklüklerini ortadan kaldırır ve sadece göreceli dağılımlarını korur. Bu, `descriptor`'ü aydınlatma değişimlerine karşı büyük ölçüde dayanıklı hale getirir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> SIFT `descriptor`'ü oluşturulurken `gradient` yönleri neden `keypoint`'in ana yönüne göre göreceli olarak hesaplanır?</summary>
-  <p>Bu işlem, `descriptor`'ü rotasyona karşı değişmez (rotation invariant) yapmak için kritik öneme sahiptir. Görüntü döndüğünde, `keypoint`'in ana yönü de aynı miktarda dönecektir. `Descriptor`'deki tüm `gradient`'ler bu ana yöne göre hizalandığı için, görüntü ne kadar dönerse dönsün, hesaplanan 128 boyutlu `descriptor` vektörü aynı kalacaktır. Bu, aynı nesnenin farklı açılardan çekilmiş fotoğraflarındaki `feature`'ların başarıyla eşleştirilebilmesini sağlar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> `Feature` eşleştirmede kullanılan "Lowe's ratio test" (`d₁ / d₂ < threshold`) neyi amaçlar?</p>
+  <div class="quiz-option" data-correct="true">A) En iyi eşleşmenin, ikinci en iyi eşleşmeden belirgin bir şekilde daha iyi olduğu, ayırt edici ve güvenilir eşleşmeleri seçmeyi.</div>
+  <div class="quiz-option">B) Sadece en yakın iki `feature`'ı eşleştirmeyi.</div>
+  <div class="quiz-option">C) Eşleşme sürecini hızlandırmayı.</div>
+  <div class="quiz-option">D) İki görüntü arasındaki `homography` matrisini hesaplamayı.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Eğer bir `feature`'ın en yakın komşusuna olan uzaklığı (`d₁`), ikinci en yakın komşusuna olan uzaklığına (`d₂`) çok yakınsa, bu durum `feature`'ın ayırt edici olmadığını ve eşleşmenin belirsiz olduğunu gösterir. `Ratio test`, bu tür belirsiz (ve büyük olasılıkla yanlış) eşleşmeleri, en iyi eşleşmenin ikinci en iyiye göre "çok daha iyi" olmasını zorunlu kılarak eler. Bu, `outlier` sayısını azaltır ve eşleşme kalitesini artırır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> `Ratio Test`
+<div class="quiz-question">
+  <p><b>Soru 3:</b> İki görüntü arasında bulunan `feature` eşleşmeleri genellikle hem doğru (`inliers`) hem de yanlış (`outliers`) eşleşmeleri içerir. RANSAC gibi bir algoritmanın bu veri setindeki temel rolü nedir?</p>
+  <div class="quiz-option">A) Tüm `outlier`'ları `inlier`'a dönüştürmek.</div>
+  <div class="quiz-option">B) Eşleşme sayısını artırmak.</div>
+  <div class="quiz-option" data-correct="true">C) `Outlier`'ların varlığına rağmen, `inlier`'lara en iyi uyan geometrik modeli (örneğin `homography`) tahmin etmek.</div>
+  <div class="quiz-option">D) Sadece `inlier`'ları kullanarak görüntüleri birleştirmek.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> RANSAC, iteratif bir şekilde rastgele küçük alt kümeler seçerek model tahminleri yapar. Her iterasyonda, tahmin edilen modelin ne kadar `inlier` (modele uyan veri noktası) tarafından desteklendiğini sayar. Sonunda, en fazla `inlier` desteğine sahip olan modeli "doğru" model olarak kabul eder. Bu sayede, `outlier`'ların model tahminini bozmasını engeller ve veriye `robust` (dayanıklı) bir şekilde model uydurur.</p>
+  </div>
+</div>

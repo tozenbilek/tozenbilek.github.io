@@ -82,17 +82,35 @@ Ancak bu yaklaşım, `image`'den küçük ve izole bölgeleri (örneğin tek bir
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> `Minimum Cut`'ın neden genellikle "kötü" segmentasyon sonuçları verdiğini basit bir örnekle açıklayın.</summary>
-  <p>Görüntünün bir köşesinde, geri kalanından biraz farklı renkte tek bir `pixel` olduğunu hayal edin. Bu `pixel`'i geri kalan tüm `graph`'tan ayıran `cut`'ın maliyeti, o `pixel`'in sadece birkaç komşusuyla olan düşük ağırlıklı `edge`'lerinin toplamı olacaktır. Bu, neredeyse her zaman, görüntüyü iki anlamlı büyük parçaya bölen bir `cut`'tan çok daha düşük maliyetli olacaktır. Sonuç olarak, `Minimum Cut` bu anlamsız tek `pixel`'lik bölgeyi bir segment olarak ayırır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Graf-tabanlı segmentasyonda, pikseller arasındaki bir `edge`'in (kenarın) ağırlığı (`w(i, j)`) genellikle neyi temsil eder?</p>
+  <div class="quiz-option">A) İki piksel arasındaki geometrik mesafeyi.</div>
+  <div class="quiz-option" data-correct="true">B) İki pikselin renk veya yoğunluk gibi özellikler açısından ne kadar benzer olduğunu.</div>
+  <div class="quiz-option">C) İki pikselin de aynı nesneye ait olma olasılığını.</div>
+  <div class="quiz-option">D) İki pikselin de kenar pikseli olup olmadığını.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Kenar ağırlığı, iki düğüm (piksel) arasındaki "benzerlik" veya "afinite" ölçüsüdür. Benzer pikseller (örneğin, renkleri birbirine çok yakın olanlar) arasındaki kenarların ağırlığı yüksek olurken, benzemeyen pikseller arasındaki kenarların ağırlığı düşük olur. Segmentasyon algoritmaları genellikle bu ağırlıkları kullanarak grafı bölmeye çalışır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> `Normalized Cuts`'ta "normalizasyon" ne anlama gelir ve bu neden önemlidir?</summary>
-  <p>Normalizasyon, `cut`'ın maliyetini, ortaya çıkan segmentlerin "boyutuna" (toplam `edge` ağırlıklarına) bölmek anlamına gelir. Bu, büyük segmentleri ayırmanın "maliyetini" cezalandıran `Minimum Cut`'ın yanlılığını ortadan kaldırır. `N-Cut`, bir `cut`'ın maliyetini, o `cut`'ın ayırdığı parçaların ne kadar büyük ve kendi içinde ne kadar bağlantılı olduğuyla ilişkilendirir. Bu sayede, "pahalı" ama dengeli bir kesim, "ucuz" ama dengesiz bir kesime tercih edilebilir. Bu, algısal olarak daha mantıklı sonuçlar üretir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> "Minimum Cut" (Min-Cut) yönteminin, segmentasyon için tek başına kullanıldığında ortaya çıkan temel sorun nedir?</p>
+  <div class="quiz-option">A) Çok yavaş çalışması.</div>
+  <div class="quiz-option" data-correct="true">B) Grafikten tek tek, izole olmuş pikselleri ayırma eğiliminde olması.</div>
+  <div class="quiz-option">C) Sadece iki segment üretebilmesi.</div>
+  <div class="quiz-option">D) Sadece dışbükey (convex) segmentler bulabilmesi.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Min-Cut, sadece kesilen kenarların toplam ağırlığını minimize etmeye odaklanır. Bir grafın kenarındaki tek bir pikselin, grafın geri kalanına olan toplam bağlantı ağırlığı genellikle çok düşüktür. Bu nedenle, Min-Cut algoritması, anlamlı ve büyük bir bölgeyi ayırmak yerine, bu tür izole "aykırı" pikselleri ayırarak minimum kesiği bulma eğilimindedir. Bu, istenen bir segmentasyon sonucu değildir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> `N-Cuts` algoritmasında neden `Laplacian` matrisinin en küçük özvektörünü değil de **ikinci en küçük** özvektörünü kullanırız?</summary>
-  <p>Herhangi bir `graph`'ın `Laplacian` matrisinin en küçük özdeğeri her zaman 0'dır ve buna karşılık gelen özvektör, tüm elemanları sabit bir değer olan bir vektördür (örneğin, tümü 1'lerden oluşan bir vektör). Bu özvektör, `graph`'ın bağlantılı olduğu bilgisini verir ancak `graph`'ı bölmek için hiçbir bilgi sağlamaz; üzerinde bir `threshold` uygulamak anlamsızdır. İkinci en küçük özvektör ise, `graph`'ı en az bağlantıyla iki parçaya bölen "en gevşek" bağlantı noktasını gösteren ilk anlamlı bilgiyi içerir. Bu yüzden `graph`'ı ikiye bölmek için bu özvektör kullanılır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> `Normalized Cuts` (N-Cuts) algoritması, Min-Cut'ın sorununu nasıl çözer?</p>
+  <div class="quiz-option">A) Daha verimli bir optimizasyon tekniği kullanarak.</div>
+  <div class="quiz-option">B) Kenar ağırlıklarını farklı bir şekilde hesaplayarak.</div>
+  <div class="quiz-option" data-correct="true">C) Kesi ağırlığını, kesilen segmentlerin kendi içindeki toplam bağlantılarına (hacimlerine) bölerek, büyük ve dengeli segmentler oluşturmayı teşvik ederek.</div>
+  <div class="quiz-option">D) Grafı pikseller yerine süper-piksellerden oluşturarak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> `N-Cuts`, kesiğin maliyetini (`cut(A,B)`) normalize eder. Bu normalizasyon, kesilen parçaların ne kadar "büyük" ve "içten bağlantılı" olduğunu da hesaba katar (`assoc(A,V)` ve `assoc(B,V)` terimleri). Bu, algoritmayı sadece küçük bir kesik bulmaktan caydırır ve bunun yerine hem segmentler arası benzerliğin düşük (`cut` küçük) hem de segment içi benzerliğin yüksek (`assoc` büyük) olduğu "dengeli" kesikleri bulmaya yönlendirir. Bu, izole piksellerin ayrılması yerine büyük, anlamlı bölgelerin ayrılmasını sağlar.</p>
+  </div>
+</div>

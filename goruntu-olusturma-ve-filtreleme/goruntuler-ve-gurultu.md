@@ -67,22 +67,34 @@ Sonuç olarak, dijital bir `image`, tam sayı değerlerinden oluşan bir matris 
 ## Kavrama Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Bir renkli görüntüyü matematiksel olarak nasıl ifade edersiniz ve bu ifadenin bileşenleri nelerdir?</p>
+  <p><b>Soru 1:</b> Bir renkli dijital görüntü (RGB) matematiksel olarak en iyi nasıl ifade edilir?</p>
+  <div class="quiz-option">A) `I(x, y)` formunda, her (x, y) konumunda tek bir parlaklık değeri olan bir fonksiyon.</div>
+  <div class="quiz-option">B) `I = [R, G, B]` formunda, tüm görüntü için üç adet ortalama renk değerinden oluşan bir vektör.</div>
+  <div class="quiz-option" data-correct="true">C) `I(x, y) = [R(x, y), G(x, y), B(x, y)]` formunda, her (x, y) konumunda üç renk kanalı için ayrı değerler içeren bir vektör değerli fonksiyon.</div>
+  <div class="quiz-option">D) `I(t) = R(t) + G(t) + B(t)` formunda, zamana bağlı renk değişimini gösteren bir fonksiyon.</div>
   <div class="quiz-explanation">
-    <p>Bir renkli görüntü, üç kanaldan (Kırmızı, Yeşil, Mavi) oluştuğu için vektör değerli bir fonksiyon olarak ifade edilir: `I(x, y) = [R(x, y), G(x, y), B(x, y)]`. Her bir bileşen (R, G, B), o renge ait `intensity` değerini veren ayrı bir fonksiyondur.</p>
+    <p><b>Cevap: C.</b> Bir renkli görüntü, her bir piksel konumu için Kırmızı, Yeşil ve Mavi kanallarına ait ayrı intensity değerlerini içeren çok kanallı bir yapı olarak temsil edilir.</p>
   </div>
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Gaussian ve Salt and Pepper gürültüleri arasındaki temel görsel fark nedir?</p>
+  <p><b>Soru 2:</b> Aşağıdakilerden hangisi "Salt and Pepper" gürültüsünü en iyi tanımlar?</p>
+  <div class="quiz-option">A) Görüntünün tamamında hafif, tanecikli bir bozulma.</div>
+  <div class="quiz-option">B) Görüntüde periyodik dalga desenleri.</div>
+  <div class="quiz-option" data-correct="true">C) Görüntüdeki bazı piksellerin rastgele tam siyah veya tam beyaz olması.</div>
+  <div class="quiz-option">D) Görüntünün renklerinin soluklaşması.</div>
   <div class="quiz-explanation">
-    <p>Gaussian gürültü, görüntünün tamamına yayılan, `pixel`'lerin orijinal değerlerini hafifçe değiştiren tanecikli bir yapıya sahiptir. Salt and Pepper gürültüsü ise görüntünün genel yapısını bozmaz, ancak belirli `pixel`'lerin değerlerini aşırı (tam siyah veya tam beyaz) değerlerle değiştirir ve rastgele noktacıklar olarak görünür.</p>
+    <p><b>Cevap: C.</b> Salt and Pepper gürültüsü, belirli piksellerin değerlerini aniden minimum (siyah, "pepper") veya maksimum (beyaz, "salt") değerlere değiştirerek kendini gösterir.</p>
   </div>
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 3:</b> "Quantization" (Niceleme) işlemi neden gereklidir ve görüntü kalitesini nasıl etkiler?</p>
+  <p><b>Soru 3:</b> Dijital bir görüntüde "Quantization" (Niceleme) seviyesini çok fazla düşürmek (örneğin 256 seviyeden 8 seviyeye indirmek) ne tür bir görsel bozulmaya yol açar?</p>
+  <div class="quiz-option">A) Görüntünün bulanıklaşması (blurring).</div>
+  <div class="quiz-option">B) Görüntüde "Salt and Pepper" gürültüsü oluşması.</div>
+  <div class="quiz-option" data-correct="true">C) Görüntüde renk geçişlerinin pürüzsüzlüğünü kaybedip bantlar halinde görünmesi (posterization).</div>
+  <div class="quiz-option">D) Görüntünün geometrik olarak bozulması (distortion).</div>
   <div class="quiz-explanation">
-    <p>Quantization, her `pixel`'in alabileceği sonsuz sayıdaki `intensity` değerini, sınırlı sayıda ayrık seviyeye (örneğin 256) indirme işlemidir. Bilgisayarların veriyi dijital olarak saklayabilmesi için bu gereklidir. Kullanılan seviye sayısı çok düşük olursa, görüntüdeki yumuşak renk geçişleri kaybolur ve "posterization" adı verilen bantlanma etkileri görülür, bu da kaliteyi düşürür.</p>
+    <p><b>Cevap: C.</b> Quantization seviyesinin düşürülmesi, temsil edilebilecek renk sayısını azaltır. Bu durum, yumuşak renk ve ton geçişlerinin kaybolmasına ve keskin sınırlarla ayrılmış renk bantlarının oluşmasına, yani "posterization" etkisine neden olur.</p>
   </div>
 </div>

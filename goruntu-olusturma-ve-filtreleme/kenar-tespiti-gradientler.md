@@ -91,17 +91,35 @@ Bir sonraki bölümde, bu temel adımları bir araya getirerek güçlü ve moder
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Yatay bir çizginin olduğu bir bölgede `Gx` ve `Gy` `gradient`'lerinin değerleri yaklaşık olarak ne olur? Neden?</summary>
-  <p>`Gy`'nin değeri büyük olurken, `Gx`'in değeri sıfıra yakın olur. Çünkü `gradient`'in y-bileşeni dikey yöndeki değişimi ölçer ve yatay bir çizgiden dikey olarak geçerken (yukarıdan aşağıya) `intensity`'de ani bir değişim olur. Yatay yönde (çizgi boyunca) ise `intensity` değişmediği için x-bileşeni zayıf kalır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Yatay bir kenar (horizontal edge) içeren bir görüntü bölgesinde, Sobel operatörü ile hesaplanan `Gx` ve `Gy` gradyanlarının büyüklükleri nasıl olur?</p>
+  <div class="quiz-option">A) `Gx` büyük, `Gy` sıfıra yakın olur.</div>
+  <div class="quiz-option" data-correct="true">B) `Gy` büyük, `Gx` sıfıra yakın olur.</div>
+  <div class="quiz-option">C) Hem `Gx` hem de `Gy` büyük olur.</div>
+  <div class="quiz-option">D) Hem `Gx` hem de `Gy` sıfıra yakın olur.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `Gy` gradyanı dikey yöndeki değişimi ölçer. Yatay bir kenardan dikey olarak geçerken yoğunlukta ani bir değişim olur, bu yüzden `Gy` büyük bir değere sahip olur. `Gx` ise yatay yöndeki değişimi ölçtüğü ve kenar boyunca yoğunluk sabit kaldığı için sıfıra yakın olur.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> `Gradient magnitude`'ünü `sqrt(Gx² + Gy²)` yerine `|Gx| + |Gy|` olarak hesaplamanın avantajı ve dezavantajı ne olabilir?</summary>
-  <p>**Avantajı:** Karekök ve kare alma işlemleri daha maliyetli olduğu için `|Gx| + |Gy|` yaklaşımı hesaplama açısından çok daha hızlı ve verimlidir. **Dezavantajı:** Bu, `gradient`'in gerçek Öklid uzunluğuna sadece bir yaklaşımdır. `Gradient` yönüne bağlı olarak küçük hatalar içerebilir, ancak çoğu uygulama için bu hız kazancı, doğruluğundaki küçük kayba değer.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Gradyan büyüklüğünü (gradient magnitude) hesaplarken `sqrt(Gx² + Gy²)` yerine `|Gx| + |Gy|` kullanmanın temel sebebi nedir?</p>
+  <div class="quiz-option">A) Daha doğru sonuçlar vermesi.</div>
+  <div class="quiz-option">B) Renkli görüntülerde daha iyi çalışması.</div>
+  <div class="quiz-option" data-correct="true">C) Hesaplama açısından daha verimli ve hızlı olması.</div>
+  <div class="quiz-option">D) Gürültüye karşı daha dayanıklı olması.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Kare alma ve karekök alma işlemleri, mutlak değer alıp toplamaktan çok daha fazla hesaplama maliyetine sahiptir. `|Gx| + |Gy|` formülü, gerçek Öklid mesafesine iyi bir yaklaşım sunarken, donanım üzerinde çok daha hızlı çalışır. Bu nedenle, özellikle gerçek zamanlı uygulamalarda sıkça tercih edilir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Neden türev almadan önce `image`'i `smooth` etme ihtiyacı duyarız? Bu işlemin potansiyel bir dezavantajı var mıdır?</summary>
-  <p>Türev filtreleri, `intensity`'deki hızlı değişimlere tepki verir. Gürültü de doğası gereği yüksek frekanslı hızlı değişimlerden oluşur. `Smooth` etmeden türev alırsak, filtre gürültüye aşırı tepki verir ve sonuçta çok sayıda yanlış kenar tespit edilir. **Potansiyel dezavantajı:** `Smoothing` (bulanıklaştırma) işlemi, sadece gürültüyü değil, aynı zamanda görüntüdeki zayıf ama gerçek olan kenarları ve ince detayları da bastırabilir. Bu yüzden doğru `smoothing` miktarını bulmak önemlidir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Kenar tespiti için gradyan hesaplamadan önce görüntüye bir `smoothing` (yumuşatma) filtresi (örneğin Gaussian) uygulamanın birincil amacı nedir?</p>
+  <div class="quiz-option" data-correct="true">A) Gürültünün neden olduğu sahte kenarları bastırmak.</div>
+  <div class="quiz-option">B) Görüntüyü keskinleştirmek.</div>
+  <div class="quiz-option">C) Görüntünün boyutunu küçülterek işlemi hızlandırmak.</div>
+  <div class="quiz-option">D) Renk bilgilerini gri seviyeye dönüştürmek.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Türev (gradyan) operatörleri, yoğunluktaki ani değişimlere karşı çok hassastır. Gürültü de bu tür yüksek frekanslı değişimlerden oluşur. Görüntüyü önce yumuşatmak, gürültüyü bastırarak türev operatörünün sadece gerçek ve anlamlı kenarlara tepki vermesini sağlar.</p>
+  </div>
+</div>

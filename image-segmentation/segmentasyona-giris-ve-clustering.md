@@ -64,17 +64,35 @@ Segmentasyon için `feature space`'i nasıl tanımladığımız, sonucun kalites
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> K-Means `clustering`'i sadece `pixel`'lerin `(x, y)` konumlarını kullanarak bir görüntüye uygularsak, sonuçta nasıl segmentler elde ederiz?</summary>
-  <p>Bu durumda algoritma, `pixel`'lerin renk veya `intensity` değerlerini tamamen göz ardı eder ve sadece birbirine geometrik olarak yakın olan `pixel`'leri aynı `cluster`'a atar. Sonuç olarak, görüntü, Voronoi diyagramına benzer şekilde, `K` adet kompakt, yuvarlak veya altıgen benzeri bölgeye ayrılır. Bu bölgelerin içindeki renkler tamamen heterojen olabilir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Görüntü segmentasyonunun temel amacı nedir?</p>
+  <div class="quiz-option">A) Görüntüdeki nesneleri tanımak ve etiketlemek.</div>
+  <div class="quiz-option" data-correct="true">B) Bir görüntüyü, piksellerin benzer özelliklere sahip olduğu birden fazla anlamlı bölgeye ayırmak.</div>
+  <div class="quiz-option">C) Görüntünün çözünürlüğünü artırmak.</div>
+  <div class="quiz-option">D) Görüntüdeki gürültüyü temizlemek.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Segmentasyon, her bir pikseli bir bölge etiketine atama işlemidir. Aynı etikete sahip pikseller, renk, doku veya yoğunluk gibi belirli özellikleri paylaşır. Amaç, görüntüyü daha anlamlı ve daha kolay analiz edilebilir bileşenlere ayırmaktır, bu da genellikle nesneleri veya nesne parçalarını temsil eden bölgelerle sonuçlanır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> K-Means algoritmasının başlangıcında `cluster` merkezlerinin rastgele seçilmesinin potansiyel bir dezavantajı nedir? Bu dezavantajın üstesinden gelmek için ne gibi bir strateji izlenebilir?</summary>
-  <p>Rastgele başlangıç, algoritmanın her çalıştırmada farklı sonuçlar vermesine ve bazen "kötü" bir lokal minimumda takılıp kalmasına neden olabilir. Örneğin, iki merkez de aynı `cluster`'ın içine düşerse, gerçek `cluster`'lardan birini tamamen kaçırabilir. Bu sorunu hafifletmek için en yaygın strateji, algoritmayı farklı rastgele başlangıç noktalarıyla birden çok kez (örneğin 10 defa) çalıştırmak ve en düşük toplam `intra-cluster` varyansa (`WCSS`) sahip olan sonucu en iyi sonuç olarak seçmektir. (Bu `K-Means++` başlatma yöntemiyle daha da iyileştirilebilir).</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> K-Means clustering algoritmasında, `K` parametresinin rolü nedir?</p>
+  <div class="quiz-option">A) Algoritmanın kaç iterasyonda çalışacağını belirler.</div>
+  <div class="quiz-option">B) Küme merkezlerinin başlangıç konumlarını belirler.</div>
+  <div class="quiz-option">C) Her bir kümenin maksimum boyutunu belirler.</div>
+  <div class="quiz-option" data-correct="true">D) Görüntünün kaç farklı segmente (bölgeye) ayrılacağını önceden belirler.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: D.</b> `K`, K-Means algoritmasının bulmaya çalışacağı küme (segment) sayısıdır. Bu, algoritmanın bir hiperparametresidir, yani kullanıcı tarafından önceden sağlanması gerekir. Algoritma, veriyi tam olarak `K` adet kümeye ayırmaya çalışır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> `Feature space`'e `(x,y)` konum bilgisini eklediğimizde, `[R, G, B, x, y]` gibi bir vektör oluşur. Renk değerleri (0-255) ile konum değerleri (örn. 0-800) farklı aralıklardadır. Bu durum K-Means'in sonucunu nasıl etkiler ve bunu çözmek için ne yapmalıyız?</summary>
-  <p>K-Means, Öklid mesafesine dayalıdır. Eğer `feature`'ların aralıkları çok farklıysa, daha büyük aralığa sahip olan `feature` (bu durumda `x,y` koordinatları), mesafe hesaplamasını domine eder. Yani algoritma, renk farklılıklarından çok `pixel`'lerin yakınlığına daha fazla önem verir. Bunu çözmek için, tüm `feature`'ları `clustering` işleminden önce normalize etmek standart bir adımdır. Örneğin, her bir `feature`'ı kendi standart sapmasına bölerek veya tüm değerleri 0-1 arasına ölçekleyerek her bir `feature`'ın mesafeye eşit derecede katkıda bulunması sağlanır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> K-Means'in segmentasyon için kullanılmasının en büyük dezavantajlarından biri nedir?</p>
+  <div class="quiz-option" data-correct="true">A) Piksellerin sadece renk/yoğunluk gibi özelliklerine baktığı için, uzamsal olarak (görüntü üzerinde) birbirinden çok uzak olan pikselleri aynı kümede toplayabilir.</div>
+  <div class="quiz-option">B) Çok yavaş çalışması ve gerçek zamanlı uygulamalar için uygun olmaması.</div>
+  <div class="quiz-option">C) Sadece siyah-beyaz görüntülerde çalışması.</div>
+  <div class="quiz-option">D) Her zaman mükemmel segmentasyon sonuçları vermesi.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Standart K-Means, her pikseli sadece `feature` uzayındaki (örneğin RGB renk uzayı) konumuna göre değerlendirir. Görüntünün farklı köşelerindeki iki pikselin renkleri aynıysa, K-Means bu iki pikseli aynı segmente atayabilir. Bu durum, anlamsal olarak bütüncül olmayan, "benekli" segmentasyon sonuçlarına yol açabilir. Bu sorunu çözmek için genellikle pikselin `(x, y)` konumu da `feature` vektörüne eklenir.</p>
+  </div>
+</div>

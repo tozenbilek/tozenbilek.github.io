@@ -120,17 +120,35 @@ Bir `image`'i bir `homography` matrisi `H` ile dönüştürme işlemine `image w
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Elinizde bir `image` ve bu `image`'in `affine` dönüşüme uğramış hali var. Bu iki `image` arasındaki `affine` matrisini bulmak için en az kaç tane nokta eşleşmesine ihtiyacınız vardır? Neden?</summary>
-  <p>`Affine` dönüşümün 6 serbestlik derecesi (`DoF`) vardır. Her bir nokta eşleşmesi, `(x', y') = A * (x, y)` denkleminden bize 2 adet lineer denklem verir. 6 bilinmeyeni (`a₁₁`'den `t_y`'ye) çözmek için en az `6 / 2 = 3` nokta eşleşmesine ihtiyacımız vardır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> 2D dönüşümler hiyerarşisinde, hangi dönüşüm paralelliği korurken, açıları ve uzunlukları korumak zorunda değildir?</p>
+  <div class="quiz-option">A) Euclidean (Rigidbody)</div>
+  <div class="quiz-option">B) Similarity</div>
+  <div class="quiz-option" data-correct="true">C) Affine</div>
+  <div class="quiz-option">D) Projective (Homography)</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Affine dönüşümler, paralel çizgileri yine paralel çizgilere dönüştürür. Ancak rotasyon, ölçekleme (farklı eksenlerde farklı oranlarda) ve eğme (shear) içerebildiği için açıları ve uzunlukları korumaz. Euclidean sadece rotasyon ve öteleme, Similarity bunlara ek olarak tek tip ölçekleme içerir. Projective ise paralelliği bile korumaz.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Bir `image`'i `forward warping` ile dönüştürdüğümüzde ortaya çıkabilecek iki temel problem nedir?</summary>
-  <p>1. **Delikler (Holes):** Kaynak `image`'deki tam sayı koordinatlı `pixel`'ler, hedef `image`'de ondalıklı konumlara düşebilir. Bu, hedef `image`'in `grid`'indeki bazı `pixel`'lere hiçbir değerin atanmamasına, yani boşluklar oluşmasına neden olabilir. 2. **Çakışmalar (Overlaps/Splats):** Farklı kaynak `pixel`'leri, hedef `image`'de aynı `pixel`'e veya çok yakın konumlara haritalanabilir, bu da hangi değerin kullanılacağı konusunda belirsizlik yaratır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Görüntü `warping` işlemlerinde, "inverse warping" (ters `warping`) yönteminin "forward warping"e göre temel avantajı nedir?</p>
+  <div class="quiz-option">A) Daha hızlı çalışması.</div>
+  <div class="quiz-option" data-correct="true">B) Hedef görüntüde delikler (holes) veya çakışmalar (splats) gibi artefaktlar oluşturmaması.</div>
+  <div class="quiz-option">C) Daha az bellek kullanması.</div>
+  <div class="quiz-option">D) Sadece `affine` dönüşümler için geçerli olması.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> "Inverse warping", hedef görüntüdeki her bir pikselin koordinatını alır, ters dönüşümle kaynak görüntüde nereye düştüğünü bulur ve oradaki rengi (genellikle interpolasyon ile) alır. Bu yaklaşım, hedefteki her pikselin tam olarak bir kez doldurulmasını garanti eder, bu da `forward warping`'de görülebilen delik ve çakışma sorunlarını ortadan kaldırır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Bir `homography`, bir kareyi ne tür bir dörtgene dönüştürebilir? Bir kareyi bir çembere dönüştürebilir mi?</summary>
-  <p>Bir `homography`, `projective` bir dönüşüm olduğu için çizgileri her zaman çizgilere dönüştürür. Dolayısıyla, bir karenin dört kenarı yine dört kenar olarak kalacaktır. Ancak paralellik ve açılar korunmadığı için, kare herhangi bir konveks (içbükey olmayan) dörtgene dönüşebilir. Bir `homography`, çizgileri eğrilere dönüştüremez, bu yüzden bir kareyi asla bir çembere dönüştüremez.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Bir `Homography` matrisi, iki görüntü arasındaki ilişkiyi hangi durumda tam olarak modelleyebilir?</p>
+  <div class="quiz-option">A) Görüntülerden biri diğerinin herhangi bir 3D dönüşüme uğramış haliyse.</div>
+  <div class="quiz-option">B) İki görüntü, farklı aydınlatma koşulları altında çekilmişse.</div>
+  <div class="quiz-option">C) İki görüntü, aynı 3D nesnenin çok farklı iki kamerasından çekilmişse.</div>
+  <div class="quiz-option" data-correct="true">D) Görüntülenen sahne tamamen düzlemsel (planar) ise veya iki görüntü aynı kamera merkezinden sadece rotasyon ile elde edilmişse.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: D.</b> Bir `homography`, iki projektif düzlem arasındaki ilişkiyi tanımlar. Bu durum, bilgisayarlı görüde iki senaryoda ortaya çıkar: 1) Görüntülenen sahne, bir duvar veya bir kağıt gibi tamamen düz bir yüzeyse. 2) Sahne 3D olsa bile, iki fotoğraf aynı noktada duran bir kameranın sadece kendi etrafında döndürülmesiyle (pan/tilt/roll) çekilmişse. Bu iki durum dışında, `homography` 3D sahneyi tam olarak modelleyemez.</p>
+  </div>
+</div>

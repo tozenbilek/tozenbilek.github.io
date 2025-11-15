@@ -60,17 +60,35 @@ Bu işlem, `feature space`'teki tüm başlangıç noktaları için yapılır. So
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Mean Shift'in K-Means'e göre en temel iki avantajı nedir?</summary>
-  <p>1. **K'yı belirlemeye gerek yoktur:** Algoritma, veri yoğunluğunun tepe noktalarını bularak `cluster` sayısını otomatik olarak belirler. 2. **Keyfi şekilli `cluster`'ları bulabilir:** K-Means'in küresel `cluster` varsayımının aksine, Mean Shift yoğunluk gradyanını takip ettiği için daha karmaşık ve düzensiz şekilli `cluster`'ları da başarılı bir şekilde bulabilir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Mean Shift algoritmasının K-Means'e göre en temel avantajı nedir?</p>
+  <div class="quiz-option" data-correct="true">A) Segment (küme) sayısını (`K`) önceden bilmeyi gerektirmez.</div>
+  <div class="quiz-option">B) Her zaman daha hızlı çalışır.</div>
+  <div class="quiz-option">C) Daha az bellek kullanır.</div>
+  <div class="quiz-option">D) Sadece gri seviye görüntülerde çalışır.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> K-Means, kullanıcıdan `K` değerini bir hiperparametre olarak bekler. Mean Shift ise non-parametrik bir yöntemdir; veri noktalarının yoğun olduğu bölgeleri (modları) kendisi bulur. Sonuçta ortaya çıkan mod (yoğunluk tepesi) sayısı, segment sayısını doğal olarak belirler. Bu, segment sayısının bilinmediği durumlar için onu çok daha güçlü bir araç yapar.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Mean Shift'teki `bandwidth` (`h`) parametresini çok büyük veya çok küçük seçmenin sonuçları ne olur?</summary>
-  <p>`h`'yi çok küçük seçmek, algoritmanın verideki küçük gürültü tepeciklerinde takılıp kalmasına ve sonuç olarak veriyi aşırı segmentlemesine (çok fazla küçük `cluster`) neden olur. `h`'yi çok büyük seçmek ise, farklı yoğunluk tepelerinin tek bir büyük pencere içinde birleşmesine ve dolayısıyla veriyi eksik segmentlemesine (birbirinden farklı `cluster`'ların tek bir `cluster` olarak birleştirilmesi) yol açar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Mean Shift'teki `bandwidth` (veya `kernel size`, `h`) parametresinin rolü nedir? Bu parametreyi çok büyük seçersek ne olur?</p>
+  <div class="quiz-option">A) Algoritmanın çalışma hızını belirler.</div>
+  <div class="quiz-option">B) Görüntünün çözünürlüğünü ayarlar.</div>
+  <div class="quiz-option" data-correct="true">C) Özellik uzayında ne kadar "yakındaki" noktaların ortalamaya dahil edileceğini belirler; çok büyük seçilirse birden fazla segmentin tek bir segment olarak birleşmesine neden olabilir.</div>
+  <div class="quiz-option">D) Renk sayısını sınırlar.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> `Bandwidth`, her bir noktanın "görüş alanını" tanımlar. Çok küçük bir `bandwidth`, her noktanın kendi başına bir mod oluşturmasına neden olarak aşırı segmentasyona (over-segmentation) yol açabilir. Çok büyük bir `bandwidth` ise, birbirinden farklı ve uzak modların bile tek bir büyük pencere içine düşmesine ve tek bir moda doğru kaymasına neden olur. Bu durum, "under-segmentation" olarak bilinir ve detayların kaybolmasına yol açar.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Bir görüntüde, birbirinden uzakta bulunan ama tamamen aynı renge sahip iki farklı nesne var. Mean Shift'i `feature space` olarak sadece `[R, G, B]` kullanarak uygularsak sonuç ne olur?</summary>
-  <p>Eğer `feature space` sadece renklerden oluşuyorsa, bu iki nesnenin `pixel`'leri `feature space`'te aynı noktada veya çok yakın bir bölgede kümelenir. Mean Shift, bu `pixel`'lerin hepsinin aynı yoğunluk tepesine ait olduğunu bulacak ve onları tek bir `cluster` olarak etiketleyecektir. Sonuç olarak, bu iki fiziksel olarak ayrı nesne, aynı segmentin parçası olarak kabul edilir. Konumsal olarak ayrı segmentler elde etmek için `feature space`'e `(x, y)` koordinatlarının da eklenmesi gerekir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Mean Shift algoritması, segmentasyon sonucunda elde edilen bölgelerin şekli hakkında nasıl bir varsayımda bulunur?</p>
+  <div class="quiz-option">A) Bölgelerin her zaman dairesel olması gerektiğini varsayar.</div>
+  <div class="quiz-option">B) Bölgelerin her zaman dışbükey (convex) olması gerektiğini varsayar.</div>
+  <div class="quiz-option" data-correct="true">C) Bölgelerin şekli hakkında hiçbir varsayımda bulunmaz ve keyfi şekilli segmentler üretebilir.</div>
+  <div class="quiz-option">D) Bölgelerin her zaman aynı boyutta olması gerektiğini varsayar.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> K-Means (özellik uzayında) küresel kümeler bulma eğilimindeyken, Mean Shift yoğunluk gradyanını takip ettiği için böyle bir kısıtlaması yoktur. Bu, algoritmanın veri dağılımına bağlı olarak oldukça karmaşık ve keyfi şekilli segmentler bulabilmesini sağlar. Bu, Mean Shift'in en güçlü yanlarından biridir.</p>
+  </div>
+</div>

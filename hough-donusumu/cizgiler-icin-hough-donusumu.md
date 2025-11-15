@@ -73,17 +73,35 @@ Oylama işlemi tamamlandığında `accumulator` matrisi, `image`'deki yapı hakk
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> `y = mx + b` yerine neden polar koordinat (`d, θ`) gösterimini kullanıyoruz? Temel sebebi nedir?</summary>
-  <p>Temel sebep, `y = mx + b` gösteriminin dikey çizgileri temsil edememesidir. Dikey bir çizginin eğimi (`m`) sonsuzdur ve bu, `parameter space`'te sonsuz bir aralık gerektirir. Polar koordinatların (`d, θ`) `parameter space`'i ise her zaman sınırlıdır (örneğin, `θ` 0-180 derece arası), bu da onu dijital bir `accumulator` matrisinde temsil etmeyi mümkün kılar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Hough Transform'da çizgileri temsil etmek için `y = mx + b` yerine polar koordinat (`d, θ`) kullanılmasının temel nedeni aşağıdakilerden hangisidir?</p>
+  <div class="quiz-option">A) Polar koordinatların hesaplanması daha hızlıdır.</div>
+  <div class="quiz-option" data-correct="true">B) Polar koordinatlar dikey çizgileri sorunsuz bir şekilde temsil edebilir.</div>
+  <div class="quiz-option">C) Polar koordinatlar daha az bellek kullanır.</div>
+  <div class="quiz-option">D) Polar koordinatlar gürültüye daha dayanıklıdır.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `y = mx + b` gösteriminde, dikey çizgilerin eğimi (`m`) sonsuzdur, bu da parametre uzayını sınırsız yapar ve dijital ortamda temsilini imkansızlaştırır. Polar koordinatların `d` ve `θ` parametreleri ise her zaman sınırlı bir aralıkta kalır, bu da dikey çizgiler de dahil olmak üzere tüm çizgilerin sorunsuz bir şekilde temsil edilmesini sağlar.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Bir görüntüde tam olarak orijinden geçen 45 derecelik bir çizgi varsa, bu çizgiye karşılık gelen `(d, θ)` `peak`'i `accumulator` matrisinde nerede olur?</summary>
-  <p>Çizgi orijinden geçtiği için, orijine olan dik mesafesi (`d`) sıfırdır. Çizginin kendisi 45 derece ise, ona dik olan doğrunun açısı `45 + 90 = 135` derece olacaktır. Dolayısıyla `peak`, `(d=0, θ=135°)` koordinatlarında bulunur.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Görüntüdeki kenar piksellerinin gradyan yönü bilgisini Hough Transform'a dahil etmek ne gibi bir avantaj sağlar?</p>
+  <div class="quiz-option" data-correct="true">A) Her pikselin daha az oy vermesini sağlayarak algoritmayı önemli ölçüde hızlandırır.</div>
+  <div class="quiz-option">B) Daha fazla sayıda çizginin bulunmasını sağlar.</div>
+  <div class="quiz-option">C) Algoritmanın eğri çizgileri de bulabilmesini sağlar.</div>
+  <div class="quiz-option">D) Accumulator matrisine olan ihtiyacı ortadan kaldırır.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Gradyan bilgisi olmadan, her kenar pikseli kendisinden geçebilecek tüm olası açılardaki (`θ`) çizgiler için oy kullanır. Gradyan yönünü bildiğimizde ise, o pikselden geçen çizginin normalinin açısının gradyan yönüyle yaklaşık aynı olması gerektiğini biliriz. Bu sayede, her piksel sadece belirli bir `θ` değeri (veya çok küçük bir aralık) için oy kullanır, bu da hesaplama miktarını büyük ölçüde azaltır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> `Gradient` bilgisini kullanmak Hough Transform'u nasıl hızlandırır?</summary>
-  <p>Standart algoritmada, her bir `edge pixel`'i, kendisinden geçebilecek tüm olası çizgiler için (yani tüm `θ` aralığı için) oy verir, bu da Hough uzayında tam bir sinüs eğrisi çizer. `Gradient` yönünü (`φ`) bildiğimizde ise, o `pixel`'den geçen çizginin normalinin açısının (`θ`) `gradient` yönüyle (`θ ≈ φ`) aynı olması gerektiğini biliriz. Bu sayede, tüm `θ` değerleri için oy vermek yerine, sadece `gradient` yönü civarındaki birkaç `θ` değeri için oy veririz. Bu, her `pixel` için yapılan hesaplama miktarını büyük ölçüde azaltır ve algoritmayı hızlandırır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Hough Transform'un temel çalışma prensibi göz önüne alındığında, en büyük dezavantajı nedir?</p>
+  <div class="quiz-option">A) Sadece siyah-beyaz görüntülerde çalışması.</div>
+  <div class="quiz-option">B) Görüntüdeki nesnelerin tam olarak kapalı şekiller olmasını gerektirmesi.</div>
+  <div class="quiz-option" data-correct="true">C) Tespit edilecek şeklin parametre sayısı arttıkça bellek ve hesaplama maliyetinin üssel olarak artması.</div>
+  <div class="quiz-option">D) Gürültüden çok kolay etkilenmesi.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Hough Transform, bir "boyutsallık laneti" (curse of dimensionality) probleminden muzdariptir. Çizgiler için 2D bir accumulator yeterliyken, çemberler için 3D, elipsler için 5D gerekir. Parametre sayısı arttıkça, accumulator matrisinin boyutu ve dolayısıyla gereken bellek ve işlem gücü pratik olmayan seviyelere çıkar.</p>
+  </div>
+</div>

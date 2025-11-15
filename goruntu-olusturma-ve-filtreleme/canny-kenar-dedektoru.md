@@ -65,17 +65,35 @@ Canny algoritması 4 ana adımdan oluşur:
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> "Non-Maximum Suppression" adımının temel amacı nedir ve bu adım olmasaydı Canny'nin çıktısı nasıl görünürdü?</summary>
-  <p>Temel amacı, `gradient magnitude`'undan elde edilen kalın, "bulanık" kenarları tek `pixel` kalınlığında keskin çizgilere dönüştürmektir. Bu adım olmasaydı, Canny'nin çıktısı nesnelerin etrafında aydınlık haleler veya kalın yollar gibi görünürdü, bu da kenarların yerini hassas bir şekilde belirlemeyi imkansız kılardı.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Canny kenar dedektöründeki "Non-Maximum Suppression" adımının birincil amacı nedir?</p>
+  <div class="quiz-option">A) Görüntüdeki gürültüyü azaltmak.</div>
+  <div class="quiz-option" data-correct="true">B) Gradyan büyüklüğünden elde edilen kalın kenarları tek piksel inceliğine getirmek.</div>
+  <div class="quiz-option">C) Zayıf kenarları tamamen ortadan kaldırmak.</div>
+  <div class="quiz-option">D) Kenar piksellerini birbirine bağlamak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Gradyan büyüklüğü, gerçek kenarın etrafında kalın, bulanık bir tepki verir. "Non-Maximum Suppression", her pikseli gradyan yönündeki komşularıyla karşılaştırır ve eğer piksel bu yöndeki en yüksek değere sahip değilse onu sıfıra indirir. Bu işlem, kalın "sırtları" tek piksellik keskin çizgilere dönüştürür.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Canny algoritmasının tek bir `threshold` yerine iki `threshold` (Hysteresis) kullanmasının avantajı nedir?</summary>
-  <p>Tek bir yüksek `threshold` kullanmak, gürültüyü iyi eler ancak gerçek kenar çizgilerinde boşluklar bırakabilir (kenarın zayıf kısımları kaybolur). Tek bir düşük `threshold` kullanmak ise kenar devamlılığını sağlar ama çok fazla gürültüyü de kenar olarak kabul eder. Hysteresis yöntemi, bu iki dünyanın en iyisini birleştirir: Yüksek `threshold` ile güvenilir "strong edge"leri bularak başlar ve ardından bu güvenilir kenarlara bağlı olan daha zayıf ama yine de kenarın bir parçası olması muhtemel "weak edge"leri de alçak `threshold`'u kullanarak takip eder. Bu, hem gürültüye dayanıklı hem de devamlılığı olan kenarlar üretir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> "Hysteresis Thresholding" adımında iki farklı eşik değeri (yüksek ve alçak) kullanılmasının temel avantajı nedir?</p>
+  <div class="quiz-option">A) Algoritmayı daha hızlı hale getirmek.</div>
+  <div class="quiz-option">B) Sadece çok güçlü kenarların tespit edilmesini sağlamak.</div>
+  <div class="quiz-option" data-correct="true">C) Güçlü kenarlarla bağlantılı olan zayıf kenarları da dahil ederek kenar devamlılığını sağlamak ve gürültüyü dışarıda bırakmak.</div>
+  <div class="quiz-option">D) Görüntünün parlaklık seviyesini otomatik olarak ayarlamak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Bu yöntem, iki eşik değeri kullanarak en iyi dengeyi kurar. Yüksek eşik, güvenilir "çekirdek" kenar piksellerini belirler. Alçak eşik ise, bu çekirdek piksellere komşu olan daha zayıf piksellerin de kenarın bir parçası olarak kabul edilmesine izin verir. Bu, kenarlardaki boşlukları doldururken, tamamen izole olmuş zayıf gürültü piksellerini dışarıda bırakır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Canny algoritmasının ilk adımı olan Gaussian `smoothing`'deki `σ` (sigma) değerini değiştirmek çıktıyı nasıl etkiler?</summary>
-  <p>`σ` değeri, `smoothing`'in miktarını, dolayısıyla kenar tespitinin "ölçeğini" kontrol eder. Küçük bir `σ` değeri, daha az `smoothing` anlamına gelir ve bu da görüntüdeki ince detayların ve ince kenarların (gürültüyle birlikte) tespit edilmesini sağlar. Büyük bir `σ` değeri ise daha fazla `smoothing` yapar, gürültüyü daha iyi bastırır ancak ince detayları ve zayıf kenarları yok eder, sadece büyük ölçekli ve belirgin kenarların bulunmasını sağlar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Canny algoritmasının ilk adımı olan Gaussian `smoothing`'deki `σ` (sigma) değerini artırmak, tespit edilen kenarları nasıl etkiler?</p>
+  <div class="quiz-option">A) Daha fazla ince ve detaylı kenar tespit edilir.</div>
+  <div class="quiz-option">B) Tespit edilen kenarların konumu daha hassas olur.</div>
+  <div class="quiz-option">C) Algoritma gürültüye karşı daha hassas hale gelir.</div>
+  <div class="quiz-option" data-correct="true">D) İnce detaylar kaybolur ve sadece büyük ölçekli, belirgin kenarlar tespit edilir.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: D.</b> Sigma'yı artırmak, daha güçlü bir bulanıklaştırma etkisi yaratır. Bu, gürültüyü daha etkili bir şekilde bastırır ancak aynı zamanda görüntüdeki ince detayları ve zayıf kenarları da ortadan kaldırır. Sonuç olarak, algoritma sadece büyük ve yapısal olarak belirgin olan kenarlara odaklanır.</p>
+  </div>
+</div>

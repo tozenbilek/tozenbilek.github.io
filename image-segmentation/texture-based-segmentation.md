@@ -57,17 +57,35 @@ Bu histogramlar, artık bölgenin doku özelliklerini temsil eden yeni, daha kom
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Neden tek bir `filter` (örneğin basit bir `Sobel` `edge detector`) doku analizi için yeterli değildir de bir `filter bank` kullanırız?</summary>
-  <p>Tek bir `filter`, sadece tek bir türde `feature`'ı (örneğin, dikey kenarlar) yakalayabilir. Dokular ise çok daha karmaşıktır ve farklı yönlerde (dikey, yatay, 45 derece vb.), farklı ölçeklerde (ince çizgiler, kalın çizgiler) ve farklı frekanslarda (yumuşak geçişler, keskin geçişler) desenlerin birleşiminden oluşur. Bir `filter bank`, bu zengin desen çeşitliliğini yakalayabilmek için tasarlanmış çok sayıda `filter` içerir ve bu sayede dokuyu çok daha kapsamlı bir şekilde temsil edebilir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Görüntü dokusunu (texture) tanımlamak için kullanılan "filter bank" yaklaşımının temel mantığı nedir?</p>
+  <div class="quiz-option">A) Görüntüyü tek bir ortalama filtre ile yumuşatmak.</div>
+  <div class="quiz-option" data-correct="true">B) Görüntüyü farklı yönelim ve ölçeklerdeki bir dizi filtreyle (örneğin, Gabor) süzerek her piksel için bir özellik vektörü oluşturmak.</div>
+  <div class="quiz-option">C) Görüntünün renk histogramını çıkarmak.</div>
+  <div class="quiz-option">D) Görüntüdeki kenarları Canny kenar dedektörü ile bulmak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> "Filter bank" yaklaşımı, tek bir özelliğin dokuyu tanımlamak için yetersiz olduğu varsayımına dayanır. Bunun yerine, görüntüye farklı "sorular soran" bir filtre seti (farklı açılardaki kenarlar, farklı boyutlardaki `blob`'lar vb.) uygulanır. Her bir filtrenin bir pikseldeki tepkisi, o pikselin doku özelliklerini tanımlayan çok boyutlu bir vektörün bir elemanı haline gelir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> "Texton" kavramını basit bir analoji ile açıklayın.</summary>
-  <p>Texton'ları, dokunun "kelimeleri" olarak düşünebilirsiniz. Nasıl ki bir metin, "a", "b", "c" gibi harflerin bir araya gelmesiyle oluşan "elma", "ağaç", "ev" gibi kelimelerden oluşuyorsa; bir dokusal bölge de, "küçük dikey çizgi", "küçük yuvarlak benek", "45 derecelik eğim" gibi temel mikro-desenlerin (texton'ların) bir araya gelmesiyle oluşur. `Clustering` adımı, görüntüdeki tüm "harfleri" (piksel `feature`'larını) analiz ederek bu temel "kelimeleri" (texton'ları) bulma işlemidir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> "Texton" kavramı, doku analizinde neyi temsil eder?</p>
+  <div class="quiz-option">A) Görüntüdeki metin karakterlerini.</div>
+  <div class="quiz-option">B) Görüntünün sıkıştırılmış halini.</div>
+  <div class="quiz-option" data-correct="true">C) Bir görüntüdeki temel mikro-yapıları veya tekrarlayan desen prototiplerini.</div>
+  <div class="quiz-option">D) Görüntünün ortalama renk değerini.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> "Texton"lar, dokuların "kelimeleri" olarak düşünülebilir. Bunlar, bir `filter bank`'tan elde edilen özellik vektörlerinin K-Means gibi bir algoritma ile kümelenmesiyle bulunur. Her küme merkezi, görüntüde sıkça tekrar eden temel bir deseni (örneğin, belirli bir yönde küçük bir çizgi, küçük bir nokta, bir köşe) temsil eden bir "texton" olur. Bir doku, bu `texton`'ların histogramı ile tanımlanabilir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> `Texton map` oluşturulduktan sonra neden doğrudan bu haritayı segmentasyon sonucu olarak kullanmıyoruz da üzerinde ek bir segmentasyon adımı (örneğin `Texton Histogramları` + `N-Cuts`) uyguluyoruz?</summary>
-  <p>`Texton map`'i genellikle oldukça gürültülüdür. Bir çita postunun üzerindeki benekli bir bölgede, hem "sarı tüy" texton'ları hem de "siyah benek" texton'ları bir arada bulunur. Haritayı doğrudan kullanmak, bu bölgeyi iki ayrı, iç içe geçmiş segmente ayırırdı. Bunun yerine, küçük pencereler içindeki `texton`'ların dağılımına (histogramına) bakarak daha üst seviye bir `feature` oluştururuz. Bu histogram, "bu bölge %70 sarı tüy, %30 siyah benek dokusuna sahip" der. Bu yeni ve daha kararlı `feature`'lar üzerinde segmentasyon yapmak, gürültüyü ortadan kaldırır ve algısal olarak bütüncül olan "çita postu" bölgesini tek bir segment olarak bulmamızı sağlar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Doku tabanlı segmentasyonun, sadece renk tabanlı segmentasyona göre üstün olduğu bir senaryo aşağıdakilerden hangisidir?</p>
+  <div class="quiz-option">A) Mavi bir gökyüzünü kırmızı bir arabadan ayırmak.</div>
+  <div class="quiz-option" data-correct="true">B) Bir çita'yı (benekli), üzerinde durduğu savanadan (çizgili otlar) ayırmak.</div>
+  <div class="quiz-option">C) Siyah-beyaz bir satranç tahtasındaki kareleri ayırmak.</div>
+  <div class="quiz-option">D) Bir stüdyoda çekilmiş, tek renkli düz bir arka plan önündeki bir nesneyi ayırmak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Çita ve savana, ortalama renk olarak birbirine çok yakın (sarı/kahverengi tonları) olabilir. Bu durumda sadece renk bilgisine dayalı bir segmentasyon başarısız olur. Ancak, dokuları (benekler ve çizgiler) tamamen farklıdır. Doku özelliklerini analiz eden bir algoritma, bu iki bölgeyi dokusal farklılıklarına dayanarak başarılı bir şekilde ayırabilir.</p>
+  </div>
+</div>

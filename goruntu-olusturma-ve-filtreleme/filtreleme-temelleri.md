@@ -91,22 +91,34 @@ Seçilen yöntem, filtrelenmiş `image`'in kenarlarındaki kaliteyi doğrudan et
 ## Kavrama Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Simetrik bir `kernel` (örneğin Gaussian) kullanıldığında `Convolution` ve `Cross-Correlation` arasındaki fark nedir?</p>
+  <p><b>Soru 1:</b> Bir filtreleme işleminde, kullanılan `kernel` (maske) hem yatay hem de dikey olarak simetrik ise, `Convolution` ve `Cross-Correlation` operasyonları arasındaki ilişki nedir?</p>
+  <div class="quiz-option">A) Convolution, Cross-Correlation'dan iki kat daha hızlı çalışır.</div>
+  <div class="quiz-option" data-correct="true">B) İki operasyon tamamen aynı sonucu verir.</div>
+  <div class="quiz-option">C) Cross-Correlation sonucu, Convolution sonucunun ters çevrilmiş halidir.</div>
+  <div class="quiz-option">D) Bu durumda sadece Convolution kullanılabilir.</div>
   <div class="quiz-explanation">
-    <p>Hiçbir fark yoktur. `Convolution` işleminden önce `kernel`'i 180 derece döndürür. Ancak `kernel` zaten simetrikse, döndürülmüş hali kendisiyle aynı olacağı için iki operasyon da tamamen aynı sonucu üretir.</p>
+    <p><b>Cevap: B.</b> `Convolution` işlemi, `kernel`'i 180 derece döndürdükten sonra `cross-correlation` yapmaktan ibarettir. Eğer `kernel` zaten simetrikse, döndürme işlemi `kernel`'i değiştirmez, bu nedenle iki operasyon da özdeş sonuçlar üretir.</p>
   </div>
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Bir `image`'i önce 3x3'lük bir `box filter` ile, sonra da 5x5'lik bir `box filter` ile filtrelemekle; doğrudan 7x7'lik bir `box filter` ile filtrelemek arasında nasıl bir ilişki vardır? Neden?</p>
+  <p><b>Soru 2:</b> Ardışık olarak önce 3x3'lük bir `box filter`, ardından 5x5'lik bir `box filter` uygulamak, tek bir filtre uygulamasına eşdeğer midir? Eşdeğerse bu filtrenin boyutu ve şekli ne olur?</p>
+  <div class="quiz-option">A) Evet, 8x8'lik bir `box filter`'a eşdeğerdir.</div>
+  <div class="quiz-option">B) Hayır, bu işlemler birleştirilemez.</div>
+  <div class="quiz-option">C) Evet, 7x7'lik bir `box filter`'a eşdeğerdir.</div>
+  <div class="quiz-option" data-correct="true">D) Evet, 7x7'lik üçgen (triangular) bir filtreye eşdeğerdir.</div>
   <div class="quiz-explanation">
-    <p>İki küçük filtrenin ardışık uygulanması, daha büyük tek bir filtrenin etkisine benzer bir `smoothing` etkisi yaratır, ancak bu etki tam olarak 7x7'lik bir filtreninkiyle aynı değildir. `Convolution`'ın `associative` (birleşme) özelliği sayesinde iki filtrenin `convolution`'ı alınarak tek bir eşdeğer `kernel` elde edilebilir. Ancak iki `box filter`'ın `convolution`'ı, üçgen şeklinde bir ağırlık dağılımı oluşturur, bu da başka bir `box filter` değildir. Bu, ardışık filtrelemenin daha karmaşık filtreler oluşturmak için kullanılabileceğini gösterir.</p>
+    <p><b>Cevap: D.</b> Convolution işlemi birleşme (associative) özelliğine sahiptir. İki `box filter`'ın `convolution`'ı, daha büyük ve üçgen şeklinde ağırlıklara sahip (merkezde daha yüksek, kenarlara doğru azalan) bir `kernel` oluşturur. Etki alanı (receptive field) 7x7 olur.</p>
   </div>
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 3:</b> `Image` kenarlarındaki `boundary` problemini yönetmek için neden genellikle "zero-padding" (siyahla doldurma) yerine "reflect" (yansıtma) yöntemi tercih edilir?</p>
+  <p><b>Soru 3:</b> Filtreleme sırasında `image` sınırlarında "zero-padding" kullanmanın en önemli dezavantajı nedir?</p>
+  <div class="quiz-option">A) Hesaplama maliyetini artırması.</div>
+  <div class="quiz-option" data-correct="true">B) Görüntünün kenarlarında yapay ve güçlü kenarlar (edges) oluşturması.</div>
+  <div class="quiz-option">C) Görüntünün boyutunu değiştirmesi.</div>
+  <div class="quiz-option">D) Sadece siyah-beyaz görüntülerde çalışması.</div>
   <div class="quiz-explanation">
-    <p>"Zero-padding", `image`'in kenarlarına yapay olarak güçlü bir `edge` (görüntüden siyaha geçiş) ekler. Bu, filtreleme sonucunda kenarlarda istenmeyen kararmalara veya artefaktlara neden olabilir. "Reflect" yöntemi ise mevcut `pixel` desenini kenarın dışına yansıtarak daha doğal bir devamlılık sağlar ve bu tür yapay kenar etkilerini en aza indirir.</p>
+    <p><b>Cevap: B.</b> Görüntüyü sıfırlarla (siyah piksellerle) çevrelemek, görüntü ile dolgu alanı arasında ani bir yoğunluk farkı yaratır. Bu durum, filtrenin bu sınırlarda hatalı tepkiler vermesine ve sonuçta kenarlarda kararma gibi istenmeyen artefaktlara yol açmasına neden olur.</p>
   </div>
 </div>

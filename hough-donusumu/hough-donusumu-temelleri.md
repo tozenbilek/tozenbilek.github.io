@@ -67,17 +67,35 @@ Bu `voting` mekanizması sayesinde `Hough Transform`, `noise`'a, eksik verilere 
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Görüntü uzayında birbirine paralel olan iki farklı çizgi, `(m,b)` Hough uzayında nasıl görünür?</summary>
-  <p>Paralel çizgiler aynı eğime (`m`) sahip ancak farklı y-kesenlerine (`b`) sahiptir. Dolayısıyla, `(m,b)` Hough uzayında bu iki çizgi, aynı dikey çizgi üzerinde (`m` değeri sabit) bulunan iki farklı nokta olarak görünür.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Görüntü uzayındaki (image space) tek bir nokta, Hough uzayında (parameter space) neye karşılık gelir?</p>
+  <div class="quiz-option">A) Yine tek bir noktaya.</div>
+  <div class="quiz-option" data-correct="true">B) Bir çizgiye (veya eğriye).</div>
+  <div class="quiz-option">C) Bir alana.</div>
+  <div class="quiz-option">D) Hiçbir şeye.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Görüntüdeki tek bir `(x, y)` noktası, kendisinden geçebilecek sonsuz sayıdaki çizginin parametrelerine (`m` ve `b`) karşılık gelir. `y = mx + b` denklemini `b = -xm + y` olarak düzenlersek, bunun `(m,b)` uzayında bir doğru denklemi olduğunu görürüz. Yani görüntüdeki her nokta, parametre uzayında bir çizgiye oy verir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Hough Transform'un temel `voting` mekanizması, gürültüye karşı nasıl bir dayanıklılık sağlar?</summary>
-  <p>Gürültü `pixel`'leri genellikle rastgele konumlardadır ve herhangi bir anlamlı geometrik şekil oluşturmazlar. Bu nedenle, bu `pixel`'lerin Hough uzayındaki oyları da `accumulator` matrisine rastgele dağılır. Anlamlı bir şekil üzerindeki `pixel`'lerin oyları ise tek bir hücrede yoğunlaşırken, gürültünün oyları yoğunlaşamaz. Bu sayede, `accumulator`'deki en yüksek tepe noktası büyük olasılıkla gürültüden değil, gerçek bir yapıdan kaynaklanır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Hough Transform'daki `accumulator` matrisinin amacı nedir?</p>
+  <div class="quiz-option">A) Görüntünün kenarlarını depolamak.</div>
+  <div class="quiz-option">B) Görüntünün renk histogramını tutmak.</div>
+  <div class="quiz-option" data-correct="true">C) Parametre uzayındaki oyları toplamak ve en çok oy alan parametreleri bulmak.</div>
+  <div class="quiz-option">D) Görüntüyü daha hızlı işlemek için geçici bir bellektir.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> `Accumulator`, parametre uzayını (`m` ve `b` gibi) ayrık hücrelere bölen bir ızgaradır. Görüntüdeki her kenar pikseli, kendisinden geçebilecek tüm olası çizgilere karşılık gelen hücrelere bir "oy" verir. Algoritmanın sonunda, en çok oy toplayan hücreler (tepe noktaları), görüntüdeki en belirgin çizgilerin parametrelerini temsil eder.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> `y = mx + b` parametrizasyonunu kullandığımızı varsayalım. Görüntüde tam olarak dikey bir çizgi varsa, `accumulator` matrisinde ne olur?</summary>
-  <p>Dikey bir çizginin eğimi (`m`) sonsuzdur. `(m,b)` Hough uzayı genellikle `m` için sonlu bir aralıkta tanımlanır. Bu nedenle, dikey çizgi bu `parameter space`'te temsil edilemez ve `accumulator`'e oy veremez. Bu, `y = mx + b` gösteriminin en büyük dezavantajıdır ve bir sonraki bölümde göreceğimiz polar koordinatların kullanılmasının ana sebebidir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> `y = mx + b` parametrizasyonunun Hough Transform'da kullanılmasının en büyük dezavantajı nedir?</p>
+  <div class="quiz-option">A) Yatay çizgileri temsil edememesi.</div>
+  <div class="quiz-option" data-correct="true">B) Dikey çizgileri temsil edememesi.</div>
+  <div class="quiz-option">C) Çemberleri temsil edememesi.</div>
+  <div class="quiz-option">D) Hesaplama açısından çok yavaş olması.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Dikey bir çizginin eğimi (`m`) sonsuzdur. Bu, `m` ekseninin sonsuz bir aralığa sahip olmasını gerektirir ki bu da bir `accumulator` matrisinde pratik olarak temsil edilemez. Bu sınırlama, dikey çizgilerin tespit edilememesine yol açar ve bu yüzden polar koordinat (`d`, `θ`) parametrizasyonu gibi alternatifler kullanılır.</p>
+  </div>
+</div>

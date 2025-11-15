@@ -49,17 +49,35 @@ RANSAC'ın temel fikri oldukça basittir: Eğer verideki doğru noktaları (`inl
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> RANSAC'ın son adımında, bulunan en iyi `inlier` seti ile modeli neden yeniden uydururuz (`refit`)? Sadece o iterasyonda hesaplanan modeli kullanmak neden yeterli değildir?</summary>
-  <p>Herhangi bir iterasyonda hesaplanan model, sadece minimum sayıda örneklem noktasına (örneğin `homography` için 4) dayanır. Bu örneklem noktaları `inlier` olsa bile, `pixel` konumlarındaki küçük gürültüler nedeniyle hesaplanan model en optimal model olmayabilir. En iyi `inlier` setini (belki de yüzlerce nokta) bulduktan sonra, bu çok daha büyük ve güvenilir veri seti üzerinden modeli yeniden hesaplamak, bu küçük gürültülerin etkisini ortalamasını alır ve çok daha doğru, daha kararlı bir nihai model elde edilmesini sağlar.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> RANSAC algoritmasının temel felsefesi nedir?</p>
+  <div class="quiz-option">A) Tüm veri noktalarını kullanarak en düşük hatayı veren modeli bulmak.</div>
+  <div class="quiz-option" data-correct="true">B) Veri içinde çok sayıda "outlier" (aykırı değer) olsa bile, "inlier" (uyumlu değerler) alt kümesini bularak güvenilir bir model tahmini yapmak.</div>
+  <div class="quiz-option">C) Veri noktası sayısını azaltarak model uydurmayı hızlandırmak.</div>
+  <div class="quiz-option">D) Veri setindeki gürültüyü temizlemek.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> RANSAC, "outlier"ların model tahminini bozacağı varsayımı üzerine kuruludur. Bu nedenle, tüm veriyi kullanmak yerine, rastgele seçilen küçük alt kümelerle tekrar tekrar model tahminleri yapar ve en çok sayıda "inlier" tarafından desteklenen modeli en iyi model olarak kabul eder. Felsefesi, "outlier"ları göz ardı ederek verinin içindeki "sağlam" yapıyı ortaya çıkarmaktır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> RANSAC'ın başarısı için en kritik parametre nedir ve bu parametreyi yanlış ayarlamanın sonuçları ne olur?</summary>
-  <p>En kritik parametre `inlier`/`outlier` ayrımını yapan `threshold`'dur (`t`). Bu `threshold` çok küçük ayarlanırsa, gürültü nedeniyle gerçek `inlier`'lar bile modelin dışında kalabilir ve RANSAC iyi bir `inlier` seti bulmakta zorlanır. Eğer çok büyük ayarlanırsa, bazı `outlier`'lar yanlışlıkla `inlier` olarak kabul edilebilir. Bu durum, algoritmanın tamamen yanlış bir model üzerinde uzlaşmasına (`consensus`) ve hatalı bir sonuç üretmesine neden olabilir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> RANSAC'ta, `inlier`/`outlier` ayrımı nasıl yapılır?</p>
+  <div class="quiz-option">A) Veri noktalarının rengine bakılarak.</div>
+  <div class="quiz-option">B) Veri noktalarının konumuna bakılarak (örneğin, görüntünün solunda mı sağında mı).</div>
+  <div class="quiz-option" data-correct="true">C) Tahmin edilen modele olan uzaklıklarının önceden belirlenmiş bir eşik değerinden (`t`) küçük olup olmadığına bakılarak.</div>
+  <div class="quiz-option">D) Veri noktalarının rastgele olarak etiketlenmesiyle.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Her iterasyonda, rastgele seçilen `s` adet noktayla bir model `M` tahmin edilir. Ardından, geri kalan tüm veri noktaları bu modele göre test edilir. Bir noktanın modele olan hatası (uzaklığı), belirlenen `t` eşiğinden küçükse o nokta bir `inlier` olarak kabul edilir, aksi takdirde `outlier` olarak işaretlenir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Bir veri setindeki `outlier` oranının %50'den çok daha fazla (örneğin %80) olduğu bir durumda RANSAC'ın performansı nasıl etkilenir? Neden?</summary>
-  <p>RANSAC'ın performansı dramatik bir şekilde düşer. RANSAC'ın temel varsayımı, rastgele seçilen küçük bir örneklemin tamamının `inlier` olma ihtimalinin makul düzeyde olmasıdır. `Outlier` oranı %80 ise, örneğin bir `homography` için rastgele seçilen 4 noktanın tamamının `inlier` olma olasılığı (`0.2⁴ = 0.0016`) çok düşüktür. Bu durumda, sadece `inlier`'lardan oluşan "iyi" bir örneklem bulmak için gereken iterasyon sayısı (`N`) astronomik derecede artar ve algoritma pratik olarak uygulanamaz hale gelir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> RANSAC'ın başarılı olma olasılığını artırmak için, deneme sayısı (`N`) hangi faktörlere bağlı olarak ayarlanmalıdır?</p>
+  <div class="quiz-option">A) Görüntünün çözünürlüğüne.</div>
+  <div class="quiz-option">B) Modelin karmaşıklığına.</div>
+  <div class="quiz-option" data-correct="true">C) Veri setindeki `inlier` oranına ve model için gereken minimum nokta sayısına.</div>
+  <div class="quiz-option">D) Kullanılan bilgisayarın hızına.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Deneme sayısı `N`, en az bir denemede tamamen `inlier`'lardan oluşan bir alt küme seçme olasılığını istenen bir seviyeye (örneğin %99) çıkarmak için hesaplanır. Bu hesaplama, veri setindeki tahmini `inlier` oranına (`w`), model için gereken minimum nokta sayısına (`s`) ve istenen başarı olasılığına (`p`) doğrudan bağlıdır. `Inlier` oranı ne kadar düşükse, tamamen `inlier`'lardan oluşan bir grup çekme olasılığı o kadar düşük olacağı için `N`'nin o kadar yüksek olması gerekir.</p>
+  </div>
+</div>
