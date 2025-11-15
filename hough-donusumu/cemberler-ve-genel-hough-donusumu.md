@@ -58,3 +58,18 @@ GHT, keyfi şekilleri tespit etmek için bir **şablon (template)** kullanır. F
 GHT, `parameter space`'e ölçek (`scale`) ve dönme (`rotation`) `parameter`'larını da ekleyerek bu tür değişimlere karşı da uyarlanabilir, ancak bu `accumulator`'ün boyutunu ve hesaplama maliyetini artırır (örneğin, 4D `accumulator` `(x, y, scale, rotation)`).
 
 `Hough Transform` ve varyasyonları, `image`'lerdeki gürültülü ve eksik veriden anlamlı yapılar çıkarmak için güçlü ve esnek bir çerçeve sunar.
+
+## Hough Transform'un Artıları ve Eksileri
+
+`Hough Transform`, birçok avantajı olan güçlü bir tekniktir, ancak bazı sınırlamaları da vardır.
+
+**Artıları (Pros):**
+-   **Gürültüye Dayanıklılık:** Oylama mekanizması sayesinde, alakasız `pixel`'lerin oyları `parameter space`'e dağılır ve genellikle anlamlı bir tepe oluşturmaz.
+-   **Eksik Veriyle Çalışabilme (`Occlusion`):** Bir şeklin bir kısmı görünmese bile, görünen kısımdaki `pixel`'ler hala doğru parametreler için oy verebilir ve şeklin tespit edilmesini sağlayabilir.
+-   **Birden Fazla Örneği Bulabilme:** `Accumulator`'deki birden fazla tepeyi bularak, aynı anda `image`'deki birden fazla `line` veya `circle`'ı tespit edebilir.
+-   **Paralelleştirilebilirlik:** Her `pixel`'in oylama işlemi birbirinden bağımsızdır, bu da algoritmayı paralelleştirmeye uygun hale getirir.
+
+**Eksileri (Cons):**
+-   **Hesaplama ve Bellek Maliyeti:** `Parameter space`'in boyutu, modeldeki parametre sayısıyla üssel olarak artar. Örneğin, `line` için 2D olan `accumulator`, keyfi bir şeklin konumu, yönelimi ve ölçeği için 4D veya daha fazla olabilir, bu da çok yüksek bellek ve işlem gücü gerektirir.
+-   **Parametre Hassasiyeti (`Quantization`):** `Accumulator`'deki `grid` (hücre) boyutunun seçimi kritiktir. Çok büyük (`coarse`) hücreler hassasiyeti düşürürken, çok küçük (`fine`) hücreler `noise` nedeniyle oyların dağılmasına ve tepelerin kaybolmasına neden olabilir.
+-   **Sahte Tepeler (Spurious Peaks):** Özellikle karmaşık `image`'lerde, ilgisiz `pixel`'lerin tesadüfen aynı hücreye oy vermesiyle yanıltıcı tepeler oluşabilir.

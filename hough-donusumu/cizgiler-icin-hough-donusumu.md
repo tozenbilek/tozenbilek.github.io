@@ -45,3 +45,11 @@ Standart `Hough Transform`'u daha verimli ve doğru hale getirmek için bazı iy
 - **`Gradient` Bilgisini Kullanma:** `Edge detection` sırasında her `pixel` için `gradient direction`'ı (`φ`) da hesaplanır. Bir `line` üzerindeki `pixel`'lerin `gradient direction`'ı, `line`'a dik olmalıdır. Yani, `θ ≈ φ`. Bu bilgiyle, her `edge` `pixel`'i için tüm `θ` değerlerini taramak yerine, sadece `gradient direction`'ı civarındaki birkaç `θ` değeri için oy verilir. Bu, hesaplama maliyetini önemli ölçüde azaltır.
 - **Daha Güçlü `Edge`'lere Daha Fazla Oy Verme:** `Gradient magnitude`'u yüksek olan `edge` `pixel`'lerinin oylarını daha ağırlıklı hale getirmek (örneğin, `H[d, θ] += magnitude` yapmak), daha belirgin `line`'ların daha kolay tespit edilmesini sağlayabilir.
 - **`Accumulator` Çözünürlüğü:** `d` ve `θ` için seçilen adım boyutları önemlidir. Çok büyük adımlar (`coarse resolution`), birbirine yakın `line`'ları aynı `bin`'de birleştirerek doğruluğu düşürür. Çok küçük adımlar (`fine resolution`) ise `noise` nedeniyle aynı `line` üzerindeki `pixel`'lerin oylarını farklı `bin`'lere dağıtabilir ve tespit gücünü azaltır. Doğru çözünürlüğü bulmak, uygulama için önemlidir.
+
+## Accumulator Matrisini Yorumlama
+
+Oylama işlemi tamamlandığında `accumulator` matrisi, `image`'deki yapı hakkında zengin bilgi içeren bir görsel haritaya dönüşür. Bu matrisi yorumlamak, algoritmanın nasıl çalıştığını anlamak için önemlidir:
+
+-   **Parlak Noktalar (Peaks):** Matristeki parlak noktalar veya yüksek değerli hücreler, birçok `edge` `pixel`'inin "oy verdiği" `(d, θ)` parametre çiftlerine karşılık gelir. Bu parlak noktalar, `image`'deki en belirgin çizgileri temsil eder. Örneğin, `image`'de dört kenarı olan bir kare varsa, `accumulator`'de bu dört çizgiye karşılık gelen dört belirgin parlak nokta (zirve) olacaktır.
+-   **Sinüzoidal İzler:** Matrisin kendisi, her bir `edge` `pixel`'inin bıraktığı sinüzoidal oy izlerinin bir toplamıdır.
+-   **Gürültünün Etkisi:** `Image`'deki gürültülü (alakasız) `edge` `pixel`'leri, `accumulator` matrisinde dağınık ve düşük değerli oylar bırakır. Bu oylar genellikle belirgin bir tepe oluşturacak şekilde yoğunlaşmazlar ve bu nedenle `Hough Transform`'un gürültüye dayanıklı olmasını sağlarlar.
