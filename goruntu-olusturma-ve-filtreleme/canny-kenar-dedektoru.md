@@ -33,6 +33,9 @@ Bu adımın amacı, `gradient magnitude`'undan elde edilen "kalın" `edge`'leri 
 
 Bu işlem sonucunda, sadece bulundukları yöndeki en tepe noktada olan `pixel`'ler hayatta kalır ve `edge`'ler inceltilmiş olur.
 
+![Non-Maximum Suppression Etkisi](./assets/images/goruntu-filtreleme/non-maximum-suppression.png)
+*<center>Solda Gradient Magnitude, sağda Non-Maximum Suppression sonrası inceltilmiş kenarlar.</center>*
+
 ## 4. Hysteresis Thresholding
 
 Bu son adım, hangi `pixel`'lerin gerçekten `edge` olduğunu ve hangilerinin `noise` olduğunu belirler. Tek bir `threshold` değeri kullanmak yerine, Canny iki farklı `threshold` değeri kullanır:
@@ -44,3 +47,35 @@ Bu son adım, hangi `pixel`'lerin gerçekten `edge` olduğunu ve hangilerinin `n
 - Eğer bir "strong edge" ile bağlantısı yoksa, `noise` olarak kabul edilir ve atılır.
 
 Bu yöntem, "strong edge"ler tarafından başlatılan `edge` çizgilerinin, daha az belirgin ama sürekli olduğu "weak edge" bölgeleri boyunca devam etmesine olanak tanır. Bu sayede, `noise`'dan kaynaklanan izole `pixel`'leri elerken, `edge` çizgilerindeki boşlukları doldurarak daha bütüncül ve güvenilir bir `edge map` oluşturulur.
+
+![Canny Edge Detector Sonucu](./assets/images/goruntu-filtreleme/canny-result.png)
+*<center>Orijinal görüntünün Canny algoritması adımları sonrası nihai kenar haritası.</center>*
+
+---
+
+## Özet ve Anahtar Kavramlar
+
+Canny algoritması 4 ana adımdan oluşur:
+1.  **Noise Reduction:** Görüntü, `Gaussian filter` ile yumuşatılır. `σ` parametresi, bulunacak kenarların ölçeğini belirler.
+2.  **Gradient Calculation:** Yumuşatılmış görüntü üzerinden `gradient`'in `magnitude` ve `direction`'ı hesaplanır.
+3.  **Non-Maximum Suppression:** Kenarları tek `pixel` kalınlığına indirmek için, her `pixel` `gradient` yönündeki komşularıyla karşılaştırılır ve lokal maksimum değilse elenir.
+4.  **Hysteresis Thresholding:** İki farklı `threshold` (yüksek ve alçak) kullanılır. Yüksek `threshold`'u geçen `pixel`'ler "strong edge" olarak kabul edilir. Bu "strong edge"lere bağlı olan ve alçak `threshold`'u geçen "weak edge" `pixel`'leri de kenar haritasına dahil edilir. Bu yöntem, kenar devamlılığını sağlar ve gürültüyü eler.
+
+---
+
+## Kavrama Soruları
+
+<details>
+  <summary><b>Soru 1:</b> "Non-Maximum Suppression" adımının temel amacı nedir ve bu adım olmasaydı Canny'nin çıktısı nasıl görünürdü?</summary>
+  <p>Temel amacı, `gradient magnitude`'undan elde edilen kalın, "bulanık" kenarları tek `pixel` kalınlığında keskin çizgilere dönüştürmektir. Bu adım olmasaydı, Canny'nin çıktısı nesnelerin etrafında aydınlık haleler veya kalın yollar gibi görünürdü, bu da kenarların yerini hassas bir şekilde belirlemeyi imkansız kılardı.</p>
+</details>
+
+<details>
+  <summary><b>Soru 2:</b> Canny algoritmasının tek bir `threshold` yerine iki `threshold` (Hysteresis) kullanmasının avantajı nedir?</summary>
+  <p>Tek bir yüksek `threshold` kullanmak, gürültüyü iyi eler ancak gerçek kenar çizgilerinde boşluklar bırakabilir (kenarın zayıf kısımları kaybolur). Tek bir düşük `threshold` kullanmak ise kenar devamlılığını sağlar ama çok fazla gürültüyü de kenar olarak kabul eder. Hysteresis yöntemi, bu iki dünyanın en iyisini birleştirir: Yüksek `threshold` ile güvenilir "strong edge"leri bularak başlar ve ardından bu güvenilir kenarlara bağlı olan daha zayıf ama yine de kenarın bir parçası olması muhtemel "weak edge"leri de alçak `threshold`'u kullanarak takip eder. Bu, hem gürültüye dayanıklı hem de devamlılığı olan kenarlar üretir.</p>
+</details>
+
+<details>
+  <summary><b>Soru 3:</b> Canny algoritmasının ilk adımı olan Gaussian `smoothing`'deki `σ` (sigma) değerini değiştirmek çıktıyı nasıl etkiler?</summary>
+  <p>`σ` değeri, `smoothing`'in miktarını, dolayısıyla kenar tespitinin "ölçeğini" kontrol eder. Küçük bir `σ` değeri, daha az `smoothing` anlamına gelir ve bu da görüntüdeki ince detayların ve ince kenarların (gürültüyle birlikte) tespit edilmesini sağlar. Büyük bir `σ` değeri ise daha fazla `smoothing` yapar, gürültüyü daha iyi bastırır ancak ince detayları ve zayıf kenarları yok eder, sadece büyük ölçekli ve belirgin kenarların bulunmasını sağlar.</p>
+</details>

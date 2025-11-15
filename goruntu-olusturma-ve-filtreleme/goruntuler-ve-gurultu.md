@@ -38,6 +38,8 @@ Sonuç olarak, dijital bir `image`, tam sayı değerlerinden oluşan bir matris 
     - **Görünüm:** `Image` üzerinde rastgele serpiştirilmiş siyah (biber) ve beyaz (tuz) `pixel`'ler şeklinde belirir.
     - **Neden:** Genellikle veri iletimindeki hatalar veya arızalı sensör hücreleri nedeniyle oluşur.
 
+    ![Salt and Pepper Gürültü Örneği](./assets/images/goruntu-filtreleme/salt-pepper-noise.png)
+
 2.  **Impulse Noise:**
     - **Görünüm:** Sadece rastgele beyaz `pixel`'lerden oluşur. *Salt and Pepper*'ın tek kutuplu halidir.
 
@@ -46,4 +48,35 @@ Sonuç olarak, dijital bir `image`, tam sayı değerlerinden oluşan bir matris 
     - **Neden:** Sensör elektroniğindeki termal gürültü veya düşük aydınlatma koşulları gibi birçok doğal süreçten kaynaklanır. En yaygın karşılaşılan `noise` türüdür.
     - **Parametre:** Gaussian dağılımının standart sapması (`σ`), `noise`'un ne kadar "yoğun" olacağını belirler. `σ` arttıkça, `pixel`'ler orijinal değerlerinden daha fazla sapar.
 
+    ![Gaussian Gürültü Örneği](./assets/images/goruntu-filtreleme/gaussian-noise.png)
+
 > **Önemli Not:** `Noise`, `image`'e bilgi eklemez, aksine var olan bilgiyi **bozar**. Bu nedenle, birçok Computer Vision uygulamasının ilk adımı, `noise`'u temizlemek veya etkisini azaltmaktır. Bir sonraki bölümde bu amaçla kullanılan `filtering` tekniklerini inceleyeceğiz.
+
+---
+
+## Özet ve Anahtar Kavramlar
+
+-   **Image as a Function:** Bir görüntü, `I(x, y)` şeklinde iki boyutlu bir fonksiyon olarak modellenebilir. Renkli görüntüler `[R(x, y), G(x, y), B(x, y)]` gibi vektör değerli fonksiyonlardır.
+-   **Digital Image:** Sürekli bir görüntünün `sampling` (örnekleme) ve `quantization` (niceleme) işlemleriyle ayrık `pixel`'lerden ve `intensity` seviyelerinden oluşan bir matrise dönüştürülmesidir.
+-   **Noise (Gürültü):** Görüntü sinyaline eklenen istenmeyen bozulmalardır.
+-   **Salt and Pepper Noise:** Görüntüde rastgele siyah ve beyaz noktalar olarak belirir.
+-   **Gaussian Noise:** Her `pixel`'e normal dağılıma sahip rastgele bir değer eklenmesiyle oluşur ve en yaygın gürültü türüdür.
+
+---
+
+## Kavrama Soruları
+
+<details>
+  <summary><b>Soru 1:</b> Bir renkli görüntüyü matematiksel olarak nasıl ifade edersiniz ve bu ifadenin bileşenleri nelerdir?</summary>
+  <p>Bir renkli görüntü, üç kanaldan (Kırmızı, Yeşil, Mavi) oluştuğu için vektör değerli bir fonksiyon olarak ifade edilir: `I(x, y) = [R(x, y), G(x, y), B(x, y)]`. Her bir bileşen (R, G, B), o renge ait `intensity` değerini veren ayrı bir fonksiyondur.</p>
+</details>
+
+<details>
+  <summary><b>Soru 2:</b> Gaussian ve Salt and Pepper gürültüleri arasındaki temel görsel fark nedir?</summary>
+  <p>Gaussian gürültü, görüntünün tamamına yayılan, `pixel`'lerin orijinal değerlerini hafifçe değiştiren tanecikli bir yapıya sahiptir. Salt and Pepper gürültüsü ise görüntünün genel yapısını bozmaz, ancak belirli `pixel`'lerin değerlerini aşırı (tam siyah veya tam beyaz) değerlerle değiştirir ve rastgele noktacıklar olarak görünür.</p>
+</details>
+
+<details>
+  <summary><b>Soru 3:</b> "Quantization" (Niceleme) işlemi neden gereklidir ve görüntü kalitesini nasıl etkiler?</summary>
+  <p>Quantization, her `pixel`'in alabileceği sonsuz sayıdaki `intensity` değerini, sınırlı sayıda ayrık seviyeye (örneğin 256) indirme işlemidir. Bilgisayarların veriyi dijital olarak saklayabilmesi için bu gereklidir. Kullanılan seviye sayısı çok düşük olursa, görüntüdeki yumuşak renk geçişleri kaybolur ve "posterization" adı verilen bantlanma etkileri görülür, bu da kaliteyi düşürür.</p>
+</details>

@@ -60,6 +60,9 @@ En yaygın kullanılan `derivative filter`'larından biridir. Hem `derivative` a
 
 Bu `kernel`'ler `image` ile `convolution` (veya `correlation`) işlemine sokularak `Gx` ve `Gy` `gradient` `image`'leri elde edilir.
 
+![Sobel Operatörü Uygulaması](./assets/images/goruntu-filtreleme/sobel-operator.png)
+*<center>Soldan sağa: Orijinal görüntü, Sobel Gx çıktısı (dikey kenarları vurgular), Sobel Gy çıktısı (yatay kenarları vurgular), Gradient Magnitude (tüm kenarlar).</center>*
+
 ## Noise'un Etkisi ve Çözümü
 
 `Derivative` operasyonları, doğaları gereği `noise`'a karşı çok hassastır. Çünkü `noise`, `image`'e yüksek frekanslı (hızlı) değişimler ekler ve `derivative filter`'ı bu değişimleri güçlendirerek hatalı `edge`'ler tespit edilmesine neden olur.
@@ -72,3 +75,33 @@ Bu problemi çözmek için standart yaklaşım şudur:
 Bu iki adım (`Gaussian smoothing` + `Derivative`), matematiksel olarak tek bir adımda birleştirilebilir. Gaussian fonksiyonunun `derivative`'ini alarak yeni bir `kernel` oluşturabiliriz. Bu yeni `kernel`'e **Derivative of Gaussian (DoG)** filtresi denir. Bu, hem `noise` bastırma hem de `edge detection` işini tek bir `convolution` ile yapan verimli bir yöntemdir.
 
 Bir sonraki bölümde, bu temel adımları bir araya getirerek güçlü ve modern bir `edge detection` algoritması olan Canny Edge Detector'nü inceleyeceğiz.
+
+---
+
+## Özet ve Anahtar Kavramlar
+
+-   **Edge (Kenar):** Görüntü `intensity` fonksiyonunda ani ve hızlı değişimlerin olduğu yerlerdir.
+-   **Image Gradient (`∇I`):** Bir `pixel`'deki `intensity` değişiminin yönünü ve büyüklüğünü gösteren 2D vektördür (`[Gx, Gy]`).
+-   **Gradient Magnitude:** Kenarın gücünü veya belirginliğini belirtir (`sqrt(Gx² + Gy²)`).
+-   **Gradient Direction:** `Intensity`'nin en hızlı arttığı yönü belirtir ve kenar çizgisine diktir.
+-   **Sobel Operator:** Hem türev alan hem de hafif bir `smoothing` yapan, `gradient` hesaplaması için yaygın olarak kullanılan bir `kernel`'dir.
+-   **Noise ve Smoothing:** Türev operasyonları gürültüye çok hassastır. Bu etkiyi azaltmak için türev almadan önce görüntüyü bir **Gaussian filtresi** ile yumuşatmak (`smooth` etmek) standart bir adımdır.
+
+---
+
+## Kavrama Soruları
+
+<details>
+  <summary><b>Soru 1:</b> Yatay bir çizginin olduğu bir bölgede `Gx` ve `Gy` `gradient`'lerinin değerleri yaklaşık olarak ne olur? Neden?</summary>
+  <p>`Gy`'nin değeri büyük olurken, `Gx`'in değeri sıfıra yakın olur. Çünkü `gradient`'in y-bileşeni dikey yöndeki değişimi ölçer ve yatay bir çizgiden dikey olarak geçerken (yukarıdan aşağıya) `intensity`'de ani bir değişim olur. Yatay yönde (çizgi boyunca) ise `intensity` değişmediği için x-bileşeni zayıf kalır.</p>
+</details>
+
+<details>
+  <summary><b>Soru 2:</b> `Gradient magnitude`'ünü `sqrt(Gx² + Gy²)` yerine `|Gx| + |Gy|` olarak hesaplamanın avantajı ve dezavantajı ne olabilir?</summary>
+  <p>**Avantajı:** Karekök ve kare alma işlemleri daha maliyetli olduğu için `|Gx| + |Gy|` yaklaşımı hesaplama açısından çok daha hızlı ve verimlidir. **Dezavantajı:** Bu, `gradient`'in gerçek Öklid uzunluğuna sadece bir yaklaşımdır. `Gradient` yönüne bağlı olarak küçük hatalar içerebilir, ancak çoğu uygulama için bu hız kazancı, doğruluğundaki küçük kayba değer.</p>
+</details>
+
+<details>
+  <summary><b>Soru 3:</b> Neden türev almadan önce `image`'i `smooth` etme ihtiyacı duyarız? Bu işlemin potansiyel bir dezavantajı var mıdır?</summary>
+  <p>Türev filtreleri, `intensity`'deki hızlı değişimlere tepki verir. Gürültü de doğası gereği yüksek frekanslı hızlı değişimlerden oluşur. `Smooth` etmeden türev alırsak, filtre gürültüye aşırı tepki verir ve sonuçta çok sayıda yanlış kenar tespit edilir. **Potansiyel dezavantajı:** `Smoothing` (bulanıklaştırma) işlemi, sadece gürültüyü değil, aynı zamanda görüntüdeki zayıf ama gerçek olan kenarları ve ince detayları da bastırabilir. Bu yüzden doğru `smoothing` miktarını bulmak önemlidir.</p>
+</details>

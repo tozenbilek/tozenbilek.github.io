@@ -39,6 +39,8 @@ Bu varsayımlara dayanarak, her `pixel`'i, kendisi ve komşularını içeren bir
 
 `G[i, j] = Σ_u Σ_v H[u, v] * F[i+u, j+v]`
 
+![Cross-Correlation Operasyonu Diagramı](./assets/images/goruntu-filtreleme/cross-correlation.png)
+
 Bu, `filtering` için en doğrudan ve sezgisel uygulamadır.
 
 ### Convolution
@@ -73,3 +75,32 @@ Filtre `kernel`'i `image`'in kenarlarına geldiğinde, pencere `image`'in dış�
 4.  **Reflect across edge:** Kenar çizgisinden `image`'i ayna gibi yansıt. Genellikle en doğal ve en az yapaylık üreten yöntemdir.
 
 Seçilen yöntem, filtrelenmiş `image`'in kenarlarındaki kaliteyi doğrudan etkiler. Çoğu modern kütüphane varsayılan olarak `reflect` veya `replicate` yöntemlerini kullanır.
+
+---
+
+## Özet ve Anahtar Kavramlar
+
+-   **Filtering:** Bir `pixel`'in değerini, komşularının değerlerini kullanarak yeniden hesaplama işlemidir. Genellikle gürültü azaltma veya özellik vurgulama için kullanılır.
+-   **Kernel (Mask):** Filtrenin ağırlıklarını içeren küçük matristir.
+-   **Cross-Correlation:** `Kernel`'i `image` üzerinde kaydırıp, her konumda eleman-elemana çarpıp toplayarak çıktı üreten temel filtreleme operasyonudur.
+-   **Convolution:** `Cross-correlation` ile aynıdır, ancak `kernel`'in işlemden önce 180 derece döndürülmüş halidir. `Convolution`, `associative` (birleşme) ve `commutative` (değişme) gibi önemli matematiksel özelliklere sahiptir.
+-   **Boundary Issues:** Filtre `image`'in kenarlarına geldiğinde oluşan problemi çözmek için `zero-padding`, `replicate`, `reflect` gibi çeşitli yöntemler kullanılır.
+
+---
+
+## Kavrama Soruları
+
+<details>
+  <summary><b>Soru 1:</b> Simetrik bir `kernel` (örneğin Gaussian) kullanıldığında `Convolution` ve `Cross-Correlation` arasındaki fark nedir?</summary>
+  <p>Hiçbir fark yoktur. `Convolution` işleminden önce `kernel`'i 180 derece döndürür. Ancak `kernel` zaten simetrikse, döndürülmüş hali kendisiyle aynı olacağı için iki operasyon da tamamen aynı sonucu üretir.</p>
+</details>
+
+<details>
+  <summary><b>Soru 2:</b> Bir `image`'i önce 3x3'lük bir `box filter` ile, sonra da 5x5'lik bir `box filter` ile filtrelemekle; doğrudan 7x7'lik bir `box filter` ile filtrelemek arasında nasıl bir ilişki vardır? Neden?</summary>
+  <p>İki küçük filtrenin ardışık uygulanması, daha büyük tek bir filtrenin etkisine benzer bir `smoothing` etkisi yaratır, ancak bu etki tam olarak 7x7'lik bir filtreninkiyle aynı değildir. `Convolution`'ın `associative` (birleşme) özelliği sayesinde iki filtrenin `convolution`'ı alınarak tek bir eşdeğer `kernel` elde edilebilir. Ancak iki `box filter`'ın `convolution`'ı, üçgen şeklinde bir ağırlık dağılımı oluşturur, bu da başka bir `box filter` değildir. Bu, ardışık filtrelemenin daha karmaşık filtreler oluşturmak için kullanılabileceğini gösterir.</p>
+</details>
+
+<details>
+  <summary><b>Soru 3:</b> `Image` kenarlarındaki `boundary` problemini yönetmek için neden genellikle "zero-padding" (siyahla doldurma) yerine "reflect" (yansıtma) yöntemi tercih edilir?</summary>
+  <p>"Zero-padding", `image`'in kenarlarına yapay olarak güçlü bir `edge` (görüntüden siyaha geçiş) ekler. Bu, filtreleme sonucunda kenarlarda istenmeyen kararmalara veya artefaktlara neden olabilir. "Reflect" yöntemi ise mevcut `pixel` desenini kenarın dışına yansıtarak daha doğal bir devamlılık sağlar ve bu tür yapay kenar etkilerini en aza indirir.</p>
+</details>

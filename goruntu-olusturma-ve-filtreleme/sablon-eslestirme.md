@@ -27,6 +27,9 @@ Bu problemi çözmek için **Normalized Cross-Correlation (NCC)** kullanılır. 
 
 NCC uygulandığında, çıktı olarak bir **correlation map** elde edilir. Bu haritadaki her `pixel`'in değeri, `template`'in merkezinin o `pixel`'e yerleştirildiğinde elde edilen eşleşme skorunu gösterir. Aradığımız nesnenin konumu, bu haritadaki en yüksek tepe (`peak`) noktasının koordinatlarıdır.
 
+![Template Matching Örneği](./assets/images/goruntu-filtreleme/template-matching.png)
+*<center>Solda sahne, ortada aranan şablon (template) ve sağda Normalized Cross-Correlation sonucu (correlation map). En parlak nokta, şablonun bulunduğu yeri gösterir.</center>*
+
 ## Template Matching'in Sınırlılıkları
 
 `Template matching` basit ve etkili bir yöntem olmasına rağmen, önemli kısıtlamaları vardır:
@@ -37,4 +40,33 @@ NCC uygulandığında, çıktı olarak bir **correlation map** elde edilir. Bu h
 4.  **Occlusion:** Nesnenin bir kısmı başka bir nesnenin arkasında kalarak gizlenmişse, eşleşme zorlaşır.
 5.  **Deformation:** Esnek veya şekil değiştiren nesneler için uygun değildir.
 
-Bu sınırlılıklardan dolayı, `template matching` en iyi, aranan nesnenin boyutu, yönelimi ve görünümünün çok fazla değişmediği kontrollü ortamlarda çalışır (örneğin, bir üretim bandındaki parçaları bulmak gibi). Daha karmaşık senaryolar için, ilerleyen konularda göreceğimiz `feature-based` yöntemler daha güçlüdür.
+Bu sınırlılıklardan dolayı, `template matching` en iyi, aranan nesnenin boyutu, yönelimi ve görünümünün çok fazla değişmediği kontrollü ortamlarda çalışır (örrneğin, bir üretim bandındaki parçaları bulmak gibi). Daha karmaşık senaryolar için, ilerleyen konularda göreceğimiz `feature-based` yöntemler daha güçlüdür.
+
+---
+
+## Özet ve Anahtar Kavramlar
+
+-   **Template Matching:** Küçük bir şablon (template) görüntüsünün, daha büyük bir sahne görüntüsü içindeki yerini bulma işlemidir.
+-   **Correlation as Matching:** Filtreleme (`correlation`) işlemi, bir şablonun görüntüdeki bir bölgeye ne kadar benzediğini ölçmek için kullanılabilir. Çıktının yüksek olması, yüksek benzerlik anlamına gelir.
+-   **Normalized Cross-Correlation (NCC):** `Cross-correlation`'ın aydınlatma ve kontrasttaki değişimlerden etkilenmeyen, normalleştirilmiş bir versiyonudur. Eşleşme skorunu `-1` ile `+1` arasında güvenilir bir aralığa getirir.
+-   **Correlation Map:** NCC operasyonunun çıktısıdır. Bu haritadaki en parlak `pixel`, şablonun en iyi eşleştiği konumu belirtir.
+-   **Sınırlılıklar:** `Template matching`, şablonun **ölçek, rotasyon, bakış açısı** ve aydınlatma değişikliklerine karşı hassastır.
+
+---
+
+## Kavrama Soruları
+
+<details>
+  <summary><b>Soru 1:</b> Normal `cross-correlation` yerine neden genellikle `Normalized Cross-Correlation (NCC)` tercih edilir?</summary>
+  <p>Normal `cross-correlation`, `pixel`'lerin ham `intensity` değerlerine dayandığı için aydınlatma değişimlerinden çok etkilenir. Bir bölge aranan desenle aynı olsa bile, daha karanlık veya parlaksa, `correlation` skoru düşük çıkar. NCC ise hem şablonu hem de görüntü bölgesini kendi ortalamalarına ve standart sapmalarına göre normalleştirdiği için bu tür aydınlatma ve kontrast değişimlerinden etkilenmez, bu da onu çok daha güvenilir bir eşleştirme metriği yapar.</p>
+</details>
+
+<details>
+  <summary><b>Soru 2:</b> Bir `template matching` algoritması, aradığı nesnenin sahnede 90 derece dönmüş halini bulabilir mi? Neden?</summary>
+  <p>Genellikle bulamaz. `Template matching`, `pixel` `pixel`'e bir karşılaştırma yapar. Nesne döndürüldüğünde, `pixel` deseni tamamen değişir ve şablonla olan benzerlik (NCC skoru) dramatik bir şekilde düşer. Döndürülmüş nesneleri bulmak için ya şablonun döndürülmüş versiyonlarıyla da arama yapmak ya da SIFT gibi rotasyona dayanıklı `feature-based` yöntemler kullanmak gerekir.</p>
+</details>
+
+<details>
+  <summary><b>Soru 3:</b> `Template matching`'in başarılı bir şekilde kullanılabileceği gerçek hayattan bir uygulama örneği verin.</summary>
+  <p>Bir üretim hattında, konveyör bandı üzerinde ilerleyen belirli bir ürünün (örneğin, bir vida veya elektronik çip) konumunu tespit etmek için kullanılabilir. Bu ortamda aydınlatma, nesnenin boyutu, yönelimi ve bakış açısı genellikle sabit ve kontrol altında olduğu için `template matching`'in sınırlılıkları bir sorun teşkil etmez ve hızlı ve güvenilir bir şekilde çalışır.</p>
+</details>
