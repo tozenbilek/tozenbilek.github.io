@@ -1,0 +1,14 @@
+# Site settings
+title: Computer Vision Ders Notları
+description: >-
+  Computer Vision dersi için sınav çalışma notları ve soruları.
+theme: "just-the-docs"
+url: "https://tozenbilek.github.io"
+
+# Aux links for the header
+aux_links:
+  "GitHub Repo":
+    - "https://github.com/tozenbilek/tozenbilek.github.io"
+
+# Enable search
+search_enabled: true
