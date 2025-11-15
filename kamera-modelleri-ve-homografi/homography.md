@@ -7,6 +7,30 @@ nav_order: 2
 
 # Homography
 
+**Homography**, en genel 2D `projective` dönüşümdür. Ancak `homography`'ye gelmeden önce, daha basit geometrik dönüşümleri ve hiyerarşisini anlamak faydalıdır. Bu dönüşümler `homogeneous` koordinatlar ve 3x3 matrisler kullanılarak zarif bir şekilde ifade edilebilir.
+
+## 2D Dönüşüm Hiyerarşisi
+
+Dönüşümler, korudukları özelliklere göre basitten karmaşığa doğru bir hiyerarşi oluşturur.
+
+1.  **Translation (Öteleme):**
+    -   Nesnenin sadece konumunu değiştirir.
+    -   **Korunanlar:** Uzunluklar, alanlar, açılar, yönelim (`orientation`), paralellik. Kısacası her şey.
+2.  **Euclidean (Rigidbody):**
+    -   Öteleme ve döndürme (`rotation`) içerir. Cisimlerin bükülmediği veya esnemediği "katı cisim" hareketleridir.
+    -   **Korunanlar:** Uzunluklar, alanlar, açılar, paralellik.
+3.  **Similarity (Benzerlik):**
+    -   Öteleme, döndürme ve tek tip ölçekleme (`uniform scaling`) içerir.
+    -   **Korunanlar:** Alanların oranı, açılar, paralellik. Uzunluklar korunmaz ama uzunlukların oranı korunur.
+4.  **Affine:**
+    -   Öteleme, döndürme, ölçekleme ve `shear` (eğme/kaykılma) içerir. Bir kareyi herhangi bir paralelkenara dönüştürebilir.
+    -   **Korunanlar:** Paralel çizgiler, alanların oranı. Açılar ve uzunluklar korunmaz.
+5.  **Projective (Homography):**
+    -   En genel 2D dönüşümdür. Bir kareyi herhangi bir dışbükey (`convex`) dörtgene dönüştürebilir.
+    -   **Korunanlar:** Sadece düz çizgiler. Paralellik, açılar, uzunluklar veya alanların oranı korunmaz.
+
+Bu hiyerarşi, `computer vision`'da `image`'ler arasındaki olası ilişkileri modellemek için temel bir araç setidir.
+
 **Homography**, aynı 3D düzlemin iki farklı `image`'deki (veya `projection`'daki) görünümü arasındaki ilişkiyi tanımlayan bir `projective` dönüşümdür. Bu dönüşüm, 3x3'lük bir matris ile temsil edilir ve `image`'ler arasında `pixel` koordinatlarını dönüştürmek için kullanılır.
 
 ## Homography Nedir?
@@ -68,3 +92,14 @@ Bir `homography` dönüşümü, iki `image` arasında yalnızca iki özel durumd
     - Bir video akışındaki düzlemsel bir yüzey (örneğin, bir dergi kapağı) tespit edilir.
     - Bu yüzey ile üzerine yerleştirilecek sanal bir `image` veya `object` arasında `homography` hesaplanır.
     - `Camera` hareket ettikçe, sanal `object`, `homography` kullanılarak gerçek yüzeyin üzerine doğru perspektifte yerleştirilir.
+
+## Image Warping Detayları
+
+Bir `image`'i bir `homography` matrisi `H` ile dönüştürme işlemine `image warping` denir. Bu işlem, kaynak `image`'deki `pixel`'leri hedef `image`'deki yeni konumlarına taşır. Bu taşıma işlemi için iki temel yaklaşım vardır:
+
+-   **Forward Warping:** Kaynak `image`'deki her bir `(x, y)` `pixel`'i için, hedef `image`'deki yeni `(x', y')` konumu `H * (x, y)` ile hesaplanır ve `pixel` değeri oraya kopyalanır.
+    -   **Sorun:** Kaynak `pixel`'leri tam sayı koordinatlarındadır, ancak hedef `(x', y')` koordinatları ondalıklı olabilir. Bu, hedef `image`'de bazı `pixel`'lerin hiç değer almamasına (delikler) veya bazı `pixel`'lere birden fazla değerin atanmasına (çakışmalar) neden olabilir.
+
+-   **Inverse Warping:** Hedef `image`'deki her bir `(x', y')` `pixel` konumu için, bu `pixel`'e kaynak `image`'de karşılık gelen `(x, y)` konumu, `inverse homography` (`H⁻¹`) kullanılarak hesaplanır: `(x, y) = H⁻¹ * (x', y')`.
+    -   **Avantaj:** Bu yaklaşım, hedef `image`'deki tüm `pixel`'lerin doldurulacağını garanti eder ve delik veya çakışma oluşturmaz.
+    -   **Bilinear Interpolation:** Hesaplanan `(x, y)` konumu genellikle ondalıklıdır, yani kaynak `image`'de dört `pixel`'in arasına düşer. Bu durumda, hedef `pixel`'in değeri, bu dört komşu `pixel`'in değerlerinden, ondalıklı konuma olan uzaklıklarına göre ağırlıklı bir ortalama alınarak hesaplanır. Bu işleme **bilinear interpolation** denir ve daha pürüzsüz, daha kaliteli bir sonuç üretir. Bu nedenle pratikte her zaman `inverse warping` tercih edilir.
