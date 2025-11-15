@@ -104,7 +104,7 @@ Bir `image`'i bir `homography` matrisi `H` ile dönüştürme işlemine `image w
     -   **Avantaj:** Bu yaklaşım, hedef `image`'deki tüm `pixel`'lerin doldurulacağını garanti eder ve delik veya çakışma oluşturmaz.
     -   **Bilinear Interpolation:** Hesaplanan `(x, y)` konumu genellikle ondalıklıdır, yani kaynak `image`'de dört `pixel`'in arasına düşer. Bu durumda, hedef `pixel`'in değeri, bu dört komşu `pixel`'in değerlerinden, ondalıklı konuma olan uzaklıklarına göre ağırlıklı bir ortalama alınarak hesaplanır. Bu işleme **bilinear interpolation** denir ve daha pürüzsüz, daha kaliteli bir sonuç üretir. Bu nedenle pratikte her zaman `inverse warping` tercih edilir.
 
-![Inverse Warping with Bilinear Interpolation](https://via.placeholder.com/700x400.png?text=Hedefteki+(x',y')+->+H-1+->+Kaynaktaki+(x,y)+->+4+komşudan+değer+al)
+![Inverse Warping with Bilinear Interpolation](https://placehold.co/700x400/EEE/31343C?text=Hedefteki+(x',y')+->+H-1+->+Kaynaktaki+(x,y)+->+4+komşudan+değer+al)
 *<center>Inverse Warping: Hedef görüntüdeki her bir piksel konumu için, kaynak görüntüdeki karşılığı bulunur ve bu noktanın etrafındaki dört komşudan bilinear interpolation ile bir değer hesaplanır.</center>*
 ---
 

@@ -35,7 +35,7 @@ Bir `pixel`'in değerini hesaplarken, merkezdeki `pixel`'e daha yakın olan kom�
 
 > **Ne Zaman Kullanılır?** `Gaussian filter`, **Gaussian noise**'u gidermek için en etkili `linear filter`'dır. `Image smoothing` ve `preprocessing` adımlarında çok yaygın olarak kullanılır.
 
-![Gaussian Filtre Uygulaması](https://via.placeholder.com/600x300.png?text=Solda:+Gürültülü+Görüntü+|+Sağda:+Gaussian+Filtre+Sonucu)
+![Gaussian Filtre Uygulaması](https://placehold.co/600x300/EEE/31343C?text=Solda:+Gürültülü+Görüntü+|+Sağda:+Gaussian+Filtre+Sonucu)
 *<center>Solda Gaussian gürültülü görüntü, sağda Gaussian filtresi uygulanmış hali.</center>*
 
 ## Median Filter
@@ -62,7 +62,7 @@ Sıralanmış hali: `[10, 12, 14, 15, **17**, 18, 20, 22, 255]`
 
 > **Ne Zaman Kullanılır?** **Salt and Pepper** veya **Impulse** türü `noise`'ları temizlemek için en iyi seçenektir. Aykırı değerleri (`outliers`) ortadan kaldırmada çok başarılıdır.
 
-![Median Filtre Uygulaması](https://via.placeholder.com/600x300.png?text=Solda:+Gürültülü+Görüntü+|+Sağda:+Median+Filtre+Sonucu)
+![Median Filtre Uygulaması](https://placehold.co/600x300/EEE/31343C?text=Solda:+Gürültülü+Görüntü+|+Sağda:+Median+Filtre+Sonucu)
 *<center>Solda Salt and Pepper gürültülü görüntü, sağda Median filtresi uygulanmış hali.</center>*
 
 ---

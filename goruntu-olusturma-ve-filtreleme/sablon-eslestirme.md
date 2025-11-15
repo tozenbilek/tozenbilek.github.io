@@ -27,7 +27,7 @@ Bu problemi çözmek için **Normalized Cross-Correlation (NCC)** kullanılır. 
 
 NCC uygulandığında, çıktı olarak bir **correlation map** elde edilir. Bu haritadaki her `pixel`'in değeri, `template`'in merkezinin o `pixel`'e yerleştirildiğinde elde edilen eşleşme skorunu gösterir. Aradığımız nesnenin konumu, bu haritadaki en yüksek tepe (`peak`) noktasının koordinatlarıdır.
 
-![Template Matching Örneği](https://via.placeholder.com/800x300.png?text=Sahne+|+Şablon+|+Correlation+Map+(En+Parlak+Nokta))
+![Template Matching Örneği](https://placehold.co/800x300/EEE/31343C?text=Sahne+|+Şablon+|+Correlation+Map+(En+Parlak+Nokta))
 *<center>Solda sahne, ortada aranan şablon (template) ve sağda Normalized Cross-Correlation sonucu (correlation map). En parlak nokta, şablonun bulunduğu yeri gösterir.</center>*
 
 ## Template Matching'in Sınırlılıkları

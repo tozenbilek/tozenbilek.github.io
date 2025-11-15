@@ -25,7 +25,7 @@ Bu gösterimin avantajı, `parameter space`'in (`d`, `θ`) sınırlı olmasıdı
 - **Image Space'teki bir `line`:** `Hough space`'te tek bir noktaya karşılık gelir.
 - **Aynı `line` üzerindeki noktalar:** `Hough space`'te aynı noktada kesişen sinüzoidal eğriler oluşturur.
 
-![Polar Hough Space Transformation](https://via.placeholder.com/700x350.png?text=Görüntüdeki+Nokta+->+Hough+Uzayında+Sinüs+Eğrisi)
+![Polar Hough Space Transformation](https://placehold.co/700x350/EEE/31343C?text=Görüntüdeki+Nokta+->+Hough+Uzayında+Sinüs+Eğrisi)
 *<center>Görüntü uzayındaki tek bir nokta, polar Hough uzayında (d, θ) bir sinüs eğrisine dönüşür.</center>*
 
 ## Hough Transform Algoritması
@@ -53,7 +53,7 @@ Standart `Hough Transform`'u daha verimli ve doğru hale getirmek için bazı iy
 
 Oylama işlemi tamamlandığında `accumulator` matrisi, `image`'deki yapı hakkında zengin bilgi içeren bir görsel haritaya dönüşür. Bu matrisi yorumlamak, algoritmanın nasıl çalıştığını anlamak için önemlidir:
 
-![Accumulator Matrix Example](https://via.placeholder.com/400x300.png?text=Accumulator+Matrisi+(Parlak+Noktalar=Çizgiler))
+![Accumulator Matrix Example](https://placehold.co/400x300/EEE/31343C?text=Accumulator+Matrisi+(Parlak+Noktalar=Çizgiler))
 
 -   **Parlak Noktalar (Peaks):** Matristeki parlak noktalar veya yüksek değerli hücreler, birçok `edge` `pixel`'inin "oy verdiği" `(d, θ)` parametre çiftlerine karşılık gelir. Bu parlak noktalar, `image`'deki en belirgin çizgileri temsil eder. Örneğin, `image`'de dört kenarı olan bir kare varsa, `accumulator`'de bu dört çizgiye karşılık gelen dört belirgin parlak nokta (zirve) olacaktır.
 -   **Sinüzoidal İzler:** Matrisin kendisi, her bir `edge` `pixel`'inin bıraktığı sinüzoidal oy izlerinin bir toplamıdır.

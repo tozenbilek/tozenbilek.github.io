@@ -39,7 +39,7 @@ Bu varsayımlara dayanarak, her `pixel`'i, kendisi ve komşularını içeren bir
 
 `G[i, j] = Σ_u Σ_v H[u, v] * F[i+u, j+v]`
 
-![Cross-Correlation Operasyonu Diagramı](https://via.placeholder.com/600x250.png?text=Cross-Correlation:+Kernel'i+Görüntü+Üzerinde+Kaydırma)
+![Cross-Correlation Operasyonu Diagramı](https://placehold.co/600x250/EEE/31343C?text=Cross-Correlation:+Kernel'i+Görüntü+Üzerinde+Kaydırma)
 
 Bu, `filtering` için en doğrudan ve sezgisel uygulamadır.
 

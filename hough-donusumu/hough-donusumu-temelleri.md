@@ -33,7 +33,7 @@ Peki ya `image`'deki tek bir `pixel`?
 - `Hough space`'teki bir nokta `(m, b)` -> `Image space`'te bir `line`.
 - `Image space`'te aynı `line` üzerinde bulunan birden fazla nokta -> `Hough space`'te **tek bir noktada kesişen** birden fazla `line`.
 
-![Image Space to Hough Space Mapping](https://via.placeholder.com/700x350.png?text=Görüntüdeki+Noktalar+->+Hough+Uzayında+Kesişen+Doğrular)
+![Image Space to Hough Space Mapping](https://placehold.co/700x350/EEE/31343C?text=Görüntüdeki+Noktalar+->+Hough+Uzayında+Kesişen+Doğrular)
 *<center>Görüntü uzayında aynı doğru üzerindeki (kırmızı, mavi, yeşil) noktaların her biri, Hough uzayında bir doğruya dönüşür. Bu doğrular, orijinal doğrunun parametrelerine karşılık gelen tek bir noktada kesişir.</center>*
 
 ## Voting Mekanizması

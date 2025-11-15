@@ -53,21 +53,21 @@ Bu kısıtlamaları kullanarak, bir `disparity map` oluşturulur. `Disparity map
 
 `disparity` ne kadar büyükse, nesne `camera`'lara o kadar yakındır. `disparity` sıfıra yaklaştıkça, nesne sonsuza o kadar yaklaşır.
 
-![Stereo Vision Depth Perception](https://via.placeholder.com/700x350.png?text=İki+Kamera+->+Disparity+->+Derinlik+(Z))
+![Stereo Vision Depth Perception](https://placehold.co/700x350/EEE/31343C?text=İki+Kamera+->+Disparity+->+Derinlik+(Z))
 *<center>Stereo vision, iki farklı kamera açısından elde edilen görüntülerdeki piksellerin yatay kayması (disparity) prensibini kullanarak derinliği (Z) hesaplar.</center>*
 
 ## Epipolar Geometry
 
 `epipolar constraint`, `correspondence` aramasını tüm `image` yerine sadece tek boyutlu bir çizgi üzerinde yapmamızı sağlayarak problemi büyük ölçüde basitleştirir.
 
-![Epipolar Geometry](https://via.placeholder.com/600x400.png?text=Epipolar+Düzlem,+Epipole'ler+ve+Epipolar+Çizgiler)
+![Epipolar Geometry](https://placehold.co/600x400/EEE/31343C?text=Epipolar+Düzlem,+Epipole'ler+ve+Epipolar+Çizgiler)
 *<center>3D nokta P ve iki kamera merkezi (O, O'), epipolar düzlemi oluşturur. Bu düzlemin görüntü düzlemleriyle kesişimi, epipolar çizgileri (l, l') verir. P'nin sağdaki görüntüsü (p'), soldaki epipolar çizgisi (l) üzerinde olmak zorundadır.</center>*
 
 ## The Correspondence Problem
 
 Bu sorunu çözmek için `template matching` benzeri, pencere tabanlı yaklaşımlar kullanılır. Sol `image`'deki bir `pixel`'i merkez alan küçük bir pencere (örneğin 5x5), sağ `image`'deki `epipolar line` üzerinde kaydırılır. Her pozisyonda iki pencere arasındaki benzerlik, **Sum of Squared Differences (SSD)** veya **Normalized Cross-Correlation (NCC)** gibi bir metrikle ölçülür. En iyi eşleşmeyi (`minimum SSD` veya `maksimum NCC`) veren pozisyon, `corresponding point` olarak seçilir.
 
-![Correspondence Problem with Window Matching](https://via.placeholder.com/800x300.png?text=Sol+Görüntüdeki+Pencere+->+Sağ+Görüntüdeki+Epipolar+Çizgi+Üzerinde+Arama)
+![Correspondence Problem with Window Matching](https://placehold.co/800x300/EEE/31343C?text=Sol+Görüntüdeki+Pencere+->+Sağ+Görüntüdeki+Epipolar+Çizgi+Üzerinde+Arama)
 *<center>Correspondence problemi: Soldaki görüntüden alınan bir pencere, sağdaki görüntüde epipolar çizgi boyunca kaydırılarak en çok benzeyen bölge aranır.</center>*
 
 Bu yaklaşımın bazı zorlukları vardır:

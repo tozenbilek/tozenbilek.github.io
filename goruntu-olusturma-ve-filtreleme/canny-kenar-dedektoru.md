@@ -33,7 +33,7 @@ Bu adımın amacı, `gradient magnitude`'undan elde edilen "kalın" `edge`'leri 
 
 Bu işlem sonucunda, sadece bulundukları yöndeki en tepe noktada olan `pixel`'ler hayatta kalır ve `edge`'ler inceltilmiş olur.
 
-![Non-Maximum Suppression Etkisi](https://via.placeholder.com/600x300.png?text=Solda:+Gradient+Magnitude+|+Sağda:+Non-Maximum+Suppression)
+![Non-Maximum Suppression Etkisi](https://placehold.co/600x300/EEE/31343C?text=Solda:+Gradient+Magnitude+|+Sağda:+Non-Maximum+Suppression)
 *<center>Solda Gradient Magnitude, sağda Non-Maximum Suppression sonrası inceltilmiş kenarlar.</center>*
 
 ## 4. Hysteresis Thresholding
@@ -48,7 +48,7 @@ Bu son adım, hangi `pixel`'lerin gerçekten `edge` olduğunu ve hangilerinin `n
 
 Bu yöntem, "strong edge"ler tarafından başlatılan `edge` çizgilerinin, daha az belirgin ama sürekli olduğu "weak edge" bölgeleri boyunca devam etmesine olanak tanır. Bu sayede, `noise`'dan kaynaklanan izole `pixel`'leri elerken, `edge` çizgilerindeki boşlukları doldurarak daha bütüncül ve güvenilir bir `edge map` oluşturulur.
 
-![Canny Edge Detector Sonucu](https://via.placeholder.com/400x300.png?text=Canny+Sonucu:+İnce+ve+Sürekli+Kenarlar)
+![Canny Edge Detector Sonucu](https://placehold.co/400x300/EEE/31343C?text=Canny+Sonucu:+İnce+ve+Sürekli+Kenarlar)
 *<center>Orijinal görüntünün Canny algoritması adımları sonrası nihai kenar haritası.</center>*
 
 ---

@@ -30,7 +30,7 @@ Bu denklemler, `perspective projection`'ın temelini oluşturur. Önemli bir öz
 
 Buradaki eksi işareti, `image`'in `pinhole` modelinde ters dönmesinden kaynaklanır. Pratikte bu eksi işareti genellikle göz ardı edilir ve `image`'in sanal olarak `pinhole`'un önünde oluştuğu varsayılır.
 
-![Pinhole Camera Model](https://via.placeholder.com/600x350.png?text=Pinhole+Kamera+Modeli+ve+Benzer+Üçgenler)
+![Pinhole Camera Model](https://placehold.co/600x350/EEE/31343C?text=Pinhole+Kamera+Modeli+ve+Benzer+Üçgenler)
 *<center>Pinhole kamera modeli, 3D dünyayı 2D görüntü düzlemine yansıtmak için benzer üçgenler prensibini kullanır.</center>*
 
 ## Homogeneous Coordinates (Homojen Koordinatlar)
@@ -68,7 +68,7 @@ Bu matris çarpımı sonucunda `(dX, dY, Z)` elde edilir. Bunu kartezyen koordin
 
 Bu sayede, `projective geometry`'nin güçlü matematiksel araçlarını kullanarak `translation` (öteleme) gibi `non-linear` dönüşümleri bile matris çarpımıyla ifade edebilir hale geliriz.
 
-![Homogeneous Coordinates Intuition](https://via.placeholder.com/700x400.png?text=2D+Nokta+->+3D+Işın+|+Sonsuzdaki+Noktalar+->+xy-düzlemine+paralel+ışınlar)
+![Homogeneous Coordinates Intuition](https://placehold.co/700x400/EEE/31343C?text=2D+Nokta+->+3D+Işın+|+Sonsuzdaki+Noktalar)
 *<center>Homojen koordinatlar, 2D'deki bir noktayı 3D'de orijinden geçen bir ışın olarak temsil eder. Sonsuzdaki noktalar ise xy-düzlemine paralel (w=0) ışınlara karşılık gelir.</center>*
 
 ## Vanishing Points (Ufuk Noktaları)
@@ -81,7 +81,7 @@ Bu sayede, `projective geometry`'nin güçlü matematiksel araçlarını kullana
 Paralel çizgilerin `image` üzerinde birleştiği bu noktalara **vanishing point (ufuk noktası)** denir.
 - **`Vanishing Point`'lerin Kümesi:** 3D uzaydaki bir düzlem üzerindeki (örneğin yer düzlemi) tüm `line`'ların `vanishing point`'leri, `image` üzerinde **vanishing line (ufuk çizgisi)** adı verilen bir `line` oluşturur.
 
-![Vanishing Point and Line](https://via.placeholder.com/500x350.png?text=Paralel+Çizgiler+Ufuk+Noktasında+Kesişir)
+![Vanishing Point and Line](https://placehold.co/500x350/EEE/31343C?text=Paralel+Çizgiler+Ufuk+Noktasında+Kesişir)
 *<center>Tren rayları gibi paralel çizgiler, görüntüde ufuk noktasında (vanishing point) birleşir. Yer düzlemindeki tüm ufuk noktaları, ufuk çizgisini (vanishing line) oluşturur.</center>*
 
 `Projective geometry`, bu tür `image` ipuçlarını kullanarak 3D sahne geometrisi hakkında çıkarımlar yapmamızı sağlar.
