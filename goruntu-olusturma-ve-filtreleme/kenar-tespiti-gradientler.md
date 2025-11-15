@@ -60,7 +60,7 @@ En yaygın kullanılan `derivative filter`'larından biridir. Hem `derivative` a
 
 Bu `kernel`'ler `image` ile `convolution` (veya `correlation`) işlemine sokularak `Gx` ve `Gy` `gradient` `image`'leri elde edilir.
 
-![Sobel Operatörü Uygulaması](./assets/images/goruntu-filtreleme/sobel-operator.png)
+![Sobel Operatörü Uygulaması](https://via.placeholder.com/800x200.png?text=Orijinal+|+Gx:+Dikey+Kenarlar+|+Gy:+Yatay+Kenarlar+|+Magnitude)
 *<center>Soldan sağa: Orijinal görüntü, Sobel Gx çıktısı (dikey kenarları vurgular), Sobel Gy çıktısı (yatay kenarları vurgular), Gradient Magnitude (tüm kenarlar).</center>*
 
 ## Noise'un Etkisi ve Çözümü

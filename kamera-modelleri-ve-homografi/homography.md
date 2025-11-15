@@ -103,3 +103,34 @@ Bir `image`'i bir `homography` matrisi `H` ile dönüştürme işlemine `image w
 -   **Inverse Warping:** Hedef `image`'deki her bir `(x', y')` `pixel` konumu için, bu `pixel`'e kaynak `image`'de karşılık gelen `(x, y)` konumu, `inverse homography` (`H⁻¹`) kullanılarak hesaplanır: `(x, y) = H⁻¹ * (x', y')`.
     -   **Avantaj:** Bu yaklaşım, hedef `image`'deki tüm `pixel`'lerin doldurulacağını garanti eder ve delik veya çakışma oluşturmaz.
     -   **Bilinear Interpolation:** Hesaplanan `(x, y)` konumu genellikle ondalıklıdır, yani kaynak `image`'de dört `pixel`'in arasına düşer. Bu durumda, hedef `pixel`'in değeri, bu dört komşu `pixel`'in değerlerinden, ondalıklı konuma olan uzaklıklarına göre ağırlıklı bir ortalama alınarak hesaplanır. Bu işleme **bilinear interpolation** denir ve daha pürüzsüz, daha kaliteli bir sonuç üretir. Bu nedenle pratikte her zaman `inverse warping` tercih edilir.
+
+![Inverse Warping with Bilinear Interpolation](https://via.placeholder.com/700x400.png?text=Hedefteki+(x',y')+->+H-1+->+Kaynaktaki+(x,y)+->+4+komşudan+değer+al)
+*<center>Inverse Warping: Hedef görüntüdeki her bir piksel konumu için, kaynak görüntüdeki karşılığı bulunur ve bu noktanın etrafındaki dört komşudan bilinear interpolation ile bir değer hesaplanır.</center>*
+---
+
+## Özet ve Anahtar Kavramlar
+
+-   **Homography:** Bir düzlemin, başka bir düzleme `projective` dönüşümünü temsil eden 3x3'lük bir matristir. 8 serbestlik derecesine sahiptir.
+-   **2D Transformation Hierarchy:** `Translation` (öteleme) en basit dönüşüm olup, sırasıyla `Euclidean`, `Similarity`, `Affine` ve `Projective` (homography) dönüşümleriyle genelleştirilir. Her seviye, bir öncekinin özelliklerini korurken bazılarını kaybeder (örn: `Affine`, paralelliği korur ama açıları korumaz).
+-   **Direct Linear Transform (DLT):** Bir `homography` matrisini hesaplamak için en az 4 nokta eşleşmesi kullanılarak kurulan lineer denklem sistemini çözen yöntemdir.
+-   **Image Warping:** Bir görüntüyü bir `homography` matrisi kullanarak dönüştürme işlemidir.
+-   **Inverse Warping & Bilinear Interpolation:** Görüntü `warping` sırasında delikler oluşmasını önlemek için kullanılan standart tekniktir. Hedef `pixel`'den kaynağa doğru bir haritalama yapılır ve kaynak görüntüden `sub-pixel` değerleri okumak için `bilinear interpolation` kullanılır.
+
+---
+
+## Kavrama Soruları
+
+<details>
+  <summary><b>Soru 1:</b> Elinizde bir `image` ve bu `image`'in `affine` dönüşüme uğramış hali var. Bu iki `image` arasındaki `affine` matrisini bulmak için en az kaç tane nokta eşleşmesine ihtiyacınız vardır? Neden?</summary>
+  <p>`Affine` dönüşümün 6 serbestlik derecesi (`DoF`) vardır. Her bir nokta eşleşmesi, `(x', y') = A * (x, y)` denkleminden bize 2 adet lineer denklem verir. 6 bilinmeyeni (`a₁₁`'den `t_y`'ye) çözmek için en az `6 / 2 = 3` nokta eşleşmesine ihtiyacımız vardır.</p>
+</details>
+
+<details>
+  <summary><b>Soru 2:</b> Bir `image`'i `forward warping` ile dönüştürdüğümüzde ortaya çıkabilecek iki temel problem nedir?</summary>
+  <p>1. **Delikler (Holes):** Kaynak `image`'deki tam sayı koordinatlı `pixel`'ler, hedef `image`'de ondalıklı konumlara düşebilir. Bu, hedef `image`'in `grid`'indeki bazı `pixel`'lere hiçbir değerin atanmamasına, yani boşluklar oluşmasına neden olabilir. 2. **Çakışmalar (Overlaps/Splats):** Farklı kaynak `pixel`'leri, hedef `image`'de aynı `pixel`'e veya çok yakın konumlara haritalanabilir, bu da hangi değerin kullanılacağı konusunda belirsizlik yaratır.</p>
+</details>
+
+<details>
+  <summary><b>Soru 3:</b> Bir `homography`, bir kareyi ne tür bir dörtgene dönüştürebilir? Bir kareyi bir çembere dönüştürebilir mi?</summary>
+  <p>Bir `homography`, `projective` bir dönüşüm olduğu için çizgileri her zaman çizgilere dönüştürür. Dolayısıyla, bir karenin dört kenarı yine dört kenar olarak kalacaktır. Ancak paralellik ve açılar korunmadığı için, kare herhangi bir konveks (içbükey olmayan) dörtgene dönüşebilir. Bir `homography`, çizgileri eğrilere dönüştüremez, bu yüzden bir kareyi asla bir çembere dönüştüremez.</p>
+</details>

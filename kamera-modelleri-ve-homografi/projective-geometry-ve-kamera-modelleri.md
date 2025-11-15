@@ -24,6 +24,15 @@ En basit `camera` modeli, ışık geçirmez bir kutunun bir yüzündeki iğne de
 
 Bu denklemler, `perspective projection`'ın temelini oluşturur. Önemli bir özelliği, bir nesnenin `image`'deki boyutunun, `camera`'ya olan uzaklığı (`Z`) ile ters orantılı olmasıdır. Yani, uzaktaki nesneler küçük görünür.
 
+`pinhole`'a olan uzaklığı `z` ve `pinhole` ile `image plane` arasındaki uzaklık (yani `focal length`) `f` ise, benzer üçgenlerden şu ilişkiyi kurabiliriz:
+
+`y' = -f * y / z`
+
+Buradaki eksi işareti, `image`'in `pinhole` modelinde ters dönmesinden kaynaklanır. Pratikte bu eksi işareti genellikle göz ardı edilir ve `image`'in sanal olarak `pinhole`'un önünde oluştuğu varsayılır.
+
+![Pinhole Camera Model](https://via.placeholder.com/600x350.png?text=Pinhole+Kamera+Modeli+ve+Benzer+Üçgenler)
+*<center>Pinhole kamera modeli, 3D dünyayı 2D görüntü düzlemine yansıtmak için benzer üçgenler prensibini kullanır.</center>*
+
 ## Homogeneous Coordinates (Homojen Koordinatlar)
 
 `Perspective projection` denklemlerindeki `Z`'ye bölme işlemi, dönüşümü **non-linear** (doğrusal olmayan) yapar. Bu, matris çarpımlarıyla ifade etmeyi zorlaştırır. Bu sorunu çözmek için **homogeneous coordinates** kullanılır.
@@ -57,6 +66,11 @@ Z \\
 
 Bu matris çarpımı sonucunda `(dX, dY, Z)` elde edilir. Bunu kartezyen koordinatlara çevirmek için ilk iki bileşeni üçüncüye böleriz ve `(dX/Z, dY/Z)` `image` koordinatlarını buluruz.
 
+Bu sayede, `projective geometry`'nin güçlü matematiksel araçlarını kullanarak `translation` (öteleme) gibi `non-linear` dönüşümleri bile matris çarpımıyla ifade edebilir hale geliriz.
+
+![Homogeneous Coordinates Intuition](https://via.placeholder.com/700x400.png?text=2D+Nokta+->+3D+Işın+|+Sonsuzdaki+Noktalar+->+xy-düzlemine+paralel+ışınlar)
+*<center>Homojen koordinatlar, 2D'deki bir noktayı 3D'de orijinden geçen bir ışın olarak temsil eder. Sonsuzdaki noktalar ise xy-düzlemine paralel (w=0) ışınlara karşılık gelir.</center>*
+
 ## Vanishing Points (Ufuk Noktaları)
 
 `Projective geometry`'nin ilginç bir sonucu, 3D dünyada birbirine paralel olan çizgilerin `image`'de tek bir noktada kesişiyormuş gibi görünmesidir. Bu kesişim noktasına **vanishing point** denir.
@@ -64,9 +78,44 @@ Bu matris çarpımı sonucunda `(dX, dY, Z)` elde edilir. Bunu kartezyen koordin
 - Her bir yön (`direction`) için farklı bir `vanishing point` vardır.
 - Aynı düzlem üzerindeki (örneğin, yer düzlemi) paralel çizgilerin `vanishing point`'leri, `image`'de **horizon line** (ufuk çizgisi) adı verilen bir doğru üzerinde yer alır.
 
-`Vanishing point`'ler, `image`'lerden 3D yapı hakkında bilgi çıkarmak (örneğin, kamera yönelimi, nesne boyutları) ve `image`'lerin perspektifini analiz etmek için kullanılır.
+Paralel çizgilerin `image` üzerinde birleştiği bu noktalara **vanishing point (ufuk noktası)** denir.
+- **`Vanishing Point`'lerin Kümesi:** 3D uzaydaki bir düzlem üzerindeki (örneğin yer düzlemi) tüm `line`'ların `vanishing point`'leri, `image` üzerinde **vanishing line (ufuk çizgisi)** adı verilen bir `line` oluşturur.
+
+![Vanishing Point and Line](https://via.placeholder.com/500x350.png?text=Paralel+Çizgiler+Ufuk+Noktasında+Kesişir)
+*<center>Tren rayları gibi paralel çizgiler, görüntüde ufuk noktasında (vanishing point) birleşir. Yer düzlemindeki tüm ufuk noktaları, ufuk çizgisini (vanishing line) oluşturur.</center>*
+
+`Projective geometry`, bu tür `image` ipuçlarını kullanarak 3D sahne geometrisi hakkında çıkarımlar yapmamızı sağlar.
 
 ## Diğer Camera Modelleri
 
 - **Orthographic Projection:** `Camera`'nın nesneden sonsuz uzakta olduğu varsayılan özel bir durumdur. Işınlar `COP`'de kesişmek yerine birbirine paralel olarak gelir. Bu modelde `Z`'ye bölme (derinlik etkisi) yoktur, `(X, Y, Z)` doğrudan `(X, Y)`'ye yansıtılır. `Perspective` bozulma olmaz. Genellikle mühendislik çizimleri veya haritalar için kullanılır.
 - **Weak Perspective Projection:** `Perspective projection`'a bir yaklaşımdır. Bir grup nesnenin yaklaşık olarak aynı derinlikte (`Z`) olduğu varsayılır. Bu durumda `Z`, sabit bir değer gibi davranır ve `projection` basit bir ölçekleme (`scaling`) haline gelir: `(x, y) = (s*X, s*Y)`.
+
+---
+
+## Özet ve Anahtar Kavramlar
+
+-   **Projective Geometry:** Paralel çizgilerin sonsuzda kesiştiği ve geometrik dönüşümlerin matrislerle ifade edildiği bir geometri dalıdır.
+-   **Pinhole Camera Model:** 3D dünyayı 2D bir görüntüye yansıtan en basit kamera modelidir.
+-   **Homogeneous Coordinates:** 2D bir noktayı `(x, y)` -> `(x, y, 1)` gibi ekstra bir koordinat ekleyerek temsil etme yöntemidir. Bu sayede öteleme gibi işlemler de matris çarpımıyla yapılabilir ve sonsuzdaki noktalar temsil edilebilir.
+-   **Vanishing Point (Ufuk Noktası):** 3D uzayda paralel olan çizgilerin görüntü düzleminde kesiştiği gibi göründüğü noktadır.
+-   **Vanishing Line (Ufuk Çizgisi):** 3D uzaydaki bir düzlem üzerindeki tüm çizgilerin ufuk noktalarının birleşerek oluşturduğu çizgidir.
+
+---
+
+## Kavrama Soruları
+
+<details>
+  <summary><b>Soru 1:</b> Neden homojen koordinatları kullanma ihtiyacı duyarız? Standart Kartezyen koordinatların yetersiz kaldığı temel durum nedir?</summary>
+  <p>Kartezyen koordinatlarda, bir noktayı ötelemek (translation) için matris çarpımı (`y = M*x`) değil, vektör toplaması (`y = x + t`) kullanılır. Diğer tüm dönüşümler (rotasyon, ölçekleme) matris çarpımıyla yapılırken, ötelemenin farklı olması işlemleri birleştirmeyi zorlaştırır. Homojen koordinatlar, ötelemeyi de bir matris çarpımı olarak ifade etmemizi sağlayarak tüm dönüşümleri tek bir birleşik matris altında toplamamıza olanak tanır. Ayrıca, sonsuzdaki noktaları (ufuk noktaları gibi) matematiksel olarak temsil etmemizi sağlar.</p>
+</details>
+
+<details>
+  <summary><b>Soru 2:</b> Bir binanın fotoğrafını çektiğimizi düşünelim. Binanın çatısının ve zemininin paralel çizgileri, görüntüde iki farklı ufuk noktası oluşturur. Bu iki ufuk noktası, ufuk çizgisine göre nerede konumlanır?</summary>
+  <p>Eğer kamera yere paralel tutuluyorsa (eğik değilse), yer düzlemi ufuk çizgisini oluşturur. Çatı çizgileri ve zemin çizgileri bu düzleme paralel olduğu için, her iki grubun ufuk noktası da bu aynı ufuk çizgisi üzerinde yer alır.</p>
+</details>
+
+<details>
+  <summary><b>Soru 3:</b> Bir kameranın `focal length`'ini (f) iki katına çıkarırsak, görüntüdeki nesnelerin boyutu nasıl değişir? Pinhole kamera modelinin denkleminden yola çıkarak açıklayın.</summary>
+  <p>`y' = -f * y / z` denklemine göre, görüntüdeki boyut (`y'`), `focal length` (`f`) ile doğru orantılıdır. `f` değerini iki katına çıkarmak, `y'` değerini de iki katına çıkarır. Bu, görüntüdeki nesnelerin iki kat daha büyük görünmesi anlamına gelir. Yani `focal length`'i artırmak, "zoom in" yapmakla aynı etkiyi yaratır.</p>
+</details>

@@ -73,3 +73,31 @@ GHT, `parameter space`'e ölçek (`scale`) ve dönme (`rotation`) `parameter`'la
 -   **Hesaplama ve Bellek Maliyeti:** `Parameter space`'in boyutu, modeldeki parametre sayısıyla üssel olarak artar. Örneğin, `line` için 2D olan `accumulator`, keyfi bir şeklin konumu, yönelimi ve ölçeği için 4D veya daha fazla olabilir, bu da çok yüksek bellek ve işlem gücü gerektirir.
 -   **Parametre Hassasiyeti (`Quantization`):** `Accumulator`'deki `grid` (hücre) boyutunun seçimi kritiktir. Çok büyük (`coarse`) hücreler hassasiyeti düşürürken, çok küçük (`fine`) hücreler `noise` nedeniyle oyların dağılmasına ve tepelerin kaybolmasına neden olabilir.
 -   **Sahte Tepeler (Spurious Peaks):** Özellikle karmaşık `image`'lerde, ilgisiz `pixel`'lerin tesadüfen aynı hücreye oy vermesiyle yanıltıcı tepeler oluşabilir.
+
+---
+
+## Özet ve Anahtar Kavramlar
+
+-   **Çemberler için Hough:** `Parameter space` 3 boyutludur (`x merkez`, `y merkez`, `yarıçap`). Görüntüdeki bir nokta, Hough uzayında bir **koni** oluşturur.
+-   **Gradient Bilgisini Kullanma (Çember):** Kenar `pixel`'inin `gradient` yönü, çemberin merkezine doğru bir çizgi üzerinde olduğunu gösterir. Bu, 3D uzayda tam bir koni için oy vermek yerine, bu çizgi üzerinde oy vererek aramayı 2D'ye indirir ve süreci hızlandırır.
+-   **Generalized Hough Transform (GHT):** Analitik denklemi olmayan keyfi şekilleri bulmak için kullanılır.
+-   **R-Table:** GHT'nin "eğitim" aşamasında, şablon şeklinin kenar `pixel`'lerinin bir referans noktasına göre göreceli konumlarını saklayan bir `look-up table`'ıdır. Bu tablo, "tespit" aşamasında oylama için kullanılır.
+
+---
+
+## Kavrama Soruları
+
+<details>
+  <summary><b>Soru 1:</b> Çemberler için Hough Transform'u `gradient` bilgisini kullanmadan uygularsak, `accumulator` matrisinin boyutu ve hesaplama maliyeti nasıl olur?</summary>
+  <p>Her bir `edge pixel`'i, kendisinden geçebilecek tüm olası çemberler için oy vermek zorunda kalır. Bu, `parameter space`'te tam bir koni oluşturur. `Accumulator` matrisi 3 boyutlu (`x, y, r`) olur ve her `pixel` için tüm yarıçap (`r`) değerlerini taramak gerekir. Bu, hem bellek (3D matris) hem de hesaplama (her `pixel` için 2D bir yüzeye oy verme) açısından çok maliyetlidir.</p>
+</details>
+
+<details>
+  <summary><b>Soru 2:</b> Generalized Hough Transform (GHT), aranan nesnenin döndürülmüş veya farklı boyuttaki hallerini bulabilir mi? Standart haliyle neden bulamaz ve bulabilmesi için ne yapmak gerekir?</summary>
+  <p>Standart GHT, R-Tablosu'nu sabit bir yönelim ve ölçek için oluşturur, bu yüzden nesnenin döndürülmüş veya yeniden boyutlandırılmış hallerini bulamaz. Bu sorunu çözmek için `parameter space`'i genişletmek gerekir: Döndürmeyi de bulmak için `accumulator`'e bir rotasyon (`θ`) boyutu eklenir (4D olur: `x, y, θ, s`). Ölçeği bulmak için bir ölçek (`s`) boyutu eklenir. Bu, `accumulator`'ün boyutunu ve dolayısıyla hesaplama maliyetini önemli ölçüde artırır.</p>
+</details>
+
+<details>
+  <summary><b>Soru 3:</b> Hough Transform'un en büyük dezavantajı nedir ve bu dezavantaj hangi durumlarda onu kullanışsız hale getirebilir?</summary>
+  <p>En büyük dezavantajı, modeldeki parametre sayısıyla üssel olarak artan hesaplama ve bellek maliyetidir ("curse of dimensionality"). Çizgiler (2 parametre) için çok verimli çalışırken, çemberler (3 parametre) için maliyet artar. Keyfi bir şeklin konumu, yönelimi ve ölçeğini (4+ parametre) bulmaya çalışmak, `accumulator` matrisini pratik olarak kullanılamayacak kadar büyütebilir. Bu nedenle, çok fazla parametreye sahip karmaşık modellerin tespiti için genellikle uygun değildir.</p>
+</details>

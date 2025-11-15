@@ -38,7 +38,7 @@ Sonuç olarak, dijital bir `image`, tam sayı değerlerinden oluşan bir matris 
     - **Görünüm:** `Image` üzerinde rastgele serpiştirilmiş siyah (biber) ve beyaz (tuz) `pixel`'ler şeklinde belirir.
     - **Neden:** Genellikle veri iletimindeki hatalar veya arızalı sensör hücreleri nedeniyle oluşur.
 
-    ![Salt and Pepper Gürültü Örneği](./assets/images/goruntu-filtreleme/salt-pepper-noise.png)
+    ![Salt and Pepper Gürültü Örneği](https://via.placeholder.com/400x300.png?text=Salt+and+Pepper+Gürültüsü)
 
 2.  **Impulse Noise:**
     - **Görünüm:** Sadece rastgele beyaz `pixel`'lerden oluşur. *Salt and Pepper*'ın tek kutuplu halidir.
@@ -48,7 +48,7 @@ Sonuç olarak, dijital bir `image`, tam sayı değerlerinden oluşan bir matris 
     - **Neden:** Sensör elektroniğindeki termal gürültü veya düşük aydınlatma koşulları gibi birçok doğal süreçten kaynaklanır. En yaygın karşılaşılan `noise` türüdür.
     - **Parametre:** Gaussian dağılımının standart sapması (`σ`), `noise`'un ne kadar "yoğun" olacağını belirler. `σ` arttıkça, `pixel`'ler orijinal değerlerinden daha fazla sapar.
 
-    ![Gaussian Gürültü Örneği](./assets/images/goruntu-filtreleme/gaussian-noise.png)
+    ![Gaussian Gürültü Örneği](https://via.placeholder.com/400x300.png?text=Gaussian+Gürültüsü)
 
 > **Önemli Not:** `Noise`, `image`'e bilgi eklemez, aksine var olan bilgiyi **bozar**. Bu nedenle, birçok Computer Vision uygulamasının ilk adımı, `noise`'u temizlemek veya etkisini azaltmaktır. Bir sonraki bölümde bu amaçla kullanılan `filtering` tekniklerini inceleyeceğiz.
 
