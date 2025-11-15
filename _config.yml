@@ -2,8 +2,12 @@
 title: Computer Vision Ders Notları
 description: >-
   Computer Vision dersi için sınav çalışma notları ve soruları.
-theme: "just-the-docs"
 url: "https://tozenbilek.github.io"
+remote_theme: just-the-docs/just-the-docs
+
+# Plugins required for the remote theme
+plugins:
+  - jekyll-remote-theme
 
 # Aux links for the header
 aux_links:
