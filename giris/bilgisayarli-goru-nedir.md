@@ -50,22 +50,24 @@ Günümüzde görüntü ve video verisi her yerdedir. Akıllı telefonlardan gü
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Bir fotoğrafın Instagram'da "sepia" filtresiyle renklendirilmesi hangi alana girer?</summary>
-  <br>
-  A) Bilgisayarlı Görü<br>
-  B) Görüntü İşleme<br>
-  C) Makine Öğrenmesi<br>
-  D) Veri Bilimi<br>
-  <p><b>Cevap: B) Görüntü İşleme.</b> Çünkü işlem, bir görüntüyü (orijinal fotoğraf) girdi olarak alıp başka bir görüntüyü (filtreli fotoğraf) çıktı olarak üretmektedir. Görüntünün içeriği hakkında bir yorum yapılmamaktadır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Bir fotoğrafın Instagram'da "sepia" filtresiyle renklendirilmesi hangi alana girer?</p>
+  <div class="quiz-option">A) Bilgisayarlı Görü</div>
+  <div class="quiz-option" data-correct="true">B) Görüntü İşleme</div>
+  <div class="quiz-option">C) Makine Öğrenmesi</div>
+  <div class="quiz-option">D) Veri Bilimi</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B) Görüntü İşleme.</b> Çünkü işlem, bir görüntüyü (orijinal fotoğraf) girdi olarak alıp başka bir görüntüyü (filtreli fotoğraf) çıktı olarak üretmektedir. Görüntünün içeriği hakkında bir yorum yapılmamaktadır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Bir güvenlik kamerasının, bir otoparktaki boş park yeri sayısını ekrana yazdırması hangi alana girer?</summary>
-  <br>
-  A) Görüntü Sıkıştırma<br>
-  B) Artırılmış Gerçeklik<br>
-  C) Bilgisayarlı Görü<br>
-  D) Görüntü İşleme<br>
-  <p><b>Cevap: C) Bilgisayarlı Görü.</b> Çünkü sistem, bir video görüntüsünü girdi olarak alıp, onu yorumlayarak anlamlı bir bilgi ("boş park yeri sayısı") üretmektedir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Bir güvenlik kamerasının, bir otoparktaki boş park yeri sayısını ekrana yazdırması hangi alana girer?</p>
+  <div class="quiz-option">A) Görüntü Sıkıştırma</div>
+  <div class="quiz-option">B) Artırılmış Gerçeklik</div>
+  <div class="quiz-option" data-correct="true">C) Bilgisayarlı Görü</div>
+  <div class="quiz-option">D) Görüntü İşleme</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C) Bilgisayarlı Görü.</b> Çünkü sistem, bir video görüntüsünü girdi olarak alıp, onu yorumlayarak anlamlı bir bilgi ("boş park yeri sayısı") üretmektedir.</p>
+  </div>
+</div>

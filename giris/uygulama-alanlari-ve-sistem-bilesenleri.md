@@ -41,33 +41,36 @@ Bir Bilgisayarlı Görü uygulaması, genellikle "pipeline" (boru hattı) olarak
 
 ## Kavrama Soruları
 
-<details>
-  <summary><b>Soru 1:</b> Bir cep telefonu kamerasının, bir QR kodunu okuyup içindeki web sitesi linkini açması, hangi ana uygulama kategorisine girer?</summary>
-  <br>
-  A) Yeniden Oluşturma ve Ölçüm<br>
-  B) Anlamlandırma ve Sınıflandırma<br>
-  C) Algılama ve İzleme<br>
-  D) Etkileşim ve Denetim<br>
-  <p><b>Cevap: C) Algılama ve İzleme.</b> İlk adım, görüntüdeki QR kodunun yerini "algılamak"tır. Ardından gelen linki çözme işlemi ise bir tür "anlamlandırma" içerse de, görevin temeli belirli bir deseni bulmaya dayanır.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Bir cep telefonu kamerasının, bir QR kodunu okuyup içindeki web sitesi linkini açması, hangi ana uygulama kategorisine girer?</p>
+  <div class="quiz-option">A) Yeniden Oluşturma ve Ölçüm</div>
+  <div class="quiz-option">B) Anlamlandırma ve Sınıflandırma</div>
+  <div class="quiz-option" data-correct="true">C) Algılama ve İzleme</div>
+  <div class="quiz-option">D) Etkileşim ve Denetim</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C) Algılama ve İzleme.</b> İlk adım, görüntüdeki QR kodunun yerini "algılamak"tır. Ardından gelen linki çözme işlemi ise bir tür "anlamlandırma" içerse de, görevin temeli belirli bir deseni bulmaya dayanır.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 2:</b> Bir Bilgisayarlı Görü "pipeline"ında, bir görüntünün bulanıklaştırılması genellikle hangi aşamada yapılır?</summary>
-  <br>
-  A) Karar Verme / Yorumlama<br>
-  B) Özellik Çıkarımı<br>
-  C) Görüntü Kaynağı<br>
-  D) Önişleme<br>
-  <p><b>Cevap: D) Önişleme.</b> Görüntüyü hafifçe bulanıklaştırmak (Gaussian blur gibi), yüksek frekanslı gürültüyü azaltmak için yaygın bir ön işleme tekniğidir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Bir Bilgisayarlı Görü "pipeline"ında, bir görüntünün bulanıklaştırılması genellikle hangi aşamada yapılır?</p>
+  <div class="quiz-option">A) Karar Verme / Yorumlama</div>
+  <div class="quiz-option">B) Özellik Çıkarımı</div>
+  <div class="quiz-option">C) Görüntü Kaynağı</div>
+  <div class="quiz-option" data-correct="true">D) Önişleme</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: D) Önişleme.</b> Görüntüyü hafifçe bulanıklaştırmak (Gaussian blur gibi), yüksek frekanslı gürültüyü azaltmak için yaygın bir ön işleme tekniğidir.</p>
+  </div>
+</div>
 
-<details>
-  <summary><b>Soru 3:</b> Aşağıdakilerden hangisi "Özellik Çıkarımı" adımına bir örnek **değildir**?</summary>
-  <br>
-  A) Bir görüntüdeki tüm dikey kenarları bulmak.<br>
-  B) Görüntüdeki nesnenin "araba" olarak etiketlenmesi.<br>
-  C) Görüntünün renk dağılımını bir histogram ile temsil etmek.<br>
-  D) Harris algoritması ile görüntüdeki köşeleri tespit etmek.<br>
-  <p><b>Cevap: B.</b> Nesnenin "araba" olarak etiketlenmesi, özellikler çıkarıldıktan sonra yapılan nihai "Karar Verme / Yorumlama" aşamasıdır. Diğer seçeneklerin tümü, ham piksel verisinden daha anlamlı ama yine de orta seviye bilgiler türetme işlemleridir.</p>
-</details>
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Aşağıdakilerden hangisi "Özellik Çıkarımı" adımına bir örnek <b>değildir</b>?</p>
+  <div class="quiz-option">A) Bir görüntüdeki tüm dikey kenarları bulmak.</div>
+  <div class="quiz-option" data-correct="true">B) Görüntüdeki nesnenin "araba" olarak etiketlenmesi.</div>
+  <div class="quiz-option">C) Görüntünün renk dağılımını bir histogram ile temsil etmek.</div>
+  <div class="quiz-option">D) Harris algoritması ile görüntüdeki köşeleri tespit etmek.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Nesnenin "araba" olarak etiketlenmesi, özellikler çıkarıldıktan sonra yapılan nihai "Karar Verme / Yorumlama" aşamasıdır. Diğer seçeneklerin tümü, ham piksel verisinden daha anlamlı ama yine de orta seviye bilgiler türetme işlemleridir.</p>
+  </div>
+</div>
 
