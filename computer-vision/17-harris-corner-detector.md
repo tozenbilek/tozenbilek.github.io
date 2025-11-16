@@ -7,7 +7,7 @@ parent: Computer Vision
 
 # "İyi" Özellikler ve Harris Köşe Dedektörü
 
-Önceki bölümlerde, görüntülerden kenarlar gibi basit yapıları çıkarmayı öğrendik. Ancak, iki görüntüyü birbiriyle hizalamak, bir nesneyi farklı açılardan tanımak veya bir sahnenin 3D modelini oluşturmak gibi daha karmaşık görevler için, kenarlardan daha gürbüz (robust) ve ayırt edici **özelliklere (features)** ihtiyacımız var.
+Önceki bölümlerde, görüntülerden kenarlar gibi basit yapıları çıkarmayı öğrendik. Ancak, iki görüntüyü birbiriyle hizalamak, bir nesneyi farklı açılardan tanımak veya bir sahnenin 3D modelini oluşturmak gibi daha karmaşık görevler için, kenarlardan daha `robust` (gürbüz) ve ayırt edici **features (özelliklere)** ihtiyacımız var.
 
 ---
 
@@ -15,12 +15,12 @@ parent: Computer Vision
 
 Bir görüntü özelliği, bir görüntünün diğerlerinde de güvenilir bir şekilde bulunabilecek, bilgi açısından zengin bir parçasıdır. İyi bir özelliğin iki ana karakteristiği olmalıdır:
 
-1.  **Tekrarlanabilirlik (Repeatability):** Aynı 3D noktasına karşılık gelen özellik, farklı aydınlatma koşullarında, farklı bakış açılarında, ölçeklerde ve döndürmelerde de tespit edilebilmelidir.
-2.  **Ayırt Edicilik (Distinctiveness / Saliency):** Özelliğin etrafındaki bölge, diğer özelliklerden kolayca ayırt edilebilecek kadar özgün bir desene sahip olmalıdır.
+1.  **Repeatability (Tekrarlanabilirlik):** Aynı 3D noktasına karşılık gelen özellik, farklı aydınlatma koşullarında, farklı bakış açılarında, ölçeklerde ve döndürmelerde de tespit edilebilmelidir.
+2.  **Distinctiveness / Saliency (Ayırt Edicilik):** Özelliğin etrafındaki bölge, diğer özelliklerden kolayca ayırt edilebilecek kadar özgün bir desene sahip olmalıdır.
 
 Bu kriterleri düşündüğümüzde, düz bir duvardaki bir nokta (ayırt edici değil) veya düz bir kenar üzerindeki bir nokta (kenar boyunca her yer birbirine benzediği için tekrarlanabilir ama ayırt edici değil) iyi bir özellik değildir.
 
-Peki ne iyi bir özelliktir? **Köşeler (Corners)**.
+Peki ne iyi bir özelliktir? **Corners (Köşeler)**.
 
 ---
 
@@ -48,7 +48,7 @@ Harris & Stephens (1988), bu sezgisel fikri matematiksel bir temele oturtan bir 
     M = Σ [ Ix²    Ix*Iy ]
         [ Ix*Iy  Iy²   ]
     ```
-3.  Bu `M` matrisinin **özdeğerleri (eigenvalues)**, `λ1` ve `λ2`, bize pencerenin kaydırılmasıyla oluşan değişimin ana yönlerini ve büyüklüklerini söyler.
+3.  Bu `M` matrisinin **eigenvalues (özdeğerleri)**, `λ1` ve `λ2`, bize pencerenin kaydırılmasıyla oluşan değişimin ana yönlerini ve büyüklüklerini söyler.
     *   Eğer `λ1` ve `λ2` ikisi de küçükse, bu "düz" bir bölgedir.
     *   Eğer biri büyük, diğeri küçükse, bu bir "kenardır".
     *   Eğer `λ1` ve `λ2` ikisi de büyükse, bu bir **"köşedir"**.
@@ -64,11 +64,11 @@ Harris & Stephens (1988), bu sezgisel fikri matematiksel bir temele oturtan bir 
 ## 4. Harris Dedektörünün Sınırlılıkları
 
 Harris köşe dedektörü, Computer Vision'da bir dönüm noktasıdır ve hala birçok uygulamada kullanılmaktadır.
-*   **Döndürmeye (Rotation) Karşı Dayanıklıdır:** Görüntü döndüğünde, köşeler hala köşe olarak algılanır.
+*   **Rotation (Döndürmeye) Karşı Dayanıklıdır:** Görüntü döndüğünde, köşeler hala köşe olarak algılanır.
 *   **Aydınlatma Değişikliklerine Karşı Dayanıklıdır:** Genel parlaklık artışı veya azalışından çok etkilenmez.
 
 Ancak önemli bir zayıflığı vardır:
-*   **Ölçeğe (Scale) Karşı Dayanıklı Değildir:** Bir görüntüye zum yapıldığında (ölçek değiştiğinde), eskiden köşe olan bir nokta artık bir kenar veya düz bir çizgi gibi görünebilir ve dedektör onu bulamayabilir.
+*   **Scale (Ölçeğe) Karşı Dayanıklı Değildir:** Bir görüntüye zum yapıldığında (ölçek değiştiğinde), eskiden köşe olan bir nokta artık bir kenar veya düz bir çizgi gibi görünebilir ve dedektör onu bulamayabilir.
 
 ![Scale Problem](https://via.placeholder.com/500x250.png?text=Yakınlaştırınca+Köşe+Kaybolur)
 *Görsel: Uzaktan "köşe" gibi görünen bir yapı, yakınlaştırıldığında düz bir kenara dönüşebilir.*

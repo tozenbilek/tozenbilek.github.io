@@ -7,7 +7,7 @@ parent: Computer Vision
 
 # Projective Geometry ve Kamera Modelleri
 
-Üç boyutlu (3D) bir dünyada yaşıyoruz ama onu kameralar aracılığıyla iki boyutlu (2D) görüntüler olarak algılıyoruz. Computer Vision'ın temel zorluklarından biri, bu 3D-2D dönüşümünü ve bunun getirdiği belirsizlikleri anlamaktır. Bu bölümde, bu dönüşümün arkasındaki matematiksel temel olan **İzdüşümsel Geometri (Projective Geometry)** ve en basit kamera modeli olan **Pinhole (iğne deliği) Kamera Modeli**'ni inceleyeceğiz.
+Üç boyutlu (3D) bir dünyada yaşıyoruz ama onu kameralar aracılığıyla iki boyutlu (2D) görüntüler olarak algılıyoruz. Computer Vision'ın temel zorluklarından biri, bu 3D-2D dönüşümünü ve bunun getirdiği belirsizlikleri anlamaktır. Bu bölümde, bu dönüşümün arkasındaki matematiksel temel olan **Projective Geometry (İzdüşümsel Geometri)** ve en basit kamera modeli olan **Pinhole (iğne deliği) Kamera Modeli**'ni inceleyeceğiz.
 
 ---
 
@@ -27,11 +27,11 @@ Benzer üçgenler kullanarak, 3D uzaydaki bir `P = (X, Y, Z)` noktasının, odak
 
 ---
 
-## 2. Homojen Koordinatlar (Homogeneous Coordinates)
+## 2. Homogeneous Coordinates (Homojen Koordinatlar)
 
-Yukarıdaki yansıtma denklemlerinde `Z`'ye bölme işlemi vardır. Bu, denklemi **doğrusal olmayan (non-linear)** yapar. Doğrusal olmayan denklemlerle çalışmak matematiksel olarak daha zordur.
+Yukarıdaki yansıtma denklemlerinde `Z`'ye bölme işlemi vardır. Bu, denklemi **non-linear (doğrusal olmayan)** yapar. Doğrusal olmayan denklemlerle çalışmak matematiksel olarak daha zordur.
 
-**Homojen koordinatlar**, bu bölme işleminden kurtularak izdüşüm (projection) gibi işlemleri tek bir matris çarpımıyla, yani **doğrusal** bir şekilde ifade etmemizi sağlayan güçlü bir matematiksel araçtır.
+**Homojen koordinatlar**, bu bölme işleminden kurtularak `projection` (izdüşüm) gibi işlemleri tek bir matris çarpımıyla, yani **doğrusal** bir şekilde ifade etmemizi sağlayan güçlü bir matematiksel araçtır.
 
 Fikir basittir: `n` boyutlu bir uzaydaki bir noktayı temsil etmek için `n+1` boyutlu bir vektör kullanırız.
 *   2D'deki bir `(x, y)` noktası, homojen koordinatlarda `(x, y, 1)` veya `(kx, ky, k)` (herhangi bir `k ≠ 0` için) olarak temsil edilir.
@@ -46,13 +46,13 @@ Bu sistem sayesinde, Pinhole kamera yansıtmasını tek bir matris çarpımıyla
 
 ---
 
-## 3. Ufuk Noktaları ve Çizgileri (Vanishing Points and Lines)
+## 3. Vanishing Points and Lines (Ufuk Noktaları ve Çizgileri)
 
-İzdüşümsel geometrinin en ilginç sonuçlarından biri, gerçek dünyada birbirine **paralel olan çizgilerin, görüntüde tek bir noktada birleşiyormuş gibi görünmesidir.** Bu birleşme noktasına **ufuk noktası (vanishing point)** denir.
+İzdüşümsel geometrinin en ilginç sonuçlarından biri, gerçek dünyada birbirine **paralel olan çizgilerin, görüntüde tek bir noktada birleşiyormuş gibi görünmesidir.** Bu birleşme noktasına **vanishing point (ufuk noktası)** denir.
 
 *   Örneğin, tren rayları veya bir yolun kenarları, sonsuzda birleşiyormuş gibi görünür.
 *   Farklı yönlere giden paralel çizgiler (örneğin bir küpün farklı kenarları) farklı ufuk noktaları oluşturur.
-*   Aynı düzlem üzerindeki (örneğin yer düzlemi) tüm ufuk noktaları, **ufuk çizgisi (vanishing line veya horizon)** adı verilen tek bir çizgi üzerinde yer alır.
+*   Aynı düzlem üzerindeki (örneğin yer düzlemi) tüm ufuk noktaları, **vanishing line (ufuk çizgisi veya horizon)** adı verilen tek bir çizgi üzerinde yer alır.
 
 Bu prensip, görüntülerden 3D yapı hakkında ipuçları çıkarmak, sahte görüntüleri tespit etmek veya bir görüntünün perspektifini analiz etmek için kullanılır.
 
@@ -75,7 +75,7 @@ Bu prensip, görüntülerden 3D yapı hakkında ipuçları çıkarmak, sahte gö
   <p><b>Soru 2:</b> İzdüşümsel geometride, 3D'den 2D'ye yansıtma gibi işlemleri doğrusal bir matris çarpımı olarak ifade edebilmek için hangi araç kullanılır?</p>
   <div class="quiz-option">A) Kutupsal Koordinatlar</div>
   <div class="quiz-option">B) Fourier Dönüşümü</div>
-  <div class="quiz-option" data-correct="true">C) Homojen Koordinatlar</div>
+  <div class="quiz-option" data-correct="true">C) Homogeneous Coordinates</div>
   <div class="quiz-option">D) Gaussian Filtreleri</div>
   <div class="quiz-explanation">
     <p><b>Cevap: C.</b> Homojen koordinatlar, bir boyut ekleyerek, yansıtma gibi normalde bölme içeren ve doğrusal olmayan işlemleri, tek bir matris çarpımıyla ifade etmemizi sağlar. Bu, bilgisayar grafikleri ve Computer Vision'da hesaplamaları büyük ölçüde basitleştirir.</p>
@@ -85,7 +85,7 @@ Bu prensip, görüntülerden 3D yapı hakkında ipuçları çıkarmak, sahte gö
 <div class="quiz-question">
   <p><b>Soru 3:</b> Bir binanın fotoğrafında, binanın sol ve sağ tarafındaki birbirine paralel olan çatı çizgilerinin görüntüde tek bir noktada birleştiği görülür. Bu noktaya ne ad verilir?</p>
   <div class="quiz-option">A) Optik Merkez</div>
-  <div class="quiz-option" data-correct="true">B) Ufuk Noktası (Vanishing Point)</div>
+  <div class="quiz-option" data-correct="true">B) Vanishing Point (Ufuk Noktası)</div>
   <div class="quiz-option">C) Odak Noktası (Focal Point)</div>
   <div class="quiz-option">D) Ana Nokta (Principal Point)</div>
   <div class="quiz-explanation">

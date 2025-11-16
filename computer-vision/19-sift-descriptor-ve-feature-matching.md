@@ -1,17 +1,17 @@
 ---
 layout: default
-title: SIFT Descriptor ve Feature Matching
+title: SIFT Descriptor and Feature Matching
 nav_order: 19
 parent: Computer Vision
 ---
 
-# SIFT Descriptor ve Feature Matching
+# SIFT Descriptor and Feature Matching
 
-Önceki bölümde, SIFT algoritmasının ölçek değişikliklerine karşı dayanıklı anahtar noktaları (keypoints) nasıl tespit ettiğini gördük. Ancak, iki farklı görüntüdeki noktaların aynı olup olmadığını anlamak için, sadece konumlarını ve ölçeklerini bilmek yeterli değildir. Her bir anahtar noktanın etrafındaki bölgeyi, eşleştirmeye olanak tanıyacak şekilde ayırt edici bir "parmak izi" ile temsil etmemiz gerekir. Bu parmak izine **tanımlayıcı (descriptor)** denir.
+Önceki bölümde, SIFT algoritmasının ölçek değişikliklerine karşı dayanıklı anahtar noktaları (`keypoints`) nasıl tespit ettiğini gördük. Ancak, iki farklı görüntüdeki noktaların aynı olup olmadığını anlamak için, sadece konumlarını ve ölçeklerini bilmek yeterli değildir. Her bir anahtar noktanın etrafındaki bölgeyi, eşleştirmeye olanak tanıyacak şekilde ayırt edici bir "parmak izi" ile temsil etmemiz gerekir. Bu parmak izine **descriptor (tanımlayıcı)** denir.
 
 ---
 
-## 1. Oryantasyon Ataması (Orientation Assignment)
+## 1. Orientation Assignment (Oryantasyon Ataması)
 
 SIFT tanımlayıcısının döndürme değişikliklerine karşı da dayanıklı olmasını sağlamak için, ilk olarak her anahtar noktaya bir veya daha fazla **oryantasyon (yönelim)** atanır.
 
@@ -23,7 +23,7 @@ Bu adım sayesinde, bir nesne döndüğünde, o nesne üzerindeki anahtar noktal
 
 ---
 
-## 2. SIFT Tanımlayıcısı (Descriptor)
+## 2. The SIFT Descriptor (SIFT Tanımlayıcısı)
 
 Artık her anahtar noktanın bir konumu, bir ölçeği ve bir oryantasyonu var. Bu bilgiler kullanılarak, noktanın etrafındaki bölgeyi temsil eden 128 elemanlı bir vektör oluşturulur:
 
@@ -32,18 +32,18 @@ Artık her anahtar noktanın bir konumu, bir ölçeği ve bir oryantasyonu var. 
 3.  Her bir 4x4'lük alt bölge için, piksellerin gradyan yönlerinden 8 binlik bir histogram oluşturulur.
 4.  Bu 16 adet 8-binlik histogram art arda eklenerek, anahtar noktayı tanımlayan **128 boyutlu (16 * 8 = 128) bir vektör** elde edilir.
 
-Bu vektör, aydınlatma değişikliklerine karşı daha dayanıklı olması için normalize edilir (uzunluğu 1 yapılır). Sonuç olarak elde edilen SIFT tanımlayıcısı, küçük perspektif değişikliklerine, aydınlatma farklılıklarına ve gürültüye karşı oldukça gürbüz (robust) bir "parmak izi"dir.
+Bu vektör, aydınlatma değişikliklerine karşı daha dayanıklı olması için normalize edilir (uzunluğu 1 yapılır). Sonuç olarak elde edilen SIFT tanımlayıcısı, küçük perspektif değişikliklerine, aydınlatma farklılıklarına ve gürültüye karşı oldukça `robust` (gürbüz) bir "parmak izi"dir.
 
 ![SIFT Descriptor](https://via.placeholder.com/600x300.png?text=16x16+Bölge+->+16+adet+4x4+Alt+Bölge+->+128-Boyutlu+Vektör)
 *Görsel: SIFT tanımlayıcısının oluşturulma şeması.*
 
 ---
 
-## 3. Özellik Eşleştirme (Feature Matching)
+## 3. Feature Matching (Özellik Eşleştirme)
 
 İki görüntüden (örneğin, Görüntü A ve Görüntü B) SIFT özellikleri (anahtar noktalar ve tanımlayıcılar) çıkarıldıktan sonraki adım, Görüntü A'daki her bir özelliğin Görüntü B'deki karşılığını bulmaktır.
 
-En basit yaklaşım, Görüntü A'daki bir `f_A` tanımlayıcısı için, Görüntü B'deki tüm tanımlayıcılar arasından ona en yakın olanı (Öklid mesafesi en düşük olanı) bulmaktır. Bu yönteme **En Yakın Komşu (Nearest Neighbor)** araması denir.
+En basit yaklaşım, Görüntü A'daki bir `f_A` tanımlayıcısı için, Görüntü B'deki tüm tanımlayıcılar arasından ona en yakın olanı (Öklid mesafesi en düşük olanı) bulmaktır. Bu yönteme **Nearest Neighbor (En Yakın Komşu)** araması denir.
 
 ---
 
@@ -64,7 +64,7 @@ Bu adımların sonunda, iki görüntü arasında yüksek olasılıkla doğru ola
 ### Test Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> SIFT tanımlayıcısının (descriptor) görüntü döndürmelerine karşı dayanıklı olmasını sağlayan ana adım hangisidir?</p>
+  <p><b>Soru 1:</b> SIFT `descriptor`'ünün (tanımlayıcısının) görüntü döndürmelerine karşı dayanıklı olmasını sağlayan ana adım hangisidir?</p>
   <div class="quiz-option">A) Görüntüyü önceden Gaussian ile bulanıklaştırmak.</div>
   <div class="quiz-option" data-correct="true">B) Her anahtar noktaya, gradyan yönleri histogramından bir "ana oryantasyon" atamak.</div>
   <div class="quiz-option">C) Tanımlayıcı vektörünü 128 boyutlu yapmak.</div>

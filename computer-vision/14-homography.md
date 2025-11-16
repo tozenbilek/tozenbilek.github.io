@@ -28,7 +28,7 @@ Sadece nesnenin konumunu değiştirir.
     ```
 
 ### b) Euclidean (Rigidbody / Katı Cisim)
-Öteleme ve döndürme (rotation) içerir. Nesneyi "bükmeden" veya "esnetmeden" hareket ettirir.
+Öteleme ve `rotation` (döndürme) içerir. Nesneyi "bükmeden" veya "esnetmeden" hareket ettirir.
 *   **Korunanlar:** Uzunluk, alan, açılar, paralellik.
 *   **Matris:**
     ```
@@ -38,7 +38,7 @@ Sadece nesnenin konumunu değiştirir.
     ```
 
 ### c) Similarity (Benzerlik)
-Öteleme, döndürme ve tek tip ölçekleme (uniform scaling) içerir. Nesnenin şeklini korur ama boyutunu değiştirebilir.
+Öteleme, döndürme ve `uniform scaling` (tek tip ölçekleme) içerir. Nesnenin şeklini korur ama boyutunu değiştirebilir.
 *   **Korunanlar:** Açılar, paralellik, uzunlukların ve alanların oranı.
 *   **Matris:**
     ```
@@ -48,7 +48,7 @@ Sadece nesnenin konumunu değiştirir.
     ```
 
 ### d) Affine
-Döndürme, ölçekleme (tek tip olmak zorunda değil), "shear" (eğme) ve öteleme içerir. Kareyi bir paralelkenara dönüştürebilir.
+Döndürme, ölçekleme (tek tip olmak zorunda değil), `shear` (eğme) ve öteleme içerir. Kareyi bir paralelkenara dönüştürebilir.
 *   **Korunanlar:** Paralel çizgiler, alanların oranı.
 *   **Matris:**
     ```
@@ -74,16 +74,16 @@ En genel 2D doğrusal dönüşümdür. Kareyi herhangi bir dışbükey dörtgene
 
 ## 2. Homography Matrisini Bulmak
 
-Bir homography matrisi `H`, 8 serbestlik derecesine sahiptir (matrisin genel ölçeği önemli olmadığı için 9 elemandan biri 1'e sabitlenir). Bu 8 bilinmeyeni çözmek için, iki görüntü arasında en az **4 adet eşleşen noktaya (correspondence)** ihtiyaç duyarız. Her bir nokta eşleşmesi, bize 2 denklem verir. 4 nokta, 8 denklemlik bir sistem oluşturur ve bu sistem çözülerek `H` matrisi bulunur.
+Bir homography matrisi `H`, 8 serbestlik derecesine sahiptir (matrisin genel ölçeği önemli olmadığı için 9 elemandan biri 1'e sabitlenir). Bu 8 bilinmeyeni çözmek için, iki görüntü arasında en az **4 adet `correspondence` (eşleşen noktaya)** ihtiyaç duyarız. Her bir nokta eşleşmesi, bize 2 denklem verir. 4 nokta, 8 denklemlik bir sistem oluşturur ve bu sistem çözülerek `H` matrisi bulunur.
 
 ---
 
 ## 3. Homography Uygulamaları
 
-### a) Görüntü Birleştirme (Panorama Stitching)
+### a) Panorama Stitching (Görüntü Birleştirme)
 Eğer aynı yerden, sadece kamerayı döndürerek birden fazla fotoğraf çekerseniz, bu iki görüntü arasındaki ilişki bir homography ile tanımlanır. Bir görüntüyü diğerinin koordinat sistemine "warp" etmek (eğip bükmek) için bu homography matrisi kullanılır. Ardından iki görüntü birleştirilerek panoramik bir fotoğraf oluşturulur.
 
-### b) Perspektif Düzeltme (Image Rectification)
+### b) Image Rectification (Perspektif Düzeltme)
 Bir düzleme (örneğin bir bina cephesi, bir masa yüzeyi) yandan bir açıyla bakıldığında, perspektif bozulması oluşur. Görüntüdeki bu düzlemin 4 köşesini, hedef bir dikdörtgenin 4 köşesine eşleyen bir homography hesaplayarak, görüntüyü sanki tam karşıdan bakılıyormuş gibi "düzeltebiliriz".
 
 ---

@@ -1,13 +1,13 @@
 ---
 layout: default
-title: Kamera Kalibrasyonu (Camera Calibration)
+title: Camera Calibration (Kamera Kalibrasyonu)
 nav_order: 15
 parent: Computer Vision
 ---
 
-# Kamera Kalibrasyonu (Camera Calibration)
+# Camera Calibration (Kamera Kalibrasyonu)
 
-Bir kamerayla çekilen görüntülerden hassas ölçümler yapabilmek (örneğin, bir nesnenin gerçek dünya boyutunu veya konumunu bulmak) için, kullandığımız kameranın belirli özelliklerini, yani **parametrelerini** bilmemiz gerekir. Kamera kalibrasyonu, bu bilinmeyen parametreleri bulma işlemidir.
+Bir kamerayla çekilen görüntülerden hassas ölçümler yapabilmek (örneğin, bir nesnenin gerçek dünya boyutunu veya konumunu bulmak) için, kullandığımız kameranın belirli özelliklerini, yani **parametrelerini** bilmemiz gerekir. `Camera calibration` (Kamera kalibrasyonu), bu bilinmeyen parametreleri bulma işlemidir.
 
 ---
 
