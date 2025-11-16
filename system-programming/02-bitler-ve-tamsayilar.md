@@ -86,19 +86,14 @@ Bu sayıyı `A` adresinden başlayan belleğe yerleştirmenin iki yolu vardır:
 
 *   **Little-Endian:** Baytlar, **en anlamsızdan en anlamlıya** doğru, yani tersten sıralanır. En anlamsız bayt (`10`), en düşük adrese gelir. Modern işlemcilerin (Intel, AMD) çoğu bu yöntemi kullanır.
 
-Aşağıdaki şema, iki düzen arasındaki farkı net bir şekilde göstermektedir:
+Aşağıdaki tablo, `0x76543210` sayısının iki düzende belleğe nasıl yerleştiğini göstermektedir:
 
-<pre>
-Sayı: 0x76543210
-
-Big-Endian Düzeni:              Little-Endian Düzeni:
- Adres | Değer                   Adres | Değer
--------|-------                 -------|-------
-   A   |  76                       A   |  10
-  A+1  |  54                      A+1  |  32
-  A+2  |  32                      A+2  |  54
-  A+3  |  10                      A+3  |  76
-</pre>
+| Adres | Big-Endian Değeri | Little-Endian Değeri |
+|:-----:|:-----------------:|:--------------------:|
+|   A   |        `76`         |         `10`         |
+|  A+1  |        `54`         |         `32`         |
+|  A+2  |        `32`         |         `54`         |
+|  A+3  |        `10`         |         `76`         |
 
 <div class="quiz-question">
   <p><b>Soru:</b> Little-Endian bir sistemde, 32-bit `0x12345678` tamsayısı belleğin `0x100` adresine yazılırsa, `0x101` adresinde hangi bayt değeri bulunur?</p>
@@ -127,15 +122,6 @@ Big-Endian Düzeni:              Little-Endian Düzeni:
 ## 3. Bit Seviyesi Mantıksal Operasyonlar
 
 C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güçlü operatörler bulunur. Bu operatörler, donanıma yakın seviyede kontrol ve optimizasyon imkanı tanır.
-
-Bu operatörlerin bitler üzerindeki etkisini gösteren doğruluk tablosu aşağıdadır:
-
-| A | B | A & B (AND) | A \| B (OR) | A ^ B (XOR) |
-|:-:|:-:|:-----------:|:-----------:|:-----------:|
-| 0 | 0 |      0      |      0      |      0      |
-| 0 | 1 |      0      |      1      |      1      |
-| 1 | 0 |      0      |      1      |      1      |
-| 1 | 1 |      1      |      1      |      0      |
 
 Örnekler için `a = 93` (yani `01011101`) ve `b = 148` (yani `10010100`) sayılarını kullanalım.
 
@@ -169,6 +155,13 @@ Bu operatörlerin bitler üzerindeki etkisini gösteren doğruluk tablosu aşağ
       --------
       10100010  (Sonuç: -94, 2'ye tümleyen gösteriminde)
     </pre>
+
+| A | B | A & B (AND) | A \| B (OR) | A ^ B (XOR) |
+|:-:|:-:|:-----------:|:-----------:|:-----------:|
+| 0 | 0 |      0      |      0      |      0      |
+| 0 | 1 |      0      |      1      |      1      |
+| 1 | 0 |      0      |      1      |      1      |
+| 1 | 1 |      1      |      1      |      0      |
 
 ### Shift (Kaydırma) Operasyonları
 
@@ -352,20 +345,20 @@ Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem
         <pre>
         // 8-bit unsigned 250 sayısını 4-bit'e kırpma
         Başlangıç (8-bit): 11111010  (Değer: 250)
-        Atılan Kısım:   1111
-        Kalan Kısım:         1010
+        Atılan Kısım:      1111
+        Kalan Kısım:           1010
 
-        Sonuç (4-bit):     1010      (Değer: 10) - Değer değişti.
+        Sonuç (4-bit):           1010  (Değer: 10) - Değer değişti.
         </pre>
 
     *   **Signed (İşaretli) Örneği:**
         <pre>
         // 8-bit signed -100 sayısını 4-bit'e kırpma
         Başlangıç (8-bit): 10011100  (Değer: -100)
-        Atılan Kısım:   1001
-        Kalan Kısım:         1100
+        Atılan Kısım:      1001
+        Kalan Kısım:           1100
 
-        Sonuç (4-bit):     1100      (Değer: -4) - Hem değer hem işaret değişebilir!
+        Sonuç (4-bit):           1100  (Değer: -4) - Hem değer hem işaret değişebilir!
         </pre>
 
 <div class="quiz-question">

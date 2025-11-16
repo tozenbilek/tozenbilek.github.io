@@ -1,45 +1,74 @@
+/* assets/css/style.css */
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --light-bg: #f8f9fa;
+    --dark-border: #dee2e6;
+    --text-color: #212529;
+    --light-text: #ffffff;
+}
+
 .quiz-question {
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--dark-border);
     border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 24px;
+    background-color: var(--light-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.quiz-question p b {
+    font-size: 1.1em;
+    color: var(--text-color);
 }
 
 .quiz-question .quiz-option {
     display: block;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 8px;
+    padding: 14px 18px;
+    border: 1px solid var(--dark-border);
+    border-radius: 6px;
+    margin-bottom: 10px;
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--light-text);
+    color: var(--text-color);
 }
 
 .quiz-question .quiz-option:hover {
-    background-color: #f0f0f0;
-    border-color: #bbb;
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    transform: translateY(-2px);
 }
 
 .quiz-question .quiz-option.correct {
-    background-color: #d4edda;
-    border-color: #c3e6cb;
-    color: #155724;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+    color: #0f5132;
+    font-weight: bold;
     cursor: default;
 }
 
 .quiz-question .quiz-option.incorrect {
     background-color: #f8d7da;
-    border-color: #f5c6cb;
-    color: #721c24;
+    border-color: #f5c2c7;
+    color: #842029;
+    font-weight: bold;
     cursor: default;
 }
 
 .quiz-explanation {
     display: none;
     margin-top: 15px;
-    padding: 12px;
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+    padding: 15px;
+    background-color: #e2e3e5;
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 4px;
+    color: #495057;
+}
+
+.quiz-explanation p b {
+    color: var(--text-color);
 }

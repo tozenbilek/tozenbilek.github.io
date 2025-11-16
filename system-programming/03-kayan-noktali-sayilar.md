@@ -11,7 +11,7 @@ Tamsayılar, hesaplama dünyasının temelini oluştursa da ondalıklı sayılar
 
 ---
 
-## 1. Kesirli İkili Sayıların Temsili
+## 1. Fractional Binary Representation (Kesirli İkili Sayıların Temsili)
 
 Ondalık sistemde olduğu gibi, ikili sistemde de "virgülün" (binary point) sağındaki basamaklar, tabanın negatif kuvvetlerini ifade eder.
 
@@ -34,27 +34,28 @@ Bu temsilin önemli bir sonucu, `0.1` (1/10) gibi ondalık sistemde basit görü
 
 ---
 
-## 2. IEEE 754 Standardı: Sayıları Bitlere Sığdırmak
+## 2. IEEE 754 Standard: Fitting Numbers into Bits (Sayıları Bitlere Sığdırmak)
 
-Farklı bilgisayarların ondalıklı sayıları aynı şekilde anlaması için **IEEE 754** standardı kullanılır. Bu standart, bir sayıyı üç temel bilgiye ayırarak bitlere dönüştürür: **işaret**, **üs (büyüklük)** ve **kesir (hassasiyet)**.
+Ondalıklı sayıların farklı sistemlerde tutarlı bir şekilde temsil edilmesi için evrensel **IEEE 754** standardı kullanılır. Bu standart, bir sayıyı bilimsel gösterime benzer şekilde üç parçaya ayırır:
 
-Formül şöyledir: **Sayı = (-1)ˢ × M × 2ᴱ**
+**Sayı = (-1)ˢ × M × 2ᴱ**
 
-*   **`s` (sign (işaret)):** 1 bit. `0` pozitif, `1` negatif.
-*   **`exp` (exponent (üs)):** `E` değerini saklar. Sayının büyüklük mertebesini belirler.
-*   **`frac` (fraction (kesir)):** `M` (mantissa) değerini saklar. Sayının hassasiyetini belirler.
+*   **`s` - Sign (İşaret):** Sayının pozitif (`0`) mi yoksa negatif (`1`) mi olduğunu belirler.
+*   **`E` - Exponent (Üs):** Sayının büyüklük mertebesini (ne kadar büyük veya küçük olduğunu) belirler.
+*   **`M` - Mantissa (Kesir):** Sayının hassasiyetini (ondalık kısmını) belirler.
 
-Bu üç bilgi, bellekte şöyle bir araya gelir:
-
+Bu üç parça, bellekte belirli bit alanlarına yerleştirilir:
 <pre>
   s |   exp   |                  frac
 (1 bit) (k bit)               (n bit)
 </pre>
 
-### Hassasiyet Seviyeleri: `float` ve `double`
+C dilindeki `float` ve `double` türleri, bu standardın iki yaygın uygulamasıdır ve farklı hassasiyet seviyeleri sunarlar:
 
-*   **`float` (Single Precision (Tek Hassasiyet)):** 32-bit (1 bit işaret, 8 bit üs, 23 bit kesir).
-*   **`double` (Double Precision (Çift Hassasiyet)):** 64-bit (1 bit işaret, 11 bit üs, 52 bit kesir).
+| Tür      | Toplam Bit | İşaret (s) | Üs (exp) | Kesir (frac) |
+|:---------|:----------:|:----------:|:--------:|:------------:|
+| `float`  |     32     |    1 bit   |   8 bit  |     23 bit     |
+| `double` |     64     |    1 bit   |  11 bit  |     52 bit     |
 
 ---
 
