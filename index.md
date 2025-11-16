@@ -4,17 +4,16 @@ title: Ana Sayfa
 nav_order: 1
 ---
 
-# Computer Vision Ders Notları
+# Üniversite Ders Notları
 
-Hoş geldin! Bu site, Computer Vision ders notlarını içermektedir. Soldaki menüden veya aşağıdaki listeden çalışmak istediğin konuyu seçerek başlayabilirsin. Başarılar!
+Hoş geldin! Bu site, **System Programming** ve **Computer Vision** dersleri için hazırladığım kişisel ders notlarımı içermektedir.
+
+Soldaki menüyü kullanarak konular arasında gezinebilirsin. Başarılar!
 
 ---
 
-## Ders Konuları
+## Dersler
 
-1.  [Giriş](./giris.md)
-2.  [Görüntü Oluşturma ve Filtreleme](./goruntu-olusturma-ve-filtreleme.md)
-3.  [Hough Dönüşümü](./hough-donusumu.md)
-4.  [Kamera Modelleri ve Homography](./kamera-modelleri-ve-homografi.md)
-5.  [Özellik Tespiti ve Eşleştirme](./ozellik-tespiti-ve-eslestirme.md)
-6.  [Image Segmentation](./image-segmentation.md)
+*   **Sistem Programlama:** C programlama dilinin temellerinden başlayarak, bit ve byte'ların dünyasına, assembly diline, bellek hiyerarşisine ve derleme süreçlerine kadar sistem programlamanın temel taşlarını ele alan notlar.
+
+*   **Computer Vision:** Bir bilgisayarın görsel dünyayı nasıl "anladığını" inceleyen notlar. Görüntü filtreleme, kenar tespiti, SIFT gibi özellik eşleştirme yöntemleri, kamera modelleri ve görüntü segmentasyonu gibi konuları kapsar.
