@@ -28,14 +28,13 @@ Bu esneklik, belirli language'ları DFA'lara göre çok daha basit ve daha az st
 *Görsel: Sonu `01` ile biten tüm string'leri (`01`, `001`, `1101`, vs.) kabul eden bir NFA. `q₀`'dan `0` okunduğunda hem `q₀`'da kalıp hem de `q₁`'e gidebilmesi, "belirleyici olmama" durumunun bir örneğidir.*
 ```mermaid
 graph LR
-    init[ ]
-    init -- "Start" --> q0
+    direction LR
+    
+    [*] --> q0
     
     q0 -- "0,1" --> q0
     q0 -- "0" --> q1
     q1 -- "1" --> q2((q2))
-
-    style init fill:none,stroke:none
 ```
 
 </div>
@@ -76,6 +75,76 @@ NFA'lar daha esnek ve genellikle daha sezgisel görünse de, hesaplama gücü ol
 Her NFA, **Subset Construction (Alt Küme İnşası)** adı verilen bir algoritma ile eşdeğer bir DFA'ya dönüştürülebilir. Bu işlem, NFA'nın aynı anda bulunabileceği tüm state'lerin kombinasyonlarını, DFA için tek bir state olarak ele alır. Ancak bu dönüşüm sonucunda state sayısı katlanarak artabilir (en kötü durumda `n` state'li bir NFA, `2ⁿ` state'li bir DFA'ya dönüşebilir).
 
 Bu nedenle, NFA ve DFA'lar aynı language sınıfını tanır: **Regular Languages (Düzenli Diller)**.
+
+---
+
+## 5. Örnek: NFA'dan DFA'ya Dönüşüm (Subset Construction)
+
+Yukarıda sonu `01` ile biten stringleri tanıyan NFA'yı ele alalım. Adım adım bu NFA'yı eşdeğer bir DFA'ya dönüştürelim.
+
+**Adım 1: Başlangıç Durumu**
+DFA'nın başlangıç durumu, NFA'nın başlangıç durumunun Epsilon-Closure'ı (`ECLOSE(q₀)`) ile başlar.
+*   NFA başlangıç durumu: `{q₀}`
+*   DFA başlangıç durumu: `A = ECLOSE({q₀}) = {q₀}`
+
+**Adım 2: Yeni Durumları Keşfetme**
+`A={q₀}` durumundan alfabedeki her sembol (`0` ve `1`) için geçişleri hesaplayalım.
+*   **`A`'dan `0` okunduğunda:**
+    *   `δ(q₀, 0) = {q₀, q₁}`
+    *   Yeni DFA durumu: `B = {q₀, q₁}`
+*   **`A`'dan `1` okunduğunda:**
+    *   `δ(q₀, 1) = {q₀}`
+    *   Yani `A` durumuna geri döner.
+
+**Adım 3: Yeni Durumlar İçin Geçişler**
+Şimdi yeni `B={q₀, q₁}` durumu için geçişleri hesaplayalım.
+*   **`B`'den `0` okunduğunda:**
+    *   `δ(q₀, 0) ∪ δ(q₁, 0) = {q₀, q₁} ∪ ∅ = {q₀, q₁}`
+    *   Yani `B` durumuna geri döner.
+*   **`B`'den `1` okunduğunda:**
+    *   `δ(q₀, 1) ∪ δ(q₁, 1) = {q₀} ∪ {q₂} = {q₀, q₂}`
+    *   Yeni DFA durumu: `C = {q₀, q₂}`
+
+**Adım 4: Son Durum İçin Geçişler**
+Son olarak yeni `C={q₀, q₂}` durumu için geçişleri hesaplayalım.
+*   **`C`'den `0` okunduğunda:**
+    *   `δ(q₀, 0) ∪ δ(q₂, 0) = {q₀, q₁} ∪ ∅ = {q₀, q₁}`
+    *   Yani `B` durumuna gider.
+*   **`C`'den `1` okunduğunda:**
+    *   `δ(q₀, 1) ∪ δ(q₂, 1) = {q₀} ∪ ∅ = {q₀}`
+    *   Yani `A` durumuna gider.
+
+**Adım 5: Kabul Durumlarını Belirleme**
+NFA'nın kabul durumu olan `q₂`'yi içeren tüm DFA durumları, yeni DFA'nın kabul durumları olur.
+*   `C = {q₀, q₂}` durumu `q₂`'yi içerdiği için kabul durumudur.
+
+**Sonuç:**
+
+<div align="center">
+
+*Görsel: Soldaki NFA'nın, Subset Construction algoritması ile sağdaki eşdeğer DFA'ya dönüşümü.*
+```mermaid
+graph TD
+    subgraph "Original NFA"
+        direction LR
+        n_init([*]) --> n_q0
+        n_q0 -- "0,1" --> n_q0
+        n_q0 -- "0" --> n_q1
+        n_q1 -- "1" --> n_q2((n_q2))
+    end
+
+    subgraph "Equivalent DFA"
+        direction LR
+        d_init([*]) --> A["{q₀}"]
+        A -- "0" --> B["{q₀,q₁}"]
+        A -- "1" --> A
+        B -- "0" --> B
+        B -- "1" --> C(("{q₀,q₂}"))
+        C -- "0" --> B
+        C -- "1" --> A
+    end
+```
+</div>
 
 ---
 

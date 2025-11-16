@@ -7,7 +7,7 @@ parent: Automata Theory
 
 # Automata Theory: Introduction and Basic Concepts (Giriş ve Temel Kavramlar)
 
-**`Automata Theory` (Otomatlar Teorisi)**, bilgisayar biliminin teorik temelini oluşturan, soyut makinelerin ve bu makinelerin çözebileceği hesaplama problemlerinin incelendiği bir alandır. Bu teori, "bir bilgisayarın temelinde ne yapabilir ve ne yapamaz?" sorusuna matematiksel bir çerçevede cevap arar.
+**`Automata Theory` (Otomatlar Teorisi)**, bilgisayar biliminin teorik temelini oluşturan, soyut makinelerin ve bu makinelerin çözebileceği hesaplama problemlerinin incelendiği bir alandır. Bu teori, *bir bilgisayarın temelinde ne yapabilir ve ne yapamaz?* sorusuna matematiksel bir çerçevede cevap arar.
 
 Bu bölümde, `Automata Theory`'nin ne olduğunu, neden önemli olduğunu ve alanın temelini oluşturan merkezi kavramları inceleyeceğiz.
 
@@ -15,7 +15,7 @@ Bu bölümde, `Automata Theory`'nin ne olduğunu, neden önemli olduğunu ve ala
 
 ## 1. What is Automata Theory and Why is it Important? (Automata Teorisi Nedir ve Neden Önemlidir?)
 
-En basit tanımıyla, `Automata Theory` soyut hesaplama cihazlarının (makinelerin) incelenmesidir. Bu teori, 1930'larda Alan Turing'in "hesaplamanın sınırlarını" tanımlama çalışmalarıyla başlamış ve 1940-50'lerde `Finite Automata` ve Noam Chomsky'nin `Formal Grammars` çalışmalarıyla gelişmiştir.
+En basit tanımıyla, `Automata Theory` soyut hesaplama cihazlarının (makinelerin) incelenmesidir. Bu teori, 1930'larda Alan Turing'in hesaplamanın sınırlarını tanımlama çalışmalarıyla başlamış ve 1940-50'lerde `Finite Automata` ve Noam Chomsky'nin `Formal Grammars` çalışmalarıyla gelişmiştir.
 
 Bu teoriyi incelemek, bilgisayar biliminin kalbini anlamamızı sağlar. Uygulama alanları oldukça geniştir:
 *   **`Compilers` (Derleyiciler):** Bir programlama dilinin kodunu analiz ederken (sözcüksel analiz, ayrıştırma).

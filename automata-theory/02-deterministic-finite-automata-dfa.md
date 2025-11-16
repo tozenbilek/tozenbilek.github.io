@@ -38,20 +38,19 @@ DFA'ları kağıt üzerinde görselleştirmek için **State Diagrams (durum diya
 *Görsel: Çift sayıda '1' içeren ikili string'leri (`ε`, `00`, `11`, `0110`, `101`, vs.) kabul eden bir DFA.*
 ```mermaid
 graph LR
-    %% "q_even" state'i hem başlangıç hem de kabul durumudur.
-    acc((q_even))
+    direction LR
     
-    %% Başlangıç state'ini göstermek için görünmez bir node
-    init[ ]
-    init -- "Start" --> acc
+    %% q_even hem başlangıç hem de kabul durumudur.
+    
+    [*] --> q_even
+    q_even((q_even))
+    
+    style q_even fill:#d4edda,stroke:#c3e6cb
 
-    style acc fill:#d4edda,stroke:#c3e6cb
-    style init fill:none,stroke:none
-
-    acc -- "0" --> acc
-    acc -- "1" --> rej((q_odd))
-    rej -- "0" --> rej
-    rej -- "1" --> acc
+    q_even -- "0" --> q_even
+    q_even -- "1" --> q_odd
+    q_odd -- "0" --> q_odd
+    q_odd -- "1" --> q_even
 ```
 
 </div>

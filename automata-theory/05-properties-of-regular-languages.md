@@ -41,6 +41,29 @@ Aynı regular language'ı tanıyan sonsuz sayıda farklı DFA olabilir. Ancak, b
 
 Bu işlem, "ayırt edilemez" (indistinguishable) state'lerin birleştirilmesine dayanır. İki state, onlardan başlayarak okunan herhangi bir string'in her ikisini de ya kabul ya da red state'ine götürmesi durumunda ayırt edilemez olarak kabul edilir ve birleştirilebilir. Bu, genellikle **Table-Filling Algorithm** ile yapılır.
 
+<div align="center">
+
+*Görsel: Soldaki DFA'da `q₂` ve `q₄` durumları ayırt edilemezdir (her ikisinden de `b` okunduğunda kabul durumuna gidilir, diğer durumlarda ise sıkışıp kalırlar). Bu nedenle, bu iki durum sağdaki minimize edilmiş DFA'da `q₂₄` olarak birleştirilmiştir.*
+```mermaid
+graph TD
+    subgraph "Original DFA"
+        direction LR
+        o_init([*]) --> q0
+        q0 -- "a" --> q1
+        q1 -- "b" --> q2((q2))
+        q0 -- "a" --> q3
+        q3 -- "b" --> q4((q4))
+    end
+
+    subgraph "Minimized DFA"
+        direction LR
+        m_init([*]) --> m_q0
+        m_q0 -- "a" --> m_q13
+        m_q13 -- "b" --> m_q24((q24))
+    end
+```
+</div>
+
 ---
 
 ## 2. Closure Properties (Kapanma Özellikleri)
