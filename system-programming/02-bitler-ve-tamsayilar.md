@@ -27,23 +27,34 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 ## 2. Bellek Organizasyonu ve Endianness (Bayt Sıralaması)
 
 ### Byte Ordering (Endianness)
-Bellek, her biri özgün bir adrese sahip olan sıralı bir bayt dizisi olarak modellenir. Birden fazla bayttan oluşan `word` (kelime) gibi veri türleri bellekte saklanırken, bu baytların hangi sırayla yerleştirileceği önem kazanır. Bu sıralama kuralına **Endianness** denir.
 
-İki temel `endianness` türü vardır:
+Bellek, her biri ardışık bir adrese sahip olan bir bayt dizisidir. `int` gibi birden fazla bayt kaplayan bir veri türünü belleğe kaydederken, bu baytların hangi sırayla (düşük adresten yüksek adrese doğru) yerleştirileceğini belirleyen kurala **Endianness** denir.
 
-*   **Big-Endian:** En anlamlı bayt (`01`), en düşük bellek adresine yazılır. İnsanların sayıları okuma şekline benzer.
-    *   Adres `A`: `01`
-    *   Adres `A+1`: `23`
-    *   Adres `A+2`: `45`
-    *   Adres `A+3`: `67`
-*   **Little-Endian:** En anlamsız bayt (`67`), en düşük bellek adresine yazılır. Intel ve AMD işlemcileri bu yöntemi kullanır.
-    *   Adres `A`: `67`
-    *   Adres `A+1`: `45`
-    *   Adres `A+2`: `23`
-    *   Adres `A+3`: `01`
+Bunu anlamak için 4 baytlık `0x01234567` sayısını ele alalım. Bu sayının baytları şunlardır:
+*   `01` (En Anlamlı Bayt - Most Significant Byte, MSB)
+*   `23`
+*   `45`
+*   `67` (En Anlamsız Bayt - Least Significant Byte, LSB)
 
-![Endianness](https://via.placeholder.com/600x300.png?text=Big+Endian+vs.+Little+Endian)
-*Görsel: Aynı sayının Big-Endian ve Little-Endian olarak bellekteki gösterimi.*
+Bu sayıyı `A` adresinden başlayan belleğe yerleştirmenin iki yolu vardır:
+
+*   **Big-Endian:** Baytlar, sayıyı yazdığımız ve okuduğumuz gibi, **en anlamlıdan en anlamsıza** doğru sıralanır. En anlamlı bayt (`01`), en düşük adrese gelir. Ağ protokolleri genellikle bu düzeni kullanır.
+
+*   **Little-Endian:** Baytlar, **en anlamsızdan en anlamlıya** doğru, yani tersten sıralanır. En anlamsız bayt (`67`), en düşük adrese gelir. Modern işlemcilerin (Intel, AMD) çoğu bu yöntemi kullanır.
+
+Aşağıdaki şema, iki düzen arasındaki farkı net bir şekilde göstermektedir:
+
+<pre>
+Sayı: 0x01234567
+
+Big-Endian Düzeni:              Little-Endian Düzeni:
+ Adres | Değer                   Adres | Değer
+-------|-------                 -------|-------
+   A   |  01                       A   |  67
+  A+1  |  23                      A+1  |  45
+  A+2  |  45                      A+2  |  23
+  A+3  |  67                      A+3  |  01
+</pre>
 
 ---
 
