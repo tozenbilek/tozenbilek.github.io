@@ -77,6 +77,8 @@ Bir language ailesinin bir işlem altında "kapalı" olması, o aileden language
 *   **Intersection (Kesişim):** İki regular language'ın kesişimi de düzenlidir. *Kanıt: `L ∩ M = ¬(¬L ∪ ¬M)` (De Morgan Kuralı).*
 *   **Difference (Fark):** `L - M` de düzenlidir.
 *   **Reversal (Ters Çevirme):** Bir language'daki tüm string'lerin ters çevrilmiş hali de düzenlidir.
+*   **Homomorfizma (Homomorphism):** Bir `h` homomorfizması, bir alfabedeki her sembolü bir string ile eşleyen bir fonksiyondur. Eğer `L` düzenli bir dil ise, `h(L)` (yani `L`'deki her string'e `h` fonksiyonunun uygulanmasıyla oluşan dil) de düzenlidir.
+*   **Ters Homomorfizma (Inverse Homomorphism):** `h⁻¹(L)`, `h` fonksiyonu uygulandığında `L` diline ait bir string üreten tüm string'lerin kümesidir. Eğer `L` düzenli ise, `h⁻¹(L)` de her zaman düzenlidir.
 
 Bu özellikler, karmaşık regular language'ları daha basit regular language'lardan inşa edebileceğimiz anlamına gelir.
 
@@ -89,6 +91,8 @@ Regular languages'ın bir diğer güçlü özelliği, onlar hakkında sorulan bi
 *   **Emptiness Problem (Boşluk Problemi):** Bir regular language `L` boş mu? (`L = ∅?`) *Çözüm: DFA'nın başlangıç state'inden herhangi bir kabul state'ine bir yol olup olmadığını kontrol et.*
 *   **Finiteness Problem (Sonluluk Problemi):** Bir regular language `L` sonlu sayıda mı string içeriyor? *Çözüm: DFA'nın state diyagramında, başlangıç state'inden ulaşılabilen ve bir kabul state'ine gidebilen bir döngü (cycle) olup olmadığını kontrol et.*
 *   **Membership Problem (Üyelik Problemi):** Bir `w` string'i, `L` language'ına ait mi? (`w ∈ L?`) *Çözüm: DFA'da `w` string'ini çalıştır ve kabul state'inde bitip bitmediğine bak.*
+*   **Equivalence Problem (Eşitlik Problemi):** İki düzenli dil `L` ve `M` birbirine eşit mi? (`L = M?`) *Çözüm: `(L ∩ ¬M) ∪ (¬L ∩ M)` dilinin boş olup olmadığını kontrol et. Bu dil boş ise, iki dil birbirine eşittir.*
+*   **Subset Problem (Alt Küme Problemi):** `L` dili, `M` dilinin bir alt kümesi mi? (`L ⊆ M?`) *Çözüm: `L ∩ ¬M` dilinin boş olup olmadığını kontrol et. Bu dil boş ise, `L`, `M`'nin bir alt kümesidir.*
 
 ---
 

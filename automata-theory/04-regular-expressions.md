@@ -78,7 +78,28 @@ Herhangi bir düzenli ifade, parçalara ayrılarak ve her parça için basit NFA
 *   **Türetme:** `E₁ + E₂`, `E₁E₂` ve `E*` işlemleri için, alt ifadelerin NFA'larını `ε`-geçişleri ile birleştiren standart şablonlar kullanılır.
 
 ### b) DFA'dan Düzenli İfadeye (State Elimination)
-Bu dönüşüm daha karmaşıktır ve genellikle durum eleme (state elimination) yöntemiyle yapılır. DFA, kenar etiketlerinin symbol'ler yerine düzenli ifadeler olabildiği bir **Genelleştirilmiş NFA (GNFA)**'ya dönüştürülür. Ardından, state'ler tek tek sistematik olarak elenir ve transition'lar üzerindeki düzenli ifadeler birleştirilir. Sonunda sadece başlangıç ve bitiş state'i kaldığında, aralarındaki yayın etiketi orijinal DFA'nın tanıdığı language'ın düzenli ifadesidir.
+Bu dönüşüm daha karmaşıktır ve genellikle durum eleme (state elimination) yöntemiyle yapılır. Süreç, **Genelleştirilmiş NFA (GNFA)** adı verilen ve geçiş etiketlerinin düzenli ifade olabildiği bir otomat türü kullanır.
+
+**Adımlar:**
+1.  **DFA'yı GNFA'ya Dönüştürme:**
+    *   Orijinal başlangıç durumuna `ε`-geçişi olan yeni bir başlangıç durumu eklenir.
+    *   Orijinal kabul durumlarından `ε`-geçişleri olan yeni ve tek bir kabul durumu eklenir.
+    *   Tüm geçiş etiketleri düzenli ifadelere dönüştürülür (örneğin, `a` ve `b` için iki ayrı geçiş `a+b` olur).
+2.  **Durumları Sistematik Olarak Eleme:**
+    *   Başlangıç ve bitiş durumları hariç, durumlar birer birer elenir.
+    *   Bir `qₖ` durumu elendiğinde, `qᵢ` durumundan `qⱼ` durumuna `qₖ` üzerinden geçen yolların yerine yeni bir geçiş eklenir. Bu yeni geçişin etiketi, eski yolları temsil eden yeni bir düzenli ifadedir.
+3.  **Sonuç:** Sadece başlangıç ve bitiş durumu kaldığında, aralarındaki tek geçişin etiketi, orijinal DFA'nın tanıdığı dilin düzenli ifadesidir.
+
+**Durum Eleme Formülü:**
+Bir `qₖ` durumu elenirken, herhangi bir `qᵢ` durumundan `qⱼ` durumuna olan geçişin yeni düzenli ifadesi (`R'ᵢⱼ`) şu formülle hesaplanır:
+
+`R'ᵢⱼ = Rᵢⱼ + Rᵢₖ(Rₖₖ)*Rₖⱼ`
+
+Burada:
+*   `Rᵢⱼ`: `qᵢ`'den `qⱼ`'ye olan mevcut ifadedir.
+*   `Rᵢₖ`: `qᵢ`'den `qₖ`'ye olan ifadedir.
+*   `Rₖₖ`: `qₖ`'den kendine olan döngünün ifadesidir.
+*   `Rₖⱼ`: `qₖ`'den `qⱼ`'ye olan ifadedir.
 
 ---
 
