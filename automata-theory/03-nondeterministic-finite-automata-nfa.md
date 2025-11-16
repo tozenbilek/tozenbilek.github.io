@@ -27,8 +27,6 @@ Bu esneklik, belirli language'ları DFA'lara göre çok daha basit ve daha az st
 
 ```mermaid
 graph LR
-    direction LR
-    
     [*] --> q0
     
     q0 -- "0,1" --> q0
@@ -131,7 +129,7 @@ graph TD
 
     subgraph "Equivalent DFA"
         direction LR
-        d_init([*]) --> A["{q₀}"]
+        [*] --> A["{q₀}"]
         A -- "0" --> B["{q₀,q₁}"]
         A -- "1" --> A
         B -- "0" --> B
