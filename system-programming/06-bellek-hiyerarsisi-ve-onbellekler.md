@@ -15,19 +15,27 @@ Modern bir işlemci çok hızlıyken, ana bellek (RAM) ona kıyasla çok yavaşt
 
 Farklı bellek türleri, hız, maliyet ve boyut arasında farklı dengeler sunar. Bu teknolojiler, hızlarına göre bir piramit şeklinde organize edilir.
 
-<pre>
-       HIZLI, KÜÇÜK, PAHALI
-      +-----------------+
-      |    Yazmaçlar    |
-      +-----------------+
-      | L1, L2, L3 Cache| (SRAM)
-      +-----------------+
-      |    Ana Bellek   | (DRAM)
-      +-----------------+
-      |   Lokal Disk    | (SSD/HDD)
-      +-----------------+
-       YAVAŞ, BÜYÜK, UCUZ
-</pre>
+```mermaid
+graph TD
+    subgraph HIZLI, KÜÇÜK, PAHALI
+        A[Yazmaçlar]
+    end
+    subgraph (SRAM)
+        B[L1, L2, L3 Cache]
+    end
+    subgraph (DRAM)
+        C[Ana Bellek]
+    end
+    subgraph (SSD/HDD)
+        D[Lokal Disk]
+    end
+    subgraph YAVAŞ, BÜYÜK, UCUZ
+        direction LR
+        D
+    end
+
+    A --> B --> C --> D
+```
 
 **Temel Fikir:** Her katman, bir altındaki daha yavaş ve daha büyük katman için bir **cache (önbellek)** görevi görür. En sık kullanılan veriler, piramidin en tepesine yakın tutulmaya çalışılır.
 

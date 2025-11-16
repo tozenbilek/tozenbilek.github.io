@@ -110,56 +110,71 @@ Bulduğumuz üç parçayı birleştirelim:
 
 ---
 
-## 4. Bitlerin Anlamını Değiştirmek: Sayıların Farklı Halleri
+## 4. Interpreting the Bits: What the Exponent Tells Us (Bitleri Yorumlamak: Üs Bize Ne Söyler?)
 
-Bilgisayar, `exp` alanındaki bitlere bakarak sayının "normal" mi, "sıfıra çok yakın" mı, yoksa "özel bir durum" mu olduğunu anlar.
+Bir kayan noktalı sayının bitlerine baktığımızda, en önemli ipucunu **üs (`exp`)** alanı verir. Bu alan, sayının hangi "kategoride" olduğunu belirleyen bir anahtar gibidir. Üç ana durum vardır:
 
-### a) Normalized Values (Normal Sayılar)
-Sayıların büyük çoğunluğunun temsil edildiği standart durumdur.
-*   **Şart:** `exp` alanı ne tamamen sıfırlardan (`00...0`) ne de tamamen birlerden (`11...1`) oluşur.
-*   **Gizli 1 Biti Kuralı:** Bilgisayar, her sayının başında `1.` varmış gibi davranır. Bu `1`'i saklamak zorunda kalmayarak fazladan bir bitlik hassasiyet kazanırız. (Yukarıdaki örneğimiz bu duruma aittir.)
-*   **Bias (Kaydırma) Yöntemi:** `exp` alanı, hem pozitif hem de negatif üsleri saklayabilmek için `Bias` adı verilen bir kaydırma değeri kullanır. Gerçek üs, `E = exp - Bias` formülüyle bulunur.
+### Case 1: Normalized (Normal Sayılar - En Yaygın Durum)
 
-### b) Denormalized Values (Sıfıra Yakın Sayılar)
-Sıfıra çok çok yakın olan minik sayıları ifade etmek için kullanılır.
-*   **Şart:** `exp` alanı tamamen `0`'lardan oluşur.
-*   Bu durumda "gizli 1 biti" kuralı geçerli değildir (sayının `0.` ile başladığı varsayılır). Bu, sayıların aniden sıfıra düşmesi yerine, yavaşça sıfıra yaklaşmasını sağlar.
+*   **Ne zaman?** `exp` alanı ne tamamen `0`'lardan ne de tamamen `1`'lerden oluşuyorsa.
+*   **Bu ne anlama gelir?** Bu, "normal", standart bir ondalıklı sayıdır. `12.75`, `-0.5`, `10000.0` gibi sayıların hepsi bu kategoriye girer.
+*   **Önemli Kural:** Bu modda, bilgisayar sayının başında gizli bir `1.` olduğunu varsayar (`1.fraction...`). Bu, fazladan bir bitlik hassasiyet kazanmamızı sağlayan akıllıca bir hiledir.
 
-### c) Special Values (Özel Durumlar)
-Bir işlemin sonucunun sayı olmadığı durumlar için özel kodlar kullanılır.
-*   **Şart:** `exp` alanı tamamen `1`'lerden oluşur.
-*   **`Infinity` (Sonsuz):** `frac` alanı tamamen `0` ise. Örneğin, `1 / 0.0`.
-*   **`NaN` (Not a Number / Sayı Değil):** `frac` alanı `0`'dan farklı ise. Örneğin, `sqrt(-1)`.
+### Case 2: Denormalized & Zeros (Sıfıra Yakın Sayılar ve Sıfırlar)
+
+*   **Ne zaman?** `exp` alanı tamamen `0`'lardan (`00...0`) oluşuyorsa.
+*   **Bu ne anlama gelir?** Sayı ya sıfırın kendisidir ya da sıfıra çok yakındır.
+    *   Eğer `frac` alanı da tamamen `0` ise, sayı **Sıfır**'dır (`+0.0` veya `-0.0`).
+    *   Eğer `frac` alanında `1` varsa, sayı **Denormalized**'dir. Bunlar, "normal" olamayacak kadar küçük sayılardır. Bu modda gizli `1.` kuralı uygulanmaz.
+
+### Case 3: Special Values (Özel Durumlar - Sonsuz ve NaN)
+
+*   **Ne zaman?** `exp` alanı tamamen `1`'lerden (`11...1`) oluşuyorsa.
+*   **Bu ne anlama gelir?** Sonuç, matematiksel bir sayı değildir.
+    *   Eğer `frac` alanı tamamen `0` ise, sonuç **Infinity (Sonsuz)**'dur. `1.0 / 0.0` gibi bir işlemin sonucudur.
+    *   Eğer `frac` alanında `1` varsa, sonuç **NaN (Not a Number - Sayı Değil)**'dir. `sqrt(-1)` veya `0.0 / 0.0` gibi geçersiz işlemlerin sonucudur.
 
 <div class="quiz-question">
-  <p><b>Soru:</b> Bir `float` hesaplaması sonucunda `exp` bitlerinin tamamı `1`, `frac` bitlerinin tamamı `0` olarak bulundu. Bu sonuç nedir?</p>
-  <div class="quiz-option">A) `NaN` (Sayı Değil)</div>
-  <div class="quiz-option">B) `+0.0`</div>
-  <div class="quiz-option" data-correct="true">C) `Infinity` (Sonsuz)</div>
-  <div class="quiz-option">D) En büyük normal sayı</div>
+  <p><b>Soru:</b> Bir `float` sayının `exp` alanı tamamen `1`'lerden, `frac` alanı ise `0`'dan farklı bir değerden oluşuyor. Bu sayı nedir?</p>
+  <div class="quiz-option">A) Sonsuz (Infinity)</div>
+  <div class="quiz-option" data-correct="true">B) Sayı Değil (NaN)</div>
+  <div class="quiz-option">C) Sıfır (Zero)</div>
+  <div class="quiz-option">D) Denormalized bir sayı</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `exp` alanının tamamen `1` olması özel bir durumu belirtir. `frac` alanının da tamamen `0` olması bu özel durumun `Infinity` (Sonsuz) olduğunu tanımlar.</p>
+    <p><b>Cevap: B.</b> `exp` alanının tamamen `1` olması, sonucun özel bir durum olduğunu gösterir. `frac` alanının `0`'dan farklı olması ise bu özel durumun `NaN` (Not a Number) olduğunu belirtir.</p>
   </div>
 </div>
 
 ---
 
-## 5. Rounding (Yuvarlama) ve C'deki Etkileri
+## 5. Rounding and Type Casting in C (C'de Yuvarlama ve Tip Dönüşümleri)
 
-Hesaplamaların sonucu genellikle mevcut bit sayısından daha fazla hassasiyet gerektirdiğinde, sonucun en yakın temsil edilebilir değere yuvarlanması gerekir. Bu, özellikle `int` ve `float`/`double` arası dönüşümlerde ilginç sonuçlara yol açar.
+Farklı sayı türleri arasında dönüşüm yapmak, C'de beklenmedik sonuçlara yol açabilir. İşte en önemli kurallar:
 
-*   `double`/`float` -> `int`: Ondalık kısım **yuvarlanmaz, doğrudan atılır (truncate)**. `(int) 3.999` işleminin sonucu `3`'tür.
-*   `int` -> `double`: Genellikle hassasiyet kaybı olmaz.
-*   `int` -> `float`: Büyük tamsayılar, `float`'ın 23 bitlik kesir alanına sığmayabilir ve bu durumda **yuvarlama** nedeniyle hassasiyet kaybı yaşanabilir. Örneğin, çok büyük bir `int` olan `123456789`, `float`'a çevrildiğinde `123456792` gibi bir değere dönüşebilir.
+*   **`float`/`double` → `int`:** Bu en tehlikeli dönüşümdür. Sayı **yuvarlanmaz**, ondalık kısmı ne olursa olsun basitçe **atılır (truncate)**.
+    ```c
+    int x = 3.99;  // x'in değeri 3 olur.
+    int y = -3.99; // y'nin değeri -3 olur.
+    ```
+
+*   **`int` → `double`:** Bu genellikle güvenlidir. `double`'ın hassasiyeti çok yüksek olduğu için veri kaybı yaşanmaz.
+
+*   **`int` → `float`:** Bu riskli olabilir. `int` çok büyük bir değerse, `float`'ın sınırlı hassasiyetine sığmayabilir. Bu durumda sayı, en yakın temsil edilebilir `float` değerine **yuvarlanır** ve hassasiyet kaybolur.
+    ```c
+    // Bu sonucun tam değeri sisteme göre değişebilir ama fikir aynıdır.
+    int big_integer = 123456789;
+    float f = (float)big_integer; 
+    // f'nin değeri 123456792.0 gibi bir şeye dönüşebilir.
+    ```
 
 <div class="quiz-question">
-  <p><b>Soru:</b> `int x = (int) -5.9;` C kodu çalıştırıldığında `x`'in değeri ne olur?</p>
-  <div class="quiz-option">A) `-6`</div>
-  <div class="quiz-option">B) `6`</div>
-  <div class="quiz-option">C) `-5.9`</div>
-  <div class="quiz-option" data-correct="true">D) `-5`</div>
+  <p><b>Soru:</b> `int x = (int)-9.99;` C kodu çalıştırıldığında `x`'in değeri ne olur?</p>
+  <div class="quiz-option">A) `-10`</div>
+  <div class="quiz-option" data-correct="true">B) `-9`</div>
+  <div class="quiz-option">C) `-9.99`</div>
+  <div class="quiz-option">D) Derleme hatası verir.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: D.</b> Kayan noktalı bir sayıyı `int`'e dönüştürürken, sayı yuvarlanmaz. Ondalık kısım (`.9`) ne olursa olsun basitçe atılır (truncate edilir). Bu nedenle sonuç `-5`'tir.</p>
+    <p><b>Cevap: B.</b> Kayan noktalı bir sayıyı `int`'e dönüştürürken, sayı en yakın tam sayıya yuvarlanmaz. Ondalık kısım (`.99`) ne olursa olsun basitçe atılır (truncate). Bu nedenle sonuç `-9`'dur.</p>
   </div>
 </div>
 
