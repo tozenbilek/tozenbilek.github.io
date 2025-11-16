@@ -24,7 +24,7 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 
 ---
 
-## 2. Bellek Organizasyonu ve Endianness (Bayt Sıralaması)
+## 2. Bellek Organizasyonu ve Endianness (Bayt Sıralaması) ([Test Sorusu](#quiz-endianness))
 
 ### Byte Ordering (Endianness)
 
@@ -56,76 +56,8 @@ Big-Endian Düzeni:              Little-Endian Düzeni:
   A+3  |  67                      A+3  |  01
 </pre>
 
----
-
-## 3. Bit Seviyesi Mantıksal Operasyonlar
-
-C dilinde, tamsayılar üzerinde bit seviyesinde mantıksal işlemler yapabiliriz.
-
-*   `&` (AND): İki bit de 1 ise sonuç 1, aksi halde 0. (Maskeleme için kullanılır)
-*   `|` (OR): En az bir bit 1 ise sonuç 1, aksi halde 0. (Bitleri ayarlamak için kullanılır)
-*   `^` (XOR): Bitler birbirinden farklı ise sonuç 1, aksi halde 0. (Bitleri ters çevirmek için kullanılır)
-*   `~` (NOT): Her biti ters çevirir (0 -> 1, 1 -> 0).
-
-### Shift (Kaydırma) Operasyonları
-
-*   `<<` (Left Shift): Bitleri sola kaydırır. Sağa 0'lar eklenir. `x << k` işlemi, `x * 2^k`'ya eşdeğerdir.
-*   `>>` (Right Shift): Bitleri sağa kaydırır. İki türü vardır:
-    *   **Logical Right Shift:** Sola 0'lar eklenir. (İşaretsiz sayılar için kullanılır)
-    *   **Arithmetic Right Shift:** En soldaki (işaret) bitinin kopyaları eklenir. Bu, sayının işaretini korur. (İşaretli sayılar için kullanılır)
-
----
-
-## 4. Tamsayıların Temsili
-
-### Unsigned (İşaretsiz) Tamsayılar
-Tüm bitler sayının büyüklüğünü temsil etmek için kullanılır. `w` bitlik bir işaretsiz tamsayı, 0 ile 2ʷ-1 arasındaki değerleri alabilir.
-
-### Signed (İşaretli) Tamsayılar: Two's Complement (İkinin Tümleyeni)
-Modern bilgisayarlarda işaretli tamsayılar için standart olan yöntem budur.
-*   En soldaki bit, **sign bit (işaret biti)** olarak adlandırılır. `0` pozitif, `1` ise negatif anlamına gelir.
-*   Pozitif bir sayının değeri, işaretsizdekiyle aynıdır.
-*   Negatif bir `x` sayısını temsil etmek için `2^w - |x|` formülü kullanılır.
-*   **Pratik Yöntem:** Bir `x` sayısının negatifini (`-x`) bulmak için, tüm bitlerini ters çevir (`~x`) ve 1 ekle (`+1`).
-
-`w` bitlik bir işaretli tamsayı, `-2^(w-1)` ile `2^(w-1) - 1` arasındaki değerleri alabilir. Dikkat ederseniz, negatif aralıkta bir sayı daha fazladır.
-
----
-
-## 5. Casting (Tip Dönüşümleri), Genişletme ve Kırpma
-
-### Expanding (Genişletme)
-Küçük bir veri tipini daha büyük bir tipe dönüştürürken (örn: `short` -> `int`):
-*   **İşaretsiz Sayılar:** Başına 0'lar eklenir (**Zero Extension**).
-*   **İşaretli Sayılar:** Sayının işaretini korumak için işaret biti kopyalanır (**Sign Extension**).
-
-### Truncating (Kırpma)
-Büyük bir veri tipini daha küçük bir tipe dönüştürürken (örn: `int` -> `short`):
-*   Yüksek anlamlı bitler atılır. Sonuç, orijinal değerden çok farklı olabilir.
-
----
-
-## 6. Tamsayı Aritmetiği
-
-### Toplama ve Overflow (Taşma)
-Hem işaretsiz hem de işaretli toplama işlemi bit seviyesinde aynı şekilde yapılır. Ancak **overflow (taşma)** durumunu farklı yorumlarlar.
-*   **Unsigned Overflow:** Sonuç, `2^w` modunda alınır. Yani, `2^w`'yi aşan kısım atılır.
-*   **Signed Overflow:** Sonuç, beklenen işaretin tersi olduğunda meydana gelir.
-    *   İki pozitif sayının toplamı negatif olursa.
-    *   İki negatif sayının toplamı pozitif olursa.
-
----
-
-### Özet ve Değerlendirme
-
-Bu bölümde, verinin en temel yapı taşı olan bitlerden başlayarak, baytlar, bellek sıralaması, mantıksal operasyonlar ve en önemlisi tamsayıların bilgisayarda nasıl temsil edildiğini öğrendik. `Two's Complement` ve `Endianness` gibi kavramlar, düşük seviyeli programlamada karşılaşılan birçok hatanın ve davranışın temelini oluşturur.
-
----
-
-### Test Soruları
-
-<div class="quiz-question">
-  <p><b>Soru 1:</b> Little-Endian bir sistemde, 32-bit `0x12345678` tamsayısı belleğin `0x100` adresine yazılırsa, `0x101` adresinde hangi bayt değeri bulunur?</p>
+<div class="quiz-question" id="quiz-endianness">
+  <p><b>Soru:</b> Little-Endian bir sistemde, 32-bit `0x12345678` tamsayısı belleğin `0x100` adresine yazılırsa, `0x101` adresinde hangi bayt değeri bulunur?</p>
   <div class="quiz-option">A) `0x12`</div>
   <div class="quiz-option">B) `0x34`</div>
   <div class="quiz-option" data-correct="true">C) `0x56`</div>
@@ -135,8 +67,132 @@ Bu bölümde, verinin en temel yapı taşı olan bitlerden başlayarak, baytlar,
   </div>
 </div>
 
-<div class="quiz-question">
-  <p><b>Soru 2:</b> 8-bit Two's Complement temsilinde, `5` (binary `00000101`) sayısının negatifi (`-5`) nasıl temsil edilir?</p>
+---
+
+## 3. Bit Seviyesi Mantıksal Operasyonlar
+
+C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güçlü operatörler bulunur. Bu operatörler, donanıma yakın seviyede kontrol ve optimizasyon imkanı tanır.
+
+Örnekler için `a = 93` (yani `01011101`) ve `b = 148` (yani `10010100`) sayılarını kullanalım.
+
+*   `&` **(AND):** İki bitte de karşılıklı olarak `1` varsa sonuç `1` olur. Genellikle belirli bitleri "maskelemek" (izole etmek) veya "sıfırlamak" için kullanılır.
+    <pre>
+      01011101  (a)
+    & 10010100  (b)
+      --------
+      00010100  (Sonuç: 20)
+    </pre>
+
+*   `|` **(OR):** İki bitten en az biri `1` ise sonuç `1` olur. Belirli bitleri "açmak" (1 yapmak) için kullanılır.
+    <pre>
+      01011101  (a)
+    | 10010100  (b)
+      --------
+      11011101  (Sonuç: 221)
+    </pre>
+
+*   `^` **(XOR - Exclusive OR):** İki bit birbirinden farklıysa (`0` ve `1`) sonuç `1` olur. Belirli bitleri "ters çevirmek" (toggle) için kullanılır.
+    <pre>
+      01011101  (a)
+    ^ 10010100  (b)
+      --------
+      11001001  (Sonuç: 201)
+    </pre>
+
+*   `~` **(NOT):** Tek bir sayının tüm bitlerini ters çevirir (`0` olanlar `1`, `1` olanlar `0` olur).
+    <pre>
+    ~ 01011101  (a)
+      --------
+      10100010  (Sonuç: -94, 2'ye tümleyen gösteriminde)
+    </pre>
+
+### Shift (Kaydırma) Operasyonları
+
+Bu operatörler, bir sayının bitlerini belirli bir sayıda sola veya sağa kaydırır.
+
+*   `<<` **(Left Shift):** Tüm bitleri sola kaydırır. Sağdan boşalan yerlere `0` eklenir. `x << k` işlemi, `x` sayısını `2^k` ile çarpmakla eşdeğerdir.
+    <pre>
+    a << 3;  // 93 sayısını 3 bit sola kaydır
+
+    Başlangıç: 01011101 (93)
+    Sonuç:     11101000 (232)
+    </pre>
+
+*   `>>` **(Right Shift):** Tüm bitleri sağa kaydırır. Bu işlemin iki türü vardır:
+    *   **Logical Right Shift (Mantıksal Sağa Kaydırma):** Soldan boşalan yerlere her zaman `0` eklenir. Bu, C'de `unsigned` (işaretsiz) tamsayılara uygulanır.
+        <pre>
+        unsigned int u = 240; // 11110000
+        u >> 2;
+
+        Başlangıç: 11110000 (240)
+        Sonuç:     00111100 (60)
+        </pre>
+    *   **Arithmetic Right Shift (Aritmetik Sağa Kaydırma):** Soldan boşalan yerlere, sayının işaretini korumak için en soldaki **işaret biti** kopyalanır. `signed` (işaretli) tamsayılara uygulanır. Negatif sayılar için bölme işleminin doğru çalışmasını sağlar.
+        <pre>
+        signed char s = -16; // 11110000 (8-bit 2'ye tümleyen)
+        s >> 2;
+
+        Başlangıç: 11110000 (-16)
+        Sonuç:     11111100 (-4)
+        </pre>
+---
+
+## 4. Tamsayıların Temsili ([Test Sorusu](#quiz-twos-complement))
+
+Bilgisayarların tamsayıları nasıl sakladığını anlamak, programlamada karşılaşılan birçok hatanın (örneğin, `overflow`) önüne geçmemizi sağlar. Sayıları temsil etmenin iki ana yolu vardır.
+
+### Unsigned (İşaretsiz) Tamsayılar
+Bu yöntemde, bir sayının sahip olduğu tüm bitler doğrudan sayının büyüklüğünü temsil eder. Negatif sayılar veya işaret bilgisi yoktur.
+
+*   `w` bitlik bir işaretsiz tamsayı, **0** ile **2ʷ-1** arasındaki değerleri alabilir.
+*   **Örnek (4-bit):** `0000` (0) ile `1111` (15) arasındaki 16 farklı sayıyı temsil edebilir.
+
+### Signed (İşaretli) Tamsayılar: Two's Complement (İkinin Tümleyeni)
+Modern bilgisayarlarda işaretli tamsayılar için standart olan ve aritmetik işlemleri çok basitleştiren yöntem budur.
+
+*   **Sign Bit (İşaret Biti):** En soldaki bit işaret için ayrılmıştır. `0` sayının pozitif, `1` ise negatif olduğunu gösterir.
+*   **Değer Aralığı:** `w` bitlik bir işaretli tamsayı, **-2ʷ⁻¹** ile **2ʷ⁻¹-1** arasındaki değerleri alabilir.
+*   **Örnek (4-bit):** `-2³` (-8) ile `2³-1` (+7) arasındaki 16 farklı sayıyı temsil edebilir.
+
+Aşağıdaki tablo, 4-bitlik bir sayının işaretsiz ve işaretli (ikinin tümleyeni) olarak nasıl yorumlandığını gösterir:
+
+<pre>
+| Bit Deseni | Unsigned Değeri | Signed (Two's Complement) Değeri |
+|------------|-----------------|----------------------------------|
+|   0000     |        0        |                0                 |
+|   0001     |        1        |                1                 |
+|   0010     |        2        |                2                 |
+|   0011     |        3        |                3                 |
+|   0100     |        4        |                4                 |
+|   0101     |        5        |                5                 |
+|   0110     |        6        |                6                 |
+|   0111     |        7        |                7                 |
+|   1000     |        8        |               -8                 |
+|   1001     |        9        |               -7                 |
+|   1010     |       10        |               -6                 |
+|   1011     |       11        |               -5                 |
+|   1100     |       12        |               -4                 |
+|   1101     |       13        |               -3                 |
+|   1110     |       14        |               -2                 |
+|   1111     |       15        |               -1                 |
+</pre>
+
+**Bir Sayının Negatifini Bulma (Pratik Yöntem): `(~x + 1)`**
+
+Bir `x` sayısının negatifini (`-x`) bulmak için:
+1.  Sayının tüm bitlerini ters çevir (`~` operatörü).
+2.  Sonuca 1 ekle.
+
+**Örnek: 5 sayısını -5 yapalım (4-bit üzerinde)**
+1.  `5`'in bit deseni: `0101`
+2.  Tüm bitleri ters çevir (`~`): `1010`
+3.  Sonuca 1 ekle: `1010 + 1 = 1011`
+4.  Tabloya baktığımızda `1011`'in gerçekten de `-5`'e karşılık geldiğini görürüz.
+
+Bu sistemin en büyük avantajı, toplama ve çıkarma işlemlerinin işaretli ve işaretsiz sayılar için aynı donanım devresiyle yapılabilmesidir.
+
+<div class="quiz-question" id="quiz-twos-complement">
+  <p><b>Soru:</b> 8-bit Two's Complement temsilinde, `5` (binary `00000101`) sayısının negatifi (`-5`) nasıl temsil edilir?</p>
   <div class="quiz-option">A) `10000101`</div>
   <div class="quiz-option" data-correct="true">B) `11111011`</div>
   <div class="quiz-option">C) `11111010`</div>
@@ -149,13 +205,119 @@ Bu bölümde, verinin en temel yapı taşı olan bitlerden başlayarak, baytlar,
   </div>
 </div>
 
-<div class="quiz-question">
-  <p><b>Soru 3:</b> 8-bit `signed char` (işaretli bir tamsayı) olan `x`'in değeri `100`'dür. Bu değişken, 16-bit `short`'a (işaretli bir tamsayıya) `sign extension` (genişletilirse) yeni değeri ne olur?</p>
-  <div class="quiz-option" data-correct="true">A) `100`</div>
-  <div class="quiz-option">B) `-156`</div>
-  <div class="quiz-option">C) `25600`</div>
-  <div class="quiz-option">D) `-100`</div>
+---
+
+## 5. Casting (Tip Dönüşümleri), Genişletme ve Kırpma ([Test Sorusu](#quiz-casting))
+
+C gibi dillerde, farklı tamsayı tipleri arasında dönüşüm yapmak yaygındır (`short`'u `int`'e atamak gibi). Bu dönüşümler derleyici tarafından otomatik olarak yapılır, ancak arka planda bitlerin nasıl değiştiğini bilmek, beklenmedik hataları anlamak için kritiktir.
+
+### Expanding (Genişletme): Küçük Tipten Büyük Tipe
+Bir değeri daha fazla bit ile temsil etmektir (örn: 4-bit'ten 8-bit'e). Değerin korunması esastır.
+
+*   **Zero Extension (Sıfırla Genişletme):** `unsigned` (işaretsiz) sayılar için kullanılır. Sayının soluna (yüksek anlamlı bitlere) `0`'lar eklenir.
+    <pre>
+    // 4-bit unsigned 9 sayısını 8-bit'e genişletme
+    Başlangıç (4-bit): 1001      (Değer: 9)
+    Sonuç (8-bit):     00001001  (Değer: 9)
+    </pre>
+
+*   **Sign Extension (İşaretle Genişletme):** `signed` (işaretli) sayılar için kullanılır. Sayının orijinal işaretini korumak için, en soldaki **işaret biti** kopyalanarak yeni bitler doldurulur.
+    *   **Pozitif Sayı Örneği:**
+        <pre>
+        // 4-bit signed 7 sayısını 8-bit'e genişletme
+        Başlangıç (4-bit): 0111      (Değer: 7)
+        Sonuç (8-bit):     00000111  (Değer: 7) - İşaret biti 0 olduğu için 0'lar eklendi.
+        </pre>
+    *   **Negatif Sayı Örneği:**
+        <pre>
+        // 4-bit signed -7 sayısını 8-bit'e genişletme
+        Başlangıç (4-bit): 1001      (Değer: -7)
+        Sonuç (8-bit):     11111001  (Değer: -7) - İşaret biti 1 olduğu için 1'ler eklendi.
+        </pre>
+
+### Truncating (Kırpma): Büyük Tipten Küçük Tipe
+Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem sırasında bilgi kaybı yaşanabilir ve sayının değeri tamamen değişebilir.
+
+*   Kural basittir: Yüksek anlamlı bitler (soldaki bitler) basitçe **atılır**.
+    <pre>
+    // 8-bit 134 sayısını 4-bit'e kırpma
+    Başlangıç (8-bit): 10000110  (Değer: 134)
+    Atılan Kısım:   1000
+    Kalan Kısım:         0110
+
+    Sonuç (4-bit):     0110      (Değer: 6) - Sayı tamamen değişti!
+    </pre>
+
+<div class="quiz-question" id="quiz-casting">
+  <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayı olan `-3` (`1101`), 8-bit bir tamsayıya `Sign Extension` ile genişletilirse sonuç ne olur?</p>
+  <div class="quiz-option">A) `00001101`</div>
+  <div class="quiz-option">B) `00000011`</div>
+  <div class="quiz-option" data-correct="true">C) `11111101`</div>
+  <div class="quiz-option">D) `10000011`</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> `100` pozitif bir sayıdır, bu yüzden işaret biti `0`'dır. `Sign Extension` (İşaretli genişletme) sırasında, sayının işaretini korumak için yeni eklenen bitlere eski işaret biti (`0`) kopyalanır. Bu nedenle değer değişmez. Eğer sayı negatif olsaydı, başına `1`'ler eklenerek değeri korunurdu.</p>
+    <p><b>Cevap: C.</b> `Sign Extension` (İşaretli genişletme) sırasında, sayının işaretini korumak için orijinal işaret biti (`-3` için en soldaki `1`) yeni eklenen bitlere kopyalanır. Bu nedenle sonuç `11111101` olur.</p>
   </div>
 </div>
+
+---
+
+## 6. Tamsayı Toplaması ve Overflow (Taşma) ([Test Sorusu](#quiz-overflow))
+
+Bilgisayar aritmetiği, gerçek dünyadaki matematikten farklıdır çünkü sınırlı sayıda bit ile çalışır. Bu sınırlılık, **overflow (taşma)** adı verilen duruma yol açabilir.
+
+Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamamen aynı şekilde yapılır. Fark, taşma durumunun nasıl yorumlandığında ortaya çıkar.
+
+### Unsigned Overflow (İşaretsiz Taşma)
+İşaretsiz toplama işleminde, sonuç `w` bitin temsil edebileceği maksimum değeri aştığında, sonuç `2ʷ` modunda alınır. Bu, sonucun "başa dönmesi" anlamına gelir.
+
+*   **Örnek (4-bit unsigned):** `10 + 7 = ?`
+    *   `10`'un deseni: `1010`
+    *   `7`'nin deseni: `0111`
+    <pre>
+      1010  (10)
+    + 0111  (7)
+      ----
+     10001  (17)
+    </pre>
+    *   Sonuç 5 bit (`10001`) olduğu için 4-bit'e sığmaz. En soldaki bit atılır ve sonuç `0001` olur.
+    *   Yani, 4-bit'lik işaretsiz dünyada `10 + 7 = 1`.
+
+### Signed Overflow (İşaretli Taşma)
+İşaretli toplama işleminde taşma, sonuç beklenen işaretin tersi olduğunda meydana gelir. Toplama işlemi mantıksal olarak yanlıştır.
+
+*   **Pozitif Taşma:** İki pozitif sayının toplamı negatif olursa.
+    *   **Örnek (4-bit signed):** `5 + 4 = ?`
+        *   `5`'in deseni: `0101`
+        *   `4`'ün deseni: `0100`
+        <pre>
+          0101  (+5)
+        + 0100  (+4)
+          ----
+          1001  (-7)
+        </pre>
+        *   Sonuç `+9` olmalıydı, ancak 4-bit `signed` aralığı `-8` ile `+7` arasıdır. Sonuç bu aralığın dışına taştı ve işaret biti `1` oldu, yani negatif bir sayı (`-7`) elde edildi. Bu bir `overflow`'dur.
+
+*   **Negatif Taşma:** İki negatif sayının toplamı pozitif olursa.
+    *   **Örnek (4-bit signed):** `(-5) + (-4) = ?`
+        *   `-5`'in deseni: `1011`
+        *   `-4`'ün deseni: `1100`
+        <pre>
+          1011  (-5)
+        + 1100  (-4)
+          ----
+         10111  (-9)
+        </pre>
+        *   Sonuç `-9` olmalıydı. 5 bitlik sonuçtan en soldaki biti atarsak elimizde `0111` kalır. Bu da `+7`'dir. İki negatif sayının toplamı pozitif çıktı. Bu da bir `overflow`'dur.
+
+<div class="quiz-question" id="quiz-overflow">
+  <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayılar kullanılarak `5 + 5` işlemi yapılırsa sonuç ne olur ve neden?</p>
+  <div class="quiz-option">A) `10` (Sonuç doğru)</div>
+  <div class="quiz-option" data-correct="true">B) `-6` (Pozitif overflow oluştu)</div>
+  <div class="quiz-option">C) `10` (Unsigned olarak doğru)</div>
+  <div class="quiz-option">D) `2` (Negatif overflow oluştu)</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `5`'in 4-bit deseni `0101`'dir. `0101 + 0101 = 1010`. `1010` deseni, 4-bit Two's Complement'te `-6`'ya karşılık gelir. İki pozitif sayının toplamı negatif çıktığı için bu bir pozitif `overflow` durumudur.</p>
+  </div>
+</div>
+
+---
