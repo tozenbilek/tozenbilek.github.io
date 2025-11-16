@@ -14,6 +14,6 @@ Soldaki menüyü kullanarak konular arasında gezinebilirsin. Başarılar!
 
 ## Dersler
 
-*   **Sistem Programlama:** C programlama dilinin temellerinden başlayarak, bit ve byte'ların dünyasına, assembly diline, bellek hiyerarşisine ve derleme süreçlerine kadar sistem programlamanın temel taşlarını ele alan notlar.
+*   **System Programming:** C programlama dilinin temellerinden başlayarak, bit ve byte'ların dünyasına, assembly diline, bellek hiyerarşisine ve derleme süreçlerine kadar sistem programlamanın temel taşlarını ele alan notlar.
 
 *   **Computer Vision:** Bir bilgisayarın görsel dünyayı nasıl "anladığını" inceleyen notlar. Görüntü filtreleme, kenar tespiti, SIFT gibi özellik eşleştirme yöntemleri, kamera modelleri ve görüntü segmentasyonu gibi konuları kapsar.

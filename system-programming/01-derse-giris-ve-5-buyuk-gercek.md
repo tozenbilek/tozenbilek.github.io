@@ -2,7 +2,7 @@
 layout: default
 title: Derse Giriş ve 5 Büyük Gerçek
 nav_order: 1
-parent: Sistem Programlama
+parent: System Programming
 ---
 
 # Derse Giriş ve 5 Büyük Gerçek

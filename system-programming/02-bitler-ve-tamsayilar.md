@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Bitler, Baytlar ve Tamsayılar
+title: Bitler ve Tamsayılar
 nav_order: 2
-parent: Sistem Programlama
+parent: System Programming
 ---
 
 # Bitler, Baytlar ve Tamsayılar

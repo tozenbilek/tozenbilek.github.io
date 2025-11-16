@@ -2,7 +2,7 @@
 layout: default
 title: Makine Kodu Temelleri
 nav_order: 4
-parent: Sistem Programlama
+parent: System Programming
 ---
 
 # Makine Kodu Temelleri: C'den Assembly'ye

@@ -2,7 +2,7 @@
 layout: default
 title: Kayan Noktalı Sayılar (Floating Point)
 nav_order: 3
-parent: Sistem Programlama
+parent: System Programming
 ---
 
 # Kayan Noktalı Sayılar (Floating Point)

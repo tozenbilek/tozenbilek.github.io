@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Aritmetik, Kontrol Akışı ve Prosedürler
+title: Aritmetik ve Kontrol Akışı
 nav_order: 5
-parent: Sistem Programlama
+parent: System Programming
 ---
 
 # Aritmetik, Kontrol Akışı ve Prosedürler

@@ -2,7 +2,7 @@
 layout: default
 title: Bellek Hiyerarşisi ve Önbellekler
 nav_order: 6
-parent: Sistem Programlama
+parent: System Programming
 ---
 
 # Bellek Hiyerarşisi ve Önbellekler (Caches)
