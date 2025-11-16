@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Model Fitting with RANSAC
+title: RANSAC ile Model Uydurma
 nav_order: 20
 parent: Computer Vision
 ---
 
-# Model Fitting with RANSAC: Getting Rid of Outliers
+# RANSAC ile Model Uydurma
 
 SIFT ve Ratio Test gibi gelişmiş teknikler, iki görüntü arasında oldukça güvenilir bir özellik eşleşmesi seti üretir. Ancak, bu setin içinde bile neredeyse her zaman bir miktar **outlier (hatalı eşleşme)** bulunur. Bu hatalı eşleşmeler, verinin geri kalanına uymayan "aykırı" değerlerdir.
 

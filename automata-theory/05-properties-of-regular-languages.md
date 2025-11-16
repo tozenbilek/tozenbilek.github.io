@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Properties of Regular Languages
+title: Düzenli Dillerin Özellikleri
 nav_order: 5
 parent: Automata Theory
 ---

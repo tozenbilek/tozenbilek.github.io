@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Stereo Vision and Depth Perception
+title: Stereo Vision ve Derinlik Algılama
 nav_order: 16
 parent: Computer Vision
 ---
 
-# Stereo Vision and Depth Perception
+# Stereo Vision ve Derinlik Algılama
 
 Tek bir 2D görüntüden 3D yapıyı çıkarmak (derinliği anlamak) doğası gereği belirsiz bir problemdir. Aynı 2D görüntüyü oluşturabilecek sonsuz sayıda farklı 3D sahne olabilir. İnsanlar ve birçok hayvan, bu belirsizliği çözmek için iki göz kullanır. Computer Vision'da bu prensibi taklit eden alana **Stereo Vision** denir.
 

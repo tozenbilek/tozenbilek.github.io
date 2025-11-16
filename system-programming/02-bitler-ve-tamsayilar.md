@@ -26,9 +26,10 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 
 ## 2. Bellek Organizasyonu ve Endianness (Bayt Sıralaması)
 
-Bellek, devasa bir bayt dizisi olarak düşünülebilir. Her baytın kendine özgü bir adresi vardır. Peki, bir kelime gibi birden fazla bayttan oluşan bir veri belleğe nasıl yerleşir? İşte burada **Endianness** kavramı devreye girer.
+### Byte Ordering (Endianness)
+Bellek, her biri özgün bir adrese sahip olan sıralı bir bayt dizisi olarak modellenir. Birden fazla bayttan oluşan `word` (kelime) gibi veri türleri bellekte saklanırken, bu baytların hangi sırayla yerleştirileceği önem kazanır. Bu sıralama kuralına **Endianness** denir.
 
-Diyelim ki `0x01234567` sayısını belleğe yazmak istiyoruz.
+İki temel `endianness` türü vardır:
 
 *   **Big-Endian:** En anlamlı bayt (`01`), en düşük bellek adresine yazılır. İnsanların sayıları okuma şekline benzer.
     *   Adres `A`: `01`

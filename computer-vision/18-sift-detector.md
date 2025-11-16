@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Scale-Invariant Features and the SIFT Detector
+title: Scale-Invariant Özellikler ve SIFT Detector
 nav_order: 18
 parent: Computer Vision
 ---
 
-# Scale-Invariant Features and the SIFT Detector
+# Scale-Invariant Özellikler ve SIFT Detector
 
 Harris köşe dedektörü, döndürme gibi dönüşümlere karşı dayanıklı olsa da, en büyük zayıflığı ölçek değişikliklerine karşı hassas olmasıydı. Bir nesneye yaklaştıkça veya uzaklaştıkça, Harris dedektörü aynı noktaları güvenilir bir şekilde bulamaz. **Scale-Invariant Feature Transform (SIFT)**, tam olarak bu sorunu çözmek için geliştirilmiştir.
 

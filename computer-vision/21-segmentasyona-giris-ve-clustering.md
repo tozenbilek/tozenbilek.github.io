@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Intro to Segmentation and Clustering
+title: Segmentasyona Giriş ve Clustering
 nav_order: 21
 parent: Computer Vision
 ---
 
-# Image Segmentation: Intro and Clustering
+# Segmentasyona Giriş ve Clustering
 
 Şimdiye kadar, görüntülerden kenarlar, köşeler ve SIFT gibi yerel özellikleri nasıl çıkaracağımızı öğrendik. **Image Segmentation (Görüntü Segmentasyonu)** ise daha global bir hedefe sahiptir: bir görüntüyü, piksellerin ait olduğu nesnelere veya bölgelere göre anlamlı gruplara ayırmak.
 
