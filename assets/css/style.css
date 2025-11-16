@@ -11,13 +11,31 @@
     --light-text: #ffffff;
 }
 
+/* Quiz Styling */
 .quiz-question {
-    border: 1px solid var(--dark-border);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 24px;
-    background-color: var(--light-bg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  --quiz-bg-color: transparent; /* Arka planı şeffaf yap */
+  --quiz-border-color: #e0e0e0;
+  --quiz-shadow-color: rgba(0, 0, 0, 0.05);
+  --option-hover-bg: #f8f9fa;
+  --correct-bg: #d4edda;
+  --correct-border: #c3e6cb;
+  --incorrect-bg: #f8d7da;
+  --incorrect-border: #f5c6cb;
+  --explanation-bg: #f1f3f5;
+  --explanation-border: #dee2e6;
+
+  background-color: var(--quiz-bg-color);
+  border: 1px solid var(--quiz-border-color);
+  border-radius: 8px;
+  padding: 18px; /* Padding'i biraz azalttım */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px var(--quiz-shadow-color);
+}
+
+.quiz-question p {
+  font-size: 1em; /* Font boyutunu küçülttüm */
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 
 .quiz-question p b {
@@ -25,19 +43,18 @@
     color: var(--text-color);
 }
 
-.quiz-question .quiz-option {
-    display: block;
-    padding: 14px 18px;
-    border: 1px solid var(--dark-border);
-    border-radius: 6px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    background-color: var(--light-text);
-    color: var(--text-color);
+.quiz-option {
+  background-color: #fff;
+  border: 1px solid var(--quiz-border-color);
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 8px; /* Şıklar arası mesafeyi azalttım */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  font-size: 0.95em; /* Font boyutunu küçülttüm */
 }
 
-.quiz-question .quiz-option:hover {
+.quiz-option:hover {
     background-color: #e9ecef;
     border-color: #ced4da;
     transform: translateY(-2px);
