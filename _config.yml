@@ -14,8 +14,13 @@ search_enabled: true
 
 # Just the Docs specific settings
 just_the_docs:
-  # Enable Mermaid diagrams
-  mermaid:
-    # Version of mermaid library
-    # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
-    version: "9.1.3"
+  # Aux links for the header
+  aux_links:
+    "GitHub Repo":
+      - "https://github.com/tozenbilek/tozenbilek.github.io"
+
+# Enable Mermaid diagrams
+mermaid:
+  # Version of mermaid library
+  # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
+  version: "9.1.3"
