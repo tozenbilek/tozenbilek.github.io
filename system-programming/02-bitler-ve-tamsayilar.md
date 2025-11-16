@@ -11,12 +11,12 @@ Dijital dünyadaki her şeyin temelinde **bit**'ler yatar. Bu bölümde, verinin
 
 ---
 
-## 1. Bilginin İkili (Binary) Temsili
+## 1. Binary (İkili) Temsili
 
 Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: açık veya kapalı, yüksek voltaj veya düşük voltaj. Bu iki duruma karşılık gelen rakamlar **1** ve **0**'dır. Tek bir 1 veya 0'a **bit** denir.
 
-*   **Bayt (Byte):** 8 bitten oluşan bir grupdur. Bellekteki en küçük adreslenebilir birimdir. Bir bayt, `00000000`'dan `11111111`'e kadar 256 (2⁸) farklı değer alabilir.
-*   **Kelime (Word):** Bir işlemcinin tek seferde işlediği doğal veri boyutudur. Modern sistemlerde genellikle 32-bit (4 bayt) veya 64-bit (8 bayt) olur.
+*   **Byte (Bayt):** 8 bitten oluşan bir grupdur. Bellekteki en küçük adreslenebilir birimdir. Bir bayt, `00000000`'dan `11111111`'e kadar 256 (2⁸) farklı değer alabilir.
+*   **Word (Kelime):** Bir işlemcinin tek seferde işlediği doğal veri boyutudur. Modern sistemlerde genellikle 32-bit (4 bayt) veya 64-bit (8 bayt) olur.
 
 **Hexadecimal (Onaltılık) Gösterim:** İkili sayılar çok uzun olabildiği için, genellikle daha kompakt olan hexadecimal (16'lık taban) gösterimi kullanılır. Her bir hexadecimal rakam, 4 bite karşılık gelir.
 *   Rakamlar: `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F`
@@ -24,7 +24,7 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 
 ---
 
-## 2. Bellek Organizasyonu ve Bayt Sıralaması (Endianness)
+## 2. Bellek Organizasyonu ve Endianness (Bayt Sıralaması)
 
 Bellek, devasa bir bayt dizisi olarak düşünülebilir. Her baytın kendine özgü bir adresi vardır. Peki, bir kelime gibi birden fazla bayttan oluşan bir veri belleğe nasıl yerleşir? İşte burada **Endianness** kavramı devreye girer.
 
@@ -55,7 +55,7 @@ C dilinde, tamsayılar üzerinde bit seviyesinde mantıksal işlemler yapabiliri
 *   `^` (XOR): Bitler birbirinden farklı ise sonuç 1, aksi halde 0. (Bitleri ters çevirmek için kullanılır)
 *   `~` (NOT): Her biti ters çevirir (0 -> 1, 1 -> 0).
 
-### Kaydırma (Shift) Operasyonları
+### Shift (Kaydırma) Operasyonları
 
 *   `<<` (Left Shift): Bitleri sola kaydırır. Sağa 0'lar eklenir. `x << k` işlemi, `x * 2^k`'ya eşdeğerdir.
 *   `>>` (Right Shift): Bitleri sağa kaydırır. İki türü vardır:
@@ -66,12 +66,12 @@ C dilinde, tamsayılar üzerinde bit seviyesinde mantıksal işlemler yapabiliri
 
 ## 4. Tamsayıların Temsili
 
-### İşaretsiz (Unsigned) Tamsayılar
+### Unsigned (İşaretsiz) Tamsayılar
 Tüm bitler sayının büyüklüğünü temsil etmek için kullanılır. `w` bitlik bir işaretsiz tamsayı, 0 ile 2ʷ-1 arasındaki değerleri alabilir.
 
-### İşaretli (Signed) Tamsayılar: Two's Complement (İkinin Tümleyeni)
+### Signed (İşaretli) Tamsayılar: Two's Complement (İkinin Tümleyeni)
 Modern bilgisayarlarda işaretli tamsayılar için standart olan yöntem budur.
-*   En soldaki bit, **işaret biti (sign bit)** olarak adlandırılır. `0` pozitif, `1` ise negatif anlamına gelir.
+*   En soldaki bit, **sign bit (işaret biti)** olarak adlandırılır. `0` pozitif, `1` ise negatif anlamına gelir.
 *   Pozitif bir sayının değeri, işaretsizdekiyle aynıdır.
 *   Negatif bir `x` sayısını temsil etmek için `2^w - |x|` formülü kullanılır.
 *   **Pratik Yöntem:** Bir `x` sayısının negatifini (`-x`) bulmak için, tüm bitlerini ters çevir (`~x`) ve 1 ekle (`+1`).
@@ -80,14 +80,14 @@ Modern bilgisayarlarda işaretli tamsayılar için standart olan yöntem budur.
 
 ---
 
-## 5. Tip Dönüşümleri (Casting), Genişletme ve Kırpma
+## 5. Casting (Tip Dönüşümleri), Genişletme ve Kırpma
 
-### Genişletme (Expanding)
+### Expanding (Genişletme)
 Küçük bir veri tipini daha büyük bir tipe dönüştürürken (örn: `short` -> `int`):
 *   **İşaretsiz Sayılar:** Başına 0'lar eklenir (**Zero Extension**).
 *   **İşaretli Sayılar:** Sayının işaretini korumak için işaret biti kopyalanır (**Sign Extension**).
 
-### Kırpma (Truncating)
+### Truncating (Kırpma)
 Büyük bir veri tipini daha küçük bir tipe dönüştürürken (örn: `int` -> `short`):
 *   Yüksek anlamlı bitler atılır. Sonuç, orijinal değerden çok farklı olabilir.
 
@@ -95,8 +95,8 @@ Büyük bir veri tipini daha küçük bir tipe dönüştürürken (örn: `int` -
 
 ## 6. Tamsayı Aritmetiği
 
-### Toplama ve Taşma (Overflow)
-Hem işaretsiz hem de işaretli toplama işlemi bit seviyesinde aynı şekilde yapılır. Ancak **taşma (overflow)** durumunu farklı yorumlarlar.
+### Toplama ve Overflow (Taşma)
+Hem işaretsiz hem de işaretli toplama işlemi bit seviyesinde aynı şekilde yapılır. Ancak **overflow (taşma)** durumunu farklı yorumlarlar.
 *   **Unsigned Overflow:** Sonuç, `2^w` modunda alınır. Yani, `2^w`'yi aşan kısım atılır.
 *   **Signed Overflow:** Sonuç, beklenen işaretin tersi olduğunda meydana gelir.
     *   İki pozitif sayının toplamı negatif olursa.
@@ -138,12 +138,12 @@ Bu bölümde, verinin en temel yapı taşı olan bitlerden başlayarak, baytlar,
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 3:</b> 8-bit işaretli bir tamsayı (`signed char`) olan `x`'in değeri `100`'dür. Bu değişken, 16-bit işaretli bir tamsayıya (`short`) genişletilirse (sign extension) yeni değeri ne olur?</p>
+  <p><b>Soru 3:</b> 8-bit `signed char` (işaretli bir tamsayı) olan `x`'in değeri `100`'dür. Bu değişken, 16-bit `short`'a (işaretli bir tamsayıya) `sign extension` (genişletilirse) yeni değeri ne olur?</p>
   <div class="quiz-option" data-correct="true">A) `100`</div>
   <div class="quiz-option">B) `-156`</div>
   <div class="quiz-option">C) `25600`</div>
   <div class="quiz-option">D) `-100`</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> `100` pozitif bir sayıdır, bu yüzden işaret biti `0`'dır. İşaretli genişletme (Sign Extension) sırasında, sayının işaretini korumak için yeni eklenen bitlere eski işaret biti (`0`) kopyalanır. Bu nedenle değer değişmez. Eğer sayı negatif olsaydı, başına `1`'ler eklenerek değeri korunurdu.</p>
+    <p><b>Cevap: A.</b> `100` pozitif bir sayıdır, bu yüzden işaret biti `0`'dır. `Sign Extension` (İşaretli genişletme) sırasında, sayının işaretini korumak için yeni eklenen bitlere eski işaret biti (`0`) kopyalanır. Bu nedenle değer değişmez. Eğer sayı negatif olsaydı, başına `1`'ler eklenerek değeri korunurdu.</p>
   </div>
 </div>

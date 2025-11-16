@@ -7,30 +7,30 @@ parent: Computer Vision
 
 # Şablon Eşleştirme (Template Matching)
 
-Filtrelemeyi sadece gürültü azaltma veya bulanıklaştırma için değil, aynı zamanda bir görüntü içinde belirli bir deseni veya şablonu bulmak için de kullanabiliriz. Bu tekniğe **Şablon Eşleştirme (Template Matching)** denir ve temelinde **korelasyon** operasyonu yatar.
+Filtrelemeyi sadece gürültü azaltma veya bulanıklaştırma için değil, aynı zamanda bir görüntü içinde belirli bir deseni veya şablonu bulmak için de kullanabiliriz. Bu tekniğe **Template Matching (Şablon Eşleştirme)** denir ve temelinde **korelasyon** operasyonu yatar.
 
 ---
 
 ## 1. Temel Fikir
 
 Elimizde iki görüntü olduğunu varsayalım:
-1.  **Sahne (Scene):** İçinde arama yapacağımız büyük görüntü.
-2.  **Şablon (Template):** Aradığımız nesneyi içeren küçük görüntü (örneğin, Waldo'nun yüzü).
+1.  **Scene (Sahne):** İçinde arama yapacağımız büyük görüntü.
+2.  **Template (Şablon):** Aradığımız nesneyi içeren küçük görüntü (örneğin, Waldo'nun yüzü).
 
 Amaç, şablonun sahne görüntüsü içindeki konumunu bulmaktır.
 
 Bunu yapmak için, şablonu bir **filtre kerneli** olarak kullanırız. Şablonu, sahne görüntüsü üzerinde piksel piksel kaydırırız ve her konumda, şablon ile altındaki sahne bölgesi arasında bir **benzerlik skoru** hesaplarız. En yüksek benzerlik skorunu veren konum, şablonun sahnede bulunduğu en olası yerdir.
 
 ![Template Matching](https://via.placeholder.com/700x300.png?text=Şablon+->+Sahne+Üzerinde+Kaydırılır+->+Benzerlik+Haritası)
-*Görsel: Şablon (template), sahne görüntüsü üzerinde kaydırılarak her konum için bir benzerlik skoru hesaplanır. Bu skorların oluşturduğu haritada en parlak nokta, en iyi eşleşmeyi gösterir.*
+*Görsel: Template (şablon), sahne görüntüsü üzerinde kaydırılarak her konum için bir benzerlik skoru hesaplanır. Bu skorların oluşturduğu haritada en parlak nokta, en iyi eşleşmeyi gösterir.*
 
 ---
 
-## 2. Benzerlik Ölçütü: Normalize Edilmiş Çapraz Korelasyon (NCC)
+## 2. Benzerlik Ölçütü: Normalized Cross-Correlation (NCC)
 
 Basit bir korelasyon (piksellerin çarpımlarının toplamı), görüntüdeki parlaklık değişimlerinden çok etkilenir. Örneğin, sahnenin bir kısmı daha aydınlık, bir kısmı daha karanlıksa, bu durum benzerlik skorunu yanıltabilir.
 
-Bu sorunu çözmek için **Normalize Edilmiş Çapraz Korelasyon (Normalized Cross-Correlation - NCC)** kullanılır. NCC, hem şablonun hem de altındaki sahne bölgesinin piksel değerlerini, kendi ortalamalarını çıkarıp standart sapmalarına bölerek normalize eder. Bu, işlemin parlaklık ve kontrasttaki genel değişikliklere karşı dayanıklı olmasını sağlar.
+Bu sorunu çözmek için **Normalized Cross-Correlation (NCC - Normalize Edilmiş Çapraz Korelasyon)** kullanılır. NCC, hem şablonun hem de altındaki sahne bölgesinin piksel değerlerini, kendi ortalamalarını çıkarıp standart sapmalarına bölerek normalize eder. Bu, işlemin parlaklık ve kontrasttaki genel değişikliklere karşı dayanıklı olmasını sağlar.
 
 Sonuç, `-1` (tamamen zıt) ile `+1` (tamamen aynı) arasında bir benzerlik skoru olur.
 
@@ -41,18 +41,18 @@ Sonuç, `-1` (tamamen zıt) ile `+1` (tamamen aynı) arasında bir benzerlik sko
 NCC tabanlı şablon eşleştirme, basit ve etkili bir yöntem olmasına rağmen, bazı önemli sınırlılıklara sahiptir:
 
 *   **Ölçek Değişimi:** Eğer sahnedeki nesne, şablondakinden daha büyük veya daha küçükse, eşleşme skoru düşük olur.
-*   **Dönme (Rotation):** Eğer sahnedeki nesne, şablona göre dönmüş bir açıyla duruyorsa, eşleşme başarısız olur.
+*   **Rotation (Dönme):** Eğer sahnedeki nesne, şablona göre dönmüş bir açıyla duruyorsa, eşleşme başarısız olur.
 *   **Bakış Açısı Değişimi:** Nesnenin 3D yapısı nedeniyle farklı bir bakış açısından çekilmiş görüntüsü, şablonla eşleşmez.
 *   **Aydınlatma:** NCC, genel parlaklık değişimlerine karşı dayanıklı olsa da, güçlü gölgeler veya vurgular gibi karmaşık aydınlatma değişiklikleri performansı düşürebilir.
 
-Bu sınırlılıklardan dolayı, basit şablon eşleştirme en iyi, aranan nesnenin boyutu, açısı ve görünümünün çok fazla değişmediği kontrollü ortamlarda çalışır (örneğin, bir üretim bandındaki parçaları bulmak). Daha karmaşık tanıma görevleri için, ileriki konularda göreceğimiz **özellik (feature) tabanlı** yöntemler kullanılır.
+Bu sınırlılıklardan dolayı, basit şablon eşleştirme en iyi, aranan nesnenin boyutu, açısı ve görünümünün çok fazla değişmediği kontrollü ortamlarda çalışır (örneğin, bir üretim bandındaki parçaları bulmak). Daha karmaşık tanıma görevleri için, ileriki konularda göreceğimiz **feature-based (özellik tabanlı)** yöntemler kullanılır.
 
 ---
 
 ### Test Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Şablon eşleştirme (template matching) sırasında basit korelasyon yerine Normalize Edilmiş Çapraz Korelasyon (NCC) kullanılmasının ana nedeni nedir?</p>
+  <p><b>Soru 1:</b> Template matching (şablon eşleştirme) sırasında basit korelasyon yerine Normalized Cross-Correlation (NCC) kullanılmasının ana nedeni nedir?</p>
   <div class="quiz-option" data-correct="true">A) Görüntüdeki parlaklık ve kontrast değişikliklerine karşı daha dayanıklı olmak.</div>
   <div class="quiz-option">B) Hesaplamanın daha hızlı olması.</div>
   <div class="quiz-option">C) Nesnenin döndürülmüş hallerini de bulabilmek.</div>

@@ -7,7 +7,7 @@ parent: System Programming
 
 # Makine Kodu Temelleri: C'den Assembly'ye
 
-Yazdığımız C kodu, işlemci tarafından doğrudan anlaşılamaz. Bir **derleyici (compiler)**, bu insan tarafından okunabilir kodu, işlemcinin yürütebileceği düşük seviyeli **makine komutlarına (machine instructions)** dönüştürür. Bu komutların insan tarafından okunabilir gösterimine **Assembly dili** denir. Bu bölümde, bu dönüşüm sürecini ve Assembly dilinin temellerini inceleyeceğiz.
+Yazdığımız C kodu, işlemci tarafından doğrudan anlaşılamaz. Bir **compiler (derleyici)**, bu insan tarafından okunabilir kodu, işlemcinin yürütebileceği düşük seviyeli **machine instructions (makine komutlarına)** dönüştürür. Bu komutların insan tarafından okunabilir gösterimine **Assembly dili** denir. Bu bölümde, bu dönüşüm sürecini ve Assembly dilinin temellerini inceleyeceğiz.
 
 ---
 
@@ -16,11 +16,11 @@ Yazdığımız C kodu, işlemci tarafından doğrudan anlaşılamaz. Bir **derle
 Bir C programını derlediğimizde aslında birkaç adımlık bir süreç işler:
 
 1.  **C Kodu (`program.c`):** Yazdığımız kaynak kod.
-2.  **Derleyici (Compiler):** Kaynak kodu Assembly diline çevirir. (`gcc -S program.c` -> `program.s`)
-3.  **Assembler:** Assembly kodunu, makine tarafından okunabilen ikili nesne koduna (`object code`) dönüştürür. (`as program.s` -> `program.o`)
-4.  **Linker:** Nesne kodunu, `printf` gibi kütüphane fonksiyonlarıyla birleştirerek son yürütülebilir dosyayı (`executable`) oluşturur. (`ld ... program.o ...` -> `a.out`)
+2.  **Compiler (Derleyici):** Kaynak kodu Assembly diline çevirir. (`gcc -S program.c` -> `program.s`)
+3.  **Assembler:** Assembly kodunu, makine tarafından okunabilen ikili **object code (nesne koduna)** dönüştürür. (`as program.s` -> `program.o`)
+4.  **Linker:** Nesne kodunu, `printf` gibi kütüphane fonksiyonlarıyla birleştirerek son **executable (yürütülebilir dosyayı)** oluşturur. (`ld ... program.o ...` -> `a.out`)
 
-![Derleme Süreci](https://via.placeholder.com/700x200.png?text=C+Source+->+Compiler+->+Assembly+->+Assembler+->+Object+Code+->+Linker+->+Executable)
+![Derleme Süreci](https://via.placeholder.com/700x200png?text=C+Source+->+Compiler+->+Assembly+->+Assembler+->+Object+Code+->+Linker+->+Executable)
 *Görsel: C kodundan yürütülebilir dosyaya giden yol.*
 
 ---
@@ -29,10 +29,10 @@ Bir C programını derlediğimizde aslında birkaç adımlık bir süreç işler
 
 Assembly seviyesinde programı düşündüğümüzde, soyut C değişkenleri yerine işlemcinin donanım kaynaklarını görürüz:
 
-*   **Program Sayacı (Program Counter - PC):** Yürütülecek bir sonraki komutun bellek adresini tutan özel bir yazmaç. x86-64'te adı `RIP`'dir.
-*   **Yazmaçlar (Registers):** İşlemcinin içinde bulunan, çok hızlı, küçük depolama birimleri. Aritmetik işlemler, parametre geçişleri ve ara değerlerin saklanması için kullanılırlar.
-*   **Durum Kodları (Condition Codes):** En son yapılan aritmetik veya mantıksal işlemin sonucu hakkında bilgi tutan tek bitlik bayraklar (örn: sonuç sıfır mıydı? negatif miydi? taşma oldu mu?).
-*   **Bellek (Memory):** Kodun kendisi, global değişkenler, yığın (stack) ve dinamik olarak ayrılan verilerin (heap) tutulduğu büyük bir bayt dizisi.
+*   **Program Counter (Program Sayacı - PC):** Yürütülecek bir sonraki komutun bellek adresini tutan özel bir yazmaç. x86-64'te adı `RIP`'dir.
+*   **Registers (Yazmaçlar):** İşlemcinin içinde bulunan, çok hızlı, küçük depolama birimleri. Aritmetik işlemler, parametre geçişleri ve ara değerlerin saklanması için kullanılırlar.
+*   **Condition Codes (Durum Kodları):** En son yapılan aritmetik veya mantıksal işlemin sonucu hakkında bilgi tutan tek bitlik bayraklar (örn: sonuç sıfır mıydı? negatif miydi? taşma oldu mu?).
+*   **Memory (Bellek):** Kodun kendisi, global değişkenler, stack (yığın) ve dinamik olarak ayrılan verilerin (heap) tutulduğu büyük bir bayt dizisi.
 
 ---
 
@@ -45,7 +45,7 @@ Günümüzdeki çoğu masaüstü ve sunucu işlemcisi **x86-64** mimarisini kull
 | `%rax`     | Fonksiyon dönüş değeri                 |
 | `%rdi`, `%rsi`, `%rdx`, `%rcx`, `%r8`, `%r9` | Fonksiyon argümanları (ilk altı)      |
 | `%rbx`, `%rbp`, `%r12`-%r15 | Çağrılan fonksiyon tarafından korunmalı |
-| `%rsp`     | Yığın (Stack) işaretçisi               |
+| `%rsp`     | Stack (Yığın) işaretçisi               |
 | `%r10`, `%r11` | Çağıran fonksiyon tarafından korunmalı   |
 
 **Önemli Not:** `%rax` yazmacına 32-bit'lik bir işlemle (`movl`) yazmak, yazmacın üst 32-bit'ini otomatik olarak sıfırlar. Bu, 32-bit ve 64-bit kod arasında uyumluluk sağlayan önemli bir özelliktir.
@@ -62,13 +62,13 @@ Assembly'deki en temel komutlardan biri `mov`'dur. Bir değeri bir yerden başka
 
 **`movq Kaynak, Hedef`**
 
-*   **Kaynak (Source):**
-    *   **Sabit (Immediate):** `$0x100` gibi dolar işaretiyle başlayan sabit bir değer.
-    *   **Yazmaç (Register):** `%rax` gibi bir yazmaç.
-    *   **Bellek (Memory):** `(%rax)` gibi parantez içinde bir adres.
-*   **Hedef (Destination):**
-    *   **Yazmaç (Register):** `%rbx` gibi bir yazmaç.
-    *   **Bellek (Memory):** `(%rbx)` gibi bir adres.
+*   **Source (Kaynak):**
+    *   **Immediate (Sabit):** `$0x100` gibi dolar işaretiyle başlayan sabit bir değer.
+    *   **Register (Yazmaç):** `%rax` gibi bir yazmaç.
+    *   **Memory (Bellek):** `(%rax)` gibi parantez içinde bir adres.
+*   **Destination (Hedef):**
+    *   **Register (Yazmaç):** `%rbx` gibi bir yazmaç.
+    *   **Memory (Bellek):** `(%rbx)` gibi bir adres.
 
 **Kısıtlama:** Tek bir `mov` komutuyla bellekten belleğe doğrudan veri kopyalamak mümkün değildir. Veri önce bir yazmaca alınmalı, sonra o yazmaçtan hedefe yazılmalıdır.
 
@@ -87,7 +87,7 @@ Belleğe erişmenin farklı yolları vardır. Bu yollara **adresleme modları** 
 | Indexed               | İki yazmaç toplanır                         | `(%rax, %rcx)`|
 | Indexed with Scale    | İkinci yazmaç bir sabitle (1,2,4,8) çarpılır | `(%rax, %rcx, 4)` |
 
-Bu modlar, diziler ve yapılar (structs) gibi veri yapılarına verimli erişim sağlamak için kritik öneme sahiptir.
+Bu modlar, diziler ve `structs` (yapılar) gibi veri yapılarına verimli erişim sağlamak için kritik öneme sahiptir.
 
 ---
 

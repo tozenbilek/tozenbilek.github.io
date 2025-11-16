@@ -25,8 +25,8 @@ Renkli bir görüntü ise, her biri bir renk kanalını (Kırmızı, Yeşil, Mav
 
 ### Dijital Görüntüler
 Pratikte, bilgisayarlar sürekli (analog) fonksiyonlarla çalışamaz. Bu nedenle görüntüler dijitalleştirilir:
-1.  **Örnekleme (Sampling):** Görüntü uzayı, düzenli bir ızgara (grid) üzerinde örneklenir. Her bir ızgara noktası bir **piksel (pixel)** olur.
-2.  **Kuantalama (Quantization):** Her pikseldeki yoğunluk değeri, belirli bir aralıktaki tamsayılara yuvarlanır. En yaygın olarak, bu aralık `[0, 255]`'tir (8-bit).
+1.  **Sampling (Örnekleme):** Görüntü uzayı, düzenli bir grid (ızgara) üzerinde örneklenir. Her bir ızgara noktası bir **pixel (piksel)** olur.
+2.  **Quantization (Kuantalama):** Her pikseldeki yoğunluk değeri, belirli bir aralıktaki tamsayılara yuvarlanır. En yaygın olarak, bu aralık `[0, 255]`'tir (8-bit).
 
 Sonuç olarak, dijital bir görüntü, piksellerin yoğunluk değerlerini içeren 2 boyutlu bir matristir.
 
@@ -35,7 +35,7 @@ Sonuç olarak, dijital bir görüntü, piksellerin yoğunluk değerlerini içere
 
 ---
 
-## 2. Gürültü (Noise)
+## 2. Noise (Gürültü)
 
 Görüntüler, sensör kusurları, yetersiz ışık, elektronik parazitler veya veri iletimindeki hatalar gibi çeşitli nedenlerle bozulabilir. Bu bozulmalara **gürültü** denir. Gürültüyü, orijinal görüntü fonksiyonuna eklenen istenmeyen bir sinyal `η(x,y)` olarak modelleyebiliriz:
 
@@ -43,11 +43,11 @@ Görüntüler, sensör kusurları, yetersiz ışık, elektronik parazitler veya 
 
 ### Yaygın Gürültü Türleri
 
-*   **Gaussian Gürültüsü:** Her piksele, ortalaması sıfır olan normal (Gaussian) bir dağılımdan rastgele seçilen bir değer eklenir. Görüntüye hafif, tanecikli bir doku katar. Düşük ışık koşullarında sensör ısınması nedeniyle sıkça görülür.
+*   **Gaussian Noise (Gaussian Gürültüsü):** Her piksele, ortalaması sıfır olan normal (Gaussian) bir dağılımdan rastgele seçilen bir değer eklenir. Görüntüye hafif, tanecikli bir doku katar. Düşük ışık koşullarında sensör ısınması nedeniyle sıkça görülür.
 
-*   **Tuz ve Biber (Salt and Pepper) Gürültüsü:** Görüntüdeki bazı piksellerin rastgele bir şekilde tamamen siyah (`0`, pepper) veya tamamen beyaz (`255`, salt) olmasına neden olur. Genellikle veri iletimi sırasında bit hatalarından kaynaklanır.
+*   **Salt and Pepper Noise (Tuz ve Biber Gürültüsü):** Görüntüdeki bazı piksellerin rastgele bir şekilde tamamen siyah (`0`, pepper) veya tamamen beyaz (`255`, salt) olmasına neden olur. Genellikle veri iletimi sırasında bit hatalarından kaynaklanır.
 
-*   **Darbe (Impulse) Gürültüsü:** Sadece beyaz piksellerin (`255`) rastgele eklenmesiyle oluşur, "salt" gürültüsüne benzer.
+*   **Impulse Noise (Darbe Gürültüsü):** Sadece beyaz piksellerin (`255`) rastgele eklenmesiyle oluşur, "salt" gürültüsüne benzer.
 
 ![Noise Types](https://via.placeholder.com/700x250.png?text=Orijinal+|+Gaussian+Gürültü+|+Tuz+ve+Biber+Gürültüsü)
 *Görsel: Yaygın gürültü türlerinin bir görüntü üzerindeki etkileri.*
@@ -69,9 +69,9 @@ Görüntüler, sensör kusurları, yetersiz ışık, elektronik parazitler veya 
 
 <div class="quiz-question">
   <p><b>Soru 2:</b> Bir fotoğraf çekerken kamerayı hafifçe sallamanın neden olduğu bulanıklık, bu derste tanımlanan gürültü modellerinden hangisine girer?</p>
-  <div class="quiz-option">A) Gaussian Gürültüsü</div>
-  <div class="quiz-option">B) Tuz ve Biber Gürültüsü</div>
-  <div class="quiz-option">C) Darbe Gürültüsü</div>
+  <div class="quiz-option">A) Gaussian Noise</div>
+  <div class="quiz-option">B) Salt and Pepper Noise</div>
+  <div class="quiz-option">C) Impulse Noise</div>
   <div class="quiz-option" data-correct="true">D) Hiçbiri, bu farklı bir bozulma türüdür.</div>
   <div class="quiz-explanation">
     <p><b>Cevap: D.</b> Hareket bulanıklığı (motion blur), piksellere rastgele değerler ekleyen bir gürültü modeli değildir. Bunun yerine, sahnenin birden fazla anının tek bir karede üst üste binmesinden kaynaklanan, daha yapısal bir bozulma türüdür ve farklı tekniklerle ele alınır.</p>

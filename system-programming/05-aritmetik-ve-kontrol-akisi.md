@@ -46,9 +46,9 @@ Bu komutlar tek bir operand üzerinde çalışır.
 
 ## 2. Kontrol Akışı: Karşılaştırma ve Zıplama
 
-Programların akıllıca davranmasını sağlayan `if`, `switch`, `while` gibi yapılar, Assembly'de iki temel mekanizma ile gerçekleştirilir: **durum kodları** ve **koşullu zıplamalar**.
+Programların akıllıca davranmasını sağlayan `if`, `switch`, `while` gibi yapılar, Assembly'de iki temel mekanizma ile gerçekleştirilir: **condition codes (durum kodları)** ve **conditional jumps (koşullu zıplamalar)**.
 
-1.  **Karşılaştırma:** `cmpq S2, S1` (compare) komutu, `S1 - S2` işlemini yapar ancak sonucu hiçbir yere yazmaz. Sadece işlemin sonucuna göre **durum kodlarını (condition codes)** ayarlar. `testq S, D` komutu ise `S & D` işlemiyle durum kodlarını ayarlar.
+1.  **Karşılaştırma:** `cmpq S2, S1` (compare) komutu, `S1 - S2` işlemini yapar ancak sonucu hiçbir yere yazmaz. Sadece işlemin sonucuna göre **condition codes (durum kodlarını)** ayarlar. `testq S, D` komutu ise `S & D` işlemiyle durum kodlarını ayarlar.
     *   **ZF (Zero Flag):** Sonuç sıfır ise `1` olur.
     *   **SF (Sign Flag):** Sonuç negatif ise `1` olur.
     *   **OF (Overflow Flag):** İşaretli taşma olduysa `1` olur.
@@ -67,23 +67,23 @@ Programların akıllıca davranmasını sağlayan `if`, `switch`, `while` gibi y
 
 ---
 
-## 3. Prosedürler (Fonksiyonlar) ve Yığın (Stack)
+## 3. Prosedürler (Fonksiyonlar) ve Stack (Yığın)
 
-Fonksiyon çağrıları, program organizasyonunun temelidir. Bu mekanizma, **yığın (stack)** adı verilen, belleğin "son giren ilk çıkar" (LIFO) prensibiyle çalışan bir bölgesi tarafından yönetilir. Yığın, yüksek bellek adreslerinden alçak adreslere doğru büyür.
+Fonksiyon çağrıları, program organizasyonunun temelidir. Bu mekanizma, **stack (yığın)** adı verilen, belleğin "son giren ilk çıkar" (LIFO) prensibiyle çalışan bir bölgesi tarafından yönetilir. Yığın, yüksek bellek adreslerinden alçak adreslere doğru büyür.
 
 *   `%rsp`: Yığının en "tepesinin" (en son eklenen elemanın) adresini tutan yığın işaretçisi yazmacı.
 
 ### Çağrı Mekanizması
 
 1.  **`callq Etiket`:** Bir fonksiyonu çağırmak için kullanılır. İki şey yapar:
-    a. `call` komutundan bir sonraki komutun adresini (**dönüş adresi**) yığına `push` eder.
+    a. `call` komutundan bir sonraki komutun adresini (**return address - dönüş adresi**) yığına `push` eder.
     b. Program sayacını (`RIP`) çağrılan fonksiyonun başlangıç adresine (`Etiket`) ayarlar.
 
-2.  **`retq`:** Fonksiyondan dönmek için kullanılır. Yığının tepesindeki **dönüş adresini** `pop` eder ve program sayacını bu adrese ayarlar.
+2.  **`retq`:** Fonksiyondan dönmek için kullanılır. Yığının tepesindeki **return address (dönüş adresini)** `pop` eder ve program sayacını bu adrese ayarlar.
 
-### Yığın Çerçevesi (Stack Frame)
+### Stack Frame (Yığın Çerçevesi)
 
-Her fonksiyon çağrıldığında, yığın üzerinde kendine ait bir çalışma alanı oluşturur. Bu alana **yığın çerçevesi (stack frame)** denir. Bir stack frame tipik olarak şunları içerir:
+Her fonksiyon çağrıldığında, yığın üzerinde kendine ait bir çalışma alanı oluşturur. Bu alana **stack frame (yığın çerçevesi)** denir. Bir stack frame tipik olarak şunları içerir:
 *   Çağıran fonksiyona geri dönmek için dönüş adresi.
 *   Fonksiyona geçirilen argümanlar (ilk 6'sı yazmaçlarla geçirilmezse).
 *   Fonksiyonun yerel değişkenleri.
@@ -108,13 +108,13 @@ Her fonksiyon çağrıldığında, yığın üzerinde kendine ait bir çalışma
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Bir `foo` fonksiyonu, başka bir `bar` fonksiyonunu `callq bar` komutuyla çağırdığında, yığına (stack) ne `push` edilir?</p>
+  <p><b>Soru 2:</b> Bir `foo` fonksiyonu, başka bir `bar` fonksiyonunu `callq bar` komutuyla çağırdığında, stack'e (yığına) ne `push` edilir?</p>
   <div class="quiz-option">A) `%rax` yazmacının değeri.</div>
   <div class="quiz-option">B) `bar` fonksiyonunun başlangıç adresi.</div>
   <div class="quiz-option" data-correct="true">C) `callq` komutundan sonraki komutun adresi.</div>
   <div class="quiz-option">D) `%rsp` yazmacının o anki değeri.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `call` komutu, `bar` fonksiyonu işini bitirip `ret` komutunu çalıştırdığında programın nereden devam edeceğini bilmesi için "dönüş adresini" yığına kaydeder. Bu adres, `call` komutundan hemen sonra gelen komutun adresidir.</p>
+    <p><b>Cevap: C.</b> `call` komutu, `bar` fonksiyonu işini bitirip `ret` komutunu çalıştırdığında programın nereden devam edeceğini bilmesi için "return address" (dönüş adresini) yığına kaydeder. Bu adres, `call` komutundan hemen sonra gelen komutun adresidir.</p>
   </div>
 </div>
 

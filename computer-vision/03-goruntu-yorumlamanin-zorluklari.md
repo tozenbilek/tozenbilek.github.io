@@ -33,11 +33,11 @@ Beynimiz, bu ve benzeri birçok ipucunu kullanarak, `B` karesinin aslında açı
 Bu illüzyon, Computer Vision'ın karşılaştığı temel zorlukları özetler:
 
 *   **Aydınlatma Belirsizliği:** Bir yüzeyden yansıyan ışık (yani kameranın ölçtüğü değer), sadece yüzeyin rengine değil, aynı zamanda üzerine düşen ışığın miktarına, rengine ve açısına da bağlıdır. Aynı nesne, farklı ışık koşullarında tamamen farklı görünebilir.
-*   **Bakış Açısı (Viewpoint):** Bir nesnenin 2D görüntüsü, ona hangi açıdan bakıldığına göre dramatik şekilde değişir.
-*   **Ölçek (Scale):** Nesneler kameraya yakın veya uzak olabilir, bu da görüntüdeki boyutlarını değiştirir.
-*   **Deformasyon (Deformation):** Birçok nesne (insanlar, hayvanlar, kumaşlar) sabit bir 3D şekle sahip değildir.
-*   **Tıkanma (Occlusion):** Nesneler sık sık birbirlerinin arkasında kalarak kısmen veya tamamen gizlenirler.
-*   **Arka Plan Karmaşası (Background Clutter):** Bir nesneyi, ona çok benzeyen doku ve renklere sahip bir arka plandan ayırt etmek zor olabilir.
+*   **Viewpoint (Bakış Açısı):** Bir nesnenin 2D görüntüsü, ona hangi açıdan bakıldığına göre dramatik şekilde değişir.
+*   **Scale (Ölçek):** Nesneler kameraya yakın veya uzak olabilir, bu da görüntüdeki boyutlarını değiştirir.
+*   **Deformation (Deformasyon):** Birçok nesne (insanlar, hayvanlar, kumaşlar) sabit bir 3D şekle sahip değildir.
+*   **Occlusion (Tıkanma):** Nesneler sık sık birbirlerinin arkasında kalarak kısmen veya tamamen gizlenirler.
+*   **Background Clutter (Arka Plan Karmaşası):** Bir nesneyi, ona çok benzeyen doku ve renklere sahip bir arka plandan ayırt etmek zor olabilir.
 
 Bir Computer Vision sisteminin, tüm bu değişkenlere rağmen bir nesneyi güvenilir bir şekilde tanıyabilmesi gerekir.
 
@@ -59,9 +59,9 @@ Bir Computer Vision sisteminin, tüm bu değişkenlere rağmen bir nesneyi güve
 <div class="quiz-question">
   <p><b>Soru 2:</b> Bir kedinin, bir çitin arkasından yürüdüğünü ve sadece bacaklarının göründüğünü düşünün. Bir Computer Vision sisteminin bu nesneyi "kedi" olarak tanımasını zorlaştıran en temel problem hangisidir?</p>
   <div class="quiz-option">A) Aydınlatma Belirsizliği</div>
-  <div class="quiz-option">B) Ölçek (Scale)</div>
-  <div class="quiz-option" data-correct="true">C) Tıkanma (Occlusion)</div>
-  <div class="quiz-option">D) Deformasyon (Deformation)</div>
+  <div class="quiz-option">B) Scale (Ölçek)</div>
+  <div class="quiz-option" data-correct="true">C) Occlusion (Tıkanma)</div>
+  <div class="quiz-option">D) Deformation (Deformasyon)</div>
   <div class="quiz-explanation">
     <p><b>Cevap: C.</b> Kedinin büyük bir kısmının çit tarafından gizlenmesi, "occlusion" (tıkanma) problemine klasik bir örnektir. Sistemin, nesnenin sadece bir parçasını görerek bütününü tanıması gerekir.</p>
   </div>

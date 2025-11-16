@@ -11,7 +11,7 @@ Görüntülerdeki gürültüyü azaltmak, kenarları keskinleştirmek veya belir
 
 ---
 
-## 1. Temel Fikir: Hareketli Ortalama (Moving Average)
+## 1. Temel Fikir: Moving Average (Hareketli Ortalama)
 
 Gürültüyü azaltmak için akla gelen en sezgisel yöntemlerden biri, her pikseli, etrafındaki küçük bir penceredeki (örneğin 3x3'lük bir alan) piksellerin ortalama değeriyle değiştirmektir.
 
@@ -25,14 +25,14 @@ Bu varsayımlar altında, bir grup komşu pikselin ortalamasını almak, rastgel
 
 ## 2. Kernel (Maske) ve Korelasyon
 
-Bu "hareketli ortalama" işlemini genelleştirebiliriz. Her bir komşu pikselin ortalamaya ne kadar katkıda bulunacağını belirleyen ağırlıklar tanımlayabiliriz. Bu ağırlık matrisine **kernel** veya **maske (mask)** denir.
+Bu "hareketli ortalama" işlemini genelleştirebiliriz. Her bir komşu pikselin ortalamaya ne kadar katkıda bulunacağını belirleyen ağırlıklar tanımlayabiliriz. Bu ağırlık matrisine **kernel** veya **mask (maske)** denir.
 
 **Filtreleme İşlemi (Korelasyon):**
 1.  Bir kernel (örneğin 3x3'lük bir matris) seçilir.
 2.  Bu kernel, görüntü üzerinde her bir pikselin üzerine gelecek şekilde gezdirilir.
 3.  Her konumda, kernelin merkezindeki pikselin yeni değeri, kernelin ağırlıkları ile üzerine denk gelen görüntü piksellerinin değerlerinin çarpımlarının toplamı olarak hesaplanır.
 
-Bu işleme **Korelasyon (Cross-Correlation)** denir ve `G = H ⨂ F` olarak gösterilir, burada `G` yeni görüntü, `H` kernel ve `F` orijinal görüntüdür.
+Bu işleme **Cross-Correlation (Korelasyon)** denir ve `G = H ⨂ F` olarak gösterilir, burada `G` yeni görüntü, `H` kernel ve `F` orijinal görüntüdür.
 
 ![Correlation](https://via.placeholder.com/600x300.png?text=Kernel+(H)+Görüntü+(F)+Üzerinde+Kaydırılır)
 *Görsel: Bir kernelin (filtre) görüntü üzerinde kaydırılarak her piksel için yeni bir değer hesaplaması.*
@@ -48,7 +48,7 @@ Basit bir ortalama filtresi, tüm ağırlıkları eşit olan bir kernel kullanı
 
 ---
 
-## 3. Konvolüsyon (Convolution)
+## 3. Convolution (Konvolüsyon)
 
 Konvolüsyon, korelasyona çok benzer bir işlemdir. Tek fark, görüntü üzerine getirilmeden önce **kernelin 180 derece döndürülmesidir.** Matematiksel ve sinyal işleme teorisinde daha "doğal" bir operasyon olarak kabul edilir ve birçok güzel matematiksel özelliğe (birleşme, değişme) sahiptir.
 
@@ -73,10 +73,10 @@ Eğer kullanılan kernel, hem yatay hem de dikey olarak simetrik ise (örneğin,
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Korelasyon ve Konvolüsyon operasyonları arasındaki temel fark nedir?</p>
+  <p><b>Soru 2:</b> Cross-Correlation ve Convolution operasyonları arasındaki temel fark nedir?</p>
   <div class="quiz-option">A) Korelasyon toplama, konvolüsyon çarpma kullanır.</div>
   <div class="quiz-option">B) Aralarında hiçbir fark yoktur.</div>
-  <div class="quiz-option" data-correct="true">C) Konvolüsyon, işlemden önce filte kernelini 180 derece döndürür.</div>
+  <div class="quiz-option" data-correct="true">C) Konvolüsyon, işlemden önce filtre kernelini 180 derece döndürür.</div>
   <div class="quiz-option">D) Konvolüsyon sadece 1D sinyaller için kullanılır.</div>
   <div class="quiz-explanation">
     <p><b>Cevap: C.</b> İki operasyon da eleman bazında çarpma ve toplama işlemi yapar. Aralarındaki tek matematiksel fark, konvolüsyonun, filtre kernelini görüntüye uygulamadan önce merkezi etrafında 180 derece döndürmesidir.</p>

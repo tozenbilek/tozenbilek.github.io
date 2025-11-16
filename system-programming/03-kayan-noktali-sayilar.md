@@ -57,37 +57,37 @@ Bu formülün üç ana bileşeni, bellekte bit alanlarına bölünerek saklanır
 Bu, en yaygın durumdur.
 *   **Koşul:** `exp` alanı ne tamamen `0` ne de tamamen `1`'lerden oluşur.
 *   **Üs (E):** `E = exp - Bias`. `Bias` (sapma), üssün hem pozitif hem de negatif değerler alabilmesini sağlayan bir sabittir (`float` için 127, `double` için 1023).
-*   **Mantissa (M):** `M = 1 + frac`. Burada "gizli bir 1" (`implicit leading 1`) varsayılır. Bu, fazladan bir bit hassasiyet kazanmamızı sağlar.
+*   **Mantissa (M):** `M = 1 + frac`. Burada "implicit leading 1" (gizli bir 1) varsayılır. Bu, fazladan bir bit hassasiyet kazanmamızı sağlar.
 
 ### b) Denormalized (Normalleştirilmemiş) Değerler
 Sıfıra çok yakın sayıları temsil etmek için kullanılırlar.
 *   **Koşul:** `exp` alanı tamamen `0`'lardan oluşur.
 *   **Üs (E):** `E = 1 - Bias`. Sabit bir üs değeri kullanılır.
-*   **Mantissa (M):** `M = frac`. Artık "gizli 1" varsayımı yoktur. Bu, sıfıra doğru kademeli bir geçiş (gradual underflow) sağlar. `+0.0` ve `-0.0` da bu kategoriye girer.
+*   **Mantissa (M):** `M = frac`. Artık "gizli 1" varsayımı yoktur. Bu, "gradual underflow" (sıfıra doğru kademeli geçiş) sağlar. `+0.0` ve `-0.0` da bu kategoriye girer.
 
 ### c) Özel Değerler
 *   **Koşul:** `exp` alanı tamamen `1`'lerden oluşur.
-    *   **Sonsuz (Infinity):** `frac` alanı tamamen `0` ise. `1/0.0` gibi işlemlerin sonucudur.
+    *   **Infinity (Sonsuz):** `frac` alanı tamamen `0` ise. `1/0.0` gibi işlemlerin sonucudur.
     *   **NaN (Not a Number):** `frac` alanı `0` değilse. `sqrt(-1)` veya `∞ - ∞` gibi tanımsız işlemlerin sonucudur.
 
 ---
 
-## 4. Yuvarlama (Rounding)
+## 4. Rounding (Yuvarlama)
 
 Hesaplamaların sonucu genellikle mevcut bit sayısından daha fazla hassasiyet gerektirdiğinde, sonucun yuvarlanması gerekir. Varsayılan ve en yaygın mod **Round-to-Nearest-Even**'dır:
 *   Sayıyı en yakın temsil edilebilir değere yuvarla.
-*   Eğer sayı iki temsil edilebilir değerin tam ortasındaysa, en anlamsız biti `0` olan (yani çift olan) komşuya yuvarla. Bu, istatistiksel sapmayı (bias) önler.
+*   Eğer sayı iki temsil edilebilir değerin tam ortasındaysa, en anlamsız biti `0` olan (yani çift olan) komşuya yuvarla. Bu, istatistiksel `bias` (sapmayı) önler.
 
 ---
 
 ## 5. C Dilinde Kayan Noktalı Sayılar
 
 C dilindeki `float` ve `double` tipleri, IEEE 754 standardına karşılık gelir. Tipler arası dönüşümlerde dikkatli olunmalıdır:
-*   `double`/`float` -> `int`: Ondalık kısım **kırpılır (truncate)**, yuvarlanmaz. `(int) 3.99` işleminin sonucu `3`'tür.
+*   `double`/`float` -> `int`: Ondalık kısım **truncate edilir (kırpılır)**, yuvarlanmaz. `(int) 3.99` işleminin sonucu `3`'tür.
 *   `int` -> `double`: Genellikle hassasiyet kaybı olmaz, çünkü `double`'ın kesir alanı (`52 bit`) bir `int`'in tüm bitlerini (`32` veya `64`) saklayabilir.
 *   `int` -> `float`: Hassasiyet kaybı yaşanabilir. `float`'ın kesir alanı (`23 bit`) büyük `int` değerlerinin tüm anlamlı basamaklarını saklayamayabilir.
 
-**Önemli Sonuç:** Kayan noktalı sayı aritmetiği, matematikteki reel sayı aritmetiğinin özelliklerini her zaman taşımaz. Özellikle **birleşme (associativity)** özelliği geçerli değildir:
+**Önemli Sonuç:** Kayan noktalı sayı aritmetiği, matematikteki reel sayı aritmetiğinin özelliklerini her zaman taşımaz. Özellikle **associativity (birleşme)** özelliği geçerli değildir:
 `(x + y) + z` her zaman `x + (y + z)`'ye eşit olmayabilir! Bu nedenle, `float` veya `double` değerlerini `==` ile karşılaştırmak genellikle kötü bir fikirdir.
 
 ---
@@ -109,10 +109,10 @@ C dilindeki `float` ve `double` tipleri, IEEE 754 standardına karşılık gelir
   <p><b>Soru 2:</b> IEEE 754 `float` (32-bit) standardında, `exp` bit alanı tamamen `1`'lerden, `frac` bit alanı ise tamamen `0`'lardan oluşuyorsa, bu hangi özel değeri temsil eder?</p>
   <div class="quiz-option">A) `+0.0`</div>
   <div class="quiz-option">B) `Denormalized` bir sayı</div>
-  <div class="quiz-option" data-correct="true">C) `Sonsuz (Infinity)`</div>
-  <div class="quiz-option">D) `NaN (Not a Number)`</div>
+  <div class="quiz-option" data-correct="true">C) `Infinity` (Sonsuz)</div>
+  <div class="quiz-option">D) `NaN` (Not a Number)</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `exp` alanının tamamen `1`'lerden oluşması özel bir durumu belirtir. Eğer bu durumda `frac` alanı sıfır ise değer `Sonsuz`, sıfırdan farklı ise `NaN` olur.</p>
+    <p><b>Cevap: C.</b> `exp` alanının tamamen `1`'lerden oluşması özel bir durumu belirtir. Eğer bu durumda `frac` alanı sıfır ise değer `Infinity`, sıfırdan farklı ise `NaN` olur.</p>
   </div>
 </div>
 

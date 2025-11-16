@@ -11,7 +11,7 @@ Computer Vision, teorik bir alan olmaktan çıkıp hayatımızın her köşesine
 
 ---
 
-## 1. Optik Karakter Tanıma (OCR)
+## 1. Optical Character Recognition (OCR)
 Taranmış dokümanlardaki, fotoğraflardaki veya trafik kameralarındaki metinlerin otomatik olarak okunarak dijital metne dönüştürülmesidir.
 *   **Örnekler:** Plaka tanıma sistemleri, taranmış kitapların dijitalleştirilmesi, fatura okuma.
 
@@ -34,8 +34,8 @@ Modern otomobiller, şerit takibi, yaya tespiti, trafik işareti tanıma ve çar
 
 ---
 
-## 4. Artırılmış Gerçeklik (Augmented Reality) ve Özel Efektler
-Gerçek dünya görüntüsünün üzerine bilgisayar tarafından üretilen sanal nesnelerin bindirilmesidir. Sinema sektöründe ise hareket yakalama (motion capture) ve 3D modelleme gibi alanlarda devrim yaratmıştır.
+## 4. Augmented Reality (Artırılmış Gerçeklik) ve Özel Efektler
+Gerçek dünya görüntüsünün üzerine bilgisayar tarafından üretilen sanal nesnelerin bindirilmesidir. Sinema sektöründe ise motion capture (hareket yakalama) ve 3D modelleme gibi alanlarda devrim yaratmıştır.
 *   **Örnekler:** Snapchat/Instagram filtreleri, Pokémon GO, filmlerdeki CGI karakterler.
 
 ---
@@ -55,7 +55,7 @@ Kalabalık alanlarda terk edilmiş nesneleri, şüpheli hareketleri veya belirli
 
 <div class="quiz-question">
   <p><b>Soru 1:</b> Bir cep telefonu kamerasının, bir QR kodunu okuyup içindeki web sitesi linkini açması, hangi ana uygulama kategorisine en yakın bir örnektir?</p>
-  <div class="quiz-option" data-correct="true">A) Optik Karakter Tanıma (OCR) ve benzeri desen tanıma</div>
+  <div class="quiz-option" data-correct="true">A) Optical Character Recognition (OCR) ve benzeri desen tanıma</div>
   <div class="quiz-option">B) Yüz Tanıma ve Analizi</div>
   <div class="quiz-option">C) Medikal Görüntüleme</div>
   <div class="quiz-option">D) Artırılmış Gerçeklik</div>
@@ -67,8 +67,8 @@ Kalabalık alanlarda terk edilmiş nesneleri, şüpheli hareketleri veya belirli
 <div class="quiz-question">
   <p><b>Soru 2:</b> Bir filmde, gerçek bir aktörün yüz ifadelerinin dijital bir karaktere aktarılması işlemi hangi teknolojinin bir parçasıdır?</p>
   <div class="quiz-option">A) Akıllı Araçlar</div>
-  <div class="quiz-option">B) Optik Karakter Tanıma (OCR)</div>
-  <div class="quiz-option" data-correct="true">C) Özel Efektler ve Hareket Yakalama (Motion Capture)</div>
+  <div class="quiz-option">B) Optical Character Recognition (OCR)</div>
+  <div class="quiz-option" data-correct="true">C) Özel Efektler ve Motion Capture (Hareket Yakalama)</div>
   <div class="quiz-option">D) Güvenlik ve Gözetleme</div>
   <div class="quiz-explanation">
     <p><b>Cevap: C.</b> Bu işlem, aktörün hareketlerini ve ifadelerini sensörler veya kameralar aracılığıyla yakalayıp dijital bir modele uygulama prensibine dayanan "motion capture" teknolojisinin bir örneğidir.</p>

@@ -11,16 +11,16 @@ Her resim bir hikaye anlatır. **Computer Vision (Bilgisayarlı Görü)**, bilgi
 
 ---
 
-## Computer Vision vs. Görüntü İşleme (Image Processing)
+## Computer Vision vs. Image Processing (Görüntü İşleme)
 
 Bu iki kavram sıkça karıştırılsa da aralarında önemli bir fark vardır:
 
-*   **Görüntü İşleme (Image Processing):** Bir görüntüyü girdi olarak alıp, yine bir görüntü çıktı olarak üreten işlemlerdir. Örneğin, bir fotoğrafa filtre uygulamak (örn: "sepia" filtresi), parlaklığını artırmak veya görüntüyü keskinleştirmek birer görüntü işleme operasyonudur. **Amaç, görüntüyü değiştirmektir.**
+*   **Image Processing (Görüntü İşleme):** Bir görüntüyü girdi olarak alıp, yine bir görüntü çıktı olarak üreten işlemlerdir. Örneğin, bir fotoğrafa filtre uygulamak (örn: "sepia" filtresi), parlaklığını artırmak veya görüntüyü keskinleştirmek birer görüntü işleme operasyonudur. **Amaç, görüntüyü değiştirmektir.**
 
 *   **Computer Vision:** Bir görüntüyü girdi olarak alır, ancak çıktı olarak o görüntü hakkında bir **anlam** veya **açıklama** üretir. Örneğin, bir fotoğrafta "kedi var" demek, trafik kamerasındaki araçları saymak veya bir MR görüntüsünden tümör tespiti yapmak birer Computer Vision problemidir. **Amaç, görüntüyü yorumlamaktır.**
 
-![Vision vs Image Processing](https://via.placeholder.com/700x250.png?text=Görüntü+->+Görüntü+İşleme+->+Geliştirilmiş+Görüntü+||+Görüntü+->+Computer+Vision+->+"Bu+bir+kedidir")
-*Görsel: Görüntü İşleme bir görüntüyü dönüştürürken, Computer Vision bir görüntüden anlam çıkarır.*
+![Vision vs Image Processing](https://via.placeholder.com/700x250.png?text=Görüntü+->+Image+Processing+->+Geliştirilmiş+Görüntü+||+Görüntü+->+Computer+Vision+->+"Bu+bir+kedidir")
+*Görsel: Image Processing bir görüntüyü dönüştürürken, Computer Vision bir görüntüden anlam çıkarır.*
 
 ---
 
@@ -42,11 +42,11 @@ En önemlisi de, insan algısını makinelere kazandırmaya çalışmak, çözme
 <div class="quiz-question">
   <p><b>Soru 1:</b> Bir fotoğrafın Instagram'da "sepia" filtresiyle renklendirilmesi hangi alana girer?</p>
   <div class="quiz-option">A) Computer Vision</div>
-  <div class="quiz-option" data-correct="true">B) Görüntü İşleme (Image Processing)</div>
+  <div class="quiz-option" data-correct="true">B) Image Processing (Görüntü İşleme)</div>
   <div class="quiz-option">C) Makine Öğrenmesi</div>
   <div class="quiz-option">D) Veri Bilimi</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: B) Görüntü İşleme.</b> Çünkü işlem, bir görüntüyü (orijinal fotoğraf) girdi olarak alıp başka bir görüntüyü (filtreli fotoğraf) çıktı olarak üretmektedir. Görüntünün içeriği hakkında bir yorum yapılmamaktadır.</p>
+    <p><b>Cevap: B) Image Processing.</b> Çünkü işlem, bir görüntüyü (orijinal fotoğraf) girdi olarak alıp başka bir görüntüyü (filtreli fotoğraf) çıktı olarak üretmektedir. Görüntünün içeriği hakkında bir yorum yapılmamaktadır.</p>
   </div>
 </div>
 

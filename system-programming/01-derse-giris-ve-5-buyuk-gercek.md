@@ -7,102 +7,101 @@ parent: System Programming
 
 # Derse Giriş ve 5 Büyük Gerçek
 
-Bu bölüme, dersin ana temasını ve bir sistem programcısı olarak her zaman aklınızda tutmanız gereken beş temel prensibi ("5 Büyük Gerçek") inceleyerek başlıyoruz.
+This section begins by examining the main theme of the course and the five fundamental principles ("5 Big Realities") that you should always keep in mind as a system programmer.
 
 ---
 
 ## Dersin Teması: Soyutlama İyidir Ama Gerçekliği Unutma
 
-Bilgisayar bilimleri eğitiminin büyük bir kısmı **soyutlama (abstraction)** üzerine kuruludur. Soyut veri tipleri (abstract data types), asimptotik analiz gibi kavramlar, karmaşık sistemleri daha yönetilebilir parçalara ayırmamızı sağlar. Ancak bu soyutlamaların da sınırları vardır.
+Computer science education is largely based on **abstraction (soyutlama)**. Abstract data types, concepts like asymptotic analysis, help us break down complex systems into more manageable parts. However, these abstractions also have their limitations.
 
-Bir programcı olarak, yazdığınız kodun altındaki "gerçekliği" - yani donanımın, derleyicinin ve işletim sisteminin nasıl çalıştığını - anladığınızda çok daha etkili olursunuz. Bu dersin amacı, sizi bu gerçeklikle tanıştırmaktır.
+As a programmer, understanding the "reality" beneath your code - the hardware, the compiler, and the operating system - will make you much more effective. This course aims to introduce you to this reality.
 
-**Bu Yaklaşımın Faydaları:**
-*   **Daha Etkili Programcı Olmak:** Kodunuzun gerçekte ne yaptığını anlarsınız.
-*   **Hataları Ayıklamak (Debugging):** Özellikle anlaşılması zor, "gizemli" hataların kökenine inebilirsiniz.
-*   **Performansı Optimize Etmek:** Kodunuzun neden yavaş çalıştığını anlayıp, darboğazları ortadan kaldırabilirsiniz.
-*   **İleri Seviye Sistem Derslerine Hazırlık:** İşletim sistemleri, derleyiciler, bilgisayar mimarisi gibi konular için sağlam bir temel oluşturur.
+**Benefits of This Approach:**
+*   **Become a More Effective Programmer:** You will understand exactly what your code is doing.
+*   **Debugging (Hataları Ayıklamak):** Especially difficult, "mysterious" errors can be traced back to their origins.
+*   **Optimize Performance:** By understanding why your code is slow and eliminating bottlenecks, you can improve its performance.
+*   **Preparation for Advanced System Design Courses:** It provides a solid foundation for topics like operating systems, compilers, and computer architecture.
 
 ![Soyutlama Katmanları](https://via.placeholder.com/600x300.png?text=Yazılım+(Soyutlama)+<-->+Donanım+(Gerçeklik))
-*Görsel: Yazılım soyutlamaları ile donanım gerçekliği arasındaki ilişki.*
+*Görsel: İlişki yazılım soyutlamaları ile donanım gerçekliği arasında.*
 
 ---
 
 ## Büyük Gerçek #1: `int` Tamsayı Değildir, `float` Reel Sayı Değildir
 
-Matematikteki tamsayılar sonsuzdur, ancak bilgisayardaki `int` gibi veri tipleri sınırlı sayıda bit ile temsil edilir. Bu da **taşma (overflow)** gibi beklenmedik sonuçlara yol açabilir.
+In mathematics, integers are infinite, but data types like `int` in computers are represented with a limited number of bits, which can lead to unexpected results like **overflow (taşma)**.
 
-Örneğin, 32-bit bir `int` en fazla `2,147,483,647` değerini tutabilir. Bu sayıyı bir artırdığınızda sonuç `2,147,483,648` olmaz, negatif bir sayıya (`-2,147,483,648`) döner.
+For example, a 32-bit `int` can hold a maximum value of `2,147,483,647`. If you increment this value, it will not become `2,147,483,648`, but a negative number (`-2,147,483,648`).
 
-Benzer şekilde, `float` ve `double` tipleri, matematikteki reel sayıları temsil etmeye çalışır ama bunu sınırlı bir hassasiyetle yaparlar. Bu durum, özellikle finansal veya bilimsel hesaplamalarda küçük **yuvarlama hatalarının (rounding errors)** birikerek büyük sorunlara yol açmasına neden olabilir.
+Similarly, `float` and `double` types attempt to represent real numbers, but they do so with limited precision. This can lead to small **rounding errors (yuvarlama hataları)** that accumulate and cause significant problems in financial or scientific calculations.
 
-**Örnek:**
-`(3.14 + 1e20) - 1e20` ifadesinin sonucu `0.0` olabilirken, `3.14 + (1e20 - 1e20)` ifadesinin sonucu `3.14` olacaktır. Bu, `float` işlemlerinin birleşme (associative) özelliğine sahip olmadığını gösterir.
+**Example:**
+The result of `(3.14 + 1e20) - 1e20` might be `0.0`, while the result of `3.14 + (1e20 - 1e20)` will be `3.14`. This demonstrates that `float` operations are not associative.
 
 ---
 
 ## Büyük Gerçek #2: Assembly Bilmek Zorundasınız
 
-Yüksek seviyeli diller (C, Java, Python) programlamayı kolaylaştırsa da, derleyicinin bu dilleri makine koduna nasıl çevirdiğini anlamak kritik öneme sahiptir. Assembly, makine kodunun insan tarafından okunabilir halidir.
+While high-level languages (C, Java, Python) make programming easier, it is crucial to understand how the compiler translates these languages into machine code. Assembly is the human-readable form of machine code.
 
-**Assembly Bilmek Neden Önemli?**
-*   **Derleyicinin Optimizasyonlarını Anlamak:** Derleyicinin kodunuzu nasıl daha verimli hale getirdiğini (veya getiremediğini) görürsünüz.
-*   **Gizemli Hataları Ayıklamak:** Programın beklenmedik şekilde çökmesine neden olan düşük seviye hataları (örn: bellek bozulmaları) anlamanıza yardımcı olur.
-*   **Performans Analizi:** Kodunuzdaki performans darboğazlarını tespit etmek için kritik bir araçtır.
-*   **Sistemlerin Derinliklerine İnmek:** İşletim sistemi ve derleyici gibi karmaşık sistemlerin nasıl çalıştığını anlamanın tek yolu, makine seviyesindeki işleyişi bilmektir.
-*   **Güvenlik:** Kötü amaçlı yazılımları (malware) analiz etmek ve sistemlerdeki güvenlik zafiyetlerini anlamak için assembly bilgisi şarttır.
+**Why Understanding Assembly is Important?**
+*   **Understanding Compiler Optimizations:** You can see how the compiler optimized your code (or how it didn't).
+*   **Debugging Mysterious Errors:** It helps you understand low-level errors (e.g., memory corruption) that cause your program to crash unexpectedly.
+*   **Performance Analysis:** It is a critical tool for identifying performance bottlenecks in your code.
+*   **Deeper System Understanding:** The only way to truly understand how complex systems like operating systems and compilers work is to understand their low-level operation.
+*   **Security:** Assembly knowledge is essential for analyzing malicious software (malware) and understanding security vulnerabilities in systems.
 
 ---
 
 ## Büyük Gerçek #3: Bellek Önemlidir (Memory Matters)
 
-Bellek, sonsuz ve hatasız bir kaynak değildir. C ve C++ gibi diller, programcıya bellek üzerinde tam kontrol verir, ancak bu büyük bir sorumluluktur.
+Memory is not an infinite, error-free resource. Languages like C and C++ give programmers full control over memory, but this is a great responsibility.
 
-**Bellekle İlgili Temel Gerçekler:**
-*   **Bellek Hataları Tehlikelidir:** Bir dizinin sınırları dışına yazmak (`buffer overflow`) veya serbest bırakılmış bir bellek alanına erişmeye çalışmak (`dangling pointer`), programın çökmesinden daha kötüsüne, öngörülemez davranışlara ve güvenlik açıklarına yol açabilir.
-*   **Hatanın Etkisi Uzakta Ortaya Çıkabilir (Action at a Distance):** Yanlış bir bellek erişimi, hatanın oluştuğu yerden çok uzakta, bambaşka bir veri yapısını bozabilir. Bu, hatanın kaynağını bulmayı son derece zorlaştırır.
-*   **Performans Bellek Hiyerarşisine Bağlıdır:** Modern bilgisayarlarda bellek erişimi, işlemci hızına göre çok yavaştır. Bu yüzden **önbellekler (caches)** kullanılır. Verilerinize nasıl eriştiğiniz (örn: bir matrisin satırları veya sütunları boyunca ilerlemek), önbellek performansını ve dolayısıyla programınızın toplam çalışma süresini dramatik şekilde etkileyebilir.
+**Basic Realities Regarding Memory:**
+*   **Memory Errors Are Dangerous:** Writing outside the bounds of an array (`buffer overflow`) or accessing a freed memory area (`dangling pointer`) can cause your program to crash, exhibit unpredictable behavior, and introduce security vulnerabilities.
+*   **The Effect of an Error Can Be Far-Reaching (Action at a Distance):** An incorrect memory access can corrupt a completely different data structure, making it difficult to locate the source of the error.
+*   **Performance Depends on Memory Hierarchy:** In modern computers, memory access is much slower than CPU speed. This is why **caches (önbellekler)** are used. How you access data (e.g., traversing rows or columns of a matrix) can dramatically affect your program's total execution time and, consequently, its performance.
 
 ![Bellek Hiyerarşisi](https://via.placeholder.com/500x350.png?text=CPU+<->+L1/L2/L3+Cache+<->+RAM+<->+Disk)
-*Görsel: Hız ve kapasiteye göre sıralanmış bellek hiyerarşisi.*
+*Görsel: Sıralanmış bellek hiyerarşisi hız ve kapasiteye göre.*
 
 ---
 
 ## Büyük Gerçek #4: Performans Asimptotik Karmaşıklıktan İbaret Değildir
 
-Algoritma derslerinde, algoritmaları `O(N)` veya `O(N log N)` gibi asimptotik notasyonlarla analiz ederiz. Bu, büyük veriler için algoritmanın ölçeklenmesini anlamak için harikadır. Ancak pratikte, **sabit çarpanlar (constant factors)** da en az o kadar önemlidir.
+In algorithm lessons, we analyze algorithms using notations like `O(N)` or `O(N log N)`. This is excellent for understanding how an algorithm scales for large data. However, in practice, **constant factors (sabit çarpanlar)** are just as important.
 
-Aynı asimptotik karmaşıklığa sahip iki kod parçasından biri, diğeri_
-nden 10 kat, hatta 100 kat daha yavaş çalışabilir.
+Two code snippets with the same asymptotic complexity can differ by 10 times, or even 100 times, in terms of execution speed.
 
-**Performansı Etkileyen Faktörler:**
-*   **İşlemci Mimarisi:** Komutların nasıl işlendiği, boru hattı (pipeline) yapısı.
-*   **Derleyici Optimizasyonları:** Kodun nasıl makine koduna çevrildiği.
-*   **Bellek Erişimi Desenleri:** Önbellek dostu (cache-friendly) kod yazmak.
-*   **Döngü Yapıları:** Basit bir döngünün sırasını değiştirmek bile performansı katbekat artırabilir.
+**Factors Affecting Performance:**
+*   **CPU Architecture:** How commands are executed, pipeline (boru hattı) structure.
+*   **Compiler Optimizations:** How your code is translated into machine code.
+*   **Memory Access Patterns:** Writing cache-friendly (önbellek dostu) code.
+*   **Loop Structures:** Even changing the order of a simple loop can dramatically improve performance.
 
 ---
 
 ## Büyük Gerçek #5: Bilgisayarlar Program Çalıştırmaktan Fazlasını Yapar
 
-Yazdığımız programlar, izole bir dünyada çalışmaz. Bir işletim sistemi üzerinde çalışır ve dış dünya ile sürekli etkileşim halindedirler.
+The programs we write do not run in isolation. They run on an operating system and constantly interact with the outside world.
 
-**Sistemin Diğer Görevleri:**
-*   **Girdi/Çıktı (I/O):** Dosyalardan okuma, diske yazma, ağ üzerinden veri alıp gönderme gibi işlemler, programın performansını önemli ölçüde etkiler.
-*   **Ağ (Networking):** Programlar, güvenilir olmayan ağlar üzerinden diğer makinelerle iletişim kurar.
-*   **Eşzamanlılık (Concurrency):** Modern sistemlerde programlar, birden çok görevi aynı anda (veya öyleymiş gibi) yürütür. Bu, yeni ve karmaşık hata türlerini beraberinde getirir.
+**Other Tasks of the System:**
+*   **I/O (Girdi/Çıktı):** Reading from files, writing to disk, sending and receiving data over the network, significantly affect program performance.
+*   **Networking (Ağ):** Programs communicate with other machines over unreliable networks.
+*   **Concurrency (Eşzamanlılık):** Modern systems run multiple tasks simultaneously (or as if they were) on a single CPU. This introduces new and complex error types.
 
-Bu etkileşimleri anlamak, sağlam ve verimli sistemler kurmanın temelidir.
-
----
-
-### Özet ve Değerlendirme
-
-Bu bölümde dersin temel felsefesini ve sistem programlamanın "5 Büyük Gerçeği"ni ele aldık. Bu prensipler, ders boyunca karşılaşacağımız konuları anlamak için bir çerçeve sunmaktadır. Unutmayın, soyutlamalar güçlü araçlardır, ancak altındaki gerçekliği anladığınızda gerçek bir usta olursunuz.
+Understanding these interactions is fundamental to building robust and efficient systems.
 
 ---
 
-### Test Soruları
+### Summary and Evaluation
+
+In this section, we discussed the fundamental philosophy of the course and the "5 Big Realities" of system programming. These principles provide a framework for understanding the topics we will encounter throughout the course. Remember, abstractions are powerful tools, but once you understand the reality beneath them, you will become a true master.
+
+---
+
+### Test Questions
 
 <div class="quiz-question">
   <p><b>Soru 1:</b> 32-bit işaretli bir tamsayı (`int`) değişkeninde `2,147,483,647` değeri varken, bu değişkene 1 eklenirse ne olur?</p>
@@ -111,7 +110,7 @@ Bu bölümde dersin temel felsefesini ve sistem programlamanın "5 Büyük Gerç
   <div class="quiz-option" data-correct="true">C) Değer, `integer overflow` nedeniyle negatif bir sayıya döner.</div>
   <div class="quiz-option">D) Değer değişmez, aynı kalır.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Sınırlı bit sayısı nedeniyle, pozitif en büyük değere 1 eklendiğinde "taşma" (overflow) olur ve sayı doğrusunun en negatif ucuna döner. Bu, "Int'ler Tamsayı Değildir" gerçeğinin klasik bir örneğidir.</p>
+    <p><b>Cevap: C.</b> Sınırlı bit sayısı nedeniyle, "overflow" (taşma) olur ve sayı doğrusunun en negatif ucuna döner. Bu, "Int'ler Tamsayı Değildir" gerçeğinin klasik bir örneğidir.</p>
   </div>
 </div>
 
@@ -131,8 +130,8 @@ Bu bölümde dersin temel felsefesini ve sistem programlamanın "5 Büyük Gerç
   <div class="quiz-option">A) Hızlı olan döngü daha az değişken kullanıyordur.</div>
   <div class="quiz-option">B) Yavaş olan döngüde bir `integer overflow` meydana geliyordur.</div>
   <div class="quiz-option">C) İşletim sistemi, hızlı olan döngüye daha fazla öncelik tanımıştır.</div>
-  <div class="quiz-option" data-correct="true">D) Hızlı olan döngü, bellek erişimlerini önbellek (cache) ile daha uyumlu yapıyordur.</div>
+  <div class="quiz-option" data-correct="true">D) Hızlı olan döngü, bellek erişimlerini cache (önbellek) ile daha uyumlu yapıyordur.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: D.</b> Modern sistemlerde işlemci hızı ile bellek hızı arasında büyük bir fark vardır. Belleğe sıralı ve öngörülebilir şekilde erişen kod, verileri önbellekte (cache) tutarak işlemciyi daha az bekletir ve çok daha hızlı çalışır. Bu, "Bellek Önemlidir" gerçeğinin en somut örneklerinden biridir.</p>
+    <p><b>Cevap: D.</b> Modern sistemlerde işlemci hızı ile bellek hızı arasında büyük bir fark vardır. Belleğe sıralı ve öngörülebilir şekilde erişen kod, verileri cache'te (önbellek) tutarak işlemciyi daha az bekletir ve çok daha hızlı çalışır. Bu, "Bellek Önemlidir" gerçeğinin en somut örneklerinden biridir.</p>
   </div>
 </div>

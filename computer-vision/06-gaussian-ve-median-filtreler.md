@@ -30,7 +30,7 @@ Gaussian filtresi, gürültü azaltma ve daha sonraki adımlar (kenar tespiti gi
 
 ## 2. Median Filtresi
 
-Gaussian ve ortalama filtreleri, `Gaussian gürültüsü` gibi dağılmış gürültü türleri için etkilidir. Ancak **Tuz ve Biber (Salt and Pepper)** gibi aykırı değerlere sahip gürültülerde başarısız olurlar. Çünkü `0` (biber) veya `255` (tuz) gibi aşırı bir değer, ortalamayı tek başına önemli ölçüde saptırabilir.
+Gaussian ve ortalama filtreleri, `Gaussian Noise` gibi dağılmış gürültü türleri için etkilidir. Ancak **Salt and Pepper Noise (Tuz ve Biber)** gibi aykırı değerlere sahip gürültülerde başarısız olurlar. Çünkü `0` (biber) veya `255` (tuz) gibi aşırı bir değer, ortalamayı tek başına önemli ölçüde saptırabilir.
 
 **Median filtresi**, bu soruna zarif bir çözüm sunar. Bir pikselin yeni değerini, komşularının ortalaması olarak değil, **medyanı** olarak belirler.
 
@@ -51,7 +51,7 @@ Gaussian ve ortalama filtreleri, `Gaussian gürültüsü` gibi dağılmış gür
 ### Test Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Bir görüntüde çok sayıda "Tuz ve Biber" gürültüsü (rastgele beyaz ve siyah noktalar) varsa, bu gürültüyü temizlemek için en uygun filtre hangisidir?</p>
+  <p><b>Soru 1:</b> Bir görüntüde çok sayıda "Salt and Pepper" gürültüsü (rastgele beyaz ve siyah noktalar) varsa, bu gürültüyü temizlemek için en uygun filtre hangisidir?</p>
   <div class="quiz-option">A) Gaussian filtresi</div>
   <div class="quiz-option" data-correct="true">B) Median filtresi</div>
   <div class="quiz-option">C) Kutu (Box) filtresi</div>

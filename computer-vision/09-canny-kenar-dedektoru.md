@@ -11,7 +11,7 @@ Sadece gradyan büyüklüğüne bir eşik değeri uygulamak, genellikle kalın v
 
 Canny'nin temel hedefi, iyi bir kenar dedektörünün sahip olması gereken üç kriteri optimize etmektir:
 1.  **İyi Tespit:** Gerçek kenarları kaçırmamalı ve gürültüyü kenar olarak algılamamalı.
-2.  **İyi Yerelleştirme (Localization):** Tespit edilen kenar pikselleri, gerçek kenara mümkün olduğunca yakın olmalı.
+2.  **İyi Localization (Yerelleştirme):** Tespit edilen kenar pikselleri, gerçek kenara mümkün olduğunca yakın olmalı.
 3.  **Tek Yanıt:** Gerçekteki tek bir kenar için sadece tek bir piksel yanıtı üretmeli (kenarlar ince olmalı).
 
 Bu hedeflere ulaşmak için algoritma, dört ana adımdan oluşur:
@@ -26,11 +26,11 @@ Daha önce öğrendiğimiz gibi, türev işlemleri gürültüye karşı çok has
 
 ## 2. Adım: Görüntü Gradyanını Bulma
 
-Gürültüsü azaltılmış görüntü üzerinde, x ve y yönlerindeki gradyanları hesaplamak için **Sobel filtresi** gibi bir türev operatörü uygulanır. Bu adımın sonunda, her piksel için bir **gradyan büyüklüğü (magnitude)** ve bir **gradyan yönü (orientation)** elde edilir.
+Gürültüsü azaltılmış görüntü üzerinde, x ve y yönlerindeki gradyanları hesaplamak için **Sobel filtresi** gibi bir türev operatörü uygulanır. Bu adımın sonunda, her piksel için bir **gradient magnitude (gradyan büyüklüğü)** ve bir **gradient orientation (gradyan yönü)** elde edilir.
 
 ---
 
-## 3. Adım: Maksimum Olmayanları Bastırma (Non-Maximum Suppression)
+## 3. Adım: Non-Maximum Suppression (Maksimum Olmayanları Bastırma)
 
 Bu adımın amacı, gradyan büyüklüğünün oluşturduğu "kalın sırtları" incelterek tek piksellik kenarlar elde etmektir.
 Her piksel için şu işlem yapılır:
@@ -43,7 +43,7 @@ Her piksel için şu işlem yapılır:
 
 ---
 
-## 4. Adım: Histerezisli Eşikleme (Hysteresis Thresholding)
+## 4. Adım: Hysteresis Thresholding (Histerezisli Eşikleme)
 
 Son adım, hangi piksellerin gerçekten kenar olduğunu belirlemektir. Tek bir eşik değeri kullanmak, gürültü nedeniyle kopuk kenarlara yol açabilir. Canny, bunun yerine iki eşik değeri (`minVal` ve `maxVal`) kullanan akıllıca bir yöntem önerir:
 
@@ -69,7 +69,7 @@ Bu yöntem, güçlü kenarlardan başlayarak onlara bağlı olan zayıf ama anla
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Histerezisli eşikleme (Hysteresis Thresholding) adımında iki farklı eşik (`minVal` ve `maxVal`) kullanılmasının sebebi nedir?</p>
+  <p><b>Soru 2:</b> Hysteresis Thresholding (Histerezisli eşikleme) adımında iki farklı eşik (`minVal` ve `maxVal`) kullanılmasının sebebi nedir?</p>
   <div class="quiz-option">A) Algoritmayı daha hızlı çalıştırmak.</div>
   <div class="quiz-option" data-correct="true">B) Güçlü kenarlara bağlı olan zayıf kenarları da takip ederek kenar kopukluklarını azaltmak.</div>
   <div class="quiz-option">C) Görüntüdeki tüm pikselleri iki kategoriye ayırmak.</div>
