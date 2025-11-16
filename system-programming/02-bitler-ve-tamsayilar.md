@@ -235,7 +235,6 @@ Modern bilgisayarlarda işaretli tamsayılar için standart olan ve aritmetik i�
 
 Aşağıdaki tablo, 4-bitlik bir sayının işaretsiz ve işaretli (ikinin tümleyeni) olarak nasıl yorumlandığını gösterir:
 
-```
 | Bit Deseni | Unsigned Değeri | Signed (Two's Complement) Değeri |
 |------------|-----------------|----------------------------------|
 |   0000     |        0        |                0                 |
@@ -254,7 +253,6 @@ Aşağıdaki tablo, 4-bitlik bir sayının işaretsiz ve işaretli (ikinin tüml
 |   1101     |       13        |               -3                 |
 |   1110     |       14        |               -2                 |
 |   1111     |       15        |               -1                 |
-```
 
 **Bir Sayının Negatifini Bulma (Pratik Yöntem): `(~x + 1)`**
 
@@ -324,17 +322,17 @@ Bir değeri daha fazla bit ile temsil etmektir (örn: 4-bit'ten 8-bit'e). Değer
 
 *   **Sign Extension (İşaretle Genişletme):** `signed` (işaretli) sayılar için kullanılır. Sayının orijinal işaretini korumak için, en soldaki **işaret biti** kopyalanarak yeni bitler doldurulur.
     *   **Pozitif Sayı Örneği:**
-        <pre>
+        ```
         // 4-bit signed 7 sayısını 8-bit'e genişletme
         Başlangıç (4-bit): 0111      (Değer: 7)
         Sonuç (8-bit):     00000111  (Değer: 7) - İşaret biti 0 olduğu için 0'lar eklendi.
-        </pre>
+        ```
     *   **Negatif Sayı Örneği:**
-        <pre>
+        ```
         // 4-bit signed -7 sayısını 8-bit'e genişletme
         Başlangıç (4-bit): 1001      (Değer: -7)
         Sonuç (8-bit):     11111001  (Değer: -7) - İşaret biti 1 olduğu için 1'ler eklendi.
-        </pre>
+        ```
 
 ### Truncating (Kırpma): Büyük Tipten Küçük Tipe
 Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem sırasında bilgi kaybı yaşanabilir ve sayının değeri tamamen değişebilir.
@@ -342,24 +340,24 @@ Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem
 *   Kural basittir: Yüksek anlamlı bitler (soldaki bitler) basitçe **atılır**.
 
     *   **Unsigned (İşaretsiz) Örneği:**
-        <pre>
+        ```
         // 8-bit unsigned 250 sayısını 4-bit'e kırpma
         Başlangıç (8-bit): 11111010  (Değer: 250)
         Atılan Kısım:      1111
         Kalan Kısım:           1010
 
         Sonuç (4-bit):           1010  (Değer: 10) - Değer değişti.
-        </pre>
+        ```
 
     *   **Signed (İşaretli) Örneği:**
-        <pre>
+        ```
         // 8-bit signed -100 sayısını 4-bit'e kırpma
         Başlangıç (8-bit): 10011100  (Değer: -100)
         Atılan Kısım:      1001
         Kalan Kısım:           1100
 
         Sonuç (4-bit):           1100  (Değer: -4) - Hem değer hem işaret değişebilir!
-        </pre>
+        ```
 
 <div class="quiz-question">
   <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayı olan `-3` (`1101`), 8-bit bir tamsayıya `Sign Extension` ile genişletilirse sonuç ne olur?</p>
@@ -395,9 +393,9 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
 İşaretsiz toplama işleminde, sonuç `w` bitin temsil edebileceği maksimum değeri aştığında, sonuç `2ʷ` modunda alınır. Bu, sonucun "başa dönmesi" anlamına gelir.
 
 *   **Örnek (4-bit unsigned):** `10 + 7 = ?`
-    *   `10`'un deseni: `1010`
-    *   `7`'nin deseni: `0111`
     ```
+    // 10'un deseni: 1010
+    //  7'nin deseni: 0111
       1010  (10)
     + 0111  (7)
       ----
@@ -411,9 +409,9 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
 
 *   **Pozitif Taşma:** İki pozitif sayının toplamı negatif olursa.
     *   **Örnek (4-bit signed):** `5 + 4 = ?`
-        *   `5`'in deseni: `0101`
-        *   `4`'ün deseni: `0100`
         ```
+        // 5'in deseni: 0101
+        // 4'ün deseni: 0100
           0101  (+5)
         + 0100  (+4)
           ----
@@ -423,9 +421,9 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
 
 *   **Negatif Taşma:** İki negatif sayının toplamı pozitif olursa.
     *   **Örnek (4-bit signed):** `(-5) + (-4) = ?`
-        *   `-5`'in deseni: `1011`
-        *   `-4`'ün deseni: `1100`
         ```
+        // -5'in deseni: 1011
+        // -4'ün deseni: 1100
           1011  (-5)
         + 1100  (-4)
           ----

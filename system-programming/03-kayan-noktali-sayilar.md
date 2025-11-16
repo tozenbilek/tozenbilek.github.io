@@ -45,10 +45,9 @@ Ondalıklı sayıların farklı sistemlerde tutarlı bir şekilde temsil edilmes
 *   **`M` - Mantissa (Kesir):** Sayının hassasiyetini (ondalık kısmını) belirler.
 
 Bu üç parça, bellekte belirli bit alanlarına yerleştirilir:
-<pre>
-  s |   exp   |                  frac
-(1 bit) (k bit)               (n bit)
-</pre>
+```
+ s |   exp (k bit)    |                  frac (n bit)
+```
 
 C dilindeki `float` ve `double` türleri, bu standardın iki yaygın uygulamasıdır ve farklı hassasiyet seviyeleri sunarlar:
 
@@ -92,7 +91,9 @@ Bulduğumuz üç parçayı birleştirelim:
 *   `exp`: `10000010`
 *   `frac`: `10011000000000000000000`
 
-<pre>1 10000010 10011000000000000000000</pre>
+```
+1 10000010 10011000000000000000000
+```
 
 İşte `-12.75` sayısının 32-bit `float` olarak bellekteki tam karşılığı budur.
 
