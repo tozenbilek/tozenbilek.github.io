@@ -41,7 +41,7 @@ Bu yaklaşım, her bir kenar pikselinin, kendisini çevreleyen ve olası bir mer
 
 Peki ya bulmak istediğimiz şeklin basit bir denklemi yoksa? Örneğin, bir kedi yüzü veya bir araba silüeti bulmak istiyorsak ne olur? İşte burada **Genelleştirilmiş Hough Dönüşümü** devreye girer.
 
-Bu teknikte, şeklin denklemi yerine, şeklin bir **şablon (template)** görüntüsü kullanılır.
+Bu teknikte, şeklin denklemi yerine, şeklin bir **template (şablon)** görüntüsü kullanılır.
 1.  **Eğitim Aşaması:** Şablon görüntüdeki her kenar pikseli için, o pikselden şeklin keyfi olarak seçilmiş bir merkez noktasına olan yer değiştirme vektörü (`Δx, Δy`) hesaplanır. Bu vektörler, pikselin gradyan yönüne göre bir tabloda (`R-Table`) saklanır.
 2.  **Tespit Aşaması:** Test görüntüsündeki her bir kenar pikseli için:
     a. Gradyan yönü hesaplanır.

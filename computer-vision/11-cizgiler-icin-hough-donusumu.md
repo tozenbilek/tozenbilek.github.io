@@ -17,9 +17,9 @@ Bir çizgiyi temsil etmek için akla ilk gelen denklem `y = mx + b`'dir. Ancak b
 
 ---
 
-## 2. Çözüm: Kutupsal Koordinat (Polar) Temsili
+## 2. Çözüm: Polar Coordinate (Kutupsal Koordinat) Temsili
 
-Bu sorunu çözmek için, bir çizgiyi temsil etmenin farklı ve daha gürbüz (robust) bir yolunu kullanırız: **Kutupsal Koordinat Temsili**.
+Bu sorunu çözmek için, bir çizgiyi temsil etmenin farklı ve daha gürbüz (robust) bir yolunu kullanırız: **Polar Coordinate (Kutupsal Koordinat) Temsili**.
 
 Bu yaklaşımda, bir çizgi iki parametre ile tanımlanır:
 *   **`ρ` (rho):** Çizginin, koordinat sisteminin orijinine `(0,0)` olan dik mesafesi.
@@ -45,11 +45,11 @@ Bu sınırlı aralıklar, parametre uzayını (`(ρ, θ)` uzayını) sonlu boyut
 Kutupsal koordinat sisteminde, görüntü uzayındaki `(x₀, y₀)` gibi **tek bir nokta**, `(ρ, θ)` parametre uzayında artık bir çizgi değil, bir **sinüs eğrisi** oluşturur: `ρ = x₀ cos(θ) + y₀ sin(θ)`.
 
 Oylama süreci şu şekilde işler:
-1.  `(ρ, θ)` parametre uzayını temsil eden 2D bir "oy sandığı" (akkümülatör matrisi) oluşturulur ve tüm değerleri sıfırlanır.
+1.  `(ρ, θ)` parametre uzayını temsil eden 2D bir "oy sandığı" (`accumulator` matrisi) oluşturulur ve tüm değerleri sıfırlanır.
 2.  Görüntüdeki her bir kenar pikseli `(x, y)` için:
     a. Mümkün olan her `θ` değeri (belirli bir adımla, örn: her 1 derece) için `ρ = x cos(θ) + y sin(θ)` denklemi kullanılarak karşılık gelen `ρ` değeri hesaplanır.
     b. Akkümülatör matrisindeki `(ρ, θ)` hücresinin değeri bir artırılır.
-3.  Tüm kenar pikselleri için oylama bittiğinde, akkümülatör matrisindeki en yüksek değere sahip hücreler (tepe noktaları), görüntüdeki en belirgin çizgilerin `(ρ, θ)` parametrelerini verir.
+3.  Tüm kenar pikselleri için oylama bittiğinde, `accumulator` matrisindeki en yüksek değere sahip hücreler (tepe noktaları), görüntüdeki en belirgin çizgilerin `(ρ, θ)` parametrelerini verir.
 
 ![Hough Accumulator](https://via.placeholder.com/700x300.png?text=Kenar+Görüntüsü+->+Oylama+->+Akkümülatör+Matrisi)
 *Görsel: Soldaki kenar pikselleri, sağdaki Hough parametre uzayında oy kullanır. Üç parlak tepe noktası, görüntüdeki üç çizgiye karşılık gelir.*
@@ -59,7 +59,7 @@ Oylama süreci şu şekilde işler:
 ### Test Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Çizgiler için Hough Dönüşümü'nde `y = mx + b` yerine kutupsal koordinat `(ρ, θ)` temsilinin kullanılmasının ana nedeni nedir?</p>
+  <p><b>Soru 1:</b> Çizgiler için Hough Dönüşümü'nde `y = mx + b` yerine `polar coordinate` (kutupsal) `(ρ, θ)` temsilinin kullanılmasının ana nedeni nedir?</p>
   <div class="quiz-option">A) Kutupsal koordinatların hesaplamasının daha hızlı olması.</div>
   <div class="quiz-option">B) Daha az belleğe ihtiyaç duyması.</div>
   <div class="quiz-option" data-correct="true">C) Dikey çizgileri de temsil edebilen sınırlı bir parametre uzayı sunması.</div>

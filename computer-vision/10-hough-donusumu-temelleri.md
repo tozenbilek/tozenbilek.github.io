@@ -9,21 +9,21 @@ parent: Computer Vision
 
 Önceki bölümde, Canny gibi algoritmalarla bir görüntüdeki kenar piksellerini nasıl bulacağımızı öğrendik. Ancak bu, bize sadece kenarların nerede olduğunu söyler, bu kenarların bir araya gelerek bir çizgi mi, çember mi yoksa başka bir geometrik şekil mi oluşturduğunu söylemez.
 
-**Hough Dönüşümü (Hough Transform)**, bu dağınık kenar pikselleri setinden, belirli parametrelere sahip global yapıları (çizgiler, çemberler vb.) çıkarmak için kullanılan güçlü bir "oylama" tekniğidir.
+**Hough Transform (Hough Dönüşümü)**, bu dağınık kenar pikselleri setinden, belirli parametrelere sahip global yapıları (çizgiler, çemberler vb.) çıkarmak için kullanılan güçlü bir "oylama" tekniğidir.
 
 ---
 
-## 1. Temel Fikir: Oylama (Voting)
+## 1. Temel Fikir: Voting (Oylama)
 
 Hough Dönüşümü'nün arkasındaki ana fikir son derece sezgiseldir: **Bırakın pikseller, ait oldukları şekil için oy versin!**
 
 1.  Öncelikle, görüntüdeki kenar pikselleri (örneğin, Canny ile) bulunur.
 2.  Aradığımız şeklin (örneğin bir çizgi) bir parametrik denklemi vardır.
 3.  Her bir kenar pikseli, kendisinin bir parçası olabileceği **tüm olası şekiller** için "oy" kullanır.
-4.  Bu oylar, **parametre uzayı (Hough space)** adı verilen bir "oy sandığında" (genellikle bir 2D matris/histogram) biriktirilir.
+4.  Bu oylar, **parameter space (parametre uzayı - Hough space)** adı verilen bir "oy sandığında" (genellikle bir 2D matris/histogram) biriktirilir.
 5.  Oylama bittiğinde, oy sandığındaki en yüksek oy alan "kutucuklar", görüntüdeki en olası şekillerin parametrelerini temsil eder.
 
-Bu yaklaşım, gürültüye ve nesnelerin kısmen gizlenmiş (occlusion) olmasına karşı oldukça dayanıklıdır. Gürültülü piksellerin oyları parametre uzayına rastgele dağılırken, "gerçek" bir şekle ait piksellerin oyları tutarlı bir şekilde tek bir noktada birikecektir.
+Bu yaklaşım, gürültüye ve `occlusion` (nesnelerin kısmen gizlenmiş olması) durumuna karşı oldukça dayanıklıdır. Gürültülü piksellerin oyları parametre uzayına rastgele dağılırken, "gerçek" bir şekle ait piksellerin oyları tutarlı bir şekilde tek bir noktada birikecektir.
 
 ---
 
