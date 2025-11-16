@@ -87,3 +87,4 @@ Türev işlemleri, doğası gereği pikseller arasındaki küçük farklılıkla
     <p><b>Cevap: C.</b> Türev operatörleri, pikseller arasındaki en küçük farkları bile güçlendirir. Bu, gürültünün de kenarlar gibi algılanmasına neden olabilir. Gaussian filtresi ile önceden pürüzsüzleştirme yapmak, bu gürültüyü bastırır ve algoritmanın sadece anlamlı kenarlara odaklanmasını sağlar.</p>
   </div>
 </div>
+

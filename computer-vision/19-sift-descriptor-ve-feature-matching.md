@@ -84,3 +84,4 @@ Bu adımların sonunda, iki görüntü arasında yüksek olasılıkla doğru ola
     <p><b>Cevap: C.</b> Ratio Test, bir eşleşmenin ne kadar "ayırt edici" olduğunu ölçer. Eğer en yakın komşu, ikinci en yakın komşudan çok daha yakın değilse, bu eşleşme belirsiz kabul edilir ve atılır. Bu, eşleşme kalitesini önemli ölçüde artırır.</p>
   </div>
 </div>
+

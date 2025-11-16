@@ -84,3 +84,4 @@ Bu sınırlılıklardan dolayı, k-means basit renk nicelemesi (color quantizati
     <p><b>Cevap: B.</b> k-means'i kullanabilmek için, verinin kaç doğal kümeden oluştuğunu önceden tahmin edip algoritmayı bu `k` değeri ile başlatmanız gerekir. Bu değerin yanlış seçilmesi, kötü segmentasyon sonuçlarına yol açar.</p>
   </div>
 </div>
+

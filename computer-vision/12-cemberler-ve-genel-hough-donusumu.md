@@ -75,3 +75,4 @@ Bu yöntem, oylama mekanizmasını ölçek, dönme ve keyfi şekil tespiti için
     <p><b>Cevap: B.</b> Bir çemberin kenarındaki bir pikselin gradyanı, her zaman merkezden geçen bir çizgi üzerindedir. Bu nedenle, bir pikselin tüm 2D düzlemdeki olası merkezler için oy vermesi yerine, sadece bu gradyan çizgisi üzerindeki noktalar için oy vermesi yeterlidir. Bu, arama uzayını önemli ölçüde daraltır.</p>
   </div>
 </div>
+

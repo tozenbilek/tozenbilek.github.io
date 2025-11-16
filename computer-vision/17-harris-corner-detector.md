@@ -100,3 +100,4 @@ Bu ölçek problemi, bir sonraki bölümde inceleyeceğimiz **SIFT (Scale-Invari
     <p><b>Cevap: C.</b> Harris dedektörü, sabit bir pencere boyutuyla çalıştığı için ölçek değişikliklerine karşı hassastır. Bir nesneye yaklaştıkça, dedektörün "gördüğü" desen değişir ve daha önce köşe olarak algılanan bir nokta artık algılanmayabilir.</p>
   </div>
 </div>
+

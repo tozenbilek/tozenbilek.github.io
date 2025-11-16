@@ -76,3 +76,4 @@ RANSAC, aykırı değerlerin oranı %50'den fazla olsa bile şaşırtıcı derec
     <p><b>Cevap: C.</b> Bir Homography matrisi 8 serbestlik derecesine sahiptir ve bunu çözmek için en az 4 nokta eşleşmesi gerekir. RANSAC, her iterasyonda bir model hipotezi oluşturmak için gereken minimum sayıda örneği seçer.</p>
   </div>
 </div>
+

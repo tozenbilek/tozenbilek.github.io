@@ -79,3 +79,4 @@ Oylama süreci şu şekilde işler:
     <p><b>Cevap: C.</b> Sabit bir `(x, y)` pikseli için `ρ = x cos(θ) + y sin(θ)` denklemi, `θ` değiştikçe `ρ`'nun sinüsoidal bir şekilde değiştiği bir eğriyi tanımlar. Görüntüdeki her nokta, parametre uzayında kendine özgü bir sinüs eğrisi çizer.</p>
   </div>
 </div>
+

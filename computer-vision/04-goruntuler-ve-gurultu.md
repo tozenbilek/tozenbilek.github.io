@@ -77,3 +77,4 @@ Görüntüler, sensör kusurları, yetersiz ışık, elektronik parazitler veya 
     <p><b>Cevap: D.</b> Hareket bulanıklığı (motion blur), piksellere rastgele değerler ekleyen bir gürültü modeli değildir. Bunun yerine, sahnenin birden fazla anının tek bir karede üst üste binmesinden kaynaklanan, daha yapısal bir bozulma türüdür ve farklı tekniklerle ele alınır.</p>
   </div>
 </div>
+

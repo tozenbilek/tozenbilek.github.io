@@ -60,3 +60,4 @@ En önemlisi de, insan algısını makinelere kazandırmaya çalışmak, çözme
     <p><b>Cevap: B.</b> Bu seçenek, görsel bir girdiden (video) yola çıkarak sayısal ve anlamsal bir bilgi (insan sayısı) üretmeyi hedefler. Diğer seçenekler, bir görüntüyü girdi alıp yine bir görüntü çıktısı üreten görüntü işleme operasyonlarıdır.</p>
   </div>
 </div>
+

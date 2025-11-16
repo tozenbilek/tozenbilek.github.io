@@ -72,3 +72,4 @@ Bu sınırlılıklardan dolayı, basit şablon eşleştirme en iyi, aranan nesne
     <p><b>Cevap: C.</b> Kameraya doğru yürüyen bir insanın yüzü, görüntüde sürekli olarak büyüyecektir. Basit şablon eşleştirme, bu tür ölçek değişikliklerine karşı dayanıklı olmadığı için, sabit boyutlu bir yüz şablonu ile bu kişiyi güvenilir bir şekilde takip edemez.</p>
   </div>
 </div>
+

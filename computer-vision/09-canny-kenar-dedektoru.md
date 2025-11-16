@@ -78,3 +78,4 @@ Bu yöntem, güçlü kenarlardan başlayarak onlara bağlı olan zayıf ama anla
     <p><b>Cevap: B.</b> Yüksek eşik (`maxVal`), güvenilir "kesin kenarları" bulur. Düşük eşik (`minVal`) ise, bu kesin kenarlara dokunan "zayıf ama muhtemel" kenarların da zincire dahil edilmesine izin verir. Bu, tek bir eşik kullanıldığında ortaya çıkabilecek kenar kopukluklarını önler.</p>
   </div>
 </div>
+

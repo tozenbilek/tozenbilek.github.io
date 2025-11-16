@@ -71,3 +71,4 @@ Gaussian ve ortalama filtreleri, `Gaussian gürültüsü` gibi dağılmış gür
     <p><b>Cevap: B.</b> `Sigma` değeri, Gaussian çan eğrisinin genişliğini belirler. Daha büyük bir `sigma`, daha geniş bir eğri ve dolayısıyla daha fazla komşunun hesaba katıldığı daha güçlü bir bulanıklaştırma anlamına gelir.</p>
   </div>
 </div>
+

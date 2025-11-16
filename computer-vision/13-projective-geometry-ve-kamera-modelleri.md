@@ -92,3 +92,4 @@ Bu prensip, görüntülerden 3D yapı hakkında ipuçları çıkarmak, sahte gö
     <p><b>Cevap: B.</b> Gerçek dünyada paralel olan çizgilerin, perspektif yansıması nedeniyle 2D bir görüntüde kesiştikleri noktaya "ufuk noktası" denir.</p>
   </div>
 </div>
+

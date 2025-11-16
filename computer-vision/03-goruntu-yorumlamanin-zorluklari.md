@@ -66,3 +66,4 @@ Bir Computer Vision sisteminin, tüm bu değişkenlere rağmen bir nesneyi güve
     <p><b>Cevap: C.</b> Kedinin büyük bir kısmının çit tarafından gizlenmesi, "occlusion" (tıkanma) problemine klasik bir örnektir. Sistemin, nesnenin sadece bir parçasını görerek bütününü tanıması gerekir.</p>
   </div>
 </div>
+

@@ -79,3 +79,4 @@ Tüm pikseller için bu kaydırma süreci tamamlandığında, aynı veya birbiri
     <p><b>Cevap: C.</b> Pencere boyutu, algoritmanın hangi ölçekteki yoğunluk değişimlerine odaklanacağını belirler. Çok küçük bir pencere çok fazla küçük küme bulurken, çok büyük bir pencere farklı kümeleri birleştirerek detayları kaybedebilir.</p>
   </div>
 </div>
+

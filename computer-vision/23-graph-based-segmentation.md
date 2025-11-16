@@ -83,3 +83,4 @@ Bu optimizasyon probleminin çözümü, doğrudan ve verimli bir şekilde buluna
     <p><b>Cevap: C.</b> Minimum Cut, tek bir aykırı pikseli veya küçük bir bölgeyi ayırmanın toplam kesim maliyetini çok düşük yapabildiğini fark eder ve bu tür "önemsiz" kesimleri tercih etme eğilimindedir. Normalized Cuts, bu durumu segment boyutunu da hesaba katarak düzeltir.</p>
   </div>
 </div>
+

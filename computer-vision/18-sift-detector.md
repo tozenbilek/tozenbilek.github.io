@@ -76,3 +76,4 @@ Bu adımların sonunda, ölçek değişikliklerine karşı dayanıklı, stabil v
     <p><b>Cevap: C.</b> DoG, farklı Gaussian seviyeleriyle bulanıklaştırılmış iki görüntünün farkını alarak, yavaş olan Laplacian of Gaussian (LoG) operatörüne hızlı ve etkili bir yaklaşım sunar. DoG'nin tepe noktaları, karakteristik ölçekteki "blob"ları işaret eder.</p>
   </div>
 </div>
+

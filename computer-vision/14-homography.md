@@ -111,3 +111,4 @@ Bir düzleme (örneğin bir bina cephesi, bir masa yüzeyi) yandan bir açıyla 
     <p><b>Cevap: C.</b> Bir Homography matrisi 8 serbestlik derecesine sahiptir. Her bir nokta eşleşmesi 2 denklem sağladığı için, bu 8 bilinmeyeni çözmek üzere en az 4 nokta eşleşmesine ihtiyaç duyarız (4 nokta x 2 denklem/nokta = 8 denklem).</p>
   </div>
 </div>
+

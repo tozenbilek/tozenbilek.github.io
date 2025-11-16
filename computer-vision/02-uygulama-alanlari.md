@@ -74,3 +74,4 @@ Kalabalık alanlarda terk edilmiş nesneleri, şüpheli hareketleri veya belirli
     <p><b>Cevap: C.</b> Bu işlem, aktörün hareketlerini ve ifadelerini sensörler veya kameralar aracılığıyla yakalayıp dijital bir modele uygulama prensibine dayanan "motion capture" teknolojisinin bir örneğidir.</p>
   </div>
 </div>
+

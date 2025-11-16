@@ -88,3 +88,4 @@ Ancak bu problem zordur, çünkü:
     <p><b>Cevap: C.</b> İki kameranın geometrisi sayesinde, sol görüntüdeki bir noktanın sağ görüntüdeki karşılığı, tüm görüntüde değil, "epipolar çizgi" adı verilen belirli bir çizgi üzerinde olmak zorundadır. Bu, arama uzayını dramatik bir şekilde küçültür.</p>
   </div>
 </div>
+

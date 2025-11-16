@@ -72,3 +72,4 @@ Kalibrasyon tamamlandığında, bir görüntüdeki herhangi bir pikselin, kamera
     <p><b>Cevap: B.</b> Kalibrasyon algoritmasının temel girdisi, 3D dünya koordinatları (`X,Y,Z`) ile bu noktaların görüntüdeki 2D piksel karşılıkları (`x,y`) arasındaki eşleşmelerdir. Satranç tahtası, köşeleri hem görüntüde kolayca bulunabilen hem de 3D'deki konumları hassas bir şekilde bilinen bir nesne olduğu için bu eşleşmeleri kurmayı kolaylaştırır.</p>
   </div>
 </div>
+

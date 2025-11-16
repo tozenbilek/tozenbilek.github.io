@@ -82,3 +82,4 @@ Eğer kullanılan kernel, hem yatay hem de dikey olarak simetrik ise (örneğin,
     <p><b>Cevap: C.</b> İki operasyon da eleman bazında çarpma ve toplama işlemi yapar. Aralarındaki tek matematiksel fark, konvolüsyonun, filtre kernelini görüntüye uygulamadan önce merkezi etrafında 180 derece döndürmesidir.</p>
   </div>
 </div>
+

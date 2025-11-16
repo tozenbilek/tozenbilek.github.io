@@ -77,3 +77,4 @@ Hough Dönüşümü, bu kesişim noktalarını bularak (en çok oyun biriktiği 
     <p><b>Cevap: B.</b> Görüntüdeki `(x₀, y₀)` noktasından sonsuz sayıda çizgi geçebilir. Bu çizgilerin `m` ve `b` parametreleri, `b = -x₀m + y₀` denklemini sağlar. Bu, `(m,b)` parametre uzayında bir çizgi denklemidir.</p>
   </div>
 </div>
+
