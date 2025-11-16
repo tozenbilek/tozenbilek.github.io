@@ -48,7 +48,6 @@ Herhangi bir CFG (ε üretmeyen), bir dizi adım takip edilerek eşdeğer bir CN
     *   İkiden fazla variable içeren kurallar, zincirleme şekilde ikili kurallara bölünür.
 
 *Görsel: `A → bCD` gibi karmaşık bir kuralın CNF'ye dönüştürülmesi. Önce terminal (`b`) kendi değişkenine (`X`), sonra da kalan çoklu değişkenler (`CD`) ikili bir yapıya (`Y`) ayrılır.*
-{: .text-center }
 
 ```mermaid
 graph TD
@@ -69,7 +68,6 @@ graph TD
     style C fill:#D2E9FF,stroke:#99C7FF
     style E fill:#D2E9FF,stroke:#99C7FF
 ```
-{: .d-block .mx-auto }
 
 Bu adımların sonunda, orijinal gramerle aynı language'ı tanıyan ancak tüm kuralları CNF formatında olan yeni bir gramer elde edilir.
 

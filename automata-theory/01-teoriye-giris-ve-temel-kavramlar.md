@@ -66,7 +66,6 @@ Bir otomatın temel görevi, bu soruyu cevaplayan bir karar verici olarak hareke
 Otomatlar, dilleri tanımak için kullanılan matematiksel modellerdir. Karmaşıklıklarına ve güçlerine göre artan bir hiyerarşi oluştururlar:
 
 *Görsel: Otomat hiyerarşisi.*
-{: .text-center }
 
 ```mermaid
 graph TD
@@ -84,7 +83,6 @@ graph TD
 
     A --> B --> C
 ```
-{: .d-block .mx-auto }
 
 ---
 
