@@ -135,13 +135,15 @@ Bilgisayar, `exp` alanındaki bit desenine bakarak sayının "normal" mi, "sıf�
 
 ---
 
-## 5. Rounding (Yuvarlama) ve C'deki Etkileri
+## 5. Rounding and Casting in C (Yuvarlama ve C'deki Tip Dönüşümleri)
 
-Hesaplamaların sonucu genellikle mevcut bit sayısından daha fazla hassasiyet gerektirdiğinde, sonucun en yakın temsil edilebilir değere yuvarlanması gerekir. Bu, özellikle `int` ve `float`/`double` arası dönüşümlerde ilginç sonuçlara yol açar.
+Hesaplamaların sonucu hassas olduğunda veya farklı sayı türleri arasında dönüşüm yapıldığında, C dilinin belirli kuralları vardır. Bu dönüşümler aşağıdaki tabloda özetlenmiştir:
 
-*   `double`/`float` -> `int`: Ondalık kısım **yuvarlanmaz, doğrudan atılır (truncate)**. `(int) 3.999` işleminin sonucu `3`'tür.
-*   `int` -> `double`: Genellikle hassasiyet kaybı olmaz.
-*   `int` -> `float`: Büyük tamsayılar, `float`'ın 23 bitlik kesir alanına sığmayabilir ve bu durumda **yuvarlama** nedeniyle hassasiyet kaybı yaşanabilir. Örneğin, çok büyük bir `int` olan `123456789`, `float`'a çevrildiğinde `123456792` gibi bir değere dönüşebilir.
+| Dönüşüm | Kural / Davranış | Örnek |
+| :--- | :--- | :--- |
+| `float`/`double` → `int` | Ondalık kısım **atılır (truncate)**. Sayı sıfıra doğru yuvarlanır. | `(int) 3.99` → `3`<br>`(int) -3.99` → `-3` |
+| `int` → `double` | Değer genellikle tam olarak korunur. Hassasiyet kaybı yaşanmaz. | `(double) 12345` → `12345.0` |
+| `int` → `float` | Büyük sayılarda `float`'ın hassasiyeti yetmeyebilir ve sayı **yuvarlanabilir**. | `(float) 123456789` → `123456792.0` |
 
 <div class="quiz-question">
   <p><b>Soru:</b> `int x = (int) -5.9;` C kodu çalıştırıldığında `x`'in değeri ne olur?</p>
