@@ -1,7 +1,7 @@
 # Site settings
-title: Computer Vision Ders Notları
+title: Üniversite Ders Notları
 description: >-
-  Computer Vision dersi için sınav çalışma notları ve soruları.
+  System Programming, Computer Vision ve Automata Theory dersleri için kişisel ders notları.
 url: "https://tozenbilek.github.io"
 remote_theme: just-the-docs/just-the-docs
 

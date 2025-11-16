@@ -69,6 +69,17 @@ Otomatlar, dilleri tanımak için kullanılan matematiksel modellerdir. Karmaş�
 
 ---
 
+## 4. Formel İspat Yöntemleri
+
+Otomatlar teorisi, matematiksel temellere dayandığı için çeşitli ispat yöntemleri kullanılır. Bir iddianın doğruluğunu göstermek için kullanılan başlıca yöntemler şunlardır:
+
+*   **Tümdengelimsel İspatlar (Deductive Proofs):** Bilinen gerçeklerden (hipotezler ve aksiyomlar) yola çıkarak mantıksal çıkarım kuralları ile bir sonuca ulaşma yöntemidir.
+*   **Tümevarımsal İspatlar (Inductive Proofs):** Genellikle doğal sayılar veya özyineli olarak tanımlanmış yapılar üzerinde kullanılır. Bir temel durum (basis) için doğruluğu gösterilir ve ardından `n` için doğru olduğu varsayılarak `n+1` için de doğru olduğu (inductive step) kanıtlanır.
+*   **Çelişki ile İspat (Proof by Contradiction):** Bir iddianın yanlış olduğunu varsayıp bu varsayımın mantıksal bir çelişkiye yol açtığını göstererek iddianın aslında doğru olduğunu kanıtlama yöntemidir.
+*   **Karşı Örnek ile Çürütme (Disproof via Counterexample):** Bir iddianın genel olarak doğru olmadığını, o iddiayı sağlamayan tek bir örnek göstererek kanıtlamaktır.
+
+---
+
 ### Test Soruları
 
 <div class="quiz-question">

@@ -64,6 +64,33 @@ Bu dönüşüm daha karmaşıktır ve genellikle durum eleme (state elimination)
 
 ---
 
+## 5. Düzenli İfadelerin Cebirsel Kuralları
+
+Düzenli ifadeler, üzerinde tanımlı cebirsel kurallara sahiptir. Bu kurallar, bir ifadeyi basitleştirmek veya farklı görünen iki ifadenin aslında aynı dili tanımlayıp tanımlamadığını anlamak için kullanılır.
+
+*   **Birleşme (Union) Değişme ve Birleşme Özelliği:**
+    *   `L + M = M + L` (Değişme - Commutative)
+    *   `L + (M + N) = (L + M) + N` (Birleşme - Associative)
+*   **Birleştirme (Concatenation) Birleşme Özelliği:**
+    *   `L(MN) = (LM)N` (Birleşme - Associative)
+    *   Ancak birleştirme işleminin değişme özelliği yoktur: `LM ≠ ML`
+*   **Dağılma (Distributive) Özelliği:**
+    *   `L(M + N) = LM + LN`
+    *   `(M + N)L = ML + NL`
+*   **Etkisiz Elemanlar (Identities):**
+    *   Birleşme için: `L + ∅ = L`
+    *   Birleştirme için: `Lε = εL = L`
+*   **Yutan Eleman (Annihilator):**
+    *   Birleştirme için: `L∅ = ∅L = ∅`
+*   **Kendine Dönüş (Idempotence):**
+    *   `L + L = L`
+*   **Yıldız (Closure) Kuralları:**
+    *   `(L*)* = L*`
+    *   `∅* = ε`
+    *   `ε* = ε`
+
+---
+
 ### Test Soruları
 
 <div class="quiz-question">
