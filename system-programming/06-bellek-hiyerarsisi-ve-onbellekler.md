@@ -7,96 +7,32 @@ parent: System Programming
 
 # Bellek Hiyerarşisi ve Önbellekler (Caches)
 
-Modern bir işlemci saniyenin milyarda biri gibi sürelerde komutları yürütebilirken, ana bellekten (RAM) veri okumak yüzlerce kat daha yavaş kalır. Bu devasa hız farkı, "CPU-Bellek Uçurumu" olarak bilinir. Bu bölümde, bu uçurumu kapatmak için tasarlanmış dahice bir sistem olan **bellek hiyerarşisini** ve onun en önemli bileşeni olan **caches (önbellekleri)** inceleyeceğiz.
+Modern bir işlemci çok hızlıyken, ana bellek (RAM) ona kıyasla çok yavaştır. Bu devasa hız farkı, "CPU-Bellek Uçurumu" olarak bilinir. Bu bölümde, bu uçurumu kapatmak için tasarlanmış **bellek hiyerarşisini** ve en önemli bileşeni olan **caches (önbellekleri)** inceleyeceğiz.
 
 ---
 
-## 1. Depolama Teknolojileri
+## 1. Depolama Teknolojileri ve Bellek Hiyerarşisi
 
-Farklı bellek türleri, hız, maliyet ve kalıcılık arasında farklı dengeler sunar.
+Farklı bellek türleri, hız, maliyet ve boyut arasında farklı dengeler sunar. Bu teknolojiler, hızlarına göre bir piramit şeklinde organize edilir.
 
-*   **SRAM (Static RAM):** Çok hızlı, çok pahalı ve güç tüketimi yüksektir. İşlemcinin içindeki **önbellekler (L1, L2, L3 cache)** için kullanılır.
-*   **DRAM (Dynamic RAM):** SRAM'den yavaş, çok daha ucuz ve daha az güç tüketir. Bilgisayarın **ana belleği (RAM)** olarak kullanılır. Sürekli tazelenmesi gerekir.
-*   **Kalıcı Depolama:** Güç kesildiğinde bile veriyi saklar.
-    *   **SSD (Solid State Drive):** Mekanik parçası olmayan, hızlı erişim sunan flash bellek tabanlı sürücüler.
-    *   **HDD (Manyetik Disk):** Dönen plakalar ve okuma/yazma kafaları kullanan, daha yavaş ama daha ucuz ve yüksek kapasiteli geleneksel sürücüler.
+<pre>
+       HIZLI, KÜÇÜK, PAHALI
+      +-----------------+
+      |    Yazmaçlar    |
+      +-----------------+
+      | L1, L2, L3 Cache| (SRAM)
+      +-----------------+
+      |    Ana Bellek   | (DRAM)
+      +-----------------+
+      |   Lokal Disk    | (SSD/HDD)
+      +-----------------+
+       YAVAŞ, BÜYÜK, UCUZ
+</pre>
 
----
-
-## 2. Bellek Hiyerarşisi
-
-Bu farklı teknolojiler, hızlarına ve boyutlarına göre bir piramit şeklinde organize edilir. Buna **bellek hiyerarşisi** denir.
-
-![Bellek Hiyerarşisi](https://via.placeholder.com/500x400.png?text=Registers+->+L1+Cache+(SRAM)+->+L2+Cache+(SRAM)+->+L3+Cache+(SRAM)+->+Main+Memory+(DRAM)+->+Local+Disk+(SSD/HDD))
-*Görsel: Tipik bir bellek hiyerarşisi. Yukarı çıktıkça hız ve maliyet artar, boyut azalır.*
-
-**Temel Fikir:** Her katman, bir altındaki daha yavaş ve daha büyük katman için bir **cache (önbellek)** görevi görür. En sık kullanılan veriler, piramidin en tepesine yakın, en hızlı katmanlarda tutulmaya çalışılır.
-
----
-
-## 3. Principle of Locality (Yerellik Prensibi)
-
-Bellek hiyerarşisinin bu kadar etkili olmasının sebebi, programların belleğe rastgele değil, öngörülebilir desenlerle erişme eğilimidir. Buna **yerellik prensibi** denir ve iki türü vardır:
-
-### a) Temporal Locality (Zamansal Yerellik)
-Eğer bir veriye erişildiyse, yakın gelecekte ona tekrar erişilme olasılığı yüksektir.
-*   **Örnek:** Bir döngü içindeki sayaç değişkeni veya tekrar tekrar çağrılan bir fonksiyonun içindeki komutlar.
-
-### b) Spatial Locality (Uzamsal Yerellik)
-Eğer bir veriye erişildiyse, onun bellekteki komşularına da yakın gelecekte erişilme olasılığı yüksektir.
-*   **Örnek:** Bir dizinin elemanlarını sırayla işlemek. `A[0]`'a eriştikten sonra muhtemelen `A[1]`, `A[2]`'ye de erişeceksiniz.
-
----
-
-## 4. Caches (Önbellekler) Nasıl Çalışır?
-
-Önbellek, ana bellekten okunan verileri geçici olarak saklayan küçük ve hızlı bir SRAM belleğidir.
-*   Veri, **block (blok)** adı verilen sabit boyutlu parçalar halinde önbelleğe kopyalanır.
-*   İşlemci bir veriye ihtiyaç duyduğunda önce önbelleğe bakar.
-    *   **Cache Hit (Önbellek Vuruşu):** Eğer veri önbellekte varsa, çok hızlı bir şekilde alınır.
-    *   **Cache Miss (Önbellek Iskalama):** Eğer veri önbellekte yoksa, işlemci duraksar. Verinin bulunduğu tüm blok, ana bellekten önbelleğe kopyalanır ve sonra işlemciye sunulur. Bu işlem, bir "hit"e göre çok daha yavaştır (**miss penalty**).
-
-**Ana Fikir:** Yerellik prensibi sayesinde, bir kez "miss" yaşayıp bir bloğu önbelleğe getirdiğimizde, o bloktaki diğer veriler (uzamsal yerellik) veya aynı veri (zamansal yerellik) için gelecekte yaşanacak erişimler "hit" olacaktır.
-
----
-
-## 5. Cache-Friendly (Önbellek Dostu) Kod Yazmak
-
-Programlarımızın performansını dramatik şekilde artırmak için, kodumuzun bellek erişim desenlerini yerellik prensibini güçlendirecek şekilde yazmalıyız.
-
-### Örnek: Matris Toplamı
-Aşağıdaki iki fonksiyondan hangisi daha hızlıdır?
-```c
-// Uzamsal yerelliği iyi
-void sum_row_major(int **matrix, int n) {
-    int sum = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            sum += matrix[i][j]; // Sıralı erişim
-        }
-    }
-}
-
-// Uzamsal yerelliği kötü
-void sum_col_major(int **matrix, int n) {
-    int sum = 0;
-    for (int j = 0; j < n; j++) {
-        for (int i = 0; i < n; i++) {
-            sum += matrix[i][j]; // Atlamalı erişim
-        }
-    }
-}
-```
-C dilinde matrisler bellekte **row-major (satır-öncelikli)** olarak saklandığı için, `sum_row_major` fonksiyonu belleğe sıralı erişim yapar. Bu, mükemmel bir uzamsal yerellik örneğidir. Bir eleman için yaşanan "miss", tüm bir satırı önbelleğe getireceği için o satırdaki diğer elemanlara erişim "hit" olacaktır.
-
-`sum_col_major` ise bellekte birbirinden uzak adreslere atlayarak erişim yapar. Bu, her erişimde yeni bir "cache miss" yaşanmasına neden olabilir ve bu da fonksiyonu diğerine göre **kat kat yavaşlatır**.
-
----
-
-### Test Soruları
+**Temel Fikir:** Her katman, bir altındaki daha yavaş ve daha büyük katman için bir **cache (önbellek)** görevi görür. En sık kullanılan veriler, piramidin en tepesine yakın tutulmaya çalışılır.
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Bellek hiyerarşisinin en tepesinde (işlemciye en yakın) ne bulunur ve en temel özelliği nedir?</p>
+  <p><b>Soru:</b> Bellek hiyerarşisinin en tepesinde (işlemciye en yakın) ne bulunur ve en temel özelliği nedir?</p>
   <div class="quiz-option">A) DRAM - En yüksek kapasite</div>
   <div class="quiz-option">B) SSD - Kalıcı depolama</div>
   <div class="quiz-option" data-correct="true">C) Registers (Yazmaçlar) - En yüksek hız</div>
@@ -106,8 +42,22 @@ C dilinde matrisler bellekte **row-major (satır-öncelikli)** olarak saklandı�
   </div>
 </div>
 
+---
+
+## 2. Principle of Locality (Yerellik Prensibi)
+
+Bellek hiyerarşisi, programların belleğe genellikle öngörülebilir desenlerle erişmesi sayesinde verimli çalışır. Buna **yerellik prensibi** denir.
+
+### a) Temporal Locality (Zamansal Yerellik)
+Eğer bir veriye erişildiyse, yakın gelecekte ona **tekrar** erişilme olasılığı yüksektir.
+*   **Örnek:** Bir döngü içindeki sayaç değişkeni.
+
+### b) Spatial Locality (Uzamsal Yerellik)
+Eğer bir veriye erişildiyse, onun bellekteki **komşularına** da yakın gelecekte erişilme olasılığı yüksektir.
+*   **Örnek:** Bir dizinin elemanlarını sırayla işlemek.
+
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Bir döngü içinde aynı değişkene 1000 defa erişmek, hangi yerellik prensibinin bir örneğidir?</p>
+  <p><b>Soru:</b> Bir döngü içinde aynı değişkene 1000 defa erişmek, hangi yerellik prensibinin bir örneğidir?</p>
   <div class="quiz-option" data-correct="true">A) Temporal Locality (Zamansal Yerellik)</div>
   <div class="quiz-option">B) Spatial Locality (Uzamsal Yerellik)</div>
   <div class="quiz-option">C) Sequential Locality (Sıralı Yerellik)</div>
@@ -117,13 +67,69 @@ C dilinde matrisler bellekte **row-major (satır-öncelikli)** olarak saklandı�
   </div>
 </div>
 
+---
+
+## 3. Caches (Önbellekler) Nasıl Çalışır?
+
+Önbellek, ana bellekten okunan verileri geçici olarak saklayan küçük ve hızlı bir SRAM belleğidir. Veri, **block (blok)** adı verilen sabit boyutlu parçalar halinde önbelleğe kopyalanır.
+
+*   **Cache Hit (Önbellek Vuruşu):** İşlemcinin aradığı veri önbellekte varsa, çok hızlı bir şekilde alınır.
+*   **Cache Miss (Önbellek Iskalama):** Veri önbellekte yoksa, işlemci yavaşlar. Verinin bulunduğu tüm blok, ana bellekten önbelleğe kopyalanır. Bu yavaşlığa **miss penalty (ıskalama cezası)** denir.
+
+**Ana Fikir:** Yerellik prensibi sayesinde, bir kez "miss" yaşayıp bir bloğu önbelleğe getirdiğimizde, o bloktaki diğer veriler için gelecekte yaşanacak erişimler "hit" olacaktır.
+
+---
+
+## 4. Cache-Friendly (Önbellek Dostu) Kod Yazmak
+
+Programlarımızın performansını artırmak için, kodumuzun bellek erişim desenlerini yerellik prensibini güçlendirecek şekilde yazmalıyız.
+
+### Örnek: Matris Toplamı
+C dilinde matrisler bellekte **row-major (satır-öncelikli)** olarak (satır satır) saklanır.
+
+```c
+// Uzamsal yerelliği MÜKEMMEL
+void sum_row_major(int **matrix, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            sum += matrix[i][j]; // Bellekte sıralı erişim
+        }
+    }
+}
+
+// Uzamsal yerelliği ÇOK KÖTÜ
+void sum_col_major(int **matrix, int n) {
+    for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++) {
+            sum += matrix[i][j]; // Bellekte atlamalı erişim
+        }
+    }
+}
+```
+`sum_row_major` fonksiyonu belleğe sıralı erişim yapar. Bu, mükemmel bir uzamsal yerellik örneğidir. Bir eleman için yaşanan "miss", tüm bir satırı önbelleğe getireceği için o satırdaki diğer elemanlara erişim "hit" olacaktır.
+
+`sum_col_major` ise bellekte birbirinden uzak adreslere atlayarak erişim yapar. Bu, her erişimde yeni bir "cache miss" yaşanmasına neden olabilir ve fonksiyonu diğerine göre **kat kat yavaşlatır**.
+
 <div class="quiz-question">
-  <p><b>Soru 3:</b> Bir programcının yazdığı kodun yavaş çalıştığı tespit ediliyor. Analiz sonucunda, programın "cache miss rate" (önbellek ıskalama oranı) çok yüksek çıkıyor. Programı hızlandırmak için aşağıdakilerden hangisi en etkili yaklaşım olur?</p>
+  <p><b>Soru:</b> Bir programcının yazdığı kodun yavaş çalıştığı tespit ediliyor. Analiz sonucunda, programın "cache miss rate" (önbellek ıskalama oranı) çok yüksek çıkıyor. Programı hızlandırmak için aşağıdakilerden hangisi en etkili yaklaşım olur?</p>
   <div class="quiz-option">A) Daha hızlı bir işlemci (CPU) kullanmak.</div>
   <div class="quiz-option">B) Daha fazla RAM eklemek.</div>
   <div class="quiz-option" data-correct="true">C) Kodun bellek erişim desenlerini, sıralı erişimi (stride-1) artıracak şekilde yeniden düzenlemek.</div>
   <div class="quiz-option">D) Programı daha düşük seviyeli bir dil olan Assembly ile yeniden yazmak.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Yüksek bir "cache miss rate", programın yerellik prensibinden iyi faydalanamadığını gösterir. Bellek erişimlerini daha sıralı ve öngörülebilir hale getirmek (uzamsal yerelliği artırmak), "cache hit rate" (önbellek vuruş oranını) artıracak ve performansı önemli ölçüde iyileştirecektir. Diğer seçenekler yardımcı olsa da, temel sorunu çözmezler.</p>
+    <p><b>Cevap: C.</b> Yüksek bir "cache miss rate", programın yerellik prensibinden iyi faydalanamadığını gösterir. Bellek erişimlerini daha sıralı ve öngörülebilir hale getirmek (uzamsal yerelliği artırmak), "cache hit rate" (önbellek vuruş oranını) artıracak ve performansı önemli ölçüde iyileştirecektir.</p>
   </div>
 </div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Bir `struct` (yapı) içindeki birden fazla alana art arda erişmek, en çok hangi yerellik prensibinden faydalanır?</p>
+  <div class="quiz-option">A) Temporal Locality</div>
+  <div class="quiz-option" data-correct="true">B) Spatial Locality</div>
+  <div class="quiz-option">C) Her ikisinden de eşit derecede</div>
+  <div class="quiz-option">D) Hiçbirinden</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Bir `struct`'ın alanları bellekte ardışık olarak yer alır. Bir alana erişildiğinde, o `struct`'ı içeren bellek bloğu muhtemelen önbelleğe yüklenir. Bu sayede, bellekte hemen yanında bulunan diğer alanlara erişim çok daha hızlı olur. Bu, uzamsal yerelliğin tanımıdır.</p>
+  </div>
+</div>
+
+---

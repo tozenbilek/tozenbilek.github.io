@@ -16,49 +16,64 @@ Yazdığımız C kodu, işlemci tarafından doğrudan anlaşılamaz. Bir **compi
 Bir C programını derlediğimizde aslında birkaç adımlık bir süreç işler:
 
 1.  **C Kodu (`program.c`):** Yazdığımız kaynak kod.
-2.  **Compiler (Derleyici):** Kaynak kodu Assembly diline çevirir. (`gcc -S program.c` -> `program.s`)
-3.  **Assembler:** Assembly kodunu, makine tarafından okunabilen ikili **object code (nesne koduna)** dönüştürür. (`as program.s` -> `program.o`)
-4.  **Linker:** Nesne kodunu, `printf` gibi kütüphane fonksiyonlarıyla birleştirerek son **executable (yürütülebilir dosyayı)** oluşturur. (`ld ... program.o ...` -> `a.out`)
+2.  **Compiler (Derleyici):** Kaynak kodu Assembly diline çevirir.
+3.  **Assembler (Çevirici):** Assembly kodunu, makine tarafından okunabilen ikili **object code (nesne koduna)** dönüştürür.
+4.  **Linker (Bağlayıcı):** Nesne kodunu, `printf` gibi kütüphane fonksiyonlarıyla birleştirerek son **executable (yürütülebilir dosyayı)** oluşturur.
 
-![Derleme Süreci](https://via.placeholder.com/700x200png?text=C+Source+->+Compiler+->+Assembly+->+Assembler+->+Object+Code+->+Linker+->+Executable)
-*Görsel: C kodundan yürütülebilir dosyaya giden yol.*
+<pre>
+[C Kaynak Kodu .c] -> Derleyici -> [Assembly Kodu .s] -> Çevirici -> [Nesne Kodu .o] -> Bağlayıcı -> [Yürütülebilir Dosya]
+</pre>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Bir C programını derlerken, Assembly kodunu (`.s` dosyası) görmek için `gcc`'ye hangi parametre verilir?</p>
+  <div class="quiz-option">A) `-c`</div>
+  <div class="quiz-option">B) `-o`</div>
+  <div class="quiz-option" data-correct="true">C) `-S`</div>
+  <div class="quiz-option">D) `-E`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> `gcc -S program.c` komutu, derleme işlemini Assembly kodu ürettikten sonra durdurur ve `program.s` adlı bir dosya oluşturur.</p>
+  </div>
+</div>
 
 ---
 
-## 2. Assembly Programcısının Dünyası
+## 2. Assembly Programcısının Gözünden Donanım
 
-Assembly seviyesinde programı düşündüğümüzde, soyut C değişkenleri yerine işlemcinin donanım kaynaklarını görürüz:
+Assembly seviyesinde, C'deki soyut değişkenler yerine işlemcinin donanım kaynaklarını görürüz:
 
-*   **Program Counter (Program Sayacı - PC):** Yürütülecek bir sonraki komutun bellek adresini tutan özel bir yazmaç. x86-64'te adı `RIP`'dir.
-*   **Registers (Yazmaçlar):** İşlemcinin içinde bulunan, çok hızlı, küçük depolama birimleri. Aritmetik işlemler, parametre geçişleri ve ara değerlerin saklanması için kullanılırlar.
-*   **Condition Codes (Durum Kodları):** En son yapılan aritmetik veya mantıksal işlemin sonucu hakkında bilgi tutan tek bitlik bayraklar (örn: sonuç sıfır mıydı? negatif miydi? taşma oldu mu?).
-*   **Memory (Bellek):** Kodun kendisi, global değişkenler, stack (yığın) ve dinamik olarak ayrılan verilerin (heap) tutulduğu büyük bir bayt dizisi.
+*   **Program Counter (PC / `RIP`):** Yürütülecek bir sonraki komutun bellek adresini tutan özel bir yazmaç.
+*   **Registers (Yazmaçlar):** İşlemcinin içindeki çok hızlı, küçük depolama birimleri.
+*   **Condition Codes (Durum Kodları):** En son yapılan işlemin sonucu hakkında bilgi tutan tek bitlik bayraklar (sonuç sıfır mıydı, negatif miydi vb.).
+*   **Memory (Bellek):** Kod, global değişkenler ve yığın (stack) gibi verilerin tutulduğu büyük bir bayt dizisi.
 
 ---
 
 ## 3. x86-64 Mimarisi ve Yazmaçlar
 
-Günümüzdeki çoğu masaüstü ve sunucu işlemcisi **x86-64** mimarisini kullanır. Bu mimari, 16 adet genel amaçlı 64-bit'lik yazmaç sunar.
+Günümüzdeki çoğu işlemci **x86-64** mimarisini kullanır ve 16 adet genel amaçlı 64-bit'lik yazmaç sunar.
 
-| Yazmaç Adı | Tipik Kullanım Amacı                   |
-| :--------- | :------------------------------------- |
-| `%rax`     | Fonksiyon dönüş değeri                 |
-| `%rdi`, `%rsi`, `%rdx`, `%rcx`, `%r8`, `%r9` | Fonksiyon argümanları (ilk altı)      |
-| `%rbx`, `%rbp`, `%r12`-%r15 | Çağrılan fonksiyon tarafından korunmalı |
-| `%rsp`     | Stack (Yığın) işaretçisi               |
-| `%r10`, `%r11` | Çağıran fonksiyon tarafından korunmalı   |
+| Yazmaç Adı | Tipik Kullanım Amacı |
+| :--- | :--- |
+| `%rax` | Fonksiyon dönüş değeri |
+| `%rdi`, `%rsi`, `%rdx`, `%rcx`, `%r8`, `%r9` | Fonksiyon argümanları (ilk altı) |
+| `%rsp` | Stack (Yığın) işaretçisi |
 
-**Önemli Not:** `%rax` yazmacına 32-bit'lik bir işlemle (`movl`) yazmak, yazmacın üst 32-bit'ini otomatik olarak sıfırlar. Bu, 32-bit ve 64-bit kod arasında uyumluluk sağlayan önemli bir özelliktir.
+<div class="quiz-question">
+  <p><b>Soru:</b> x86-64 mimarisinde, bir fonksiyondan dönen tamsayı veya pointer değeri tipik olarak hangi yazmaçta bulunur?</p>
+  <div class="quiz-option" data-correct="true">A) `%rax`</div>
+  <div class="quiz-option">B) `%rsp`</div>
+  <div class="quiz-option">C) `%rdi`</div>
+  <div class="quiz-option">D) `%rbp`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Çağrı kurallarına göre, fonksiyonun dönüş değeri `%rax` yazmacına yerleştirilerek çağıran fonksiyona döndürülür.</p>
+  </div>
+</div>
 
 ---
 
 ## 4. Temel Komut: `mov` (Veri Taşıma)
 
-Assembly'deki en temel komutlardan biri `mov`'dur. Bir değeri bir yerden başka bir yere kopyalar. `mov` komutu, veri boyutunu belirten bir sonek alır:
-*   `movb` (move byte - 1 byte)
-*   `movw` (move word - 2 byte)
-*   `movl` (move long - 4 byte)
-*   `movq` (move quad - 8 byte)
+Assembly'deki en temel komutlardan biri `mov`'dur. Bir değeri bir yerden başka bir yere kopyalar. Komut, veri boyutunu belirten bir sonek alır: `movb` (1 byte), `movl` (4 byte), `movq` (8 byte).
 
 **`movq Kaynak, Hedef`**
 
@@ -74,26 +89,18 @@ Assembly'deki en temel komutlardan biri `mov`'dur. Bir değeri bir yerden başka
 
 ---
 
-## 5. Adresleme Modları
+## 5. Adresleme Modları ve `swap` Örneği
 
-Belleğe erişmenin farklı yolları vardır. Bu yollara **adresleme modları** denir.
+Belleğe erişmenin farklı yollarına **adresleme modları** denir. Bu modlar, C'deki pointer ve dizi işlemlerini mümkün kılar.
 
-| Mod                   | Açıklama                                    | Örnek        |
-| :-------------------- | :------------------------------------------ | :----------- |
-| Immediate             | Sabit değer                                 | `$0x40`      |
-| Register              | Bir yazmacın içeriği                        | `%rax`       |
-| Normal (Absolute)     | Parantez içindeki yazmaç adres olarak kullanılır | `(%rcx)`     |
-| Displacement          | Yazmaca bir sabit eklenerek adres bulunur   | `8(%rbp)`    |
-| Indexed               | İki yazmaç toplanır                         | `(%rax, %rcx)`|
-| Indexed with Scale    | İkinci yazmaç bir sabitle (1,2,4,8) çarpılır | `(%rax, %rcx, 4)` |
-
-Bu modlar, diziler ve `structs` (yapılar) gibi veri yapılarına verimli erişim sağlamak için kritik öneme sahiptir.
-
----
+| Mod | Açıklama | Örnek |
+| :--- | :--- | :--- |
+| Normal | Parantez içindeki yazmaç adres olarak kullanılır | `(%rcx)` |
+| Displacement | Yazmaca bir sabit eklenerek adres bulunur | `8(%rbp)` |
+| Indexed w/ Scale | `Sabit + Yazmac1 + Yazmac2 * Olcek` | `8(%rax, %rcx, 4)` |
 
 ### C'den Assembly'ye Örnek: `swap`
 
-Aşağıdaki basit C fonksiyonunun Assembly karşılığına bakalım:
 ```c
 void swap(long *xp, long *yp) {
     long t0 = *xp;
@@ -102,11 +109,9 @@ void swap(long *xp, long *yp) {
     *yp = t0;
 }
 ```
-*   `xp`'nin adresi `%rdi` yazmacında, `yp`'nin adresi `%rsi` yazmacındadır.
+*   `xp`'nin adresi `%rdi`'de, `yp`'nin adresi `%rsi`'dedir.
 
 ```assembly
-# void swap(long *xp, long *yp)
-# xp in %rdi, yp in %rsi
 swap:
     movq  (%rdi), %rax   # t0 = *xp; (xp adresindeki degeri rax'e tasi)
     movq  (%rsi), %rdx   # t1 = *yp; (yp adresindeki degeri rdx'e tasi)
@@ -115,39 +120,28 @@ swap:
     ret                  # Fonksiyondan don
 ```
 
----
-
-### Test Soruları
+Bu örnekte, `(%rdi)` ve `(%rsi)` ifadeleri **Normal Adresleme Modu**'nu kullanarak `xp` ve `yp` pointer'larının gösterdiği bellek alanlarına erişir.
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Bir C programını derlerken, Assembly kodunu (`.s` dosyası) görmek için `gcc`'ye hangi parametre verilir?</p>
-  <div class="quiz-option">A) `-c`</div>
-  <div class="quiz-option">B) `-o`</div>
-  <div class="quiz-option" data-correct="true">C) `-S`</div>
-  <div class="quiz-option">D) `-E`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `gcc -S program.c` komutu, derleme işlemini Assembly kodu ürettikten sonra durdurur ve `program.s` adlı bir dosya oluşturur.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru 2:</b> x86-64 mimarisinde, bir fonksiyondan dönen tamsayı veya pointer değeri tipik olarak hangi yazmaçta bulunur?</p>
-  <div class="quiz-option" data-correct="true">A) `%rax`</div>
-  <div class="quiz-option">B) `%rsp`</div>
-  <div class="quiz-option">C) `%rdi`</div>
-  <div class="quiz-option">D) `%rbp`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Çağrı kurallarına göre, fonksiyonun dönüş değeri `%rax` yazmacına yerleştirilerek çağıran fonksiyona döndürülür.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru 3:</b> `%rax` yazmacında `0x100` değeri, `%rbx` yazmacında ise `0x10` değeri olduğunu varsayalım. `movq 8(%rax, %rbx, 4), %rcx` komutu çalıştırıldığında, `%rcx` yazmacına hangi bellek adresindeki veri kopyalanır?</p>
+  <p><b>Soru:</b> `%rax` yazmacında `0x100`, `%rbx` yazmacında ise `0x10` değeri olduğunu varsayalım. `movq 8(%rax, %rbx, 4), %rcx` komutu çalıştırıldığında, `%rcx` yazmacına hangi bellek adresindeki veri kopyalanır?</p>
   <div class="quiz-option">A) `0x118`</div>
   <div class="quiz-option">B) `0x148`</div>
-  <div class="quiz-option">C) `0x440`</div>
-  <div class="quiz-option" data-correct="true">D) `0x148` adresindeki veri</div>
+  <div class="quiz-option" data-correct="true">C) `0x148` adresindeki veri</div>
+  <div class="quiz-option">D) Bu komut geçersizdir</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: D.</b> Adres hesaplaması `Sabit + Yazmac1 + Yazmac2 * Olcek` formülüne göre yapılır: `8 + 0x100 + 0x10 * 4` = `8 + 256 + 16 * 4` = `8 + 256 + 64` = `328`, yani `0x148`. Komut, bu hesaplanan adresteki 8 baytlık veriyi `%rcx` yazmacına kopyalar.</p>
+    <p><b>Cevap: C.</b> Adres hesaplaması `Sabit + Yazmac1 + Yazmac2 * Olcek` formülüne göre yapılır: `8 + 0x100 + 0x10 * 4` = `8 + 256 + 16 * 4` = `8 + 256 + 64` = `328`, yani `0x148`. Komut, bu hesaplanan **adresteki 8 baytlık veriyi** `%rcx` yazmacına kopyalar.</p>
   </div>
 </div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Yukarıdaki `swap` fonksiyonunda, ilk iki `movq` komutundan sonra `%rax` ve `%rdx` yazmaçları hangi değerleri tutar?</p>
+  <div class="quiz-option">A) `xp` ve `yp`'nin bellek adreslerini</div>
+  <div class="quiz-option" data-correct="true">B) `xp` ve `yp`'nin gösterdiği yerdeki değerleri</div>
+  <div class="quiz-option">C) `t0` ve `t1`'in bellek adreslerini</div>
+  <div class="quiz-option">D) `%rdi` ve `%rsi`'nin kendisini</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `movq (%rdi), %rax` komutu, `%rdi`'nin **içindeki adrese gider** ve o adresteki 8 byte'lık değeri `%rax`'e kopyalar. Yani `*xp` işlemini yapar. Aynı durum `%rdx` için de geçerlidir.</p>
+  </div>
+</div>
+
+---

@@ -53,10 +53,10 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 Bellek, her biri ardışık bir adrese sahip olan bir bayt dizisidir. `int` gibi birden fazla bayt kaplayan bir veri türünü belleğe kaydederken, bu baytların hangi sırayla (düşük adresten yüksek adrese doğru) yerleştirileceğini belirleyen kurala **Endianness** denir.
 
 Bunu anlamak için 4 baytlık `0x01234567` sayısını ele alalım. Bu sayının baytları şunlardır:
-*   `01` (En Anlamlı Bayt - Most Significant Byte, MSB)
+*   `01` (Most Significant Byte (En Anlamlı Bayt), MSB)
 *   `23`
 *   `45`
-*   `67` (En Anlamsız Bayt - Least Significant Byte, LSB)
+*   `67` (Least Significant Byte (En Anlamsız Bayt), LSB)
 
 Bu sayıyı `A` adresinden başlayan belleğe yerleştirmenin iki yolu vardır:
 
@@ -180,17 +180,6 @@ Bu operatörler, bir sayının bitlerini belirli bir sayıda sola veya sağa kay
   </div>
 </div>
 <div class="quiz-question">
-  <p><b>Soru:</b> 8-bit `signed char` olan `-80` (`10110000`) sayısına 3 bit aritmetik sağa kaydırma (`>> 3`) uygulanırsa sonuç ne olur?</p>
-  <div class="quiz-option">A) `20`</div>
-  <div class="quiz-option">B) `-40`</div>
-  <div class="quiz-option">C) `10`</div>
-  <div class="quiz-option" data-correct="true">D) `-10`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: D.</b> Aritmetik sağa kaydırma, sayının işaretini korumak için soldan boşalan bitlere işaret bitini (`1`) kopyalar. `10110000` >> 3 işlemi `11110110` sonucunu verir. Bu bit deseni, 8-bit Two's Complement'te `-10`'a karşılık gelir. Bu, pratikte ` -80 / (2^3) = -10` bölme işlemine eşdeğerdir.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
   <p><b>Soru:</b> `x = 176` (binary `10110000`) sayısının 3. bitini (sağdan, 0'dan başlayarak) `1` yapmak için hangi `OR` işlemi uygulanmalıdır?</p>
   <div class="quiz-option">A) `x | 4`</div>
   <div class="quiz-option">B) `x | 2`</div>
@@ -279,6 +268,17 @@ Bu sistemin en büyük avantajı, toplama ve çıkarma işlemlerinin işaretli v
   <div class="quiz-option">D) `32768`</div>
   <div class="quiz-explanation">
     <p><b>Cevap: B.</b> `w` bitlik işaretli bir tamsayının aralığı `-2^(w-1)` ile `2^(w-1) - 1` arasındadır. `w=16` için en büyük değer `2^15 - 1 = 32768 - 1 = 32767`'dir.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> 8-bit `signed char` olan `-80` (`10110000`) sayısına 3 bit aritmetik sağa kaydırma (`>> 3`) uygulanırsa sonuç ne olur?</p>
+  <div class="quiz-option">A) `20`</div>
+  <div class="quiz-option">B) `-40`</div>
+  <div class="quiz-option">C) `10`</div>
+  <div class="quiz-option" data-correct="true">D) `-10`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: D.</b> Aritmetik sağa kaydırma, sayının işaretini korumak için soldan boşalan bitlere işaret bitini (`1`) kopyalar. `10110000` >> 3 işlemi `11110110` sonucunu verir. Bu bit deseni, 8-bit Two's Complement'te `-10`'a karşılık gelir. Bu, pratikte ` -80 / (2^3) = -10` bölme işlemine eşdeğerdir.</p>
   </div>
 </div>
 
