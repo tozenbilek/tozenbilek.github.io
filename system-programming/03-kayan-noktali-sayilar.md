@@ -45,9 +45,11 @@ Ondalıklı sayıların farklı sistemlerde tutarlı bir şekilde temsil edilmes
 *   **`M` - Mantissa (Kesir):** Sayının hassasiyetini (ondalık kısmını) belirler.
 
 Bu üç parça, bellekte belirli bit alanlarına yerleştirilir:
-```
- s |   exp (k bit)    |                  frac (n bit)
-```
+
+| İşaret (s) | Üs (exp) | Kesir (frac) |
+|:----------:|:--------:|:------------:|
+| 1 bit      | k bit    | n bit        |
+
 
 C dilindeki `float` ve `double` türleri, bu standardın iki yaygın uygulamasıdır ve farklı hassasiyet seviyeleri sunarlar:
 
