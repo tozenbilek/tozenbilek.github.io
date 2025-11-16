@@ -59,7 +59,6 @@ Bu türetme süreci, **parse tree (ayrıştırma ağacı)** adı verilen bir ağ
 ```mermaid
 graph TD
     subgraph "Derivation (Türetme Süreci)"
-        direction LR
         S["E"] --> R1["E + E"]
         R1 --> R2["a + E"]
         R2 --> R3["a + a"]

@@ -414,7 +414,7 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
         // 4'ün deseni: 0100
           0101  (+5)
         + 0100  (+4)
-          ----
+        +----
           1001  (-7)
         ```
         *   Sonuç `+9` olmalıydı, ancak 4-bit `signed` aralığı `-8` ile `+7` arasıdır. Sonuç bu aralığın dışına taştı ve işaret biti `1` oldu, yani negatif bir sayı (`-7`) elde edildi. Bu bir `overflow`'dur.
@@ -426,7 +426,7 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
         // -4'ün deseni: 1100
           1011  (-5)
         + 1100  (-4)
-          ----
+        +----
          10111  (-9)
         ```
         *   Sonuç `-9` olmalıydı. 5 bitlik sonuçtan en soldaki biti atarsak elimizde `0111` kalır. Bu da `+7`'dir. İki negatif sayının toplamı pozitif çıktı. Bu da bir `overflow`'dur.

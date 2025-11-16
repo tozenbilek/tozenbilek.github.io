@@ -14,7 +14,6 @@ parent: Automata Theory
 ```mermaid
 graph TD
     subgraph "Closure Properties (Kapanma Özellikleri)"
-        direction LR
         A["Regular<br>Languages"] -- "Union, Intersection,<br>Complement, Concatenation,<br>Star, Reversal..." --> A
     end
 
@@ -44,8 +43,7 @@ Bu işlem, "ayırt edilemez" (indistinguishable) state'lerin birleştirilmesine 
 ```mermaid
 graph TD
     subgraph "Original DFA"
-        direction LR
-        o_init([*]) --> q0
+        [*] --> q0
         q0 -- "a" --> q1
         q1 -- "b" --> q2((q2))
         q0 -- "a" --> q3
@@ -53,8 +51,7 @@ graph TD
     end
 
     subgraph "Minimized DFA"
-        direction LR
-        m_init([*]) --> m_q0
+        [*] --> m_q0
         m_q0 -- "a" --> m_q13
         m_q13 -- "b" --> m_q24((q24))
     end
@@ -78,6 +75,17 @@ Bir language ailesinin bir işlem altında "kapalı" olması, o aileden language
 
 Bu özellikler, karmaşık regular language'ları daha basit regular language'lardan inşa edebileceğimiz anlamına gelir.
 
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Regular languages'ın "kesişim" (intersection) altında kapalı olması ne anlama gelir?</p>
+  <div class="quiz-option">A) İki regular language'ın kesişimi her zaman boş kümedir.</div>
+  <div class="quiz-option" data-correct="true">B) `L` ve `M` regular language ise, `L ∩ M` language'ı de her zaman düzenlidir.</div>
+  <div class="quiz-option">C) Bir regular language kendisiyle kesiştiğinde yine kendisini verir.</div>
+  <div class="quiz-option">D) İki DFA'yı kesiştirmek mümkün değildir.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Kapanma özelliği, bir işlem uygulandıktan sonra sonucun yine aynı küme (bu durumda regular languages kümesi) içinde kalması demektir.</p>
+  </div>
+</div>
+
 ---
 
 ## 3. Decision Properties (Karar Verilebilirlik Özellikleri)
@@ -89,6 +97,17 @@ Regular languages'ın bir diğer güçlü özelliği, onlar hakkında sorulan bi
 *   **Membership Problem (Üyelik Problemi):** Bir `w` string'i, `L` language'ına ait mi? (`w ∈ L?`) *Çözüm: DFA'da `w` string'ini çalıştır ve kabul state'inde bitip bitmediğine bak.*
 *   **Equivalence Problem (Eşitlik Problemi):** İki düzenli dil `L` ve `M` birbirine eşit mi? (`L = M?`) *Çözüm: `(L ∩ ¬M) ∪ (¬L ∩ M)` dilinin boş olup olmadığını kontrol et. Bu dil boş ise, iki dil birbirine eşittir.*
 *   **Subset Problem (Alt Küme Problemi):** `L` dili, `M` dilinin bir alt kümesi mi? (`L ⊆ M?`) *Çözüm: `L ∩ ¬M` dilinin boş olup olmadığını kontrol et. Bu dil boş ise, `L`, `M`'nin bir alt kümesidir.*
+
+<div class="quiz-question">
+  <p><b>Soru 3:</b> Bir DFA'nın tanıdığı language'ın **sonsuz** olup olmadığına nasıl karar verilir?</p>
+  <div class="quiz-option" data-correct="true">A) State diyagramında başlangıç state'inden ulaşılabilen ve bir kabul state'ine götüren bir döngü (cycle) varsa.</div>
+  <div class="quiz-option">B) DFA'nın en az bir kabul state'i varsa.</div>
+  <div class="quiz-option">C) State sayısı belirli bir eşiği aşıyorsa.</div>
+  <div class="quiz-option">D) NFA'ya dönüştürüldüğünde epsilon transition'ları içeriyorsa.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Eğer böyle bir döngü varsa, bu döngü etrafında istenildiği kadar dönülerek sonsuz sayıda farklı ve geçerli string üretilebilir. Eğer böyle bir döngü yoksa, tanınan language'daki string'lerin uzunluğu sınırlıdır ve language sonludur.</p>
+  </div>
+</div>
 
 ---
 
@@ -110,17 +129,6 @@ Bu teorem, yeterince uzun bir string'in bir DFA'da işlenirken mutlaka bir state
 ---
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Regular languages'ın "kesişim" (intersection) altında kapalı olması ne anlama gelir?</p>
-  <div class="quiz-option">A) İki regular language'ın kesişimi her zaman boş kümedir.</div>
-  <div class="quiz-option" data-correct="true">B) `L` ve `M` regular language ise, `L ∩ M` language'ı de her zaman düzenlidir.</div>
-  <div class="quiz-option">C) Bir regular language kendisiyle kesiştiğinde yine kendisini verir.</div>
-  <div class="quiz-option">D) İki DFA'yı kesiştirmek mümkün değildir.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Kapanma özelliği, bir işlem uygulandıktan sonra sonucun yine aynı küme (bu durumda regular languages kümesi) içinde kalması demektir.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
   <p><b>Soru 2:</b> Pumping Lemma en yaygın olarak ne için kullanılır?</p>
   <div class="quiz-option">A) Bir language'ın düzenli olduğunu ispatlamak için.</div>
   <div class="quiz-option">B) Bir DFA'yı NFA'ya dönüştürmek için.</div>
@@ -128,16 +136,5 @@ Bu teorem, yeterince uzun bir string'in bir DFA'da işlenirken mutlaka bir state
   <div class="quiz-option">D) Bir DFA'yı minimize etmek için.</div>
   <div class="quiz-explanation">
     <p><b>Cevap: C.</b> Pumping Lemma, bir language'ın düzenli olduğu varsayımı altında, o language'ın sahip olması gereken bir "pompalama" özelliğini belirtir. Eğer language bu özelliği sağlamıyorsa (çelişki bulunursa), o zaman language düzenli olamaz.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru 3:</b> Bir DFA'nın tanıdığı language'ın **sonsuz** olup olmadığına nasıl karar verilir?</p>
-  <div class="quiz-option" data-correct="true">A) State diyagramında başlangıç state'inden ulaşılabilen ve bir kabul state'ine götüren bir döngü (cycle) varsa.</div>
-  <div class="quiz-option">B) DFA'nın en az bir kabul state'i varsa.</div>
-  <div class="quiz-option">C) State sayısı belirli bir eşiği aşıyorsa.</div>
-  <div class="quiz-option">D) NFA'ya dönüştürüldüğünde epsilon transition'ları içeriyorsa.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Eğer böyle bir döngü varsa, bu döngü etrafında istenildiği kadar dönülerek sonsuz sayıda farklı ve geçerli string üretilebilir. Eğer böyle bir döngü yoksa, tanınan language'daki string'lerin uzunluğu sınırlıdır ve language sonludur.</p>
   </div>
 </div>

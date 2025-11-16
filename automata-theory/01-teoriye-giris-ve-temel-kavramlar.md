@@ -61,6 +61,19 @@ Bir otomatın temel görevi, bu soruyu cevaplayan bir karar verici olarak hareke
 
 ---
 
+<div class="quiz-question">
+  <p><b>Soru 1:</b> `Σ = {a, b}` alfabesi verildiğinde, aşağıdakilerden hangisi `Σ*` kümesinin bir elemanı <b>değildir</b>?</p>
+  <div class="quiz-option">A) `ababa`</div>
+  <div class="quiz-option">B) `ε` (boş string)</div>
+  <div class="quiz-option" data-correct="true">C) `a c`</div>
+  <div class="quiz-option">D) `bbbb`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> `Σ*`, `Σ` alfabesindeki sembollerden (`a` ve `b`) oluşan tüm sonlu dizgileri içerir. `a c` string'i, alfabe dışı bir sembol olan `c`'yi içerdiği için `Σ*` kümesine ait değildir.</p>
+  </div>
+</div>
+
+---
+
 ## 3. Overview of Automata (Otomatlara Genel Bakış)
 
 Otomatlar, dilleri tanımak için kullanılan matematiksel modellerdir. Karmaşıklıklarına ve güçlerine göre artan bir hiyerarşi oluştururlar:
@@ -88,14 +101,3 @@ Automata Theory, matematiksel temellere dayandığı için çeşitli ispat yönt
 *   **Disproof via Counterexample (Karşı Örnek ile Çürütme):** Bir iddianın genel olarak doğru olmadığını, o iddiayı sağlamayan tek bir örnek göstererek kanıtlamaktır.
 
 ---
-
-<div class="quiz-question">
-  <p><b>Soru 1:</b> `Σ = {a, b}` alfabesi verildiğinde, aşağıdakilerden hangisi `Σ*` kümesinin bir elemanı <b>değildir</b>?</p>
-  <div class="quiz-option">A) `ababa`</div>
-  <div class="quiz-option">B) `ε` (boş string)</div>
-  <div class="quiz-option" data-correct="true">C) `a c`</div>
-  <div class="quiz-option">D) `bbbb`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `Σ*`, `Σ` alfabesindeki sembollerden (`a` ve `b`) oluşan tüm sonlu dizgileri içerir. `a c` string'i, alfabe dışı bir sembol olan `c`'yi içerdiği için `Σ*` kümesine ait değildir.</p>
-  </div>
-</div>

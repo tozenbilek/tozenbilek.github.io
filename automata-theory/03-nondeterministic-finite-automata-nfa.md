@@ -73,6 +73,41 @@ Bu nedenle, NFA ve DFA'lar aynı language sınıfını tanır: **Regular Languag
 
 ---
 
+<div class="quiz-question">
+  <p><b>Soru 1:</b> Aşağıdakilerden hangisi bir NFA'nın yapabileceği ancak bir DFA'nın yapamayacağı bir eylemdir?</p>
+  <div class="quiz-option">A) Bir başlangıç state'inden başlamak.</div>
+  <div class="quiz-option">B) Bir string'i okuduktan sonra kabul state'inde sonlanmak.</div>
+  <div class="quiz-option" data-correct="true">C) Hiçbir symbol okumadan (`ε` ile) state değiştirmek.</div>
+  <div class="quiz-option">D) Alfabedeki bir symbol'ü okuyarak state değiştirmek.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Epsilon (`ε`) transition'ları, NFA'ların belirleyici olmayan doğasının bir parçasıdır ve DFA'larda bulunmazlar. Bu, NFA'ların hiçbir girdi almadan state değiştirmesine olanak tanır.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru 2:</b> Bir NFA, `w = 010` string'ini işledikten sonra olası tüm yolların sonunda `{q₁, q₃, q₅}` state'lerinde bulunuyor. NFA'nın kabul state'leri kümesi `F = {q₄, q₅}` ise, string kabul edilir mi?</p>
+  <div class="quiz-option" data-correct="true">A) Evet, çünkü olası son state'lerden en az biri (`q₅`) kabul state'leri kümesine aittir.</div>
+  <div class="quiz-option">B) Hayır, çünkü tüm olası son state'ler (`q₁`, `q₃`, `q₅`) kabul state'leri kümesine ait değildir.</div>
+  <div class="quiz-option">C) Belirsizdir, çünkü NFA'lar deterministik değildir.</div>
+  <div class="quiz-option">D) Hayır, çünkü `q₁` ve `q₃` kabul state'i değildir.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Bir NFA'nın bir string'i kabul etmesi için, olası hesaplama yollarından sadece bir tanesinin bile bir kabul state'inde bitmesi yeterlidir. `q₅` bir kabul state'i olduğu için string kabul edilir.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru 3:</b> NFA'ların hesaplama gücü DFA'lara kıyasla nasıldır?</p>
+  <div class="quiz-option">A) NFA'lar DFA'lardan daha güçlüdür.</div>
+  <div class="quiz-option">B) DFA'lar NFA'lardan daha güçlüdür.</div>
+  <div class="quiz-option" data-correct="true">C) NFA'lar ve DFA'lar eşdeğer hesaplama gücüne sahiptir.</div>
+  <div class="quiz-option">D) Bazı language'ları sadece NFA'lar tanıyabilir.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Her NFA, eşdeğer bir DFA'ya dönüştürülebildiği için, iki model de aynı language sınıfını, yani Düzenli Dilleri (Regular Languages) tanır. NFA'lar genellikle daha az state ile daha öz bir gösterim sunsa da, bu onların daha "güçlü" olduğu anlamına gelmez.</p>
+  </div>
+</div>
+
+---
+
 ## 5. Örnek: NFA'dan DFA'ya Dönüşüm (Subset Construction)
 
 Yukarıda sonu `01` ile biten stringleri tanıyan NFA'yı ele alalım. Adım adım bu NFA'yı eşdeğer bir DFA'ya dönüştürelim.
@@ -120,15 +155,13 @@ NFA'nın kabul durumu olan `q₂`'yi içeren tüm DFA durumları, yeni DFA'nın 
 ```mermaid
 graph TD
     subgraph "Original NFA"
-        direction LR
-        n_init([*]) --> n_q0
+        [*] --> n_q0
         n_q0 -- "0,1" --> n_q0
         n_q0 -- "0" --> n_q1
         n_q1 -- "1" --> n_q2((n_q2))
     end
 
     subgraph "Equivalent DFA"
-        direction LR
         [*] --> A["{q₀}"]
         A -- "0" --> B["{q₀,q₁}"]
         A -- "1" --> A
@@ -140,36 +173,3 @@ graph TD
 ```
 
 ---
-
-<div class="quiz-question">
-  <p><b>Soru 1:</b> Aşağıdakilerden hangisi bir NFA'nın yapabileceği ancak bir DFA'nın yapamayacağı bir eylemdir?</p>
-  <div class="quiz-option">A) Bir başlangıç state'inden başlamak.</div>
-  <div class="quiz-option">B) Bir string'i okuduktan sonra kabul state'inde sonlanmak.</div>
-  <div class="quiz-option" data-correct="true">C) Hiçbir symbol okumadan (`ε` ile) state değiştirmek.</div>
-  <div class="quiz-option">D) Alfabedeki bir symbol'ü okuyarak state değiştirmek.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Epsilon (`ε`) transition'ları, NFA'ların belirleyici olmayan doğasının bir parçasıdır ve DFA'larda bulunmazlar. Bu, NFA'ların hiçbir girdi almadan state değiştirmesine olanak tanır.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru 2:</b> Bir NFA, `w = 010` string'ini işledikten sonra olası tüm yolların sonunda `{q₁, q₃, q₅}` state'lerinde bulunuyor. DFA'nın kabul state'leri kümesi `F = {q₄, q₅}` ise, string kabul edilir mi?</p>
-  <div class="quiz-option" data-correct="true">A) Evet, çünkü olası son state'lerden en az biri (`q₅`) kabul state'leri kümesine aittir.</div>
-  <div class="quiz-option">B) Hayır, çünkü tüm olası son state'ler (`q₁`, `q₃`, `q₅`) kabul state'leri kümesine ait değildir.</div>
-  <div class="quiz-option">C) Belirsizdir, çünkü NFA'lar deterministik değildir.</div>
-  <div class="quiz-option">D) Hayır, çünkü `q₁` ve `q₃` kabul state'i değildir.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Bir NFA'nın bir string'i kabul etmesi için, olası hesaplama yollarından sadece bir tanesinin bile bir kabul state'inde bitmesi yeterlidir. `q₅` bir kabul state'i olduğu için string kabul edilir.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru 3:</b> NFA'ların hesaplama gücü DFA'lara kıyasla nasıldır?</p>
-  <div class="quiz-option">A) NFA'lar DFA'lardan daha güçlüdür.</div>
-  <div class="quiz-option">B) DFA'lar NFA'lardan daha güçlüdür.</div>
-  <div class="quiz-option" data-correct="true">C) NFA'lar ve DFA'lar eşdeğer hesaplama gücüne sahiptir.</div>
-  <div class="quiz-option">D) Bazı language'ları sadece NFA'lar tanıyabilir.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Her NFA, eşdeğer bir DFA'ya dönüştürülebildiği için, iki model de aynı language sınıfını, yani Düzenli Dilleri (Regular Languages) tanır. NFA'lar genellikle daha az state ile daha öz bir gösterim sunsa da, bu onların daha "güçlü" olduğu anlamına gelmez.</p>
-  </div>
-</div>
