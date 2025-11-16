@@ -1,60 +1,74 @@
 /* assets/css/style.css */
 
-/* --- Quiz Component Styles --- */
-/* A minimalist style to match the "Just the Docs" theme aesthetic. */
-
-.quiz-question {
-    border: 1px solid #e8e8e8; /* Lighter border, similar to tables */
-    border-radius: 6px;
-    padding: 16px;
-    margin: 20px 0;
-    background-color: #f7f7f7; /* Subtle background */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --light-bg: #f8f9fa;
+    --dark-border: #dee2e6;
+    --text-color: #212529;
+    --light-text: #ffffff;
 }
 
-.quiz-question p {
-    margin-top: 0;
+.quiz-question {
+    border: 1px solid var(--dark-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 24px;
+    background-color: var(--light-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.quiz-question p b {
+    font-size: 1.1em;
+    color: var(--text-color);
 }
 
 .quiz-question .quiz-option {
     display: block;
-    padding: 10px 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    margin-bottom: 8px;
+    padding: 14px 18px;
+    border: 1px solid var(--dark-border);
+    border-radius: 6px;
+    margin-bottom: 10px;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--light-text);
+    color: var(--text-color);
 }
 
 .quiz-question .quiz-option:hover {
-    background-color: #f9f9f9; /* Subtle hover effect */
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    transform: translateY(-2px);
 }
 
-/* Correct answer style */
 .quiz-question .quiz-option.correct {
-    border-color: #3c864a;
-    background-color: #f0f9f2;
-    color: #2a6436;
-    font-weight: 500;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+    color: #0f5132;
+    font-weight: bold;
     cursor: default;
 }
 
-/* Incorrect answer style */
 .quiz-question .quiz-option.incorrect {
-    border-color: #b73948;
-    background-color: #fcf1f2;
-    color: #a0323f;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    color: #842029;
+    font-weight: bold;
     cursor: default;
 }
 
-/* Explanation box style */
 .quiz-explanation {
     display: none;
     margin-top: 15px;
-    padding: 12px;
-    background-color: #f0f0f0;
-    border-left: 3px solid #6c757d; /* A simple left border for emphasis */
-    border-radius: 0 4px 4px 0;
-    color: #333;
-    font-size: 0.95em;
+    padding: 15px;
+    background-color: #e2e3e5;
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 4px;
+    color: #495057;
+}
+
+.quiz-explanation p b {
+    color: var(--text-color);
 }

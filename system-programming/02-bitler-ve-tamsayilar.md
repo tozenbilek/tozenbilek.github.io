@@ -352,14 +352,14 @@ Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem
         </pre>
 
     *   **Signed (İşaretli) Örneği:**
-    <pre>
+        <pre>
         // 8-bit signed -100 sayısını 4-bit'e kırpma
         Başlangıç (8-bit): 10011100  (Değer: -100)
         Atılan Kısım:      1001
         Kalan Kısım:           1100
 
         Sonuç (4-bit):           1100  (Değer: -4) - Hem değer hem işaret değişebilir!
-    </pre>
+        </pre>
 
 <div class="quiz-question">
   <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayı olan `-3` (`1101`), 8-bit bir tamsayıya `Sign Extension` ile genişletilirse sonuç ne olur?</p>

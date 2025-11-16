@@ -109,18 +109,26 @@ Bulduğumuz üç parçayı birleştirelim:
 
 ---
 
-## 4. Interpreting the Bits: The Different States of Numbers (Bitlerin Anlamını Değiştirmek)
+## 4. Bitlerin Anlamını Değiştirmek: Sayıların Farklı Halleri
 
-Bilgisayar, `exp` alanındaki bit desenine bakarak sayının "normal" mi, "sıfıra çok yakın" mı, yoksa "özel bir durum" mu olduğunu anlar. Bu durumlar aşağıdaki tabloda özetlenmiştir:
+Bilgisayar, `exp` alanındaki bitlere bakarak sayının "normal" mi, "sıfıra çok yakın" mı, yoksa "özel bir durum" mu olduğunu anlar.
 
-| Kategori | `exp` Değeri | `frac` Değeri | Anlamı ve Formülü |
-| :--- | :--- | :--- | :--- |
-| **Normalized** (Normal Sayılar) | Ne `0...0` ne de `1...1` | Herhangi bir değer | En yaygın durum. Sayı = (-1)ˢ × **1**.frac × 2^(exp - Bias) |
-| **Denormalized** (Sıfıra Yakın Sayılar) | `0...0` | `0`'dan farklı | Sıfıra çok yakın sayıları temsil eder. Sayı = (-1)ˢ × **0**.frac × 2^(1 - Bias) |
-| **Zero** (Sıfır) | `0...0` | `0...0` | İşaret bitine göre `+0.0` veya `-0.0` |
-| **Special** (Özel Durumlar) | `1...1` | - | İşlemlerin sayısal olmayan sonuçları için. |
-| &nbsp;&nbsp;&nbsp; _Infinity_ (Sonsuz) | `1...1` | `0...0` | Sayı taşması (`1/0`) gibi durumlar. |
-| &nbsp;&nbsp;&nbsp; _NaN_ (Sayı Değil) | `1...1` | `0`'dan farklı | Geçersiz işlemler (`sqrt(-1)`) için. |
+### a) Normalized Values (Normal Sayılar)
+Sayıların büyük çoğunluğunun temsil edildiği standart durumdur.
+*   **Şart:** `exp` alanı ne tamamen sıfırlardan (`00...0`) ne de tamamen birlerden (`11...1`) oluşur.
+*   **Gizli 1 Biti Kuralı:** Bilgisayar, her sayının başında `1.` varmış gibi davranır. Bu `1`'i saklamak zorunda kalmayarak fazladan bir bitlik hassasiyet kazanırız. (Yukarıdaki örneğimiz bu duruma aittir.)
+*   **Bias (Kaydırma) Yöntemi:** `exp` alanı, hem pozitif hem de negatif üsleri saklayabilmek için `Bias` adı verilen bir kaydırma değeri kullanır. Gerçek üs, `E = exp - Bias` formülüyle bulunur.
+
+### b) Denormalized Values (Sıfıra Yakın Sayılar)
+Sıfıra çok çok yakın olan minik sayıları ifade etmek için kullanılır.
+*   **Şart:** `exp` alanı tamamen `0`'lardan oluşur.
+*   Bu durumda "gizli 1 biti" kuralı geçerli değildir (sayının `0.` ile başladığı varsayılır). Bu, sayıların aniden sıfıra düşmesi yerine, yavaşça sıfıra yaklaşmasını sağlar.
+
+### c) Special Values (Özel Durumlar)
+Bir işlemin sonucunun sayı olmadığı durumlar için özel kodlar kullanılır.
+*   **Şart:** `exp` alanı tamamen `1`'lerden oluşur.
+*   **`Infinity` (Sonsuz):** `frac` alanı tamamen `0` ise. Örneğin, `1 / 0.0`.
+*   **`NaN` (Not a Number / Sayı Değil):** `frac` alanı `0`'dan farklı ise. Örneğin, `sqrt(-1)`.
 
 <div class="quiz-question">
   <p><b>Soru:</b> Bir `float` hesaplaması sonucunda `exp` bitlerinin tamamı `1`, `frac` bitlerinin tamamı `0` olarak bulundu. Bu sonuç nedir?</p>
@@ -135,15 +143,13 @@ Bilgisayar, `exp` alanındaki bit desenine bakarak sayının "normal" mi, "sıf�
 
 ---
 
-## 5. Rounding and Casting in C (Yuvarlama ve C'deki Tip Dönüşümleri)
+## 5. Rounding (Yuvarlama) ve C'deki Etkileri
 
-Hesaplamaların sonucu hassas olduğunda veya farklı sayı türleri arasında dönüşüm yapıldığında, C dilinin belirli kuralları vardır. Bu dönüşümler aşağıdaki tabloda özetlenmiştir:
+Hesaplamaların sonucu genellikle mevcut bit sayısından daha fazla hassasiyet gerektirdiğinde, sonucun en yakın temsil edilebilir değere yuvarlanması gerekir. Bu, özellikle `int` ve `float`/`double` arası dönüşümlerde ilginç sonuçlara yol açar.
 
-| Dönüşüm | Kural / Davranış | Örnek |
-| :--- | :--- | :--- |
-| `float`/`double` → `int` | Ondalık kısım **atılır (truncate)**. Sayı sıfıra doğru yuvarlanır. | `(int) 3.99` → `3`<br>`(int) -3.99` → `-3` |
-| `int` → `double` | Değer genellikle tam olarak korunur. Hassasiyet kaybı yaşanmaz. | `(double) 12345` → `12345.0` |
-| `int` → `float` | Büyük sayılarda `float`'ın hassasiyeti yetmeyebilir ve sayı **yuvarlanabilir**. | `(float) 123456789` → `123456792.0` |
+*   `double`/`float` -> `int`: Ondalık kısım **yuvarlanmaz, doğrudan atılır (truncate)**. `(int) 3.999` işleminin sonucu `3`'tür.
+*   `int` -> `double`: Genellikle hassasiyet kaybı olmaz.
+*   `int` -> `float`: Büyük tamsayılar, `float`'ın 23 bitlik kesir alanına sığmayabilir ve bu durumda **yuvarlama** nedeniyle hassasiyet kaybı yaşanabilir. Örneğin, çok büyük bir `int` olan `123456789`, `float`'a çevrildiğinde `123456792` gibi bir değere dönüşebilir.
 
 <div class="quiz-question">
   <p><b>Soru:</b> `int x = (int) -5.9;` C kodu çalıştırıldığında `x`'in değeri ne olur?</p>
