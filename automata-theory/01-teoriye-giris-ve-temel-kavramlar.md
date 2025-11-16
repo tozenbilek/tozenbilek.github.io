@@ -70,15 +70,15 @@ Otomatlar, dilleri tanımak için kullanılan matematiksel modellerdir. Karmaş�
 ```mermaid
 graph TD
     subgraph "En Basit"
-        A["**Finite Automata**<br>(Sonlu Hafıza)<br>*Regular Languages*"]
+        A["Finite Automata (Sonlu Hafıza) | Regular Languages"]
     end
     
     subgraph "Daha Güçlü"
-        B["**Pushdown Automata**<br>(+ Stack Hafızası)<br>*Context-Free Languages*"]
+        B["Pushdown Automata (+ Stack Hafızası) | Context-Free Languages"]
     end
 
     subgraph "En Güçlü"
-        C["**Turing Machines**<br>(+ Sonsuz Bant Hafızası)<br>*Tüm Hesaplanabilir Diller*"]
+        C["Turing Machines (+ Sonsuz Bant Hafızası) | Tüm Hesaplanabilir Diller"]
     end
 
     A --> B --> C
