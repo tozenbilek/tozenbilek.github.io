@@ -11,7 +11,7 @@ Dijital dünyadaki her şeyin temelinde **bit**'ler yatar. Bu bölümde, verinin
 
 ---
 
-## 1. Binary (İkili) Temsili
+## 1. Binary (İkili) Temsili ([Test Sorusu](#quiz-binary))
 
 Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: açık veya kapalı, yüksek voltaj veya düşük voltaj. Bu iki duruma karşılık gelen rakamlar **1** ve **0**'dır. Tek bir 1 veya 0'a **bit** denir.
 
@@ -21,6 +21,17 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 **Hexadecimal (Onaltılık) Gösterim:** İkili sayılar çok uzun olabildiği için, genellikle daha kompakt olan hexadecimal (16'lık taban) gösterimi kullanılır. Her bir hexadecimal rakam, 4 bite karşılık gelir.
 *   Rakamlar: `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F`
 *   Örnek: `1111 1111` (binary) = `255` (decimal) = `FF` (hexadecimal)
+
+<div class="quiz-question" id="quiz-binary">
+  <p><b>Soru:</b> `0xC3` hexadecimal sayısının 8-bit ikili (binary) karşılığı nedir?</p>
+  <div class="quiz-option" data-correct="true">A) `11000011`</div>
+  <div class="quiz-option">B) `10100101`</div>
+  <div class="quiz-option">C) `11001100`</div>
+  <div class="quiz-option">D) `11100011`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Hexadecimal'deki her bir rakam 4 bite karşılık gelir. `C` onluk tabanda 12'dir ve ikili karşılığı `1100`'dür. `3`'ün ikili karşılığı `0011`'dir. Bu ikisini birleştirdiğimizde `11000011` elde ederiz.</p>
+  </div>
+</div>
 
 ---
 
@@ -69,7 +80,7 @@ Big-Endian Düzeni:              Little-Endian Düzeni:
 
 ---
 
-## 3. Bit Seviyesi Mantıksal Operasyonlar
+## 3. Bit Seviyesi Mantıksal Operasyonlar ([Test Soruları](#quiz-bitwise))
 
 C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güçlü operatörler bulunur. Bu operatörler, donanıma yakın seviyede kontrol ve optimizasyon imkanı tanır.
 
@@ -135,6 +146,29 @@ Bu operatörler, bir sayının bitlerini belirli bir sayıda sola veya sağa kay
         Başlangıç: 11110000 (-16)
         Sonuç:     11111100 (-4)
         </pre>
+
+<div id="quiz-bitwise"></div>
+<div class="quiz-question">
+  <p><b>Soru:</b> Bir `x` tamsayısının tek mi çift mi olduğunu anlamak için `(x & 1)` ifadesi kullanılıyor. `x = 7` (binary `0111`) ise bu ifadenin sonucu ne olur ve bu ne anlama gelir?</p>
+  <div class="quiz-option">A) `0` (Sayı çifttir)</div>
+  <div class="quiz-option">B) `1` (Sayı çifttir)</div>
+  <div class="quiz-option" data-correct="true">C) `1` (Sayı tektir)</div>
+  <div class="quiz-option">D) `0` (Sayı tektir)</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Bir sayının en anlamsız biti (en sağdaki bit), sayı tek ise `1`, çift ise `0`'dır. `& 1` işlemi (`0001` ile AND'lemek) diğer tüm bitleri sıfırlar ve sadece bu en sağdaki biti kontrol eder. `0111 & 0001` işleminin sonucu `0001`, yani `1` olduğu için sayı tektir.</p>
+  </div>
+</div>
+<div class="quiz-question">
+  <p><b>Soru:</b> 8-bit `signed char` olan `-80` (`10110000`) sayısına 3 bit aritmetik sağa kaydırma (`>> 3`) uygulanırsa sonuç ne olur?</p>
+  <div class="quiz-option">A) `20`</div>
+  <div class="quiz-option">B) `-40`</div>
+  <div class="quiz-option">C) `10`</div>
+  <div class="quiz-option" data-correct="true">D) `-10`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: D.</b> Aritmetik sağa kaydırma, sayının işaretini korumak için soldan boşalan bitlere işaret bitini (`1`) kopyalar. `10110000` >> 3 işlemi `11110110` sonucunu verir. Bu bit deseni, 8-bit Two's Complement'te `-10`'a karşılık gelir. Bu, pratikte ` -80 / (2^3) = -10` bölme işlemine eşdeğerdir.</p>
+  </div>
+</div>
+
 ---
 
 ## 4. Tamsayıların Temsili ([Test Sorusu](#quiz-twos-complement))
