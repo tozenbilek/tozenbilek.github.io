@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Computer Vision Nedir?
-parent: 1. Giriş
 nav_order: 1
+parent: Computer Vision
 ---
 
 # Computer Vision Nedir?

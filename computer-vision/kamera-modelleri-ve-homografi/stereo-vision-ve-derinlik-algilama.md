@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Stereo Vision ve Depth Perception
-parent: 4. Camera Models ve Homography
-nav_order: 3
+title: Stereo Vision ve Derinlik Algılama
+nav_order: 4
+parent: Computer Vision
 ---
 
 # Stereo Vision ve Depth Perception

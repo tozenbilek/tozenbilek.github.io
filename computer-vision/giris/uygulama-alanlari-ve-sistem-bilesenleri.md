@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Uygulama Alanları ve Sistem Bileşenleri
-parent: 1. Giriş
-nav_order: 2
+nav_order: 3
+parent: Computer Vision
 ---
 
 # Uygulama Alanları ve Sistem Bileşenleri

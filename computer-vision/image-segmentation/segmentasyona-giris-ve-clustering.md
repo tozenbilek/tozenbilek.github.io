@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Segmentasyona Giriş ve Clustering
-parent: Image Segmentation
+title: Segmentasyona Giriş ve Kümeleme (Clustering)
 nav_order: 1
+parent: Computer Vision
 ---
 
 # Segmentasyona Giriş ve Clustering

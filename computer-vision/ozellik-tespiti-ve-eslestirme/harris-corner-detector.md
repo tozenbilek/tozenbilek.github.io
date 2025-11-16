@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Harris Corner Detector
-parent: 5. Feature Detection ve Matching
-nav_order: 1
+nav_order: 2
+parent: Computer Vision
 ---
 
 # Harris Corner Detector

@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Texture-Based Segmentation
-parent: 6. Image Segmentation
-nav_order: 3
+title: Doku (Texture) Temelli Segmentasyon
+nav_order: 4
+parent: Computer Vision
 ---
 
 # Texture-Based Segmentation

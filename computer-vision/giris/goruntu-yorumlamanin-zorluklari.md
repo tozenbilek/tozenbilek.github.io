@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Görüntü Yorumlamanın Zorlukları
-parent: 1. Giriş
-nav_order: 3
+nav_order: 2
+parent: Computer Vision
 ---
 
 # Görüntü Yorumlamanın Zorlukları

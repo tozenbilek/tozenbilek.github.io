@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Camera Calibration
-parent: 4. Camera Models ve Homography
-nav_order: 4
+title: Kamera Kalibrasyonu (Camera Calibration)
+nav_order: 3
+parent: Computer Vision
 ---
 
 # Camera Calibration

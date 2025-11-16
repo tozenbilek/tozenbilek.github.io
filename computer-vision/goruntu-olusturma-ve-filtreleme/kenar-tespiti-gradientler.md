@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Edge Detection ve Gradient'ler
-parent: 2. Image Formation ve Filtering
+title: Kenar Tespiti ve Gradientler
 nav_order: 4
+parent: Computer Vision
 ---
 
 # Edge Detection ve Gradient'ler

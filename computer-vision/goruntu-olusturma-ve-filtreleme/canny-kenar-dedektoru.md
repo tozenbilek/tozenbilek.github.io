@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Canny Edge Detector
-parent: 2. Image Formation ve Filtering
+title: Canny Kenar Dedektörü
 nav_order: 5
+parent: Computer Vision
 ---
 
 # Canny Edge Detector

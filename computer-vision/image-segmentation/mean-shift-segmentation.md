@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Mean Shift Segmentation
-parent: 6. Image Segmentation
-nav_order: 2
+title: Mean Shift Segmentasyonu
+nav_order: 3
+parent: Computer Vision
 ---
 
-# Mean Shift Segmentation
+# Mean Shift Segmentasyonu
 
 K-Means'in bazı dezavantajlarına (K'yı belirleme, küresel cluster varsayımı) bir alternatif olarak **Mean Shift** algoritması geliştirilmiştir. Mean Shift, `feature space`'teki veri yoğunluğunun tepe noktalarını (modlarını veya yerel maksimumlarını) bulmaya çalışan bir yöntemdir. Her bir tepe noktası, bir `cluster`'ın merkezini temsil eder.
 

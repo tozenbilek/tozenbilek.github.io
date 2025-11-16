@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Lines için Hough Transform
-parent: 3. Hough Transform
+title: Çizgiler İçin Hough Dönüşümü
 nav_order: 2
+parent: Computer Vision
 ---
 
 # Lines için Hough Transform: Polar Koordinatlar ve Algoritma

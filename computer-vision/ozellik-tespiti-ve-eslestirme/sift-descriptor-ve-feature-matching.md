@@ -1,8 +1,8 @@
 ---
 layout: default
 title: SIFT Descriptor ve Feature Matching
-parent: 5. Feature Detection ve Matching
-nav_order: 3
+nav_order: 4
+parent: Computer Vision
 ---
 
 # SIFT Descriptor ve Feature Matching

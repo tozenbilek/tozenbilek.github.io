@@ -1,8 +1,8 @@
 ---
 layout: default
 title: RANSAC ile Model Uydurma
-parent: 5. Feature Detection ve Matching
-nav_order: 4
+nav_order: 5
+parent: Computer Vision
 ---
 
 # RANSAC ile Hatalı Eşleşmeleri Ayıklama
@@ -78,6 +78,4 @@ RANSAC'ın temel fikri oldukça basittir: Eğer verideki doğru noktaları (`inl
   <div class="quiz-option" data-correct="true">C) Veri setindeki `inlier` oranına ve model için gereken minimum nokta sayısına.</div>
   <div class="quiz-option">D) Kullanılan bilgisayarın hızına.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Deneme sayısı `N`, en az bir denemede tamamen `inlier`'lardan oluşan bir alt küme seçme olasılığını istenen bir seviyeye (örneğin %99) çıkarmak için hesaplanır. Bu hesaplama, veri setindeki tahmini `inlier` oranına (`w`), model için gereken minimum nokta sayısına (`s`) ve istenen başarı olasılığına (`p`) doğrudan bağlıdır. `Inlier` oranı ne kadar düşükse, tamamen `inlier`'lardan oluşan bir grup çekme olasılığı o kadar düşük olacağı için `N`'nin o kadar yüksek olması gerekir.</p>
-  </div>
-</div>
+    <p><b>Cevap: C.</b> Deneme sayısı `N`, en az bir denemede tamamen `inlier`'lardan oluşan bir alt küme seçme olasılığını istenen bir seviyeye (örneğin %99) çıkarmak için hesaplanır. Bu hesaplama, veri setindeki tahmini `

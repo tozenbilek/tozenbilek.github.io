@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Template Matching
-parent: 2. Image Formation ve Filtering
+title: Şablon Eşleştirme (Template Matching)
 nav_order: 6
+parent: Computer Vision
 ---
 
 # Template Matching

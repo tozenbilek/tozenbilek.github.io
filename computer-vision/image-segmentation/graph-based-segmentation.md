@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Graph-Based Segmentation
-parent: 6. Image Segmentation
-nav_order: 4
+title: Grafik Tabanlı Segmentasyon (Graph-Based Segmentation)
+nav_order: 2
+parent: Computer Vision
 ---
 
 # Graph-Based Segmentation

@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Scale-Invariant Feature'lar ve SIFT Detector
-parent: 5. Feature Detection ve Matching
-nav_order: 2
+nav_order: 3
+parent: Computer Vision
 ---
 
 # Scale-Invariant Feature'lar ve SIFT Detector

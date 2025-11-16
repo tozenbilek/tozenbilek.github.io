@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Projective Geometry ve Camera Models
-parent: 4. Camera Models ve Homography
+title: Projective Geometry ve Kamera Modelleri
 nav_order: 1
+parent: Computer Vision
 ---
 
-# Projective Geometry ve Camera Models
+# Projective Geometry ve Kamera Modelleri
 
 `Image`'lerin nasıl oluştuğunu anlamak, 3D dünyayı 2D `image`'lere yansıtan geometrik süreci anlamakla başlar. Bu süreç **Projective Geometry** ile açıklanır ve en temel `camera` modeli olan **pinhole camera** ile basitleştirilir.
 

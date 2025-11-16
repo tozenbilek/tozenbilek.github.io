@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Homography
-parent: 4. Camera Models ve Homography
 nav_order: 2
+parent: Computer Vision
 ---
 
 # Homography
