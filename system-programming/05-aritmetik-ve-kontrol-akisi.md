@@ -64,6 +64,8 @@ Bu özelliği sayesinde, toplama ve sınırlı çarpma işlemleri için dahice b
 
 Bu mekanizma, `if-else` gibi yapıların temelini oluşturur. Aşağıdaki diyagram, bu mantıksal akışı görselleştirmektedir:
 
+<div align="center">
+
 ```mermaid
 graph TD
     A["Başlangıç"] --> B{cmp a, b};
@@ -72,6 +74,8 @@ graph TD
     C --> E["Bitiş"];
     D --> E;
 ```
+
+</div>
 
 <div class="quiz-question">
   <p><b>Soru:</b> `%rax` register'ında 5, `%rbx` register'ında 10 değeri varken, `cmpq %rax, %rbx` komutu çalıştırıldıktan sonra durum kodlarından hangisi `1` olur?</p>
@@ -99,22 +103,28 @@ Fonksiyon çağrıları, belleğin "son giren ilk çıkar" (LIFO) prensibiyle ç
 
 Her fonksiyon, stack üzerinde kendine ait **stack frame** denilen bir çalışma alanı kullanır.
 
+<div align="center">
+
 ```mermaid
 graph TD
     A["...<br>(Yüksek Adresler)"]
-    B["Argüman 7+"]
-    C["Dönüş Adresi<br><i>(call tarafından push edildi)</i>"]
-    D["Kaydedilmiş Register'lar"]
-    E["Yerel Değişkenler"]
+    B["Argümanlar (Caller'dan)"]
+    
+    subgraph "Aktif Fonksiyonun Stack Frame'i"
+        C["Dönüş Adresi"]
+        D["Kaydedilmiş Register'lar"]
+        E["Yerel Değişkenler"]
+    end
+
     F["..."]
     G["%rsp (Stack Tepesi)<br><i>(Düşük Adreslere Doğru)</i>"]
 
-    subgraph Stack Büyüme Yönü
-        A --> B --> C --> D --> E --> F
-    end
-    
+    A --> B --> C
+    E --> F
     F -.-> G
 ```
+
+</div>
 
 <div class="quiz-question">
   <p><b>Soru:</b> Bir `foo` fonksiyonu, başka bir `bar` fonksiyonunu `callq bar` komutuyla çağırdığında, stack'e ne `push` edilir?</p>

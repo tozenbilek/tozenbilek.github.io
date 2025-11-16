@@ -151,3 +151,4 @@ Bu örnekte, `(%rdi)` ve `(%rsi)` ifadeleri **Normal Adresleme Modu**'nu kullana
 </div>
 
 ---
+
