@@ -126,35 +126,35 @@ C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güç
 Örnekler için `a = 93` (yani `01011101`) ve `b = 148` (yani `10010100`) sayılarını kullanalım.
 
 *   `&` **(AND):** İki bitte de karşılıklı olarak `1` varsa sonuç `1` olur. Genellikle belirli bitleri "maskelemek" (izole etmek) veya "sıfırlamak" için kullanılır.
-    <pre>
+    ```
       01011101  (a)
     & 10010100  (b)
       --------
       00010100  (Sonuç: 20)
-    </pre>
+    ```
 
 *   `|` **(OR):** İki bitten en az biri `1` ise sonuç `1` olur. Belirli bitleri "açmak" (1 yapmak) için kullanılır.
-    <pre>
+    ```
       01011101  (a)
     | 10010100  (b)
       --------
       11011101  (Sonuç: 221)
-    </pre>
+    ```
 
 *   `^` **(XOR - Exclusive OR):** İki bit birbirinden farklıysa (`0` ve `1`) sonuç `1` olur. Belirli bitleri "ters çevirmek" (toggle) için kullanılır.
-    <pre>
+    ```
       01011101  (a)
     ^ 10010100  (b)
       --------
       11001001  (Sonuç: 201)
-    </pre>
+    ```
 
 *   `~` **(NOT):** Tek bir sayının tüm bitlerini ters çevirir (`0` olanlar `1`, `1` olanlar `0` olur).
-    <pre>
+    ```
     ~ 01011101  (a)
       --------
       10100010  (Sonuç: -94, 2'ye tümleyen gösteriminde)
-    </pre>
+    ```
 
 | A | B | A & B (AND) | A \| B (OR) | A ^ B (XOR) |
 |:-:|:-:|:-----------:|:-----------:|:-----------:|
@@ -168,30 +168,30 @@ C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güç
 Bu operatörler, bir sayının bitlerini belirli bir sayıda sola veya sağa kaydırır.
 
 *   `<<` **(Left Shift):** Tüm bitleri sola kaydırır. Sağdan boşalan yerlere `0` eklenir. `x << k` işlemi, `x` sayısını `2^k` ile çarpmakla eşdeğerdir.
-    <pre>
+    ```
     a << 3;  // 93 sayısını 3 bit sola kaydır
 
     Başlangıç: 01011101 (93)
     Sonuç:     11101000 (232)
-    </pre>
+    ```
 
 *   `>>` **(Right Shift):** Tüm bitleri sağa kaydırır. Bu işlemin iki türü vardır:
     *   **Logical Right Shift (Mantıksal Sağa Kaydırma):** Soldan boşalan yerlere her zaman `0` eklenir. Bu, C'de `unsigned` (işaretsiz) tamsayılara uygulanır.
-        <pre>
+        ```
         unsigned int u = 240; // 11110000
         u >> 2;
 
         Başlangıç: 11110000 (240)
         Sonuç:     00111100 (60)
-        </pre>
+        ```
     *   **Arithmetic Right Shift (Aritmetik Sağa Kaydırma):** Soldan boşalan yerlere, sayının işaretini korumak için en soldaki **işaret biti** kopyalanır. `signed` (işaretli) tamsayılara uygulanır. Negatif sayılar için bölme işleminin doğru çalışmasını sağlar.
-        <pre>
+        ```
         signed char s = -16; // 11110000 (8-bit 2'ye tümleyen)
         s >> 2;
 
         Başlangıç: 11110000 (-16)
         Sonuç:     11111100 (-4)
-        </pre>
+        ```
 
 <div class="quiz-question">
   <p><b>Soru:</b> Bir `x` tamsayısının tek mi çift mi olduğunu anlamak için `(x & 1)` ifadesi kullanılıyor. `x = 7` (binary `0111`) ise bu ifadenin sonucu ne olur ve bu ne anlama gelir?</p>
@@ -235,7 +235,7 @@ Modern bilgisayarlarda işaretli tamsayılar için standart olan ve aritmetik i�
 
 Aşağıdaki tablo, 4-bitlik bir sayının işaretsiz ve işaretli (ikinin tümleyeni) olarak nasıl yorumlandığını gösterir:
 
-<pre>
+```
 | Bit Deseni | Unsigned Değeri | Signed (Two's Complement) Değeri |
 |------------|-----------------|----------------------------------|
 |   0000     |        0        |                0                 |
@@ -254,7 +254,7 @@ Aşağıdaki tablo, 4-bitlik bir sayının işaretsiz ve işaretli (ikinin tüml
 |   1101     |       13        |               -3                 |
 |   1110     |       14        |               -2                 |
 |   1111     |       15        |               -1                 |
-</pre>
+```
 
 **Bir Sayının Negatifini Bulma (Pratik Yöntem): `(~x + 1)`**
 
@@ -316,11 +316,11 @@ C gibi dillerde, farklı tamsayı tipleri arasında dönüşüm yapmak yaygınd�
 Bir değeri daha fazla bit ile temsil etmektir (örn: 4-bit'ten 8-bit'e). Değerin korunması esastır.
 
 *   **Zero Extension (Sıfırla Genişletme):** `unsigned` (işaretsiz) sayılar için kullanılır. Sayının soluna (yüksek anlamlı bitlere) `0`'lar eklenir.
-    <pre>
+    ```
     // 4-bit unsigned 9 sayısını 8-bit'e genişletme
     Başlangıç (4-bit): 1001      (Değer: 9)
     Sonuç (8-bit):     00001001  (Değer: 9)
-    </pre>
+    ```
 
 *   **Sign Extension (İşaretle Genişletme):** `signed` (işaretli) sayılar için kullanılır. Sayının orijinal işaretini korumak için, en soldaki **işaret biti** kopyalanarak yeni bitler doldurulur.
     *   **Pozitif Sayı Örneği:**
@@ -397,12 +397,12 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
 *   **Örnek (4-bit unsigned):** `10 + 7 = ?`
     *   `10`'un deseni: `1010`
     *   `7`'nin deseni: `0111`
-    <pre>
+    ```
       1010  (10)
     + 0111  (7)
       ----
      10001  (17)
-    </pre>
+    ```
     *   Sonuç 5 bit (`10001`) olduğu için 4-bit'e sığmaz. En soldaki bit atılır ve sonuç `0001` olur.
     *   Yani, 4-bit'lik işaretsiz dünyada `10 + 7 = 1`.
 
@@ -413,24 +413,24 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
     *   **Örnek (4-bit signed):** `5 + 4 = ?`
         *   `5`'in deseni: `0101`
         *   `4`'ün deseni: `0100`
-        <pre>
+        ```
           0101  (+5)
         + 0100  (+4)
           ----
           1001  (-7)
-        </pre>
+        ```
         *   Sonuç `+9` olmalıydı, ancak 4-bit `signed` aralığı `-8` ile `+7` arasıdır. Sonuç bu aralığın dışına taştı ve işaret biti `1` oldu, yani negatif bir sayı (`-7`) elde edildi. Bu bir `overflow`'dur.
 
 *   **Negatif Taşma:** İki negatif sayının toplamı pozitif olursa.
     *   **Örnek (4-bit signed):** `(-5) + (-4) = ?`
         *   `-5`'in deseni: `1011`
         *   `-4`'ün deseni: `1100`
-        <pre>
+        ```
           1011  (-5)
         + 1100  (-4)
           ----
          10111  (-9)
-        </pre>
+        ```
         *   Sonuç `-9` olmalıydı. 5 bitlik sonuçtan en soldaki biti atarsak elimizde `0111` kalır. Bu da `+7`'dir. İki negatif sayının toplamı pozitif çıktı. Bu da bir `overflow`'dur.
 
 <div class="quiz-question">
