@@ -91,7 +91,7 @@ Bulduğumuz üç parçayı birleştirelim:
 *   `exp`: `10000010`
 *   `frac`: `10011000000000000000000`
 
-**`1 10000010 10011000000000000000000`**
+<pre>1 10000010 10011000000000000000000</pre>
 
 İşte `-12.75` sayısının 32-bit `float` olarak bellekteki tam karşılığı budur.
 

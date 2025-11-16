@@ -27,7 +27,7 @@ parent: System Programming
 | `xorq S, D` | Bitwise XOR (`D ^= S`)| | |
 
 ### b) `leaq` Komutu: Adres Hesabı Sanatı
-`leaq Kaynak, Hedef` (Load Effective Address) komutu, Assembly'nin en ilginç komutlarındandır. `Kaynak` operandının belirttiği *bellek adresini hesaplar* ve sonucu `Hedef` yazmacına yazar. **Belleğe gerçekten erişmez, sadece adres matematiği yapar.**
+`leaq Source, Destination` (Load Effective Address) komutu, Assembly'nin en ilginç komutlarındandır. `Source` operandının belirttiği *bellek adresini hesaplar* ve sonucu `Destination` yazmacına yazar. **Belleğe gerçekten erişmez, sadece adres matematiği yapar.**
 
 Bu özelliği sayesinde, toplama ve sınırlı çarpma işlemleri için dahice bir şekilde kullanılabilir.
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Harris Corner Detector
+title: Harris Köşe Dedektörü (Harris Corner Detector)
 nav_order: 17
 parent: Computer Vision
 ---
@@ -38,21 +38,39 @@ Bir köşenin neden iyi bir özellik olduğunu anlamak için, görüntü üzerin
 
 ---
 
-## 3. Harris Köşe Dedektörü
+## 3. Harris Köşe Dedektörü: Matematiksel Sezgi
 
 Harris & Stephens (1988), bu sezgisel fikri matematiksel bir temele oturtan bir algoritma geliştirdiler.
 
-1.  Görüntünün her pikseli için, x ve y yönlerindeki türevler (`Ix` ve `Iy`) hesaplanır.
-2.  Her pikselin etrafındaki küçük bir pencere içindeki türevler kullanılarak 2x2'lik bir `M` matrisi oluşturulur:
+1.  Her pikselin etrafındaki küçük bir pencere içindeki gradyan (türev) bilgileri kullanılarak 2x2'lik bir `M` matrisi (yapı tensörü) oluşturulur:
     ```
     M = Σ [ Ix²    Ix*Iy ]
         [ Ix*Iy  Iy²   ]
     ```
-3.  Bu `M` matrisinin **eigenvalues (özdeğerleri)**, `λ1` ve `λ2`, bize pencerenin kaydırılmasıyla oluşan değişimin ana yönlerini ve büyüklüklerini söyler.
+    Burada `Σ` (toplam), pencere üzerindeki tüm pikseller için bir ağırlıklı toplamı (genellikle Gaussian ağırlıklı) ifade eder. `Ix` ve `Iy`, o pikseldeki x ve y yönlerindeki görüntü türevleridir.
+
+2.  Bu `M` matrisinin **eigenvalues (özdeğerleri)**, `λ1` ve `λ2`, bize gradyanın dağılımını, yani pencere kaydırıldığında yoğunluğun hangi yönlerde ve ne kadar değiştiğini söyler.
     *   Eğer `λ1` ve `λ2` ikisi de küçükse, bu "düz" bir bölgedir.
     *   Eğer biri büyük, diğeri küçükse, bu bir "kenardır".
     *   Eğer `λ1` ve `λ2` ikisi de büyükse, bu bir **"köşedir"**.
-4.  Özdeğerleri doğrudan hesaplamak yerine, Harris dedektörü daha verimli bir "köşelik" skoru `R` hesaplar:
+
+<pre>
+Özdeğerlerin Yorumu (Gradyan Dağılım Elipsi):
+
+  λ2
+  ^
+  |
+  +-------+
+  | Köşe  |   (λ1 ve λ2 büyük) --> Belirgin bir elips yok, her yönde değişim
+  +-------+
+  | Kenar |   (λ1 büyük, λ2 küçük) --> Yatay ince bir elips
+--+-------+--> λ1
+  | Düz   |   (λ1 ve λ2 küçük) --> Merkezde küçük bir nokta
+  +-------+
+
+</pre>
+
+3.  Özdeğerleri doğrudan hesaplamak yerine, Harris dedektörü daha verimli bir **"köşelik" skoru (`R`)** hesaplar:
     `R = det(M) - k * (trace(M))² = (λ1*λ2) - k * (λ1+λ2)²`
 
     *   `R` büyük ve pozitifse, bu bir köşedir.
@@ -61,7 +79,18 @@ Harris & Stephens (1988), bu sezgisel fikri matematiksel bir temele oturtan bir 
 
 ---
 
-## 4. Harris Dedektörünün Sınırlılıkları
+## 4. Harris Dedektörü Algoritmasının Adımları
+
+Pratikte algoritma şu adımlarla çalışır:
+1.  **Gradyan Hesaplama:** Görüntünün x ve y türevlerini (`Ix`, `Iy`) hesapla (örn: Sobel filtresi ile).
+2.  **Gradyan Ürünleri:** `Ix²`, `Iy²` ve `Ix*Iy` görüntülerini oluştur.
+3.  **Toplama:** Bu üç görüntü üzerinde küçük bir Gaussian filtre gezdir. Bu, her piksel için `M` matrisinin elemanlarını etkin bir şekilde hesaplar.
+4.  **Köşelik Skoru:** Her piksel için `R` skorunu hesaplayarak bir "köşelik haritası" oluştur.
+5.  **Non-Maximum Suppression (Maksimum Olmayanı Bastırma):** Köşelerin tek ve hassas bir pikselde tespit edilmesi için, `R` haritasındaki yerel maksimumları bul. Yani, bir pikselin `R` skoru, etrafındaki 8 komşusundan daha büyük değilse, o pikseli köşe olarak kabul etme. Bu, köşe etrafındaki "kalın" tepkileri tek bir noktaya indirger.
+
+---
+
+## 5. Harris Dedektörünün Özellikleri ve Sınırlılıkları
 
 Harris köşe dedektörü, Computer Vision'da bir dönüm noktasıdır ve hala birçok uygulamada kullanılmaktadır.
 *   **Rotation (Döndürmeye) Karşı Dayanıklıdır:** Görüntü döndüğünde, köşeler hala köşe olarak algılanır.
@@ -77,10 +106,10 @@ Bu ölçek problemi, bir sonraki bölümde inceleyeceğimiz **SIFT (Scale-Invari
 
 ---
 
-### Test Soruları
+## Test Soruları
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Harris köşe dedektörüne göre, bir görüntü bölgesinin "köşe" olarak sınıflandırılmasının temel koşulu nedir?</p>
+  <p><b>Soru:</b> Harris köşe dedektörüne göre, bir görüntü bölgesinin "köşe" olarak sınıflandırılmasının temel koşulu nedir?</p>
   <div class="quiz-option">A) Görüntü türevinin sadece x yönünde büyük olması.</div>
   <div class="quiz-option" data-correct="true">B) Küçük bir pencere kaydırıldığında, yoğunluğun her yönde de belirgin şekilde değişmesi.</div>
   <div class="quiz-option">C) Bölgenin parlaklığının belirli bir eşik değerinin üzerinde olması.</div>
@@ -91,13 +120,24 @@ Bu ölçek problemi, bir sonraki bölümde inceleyeceğimiz **SIFT (Scale-Invari
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Harris köşe dedektörünün en önemli zayıflığı aşağıdakilerden hangisidir?</p>
+  <p><b>Soru:</b> Harris köşe dedektörünün en önemli zayıflığı aşağıdakilerden hangisidir?</p>
   <div class="quiz-option">A) Görüntü döndürüldüğünde iyi çalışmaması.</div>
   <div class="quiz-option">B) Renkli görüntülerde kullanılamaması.</div>
   <div class="quiz-option" data-correct="true">C) Görüntünün ölçeği değiştiğinde (örn: zoom yapıldığında) aynı köşeyi bulamaması.</div>
   <div class="quiz-option">D) Çok yavaş çalışması.</div>
   <div class="quiz-explanation">
     <p><b>Cevap: C.</b> Harris dedektörü, sabit bir pencere boyutuyla çalıştığı için ölçek değişikliklerine karşı hassastır. Bir nesneye yaklaştıkça, dedektörün "gördüğü" desen değişir ve daha önce köşe olarak algılanan bir nokta artık algılanmayabilir.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Görüntüde belirgin bir **dikey kenar** üzerindeki bir piksel için Harris dedektörünün `M` matrisini oluşturan `Ix` ve `Iy` türevleri hakkında ne beklersiniz?</p>
+  <div class="quiz-option" data-correct="true">A) `Ix` büyük, `Iy` sıfıra yakın olur.</div>
+  <div class="quiz-option">B) `Iy` büyük, `Ix` sıfıra yakın olur.</div>
+  <div class="quiz-option">C) Hem `Ix` hem de `Iy` büyük olur.</div>
+  <div class="quiz-option">D) Hem `Ix` hem de `Iy` sıfıra yakın olur.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Dikey bir kenar, yatay (x) yönde büyük bir yoğunluk değişimi gösterir, bu nedenle `Ix` gradyanı büyük olur. Ancak dikey (y) yön boyunca yoğunluk değişmediği için `Iy` gradyanı sıfıra yakın olacaktır. Bu durum, `M` matrisinin özdeğerlerinden birinin büyük, diğerinin küçük olmasına yol açar ve bölgenin "kenar" olarak sınıflandırılmasına neden olur.</p>
   </div>
 </div>
 

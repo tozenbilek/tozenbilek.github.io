@@ -7,46 +7,40 @@ parent: Computer Vision
 
 # Görüntü Yorumlamanın Zorlukları
 
-Computer Vision'ın hedefi basit gibi görünse de, bir görüntüyü "anlamak" inanılmaz derecede zor bir problemdir. İnsan görsel sistemi, bunu o kadar zahmetsizce yapar ki, arkasındaki karmaşıklığı genellikle gözden kaçırırız. Zorluk, bir görüntünün sadece piksellerden oluşan bir matris olmasından ve fiziksel dünyanın bu matrise yansırken birçok belirsizlik yaratmasından kaynaklanır.
+Computer Vision'ın hedefi basit gibi görünse de, bir görüntüyü "anlamak" inanılmaz derecede zor bir problemdir. İnsan görsel sistemi, bunu o kadar zahmetsizce yapar ki, arkasındaki karmaşıklığı genellikle gözden kaçırırız. Zorluğun temel kaynağı, 3D dünyanın 2D bir görüntüye yansırken yarattığı **bilgi kaybı ve belirsizliklerdir.**
 
 ---
 
-## Görmek, Ölçmek Değildir: Adelson'un Gölge İllüzyonu
+## 1. Görmek, Ölçmek Değildir: Optik İllüzyonlar
 
-Bu zorluğu anlamanın en iyi yollarından biri, Edward Adelson tarafından yaratılan ünlü gölge illüzyonudur. Aşağıdaki görüntüye bakın. `A` ile işaretli kare mi daha koyu, yoksa `B` ile işaretli kare mi?
+Bu zorluğu anlamanın en iyi yollarından biri optik illüzyonlardır. Beynimizin, ham piksel verisinden ne kadar farklı bir yorumlama yaptığını gösterirler.
 
-![Adelson Illusion](https://via.placeholder.com/400x300.png?text=Adelson'un+Gölge+İllüzyonu)
-*Görsel: A ve B karelerinden hangisi daha koyu renklidir?*
+### Adelson'un Gölge İllüzyonu
 
-Çoğu insan için `A` karesi bariz bir şekilde `B`'den daha koyudur. Ancak gerçekte, iki kare de **tamamen aynı gri tonuna** sahiptir.
+Ünlü gölge illüzyonunda, `A` ve `B` kareleri farklı görünse de aslında **tamamen aynı gri tonuna** sahiptir. Beynimiz, gölge ve satranç tahtası deseni gibi bağlamsal ipuçlarını kullanarak `B`'nin aslında daha parlak olması gerektiğini "hesaplar". Bu, algısal bir yorumlamadır, saf bir ölçüm değil.
 
-Peki beynimiz neden yanılıyor? Çünkü beynimiz, piksellerin mutlak parlaklık değerlerini ölçmez. Görüntüyü bir bütün olarak yorumlar:
-1.  **Gölge Bilgisi:** Beynimiz, silindirin bir gölge yarattığını algılar ve gölgedeki bir yüzeyin gerçekte olduğundan daha parlak olması gerektiğini "bilir".
-2.  **Bağlam Bilgisi:** Satranç tahtası desenini tanır ve `B`'nin açık renkli bir kare olması gerektiğini, `A`'nın ise koyu renkli bir kare olması gerektiğini varsayar.
+<pre>
+       +-------+
+      /       /|
+     /       / |
+    +-------+  |
+    |  (_)  |  |
+    |       |  +
+    |       | /
+    +-------+
++-------+-------+-------+-------+
+|       |   A   |       |       |
++-------+-------+-------+-------+
+|   B   |       |       |       |
++-------+-------+-------+-------+
+</pre>
 
-Beynimiz, bu ve benzeri birçok ipucunu kullanarak, `B` karesinin aslında açık renkli bir kare olduğunu ama bir gölge tarafından karartıldığını, bu yüzden `A`'dan daha parlak olması gerektiğini "hesaplar". Bu, algısal bir yorumlamadır, saf bir ölçüm değil.
+### Diğer İllüzyonlar
 
----
-
-## Temel Zorluklar
-
-Bu illüzyon, Computer Vision'ın karşılaştığı temel zorlukları özetler:
-
-*   **Aydınlatma Belirsizliği:** Bir yüzeyden yansıyan ışık (yani kameranın ölçtüğü değer), sadece yüzeyin rengine değil, aynı zamanda üzerine düşen ışığın miktarına, rengine ve açısına da bağlıdır. Aynı nesne, farklı ışık koşullarında tamamen farklı görünebilir.
-*   **Viewpoint (Bakış Açısı):** Bir nesnenin 2D görüntüsü, ona hangi açıdan bakıldığına göre dramatik şekilde değişir.
-*   **Scale (Ölçek):** Nesneler kameraya yakın veya uzak olabilir, bu da görüntüdeki boyutlarını değiştirir.
-*   **Deformation (Deformasyon):** Birçok nesne (insanlar, hayvanlar, kumaşlar) sabit bir 3D şekle sahip değildir.
-*   **Occlusion (Tıkanma):** Nesneler sık sık birbirlerinin arkasında kalarak kısmen veya tamamen gizlenirler.
-*   **Background Clutter (Arka Plan Karmaşası):** Bir nesneyi, ona çok benzeyen doku ve renklere sahip bir arka plandan ayırt etmek zor olabilir.
-
-Bir Computer Vision sisteminin, tüm bu değişkenlere rağmen bir nesneyi güvenilir bir şekilde tanıyabilmesi gerekir.
-
----
-
-### Test Soruları
+Benzer şekilde, durağan bazı desenler hareket ediyormuş gibi görünebilir veya bir nesnenin gölgesinin şekli, o nesne hakkındaki algımızı tamamen değiştirebilir. Tüm bu örnekler, "görmenin" sadece pikselleri ölçmek olmadığını, karmaşık bir yorumlama süreci olduğunu kanıtlar.
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Adelson'un gölge illüzyonunda A ve B karelerinin aynı piksel değerine sahip olmasına rağmen farklı tonlarda algılanmasının temel nedeni nedir?</p>
+  <p><b>Soru:</b> Adelson'un gölge illüzyonunda A ve B karelerinin aynı piksel değerine sahip olmasına rağmen farklı tonlarda algılanmasının temel nedeni nedir?</p>
   <div class="quiz-option">A) Gözümüzün renkleri yanlış algılaması.</div>
   <div class="quiz-option" data-correct="true">B) Beynimizin, gölge ve desen gibi bağlamsal ipuçlarını kullanarak görüntüyü yorumlaması.</div>
   <div class="quiz-option">C) Görüntünün dijital olarak manipüle edilmiş olması.</div>
@@ -56,8 +50,24 @@ Bir Computer Vision sisteminin, tüm bu değişkenlere rağmen bir nesneyi güve
   </div>
 </div>
 
+---
+
+## 2. Temel Zorluklar
+
+Bu illüzyonlar ve belirsizlikler, Computer Vision sistemlerinin aşması gereken temel zorlukları özetler:
+
+*   **Viewpoint (Bakış Açısı):** Bir nesnenin 2D görüntüsü, ona hangi açıdan bakıldığına göre dramatik şekilde değişir. (Örn: Bir kupanın yandan ve üstten görünüşü tamamen farklıdır).
+*   **Aydınlatma (Illumination):** Aynı nesne, farklı ışık koşullarında (gölgede, direkt güneşte, floresan ışıkta) tamamen farklı renkte ve parlaklıkta görünebilir.
+*   **Scale (Ölçek):** Nesneler kameraya yakın veya uzak olabilir, bu da görüntüdeki boyutlarını değiştirir.
+*   **Deformation (Deformasyon):** Birçok nesne (insanlar, hayvanlar, kumaşlar) sabit bir 3D şekle sahip değildir ve sürekli şekil değiştirir.
+*   **Occlusion (Tıkanma / Örtülme):** Nesneler sık sık birbirlerinin arkasında kalarak kısmen veya tamamen gizlenirler. (Örn: Kalabalıktaki bir insanın sadece yüzünün görünmesi).
+*   **Background Clutter (Arka Plan Karmaşası):** Bir nesneyi, ona çok benzeyen doku ve renklere sahip bir arka plandan ayırt etmek zor olabilir. (Örn: Karlı bir ormanda beyaz bir tavşanı bulmak).
+*   **Intra-class Variation (Sınıf İçi Çeşitlilik):** Aynı kategoriye ait nesneler bile birbirinden çok farklı görünebilir. (Örn: Onlarca farklı sandalye türünün olması).
+
+Bir Computer Vision sisteminin, tüm bu değişkenlere rağmen bir nesneyi güvenilir bir şekilde tanıyabilmesi gerekir.
+
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Bir kedinin, bir çitin arkasından yürüdüğünü ve sadece bacaklarının göründüğünü düşünün. Bir Computer Vision sisteminin bu nesneyi "kedi" olarak tanımasını zorlaştıran en temel problem hangisidir?</p>
+  <p><b>Soru:</b> Bir kedinin, bir çitin arkasından yürüdüğünü ve sadece bacaklarının göründüğünü düşünün. Bir Computer Vision sisteminin bu nesneyi "kedi" olarak tanımasını zorlaştıran en temel problem hangisidir?</p>
   <div class="quiz-option">A) Aydınlatma Belirsizliği</div>
   <div class="quiz-option">B) Scale (Ölçek)</div>
   <div class="quiz-option" data-correct="true">C) Occlusion (Tıkanma)</div>
@@ -66,4 +76,28 @@ Bir Computer Vision sisteminin, tüm bu değişkenlere rağmen bir nesneyi güve
     <p><b>Cevap: C.</b> Kedinin büyük bir kısmının çit tarafından gizlenmesi, "occlusion" (tıkanma) problemine klasik bir örnektir. Sistemin, nesnenin sadece bir parçasını görerek bütününü tanıması gerekir.</p>
   </div>
 </div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Farklı cinslerde, renklerde ve boyutlardaki köpeklerin hepsini "köpek" olarak tanıyabilen bir sistem, en temelde hangi zorluğun üstesinden gelmiş demektir?</p>
+  <div class="quiz-option">A) Occlusion (Tıkanma)</div>
+  <div class="quiz-option" data-correct="true">B) Intra-class Variation (Sınıf İçi Çeşitlilik)</div>
+  <div class="quiz-option">C) Background Clutter (Arka Plan Karmaşası)</div>
+  <div class="quiz-option">D) Viewpoint (Bakış Açısı)</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Bir "köpek" kategorisi içindeki nesnelerin (Danua, Kaniş, Sibirya Kurdu vb.) birbirinden çok farklı görünebilmesi, sınıf içi çeşitliliğe bir örnektir. Başarılı bir sistem, bu çeşitliliğe rağmen ortak özellikleri bulup doğru sınıflandırmayı yapabilmelidir.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Uzaktan çekilmiş bir hava fotoğrafında bir arabayı tanımaya çalışan bir sistem, aynı arabayı yakın çekim bir sokak fotoğrafında tanımakta zorlanabilir. Bu senaryoda hangi iki temel zorluk bir arada görülmektedir?</p>
+  <div class="quiz-option">A) Occlusion ve Deformation</div>
+  <div class="quiz-option" data-correct="true">B) Scale (Ölçek) ve Viewpoint (Bakış Açısı)</div>
+  <div class="quiz-option">C) Aydınlatma ve Background Clutter</div>
+  <div class="quiz-option">D) Deformation ve Aydınlatma</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Arabanın boyutu iki fotoğrafta çok farklıdır (Scale) ve arabaya farklı açılardan bakılmaktadır (hava fotoğrafı vs. sokak seviyesi - Viewpoint). Bu iki faktör, nesnenin 2D görüntüsünü tamamen değiştirir.</p>
+  </div>
+</div>
+
+---
 

@@ -7,104 +7,40 @@ parent: System Programming
 
 # Derse Giriş ve 5 Büyük Gerçek
 
-This section begins by examining the main theme of the course and the five fundamental principles ("5 Big Realities") that you should always keep in mind as a system programmer.
+Bu bölüm, dersin ana temasını ve bir sistem programcısı olarak her zaman aklınızda tutmanız gereken beş temel ilkeyi ("5 Büyük Gerçek") inceleyerek başlıyor.
 
 ---
 
 ## Dersin Teması: Soyutlama İyidir Ama Gerçekliği Unutma
 
-Computer science education is largely based on **abstraction (soyutlama)**. Abstract data types, concepts like asymptotic analysis, help us break down complex systems into more manageable parts. However, these abstractions also have their limitations.
+Bilgisayar bilimi eğitimi büyük ölçüde **abstraction (soyutlama)** üzerine kuruludur. Soyut veri türleri, asimptotik analiz gibi kavramlar, karmaşık sistemleri daha yönetilebilir parçalara ayırmamıza yardımcı olur. Ancak bu soyutlamaların da sınırları vardır.
 
-As a programmer, understanding the "reality" beneath your code - the hardware, the compiler, and the operating system - will make you much more effective. This course aims to introduce you to this reality.
+Bir programcı olarak, kodunuzun altındaki "gerçekliği" - donanımı, derleyiciyi ve işletim sistemini - anlamak sizi çok daha etkili kılacaktır. Bu ders, sizi bu gerçeklikle tanıştırmayı amaçlamaktadır. Bu yaklaşımın faydaları şunlardır:
 
-**Benefits of This Approach:**
-*   **Become a More Effective Programmer:** You will understand exactly what your code is doing.
-*   **Debugging (Hataları Ayıklamak):** Especially difficult, "mysterious" errors can be traced back to their origins.
-*   **Optimize Performance:** By understanding why your code is slow and eliminating bottlenecks, you can improve its performance.
-*   **Preparation for Advanced System Design Courses:** It provides a solid foundation for topics like operating systems, compilers, and computer architecture.
+*   **Daha Etkili Programlama:** Kodunuzun tam olarak ne yaptığını anlarsınız.
+*   **Etkin Hata Ayıklama:** Özellikle zor, "gizemli" hataların kökenine inebilirsiniz.
+*   **Performans Optimizasyonu:** Kodunuzun neden yavaş olduğunu anlayıp darboğazları ortadan kaldırarak performansını artırabilirsiniz.
 
-![Soyutlama Katmanları](https://via.placeholder.com/600x300.png?text=Yazılım+(Soyutlama)+<-->+Donanım+(Gerçeklik))
-*Görsel: İlişki yazılım soyutlamaları ile donanım gerçekliği arasında.*
+<pre>
++------------------------------------------+
+|          Uygulama (Application)          |
++------------------------------------------+
+|         Programlama Dili (C, Java)       |  <-- Soyutlama Katmanları
++------------------------------------------+
+| İşletim Sistemi / Derleyici / Donanım Mimarisi|  <-- Gerçeklik
++------------------------------------------+
+</pre>
 
 ---
 
 ## Büyük Gerçek #1: `int` Tamsayı Değildir, `float` Reel Sayı Değildir
 
-In mathematics, integers are infinite, but data types like `int` in computers are represented with a limited number of bits, which can lead to unexpected results like **overflow (taşma)**.
+Matematikte tamsayılar sonsuzdur, ancak bilgisayarlardaki `int` gibi veri türleri sınırlı sayıda bitle temsil edilir ve bu da **overflow (taşma)** gibi beklenmedik sonuçlara yol açabilir. Örneğin, 32-bit bir `int`, en fazla `2,147,483,647` değerini tutabilir. Bu değeri bir artırırsanız, sonuç `2,147,483,648` değil, negatif bir sayı (`-2,147,483,648`) olur.
 
-For example, a 32-bit `int` can hold a maximum value of `2,147,483,647`. If you increment this value, it will not become `2,147,483,648`, but a negative number (`-2,147,483,648`).
-
-Similarly, `float` and `double` types attempt to represent real numbers, but they do so with limited precision. This can lead to small **rounding errors (yuvarlama hataları)** that accumulate and cause significant problems in financial or scientific calculations.
-
-**Example:**
-The result of `(3.14 + 1e20) - 1e20` might be `0.0`, while the result of `3.14 + (1e20 - 1e20)` will be `3.14`. This demonstrates that `float` operations are not associative.
-
----
-
-## Büyük Gerçek #2: Assembly Bilmek Zorundasınız
-
-While high-level languages (C, Java, Python) make programming easier, it is crucial to understand how the compiler translates these languages into machine code. Assembly is the human-readable form of machine code.
-
-**Why Understanding Assembly is Important?**
-*   **Understanding Compiler Optimizations:** You can see how the compiler optimized your code (or how it didn't).
-*   **Debugging Mysterious Errors:** It helps you understand low-level errors (e.g., memory corruption) that cause your program to crash unexpectedly.
-*   **Performance Analysis:** It is a critical tool for identifying performance bottlenecks in your code.
-*   **Deeper System Understanding:** The only way to truly understand how complex systems like operating systems and compilers work is to understand their low-level operation.
-*   **Security:** Assembly knowledge is essential for analyzing malicious software (malware) and understanding security vulnerabilities in systems.
-
----
-
-## Büyük Gerçek #3: Bellek Önemlidir (Memory Matters)
-
-Memory is not an infinite, error-free resource. Languages like C and C++ give programmers full control over memory, but this is a great responsibility.
-
-**Basic Realities Regarding Memory:**
-*   **Memory Errors Are Dangerous:** Writing outside the bounds of an array (`buffer overflow`) or accessing a freed memory area (`dangling pointer`) can cause your program to crash, exhibit unpredictable behavior, and introduce security vulnerabilities.
-*   **The Effect of an Error Can Be Far-Reaching (Action at a Distance):** An incorrect memory access can corrupt a completely different data structure, making it difficult to locate the source of the error.
-*   **Performance Depends on Memory Hierarchy:** In modern computers, memory access is much slower than CPU speed. This is why **caches (önbellekler)** are used. How you access data (e.g., traversing rows or columns of a matrix) can dramatically affect your program's total execution time and, consequently, its performance.
-
-![Bellek Hiyerarşisi](https://via.placeholder.com/500x350.png?text=CPU+<->+L1/L2/L3+Cache+<->+RAM+<->+Disk)
-*Görsel: Sıralanmış bellek hiyerarşisi hız ve kapasiteye göre.*
-
----
-
-## Büyük Gerçek #4: Performans Asimptotik Karmaşıklıktan İbaret Değildir
-
-In algorithm lessons, we analyze algorithms using notations like `O(N)` or `O(N log N)`. This is excellent for understanding how an algorithm scales for large data. However, in practice, **constant factors (sabit çarpanlar)** are just as important.
-
-Two code snippets with the same asymptotic complexity can differ by 10 times, or even 100 times, in terms of execution speed.
-
-**Factors Affecting Performance:**
-*   **CPU Architecture:** How commands are executed, pipeline (boru hattı) structure.
-*   **Compiler Optimizations:** How your code is translated into machine code.
-*   **Memory Access Patterns:** Writing cache-friendly (önbellek dostu) code.
-*   **Loop Structures:** Even changing the order of a simple loop can dramatically improve performance.
-
----
-
-## Büyük Gerçek #5: Bilgisayarlar Program Çalıştırmaktan Fazlasını Yapar
-
-The programs we write do not run in isolation. They run on an operating system and constantly interact with the outside world.
-
-**Other Tasks of the System:**
-*   **I/O (Girdi/Çıktı):** Reading from files, writing to disk, sending and receiving data over the network, significantly affect program performance.
-*   **Networking (Ağ):** Programs communicate with other machines over unreliable networks.
-*   **Concurrency (Eşzamanlılık):** Modern systems run multiple tasks simultaneously (or as if they were) on a single CPU. This introduces new and complex error types.
-
-Understanding these interactions is fundamental to building robust and efficient systems.
-
----
-
-### Summary and Evaluation
-
-In this section, we discussed the fundamental philosophy of the course and the "5 Big Realities" of system programming. These principles provide a framework for understanding the topics we will encounter throughout the course. Remember, abstractions are powerful tools, but once you understand the reality beneath them, you will become a true master.
-
----
-
-### Test Questions
+Benzer şekilde, `float` ve `double` türleri reel sayıları temsil etmeye çalışır, ancak bunu sınırlı bir hassasiyetle yaparlar. Bu durum, küçük **rounding errors (yuvarlama hatalarının)** birikerek finansal veya bilimsel hesaplamalarda önemli sorunlara neden olmasına yol açabilir. Örneğin, `(3.14 + 1e20) - 1e20` işleminin sonucu `0.0` olabilirken, `3.14 + (1e20 - 1e20)` işleminin sonucu `3.14` olacaktır.
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> 32-bit işaretli bir tamsayı (`int`) değişkeninde `2,147,483,647` değeri varken, bu değişkene 1 eklenirse ne olur?</p>
+  <p><b>Soru:</b> 32-bit işaretli bir tamsayı (`int`) değişkeninde `2,147,483,647` değeri varken, bu değişkene 1 eklenirse ne olur?</p>
   <div class="quiz-option">A) Değer `2,147,483,648` olur.</div>
   <div class="quiz-option">B) Program bir hata vererek çöker.</div>
   <div class="quiz-option" data-correct="true">C) Değer, `integer overflow` nedeniyle negatif bir sayıya döner.</div>
@@ -114,8 +50,17 @@ In this section, we discussed the fundamental philosophy of the course and the "
   </div>
 </div>
 
+---
+
+## Büyük Gerçek #2: Assembly Bilmek Zorundasınız
+
+C, Java, Python gibi yüksek seviyeli diller programlamayı kolaylaştırsa da, derleyicinin bu dilleri makine koduna nasıl çevirdiğini anlamak çok önemlidir. Assembly, makine kodunun insan tarafından okunabilir halidir. Assembly anlamak şunları sağlar:
+*   Derleyicinin kodunuzu nasıl optimize ettiğini (veya edemediğini) görmenizi.
+*   Programınızın beklenmedik şekilde çökmesine neden olan düşük seviyeli hataları (örn. bellek bozulması) anlamanızı.
+*   Kodunuzdaki performans darboğazlarını belirlemenizi.
+
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Bir programcı, yazdığı C kodunun belirli bir bölümünün neden çok yavaş çalıştığını anlamak istiyor. Hangi araca veya bilgiye başvurması en aydınlatıcı olur?</p>
+  <p><b>Soru:</b> Bir programcı, yazdığı C kodunun belirli bir bölümünün neden çok yavaş çalıştığını anlamak istiyor. Hangi araca veya bilgiye başvurması en aydınlatıcı olur?</p>
   <div class="quiz-option">A) Kodun asimptotik karmaşıklığını (`Big-O`) hesaplamak.</div>
   <div class="quiz-option" data-correct="true">B) Derleyicinin ürettiği Assembly kodunu incelemek.</div>
   <div class="quiz-option">C) Daha yüksek seviyeli bir dil olan Python'da aynı kodu yazmak.</div>
@@ -125,8 +70,16 @@ In this section, we discussed the fundamental philosophy of the course and the "
   </div>
 </div>
 
+---
+
+## Büyük Gerçek #3: Bellek Önemlidir (Memory Matters)
+
+Bellek, sonsuz ve hatasız bir kaynak değildir. C ve C++ gibi diller bellek üzerinde tam kontrol sağlar, ancak bu büyük bir sorumluluktur.
+*   **Bellek Hataları Tehlikelidir:** Bir dizinin sınırları dışına yazmak (`buffer overflow`) veya serbest bırakılmış bir bellek alanına erişmek (`dangling pointer`), programınızın çökmesine, öngörülemeyen davranışlara ve güvenlik açıklarına neden olabilir.
+*   **Performans Bellek Hiyerarşisine Bağlıdır:** Modern bilgisayarlarda bellek erişimi, CPU hızından çok daha yavaştır. Bu yüzden **caches (önbellekler)** kullanılır. Veriye nasıl eriştiğiniz (örneğin, bir matrisin satırlarını veya sütunlarını dolaşmak), programınızın toplam çalışma süresini ve dolayısıyla performansını önemli ölçüde etkileyebilir.
+
 <div class="quiz-question">
-  <p><b>Soru 3:</b> Bir matris üzerinde işlem yapan iki farklı döngü yazılıyor. İkisi de aynı sayıda ve türde matematiksel işlem yapmasına rağmen, birisi diğerinden 10 kat daha hızlı çalışıyor. Bu durumun en olası açıklaması nedir?</p>
+  <p><b>Soru:</b> Bir matris üzerinde işlem yapan iki farklı döngü yazılıyor. İkisi de aynı sayıda ve türde matematiksel işlem yapmasına rağmen, birisi diğerinden 10 kat daha hızlı çalışıyor. Bu durumun en olası açıklaması nedir?</p>
   <div class="quiz-option">A) Hızlı olan döngü daha az değişken kullanıyordur.</div>
   <div class="quiz-option">B) Yavaş olan döngüde bir `integer overflow` meydana geliyordur.</div>
   <div class="quiz-option">C) İşletim sistemi, hızlı olan döngüye daha fazla öncelik tanımıştır.</div>
@@ -135,3 +88,39 @@ In this section, we discussed the fundamental philosophy of the course and the "
     <p><b>Cevap: D.</b> Modern sistemlerde işlemci hızı ile bellek hızı arasında büyük bir fark vardır. Belleğe sıralı ve öngörülebilir şekilde erişen kod, verileri cache'te (önbellek) tutarak işlemciyi daha az bekletir ve çok daha hızlı çalışır. Bu, "Bellek Önemlidir" gerçeğinin en somut örneklerinden biridir.</p>
   </div>
 </div>
+
+---
+
+## Büyük Gerçek #4: Performans Asimptotik Karmaşıklıktan İbaret Değildir
+
+Algoritma derslerinde, algoritmaları `O(N)` veya `O(N log N)` gibi notasyonlarla analiz ederiz. Bu, bir algoritmanın büyük veriler için nasıl ölçeklendiğini anlamak için mükemmeldir. Ancak pratikte, **constant factors (sabit çarpanlar)** da bir o kadar önemlidir. Aynı asimptotik karmaşıklığa sahip iki kod parçası, çalışma hızı açısından 10 kat, hatta 100 kat farklılık gösterebilir. Performansı etkileyen faktörler arasında derleyici optimizasyonları, bellek erişim desenleri ve döngü yapıları bulunur.
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Biri `200*N`, diğeri `2*N` maliyetli iki algoritma düşünün. Asimptotik analiz (`Big-O`) açısından her ikisi de `O(N)` olarak sınıflandırılır. Bu durum, pratik performans hakkında bize neyi hatırlatmalıdır?</p>
+  <div class="quiz-option">A) Asimptotik analiz her zaman yanıltıcıdır.</div>
+  <div class="quiz-option" data-correct="true">B) Asimptotik analiz sabit çarpanları göz ardı eder, ancak bu çarpanlar gerçek dünyadaki performansı önemli ölçüde etkileyebilir.</div>
+  <div class="quiz-option">C) `2*N` maliyetli algoritma her zaman daha iyi bir tasarıma sahiptir.</div>
+  <div class="quiz-option">D) Her iki algoritma da pratikte tamamen aynı hızda çalışacaktır.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `Big-O` notasyonu, bir algoritmanın büyüme oranını anlamak için kullanılır ve sabit çarpanları (`200` ve `2` gibi) ihmal eder. Ancak gerçek çalışma zamanı için bu çarpanlar kritiktir ve bir algoritmanın diğerinden 100 kat daha yavaş olmasına neden olabilir.</p>
+  </div>
+</div>
+
+---
+
+## Büyük Gerçek #5: Bilgisayarlar Program Çalıştırmaktan Fazlasını Yapar
+
+Yazdığımız programlar tek başına çalışmazlar. Bir işletim sistemi üzerinde çalışırlar ve sürekli olarak dış dünya ile etkileşime girerler. **I/O (Girdi/Çıktı)** işlemleri, **Networking (Ağ)** iletişimi ve **Concurrency (Eşzamanlılık)** gibi faktörler, program performansını ve doğruluğunu derinden etkiler. Bu etkileşimleri anlamak, sağlam ve verimli sistemler oluşturmanın temelidir.
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Bir programın, bir ağ soketinden veri beklerken "donmasının" veya yavaşlamasının temel nedeni hangi sistem gerçeğiyle en iyi açıklanır?</p>
+  <div class="quiz-option">A) `int`'lerin tamsayı olmaması.</div>
+  <div class="quiz-option">B) Belleğin önemli olması.</div>
+  <div class="quiz-option" data-correct="true">C) Bilgisayarların program çalıştırmaktan fazlasını yapması (I/O işlemleri).</div>
+  <div class="quiz-option">D) Performansın asimptotik karmaşıklıktan ibaret olmaması.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Program, kendi komutlarını yürütmek yerine dış bir kaynaktan (ağ) veri beklemektedir. Bu I/O (Girdi/Çıktı) beklemesi, CPU'nun hızlı olmasından bağımsız olarak programın yavaşlamasına neden olan en temel faktördür.</p>
+  </div>
+</div>
+
+---

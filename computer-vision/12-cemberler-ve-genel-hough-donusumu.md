@@ -7,55 +7,39 @@ parent: Computer Vision
 
 # Çemberler ve Genelleştirilmiş Hough Dönüşümü
 
-Hough Dönüşümü'nün gücü, sadece çizgileri bulmakla sınırlı değildir. Aynı oylama prensibi, parametrik denklemi bilinen herhangi bir şekli tespit etmek için genelleştirilebilir. Bu bölümde, çemberleri ve hatta denklemi olmayan keyfi şekilleri bulmak için bu tekniğin nasıl uyarlandığını inceleyeceğiz.
+Hough Dönüşümü'nün "oylama" prensibinin gücü, sadece çizgileri bulmakla sınırlı olmamasından gelir. Aynı temel fikir, parametrik denklemi bilinen (veya bir şablonu olan) herhangi bir şekli tespit etmek için genelleştirilebilir. Bu bölümde, çemberleri ve hatta denklemi olmayan keyfi şekilleri bulmak için bu tekniğin nasıl uyarlandığını inceleyeceğiz.
 
 ---
 
 ## 1. Çemberler İçin Hough Dönüşümü
 
-Bir çember, üç parametre ile tanımlanır: merkezinin koordinatları `(a, b)` ve yarıçapı `r`. Denklemi şöyledir:
+Bir çember, üç parametre ile tanımlanır: merkezinin koordinatları `(a, b)` ve yarıçapı `r`. Denklemi: `(x - a)² + (y - b)² = r²`.
 
-`(x - a)² + (y - b)² = r²`
+Bu durumda, Hough parametre uzayımız artık 2D değil, **3 boyutlu `(a, b, r)`** olur ve bu da hesaplama maliyetini önemli ölçüde artırır.
 
-Bu durumda, Hough parametre uzayımız artık 2 boyutlu değil, **3 boyutlu `(a, b, r)`** olur.
+### Arama Uzayını Küçültmenin Yolları
 
-**Oylama Süreci:**
-1.  3D bir akkümülatör dizisi `H[a, b, r]` oluşturulur ve sıfırlanır.
-2.  Görüntüdeki her bir kenar pikseli `(x, y)` için:
-    a. Mümkün olan her `a` ve `b` merkezi için, `r = sqrt((x - a)² + (y - b)²) ` formülüyle bir `r` yarıçapı hesaplanır.
-    b. `H[a, b, r]` hücresine bir oy eklenir.
+3D bir uzayda arama yapmak çok maliyetli olduğu için, genellikle süreci hızlandıracak ek bilgiler kullanılır:
 
-Bu yaklaşım, her bir kenar pikselinin, kendisini çevreleyen ve olası bir merkez olabilecek her `(a,b)` noktası için oy vermesi anlamına gelir. Bu, parametre uzayında bir koni oluşturur. Farklı kenar piksellerinin oluşturduğu koniler, gerçek çemberin `(a,b,r)` parametresinde kesişir ve burada oylar birikir.
+*   **Sabit Yarıçap:** Eğer aranacak çemberin yarıçapı `r` biliniyorsa, problem 2D'ye (`(a,b)` uzayına) indirgenir. Her kenar pikseli, `(a,b)` uzayında etrafına `r` yarıçaplı bir çember çizerek oy kullanır.
+*   **Gradyan Yönünü Kullanma (En Verimli Yöntem):** Bir çember üzerindeki bir kenar pikselinin gradyan yönü, her zaman çemberin merkezinden geçen bir doğru üzerindedir. Bu bilgi, her kenar pikseli için olası merkezlerin sayısını sonsuzdan (tüm 2D düzlem) sadece bir çizgiye indirir. Bu, oylama sürecini muazzam ölçüde hızlandırır.
 
-![Hough for Circles](https://via.placeholder.com/600x300.png?text=Kenar+Pikseli+->+3D+Parametre+Uzayında+Oy+Verir)
-*Görsel: Bir kenar pikseli, kendisinden `r` yarıçapı kadar uzaktaki tüm olası merkezler `(a,b)` için oy kullanır.*
+<pre>
+<b>Gradyan Bilgisi Olmadan Oylama:</b>
+- Kenar pikseli P(x,y) alınır.
+- P merkezli, r yarıçaplı bir çember çizilir.
+- Bu çember üzerindeki <b>tüm noktalar (a,b)</b>,
+  H[a,b,r] için bir oy alır. (Çok maliyetli)
 
-### Arama Uzayını Küçültmek
-3D bir uzayda arama yapmak hesaplama açısından çok maliyetlidir. Bu maliyeti düşürmek için bazı pratik iyileştirmeler yapılabilir:
-*   **Sabit Yarıçap:** Eğer aranacak çemberin yarıçapı `r` biliniyorsa, problem 2D'ye (`(a,b)` uzayına) indirgenir.
-*   **Gradyan Yönünü Kullanma:** Bir çember üzerindeki bir kenar pikselinin gradyan yönü, her zaman çemberin merkezini işaret eder (veya merkezden dışarıyı). Bu bilgi, her kenar pikseli için olası merkezlerin sayısını büyük ölçüde azaltır. Bir piksel artık 2D bir düzlemde değil, sadece gradyanı yönündeki 1D bir çizgi boyunca oy kullanır.
-
----
-
-## 2. Genelleştirilmiş Hough Dönüşümü
-
-Peki ya bulmak istediğimiz şeklin basit bir denklemi yoksa? Örneğin, bir kedi yüzü veya bir araba silüeti bulmak istiyorsak ne olur? İşte burada **Genelleştirilmiş Hough Dönüşümü** devreye girer.
-
-Bu teknikte, şeklin denklemi yerine, şeklin bir **template (şablon)** görüntüsü kullanılır.
-1.  **Eğitim Aşaması:** Şablon görüntüdeki her kenar pikseli için, o pikselden şeklin keyfi olarak seçilmiş bir merkez noktasına olan yer değiştirme vektörü (`Δx, Δy`) hesaplanır. Bu vektörler, pikselin gradyan yönüne göre bir tabloda (`R-Table`) saklanır.
-2.  **Tespit Aşaması:** Test görüntüsündeki her bir kenar pikseli için:
-    a. Gradyan yönü hesaplanır.
-    b. Tablodan bu gradyan yönüne karşılık gelen tüm yer değiştirme vektörleri alınır.
-    c. Her bir yer değiştirme vektörü, mevcut kenar pikselinin konumuna eklenerek olası bir merkez noktası için oy kullanılır.
-
-Bu yöntem, oylama mekanizmasını ölçek, dönme ve keyfi şekil tespiti için genişletir, ancak parametre uzayının boyutu ve dolayısıyla hesaplama maliyeti önemli ölçüde artar.
-
----
-
-### Test Soruları
+<b>Gradyan Bilgisiyle Oylama:</b>
+- Kenar pikseli P(x,y) alınır.
+- P'deki gradyan yönü bulunur.
+- Sadece bu gradyan çizgisi üzerindeki <b>noktalar (a,b)</b>,
+  H[a,b,r] için oy alır. (Çok daha verimli!)
+</pre>
 
 <div class="quiz-question">
-  <p><b>Soru 1:</b> Bir görüntüde bilinmeyen boyutta bir çember aramak için Hough Dönüşümü kullanıldığında, Hough parametre uzayı kaç boyutlu olur?</p>
+  <p><b>Soru:</b> Bir görüntüde bilinmeyen boyutta bir çember aramak için Hough Dönüşümü kullanıldığında, Hough parametre uzayı kaç boyutlu olur?</p>
   <div class="quiz-option">A) 1D (r)</div>
   <div class="quiz-option">B) 2D (a, b)</div>
   <div class="quiz-option" data-correct="true">C) 3D (a, b, r)</div>
@@ -66,13 +50,55 @@ Bu yöntem, oylama mekanizmasını ölçek, dönme ve keyfi şekil tespiti için
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Çemberler için Hough Dönüşümü'nün hesaplama maliyetini düşürmek amacıyla kenar piksellerinin gradyan yönü bilgisini kullanmanın temel mantığı nedir?</p>
-  <div class.quiz-option">A) Görüntüyü daha pürüzsüz hale getirmek.</div>
-  <div class="quiz-option" data-correct="true">B) Her kenar pikseli için olası merkez adaylarının sayısını azaltmak.</div>
+  <p><b>Soru:</b> Bir elipsi (`(x-a)²/Rx² + (y-b)²/Ry² = 1`) bulmak için Hough Dönüşümü kullanılacak olsaydı, parametre uzayı en az kaç boyutlu olurdu?</p>
+  <div class="quiz-option">A) 2D</div>
+  <div class="quiz-option">B) 3D</div>
+  <div class="quiz-option">C) 4D</div>
+  <div class="quiz-option" data-correct="true">D) 5D</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: D.</b> Standart bir elipsi tanımlamak için 5 parametre gerekir: merkez koordinatları `(a,b)`, x ve y eksenlerindeki yarıçapları `(Rx, Ry)` ve elipsin dönme açısı `(θ)`. Bu, Hough Dönüşümü'nün parametre sayısı arttıkça ne kadar maliyetli hale geldiğinin iyi bir örneğidir.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Çemberler için Hough Dönüşümü'nün hesaplama maliyetini düşürmek amacıyla kenar piksellerinin gradyan yönü bilgisini kullanmanın temel mantığı nedir?</p>
+  <div class="quiz-option">A) Görüntüyü daha pürüzsüz hale getirmek.</div>
+  <div class="quiz-option" data-correct="true">B) Her kenar pikseli için olası merkez adaylarının sayısını 2D bir alandan 1D bir çizgiye indirmek.</div>
   <div class="quiz-option">C) Çemberin yarıçapını sabit tutmak.</div>
   <div class="quiz-option">D) Sadece dikey kenarları kullanmak.</div>
   <div class="quiz-explanation">
     <p><b>Cevap: B.</b> Bir çemberin kenarındaki bir pikselin gradyanı, her zaman merkezden geçen bir çizgi üzerindedir. Bu nedenle, bir pikselin tüm 2D düzlemdeki olası merkezler için oy vermesi yerine, sadece bu gradyan çizgisi üzerindeki noktalar için oy vermesi yeterlidir. Bu, arama uzayını önemli ölçüde daraltır.</p>
   </div>
 </div>
+
+---
+
+## 2. Genelleştirilmiş Hough Dönüşümü
+
+Peki ya bulmak istediğimiz şeklin basit bir denklemi yoksa? Örneğin, bir kedi yüzü veya bir araba silüeti bulmak istiyorsak? İşte burada **Genelleştirilmiş Hough Dönüşümü** devreye girer. Bu yöntem, bir yapboz çözmeye benzer.
+
+1.  **Eğitim Aşaması (Yapbozun Kılavuzunu Oluşturma):**
+    *   Aranacak şeklin bir şablon görüntüsü alınır ve keyfi bir merkez noktası seçilir.
+    *   Şablondaki her kenar pikseli için, o pikselin gradyan yönü (`θ`) ve o pikselden merkeze giden vektör (`r`) hesaplanır.
+    *   Bu bilgiler, `R-Table` adı verilen bir "kılavuz" tabloda saklanır: Her gradyan yönü (`θ`) için olası merkez-piksel vektörlerinin (`r`) bir listesi tutulur.
+2.  **Tespit Aşaması (Yapbozu Çözme):**
+    *   Test görüntüsündeki her bir kenar pikseli için gradyan yönü (`θ`) hesaplanır.
+    *   `R-Table`'dan bu `θ`'ya karşılık gelen tüm `r` vektörleri alınır.
+    *   Her bir `r` vektörü, mevcut kenar pikselinin konumundan "geriye doğru" uygulanarak olası bir merkez noktası için oy kullanılır.
+    *   En çok oy alan merkez noktası, aranan şeklin konumunu verir.
+
+Bu yöntem, oylama mekanizmasını keyfi şekil tespiti için genişletir, ancak genellikle standart haliyle ölçek ve dönme değişikliklerine karşı hassastır.
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Genelleştirilmiş Hough Dönüşümü'nü, standart Hough Dönüşümü'nden ayıran en temel özellik nedir?</p>
+  <div class="quiz-option">A) Sadece çizgileri bulabilmesi.</div>
+  <div class="quiz-option">B) Daha hızlı çalışması.</div>
+  <div class="quiz-option" data-correct="true">C) Basit bir matematiksel denklemi olmayan keyfi şekilleri de bir şablon (R-Table) kullanarak bulabilmesi.</div>
+  <div class="quiz-option">D) Gürültüye karşı daha dayanıksız olması.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Standart Hough, çizgi veya çember gibi net parametrik denklemlere dayanır. Genelleştirilmiş Hough ise, bir denklem yerine önceden tanımlanmış bir şablon (R-Table) kullanarak denklemi olmayan herhangi bir şekli bulabilir.</p>
+  </div>
+</div>
+
+---
 
