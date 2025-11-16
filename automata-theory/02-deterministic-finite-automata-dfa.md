@@ -33,9 +33,9 @@ DFA'ları kağıt üzerinde görselleştirmek için **State Diagrams (durum diya
 *   **Accepting States (F):** Çift daire ile gösterilir.
 *   **Transitions (δ):** Bir state'ten diğerine yönelen ve okunan symbol ile etiketlenmiş oklar (arc'lar) ile gösterilir. Örneğin, `δ(q₁, 0) = q₂` transition'ı, `q₁` state'inden `q₂` state'ine üzerinde `0` yazan bir ok ile çizilir.
 
-<div align="center">
-
 *Görsel: Çift sayıda '1' içeren ikili string'leri (`ε`, `00`, `11`, `0110`, `101`, vs.) kabul eden bir DFA.*
+{: .text-center }
+
 ```mermaid
 graph LR
     direction LR
@@ -52,8 +52,7 @@ graph LR
     q_odd -- "0" --> q_odd
     q_odd -- "1" --> q_even
 ```
-
-</div>
+{: .d-block .mx-auto }
 
 ---
 
