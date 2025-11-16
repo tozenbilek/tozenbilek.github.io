@@ -62,10 +62,28 @@ Bir otomatın temel görevi, bu soruyu cevaplayan bir "karar verici" olarak hare
 
 ## 3. Overview of Automata (Otomatlara Genel Bakış)
 
-Otomatlar, dilleri tanımak için kullanılan matematiksel modellerdir. Karmaşıklıklarına göre temel türleri şunlardır:
-1.  **`Finite Automata` (Sonlu Otomatlar):** En basit otomat türüdür. Hafızaları çok sınırlıdır (sadece mevcut durumlarını bilirler). `Regular Languages` (Düzenli Dilleri) tanırlar. Örnek: Bir metinde "ing" ile biten kelimeleri bulmak.
-2.  **`Pushdown Automata` (Yığınlı Otomatlar):** `Finite Automata`'ya bir "yığın" (stack) hafızası eklenmiş halidir. `Context-Free Languages` (Bağlamdan Bağımsız Dilleri) tanırlar. Örnek: `0ⁿ1ⁿ` dilini tanımak.
-3.  **`Turing Machines` (Turing Makineleri):** Sonsuz bir bant (hafıza) üzerinde okuma/yazma yapabilen, en güçlü otomat modelidir. Bugün "hesaplanabilir" olarak kabul ettiğimiz her şeyi hesaplayabilirler.
+Otomatlar, dilleri tanımak için kullanılan matematiksel modellerdir. Karmaşıklıklarına ve güçlerine göre artan bir hiyerarşi oluştururlar:
+
+<div align="center">
+
+```mermaid
+graph TD
+    subgraph "En Basit"
+        A["<b>Finite Automata</b><br>(Sonlu Hafıza)<br><i>Regular Languages</i>"]
+    end
+    
+    subgraph "Daha Güçlü"
+        B["<b>Pushdown Automata</b><br>(+ Stack Hafızası)<br><i>Context-Free Languages</i>"]
+    end
+
+    subgraph "En Güçlü"
+        C["<b>Turing Machines</b><br>(+ Sonsuz Bant Hafızası)<br><i>Tüm Hesaplanabilir Diller</i>"]
+    end
+
+    A --> B --> C
+```
+
+</div>
 
 ---
 
