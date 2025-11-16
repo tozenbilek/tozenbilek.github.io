@@ -11,7 +11,7 @@ Dijital dünyadaki her şeyin temelinde **bit**'ler yatar. Bu bölümde, verinin
 
 ---
 
-## 1. Binary (İkili) Temsili ([Test Sorusu](#quiz-binary))
+## 1. Binary (İkili) Temsili
 
 Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: açık veya kapalı, yüksek voltaj veya düşük voltaj. Bu iki duruma karşılık gelen rakamlar **1** ve **0**'dır. Tek bir 1 veya 0'a **bit** denir.
 
@@ -22,7 +22,7 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 *   Rakamlar: `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F`
 *   Örnek: `1111 1111` (binary) = `255` (decimal) = `FF` (hexadecimal)
 
-<div class="quiz-question" id="quiz-binary">
+<div class="quiz-question">
   <p><b>Soru:</b> `0xC3` hexadecimal sayısının 8-bit ikili (binary) karşılığı nedir?</p>
   <div class="quiz-option" data-correct="true">A) `11000011`</div>
   <div class="quiz-option">B) `10100101`</div>
@@ -33,9 +33,20 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
   </div>
 </div>
 
+<div class="quiz-question">
+  <p><b>Soru:</b> 8-bitlik bir `unsigned char` (işaretsiz karakter) değişkeni en fazla hangi değeri alabilir?</p>
+  <div class="quiz-option">A) `127`</div>
+  <div class="quiz-option">B) `256`</div>
+  <div class="quiz-option" data-correct="true">C) `255`</div>
+  <div class="quiz-option">D) `128`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> 8 bit ile 2⁸ = 256 farklı değer temsil edilebilir. İşaretsiz tamsayılar için bu aralık `0`'dan başlar ve `255`'e kadar gider (`0` dahil 256 sayı).</p>
+  </div>
+</div>
+
 ---
 
-## 2. Bellek Organizasyonu ve Endianness (Bayt Sıralaması) ([Test Sorusu](#quiz-endianness))
+## 2. Bellek Organizasyonu ve Endianness (Bayt Sıralaması)
 
 ### Byte Ordering (Endianness)
 
@@ -67,7 +78,7 @@ Big-Endian Düzeni:              Little-Endian Düzeni:
   A+3  |  67                      A+3  |  01
 </pre>
 
-<div class="quiz-question" id="quiz-endianness">
+<div class="quiz-question">
   <p><b>Soru:</b> Little-Endian bir sistemde, 32-bit `0x12345678` tamsayısı belleğin `0x100` adresine yazılırsa, `0x101` adresinde hangi bayt değeri bulunur?</p>
   <div class="quiz-option">A) `0x12`</div>
   <div class="quiz-option">B) `0x34`</div>
@@ -78,9 +89,20 @@ Big-Endian Düzeni:              Little-Endian Düzeni:
   </div>
 </div>
 
+<div class="quiz-question">
+  <p><b>Soru:</b> Big-Endian bir sistemde, 32-bit `0x12345678` tamsayısı belleğin `0x100` adresine yazılırsa, `0x101` adresinde hangi bayt değeri bulunur?</p>
+  <div class="quiz-option">A) `0x12`</div>
+  <div class="quiz-option" data-correct="true">B) `0x34`</div>
+  <div class="quiz-option">C) `0x56`</div>
+  <div class="quiz-option">D) `0x78`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Big-Endian sistemlerde, en anlamlı (en soldaki) bayt en düşük adrese yazılır. Bu durumda sıralama şöyle olur: Adres `0x100`: `0x12`, Adres `0x101`: `0x34`, Adres `0x102`: `0x56`, Adres `0x103`: `0x78`.</p>
+  </div>
+</div>
+
 ---
 
-## 3. Bit Seviyesi Mantıksal Operasyonlar ([Test Soruları](#quiz-bitwise))
+## 3. Bit Seviyesi Mantıksal Operasyonlar
 
 C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güçlü operatörler bulunur. Bu operatörler, donanıma yakın seviyede kontrol ve optimizasyon imkanı tanır.
 
@@ -147,7 +169,6 @@ Bu operatörler, bir sayının bitlerini belirli bir sayıda sola veya sağa kay
         Sonuç:     11111100 (-4)
         </pre>
 
-<div id="quiz-bitwise"></div>
 <div class="quiz-question">
   <p><b>Soru:</b> Bir `x` tamsayısının tek mi çift mi olduğunu anlamak için `(x & 1)` ifadesi kullanılıyor. `x = 7` (binary `0111`) ise bu ifadenin sonucu ne olur ve bu ne anlama gelir?</p>
   <div class="quiz-option">A) `0` (Sayı çifttir)</div>
@@ -169,9 +190,20 @@ Bu operatörler, bir sayının bitlerini belirli bir sayıda sola veya sağa kay
   </div>
 </div>
 
+<div class="quiz-question">
+  <p><b>Soru:</b> `x = 176` (binary `10110000`) sayısının 3. bitini (sağdan, 0'dan başlayarak) `1` yapmak için hangi `OR` işlemi uygulanmalıdır?</p>
+  <div class="quiz-option">A) `x | 4`</div>
+  <div class="quiz-option">B) `x | 2`</div>
+  <div class="quiz-option" data-correct="true">C) `x | 8`</div>
+  <div class="quiz-option">D) `x | 16`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> 3. biti `1` olan sayı `00001000`'dir, bu da onluk tabanda `8`'e eşittir. `OR` işlemi, `1` olan bir bit ile yapıldığında sonucu her zaman `1` yapar. `10110000 | 00001000` işleminin sonucu `10111000` olur ve 3. bit `1`'e ayarlanmış olur.</p>
+  </div>
+</div>
+
 ---
 
-## 4. Tamsayıların Temsili ([Test Sorusu](#quiz-twos-complement))
+## 4. Tamsayıların Temsili
 
 Bilgisayarların tamsayıları nasıl sakladığını anlamak, programlamada karşılaşılan birçok hatanın (örneğin, `overflow`) önüne geçmemizi sağlar. Sayıları temsil etmenin iki ana yolu vardır.
 
@@ -225,7 +257,7 @@ Bir `x` sayısının negatifini (`-x`) bulmak için:
 
 Bu sistemin en büyük avantajı, toplama ve çıkarma işlemlerinin işaretli ve işaretsiz sayılar için aynı donanım devresiyle yapılabilmesidir.
 
-<div class="quiz-question" id="quiz-twos-complement">
+<div class="quiz-question">
   <p><b>Soru:</b> 8-bit Two's Complement temsilinde, `5` (binary `00000101`) sayısının negatifi (`-5`) nasıl temsil edilir?</p>
   <div class="quiz-option">A) `10000101`</div>
   <div class="quiz-option" data-correct="true">B) `11111011`</div>
@@ -239,9 +271,20 @@ Bu sistemin en büyük avantajı, toplama ve çıkarma işlemlerinin işaretli v
   </div>
 </div>
 
+<div class="quiz-question">
+  <p><b>Soru:</b> 16-bit `signed` (işaretli) bir tamsayının alabileceği en büyük pozitif değer nedir?</p>
+  <div class="quiz-option">A) `65535`</div>
+  <div class="quiz-option" data-correct="true">B) `32767`</div>
+  <div class="quiz-option">C) `65536`</div>
+  <div class="quiz-option">D) `32768`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `w` bitlik işaretli bir tamsayının aralığı `-2^(w-1)` ile `2^(w-1) - 1` arasındadır. `w=16` için en büyük değer `2^15 - 1 = 32768 - 1 = 32767`'dir.</p>
+  </div>
+</div>
+
 ---
 
-## 5. Casting (Tip Dönüşümleri), Genişletme ve Kırpma ([Test Sorusu](#quiz-casting))
+## 5. Casting (Tip Dönüşümleri), Genişletme ve Kırpma
 
 C gibi dillerde, farklı tamsayı tipleri arasında dönüşüm yapmak yaygındır (`short`'u `int`'e atamak gibi). Bu dönüşümler derleyici tarafından otomatik olarak yapılır, ancak arka planda bitlerin nasıl değiştiğini bilmek, beklenmedik hataları anlamak için kritiktir.
 
@@ -282,7 +325,7 @@ Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem
     Sonuç (4-bit):     0110      (Değer: 6) - Sayı tamamen değişti!
     </pre>
 
-<div class="quiz-question" id="quiz-casting">
+<div class="quiz-question">
   <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayı olan `-3` (`1101`), 8-bit bir tamsayıya `Sign Extension` ile genişletilirse sonuç ne olur?</p>
   <div class="quiz-option">A) `00001101`</div>
   <div class="quiz-option">B) `00000011`</div>
@@ -293,9 +336,20 @@ Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem
   </div>
 </div>
 
+<div class="quiz-question">
+  <p><b>Soru:</b> 32-bit `int` türündeki `260` sayısı (`...0001 0000 0100`), 8-bit `char` türüne kırpılırsa (`truncate`) sonuç ne olur?</p>
+  <div class="quiz-option" data-correct="true">A) `4`</div>
+  <div class="quiz-option">B) `-4`</div>
+  <div class="quiz-option">C) `100`</div>
+  <div class="quiz-option">D) `-260`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Kırpma işlemi, yüksek anlamlı bitleri atar. `260` sayısının son 8 biti `00000100`'dür. Bu da onluk tabanda `4`'e eşittir.</p>
+  </div>
+</div>
+
 ---
 
-## 6. Tamsayı Toplaması ve Overflow (Taşma) ([Test Sorusu](#quiz-overflow))
+## 6. Tamsayı Toplaması ve Overflow (Taşma)
 
 Bilgisayar aritmetiği, gerçek dünyadaki matematikten farklıdır çünkü sınırlı sayıda bit ile çalışır. Bu sınırlılık, **overflow (taşma)** adı verilen duruma yol açabilir.
 
@@ -343,7 +397,7 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
         </pre>
         *   Sonuç `-9` olmalıydı. 5 bitlik sonuçtan en soldaki biti atarsak elimizde `0111` kalır. Bu da `+7`'dir. İki negatif sayının toplamı pozitif çıktı. Bu da bir `overflow`'dur.
 
-<div class="quiz-question" id="quiz-overflow">
+<div class="quiz-question">
   <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayılar kullanılarak `5 + 5` işlemi yapılırsa sonuç ne olur ve neden?</p>
   <div class="quiz-option">A) `10` (Sonuç doğru)</div>
   <div class="quiz-option" data-correct="true">B) `-6` (Pozitif overflow oluştu)</div>
@@ -351,6 +405,17 @@ Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamame
   <div class="quiz-option">D) `2` (Negatif overflow oluştu)</div>
   <div class="quiz-explanation">
     <p><b>Cevap: B.</b> `5`'in 4-bit deseni `0101`'dir. `0101 + 0101 = 1010`. `1010` deseni, 4-bit Two's Complement'te `-6`'ya karşılık gelir. İki pozitif sayının toplamı negatif çıktığı için bu bir pozitif `overflow` durumudur.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> 8-bit `unsigned char` (işaretsiz) değişkenler kullanılarak `250 + 10` işlemi yapılırsa sonuç ne olur?</p>
+  <div class="quiz-option">A) `260`</div>
+  <div class="quiz-option">B) `-4`</div>
+  <div class="quiz-option" data-correct="true">C) `4`</div>
+  <div class="quiz-option">D) `-252`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> 8-bit işaretsiz bir tamsayı `0` ile `255` arasında değer alabilir. `250 + 10 = 260`, bu aralığın dışındadır. Sonuç, `260 mod 256` işlemiyle bulunur, bu da `4`'tür. Bu bir `unsigned overflow` durumudur.</p>
   </div>
 </div>
 
