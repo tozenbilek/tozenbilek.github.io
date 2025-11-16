@@ -25,9 +25,9 @@ Bir programcı olarak, kodunuzun altındaki "gerçekliği" - donanımı, derleyi
 +------------------------------------------+
 |          Uygulama (Application)          |
 +------------------------------------------+
-|         Programlama Dili (C, Java)       |  <-- Soyutlama Katmanları
+|        Programlama Dili (C, Java)        |  <-- Soyutlama Katmanları
 +------------------------------------------+
-| İşletim Sistemi / Derleyici / Donanım Mimarisi|  <-- Gerçeklik
+|    İşletim Sis. / Derleyici / Mimari     |  <-- Gerçeklik
 +------------------------------------------+
 </pre>
 

@@ -20,6 +20,28 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 
 **Hexadecimal (Onaltılık) Gösterim:** İkili sayılar çok uzun olabildiği için, genellikle daha kompakt olan hexadecimal (16'lık taban) gösterimi kullanılır. Her bir hexadecimal rakam, 4 bite karşılık gelir.
 *   Rakamlar: `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F`
+
+Aşağıdaki tablo, 4-bit'lik bir ikili sayının onluk ve onaltılık sistemdeki karşılıklarını göstermektedir:
+
+| Onluk (Decimal) | İkili (Binary) | Onaltılık (Hex) |
+|:---------------:|:--------------:|:---------------:|
+|        0        |      `0000`      |        `0`        |
+|        1        |      `0001`      |        `1`        |
+|        2        |      `0010`      |        `2`        |
+|        3        |      `0011`      |        `3`        |
+|        4        |      `0100`      |        `4`        |
+|        5        |      `0101`      |        `5`        |
+|        6        |      `0110`      |        `6`        |
+|        7        |      `0111`      |        `7`        |
+|        8        |      `1000`      |        `8`        |
+|        9        |      `1001`      |        `9`        |
+|       10        |      `1010`      |        `A`        |
+|       11        |      `1011`      |        `B`        |
+|       12        |      `1100`      |        `C`        |
+|       13        |      `1101`      |        `D`        |
+|       14        |      `1110`      |        `E`        |
+|       15        |      `1111`      |        `F`        |
+
 *   Örnek: `1111 1111` (binary) = `255` (decimal) = `FF` (hexadecimal)
 
 <div class="quiz-question">
@@ -52,30 +74,30 @@ Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: a
 
 Bellek, her biri ardışık bir adrese sahip olan bir bayt dizisidir. `int` gibi birden fazla bayt kaplayan bir veri türünü belleğe kaydederken, bu baytların hangi sırayla (düşük adresten yüksek adrese doğru) yerleştirileceğini belirleyen kurala **Endianness** denir.
 
-Bunu anlamak için 4 baytlık `0x01234567` sayısını ele alalım. Bu sayının baytları şunlardır:
-*   `01` (Most Significant Byte (En Anlamlı Bayt), MSB)
-*   `23`
-*   `45`
-*   `67` (Least Significant Byte (En Anlamsız Bayt), LSB)
+Bunu anlamak için 4 baytlık `0x76543210` sayısını ele alalım. Bu sayının baytları şunlardır:
+*   `76` (Most Significant Byte (En Anlamlı Bayt), MSB)
+*   `54`
+*   `32`
+*   `10` (Least Significant Byte (En Anlamsız Bayt), LSB)
 
 Bu sayıyı `A` adresinden başlayan belleğe yerleştirmenin iki yolu vardır:
 
-*   **Big-Endian:** Baytlar, sayıyı yazdığımız ve okuduğumuz gibi, **en anlamlıdan en anlamsıza** doğru sıralanır. En anlamlı bayt (`01`), en düşük adrese gelir. Ağ protokolleri genellikle bu düzeni kullanır.
+*   **Big-Endian:** Baytlar, sayıyı yazdığımız ve okuduğumuz gibi, **en anlamlıdan en anlamsıza** doğru sıralanır. En anlamlı bayt (`76`), en düşük adrese gelir. Ağ protokolleri genellikle bu düzeni kullanır.
 
-*   **Little-Endian:** Baytlar, **en anlamsızdan en anlamlıya** doğru, yani tersten sıralanır. En anlamsız bayt (`67`), en düşük adrese gelir. Modern işlemcilerin (Intel, AMD) çoğu bu yöntemi kullanır.
+*   **Little-Endian:** Baytlar, **en anlamsızdan en anlamlıya** doğru, yani tersten sıralanır. En anlamsız bayt (`10`), en düşük adrese gelir. Modern işlemcilerin (Intel, AMD) çoğu bu yöntemi kullanır.
 
 Aşağıdaki şema, iki düzen arasındaki farkı net bir şekilde göstermektedir:
 
 <pre>
-Sayı: 0x01234567
+Sayı: 0x76543210
 
 Big-Endian Düzeni:              Little-Endian Düzeni:
  Adres | Değer                   Adres | Değer
 -------|-------                 -------|-------
-   A   |  01                       A   |  67
-  A+1  |  23                      A+1  |  45
-  A+2  |  45                      A+2  |  23
-  A+3  |  67                      A+3  |  01
+   A   |  76                       A   |  10
+  A+1  |  54                      A+1  |  32
+  A+2  |  32                      A+2  |  54
+  A+3  |  10                      A+3  |  76
 </pre>
 
 <div class="quiz-question">
@@ -105,6 +127,15 @@ Big-Endian Düzeni:              Little-Endian Düzeni:
 ## 3. Bit Seviyesi Mantıksal Operasyonlar
 
 C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güçlü operatörler bulunur. Bu operatörler, donanıma yakın seviyede kontrol ve optimizasyon imkanı tanır.
+
+Bu operatörlerin bitler üzerindeki etkisini gösteren doğruluk tablosu aşağıdadır:
+
+| A | B | A & B (AND) | A \| B (OR) | A ^ B (XOR) |
+|:-:|:-:|:-----------:|:-----------:|:-----------:|
+| 0 | 0 |      0      |      0      |      0      |
+| 0 | 1 |      0      |      1      |      1      |
+| 1 | 0 |      0      |      1      |      1      |
+| 1 | 1 |      1      |      1      |      0      |
 
 Örnekler için `a = 93` (yani `01011101`) ve `b = 148` (yani `10010100`) sayılarını kullanalım.
 
@@ -316,14 +347,26 @@ Bir değeri daha fazla bit ile temsil etmektir (örn: 4-bit'ten 8-bit'e). Değer
 Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem sırasında bilgi kaybı yaşanabilir ve sayının değeri tamamen değişebilir.
 
 *   Kural basittir: Yüksek anlamlı bitler (soldaki bitler) basitçe **atılır**.
-    <pre>
-    // 8-bit 134 sayısını 4-bit'e kırpma
-    Başlangıç (8-bit): 10000110  (Değer: 134)
-    Atılan Kısım:   1000
-    Kalan Kısım:         0110
 
-    Sonuç (4-bit):     0110      (Değer: 6) - Sayı tamamen değişti!
-    </pre>
+    *   **Unsigned (İşaretsiz) Örneği:**
+        <pre>
+        // 8-bit unsigned 250 sayısını 4-bit'e kırpma
+        Başlangıç (8-bit): 11111010  (Değer: 250)
+        Atılan Kısım:   1111
+        Kalan Kısım:         1010
+
+        Sonuç (4-bit):     1010      (Değer: 10) - Değer değişti.
+        </pre>
+
+    *   **Signed (İşaretli) Örneği:**
+        <pre>
+        // 8-bit signed -100 sayısını 4-bit'e kırpma
+        Başlangıç (8-bit): 10011100  (Değer: -100)
+        Atılan Kısım:   1001
+        Kalan Kısım:         1100
+
+        Sonuç (4-bit):     1100      (Değer: -4) - Hem değer hem işaret değişebilir!
+        </pre>
 
 <div class="quiz-question">
   <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayı olan `-3` (`1101`), 8-bit bir tamsayıya `Sign Extension` ile genişletilirse sonuç ne olur?</p>
