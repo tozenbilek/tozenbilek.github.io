@@ -42,15 +42,16 @@ Bir dizgi (`w` ile gösterilir), bir alfabedeki sembollerin sonlu bir dizisidir.
 *   **`Empty String` (Boş Dizgi):** `ε` (epsilon) ile gösterilir ve uzunluğu 0'dır.
 *   **Uzunluk:** Bir dizginin uzunluğu `|w|` ile gösterilir. Örneğin, `|101| = 3`.
 
-### c) Language (Dil)
-Bir dil (`L` ile gösterilir), belirli bir alfabe (`Σ`) üzerinden oluşturulabilecek **tüm olası dizgiler kümesinin (`Σ*`) herhangi bir alt kümesidir.**
-*   `Σ*` (Sigma-star), `Σ` alfabesiyle oluşturulabilen tüm dizgilerin (`Empty String` dahil) kümesidir.
-*   `Σ+` (Sigma-plus), `Σ*`'dan tek farkı `Empty String`'i içermemesidir.
-*   **Örnek Diller:**
-    *   `L1 = {0ⁿ1ⁿ | n ≥ 1}`: Eşit sayıda 0 ve ardından eşit sayıda 1'den oluşan dizgiler (`{01, 0011, ...}`).
-    *   `L2 = Σ*`: Mümkün olan tüm dizgileri içeren dil.
-    *   `L3 = ∅`: `Empty Language` (hiçbir dizgi içermez).
-    *   `L4 = {ε}`: Sadece `Empty String`'i içeren dil.
+### c) `Language` (Dil)
+
+Bir `language` (`L` ile gösterilir), belirli bir `alphabet` (`Σ`) üzerinden oluşturulabilecek **tüm olası `string`'ler kümesinin (`Σ*`) herhangi bir alt kümesidir.**
+*   `Σ*` (**`Sigma-star`**), `Σ` `alphabet`'iyle oluşturulabilen tüm `string`'lerin (`Empty String` dahil) kümesidir.
+*   `Σ+` (**`Sigma-plus`**), `Σ*`'dan tek farkı `Empty String`'i içermemesidir.
+*   **Örnek `Language`'lar:**
+    *   `L1 = {0ⁿ1ⁿ | n ≥ 1}`: Eşit sayıda 0 ve ardından eşit sayıda 1'den oluşan `string`'ler (`{01, 0011, ...}`).
+    *   `L2 = Σ*`: Mümkün olan tüm `string`'leri içeren `language`.
+    *   `L3 = ∅`: **`Empty Language` (boş dil)** (hiçbir `string` içermez).
+    *   `L4 = {ε}`: Sadece `Empty String`'i içeren `language`.
 
 ### d) Decision Problems (Karar Problemleri)
 `Automata Theory`'deki en temel problem türü "karar problemi"dir.
@@ -101,32 +102,4 @@ graph TD
 <div class="quiz-question">
   <p><b>Soru 1:</b> `Σ = {a, b}` alfabesi verildiğinde, aşağıdakilerden hangisi `Σ*` kümesinin bir elemanı <b>değildir</b>?</p>
   <div class="quiz-option">A) `ababa`</div>
-  <div class="quiz-option">B) `ε` (boş dizgi)</div>
-  <div class="quiz-option" data-correct="true">C) `aba c`</div>
-  <div class="quiz-option">D) `bbbaaa`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `Σ*`, verilen `Σ` alfabesindeki sembollerden oluşan tüm dizgileri içerir. `aba c` dizgisi, alfabede olmayan ' ' (boşluk) ve 'c' sembollerini içerdiği için bu dile ait değildir.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru 2:</b> Bir programlama dilinin sözdiziminin (syntax) doğru olup olmadığını kontrol eden bir derleyici bileşeni, en temelinde hangi teorik kavrama dayanır?</p>
-  <div class="quiz-option">A) `Turing Machines`</div>
-  <div class="quiz-option">B) `Decision Problems`</div>
-  <div class="quiz-option" data-correct="true">C) `Language Recognition` (Dil Tanıma)</div>
-  <div class="quiz-option">D) İkili Alfabe</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Bir derleyicinin ayrıştırma (parsing) aşaması, yazılan kodun o programlama dilinin "diline" (kurallarına) uygun bir dizgi olup olmadığını kontrol eder. Bu, temel bir dil tanıma problemidir.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru 3:</b> Aşağıdaki dillerden hangisini tanımak için basit bir `Finite Automaton` <b>yetersiz kalır</b> ve en az bir `Pushdown Automaton` gerekir?</p>
-  <div class="quiz-option">A) `a` ile başlayan tüm dizgiler.</div>
-  <div class="quiz-option">B) İçinde "101" alt dizgisi geçen tüm ikili dizgiler.</div>
-  <div class="quiz-option">C) Çift sayıda 'b' içeren tüm dizgiler.</div>
-  <div class="quiz-option" data-correct="true">D) `L = {aⁿbⁿ | n ≥ 0}` (eşit sayıda 'a' ve ardından eşit sayıda 'b' gelen dizgiler)</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: D.</b> `aⁿbⁿ` dilini tanımak, 'a'ların sayısını saymayı ve sonra aynı sayıda 'b' olup olmadığını kontrol etmeyi gerektirir. Bu "sayma" işlemi, sonlu bir hafızaya sahip olan `Finite Automata`'nın kapasitesini aşar ve bir yığın (stack) gibi ek bir hafıza gerektirir.</p>
-  </div>
-</div>
+  <div class="quiz-option">B) `

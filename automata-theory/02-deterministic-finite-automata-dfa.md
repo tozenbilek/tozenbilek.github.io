@@ -9,7 +9,7 @@ parent: Automata Theory
 
 Önceki bölümde, otomatlar teorisinin temel kavramlarını öğrendik. Şimdi, en basit otomat türü olan **Deterministic Finite Automaton (Belirleyici Sonlu Otomat)**, kısaca **DFA**'yı detaylı olarak inceleyeceğiz.
 
-DFA'lar, hafızası sonlu sayıda "durumdan" ibaret olan ve okuduğu her sembol için o anki durumundan tam olarak bir sonraki duruma geçen basit makinelerdir. "Belirleyici" (deterministic) olmaları, her durum ve her giriş sembolü için geçilecek bir ve yalnızca bir sonraki durumun olmasından kaynaklanır.
+DFA'lar, hafızası sonlu sayıda `state`'ten ibaret olan ve okuduğu her `symbol` için o anki `state`'inden tam olarak bir sonraki `state`'e geçen basit makinelerdir. "Belirleyici" (deterministic) olmaları, her `state` ve her giriş `symbol`'ü için geçilecek bir ve yalnızca bir sonraki `state`'in olmasından kaynaklanır.
 
 ---
 
@@ -17,82 +17,100 @@ DFA'lar, hafızası sonlu sayıda "durumdan" ibaret olan ve okuduğu her sembol 
 
 Bir DFA, matematiksel olarak 5 elemanlı bir demet (5-tuple) ile ifade edilir: `A = (Q, Σ, δ, q₀, F)`
 
-1.  **Q:** Sonlu bir **durumlar (states)** kümesi. (Örn: `{q₀, q₁, q₂}`)
-2.  **Σ:** Bir **alfabe (alphabet)**. (Örn: `{0, 1}`)
-3.  **δ (delta):** Geçiş fonksiyonu (**transition function**). Bu fonksiyon, mevcut durumu ve okunan sembolü girdi olarak alıp bir sonraki durumu çıktı olarak verir. `δ: Q × Σ → Q`.
-4.  **q₀:** Başlangıç durumu (**start state**). `q₀ ∈ Q` olmalıdır.
-5.  **F:** Kabul durumları (**accepting states** veya final states) kümesi. `F ⊆ Q` olmalıdır.
+1.  **Q:** Sonlu bir **`States` (durumlar)** kümesi. (Örn: `{q₀, q₁, q₂}`)
+2.  **Σ:** Bir **`Alphabet` (alfabe)**. (Örn: `{0, 1}`)
+3.  **δ (delta):** **`Transition Function` (geçiş fonksiyonu)**. Bu fonksiyon, mevcut `state`'i ve okunan `symbol`'ü girdi olarak alıp bir sonraki `state`'i çıktı olarak verir. `δ: Q × Σ → Q`.
+4.  **q₀:** **`Start State` (başlangıç durumu)**. `q₀ ∈ Q` olmalıdır.
+5.  **F:** **`Accepting States` (kabul durumları)** veya `final states` kümesi. `F ⊆ Q` olmalıdır.
 
 ---
 
-## 2. DFA'nın Grafik Gösterimi: Durum Diyagramları
+## 2. DFA'nın Grafik Gösterimi: `State Diagrams` (Durum Diyagramları)
 
-DFA'ları kağıt üzerinde görselleştirmek için **durum diyagramları (state diagrams)** kullanılır:
-*   **Durumlar (Q):** Daireler (node'lar) ile gösterilir.
-*   **Başlangıç Durumu (q₀):** Hiçbir yerden gelmeyen bir ok ile işaretlenir.
-*   **Kabul Durumları (F):** Çift daire ile gösterilir.
-*   **Geçişler (δ):** Bir durumdan diğerine yönelen ve okunan sembolle etiketlenmiş oklar (arc'lar) ile gösterilir. Örneğin, `δ(q₁, 0) = q₂` geçişi, `q₁` durumundan `q₂` durumuna üzerinde `0` yazan bir ok ile çizilir.
+DFA'ları kağıt üzerinde görselleştirmek için **`State Diagrams` (durum diyagramları)** kullanılır:
+*   **`States` (Q):** Daireler (node'lar) ile gösterilir.
+*   **`Start State` (q₀):** Hiçbir yerden gelmeyen bir ok ile işaretlenir.
+*   **`Accepting States` (F):** Çift daire ile gösterilir.
+*   **`Transitions` (δ):** Bir `state`'ten diğerine yönelen ve okunan `symbol` ile etiketlenmiş oklar (arc'lar) ile gösterilir. Örneğin, `δ(q₁, 0) = q₂` `transition`'ı, `q₁` `state`'inden `q₂` `state`'ine üzerinde `0` yazan bir ok ile çizilir.
 
-![DFA State Diagram](https://via.placeholder.com/500x300.png?text=DFA+Durum+Diyagramı+Örneği)
-*Görsel: Çift sayıda '1' içeren ikili dizgileri kabul eden bir DFA'nın durum diyagramı.*
+<div align="center">
+
+*Görsel: Çift sayıda '1' içeren ikili `string`'leri (`ε`, `00`, `11`, `0110`, `101`, vs.) kabul eden bir DFA.*
+```mermaid
+graph LR
+    %% "q_even" state'i hem başlangıç hem de kabul durumudur.
+    acc((q_even))
+    
+    %% Başlangıç state'ini göstermek için görünmez bir node
+    init[ ]
+    init -- "Start" --> acc
+
+    style acc fill:#d4edda,stroke:#c3e6cb
+    style init fill:none,stroke:none
+
+    acc -- "0" --> acc
+    acc -- "1" --> rej((q_odd))
+    rej -- "0" --> rej
+    rej -- "1" --> acc
+```
+
+</div>
 
 ---
 
-## 3. DFA Bir Dizgiyi Nasıl İşler?
+## 3. Bir DFA, Bir `String`'i Nasıl İşler?
 
-Bir DFA, bir girdi dizgisini (`w`) başından sonuna kadar sembol sembol okur.
-1.  İşlem, **başlangıç durumu `q₀`**'da başlar.
-2.  Dizginin ilk sembolü okunur ve geçiş fonksiyonu `δ` kullanılarak bir sonraki duruma geçilir.
-3.  Bu işlem, dizginin tüm sembolleri okunana kadar devam eder.
-4.  Dizginin son sembolü okunduktan sonra, makinenin bulunduğu durum bir **kabul durumu (F'nin bir elemanı)** ise, DFA o dizgiyi **kabul eder (accepts)**.
-5.  Eğer son durum bir kabul durumu değilse, dizgi **reddedilir (rejects)**.
+Bir DFA, bir girdi `string`'ini (`w`) başından sonuna kadar `symbol` `symbol` okur.
+1.  İşlem, **başlangıç `state`'i `q₀`**'da başlar.
+2.  `String`'in ilk `symbol`'ü okunur ve `transition function` `δ` kullanılarak bir sonraki `state`'e geçilir.
+3.  Bu işlem, `string`'in tüm `symbol`'leri okunana kadar devam eder.
+4.  `String`'in son `symbol`'ü okunduktan sonra, makinenin bulunduğu `state` bir **kabul `state`'i (F'nin bir elemanı)** ise, DFA o `string`'i **kabul eder (accepts)**.
+5.  Eğer son `state` bir kabul `state`'i değilse, `string` **reddedilir (rejects)**.
 
-### Genişletilmiş Geçiş Fonksiyonu (δ̂)
-Bir sembol yerine bütün bir dizgi için geçişi tanımlayan fonksiyona `δ̂` (delta-hat) denir. `δ̂(q, w)`, `q` durumundan başlayarak `w` dizgisini okuduktan sonra gelinecek durumu verir.
+### Extended Transition Function (δ̂)
+Bir `symbol` yerine bütün bir `string` için `transition`'ı tanımlayan fonksiyona `δ̂` (delta-hat) denir. `δ̂(q, w)`, `q` `state`'inden başlayarak `w` `string`'ini okuduktan sonra gelinecek `state`'i verir.
 
 ---
 
-## 4. Bir DFA'nın Dili
+## 4. Bir DFA'nın `Language`'ı
 
-Bir `A` DFA'sının tanıdığı dil, `L(A)` ile gösterilir ve o DFA tarafından kabul edilen **tüm dizgilerin kümesidir**.
+Bir `A` DFA'sının tanıdığı `language`, `L(A)` ile gösterilir ve o DFA tarafından kabul edilen **tüm `string`'lerin kümesidir**.
 
 `L(A) = { w | δ̂(q₀, w) ∈ F }`
 
-Yani, başlangıç durumundan başlayıp `w` dizgisini okuduktan sonra bir kabul durumuna ulaştığımız tüm `w` dizgileri, o DFA'nın dilini oluşturur. DFA'lar tarafından tanınabilen dillere **Regular Languages (Düzenli Diller)** denir.
+Yani, başlangıç `state`'inden başlayıp `w` `string`'ini okuduktan sonra bir kabul `state`'ine ulaştığımız tüm `w` `string`'leri, o DFA'nın `language`'ını oluşturur. DFA'lar tarafından tanınabilen `language`'lara **Regular Languages (Düzenli Diller)** denir.
 
 ---
 
-### Test Soruları
-
 <div class="quiz-question">
   <p><b>Soru 1:</b> Bir DFA'nın "deterministik" (belirleyici) olarak adlandırılmasının ana sebebi nedir?</p>
-  <div class="quiz-option">A) Sonlu sayıda durumu olması.</div>
-  <div class="quiz-option" data-correct="true">B) Her durum ve her alfabe sembolü için geçiş fonksiyonunun tam olarak bir sonraki durumu tanımlaması.</div>
-  <div class="quiz-option">C) Bir başlangıç durumuna sahip olması.</div>
-  <div class="quiz-option">D) Boş dizgi (`ε`) ile geçiş yapamaması.</div>
+  <div class="quiz-option">A) Sonlu sayıda `state`'i olması.</div>
+  <div class="quiz-option" data-correct="true">B) Her `state` ve her alfabe `symbol`'ü için `transition function`'ının tam olarak bir sonraki `state`'i tanımlaması.</div>
+  <div class="quiz-option">C) Bir başlangıç `state`'ine sahip olması.</div>
+  <div class="quiz-option">D) Boş `string` (`ε`) ile `transition` yapamaması.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Determinizm, belirsizliğin olmaması anlamına gelir. Bir DFA, belirli bir durumda belirli bir sembolü okuduğunda, gidebileceği tek bir yer vardır. Bu, geçiş fonksiyonu `δ: Q × Σ → Q` ile garanti edilir.</p>
+    <p><b>Cevap: B.</b> Determinizm, belirsizliğin olmaması anlamına gelir. Bir DFA, belirli bir `state`'te belirli bir `symbol`'ü okuduğunda, gidebileceği tek bir yer vardır. Bu, `transition function` `δ: Q × Σ → Q` ile garanti edilir.</p>
   </div>
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 2:</b> Bir DFA'nın durum diyagramında, bir durumun "kabul durumu" (accepting state) olduğunu nasıl anlarız?</p>
+  <p><b>Soru 2:</b> Bir DFA'nın durum diyagramında, bir `state`'in "kabul `state`'i" (accepting state) olduğunu nasıl anlarız?</p>
   <div class="quiz-option">A) "Final" kelimesiyle etiketlenmiştir.</div>
   <div class="quiz-option">B) Gelen bir ok ile işaretlenmiştir.</div>
   <div class="quiz-option" data-correct="true">C) Çift daire ile çizilmiştir.</div>
-  <div class="quiz-option">D) En sağdaki durumdur.</div>
+  <div class="quiz-option">D) En sağdaki `state`'tir.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Standart gösterimde, kabul durumları iç içe geçmiş iki daire (çift daire) ile belirtilirken, diğer durumlar tek bir daire ile gösterilir.</p>
+    <p><b>Cevap: C.</b> Standart gösterimde, kabul `state`'leri iç içe geçmiş iki daire (çift daire) ile belirtilirken, diğer `state`'ler tek bir daire ile gösterilir.</p>
   </div>
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru 3:</b> Bir `A` DFA'sı, bir `w` dizgisini ne zaman "kabul eder"?</p>
-  <div class="quiz-option">A) `w` dizgisindeki tüm semboller DFA'nın alfabesine aitse.</div>
-  <div class="quiz-option">B) `w` dizgisini işlerken en az bir kez kabul durumundan geçerse.</div>
-  <div class="quiz-option">C) `w` dizgisi boş dizgi (`ε`) ise.</div>
-  <div class="quiz-option" data-correct="true">D) `w` dizgisinin tamamı okunduktan sonra makinenin bulunduğu son durum, kabul durumları kümesinin bir elemanı ise.</div>
+  <p><b>Soru 3:</b> Bir `A` DFA'sı, bir `w` `string`'ini ne zaman "kabul eder"?</p>
+  <div class="quiz-option">A) `w` `string`'indeki tüm `symbol`'ler DFA'nın alfabesine aitse.</div>
+  <div class="quiz-option">B) `w` `string`'ini işlerken en az bir kez kabul `state`'inden geçerse.</div>
+  <div class="quiz-option">C) `w` `string`'i boş `string` (`ε`) ise.</div>
+  <div class="quiz-option" data-correct="true">D) `w` `string`'inin tamamı okunduktan sonra makinenin bulunduğu son `state`, kabul `state`'leri kümesinin bir elemanı ise.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: D.</b> Bir dizginin kabul edilmesi için tek kriter, tüm dizgi işlendikten sonra ulaşılan nihai durumun, önceden tanımlanmış kabul durumları (`F`) kümesinde yer almasıdır.</p>
+    <p><b>Cevap: D.</b> Bir `string`'in kabul edilmesi için tek kriter, tüm `string` işlendikten sonra ulaşılan nihai `state`'in, önceden tanımlanmış kabul `state`'leri (`F`) kümesinde yer almasıdır.</p>
   </div>
 </div>
