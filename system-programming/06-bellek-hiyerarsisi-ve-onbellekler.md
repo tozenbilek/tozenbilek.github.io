@@ -17,18 +17,20 @@ Farklı bellek türleri, hız, maliyet ve boyut arasında farklı dengeler sunar
 
 ```mermaid
 graph TD
-    A["HIZLI, KÜÇÜK, PAHALI"]
+    A["HIZLI, KÜÇÜK, PAHALI"]:::label
     B["Yazmaçlar"]
     C["L1, L2, L3 Cache (SRAM)"]
     D["Ana Bellek (DRAM)"]
     E["Lokal Disk (SSD/HDD)"]
-    F["YAVAŞ, BÜYÜK, UCUZ"]
+    F["YAVAŞ, BÜYÜK, UCUZ"]:::label
 
     A --> B
     B --> C
     C --> D
     D --> E
     E --> F
+
+    classDef label fill:none,stroke:none,font-weight:bold
 ```
 
 **Temel Fikir:** Her katman, bir altındaki daha yavaş ve daha büyük katman için bir **cache (önbellek)** görevi görür. En sık kullanılan veriler, piramidin en tepesine yakın tutulmaya çalışılır.
