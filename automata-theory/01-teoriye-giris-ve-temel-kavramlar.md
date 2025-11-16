@@ -39,19 +39,19 @@ Bir alfabe (`Σ` ile gösterilir), sembollerden oluşan **sonlu ve boş olmayan*
 
 ### b) String (Dizgi)
 Bir dizgi (`w` ile gösterilir), bir alfabedeki sembollerin sonlu bir dizisidir.
-*   **`Empty String` (Boş Dizgi):** `ε` (epsilon) ile gösterilir ve uzunluğu 0'dır.
+*   **Empty String (Boş Dizgi):** `ε` (epsilon) ile gösterilir ve uzunluğu 0'dır.
 *   **Uzunluk:** Bir dizginin uzunluğu `|w|` ile gösterilir. Örneğin, `|101| = 3`.
 
-### c) `Language` (Dil)
+### c) Language (Dil)
 
-Bir `language` (`L` ile gösterilir), belirli bir `alphabet` (`Σ`) üzerinden oluşturulabilecek **tüm olası `string`'ler kümesinin (`Σ*`) herhangi bir alt kümesidir.**
-*   `Σ*` (**`Sigma-star`**), `Σ` `alphabet`'iyle oluşturulabilen tüm `string`'lerin (`Empty String` dahil) kümesidir.
-*   `Σ+` (**`Sigma-plus`**), `Σ*`'dan tek farkı `Empty String`'i içermemesidir.
-*   **Örnek `Language`'lar:**
-    *   `L1 = {0ⁿ1ⁿ | n ≥ 1}`: Eşit sayıda 0 ve ardından eşit sayıda 1'den oluşan `string`'ler (`{01, 0011, ...}`).
-    *   `L2 = Σ*`: Mümkün olan tüm `string`'leri içeren `language`.
-    *   `L3 = ∅`: **`Empty Language` (boş dil)** (hiçbir `string` içermez).
-    *   `L4 = {ε}`: Sadece `Empty String`'i içeren `language`.
+Bir language (`L` ile gösterilir), belirli bir alphabet (`Σ`) üzerinden oluşturulabilecek **tüm olası string'ler kümesinin (`Σ*`) herhangi bir alt kümesidir.**
+*   `Σ*` (**Sigma-star**), `Σ` alphabet'iyle oluşturulabilen tüm string'lerin (Empty String dahil) kümesidir.
+*   `Σ+` (**Sigma-plus**), `Σ*`'dan tek farkı Empty String'i içermemesidir.
+*   **Örnek Language'lar:**
+    *   `L1 = {0ⁿ1ⁿ | n ≥ 1}`: Eşit sayıda 0 ve ardından eşit sayıda 1'den oluşan string'ler (`{01, 0011, ...}`).
+    *   `L2 = Σ*`: Mümkün olan tüm string'leri içeren language.
+    *   `L3 = ∅`: **Empty Language (boş dil)** (hiçbir string içermez).
+    *   `L4 = {ε}`: Sadece Empty String'i içeren language.
 
 ### d) Decision Problems (Karar Problemleri)
 `Automata Theory`'deki en temel problem türü "karar problemi"dir.
@@ -92,14 +92,20 @@ graph TD
 
 `Automata Theory`, matematiksel temellere dayandığı için çeşitli ispat yöntemleri kullanılır. Bir iddianın doğruluğunu göstermek için kullanılan başlıca yöntemler şunlardır:
 
-*   **`Deductive Proofs` (Tümdengelimsel İspatlar):** Bilinen gerçeklerden (hipotezler ve aksiyomlar) yola çıkarak mantıksal çıkarım kuralları ile bir sonuca ulaşma yöntemidir.
-*   **`Inductive Proofs` (Tümevarımsal İspatlar):** Genellikle doğal sayılar veya özyineli olarak tanımlanmış yapılar üzerinde kullanılır. Bir temel durum (basis) için doğruluğu gösterilir ve ardından `n` için doğru olduğu varsayılarak `n+1` için de doğru olduğu (inductive step) kanıtlanır.
-*   **`Proof by Contradiction` (Çelişki ile İspat):** Bir iddianın yanlış olduğunu varsayıp bu varsayımın mantıksal bir çelişkiye yol açtığını göstererek iddianın aslında doğru olduğunu kanıtlama yöntemidir.
-*   **`Disproof via Counterexample` (Karşı Örnek ile Çürütme):** Bir iddianın genel olarak doğru olmadığını, o iddiayı sağlamayan tek bir örnek göstererek kanıtlamaktır.
+*   **Deductive Proofs (Tümdengelimsel İspatlar):** Bilinen gerçeklerden (hipotezler ve aksiyomlar) yola çıkarak mantıksal çıkarım kuralları ile bir sonuca ulaşma yöntemidir.
+*   **Inductive Proofs (Tümevarımsal İspatlar):** Genellikle doğal sayılar veya özyineli olarak tanımlanmış yapılar üzerinde kullanılır. Bir temel durum (basis) için doğruluğu gösterilir ve ardından `n` için doğru olduğu varsayılarak `n+1` için de doğru olduğu (inductive step) kanıtlanır.
+*   **Proof by Contradiction (Çelişki ile İspat):** Bir iddianın yanlış olduğunu varsayıp bu varsayımın mantıksal bir çelişkiye yol açtığını göstererek iddianın aslında doğru olduğunu kanıtlama yöntemidir.
+*   **Disproof via Counterexample (Karşı Örnek ile Çürütme):** Bir iddianın genel olarak doğru olmadığını, o iddiayı sağlamayan tek bir örnek göstererek kanıtlamaktır.
 
 ---
 
 <div class="quiz-question">
   <p><b>Soru 1:</b> `Σ = {a, b}` alfabesi verildiğinde, aşağıdakilerden hangisi `Σ*` kümesinin bir elemanı <b>değildir</b>?</p>
   <div class="quiz-option">A) `ababa`</div>
-  <div class="quiz-option">B) `
+  <div class="quiz-option">B) `ε` (boş string)</div>
+  <div class="quiz-option" data-correct="true">C) `a c`</div>
+  <div class="quiz-option">D) `bbbb`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> `Σ*`, `Σ` alfabesindeki sembollerden (`a` ve `b`) oluşan tüm sonlu dizgileri içerir. `a c` string'i, alfabe dışı bir sembol olan `c`'yi içerdiği için `Σ*` kümesine ait değildir.</p>
+  </div>
+</div>
