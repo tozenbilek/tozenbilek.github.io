@@ -21,15 +21,14 @@ Bir programcı olarak, kodunuzun altındaki "gerçekliği" - donanımı, derleyi
 *   **Etkin Hata Ayıklama:** Özellikle zor, "gizemli" hataların kökenine inebilirsiniz.
 *   **Performans Optimizasyonu:** Kodunuzun neden yavaş olduğunu anlayıp darboğazları ortadan kaldırarak performansını artırabilirsiniz.
 
-<pre>
-+------------------------------------------+
-|          Uygulama (Application)          |
-+------------------------------------------+
-|        Programlama Dili (C, Java)        |  <-- Soyutlama Katmanları
-+------------------------------------------+
-|    İşletim Sis. / Derleyici / Mimari     |  <-- Gerçeklik
-+------------------------------------------+
-</pre>
+```mermaid
+graph TD
+    A["Uygulama (Application)"]
+    B["Programlama Dili (C, Java)<br><i>Soyutlama Katmanları</i>"]
+    C["İşletim Sis. / Compiler / Mimari<br><b>Gerçeklik</b>"]
+
+    A --> B --> C
+```
 
 ---
 

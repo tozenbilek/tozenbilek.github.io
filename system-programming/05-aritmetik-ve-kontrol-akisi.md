@@ -62,6 +62,17 @@ Bu özelliği sayesinde, toplama ve sınırlı çarpma işlemleri için dahice b
     *   `jg Etiket` (Jump if Greater): İşaretli "büyükse" zıpla.
     *   `ja Etiket` (Jump if Above): İşaretsiz "büyükse" zıpla.
 
+Bu mekanizma, `if-else` gibi yapıların temelini oluşturur. Aşağıdaki diyagram, bu mantıksal akışı görselleştirmektedir:
+
+```mermaid
+graph TD
+    A["Başlangıç"] --> B{cmp a, b};
+    B -- "a == b (je)" --> C["'if' bloğu çalışır"];
+    B -- "a != b (jne)" --> D["'else' bloğu çalışır"];
+    C --> E["Bitiş"];
+    D --> E;
+```
+
 <div class="quiz-question">
   <p><b>Soru:</b> `%rax` register'ında 5, `%rbx` register'ında 10 değeri varken, `cmpq %rax, %rbx` komutu çalıştırıldıktan sonra durum kodlarından hangisi `1` olur?</p>
   <div class="quiz-option">A) `ZF (Zero Flag)`</div>
@@ -88,18 +99,22 @@ Fonksiyon çağrıları, belleğin "son giren ilk çıkar" (LIFO) prensibiyle ç
 
 Her fonksiyon, stack üzerinde kendine ait **stack frame** denilen bir çalışma alanı kullanır.
 
-<pre>
-| ...                   |
-| Argüman 7+            | <-- Yüksek Adresler
-|-----------------------|
-| Dönüş Adresi          | <-- `call` tarafından push edildi
-|-----------------------|
-| Kaydedilmiş Register'lar |
-|-----------------------|
-| Yerel Değişkenler     |
-|-----------------------|
-| ...                   | <-- %rsp (Stack Tepesi)
-</pre>
+```mermaid
+graph TD
+    A["...<br>(Yüksek Adresler)"]
+    B["Argüman 7+"]
+    C["Dönüş Adresi<br><i>(call tarafından push edildi)</i>"]
+    D["Kaydedilmiş Register'lar"]
+    E["Yerel Değişkenler"]
+    F["..."]
+    G["%rsp (Stack Tepesi)<br><i>(Düşük Adreslere Doğru)</i>"]
+
+    subgraph Stack Büyüme Yönü
+        A --> B --> C --> D --> E --> F
+    end
+    
+    F -.-> G
+```
 
 <div class="quiz-question">
   <p><b>Soru:</b> Bir `foo` fonksiyonu, başka bir `bar` fonksiyonunu `callq bar` komutuyla çağırdığında, stack'e ne `push` edilir?</p>

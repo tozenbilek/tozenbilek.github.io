@@ -27,7 +27,7 @@ graph LR
     C --> D{Assembler};
     D --> E["Nesne Kodu (.o)"];
     E --> F{Linker};
-    F --> G["Yürütülebilir Dosya"];
+    F --> G["Executable File (.exe / .out)"];
 ```
 
 <div class="quiz-question">
