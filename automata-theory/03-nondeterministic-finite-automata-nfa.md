@@ -23,9 +23,9 @@ Bir NFA, üç temel yeteneğiyle DFA'dan ayrılır:
 
 Bu esneklik, belirli language'ları DFA'lara göre çok daha basit ve daha az state ile ifade etmeyi mümkün kılar.
 
-<div align="center">
-
 *Görsel: Sonu `01` ile biten tüm string'leri (`01`, `001`, `1101`, vs.) kabul eden bir NFA. `q₀`'dan `0` okunduğunda hem `q₀`'da kalıp hem de `q₁`'e gidebilmesi, "belirleyici olmama" durumunun bir örneğidir.*
+{: .text-center }
+
 ```mermaid
 graph LR
     direction LR
@@ -36,8 +36,7 @@ graph LR
     q0 -- "0" --> q1
     q1 -- "1" --> q2((q2))
 ```
-
-</div>
+{: .d-block .mx-auto }
 
 ---
 
@@ -120,9 +119,9 @@ NFA'nın kabul durumu olan `q₂`'yi içeren tüm DFA durumları, yeni DFA'nın 
 
 **Sonuç:**
 
-<div align="center">
-
 *Görsel: Soldaki NFA'nın, Subset Construction algoritması ile sağdaki eşdeğer DFA'ya dönüşümü.*
+{: .text-center }
+
 ```mermaid
 graph TD
     subgraph "Original NFA"
@@ -144,7 +143,7 @@ graph TD
         C -- "1" --> A
     end
 ```
-</div>
+{: .d-block .mx-auto }
 
 ---
 

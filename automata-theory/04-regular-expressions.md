@@ -22,9 +22,9 @@ Bu üç kavram arasında çok güçlü ve temel bir bağlantı vardır:
 
 Kısacası, **DFA'lar, NFA'lar ve Düzenli İfadeler, aynı language sınıfını (Regular Languages) tanımlamanın üç farklı yoludur.**
 
-<div align="center">
-
 *Görsel: Düzenli Dilleri Temsil Etmenin "Altın Üçgeni". Her köşe, aynı güce sahip farklı bir temsil yöntemidir ve aralarında sistematik dönüşüm algoritmaları vardır.*
+{: .text-center }
+
 ```mermaid
 graph TD
     subgraph "The Golden Triangle of Regular Languages"
@@ -38,7 +38,7 @@ graph TD
     DFA -- "State Elimination" --> RE
     NFA -.-> DFA
 ```
-</div>
+{: .d-block .mx-auto }
 
 ---
 

@@ -9,9 +9,9 @@ parent: Automata Theory
 
 Şimdiye kadar regular languages'ı üç farklı yolla tanımladık: DFA'lar, NFA'lar ve Düzenli İfadeler. Bu bölümde, bu language sınıfının sahip olduğu temel özellikleri ve bu özelliklerin bize ne gibi yetenekler kazandırdığını inceleyeceğiz. Bu özellikler, bir language'ın düzenli olup olmadığını anlamamızı, otomatları optimize etmemizi ve language'lar hakkında algoritmik olarak sorular sormamızı sağlar.
 
-<div align="center">
-
 *Görsel: Düzenli Dillerin temel özellikleri. Bu language ailesi, birçok işlem altında "kapalıdır", onlar hakkında kritik sorular algoritmik olarak cevaplanabilir ve düzenli olmadıklarını kanıtlamak için güçlü bir aracımız (Pumping Lemma) vardır.*
+{: .text-center }
+
 ```mermaid
 graph TD
     subgraph "Closure Properties (Kapanma Özellikleri)"
@@ -31,7 +31,7 @@ graph TD
 
     style A fill:#D2E9FF,stroke:#99C7FF
 ```
-</div>
+{: .d-block .mx-auto }
 
 ---
 
@@ -41,9 +41,9 @@ Aynı regular language'ı tanıyan sonsuz sayıda farklı DFA olabilir. Ancak, b
 
 Bu işlem, "ayırt edilemez" (indistinguishable) state'lerin birleştirilmesine dayanır. İki state, onlardan başlayarak okunan herhangi bir string'in her ikisini de ya kabul ya da red state'ine götürmesi durumunda ayırt edilemez olarak kabul edilir ve birleştirilebilir. Bu, genellikle **Table-Filling Algorithm** ile yapılır.
 
-<div align="center">
-
 *Görsel: Soldaki DFA'da `q₂` ve `q₄` durumları ayırt edilemezdir (her ikisinden de `b` okunduğunda kabul durumuna gidilir, diğer durumlarda ise sıkışıp kalırlar). Bu nedenle, bu iki durum sağdaki minimize edilmiş DFA'da `q₂₄` olarak birleştirilmiştir.*
+{: .text-center }
+
 ```mermaid
 graph TD
     subgraph "Original DFA"
@@ -62,7 +62,7 @@ graph TD
         m_q13 -- "b" --> m_q24((q24))
     end
 ```
-</div>
+{: .d-block .mx-auto }
 
 ---
 
