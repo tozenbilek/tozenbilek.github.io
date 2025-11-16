@@ -38,17 +38,12 @@ DFA'ları kağıt üzerinde görselleştirmek için **State Diagrams (durum diya
 ```mermaid
 graph LR
     direction LR
-    
-    %% q_even hem başlangıç hem de kabul durumudur.
-    
-    [*] --> q_even
-    q_even((q_even))
-    
-    style q_even fill:#d4edda,stroke:#c3e6cb
+
+    [*] --> q_even((q_even))
 
     q_even -- "0" --> q_even
     q_even -- "1" --> q_odd
-    q_odd -- "0" --> q_odd
+    q_odd((q_odd)) -- "0" --> q_odd
     q_odd -- "1" --> q_even
 ```
 

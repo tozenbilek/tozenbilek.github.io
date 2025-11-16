@@ -18,9 +18,15 @@ just_the_docs:
   aux_links:
     "GitHub Repo":
       - "https://github.com/tozenbilek/tozenbilek.github.io"
+  
+  # Enable Mermaid diagrams
+  mermaid:
+    # Version of mermaid library
+    # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
+    version: "9.1.3"
 
 # Enable Mermaid diagrams
-mermaid:
-  # Version of mermaid library
-  # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
-  version: "9.1.3"
+# mermaid:
+#  # Version of mermaid library
+#  # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
+#  version: "9.1.3"
