@@ -25,7 +25,7 @@ Bir DFA, matematiksel olarak 5 elemanlı bir demet (5-tuple) ile ifade edilir: `
 
 ---
 
-## 2. DFA'nın Grafik Gösterimi: `State Diagrams` (Durum Diyagramları)
+## 2. DFA'nın Grafik Gösterimi: State Diagrams (Durum Diyagramları)
 
 DFA'ları kağıt üzerinde görselleştirmek için **State Diagrams (durum diyagramları)** kullanılır:
 *   **States (Q):** Daireler (node'lar) ile gösterilir.

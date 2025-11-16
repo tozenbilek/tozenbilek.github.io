@@ -7,7 +7,7 @@ parent: Automata Theory
 
 # Chomsky Normal Form (CNF)
 
-Önceki bölümde `Context-Free Grammars` (CFG)'nin ne kadar güçlü olduğunu gördük. Ancak, kuralları `A → wBxyZ` gibi çok çeşitli ve karmaşık formlarda olabilir. Bu durum, gramerleri analiz eden ve onlarla çalışan algoritmaları (örneğin, bir string'in language'a ait olup olmadığını kontrol eden `CYK` algoritması) yazmayı zorlaştırır.
+Önceki bölümde Context-Free Grammars (CFG)'nin ne kadar güçlü olduğunu gördük. Ancak, kuralları `A → wBxyZ` gibi çok çeşitli ve karmaşık formlarda olabilir. Bu durum, gramerleri analiz eden ve onlarla çalışan algoritmaları (örneğin, bir string'in language'a ait olup olmadığını kontrol eden `CYK` algoritması) yazmayı zorlaştırır.
 
 **Chomsky Normal Form (CNF)**, herhangi bir CFG'yi, kurallarını çok basit ve standart iki formattan birine indirgeyerek basitleştiren bir yöntemdir. Bu standardizasyon, birçok teorik ispatı ve pratik uygulamayı kolaylaştırır.
 

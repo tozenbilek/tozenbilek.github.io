@@ -7,28 +7,28 @@ parent: Automata Theory
 
 # Automata Theory: Introduction and Basic Concepts (Giriş ve Temel Kavramlar)
 
-**`Automata Theory` (Otomatlar Teorisi)**, bilgisayar biliminin teorik temelini oluşturan, soyut makinelerin ve bu makinelerin çözebileceği hesaplama problemlerinin incelendiği bir alandır. Bu teori, *bir bilgisayarın temelinde ne yapabilir ve ne yapamaz?* sorusuna matematiksel bir çerçevede cevap arar.
+**Automata Theory (Otomatlar Teorisi)**, bilgisayar biliminin teorik temelini oluşturan, soyut makinelerin ve bu makinelerin çözebileceği hesaplama problemlerinin incelendiği bir alandır. Bu teori, *bir bilgisayarın temelinde ne yapabilir ve ne yapamaz?* sorusuna matematiksel bir çerçevede cevap arar.
 
-Bu bölümde, `Automata Theory`'nin ne olduğunu, neden önemli olduğunu ve alanın temelini oluşturan merkezi kavramları inceleyeceğiz.
+Bu bölümde, Automata Theory'nin ne olduğunu, neden önemli olduğunu ve alanın temelini oluşturan merkezi kavramları inceleyeceğiz.
 
 ---
 
 ## 1. What is Automata Theory and Why is it Important? (Automata Teorisi Nedir ve Neden Önemlidir?)
 
-En basit tanımıyla, `Automata Theory` soyut hesaplama cihazlarının (makinelerin) incelenmesidir. Bu teori, 1930'larda Alan Turing'in hesaplamanın sınırlarını tanımlama çalışmalarıyla başlamış ve 1940-50'lerde `Finite Automata` ve Noam Chomsky'nin `Formal Grammars` çalışmalarıyla gelişmiştir.
+En basit tanımıyla, Automata Theory soyut hesaplama cihazlarının (makinelerin) incelenmesidir. Bu teori, 1930'larda Alan Turing'in hesaplamanın sınırlarını tanımlama çalışmalarıyla başlamış ve 1940-50'lerde Finite Automata ve Noam Chomsky'nin Formal Grammars çalışmalarıyla gelişmiştir.
 
 Bu teoriyi incelemek, bilgisayar biliminin kalbini anlamamızı sağlar. Uygulama alanları oldukça geniştir:
-*   **`Compilers` (Derleyiciler):** Bir programlama dilinin kodunu analiz ederken (sözcüksel analiz, ayrıştırma).
-*   **`Search Engines` (Arama Motorları):** Metin içinde belirli kalıpları ararken.
-*   **`Hardware Design` (Donanım Tasarımı):** Dijital devrelerin mantığını tasarlarken.
-*   **`Natural Language Processing` (Doğal Dil İşleme):** İnsan dilini anlamak ve işlemek için.
-*   Ayrıca, hangi problemlerin **`undecidable` (çözülemez)** veya **`intractable` (içinden çıkılmaz)** olduğunu anlamamızı sağlar.
+*   **Compilers (Derleyiciler):** Bir programlama dilinin kodunu analiz ederken (sözcüksel analiz, ayrıştırma).
+*   **Search Engines (Arama Motorları):** Metin içinde belirli kalıpları ararken.
+*   **Hardware Design (Donanım Tasarımı):** Dijital devrelerin mantığını tasarlarken.
+*   **Natural Language Processing (Doğal Dil İşleme):** İnsan dilini anlamak ve işlemek için.
+*   Ayrıca, hangi problemlerin **undecidable (çözülemez)** veya **intractable (içinden çıkılmaz)** olduğunu anlamamızı sağlar.
 
 ---
 
 ## 2. Central Concepts (Merkezi Kavramlar)
 
-`Automata Theory`'yi anlamak için bazı temel tanımları bilmemiz gerekir.
+Automata Theory'yi anlamak için bazı temel tanımları bilmemiz gerekir.
 
 ### a) Alphabet (Alfabe)
 Bir alfabe (`Σ` ile gösterilir), sembollerden oluşan **sonlu ve boş olmayan** bir kümedir.
@@ -54,10 +54,10 @@ Bir language (`L` ile gösterilir), belirli bir alphabet (`Σ`) üzerinden oluş
     *   `L4 = {ε}`: Sadece Empty String'i içeren language.
 
 ### d) Decision Problems (Karar Problemleri)
-`Automata Theory`'deki en temel problem türü "karar problemi"dir.
+Automata Theory'deki en temel problem türü "karar problemi"dir.
 > Verilen bir `w` dizgisi, belirli bir `L` diline ait midir? (`w ∈ L?`)
 
-Bir otomatın temel görevi, bu soruyu cevaplayan bir "karar verici" olarak hareket etmektir.
+Bir otomatın temel görevi, bu soruyu cevaplayan bir karar verici olarak hareket etmektir.
 
 ---
 
@@ -90,7 +90,7 @@ graph TD
 
 ## 4. Formal Proof Methods (Formel İspat Yöntemleri)
 
-`Automata Theory`, matematiksel temellere dayandığı için çeşitli ispat yöntemleri kullanılır. Bir iddianın doğruluğunu göstermek için kullanılan başlıca yöntemler şunlardır:
+Automata Theory, matematiksel temellere dayandığı için çeşitli ispat yöntemleri kullanılır. Bir iddianın doğruluğunu göstermek için kullanılan başlıca yöntemler şunlardır:
 
 *   **Deductive Proofs (Tümdengelimsel İspatlar):** Bilinen gerçeklerden (hipotezler ve aksiyomlar) yola çıkarak mantıksal çıkarım kuralları ile bir sonuca ulaşma yöntemidir.
 *   **Inductive Proofs (Tümevarımsal İspatlar):** Genellikle doğal sayılar veya özyineli olarak tanımlanmış yapılar üzerinde kullanılır. Bir temel durum (basis) için doğruluğu gösterilir ve ardından `n` için doğru olduğu varsayılarak `n+1` için de doğru olduğu (inductive step) kanıtlanır.

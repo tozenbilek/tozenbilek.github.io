@@ -7,13 +7,13 @@ parent: Automata Theory
 
 # Regular Expressions (Düzenli İfadeler)
 
-Şimdiye kadar, `Regular Languages` (Düzenli Dilleri) tanıyan makineleri, yani DFA ve NFA'ları inceledik. Şimdi ise bu language'ları cebirsel bir yolla tanımlamak ve oluşturmak için kullanılan güçlü bir notasyon olan **Regular Expressions (Düzenli İfadeler)**, kısaca **RE**'leri öğreneceğiz.
+Şimdiye kadar, Regular Languages (Düzenli Dilleri) tanıyan makineleri, yani DFA ve NFA'ları inceledik. Şimdi ise bu language'ları cebirsel bir yolla tanımlamak ve oluşturmak için kullanılan güçlü bir notasyon olan **Regular Expressions (Düzenli İfadeler)**, kısaca **RE**'leri öğreneceğiz.
 
 Düzenli ifadeler, bir metin editöründe "bul ve değiştir" yaparken veya bir terminalde dosya ararken (`ls *.txt`) kullandığımız kalıp eşleştirme (pattern matching) kurallarının teorik temelidir.
 
 ---
 
-## 1. `Regular Languages` ve `Regular Expressions` Arasındaki İlişki
+## 1. Regular Languages ve Regular Expressions Arasındaki İlişki
 
 Bu üç kavram arasında çok güçlü ve temel bir bağlantı vardır:
 *   Her düzenli ifade (`E`), bir regular language'ı (`L(E)`) tanımlar.

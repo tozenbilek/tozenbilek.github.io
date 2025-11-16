@@ -7,7 +7,7 @@ parent: Automata Theory
 
 # Context-Free Grammars (Bağlamdan Bağımsız Dilbilgisi)
 
-Önceki bölümlerde, `Regular Languages` (Düzenli Diller) sınıfını ve bunları tanıyan `Finite Automata` (Sonlu Otomatlar)'yı inceledik. Ancak, programlama dillerindeki iç içe geçmiş yapılar (parantezler, `if-else` blokları) veya `L = {0ⁿ1ⁿ}` gibi language'lar, finite automata'nın sınırlı hafızası tarafından tanınamaz.
+Önceki bölümlerde, Regular Languages (Düzenli Diller) sınıfını ve bunları tanıyan Finite Automata (Sonlu Otomatlar)'yı inceledik. Ancak, programlama dillerindeki iç içe geçmiş yapılar (parantezler, `if-else` blokları) veya `L = {0ⁿ1ⁿ}` gibi language'lar, finite automata'nın sınırlı hafızası tarafından tanınamaz.
 
 Bu daha karmaşık language'ları tanımlamak için daha güçlü bir araca ihtiyacımız var: **Context-Free Grammars (Bağlamdan Bağımsız Dilbilgisi)**, kısaca **CFG**. CFG'ler, bir language'ın sözdizimsel (syntactic) yapısını ve kurallarını tanımlamak için kullanılır ve **Context-Free Languages (CFL)** olarak bilinen daha geniş bir language sınıfını oluştururlar.
 
@@ -26,7 +26,7 @@ Bir CFG, matematiksel olarak 4 elemanlı bir demet (4-tuple) ile ifade edilir: `
 
 ---
 
-## 2. Derivations (Türetme) ve `Parse Trees` (Ayrıştırma Ağaçları)
+## 2. Derivations (Türetme) ve Parse Trees (Ayrıştırma Ağaçları)
 
 Bir CFG'nin bir language'ı nasıl ürettiğini anlamak için **derivation (türetme)** sürecini kullanırız. Bu süreç, start symbol `S` ile başlar ve bir kuralı tekrar tekrar uygulayarak, sadece terminal symbol'lerden oluşan bir string elde edene kadar devam eder.
 
