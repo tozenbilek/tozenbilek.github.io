@@ -70,22 +70,8 @@ graph LR
 
 ## 2. Assembly Programcısının Gözünden Donanım Mimarisi
 
-Assembly seviyesinde programlama yaparken, C'deki değişkenler veya fonksiyonlar gibi soyut kavramlar yerine, işlemcinin doğrudan yönettiği fiziksel kaynakları görürüz. Bu kaynaklar, bir programın durumunu (state) tanımlar.
+Assembly seviyesinde programlama yaparken, C’deki değişkenler veya fonksiyonlar gibi soyut kavramlar yerine, işlemcinin doğrudan yönettiği fiziksel kaynakları görürüz. Bu kaynaklar, bir programın durumunu (state) tanımlar.
 
-*   **Program Counter (PC / `%rip`):** İşlemcinin o an yürüttüğü komuttan bir sonraki komutun bellek adresini tutan en önemli register'dır. Varsayılan olarak, işlemci bir komutu yürüttükten sonra PC'yi bir sonrakini gösterecek şekilde otomatik olarak artırır. `jump` (dallanma) veya `call` (fonksiyon çağırma) gibi kontrol akışı komutları, doğrudan bu register'ın değerini değiştirerek programın akışını yönlendirir.
-
-*   **Registers (Tamsayı Yazmaçları):** İşlemcinin içinde bulunan, son derece hızlı ve küçük depolama alanlarıdır. Assembly dilinin "değişkenleri" olarak düşünülebilirler. Belleğe erişmek yavaş bir işlem olduğu için, sık kullanılan veriler ve ara hesaplamalar bu register'larda tutulur. x86-64 mimarisinde, `%rax`, `%rbx`, `%rdi` gibi isimlere sahip 16 adet genel amaçlı 64-bit register bulunur.
-
-*   **Condition Codes (Durum Kodları):** En son yürütülen aritmetik veya mantıksal işlemin sonucu hakkında bilgi tutan tek bitlik özel register'lardır. C'deki `if (a > b)` gibi koşullu ifadelerin temelini oluştururlar.
-    *   **`ZF` (Zero Flag):** Sonuç sıfır ise `1` olur.
-    *   **`SF` (Sign Flag):** Sonuç negatif ise `1` olur.
-    *   **`CF` (Carry Flag):** İşaretsiz bir toplama işleminde el de oluşursa `1` olur.
-    *   **`OF` (Overflow Flag):** İşaretli bir toplama işleminde taşma olursa `1` olur.
-    `cmp` (karşılaştırma) ve `test` gibi komutlar bu bayrakları ayarlar, `je` (jump if equal), `jg` (jump if greater) gibi koşullu dallanma komutları ise bu bayrakların değerine göre programın akışını değiştirir.
-
-*   **Memory (Bellek):** Kodun kendisi, global değişkenler, yığın (stack) ve dinamik olarak ayrılan verilerin (heap) tutulduğu devasa bir bayt dizisidir. Her baytın benzersiz bir adresi vardır. Assembly'de `movq (%rax), %rbx` gibi komutlarla belirli bellek adreslerindeki veriler okunabilir veya bu adreslere veri yazılabilir.
-
-*Görsel: İşlemci (CPU) ve Bellek (Memory) arasındaki temel ilişki. CPU, komutları ve verileri işlemek için kendi içindeki hızlı register'ları kullanır ve gerektiğinde yavaş olan ana belleğe adres veriyolu üzerinden erişir.*
 ```mermaid
 graph TD
     subgraph "CPU (İşlemci)"
@@ -109,6 +95,11 @@ graph TD
 
     style CPU fill:#D2E9FF,stroke:#99C7FF
 ```
+
+*   **Program Counter (PC / `%rip`):** İşlemcinin o an yürüttüğü komuttan bir sonraki komutun bellek adresini tutan en önemli register’dır.
+*   **Registers (Yazmaçlar):** İşlemcinin içindeki, çok hızlı erişilebilen küçük depolama birimleridir. Lokal değişkenler ve ara hesaplama sonuçları gibi sık kullanılan veriler burada tutulur.
+*   **Condition Codes (Durum Kodları):** En son yapılan aritmetik veya mantıksal işlemin sonucu hakkında bilgi tutan (örneğin, sonuç sıfır mıydı, negatif miydi vb.) tek bitlik bayraklardır. `if` ve `while` gibi yapıların temelini oluştururlar.
+*   **Memory (Bellek):** Kodun kendisi, global değişkenler, yığın (stack) ve programın çalışma zamanında ayırdığı diğer verilerin (heap) tutulduğu devasa bir bayt dizisidir.
 
 <div class="quiz-question">
   <p><b>Soru:</b> C dilindeki `if (x > y)` gibi koşullu ifadelerin çalışmasını sağlayan temel donanım mekanizması nedir?</p>
@@ -187,8 +178,13 @@ Bir programı dinamik hale getiren temel yapı taşları aritmetik işlemler ve 
 **Örnek: `a = b + c` C kodunun Assembly Karşılığı**
 `b`'nin `%rdi`'de, `c`'nin `%rsi`'de tutulduğunu ve sonucun (`a`) `%rax`'e yazılacağını varsayalım.
 
+**C Kodu:**
+```c
+long a = b + c;
+```
+
+**Assembly Karşılığı:**
 ```asm
-# C Kodu: long a = b + c;
 movq %rdi, %rax   # a = b; (%rax = %rdi)
 addq %rsi, %rax   # a = a + c; (%rax = %rax + %rsi)
 ```
