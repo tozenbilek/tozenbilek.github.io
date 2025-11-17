@@ -26,10 +26,17 @@ parent: System Programming
 | `andq S, D` | Bitwise AND (`D &= S`) | `notq D` | Bitwise NOT (`D = ~D`) |
 | `xorq S, D` | Bitwise XOR (`D ^= S`)| | |
 
-### b) `leaq` Komutu: Adres Hesabı Sanatı
-`leaq Source, Destination` (Load Effective Address) komutu, Assembly'nin en ilginç komutlarındandır. `Source` operandının belirttiği *bellek adresini hesaplar* ve sonucu `Destination` register'ına yazar. **Belleğe gerçekten erişmez, sadece adres matematiği yapar.**
+### b) `leaq` Komutu: Belleğe Dokunmadan Adres Hesabı Yapma Sanatı
+`leaq Source, Destination` (Load Effective Address) komutu, Assembly'nin en ilginç ve güçlü komutlarındandır. Standart `movq` komutunun aksine, bu komut **belleğe gerçekten erişmez.**
 
-Bu özelliği sayesinde, toplama ve sınırlı çarpma işlemleri için dahice bir şekilde kullanılabilir.
+`leaq`, `Source` operandının belirttiği *bellek adresini hesaplar* ve bu adresin kendisini `Destination` register'ına yazar.
+
+**`movq` ile `leaq` Arasındaki Temel Fark:**
+`%rdi` register'ında `0x100` değeri olduğunu varsayalım.
+*   `movq (%rdi), %rax`: Belleğin `0x100` adresine git, oradaki **değeri** oku ve `%rax`'e kopyala.
+*   `leaq (%rdi), %rax`: Sadece `(%rdi)` ifadesinin sonucunu, yani `0x100` **adresinin kendisini** `%rax`'e kopyala. Belleğe hiç dokunma.
+
+Bu özelliği sayesinde, toplama ve sınırlı çarpma işlemleri için de dahice bir şekilde kullanılabilir.
 
 *   **Örnek:** `%rax`'ta `x` değeri varken `leaq (%rax, %rax, 2), %rdx` komutu, `%rdx` register'ına `x + x*2`, yani `3*x` değerini yazar. Bu, `imul` komutundan daha hızlı olabilir.
 
@@ -48,21 +55,39 @@ Bu özelliği sayesinde, toplama ve sınırlı çarpma işlemleri için dahice b
 
 ## 2. Kontrol Akışı: Karşılaştırma ve Zıplama
 
-`if`, `while` gibi yapılar, **karşılaştırma** ve **koşullu zıplama** mekanizmalarıyla çalışır.
+`if`, `for`, `while` gibi C dilindeki kontrol yapıları, makine seviyesinde iki temel mekanizmayla çalışır: **durum kodlarını ayarlama** ve bu kodlara göre **koşullu zıplama**.
 
-1.  **Karşılaştırma:** `cmpq S2, S1` komutu, `S1 - S2` işlemini yapar ancak sonucu bir yere yazmaz. Sadece işlemin sonucuna göre **condition codes (durum kodlarını)** ayarlar.
-    *   **ZF (Zero Flag):** Sonuç sıfır ise `1` olur (`S1 == S2`).
-    *   **SF (Sign Flag):** Sonuç negatif ise `1` olur (`S1 < S2`).
-    *   **OF (Overflow Flag):** İşaretli taşma olduysa `1` olur.
+### a) Durum Kodlarını Ayarlama: `cmpq` ve `testq`
 
-2.  **Zıplama (Jump):** `j...` komutları, durum kodlarına bakarak programın akışını farklı bir etikete yönlendirir.
-    *   `jmp Etiket`: Koşulsuz zıpla.
-    *   `je Etiket` (Jump if Equal): Eşitse zıpla (`ZF=1`).
-    *   `jne Etiket` (Jump if Not Equal): Eşit değilse zıpla (`ZF=0`).
-    *   `jg Etiket` (Jump if Greater): İşaretli "büyükse" zıpla.
-    *   `ja Etiket` (Jump if Above): İşaretsiz "büyükse" zıpla.
+İşlemcinin içinde, en son yapılan aritmetik işlemin sonucu hakkında bilgi tutan özel, tek bitlik register'lar bulunur. Bunlara **Condition Codes (Durum Kodları)** denir. En önemlileri şunlardır:
 
-Bu mekanizma, `if-else` gibi yapıların temelini oluşturur. Aşağıdaki diyagram, bu mantıksal akışı görselleştirmektedir:
+*   **`ZF` (Zero Flag):** Sonuç **sıfır** ise `1` olur.
+*   **`SF` (Sign Flag):** Sonuç **negatif** ise `1` olur.
+*   **`CF` (Carry Flag):** İşaretsiz (unsigned) bir işlemde **taşma** olduysa `1` olur.
+*   **`OF` (Overflow Flag):** İşaretli (signed) bir işlemde **taşma** olduysa `1` olur.
+
+Durum kodlarını, bir sonraki `jump` komutunun karar verebilmesi için ayarlayan iki temel komut vardır:
+
+1.  **`cmpq S2, S1` (Compare):** Arka planda `S1 - S2` işlemini yapar ama sonucu hiçbir yere kaydetmez. Sadece bu çıkarma işleminin sonucuna göre durum kodlarını ayarlar.
+    *   Kullanım: `if (x == y)`, `if (x > y)` gibi karşılaştırmalar için.
+    *   `cmpq %rax, %rsi` -> `ZF=1` ise `%rsi == %rax` demektir.
+
+2.  **`testq S2, S1` (Test):** Arka planda `S1 & S2` (bitwise AND) işlemini yapar ve sonucu kaydetmez. Sadece bu AND işleminin sonucuna göre `ZF` ve `SF`'yi ayarlar.
+    *   Kullanım: Bir sayının belirli bitlerini kontrol etmek veya sayının sıfır olup olmadığını anlamak için çok verimlidir.
+    *   `testq %rax, %rax` -> `ZF=1` ise `%rax == 0` demektir.
+
+### b) Koşullu Zıplama (Conditional Jumps)
+
+`j...` ile başlayan komutlar, durum kodlarının o anki değerine bakarak programın akışını farklı bir **etikete (label)** yönlendirir.
+
+*   `jmp Etiket`: Koşulsuz zıpla.
+*   `je Etiket` (Jump if Equal): Eşitse zıpla (`ZF=1`).
+*   `jne Etiket` (Jump if Not Equal): Eşit değilse zıpla (`ZF=0`).
+*   `js Etiket` (Jump if Sign): Sonuç negatifse zıpla (`SF=1`).
+*   `jg Etiket` (Jump if Greater): İşaretli "büyükse" zıpla (`ZF=0` ve `SF==OF`).
+*   `ja Etiket` (Jump if Above): İşaretsiz "büyükse" zıpla (`CF=0` ve `ZF=0`).
+
+Bu mekanizma, `if-else` gibi yapıların temelini oluşturur:
 
 ```mermaid
 graph TD
@@ -86,57 +111,93 @@ graph TD
 
 ---
 
-## 3. Prosedürler (Fonksiyonlar) ve Stack
+## 3. Prosedürler (Fonksiyonlar) ve Program Yığını (The Stack)
 
-Fonksiyon çağrıları, belleğin "son giren ilk çıkar" (LIFO) prensibiyle çalışan **stack** bölgesi tarafından yönetilir. Stack, yüksek bellek adreslerinden alçak adreslere doğru büyür ve `%rsp` register'ı stack'in en "tepesinin" adresini tutar.
+Fonksiyon çağrıları, belleğin "son giren ilk çıkar" (LIFO) prensibiyle çalışan **yığın (stack)** bölgesi tarafından yönetilir. Stack, **yüksek bellek adreslerinden alçak adreslere doğru** büyür.
 
-### Çağrı Mekanizması
+İki önemli register bu süreci yönetir:
+*   `%rsp` (Stack Pointer): Her zaman yığının en "tepesinin" (en son eklenen elemanın) adresini tutar.
+*   `%rbp` (Base Pointer): Çağrılan fonksiyonun kendi çalışma alanının (stack frame) taban adresini işaretlemek için kullanılır. Bu, fonksiyonun kendi yerel değişkenlerine ve aldığı argümanlara tutarlı bir şekilde erişmesini sağlar.
 
-1.  **`callq Etiket`:** Çağıran, `call`'dan bir sonraki komutun adresini (**dönüş adresi**) stack'e `push` eder ve çağrılan fonksiyona zıplar.
-2.  **`retq`:** Çağrılan, işi bitince stack'teki dönüş adresini `pop` ederek program akışını çağıran kişiye geri verir.
+### a) Çağrı ve Geri Dönüş Mekanizması
 
-### Stack Frame
+1.  **`callq my_func`:** Bu komut iki temel iş yapar:
+    1.  `callq`'dan bir sonraki komutun adresini (**dönüş adresi**) yığına `push` eder. Bu, fonksiyon bittiğinde nereye geri döneceğini bilmesini sağlar.
+    2.  Programın kontrolünü `my_func` etiketindeki komuta zıplatarak aktarır.
 
-Her fonksiyon, stack üzerinde kendine ait **stack frame** denilen bir çalışma alanı kullanır.
+2.  **`retq`:** Bu komut da iki temel iş yapar:
+    1.  Yığının tepesindeki dönüş adresini bir register'a `pop` eder.
+    2.  Programın kontrolünü o adrese zıplatarak geri verir.
+
+### b) Yığın Çerçevesi (Stack Frame)
+
+Bir fonksiyon çağrıldığında, yığın üzerinde kendine ait, **yığın çerçevesi (stack frame)** adı verilen özel bir çalışma alanı oluşturulur. Bu çerçeve, fonksiyonun çalışması için gereken her şeyi barındırır.
 
 ```mermaid
 graph TD
-    A["...<br>(Yüksek Adresler)"]
-    B["Argümanlar (Caller'dan)"]
-    
-    subgraph "Aktif Fonksiyonun Stack Frame'i"
-        C["Dönüş Adresi"]
-        D["Kaydedilmiş Register'lar"]
-        E["Yerel Değişkenler"]
+    subgraph "Yığın (Stack) - Yüksek Adresten Düşüğe Büyür"
+        direction TB
+        A["..."]
+        B["Önceki Fonksiyonun Çerçevesi"]
+        
+        subgraph "<b>aktif_fonk() Stack Frame'i</b>"
+            C["<b>Dönüş Adresi</b><br><i>(callq tarafından eklendi)</i>"]
+            D["<b>Eski %rbp Değeri</b><br><i>(Fonksiyonun başında saklandı)</i>"]
+            E["Lokal Değişkenler<br>(Örn: int x, char* s)"]
+            F["..."]
+        end
+        
+        G["... (Daha Düşük Adresler)"]
     end
+    
+    A --> B --> C --> D --> E --> F --> G
 
-    F["..."]
-    G["%rsp (Stack Tepesi)<br><i>(Düşük Adreslere Doğru)</i>"]
-
-    A --> B --> C
-    E --> F
-    F -.-> G
+    subgraph "İşaretçiler (Pointerlar)"
+        direction LR
+        RBP["<b>%rbp</b><br>(Base Pointer)"] --> D
+        RSP["<b>%rsp</b><br>(Stack Pointer)"] --> F
+    end
+    
+    style RBP fill:#D2E9FF,stroke:#99C7FF
+    style RSP fill:#FFD2D2,stroke:#FF9999
 ```
+Bu yapı sayesinde, bir fonksiyon diğerini çağırdığında (ve o da bir başkasını), her birinin kendi özel değişken alanı olur ve program karışıklık olmadan çalışır.
 
 <div class="quiz-question">
-  <p><b>Soru:</b> Bir `foo` fonksiyonu, başka bir `bar` fonksiyonunu `callq bar` komutuyla çağırdığında, stack'e ne `push` edilir?</p>
-  <div class="quiz-option">A) `%rax` register'ının değeri.</div>
-  <div class="quiz-option">B) `bar` fonksiyonunun başlangıç adresi.</div>
-  <div class="quiz-option" data-correct="true">C) `callq` komutundan sonraki komutun adresi.</div>
-  <div class="quiz-option">D) `%rsp` register'ının o anki değeri.</div>
+  <p><b>Soru:</b> Bir C kodunda `if (x > 0)` kontrolü yapılacaktır. `%rax` register'ında `x`'in değeri tutuluyorsa, bu kontrolü yapmak için hangi Assembly komutları en mantıklısıdır?</p>
+  <div class="quiz-option">A) `movq $0, %rax` ve `je .zero_label`</div>
+  <div class="quiz-option" data-correct="true">B) `testq %rax, %rax` ve `jle .not_positive_label`</div>
+  <div class="quiz-option">C) `addq $1, %rax` ve `js .negative_label`</div>
+  <div class="quiz-option">D) `leaq (%rax), %rax` ve `jmp .loop_label`</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `call` komutu, `bar` fonksiyonu işini bitirip `ret` komutunu çalıştırdığında programın nereden devam edeceğini bilmesi için "return address" (dönüş adresini) stack'e kaydeder. Bu adres, `call` komutundan hemen sonra gelen komutun adresidir.</p>
+    <p><b>Cevap: B.</b> Bir sayının sıfır veya negatif olup olmadığını kontrol etmenin en verimli yollarından biri `testq` komutudur. 
+    <pre><code class="language-asm">
+testq %rax, %rax  # %rax & %rax işlemini yap. Sonuç 0 ise ZF=1, negatifse SF=1 olur.
+jle .not_positive_label # "Jump if Less or Equal". ZF=1 (eşitse) veya SF=1 (küçükse) zıpla.
+    </code></pre>
+    Bu kod bloğu, `x <= 0` durumunda etikete zıplar, bu da `x > 0` kontrolünün tam tersidir ve `if` bloklarını uygulamak için yaygın bir yöntemdir.</p>
   </div>
 </div>
 
 <div class="quiz-question">
-  <p><b>Soru:</b> Bir fonksiyonun yerel değişkenleri nerede saklanır?</p>
-  <div class="quiz-option">A) `Heap` (Öbek) bölgesinde.</div>
-  <div class="quiz-option" data-correct="true">B) O fonksiyona ait `Stack Frame` içinde.</div>
-  <div class="quiz-option">C) `Data` segmentinde.</div>
-  <div class="quiz-option">D) Register'larda.</div>
+  <p><b>Soru:</b> `main` fonksiyonu içinden `sum(a, b)` fonksiyonuna `callq sum` komutuyla bir çağrı yapılıyor. `sum` fonksiyonu işini bitirip `retq` komutunu çalıştırdığında programın akışı nereye döner?</p>
+  <div class="quiz-option">A) `main` fonksiyonunun en başına.</div>
+  <div class="quiz-option">B) Programın sonuna.</div>
+  <div class="quiz-option" data-correct="true">C) `main` içindeki `callq sum` komutundan hemen sonraki komuta.</div>
+  <div class="quiz-option">D) `sum` fonksiyonunun en başına.</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Bir fonksiyonun kendi kapsamındaki yerel değişkenler, o fonksiyon çağrıldığında stack'te oluşturulan geçici çalışma alanında, yani Stack Frame'inde saklanır. Fonksiyon sona erdiğinde bu alan serbest bırakılır.</p>
+    <p><b>Cevap: C.</b> `callq` komutu çalıştırılmadan hemen önce, bir sonraki komutun adresi ("dönüş adresi") yığına (stack) kaydedilir. `retq` komutunun tek görevi, yığındaki bu adresi alıp programı oradan devam ettirmektir. Bu mekanizma, fonksiyonların çağrıldıkları yere geri dönebilmelerini sağlar.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> `%rbp` (Base Pointer) register'ının temel amacı nedir?</p>
+  <div class="quiz-option">A) Yığının en tepesini göstermek.</div>
+  <div class="quiz-option" data-correct="true">B) Aktif fonksiyonun yığın çerçevesinin (stack frame) tabanını işaretleyerek lokal değişkenlere ve argümanlara sabit bir noktadan erişim sağlamak.</div>
+  <div class="quiz-option">C) Bir sonraki çalıştırılacak komutun adresini tutmak.</div>
+  <div class="quiz-option">D) Fonksiyonun dönüş değerini saklamak.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `%rsp` (Stack Pointer) yığına eleman eklenip çıkarıldıkça sürekli hareket eder. Bu nedenle, fonksiyonun kendi değişkenlerine `%rsp`'ye göre erişmek karmaşık olurdu. `%rbp` ise fonksiyon boyunca sabit kalarak, tüm lokal değişkenlere ve argümanlara bilinen, sabit bir ofsetle (`-8(%rbp)` gibi) erişilmesini sağlayan güvenilir bir "çapa" (anchor) görevi görür.</p>
   </div>
 </div>
 
