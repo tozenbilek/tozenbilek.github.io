@@ -30,6 +30,17 @@ graph TD
     A --> B --> C
 ```
 
+<div class="quiz-question">
+  <p><b>Soru:</b> Bir programcının, kodunun altında yatan donanım ve işletim sistemi gibi "gerçeklikleri" anlaması, ona en çok hangi konuda fayda sağlar?</p>
+  <div class="quiz-option">A) Daha hızlı kod yazma.</div>
+  <div class="quiz-option" data-correct="true">B) Zor ve gizemli hataları ayıklama ve performansı optimize etme.</div>
+  <div class="quiz-option">C) Daha fazla programlama dilini daha kolay öğrenme.</div>
+  <div class="quiz-option">D) Kullanıcı arayüzünü daha iyi tasarlama.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Soyutlamaların sızdığı veya performansın kritik olduğu durumlarda, altta yatan sistemin nasıl çalıştığını bilmek, bir programcının en güçlü silahıdır. Bu bilgi, özellikle zor hataları çözmede ve programı hızlandırmada fark yaratır.</p>
+  </div>
+</div>
+
 ---
 
 ## Büyük Gerçek #1: `int` Tamsayı Değildir, `float` Reel Sayı Değildir
@@ -92,7 +103,21 @@ Bellek, sonsuz ve hatasız bir kaynak değildir. C ve C++ gibi diller bellek üz
 
 ## Büyük Gerçek #4: Performans Asimptotik Karmaşıklıktan İbaret Değildir
 
-Algoritma derslerinde, algoritmaları `O(N)` veya `O(N log N)` gibi notasyonlarla analiz ederiz. Bu, bir algoritmanın büyük veriler için nasıl ölçeklendiğini anlamak için mükemmeldir. Ancak pratikte, **constant factors (sabit çarpanlar)** da bir o kadar önemlidir. Aynı asimptotik karmaşıklığa sahip iki kod parçası, çalışma hızı açısından 10 kat, hatta 100 kat farklılık gösterebilir. Performansı etkileyen faktörler arasında derleyici optimizasyonları, bellek erişim desenleri ve döngü yapıları bulunur.
+Algoritma derslerinde, algoritmaları `O(N)` veya `O(N log N)` gibi notasyonlarla analiz ederiz. Bu, bir algoritmanın büyük veriler için nasıl ölçeklendiğini anlamak için mükemmeldir. Ancak pratikte, **sabit çarpanlar (constant factors)** da bir o kadar önemlidir.
+
+Aynı asimptotik karmaşıklığa sahip iki kod parçası, çalışma hızı açısından 10 kat, hatta 100 kat farklılık gösterebilir. Performansı etkileyen faktörler arasında derleyici optimizasyonları, bellek erişim desenleri ve döngü yapıları bulunur.
+
+### Amdahl Yasası
+Amdahl Yasası, bir sistemin bir parçasını hızlandırdığımızda, toplam sistem performansında ne kadar iyileşme bekleyebileceğimizi söyleyen bir formüldür.
+
+**Formül:** `S_toplam = 1 / ((1 - α) + (α / k))`
+*   `S_toplam`: Toplam hızlanma.
+*   `α`: Programın hızlandırılan kısmının toplam çalışma süresine oranı.
+*   `k`: Programın o kısmındaki hızlanma faktörü.
+
+**Örnek:** Bir programın %80'i (`α = 0.8`), 4 kat (`k = 4`) hızlandırılabiliyor.
+`S_toplam = 1 / ((1 - 0.8) + (0.8 / 4)) = 1 / (0.2 + 0.2) = 1 / 0.4 = 2.5`
+Yani, programın çok büyük bir kısmını 4 kat hızlandırsak bile, toplamda sadece 2.5 kat hızlanma elde ederiz. Bu, sistemin hızlandırılamayan kısmının (`%20`) genel performansta bir darboğaz oluşturduğunu gösterir.
 
 <div class="quiz-question">
   <p><b>Soru:</b> Biri `200*N`, diğeri `2*N` maliyetli iki algoritma düşünün. Asimptotik analiz (`Big-O`) açısından her ikisi de `O(N)` olarak sınıflandırılır. Bu durum, pratik performans hakkında bize neyi hatırlatmalıdır?</p>
@@ -109,17 +134,38 @@ Algoritma derslerinde, algoritmaları `O(N)` veya `O(N log N)` gibi notasyonlarl
 
 ## Büyük Gerçek #5: Bilgisayarlar Program Çalıştırmaktan Fazlasını Yapar
 
-Yazdığımız programlar tek başına çalışmazlar. Bir işletim sistemi üzerinde çalışırlar ve sürekli olarak dış dünya ile etkileşime girerler. **I/O (Girdi/Çıktı)** işlemleri, **Networking (Ağ)** iletişimi ve **Concurrency (Eşzamanlılık)** gibi faktörler, program performansını ve doğruluğunu derinden etkiler. Bu etkileşimleri anlamak, sağlam ve verimli sistemler oluşturmanın temelidir.
+Yazdığımız programlar tek başına çalışmazlar. Bir işletim sistemi üzerinde çalışırlar ve sürekli olarak dış dünya ile etkileşime girerler. **I/O (Girdi/Çıktı)** işlemleri, **Ağ (Networking)** iletişimi ve **Eşzamanlılık (Concurrency)** gibi faktörler, program performansını ve doğruluğunu derinden etkiler.
+
+### Concurrency (Eşzamanlılık) vs. Parallelism (Paralellik)
+Bu iki kavram sıkça karıştırılır, ancak aralarında önemli bir fark vardır:
+*   **Concurrency:** Birden fazla görevin aynı anda **ilerlemesidir**. Tek bir işlemci çekirdeği, görevler arasında hızla geçiş yaparak bunu sağlayabilir (örneğin, bir görev I/O beklerken diğerini çalıştırmak).
+*   **Parallelism:** Birden fazla görevin aynı anda **yürütülmesidir**. Bu, görevlerin farklı işlemci çekirdeklerine dağıtılmasıyla, yani gerçek donanım desteğiyle mümkün olur.
+
+```mermaid
+graph TD
+    subgraph "Concurrency (Tek Çekirdek)"
+        direction LR
+        A["Görev A (Çalışıyor)"] --> B["Görev B (Bekliyor)"];
+        B --> C["Görev A (Bekliyor)"];
+        C --> D["Görev B (Çalışıyor)"];
+    end
+
+    subgraph "Parallelism (Çok Çekirdek)"
+        direction LR
+        Core1["Çekirdek 1: Görev A (Çalışıyor)"]
+        Core2["Çekirdek 2: Görev B (Çalışıyor)"]
+    end
+```
+
+Bu etkileşimleri anlamak, sağlam ve verimli sistemler oluşturmanın temelidir.
 
 <div class="quiz-question">
-  <p><b>Soru:</b> Bir programın, bir ağ soketinden veri beklerken "donmasının" veya yavaşlamasının temel nedeni hangi sistem gerçeğiyle en iyi açıklanır?</p>
-  <div class="quiz-option">A) `int`'lerin tamsayı olmaması.</div>
-  <div class="quiz-option">B) Belleğin önemli olması.</div>
-  <div class="quiz-option" data-correct="true">C) Bilgisayarların program çalıştırmaktan fazlasını yapması (I/O işlemleri).</div>
-  <div class="quiz-option">D) Performansın asimptotik karmaşıklıktan ibaret olmaması.</div>
+  <p><b>Soru:</b> Bir web sunucusu, tek bir işlemci çekirdeği üzerinde yüzlerce ağ bağlantısını aynı anda yönetebilmektedir. Bir bağlantıdan veri beklerken, diğer bağlantıdan gelen isteği işleyebilmektedir. Bu durum en iyi hangi kavramla açıklanır?</p>
+  <div class="quiz-option" data-correct="true">A) Concurrency (Eşzamanlılık)</div>
+  <div class="quiz-option">B) Parallelism (Paralellik)</div>
+  <div class="quiz-option">C) Amdahl Yasası</div>
+  <div class="quiz-option">D) Bellek Hiyerarşisi</div>
   <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Program, kendi komutlarını yürütmek yerine dış bir kaynaktan (ağ) veri beklemektedir. Bu I/O (Girdi/Çıktı) beklemesi, CPU'nun hızlı olmasından bağımsız olarak programın yavaşlamasına neden olan en temel faktördür.</p>
+    <p><b>Cevap: A.</b> Tek bir çekirdek, görevler arasında hızla geçiş yaparak (context switching) birden fazla işi aynı anda "ilerletiyormuş" gibi gösterebilir. Bu, paralellik değil, eşzamanlılıktır. Paralellik için görevlerin aynı anda, farklı çekirdeklerde fiziksel olarak çalıştırılması gerekir.</p>
   </div>
 </div>
-
----

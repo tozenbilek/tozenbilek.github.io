@@ -175,7 +175,46 @@ Assembly'deki en temel komutlardan biri `mov`'dur. Bir değeri bir yerden başka
 
 ---
 
-## 5. Adresleme Modları ve `swap` Örneği
+## 5. Temel Aritmetik ve Kontrol Akışı Komutları
+
+Bir programı dinamik hale getiren temel yapı taşları aritmetik işlemler ve `if/else` gibi kontrol akışlarıdır.
+
+### a) Aritmetik Komutlar: `addq`, `subq`
+
+*   `addq S, D`: `D = D + S` (Toplama)
+*   `subq S, D`: `D = D - S` (Çıkarma)
+
+**Örnek: `a = b + c` C kodunun Assembly Karşılığı**
+`b`'nin `%rdi`'de, `c`'nin `%rsi`'de tutulduğunu ve sonucun (`a`) `%rax`'e yazılacağını varsayalım.
+
+```asm
+# C Kodu: long a = b + c;
+movq %rdi, %rax   # a = b; (%rax = %rdi)
+addq %rsi, %rax   # a = a + c; (%rax = %rax + %rsi)
+```
+Önce `b`'nin değeri `%rax`'e kopyalanır, ardından `c`'nin değeri `%rax`'e eklenir. Sonuç `%rax`'te kalır.
+
+### b) Kontrol Akışı: `cmpq` ve `je`
+
+*   `cmpq S2, S1`: Arka planda `S1 - S2` işlemini yapar ve sonucu kaydetmez, sadece **durum kodlarını (condition codes)** ayarlar.
+*   `je etiket`: Eğer `cmpq`'nun sonucu sıfır ise (yani `S1 == S2`), programın akışını belirtilen `etiket`'e zıplatır.
+
+Bu iki komut, `if (a == b)` gibi yapıların temelini oluşturur.
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Bir `sum` fonksiyonu, kendisine argüman olarak gelen register'lar dışında `%rbx` register'ını da bir ara hesaplama için kullanmak istiyor. Fonksiyon çağrı kurallarına göre `sum` fonksiyonu ne yapmalıdır?</p>
+  <div class="quiz-option">A) Hiçbir şey yapmasına gerek yok, `%rbx`'i doğrudan kullanabilir.</div>
+  <div class="quiz-option" data-correct="true">B) `%rbx` "callee-saved" olduğu için, fonksiyonun başında orijinal değerini yığına kaydetmeli ve fonksiyondan çıkmadan önce geri yüklemelidir.</div>
+  <div class="quiz-option">C) `%rbx` "caller-saved" olduğu için, çağıran fonksiyonun sorumluluğundadır. `sum` fonksiyonu bir şey yapmaz.</div>
+  <div class="quiz-option">D) `%rbx` register'ı sadece işletim sistemi tarafından kullanılabilir.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `%rbx`, `%rbp`, ve `%r12-%r15` register'ları "callee-saved" (çağrılan tarafından korunur) olarak kabul edilir. Bu, bir fonksiyonun bu register'ları kullanabilmesi için, çağıran fonksiyona ait olan orijinal değeri bozmamakla yükümlü olduğu anlamına gelir. Bu yüzden fonksiyonun başında değeri yığına `push` eder ve sonunda `pop` ile geri alır.</p>
+  </div>
+</div>
+
+---
+
+## 6. Adresleme Modları ve `swap` Örneği
 
 Belleğe erişmenin farklı yollarına **adresleme modları** denir. Bu modlar, C'deki pointer ve dizi işlemlerini mümkün kılar.
 
