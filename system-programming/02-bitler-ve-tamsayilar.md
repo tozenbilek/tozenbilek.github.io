@@ -385,51 +385,71 @@ Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem
 
 ## 6. Tamsayı Toplaması ve Overflow (Taşma)
 
-Bilgisayar aritmetiği, gerçek dünyadaki matematikten farklıdır çünkü sınırlı sayıda bit ile çalışır. Bu sınırlılık, **overflow (taşma)** adı verilen duruma yol açabilir.
+Bilgisayar aritmetiği, gerçek dünyadaki matematikten farklıdır çünkü **sınırlı sayıda bit** ile çalışır. Bir `int` 32 bit ise, bu 2³² farklı sayıyı temsil edebilir, ama daha fazlasını edemez. Bu sınırlılık, toplama gibi basit bir işlemin sonucunun beklenenden farklı çıkmasına, yani **overflow (taşma)** adı verilen duruma yol açabilir.
 
-Toplama işlemi, `unsigned` ve `signed` tamsayılar için bit seviyesinde tamamen aynı şekilde yapılır. Fark, taşma durumunun nasıl yorumlandığında ortaya çıkar.
+Toplama işlemi, `unsigned` ve `signed` tamsayılar için donanım seviyesinde (bit düzeyinde) tamamen aynı şekilde yapılır. Fark, sonucun ve taşma durumunun nasıl yorumlandığında ortaya çıkar.
 
-### Unsigned Overflow (İşaretsiz Taşma)
-İşaretsiz toplama işleminde, sonuç `w` bitin temsil edebileceği maksimum değeri aştığında, sonuç `2ʷ` modunda alınır. Bu, sonucun "başa dönmesi" anlamına gelir.
+### Unsigned Addition & Overflow (İşaretsiz Toplama ve Taşma)
 
-*   **Örnek (4-bit unsigned):** `10 + 7 = ?`
-    ```
-    // 10'un deseni: 1010
-    //  7'nin deseni: 0111
-      1010  (10)
-    + 0111  (7)
-      ----
-     10001  (17)
-    ```
-    *   Sonuç 5 bit (`10001`) olduğu için 4-bit'e sığmaz. En soldaki bit atılır ve sonuç `0001` olur.
-    *   Yani, 4-bit'lik işaretsiz dünyada `10 + 7 = 1`.
+İşaretsiz tamsayılar, bir çember üzerindeki sayılar gibi düşünülebilir. Örneğin, 4-bit'lik bir sayı 0'dan 15'e kadardır. 15'e 1 eklediğinizde, en başa, yani 0'a dönersiniz. Bu duruma **modüler aritmetik** denir.
 
-### Signed Overflow (İşaretli Taşma)
-İşaretli toplama işleminde taşma, sonuç beklenen işaretin tersi olduğunda meydana gelir. Toplama işlemi mantıksal olarak yanlıştır.
+İşaretsiz toplama işleminde, sonuç `w` bitin temsil edebileceği maksimum değeri (2ʷ-1) aştığında, sonuç `2ʷ` modunda alınır. Bu, sonucun "başa dönmesi" anlamına gelir.
 
-*   **Pozitif Taşma:** İki pozitif sayının toplamı negatif olursa.
-    *   **Örnek (4-bit signed):** `5 + 4 = ?`
-        ```
-        // 5'in deseni: 0101
-        // 4'ün deseni: 0100
-          0101  (+5)
-        + 0100  (+4)
-        +----
-          1001  (-7)
-        ```
-        *   Sonuç `+9` olmalıydı, ancak 4-bit `signed` aralığı `-8` ile `+7` arasıdır. Sonuç bu aralığın dışına taştı ve işaret biti `1` oldu, yani negatif bir sayı (`-7`) elde edildi. Bu bir `overflow`'dur.
+**Örnek (4-bit unsigned):** `11 + 8 = ?`
 
-*   **Negatif Taşma:** İki negatif sayının toplamı pozitif olursa.
-    *   **Örnek (4-bit signed):** `(-5) + (-4) = ?`
-        ```
-        // -5'in deseni: 1011
-        // -4'ün deseni: 1100
-          1011  (-5)
-        + 1100  (-4)
-        +----
-         10111  (-9)
-        ```
-        *   Sonuç `-9` olmalıydı. 5 bitlik sonuçtan en soldaki biti atarsak elimizde `0111` kalır. Bu da `+7`'dir. İki negatif sayının toplamı pozitif çıktı. Bu da bir `overflow`'dur.
+```
+  11    (Decimal) ->   1011 (Binary)
++  8    (Decimal) -> + 1000 (Binary)
+----                 ------
+  19    (Decimal) ->  10011 (Binary) -> 5-bit!
+```
+
+*   **Sorun:** Sonuç `10011` olarak 5 bit uzunluğundadır, ancak bizim sayımız sadece 4 bit saklayabilir.
+*   **Çözüm:** En soldaki, yani 5. bit (elde biti - carry out), atılır.
+*   **Sonuç:** Geriye `0011` kalır. Bu da onluk tabanda `3`'e eşittir.
+*   **Yorum:** 4-bit'lik işaretsiz dünyada `11 + 8` işleminin sonucu `3`'tür. Matematiksel olarak bu, `(11 + 8) mod 16 = 19 mod 16 = 3` ile aynıdır.
+
+### Signed Addition & Overflow (İşaretli Toplama ve Taşma)
+
+İşaretli (Two's Complement) toplama işleminde taşma, sonucun mantıksal olarak yanlış bir işarete sahip olmasıyla tespit edilir.
+
+**Taşma Tespit Kuralları:**
+1.  **Pozitif Taşma:** İki **pozitif** sayının toplamı **negatif** bir sonuç verirse.
+2.  **Negatif Taşma:** İki **negatif** sayının toplamı **pozitif** bir sonuç verirse.
+3.  *Not:* Bir pozitif ve bir negatif sayının toplamı **asla** taşmaya neden olmaz.
+
+---
+
+**1. Pozitif Taşma Örneği (4-bit signed):** `6 + 5 = ?`
+(4-bit signed aralığı: -8 ile +7 arası)
+
+```
+   6    (Decimal) ->   0110 (Binary)
++  5    (Decimal) -> + 0101 (Binary)
+----                 ------
+  11    (Decimal) ->   1011 (Binary) -> Bu ne anlama geliyor?
+```
+
+*   **Sorun:** Sonucun `+11` olması beklenir, ancak bu değer 4-bit'lik işaretli sayı aralığına sığmaz.
+*   **Sonuç:** Elde edilen `1011` bit deseni, Two's Complement'te `-5`'e karşılık gelir.
+*   **Yorum:** İki pozitif sayıyı topladık ve sonuç negatif çıktı. Bu, bariz bir **pozitif overflow** durumudur.
+
+---
+
+**2. Negatif Taşma Örneği (4-bit signed):** `(-6) + (-5) = ?`
+
+```
+  -6    (Decimal) ->   1010 (Binary)
++ -5    (Decimal) -> + 1011 (Binary)
+----                 ------
+ -11    (Decimal) ->  10101 (Binary) -> 5-bit!
+```
+
+*   **Sorun:** Sonucun `-11` olması beklenir, ancak bu da aralığa sığmaz.
+*   **Çözüm:** 5 bitlik sonuçtan en soldaki bit (elde biti) atılır ve geriye `0101` kalır.
+*   **Sonuç:** `0101` bit deseni, Two's Complement'te `+5`'e karşılık gelir.
+*   **Yorum:** İki negatif sayıyı topladık ve sonuç pozitif çıktı. Bu da bir **negatif overflow** durumudur.
+
 
 <div class="quiz-question">
   <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayılar kullanılarak `5 + 5` işlemi yapılırsa sonuç ne olur ve neden?</p>

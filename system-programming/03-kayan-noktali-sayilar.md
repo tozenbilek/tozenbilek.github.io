@@ -60,42 +60,76 @@ C dilindeki `float` ve `double` türleri, bu standardın iki yaygın uygulaması
 
 ---
 
-## 3. Örnek: `-12.75` Sayısını `float`'a Dönüştürme
+## 3. Örnek: -12.75 Sayısını `float`'a Dönüştürme (Basit Anlatım)
 
-Teoriyi pratiğe dökelim ve `-12.75` sayısını adım adım 32-bit `float`'a çevirelim.
+Teoriyi pratiğe dökelim ve `-12.75` sayısını, sanki bir bulmacanın parçalarını birleştirir gibi, adım adım 32-bit `float`'a çevirelim. Amacımız 32 bitlik kutucuğu `s | exp | frac` kuralına göre doldurmak.
 
-**Adım 1: İşaret Biti (`s`)**
-Sayı negatif olduğu için işaret biti **`1`**'dir.
+---
 
-**Adım 2: Sayıyı İkili Sisteme Çevirme**
-*   `12`'nin ikili karşılığı: `1100`
-*   `0.75`'in ikili karşılığı: `0.5 + 0.25` => `2⁻¹ + 2⁻²` => `.11`
-*   Birleştir: `1100.11`₂
+### **Adım 1: Sayının İşaretini Belirle (`s`)**
 
-**Adım 3: Normalize Etme (1.M Formatına Getirme)**
-Sayıyı, başında `1.` olacak şekilde yazarız ve virgülü kaç basamak kaydırdığımızı not ederiz.
-*   `1100.11` = `1.10011 × 2³`
-*   Buradan gerçek üs değerimiz **`E = 3`** çıkar.
-*   Virgülün sağında kalan kısım ise **`M`**'nin kesir kısmıdır: `10011`.
+*   **Ne yapıyoruz?** Sayımızın pozitif mi negatif mi olduğuna bakıyoruz.
+*   **Analiz:** Sayımız `-12.75`, yani negatif.
+*   **Sonuç:** IEEE 754 standardına göre negatif sayılar için işaret biti **`1`**'dir.
 
-**Adım 4: Üs Bitlerini (`exp`) Hesaplama**
-`float` için **Bias** değeri `127`'dir. `exp` alanı, `E + Bias` formülüyle hesaplanır.
-*   `exp` = `3 + 127 = 130`
-*   `130`'un 8-bit ikili karşılığı: **`10000010`**
+> **Bulduk:** `s = 1`
 
-**Adım 5: Kesir Bitlerini (`frac`) Doldurma**
-`frac` alanı, 3. adımda bulduğumuz `10011` ile başlar ve 23 bite tamamlanacak şekilde sağına `0`'lar eklenir.
-*   `frac` = **`10011000000000000000000`**
+---
 
-**Sonuç: Bitleri Birleştirme**
-Bulduğumuz üç parçayı birleştirelim:
-*   `s`: `1`
-*   `exp`: `10000010`
-*   `frac`: `10011000000000000000000`
+### **Adım 2: Sayıyı İkili (Binary) Sisteme Çevir**
 
-```
-1 10000010 10011000000000000000000
-```
+*   **Ne yapıyoruz?** Sayının pozitif halini (`12.75`) ikili sisteme çeviriyoruz. Bunu iki parça halinde yaparız: virgülden öncesi ve sonrası.
+*   **Analiz:**
+    *   **Tam Kısım (12):** 12'yi ikiliye çevirirsek `1100`₂ elde ederiz. (8 + 4)
+    *   **Ondalık Kısım (0.75):** 0.75'i ikiliye çevirirsek `.11`₂ elde ederiz. (0.5 + 0.25 yani 2⁻¹ + 2⁻²)
+*   **Sonuç:** Bu iki parçayı birleştirdiğimizde `1100.11`₂ sayısını elde ederiz.
+
+> **Bulduk:** Sayımızın ikili hali `1100.11`
+
+---
+
+### **Adım 3: Sayıyı Normalize Et (Bilimsel Gösterim)**
+
+*   **Ne yapıyoruz?** İkili sayımızı, `1.` ile başlayacak şekilde bilimsel gösterim formatına getiriyoruz. Tıpkı onluk sistemde `1234` sayısını `1.234 × 10³` olarak yazmak gibi.
+*   **Analiz:** `1100.11` sayısında, virgülü 3 basamak sola kaydırarak `1.` formatına ulaşırız.
+*   **Sonuç:** `1.10011 × 2³`.
+    *   Bu gösterimdeki üs (`3`), bizim **gerçek üs değerimizdir (`E`)**.
+    *   Virgülden sonraki kısım (`10011`), bizim **kesir (mantissa) başlangıcımızdır**.
+
+> **Bulduk:** Gerçek üs `E = 3`, Kesir başlangıcı `10011`
+
+---
+
+### **Adım 4: Üs Alanını Hesapla (`exp`)**
+
+*   **Ne yapıyoruz?** `float`'ın 8 bitlik `exp` alanını dolduracağız. Bu alanda gerçek üs değeri doğrudan saklanmaz. Bunun yerine, "sapmalı" (biased) bir değer saklanır. `float` için bu sapma (bias) değeri **127**'dir.
+*   **Analiz:** Formülümüz basit: `exp = E + Bias`
+*   **Sonuç:** `exp = 3 + 127 = 130`. Şimdi `130`'u 8-bit ikili sayıya çeviriyoruz: `10000010`.
+
+> **Bulduk:** `exp = 10000010`
+
+---
+
+### **Adım 5: Kesir Alanını Doldur (`frac`)**
+
+*   **Ne yapıyoruz?** `float`'ın 23 bitlik `frac` alanını dolduracağız.
+*   **Analiz:** 3. adımda bulduğumuz kesir başlangıcı `10011` idi. Bu kısmı, toplam 23 bit olacak şekilde sonuna sıfırlar ekleyerek tamamlarız.
+*   **Sonuç:** `10011`**`000000000000000000`** (5 bit + 18 tane 0)
+
+> **Bulduk:** `frac = 10011000000000000000000`
+
+---
+
+### **Final: Parçaları Birleştir!**
+
+Artık bulmacanın tüm parçalarına sahibiz. Onları `s | exp | frac` sırasına göre birleştirelim:
+
+*   **s:** `1`
+*   **exp:** `10000010`
+*   **frac:** `10011000000000000000000`
+
+**Sonuç:**
+`1 10000010 10011000000000000000000`
 
 İşte `-12.75` sayısının 32-bit `float` olarak bellekteki tam karşılığı budur.
 
@@ -112,29 +146,46 @@ Bulduğumuz üç parçayı birleştirelim:
 
 ---
 
-## 4. Interpreting the Bits: What the Exponent Tells Us (Bitleri Yorumlamak: Üs Bize Ne Söyler?)
+## 4. Üs Alanının Sırrı: Sayının Kategorisini Anlamak
 
-Bir kayan noktalı sayının bitlerine baktığımızda, en önemli ipucunu **üs (`exp`)** alanı verir. Bu alan, sayının hangi "kategoride" olduğunu belirleyen bir anahtar gibidir. Üç ana durum vardır:
+Bir `float` sayısının 32 bitine baktığımızda, bu bitlerin ne anlama geldiğini çözen bir **anahtar** vardır: 8 bitlik **`exp` (üs)** alanı.
 
-### Case 1: Normalized (Normal Sayılar - En Yaygın Durum)
+Bu alanı, bir sayının hangi "kategoride" olduğunu belirleyen bir **mod seçme anahtarı** gibi düşünebilirsiniz. `exp` alanının değeri, bilgisayara şunu söyler: "Karşındaki bitleri normal bir sayı gibi mi okuyacaksın, yoksa bu özel bir durum mu?"
 
-*   **Ne zaman?** `exp` alanı ne tamamen `0`'lardan ne de tamamen `1`'lerden oluşuyorsa.
-*   **Bu ne anlama gelir?** Bu, "normal", standart bir ondalıklı sayıdır. `12.75`, `-0.5`, `10000.0` gibi sayıların hepsi bu kategoriye girer.
-*   **Önemli Kural:** Bu modda, bilgisayar sayının başında gizli bir `1.` olduğunu varsayar (`1.fraction...`). Bu, fazladan bir bitlik hassasiyet kazanmamızı sağlayan akıllıca bir hiledir.
+Bu anahtarın üç temel konumu vardır:
 
-### Case 2: Denormalized & Zeros (Sıfıra Yakın Sayılar ve Sıfırlar)
+---
 
-*   **Ne zaman?** `exp` alanı tamamen `0`'lardan (`00...0`) oluşuyorsa.
-*   **Bu ne anlama gelir?** Sayı ya sıfırın kendisidir ya da sıfıra çok yakındır.
-    *   Eğer `frac` alanı da tamamen `0` ise, sayı **Sıfır**'dır (`+0.0` veya `-0.0`).
-    *   Eğer `frac` alanında `1` varsa, sayı **Denormalized**'dir. Bunlar, "normal" olamayacak kadar küçük sayılardır. Bu modda gizli `1.` kuralı uygulanmaz.
+### **Konum 1: Normal Sayılar (exp ne `00...0` ne de `11...1` ise)**
 
-### Case 3: Special Values (Özel Durumlar - Sonsuz ve NaN)
+Bu, en sık karşılaşacağımız, "standart" konumdur. `exp` alanı `00000000` veya `11111111` **değilse**, bilgisayar bunun normal bir ondalıklı sayı olduğunu anlar.
 
-*   **Ne zaman?** `exp` alanı tamamen `1`'lerden (`11...1`) oluşuyorsa.
+*   **Ne Anlama Gelir?** `12.75`, `-0.5`, `10000.0` gibi aklınıza gelebilecek sayıların neredeyse tamamı bu kategoridedir.
+*   **En Önemli Kural (Gizli Bit Hilesi):** Bu modda bilgisayar, sayının kesir kısmının (`frac`) başında gizli bir `1.` olduğunu varsayar. Yani, `frac` alanı `10011...` ise, bilgisayar bunu `1.10011...` olarak okur. Bu akıllıca hile, bize fazladan 1 bitlik hassasiyet kazandırır ve sayıları daha verimli saklamamızı sağlar.
+
+---
+
+### **Konum 2: Sıfır ve Sıfıra Çok Yakın Sayılar (exp `00...0` ise)**
+
+Eğer `exp` anahtarı `00000000` konumuna getirilirse, bilgisayar "Dikkat, bu sayı ya sıfır ya da sıfıra aşırı yakın!" moduna geçer.
+
+*   **Bu ne anlama gelir?** Bu mod, normal sayıların temsil edemeyeceği kadar küçük değerler için kullanılır.
+*   **İki alt durumu vardır:**
+    1.  Eğer `frac` alanı da tamamen `0` ise, sayı tam olarak **Sıfır**'dır (`+0.0` veya `-0.0`).
+    2.  Eğer `frac` alanında `1`'ler varsa, sayı **Denormalized**'dir. Bunlar, o kadar küçük sayılardır ki, "gizli `1.`" hilesini kullanamayız. Bu mod, sayıların aniden sıfıra düşmesi yerine, yavaşça sıfıra yaklaşmasını sağlar ("gradual underflow").
+
+---
+
+### **Konum 3: Özel Değerler - Sonsuz ve Hata Kodları (exp `11...1` ise)**
+
+Eğer `exp` anahtarı `11111111` konumuna getirilirse, bilgisayar "Normal bir sayıyla uğraşmıyoruz, bu özel bir durum!" moduna geçer. Bu, programın çökmesini önleyen bir güvenlik mekanizmasıdır.
+
 *   **Bu ne anlama gelir?** Sonuç, matematiksel bir sayı değildir.
-    *   Eğer `frac` alanı tamamen `0` ise, sonuç **Infinity (Sonsuz)**'dur. `1.0 / 0.0` gibi bir işlemin sonucudur.
-    *   Eğer `frac` alanında `1` varsa, sonuç **NaN (Not a Number - Sayı Değil)**'dir. `sqrt(-1)` veya `0.0 / 0.0` gibi geçersiz işlemlerin sonucudur.
+*   **İki alt durumu vardır:**
+    1.  Eğer `frac` alanı tamamen `0` ise, sonuç **Sonsuz (Infinity)**'dur. Bu, `1.0 / 0.0` gibi bir işlemin sonucudur.
+    2.  Eğer `frac` alanında `1`'ler varsa, sonuç **NaN (Not a Number - Sayı Değil)**'dir. Bu, `sqrt(-1)` veya `0.0 / 0.0` gibi geçersiz işlemlerin sonucunu temsil eden bir tür "hata kodudur".
+
+Bu yapı, bilgisayarın hem çok geniş bir aralıktaki sayıları temsil etmesini hem de matematiksel olarak imkansız durumlarla başa çıkabilmesini sağlar.
 
 <div class="quiz-question">
   <p><b>Soru:</b> Bir `float` sayının `exp` alanı tamamen `1`'lerden, `frac` alanı ise `0`'dan farklı bir değerden oluşuyor. Bu sayı nedir?</p>
