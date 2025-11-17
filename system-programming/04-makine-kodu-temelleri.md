@@ -38,14 +38,10 @@ Bir C programını derlediğimizde aslında birkaç adımlık bir süreç işler
 
 ```mermaid
 graph LR
-    A["C Kaynak Kodu (.c)"] -- "gcc -E" --> Preprocessed["Genişletilmiş Kod (.i)"];
-    Preprocessed --> B{Compiler};
-    A --> B{Compiler};
-    B -- "gcc -S" --> C["Assembly Kodu (.s)"];
-    C --> D{Assembler};
-    D --> E["Nesne Kodu (.o)"];
-    E --> F{Linker};
-    F --> G["Executable File (.exe / .out)"];
+    A["C Kaynak Kodu (.c)"] -- "gcc -E <br> (Preprocessor)" --> B["Genişletilmiş Kod (.i)"];
+    B -- "gcc -S <br> (Compiler)" --> C["Assembly Kodu (.s)"];
+    C -- "gcc -c <br> (Assembler)" --> D["Nesne Kodu (.o)"];
+    D -- "gcc <br> (Linker)" --> E["Yürütülebilir Dosya"];
 ```
 
 <div class="quiz-question">
