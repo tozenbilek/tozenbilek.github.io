@@ -300,3 +300,145 @@ ret
 </div>
 
 ---
+
+## 4. Örnek: C Kodundan Assembly'ye Tam Bir Dönüşüm
+
+Şimdiye kadar öğrendiğimiz tüm parçaları birleştirelim ve basit bir C programının baştan sona nasıl Assembly'ye dönüştüğünü inceleyelim.
+
+### a) Kaynak C Kodu
+
+```c
+// temp_example.c
+int topla(int a, int b) {
+    int sonuc = a + b;
+    return sonuc;
+}
+
+int main() {
+    int z = topla(10, 20);
+    return z;
+}
+```
+
+### b) Üretilen Assembly Kodu ve Analizi
+
+Bu C kodunu `gcc -O1 -S` gibi bir komutla derlediğimizde, aşağıdaki gibi bir Assembly dosyası elde ederiz. Her bölümü satır satır inceleyelim.
+
+#### `topla` Fonksiyonu
+
+```asm
+topla:
+    leal    (%rdi,%rsi), %eax
+    ret
+```
+
+*   **Satır 1: `topla:`** - Bu bir etikettir ve `topla` fonksiyonunun başlangıç adresini belirtir.
+*   **Satır 2: `leal (%rdi,%rsi), %eax`** - Bu satır, derleyicinin yaptığı zekice bir optimizasyondur.
+    *   x86-64 çağrı kurallarına göre, ilk iki `int` argümanı olan `a` ve `b`, sırasıyla 32-bit'lik `%edi` ve `%esi` register'larına (64-bit'lik `%rdi` ve `%rsi`'nin alt kısımları) yerleştirilir.
+    *   `leal` komutu, normalde adres hesabı yapar. `(%rdi, %rsi)` ifadesi, `%rdi` ve `%rsi`'nin değerlerini toplar. `leal` bu toplam sonucunu (belleğe gitmeden) doğrudan `%eax` register'ına yazar. `%eax`, fonksiyonların 32-bit dönüş değerleri için kullanılan standart register'dır.
+    *   Yani bu tek komut, `int sonuc = a + b;` ve `return sonuc;` işlemlerinin ikisini birden yapmış olur.
+*   **Satır 3: `ret`** - Fonksiyondan geri döner. `call` komutunun yığına yazdığı dönüş adresine zıplar.
+
+#### `main` Fonksiyonu
+
+```asm
+main:
+    movl    $20, %esi
+    movl    $10, %edi
+    call    topla
+    ret
+```
+
+*   **Satır 1: `main:`** - Programın başlangıç noktası olan `main` fonksiyonunun etiketidir.
+*   **Satır 2: `movl $20, %esi`** - `topla` fonksiyonunun ikinci argümanı (`b=20`) olan `20` sabit değerini, ikinci argüman register'ı olan `%esi`'ye yükler.
+*   **Satır 3: `movl $10, %edi`** - `topla` fonksiyonunun ilk argümanı (`a=10`) olan `10` sabit değerini, ilk argüman register'ı olan `%edi`'ye yükler.
+*   **Satır 4: `call topla`** - `topla` fonksiyonunu çağırır. Bu komut, bir sonraki komutun (`ret`) adresini yığına kaydeder ve programın akışını `topla` etiketine yönlendirir.
+*   **Satır 5: `ret`** - `topla` fonksiyonu işini bitirip geri döndüğünde, `%eax` register'ında `30` değeri bulunur. `main` fonksiyonu da bu değeri işletim sistemine dönüş değeri olarak kullanarak sonlanır.
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Yukarıdaki `main` fonksiyonunda, `call topla` komutu çalıştırılmadan hemen önce `%rdi` ve `%rsi` register'ları hangi değerleri içerir?</p>
+  <div class="quiz-option">A) `20` ve `10`</div>
+  <div class="quiz-option">B) `x` ve `y`'nin bellek adreslerini</div>
+  <div class="quiz-option" data-correct="true">C) `10` ve `20`</div>
+  <div class="quiz-option">D) `0` ve `0`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> x86-64 çağrı kurallarına göre, bir fonksiyona geçirilen ilk tamsayı argümanı `%rdi`'ye (veya 32-bit ise `%edi`'ye), ikincisi ise `%rsi`'ye (veya `%esi`'ye) yerleştirilir. Derleyici, `topla(10, 20)` çağrısı için `10`'u `%edi`'ye ve `20`'yi `%esi`'ye yükler.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> `topla` fonksiyonu neden `pushq %rbp` ve `movq %rsp, %rbp` gibi stack frame kurma komutlarını kullanmamıştır?</p>
+  <div class="quiz-option">A) Çünkü `main` fonksiyonu tarafından çağrılmıştır.</div>
+  <div class="quiz-option" data-correct="true">B) Çünkü fonksiyon çok basittir; herhangi bir lokal değişken için yığına (stack) ihtiyaç duymamış ve başka bir fonksiyonu çağırmamıştır.</div>
+  <div class="quiz-option">C) Modern derleyiciler artık stack frame kullanmaz.</div>
+  <div class="quiz-option">D) Çünkü dönüş değeri bir register ile döndürülmüştür.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> Stack frame kurmak, özellikle fonksiyonun kendi lokal değişkenleri varsa veya başka fonksiyonları çağıracaksa (dönüş adresini korumak için) gereklidir. `topla` fonksiyonu o kadar basittir ki, tüm işlemlerini sadece register'lar üzerinde yapabilir. `-O1` gibi optimizasyon seviyelerinde derleyici, bu gereksiz stack operasyonlarını koddran çıkararak daha verimli bir makine kodu üretir. Bu tür fonksiyonlara "leaf function" (yaprak fonksiyon) denir.</p>
+  </div>
+</div>
+
+---
+
+## 5. Döngü Yapıları: Fibonacci Örneği
+
+`for` ve `while` gibi döngü yapıları, Assembly'de `if` yapılarına benzer şekilde, koşullu dallanma (`j...`) ve koşulsuz zıplama (`jmp`) komutlarının bir kombinasyonuyla oluşturulur. Bunu iteratif bir Fibonacci fonksiyonu üzerinden inceleyelim.
+
+### a) Kaynak C Kodu (İteratif Fibonacci)
+
+```c
+int fib(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    int prev = 0;
+    int current = 1;
+    for (int i = 2; i <= n; i++) {
+        int next = prev + current;
+        prev = current;
+        current = next;
+    }
+    return current;
+}
+```
+
+### b) Üretilen Assembly Kodu ve Analizi
+
+```asm
+fib:
+    cmpl    $1, %edi
+    jle     .L_return_n
+    movl    $0, %ecx       ; prev = 0
+    movl    $1, %eax       ; current = 1
+    movl    $2, %edx       ; i = 2
+.L_loop_start:
+    cmpl    %edi, %edx     ; i <= n kontrolü (n - i)
+    jg      .L_loop_end
+    leal    (%rcx,%rax), %esi ; next = prev + current
+    movl    %eax, %ecx     ; prev = current
+    movl    %esi, %eax     ; current = next
+    addl    $1, %edx       ; i++
+    jmp     .L_loop_start
+.L_return_n:
+    movl    %edi, %eax     ; return n;
+    ret
+.L_loop_end:
+    ret
+```
+
+*   **Satır 2-3: `cmpl $1, %edi` / `jle .L_return_n`**
+    *   `if (n <= 1)` kontrolü yapılır. Argüman `n` (`%edi` içinde) `1` ile karşılaştırılır. Eğer küçük veya eşitse (`jle`), `.L_return_n` etiketine zıplanır.
+*   **Satır 4-6: `movl ...`**
+    *   Döngü değişkenleri başlatılır: `prev` (`%ecx`), `current` (`%eax`), `i` (`%edx`). `current`'ın dönüş değeri register'ı olan `%eax`'e konması bir optimizasyondur.
+*   **Satır 7: `.L_loop_start:`** - Döngünün başlangıcını işaret eden etiket.
+*   **Satır 8-9: `cmpl %edi, %edx` / `jg .L_loop_end`**
+    *   `for` döngüsünün `i <= n` koşulu kontrol edilir. `cmp` komutu `i - n` işlemini yapar. Eğer `i > n` ise (`jg` - jump if greater), döngü biter ve `.L_loop_end` etiketine zıplanır.
+*   **Satır 10-12: `leal`, `movl`, `movl`**
+    *   Döngü içindeki üç atama işlemi yapılır: `next = prev + current`, `prev = current`, `current = next`.
+*   **Satır 13: `addl $1, %edx`**
+    *   Döngü sayacı `i` bir artırılır (`i++`).
+*   **Satır 14: `jmp .L_loop_start`**
+    *   Koşulsuz olarak döngünün başına zıplanır ve kontrol tekrar yapılır.
+*   **Satır 15-17: `.L_return_n`**
+    *   `n <= 1` ise çalışacak blok. `n`'nin orijinal değeri (`%edi` içinde) dönüş register'ı `%eax`'e kopyalanır ve fonksiyon `ret` ile sonlanır.
+*   **Satır 18: `.L_loop_end:`**
+    *   Döngü bittiğinde, `current`'ın son değeri zaten `%eax`'te olduğu için doğrudan `ret` komutuyla geri dönülür.

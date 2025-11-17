@@ -1,159 +1,165 @@
 ---
 layout: default
-title: Bitler ve Tamsayılar
+title: Bits and Integers
 nav_order: 1
 parent: System Programming
 ---
 
-# Bitler, Baytlar ve Tamsayılar
+# Bits, Bytes, and Integers
 
-Dijital dünyadaki her şeyin temelinde **bit**'ler yatar. Bu bölümde, verinin bu en temel formda nasıl temsil edildiğini, manipüle edildiğini ve tamsayılar gibi daha karmaşık yapıları nasıl oluşturduğunu inceleyeceğiz.
-
----
-
-## 1. Binary (İkili) Temsili
-
-Bilgisayarlar, bilgiyi depolamak ve işlemek için sadece iki durumu anlarlar: açık veya kapalı, yüksek voltaj veya düşük voltaj. Bu iki duruma karşılık gelen rakamlar **1** ve **0**'dır. Tek bir 1 veya 0'a **bit** denir.
-
-*   **Byte (Bayt):** 8 bitten oluşan bir grupdur. Bellekteki en küçük adreslenebilir birimdir. Bir bayt, `00000000`'dan `11111111`'e kadar 256 (2⁸) farklı değer alabilir.
-*   **Word (Kelime):** Bir işlemcinin tek seferde işlediği doğal veri boyutudur. Modern sistemlerde genellikle 32-bit (4 bayt) veya 64-bit (8 bayt) olur.
-
-**Hexadecimal (Onaltılık) Gösterim:** İkili sayılar çok uzun olabildiği için, genellikle daha kompakt olan hexadecimal (16'lık taban) gösterimi kullanılır. Her bir hexadecimal rakam, 4 bite karşılık gelir.
-*   Rakamlar: `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F`
-
-Aşağıdaki tablo, 4-bit'lik bir ikili sayının onluk ve onaltılık sistemdeki karşılıklarını göstermektedir:
-
-| Onluk (Decimal) | İkili (Binary) | Onaltılık (Hex) |
-|:---------------:|:--------------:|:---------------:|
-|        0        |      `0000`      |        `0`        |
-|        1        |      `0001`      |        `1`        |
-|        2        |      `0010`      |        `2`        |
-|        3        |      `0011`      |        `3`        |
-|        4        |      `0100`      |        `4`        |
-|        5        |      `0101`      |        `5`        |
-|        6        |      `0110`      |        `6`        |
-|        7        |      `0111`      |        `7`        |
-|        8        |      `1000`      |        `8`        |
-|        9        |      `1001`      |        `9`        |
-|       10        |      `1010`      |        `A`        |
-|       11        |      `1011`      |        `B`        |
-|       12        |      `1100`      |        `C`        |
-|       13        |      `1101`      |        `D`        |
-|       14        |      `1110`      |        `E`        |
-|       15        |      `1111`      |        `F`        |
-
-*   Örnek: `1111 1111` (binary) = `255` (decimal) = `FF` (hexadecimal)
-
-<div class="quiz-question">
-  <p><b>Soru:</b> `0xC3` hexadecimal sayısının 8-bit ikili (binary) karşılığı nedir?</p>
-  <div class="quiz-option" data-correct="true">A) `11000011`</div>
-  <div class="quiz-option">B) `10100101`</div>
-  <div class="quiz-option">C) `11001100`</div>
-  <div class="quiz-option">D) `11100011`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Hexadecimal'deki her bir rakam 4 bite karşılık gelir. `C` onluk tabanda 12'dir ve ikili karşılığı `1100`'dür. `3`'ün ikili karşılığı `0011`'dir. Bu ikisini birleştirdiğimizde `11000011` elde ederiz.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru:</b> 8-bitlik bir `unsigned char` (işaretsiz karakter) değişkeni en fazla hangi değeri alabilir?</p>
-  <div class="quiz-option">A) `127`</div>
-  <div class="quiz-option">B) `256`</div>
-  <div class="quiz-option" data-correct="true">C) `255`</div>
-  <div class="quiz-option">D) `128`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> 8 bit ile 2⁸ = 256 farklı değer temsil edilebilir. İşaretsiz tamsayılar için bu aralık `0`'dan başlar ve `255`'e kadar gider (`0` dahil 256 sayı).</p>
-  </div>
-</div>
+The foundation of everything in the digital world is **bits**. In this section, we will examine how data is represented and manipulated in this most basic form, and how it constitutes more complex structures like integers.
 
 ---
 
-## 2. Bellek Organizasyonu ve Endianness (Bayt Sıralaması)
+## 1. Binary Representation
+
+Computers only understand two states to store and process information: on or off, high voltage or low voltage. The digits corresponding to these two states are **1** and **0**. A single 1 or 0 is called a **bit**.
+
+*   **Byte:** A group of 8 bits. It is the smallest addressable unit in memory. A byte can take on 256 (2⁸) different values, from `00000000` to `11111111`.
+*   **Word:** The natural data size that a processor handles in a single operation. In modern systems, it is usually 32-bit (4 bytes) or 64-bit (8 bytes).
+
+**Hexadecimal Representation:** Since binary numbers can be very long, the more compact hexadecimal (base 16) representation is often used. Each hexadecimal digit corresponds to 4 bits.
+*   Digits: `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F`
+
+The following table shows the decimal and hexadecimal equivalents of a 4-bit binary number:
+
+| Decimal | Binary | Hexadecimal |
+|:-------:|:------:|:-----------:|
+|    0    | `0000` |     `0`     |
+|    1    | `0001` |     `1`     |
+|    2    | `0010` |     `2`     |
+|    3    | `0011` |     `3`     |
+|    4    | `0100` |     `4`     |
+|    5    | `0101` |     `5`     |
+|    6    | `0110` |     `6`     |
+|    7    | `0111` |     `7`     |
+|    8    | `1000` |     `8`     |
+|    9    | `1001` |     `9`     |
+|   10    | `1010` |     `A`     |
+|   11    | `1011` |     `B`     |
+|   12    | `1100` |     `C`     |
+|   13    | `1101` |     `D`     |
+|   14    | `1110` |     `E`     |
+|   15    | `1111` |     `F`     |
+
+*   Example: `1111 1111` (binary) = `255` (decimal) = `FF` (hexadecimal)
+
+**Question 1:** What is the 8-bit binary equivalent of the hexadecimal number `0xC3`?
+
+*   A) `11000011`
+*   B) `10100101`
+*   C) `11001100`
+*   D) `11100011`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: A.</b> Each digit in hexadecimal corresponds to 4 bits. `C` is 12 in decimal, and its binary equivalent is `1100`. The binary equivalent of `3` is `0011`. Combining these, we get `11000011`.</p>
+</details>
+
+**Question 2:** What is the maximum value an 8-bit `unsigned char` can hold?
+
+*   A) `127`
+*   B) `256`
+*   C) `255`
+*   D) `128`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> With 8 bits, 2⁸ = 256 different values can be represented. For unsigned integers, this range starts from `0` and goes up to `255` (256 numbers including `0`).</p>
+</details>
+
+---
+
+## 2. Memory Organization and Endianness
 
 ### Byte Ordering (Endianness)
 
-Bellek, her biri ardışık bir adrese sahip olan bir bayt dizisidir. `int` gibi birden fazla bayt kaplayan bir veri türünü belleğe kaydederken, bu baytların hangi sırayla (düşük adresten yüksek adrese doğru) yerleştirileceğini belirleyen kurala **Endianness** denir.
+Memory is an array of bytes, each with a consecutive address. When storing a data type that spans multiple bytes, such as an `int`, the rule that determines the order in which these bytes are placed (from low address to high address) is called **Endianness**.
 
-Bunu anlamak için 4 baytlık `0x76543210` sayısını ele alalım. Bu sayının baytları şunlardır:
-*   `76` (Most Significant Byte (En Anlamlı Bayt), MSB)
+To understand this, let's consider the 4-byte number `0x76543210`. The bytes of this number are:
+*   `76` (Most Significant Byte, MSB)
 *   `54`
 *   `32`
-*   `10` (Least Significant Byte (En Anlamsız Bayt), LSB)
+*   `10` (Least Significant Byte, LSB)
 
-Bu sayıyı `A` adresinden başlayan belleğe yerleştirmenin iki yolu vardır:
+There are two ways to place this number in memory starting at address `A`:
 
-*   **Big-Endian:** Baytlar, sayıyı yazdığımız ve okuduğumuz gibi, **en anlamlıdan en anlamsıza** doğru sıralanır. En anlamlı bayt (`76`), en düşük adrese gelir. Ağ protokolleri genellikle bu düzeni kullanır.
+*   **Big-Endian:** Bytes are ordered from **most significant to least significant**, just as we write and read them. The most significant byte (`76`) goes to the lowest address. Network protocols often use this order.
 
-*   **Little-Endian:** Baytlar, **en anlamsızdan en anlamlıya** doğru, yani tersten sıralanır. En anlamsız bayt (`10`), en düşük adrese gelir. Modern işlemcilerin (Intel, AMD) çoğu bu yöntemi kullanır.
+*   **Little-Endian:** Bytes are ordered from **least significant to most significant**, i.e., in reverse. The least significant byte (`10`) goes to the lowest address. Most modern processors (Intel, AMD) use this method.
 
-Aşağıdaki tablo, `0x76543210` sayısının iki düzende belleğe nasıl yerleştiğini göstermektedir:
+The following table shows how the number `0x76543210` is placed in memory in the two orders:
 
-| Adres | Big-Endian Değeri | Little-Endian Değeri |
-|:-----:|:-----------------:|:--------------------:|
-|   A   |        `76`         |         `10`         |
-|  A+1  |        `54`         |         `32`         |
-|  A+2  |        `32`         |         `54`         |
-|  A+3  |        `10`         |         `76`         |
+| Address | Big-Endian Value | Little-Endian Value |
+|:-------:|:----------------:|:-------------------:|
+|    A    |       `76`       |        `10`         |
+|   A+1   |       `54`       |        `32`         |
+|   A+2   |       `32`       |        `54`         |
+|   A+3   |       `10`       |        `76`         |
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Little-Endian bir sistemde, 32-bit `0x12345678` tamsayısı belleğin `0x100` adresine yazılırsa, `0x101` adresinde hangi bayt değeri bulunur?</p>
-  <div class="quiz-option">A) `0x12`</div>
-  <div class="quiz-option">B) `0x34`</div>
-  <div class="quiz-option" data-correct="true">C) `0x56`</div>
-  <div class="quiz-option">D) `0x78`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Little-Endian sistemlerde, en anlamsız (en sağdaki) bayt en düşük adrese yazılır. Bu durumda sıralama şöyle olur: Adres `0x100`: `0x78`, Adres `0x101`: `0x56`, Adres `0x102`: `0x34`, Adres `0x103`: `0x12`.</p>
-  </div>
-</div>
+**Question 1:** In a Little-Endian system, if the 32-bit integer `0x12345678` is written to memory address `0x100`, what byte value is found at address `0x101`?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Big-Endian bir sistemde, 32-bit `0x12345678` tamsayısı belleğin `0x100` adresine yazılırsa, `0x101` adresinde hangi bayt değeri bulunur?</p>
-  <div class="quiz-option">A) `0x12`</div>
-  <div class="quiz-option" data-correct="true">B) `0x34`</div>
-  <div class="quiz-option">C) `0x56`</div>
-  <div class="quiz-option">D) `0x78`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Big-Endian sistemlerde, en anlamlı (en soldaki) bayt en düşük adrese yazılır. Bu durumda sıralama şöyle olur: Adres `0x100`: `0x12`, Adres `0x101`: `0x34`, Adres `0x102`: `0x56`, Adres `0x103`: `0x78`.</p>
-  </div>
-</div>
+*   A) `0x12`
+*   B) `0x34`
+*   C) `0x56`
+*   D) `0x78`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> In Little-Endian systems, the least significant (rightmost) byte is written to the lowest address. The order would be: Address `0x100`: `0x78`, Address `0x101`: `0x56`, Address `0x102`: `0x34`, Address `0x103`: `0x12`.</p>
+</details>
+
+**Question 2:** In a Big-Endian system, if the 32-bit integer `0x12345678` is written to memory address `0x100`, what byte value is found at address `0x101`?
+
+*   A) `0x12`
+*   B) `0x34`
+*   C) `0x56`
+*   D) `0x78`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> In Big-Endian systems, the most significant (leftmost) byte is written to the lowest address. The order would be: Address `0x100`: `0x12`, Address `0x101`: `0x34`, Address `0x102`: `0x56`, Address `0x103`: `0x78`.</p>
+</details>
 
 ---
 
-## 3. Bit Seviyesi Mantıksal Operasyonlar
+## 3. Bit-Level Logical Operations
 
-C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güçlü operatörler bulunur. Bu operatörler, donanıma yakın seviyede kontrol ve optimizasyon imkanı tanır.
+The C language has powerful operators that allow us to manipulate the bits of integers directly. These operators provide low-level control and optimization possibilities.
 
-Örnekler için `a = 93` (yani `01011101`) ve `b = 148` (yani `10010100`) sayılarını kullanalım.
+Let's use `a = 93` (i.e., `01011101`) and `b = 148` (i.e., `10010100`) for examples.
 
-*   `&` **(AND):** İki bitte de karşılıklı olarak `1` varsa sonuç `1` olur. Genellikle belirli bitleri "maskelemek" (izole etmek) veya "sıfırlamak" için kullanılır.
+### Logical Operators
+
+*   `&` **(AND):** The result is `1` if both corresponding bits are `1`. It is often used to "mask" (isolate) or "clear" specific bits.
     ```
       01011101  (a)
     & 10010100  (b)
       --------
-      00010100  (Sonuç: 20)
+      00010100  (Result: 20)
     ```
 
-*   `|` **(OR):** İki bitten en az biri `1` ise sonuç `1` olur. Belirli bitleri "açmak" (1 yapmak) için kullanılır.
+*   `|` **(OR):** The result is `1` if at least one of the two bits is `1`. It is used to "set" specific bits (make them 1).
     ```
       01011101  (a)
     | 10010100  (b)
       --------
-      11011101  (Sonuç: 221)
+      11011101  (Result: 221)
     ```
 
-*   `^` **(XOR - Exclusive OR):** İki bit birbirinden farklıysa (`0` ve `1`) sonuç `1` olur. Belirli bitleri "ters çevirmek" (toggle) için kullanılır.
+*   `^` **(XOR - Exclusive OR):** The result is `1` if the two bits are different (`0` and `1`). It is used to "toggle" specific bits.
     ```
       01011101  (a)
     ^ 10010100  (b)
       --------
-      11001001  (Sonuç: 201)
+      11001001  (Result: 201)
     ```
 
-*   `~` **(NOT):** Tek bir sayının tüm bitlerini ters çevirir (`0` olanlar `1`, `1` olanlar `0` olur).
+*   `~` **(NOT):** Inverts all the bits of a single number (`0`s become `1`s, and `1`s become `0`s).
     ```
     ~ 01011101  (a)
       --------
-      10100010  (Sonuç: -94, 2'ye tümleyen gösteriminde)
+      10100010  (Result: -94, in 2's complement)
     ```
 
 | A | B | A & B (AND) | A \| B (OR) | A ^ B (XOR) |
@@ -163,314 +169,229 @@ C dilinde, tamsayıların bitlerini doğrudan manipüle etmemizi sağlayan güç
 | 1 | 0 |      0      |      1      |      1      |
 | 1 | 1 |      1      |      1      |      0      |
 
-### Shift (Kaydırma) Operasyonları
+### Shift Operations
 
-Bu operatörler, bir sayının bitlerini belirli bir sayıda sola veya sağa kaydırır.
+These operators shift the bits of a number to the left or right by a specified amount.
 
-*   `<<` **(Left Shift):** Tüm bitleri sola kaydırır. Sağdan boşalan yerlere `0` eklenir. `x << k` işlemi, `x` sayısını `2^k` ile çarpmakla eşdeğerdir.
+*   `<<` **(Left Shift):** Shifts all bits to the left. Vacated positions on the right are filled with `0`s. `x << k` is equivalent to multiplying `x` by `2^k`.
     ```
-    a << 3;  // 93 sayısını 3 bit sola kaydır
+    a << 3;  // Shift 93 left by 3 bits
 
-    Başlangıç: 01011101 (93)
-    Sonuç:     11101000 (232)
+    Start: 01011101 (93)
+    Result:    11101000 (232)
     ```
 
-*   `>>` **(Right Shift):** Tüm bitleri sağa kaydırır. Bu işlemin iki türü vardır:
-    *   **Logical Right Shift (Mantıksal Sağa Kaydırma):** Soldan boşalan yerlere her zaman `0` eklenir. Bu, C'de `unsigned` (işaretsiz) tamsayılara uygulanır.
+*   `>>` **(Right Shift):** Shifts all bits to the right. There are two types:
+    *   **Logical Right Shift:** Vacated positions on the left are always filled with `0`s. This is applied to `unsigned` integers in C.
         ```
         unsigned int u = 240; // 11110000
         u >> 2;
 
-        Başlangıç: 11110000 (240)
-        Sonuç:     00111100 (60)
+        Start: 11110000 (240)
+        Result:    00111100 (60)
         ```
-    *   **Arithmetic Right Shift (Aritmetik Sağa Kaydırma):** Soldan boşalan yerlere, sayının işaretini korumak için en soldaki **işaret biti** kopyalanır. `signed` (işaretli) tamsayılara uygulanır. Negatif sayılar için bölme işleminin doğru çalışmasını sağlar.
+    *   **Arithmetic Right Shift:** Vacated positions on the left are filled by copying the **sign bit** (the leftmost bit) to preserve the number's sign. This is applied to `signed` integers. It ensures that division works correctly for negative numbers.
         ```
-        signed char s = -16; // 11110000 (8-bit 2'ye tümleyen)
+        signed char s = -16; // 11110000 (8-bit 2's complement)
         s >> 2;
 
-        Başlangıç: 11110000 (-16)
-        Sonuç:     11111100 (-4)
+        Start: 11110000 (-16)
+        Result:    11111100 (-4)
         ```
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir `x` tamsayısının tek mi çift mi olduğunu anlamak için `(x & 1)` ifadesi kullanılıyor. `x = 7` (binary `0111`) ise bu ifadenin sonucu ne olur ve bu ne anlama gelir?</p>
-  <div class="quiz-option">A) `0` (Sayı çifttir)</div>
-  <div class="quiz-option">B) `1` (Sayı çifttir)</div>
-  <div class="quiz-option" data-correct="true">C) `1` (Sayı tektir)</div>
-  <div class="quiz-option">D) `0` (Sayı tektir)</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Bir sayının en anlamsız biti (en sağdaki bit), sayı tek ise `1`, çift ise `0`'dır. `& 1` işlemi (`0001` ile AND'lemek) diğer tüm bitleri sıfırlar ve sadece bu en sağdaki biti kontrol eder. `0111 & 0001` işleminin sonucu `0001`, yani `1` olduğu için sayı tektir.</p>
-  </div>
-</div>
-<div class="quiz-question">
-  <p><b>Soru:</b> `x = 176` (binary `10110000`) sayısının 3. bitini (sağdan, 0'dan başlayarak) `1` yapmak için hangi `OR` işlemi uygulanmalıdır?</p>
-  <div class="quiz-option">A) `x | 4`</div>
-  <div class="quiz-option">B) `x | 2`</div>
-  <div class="quiz-option" data-correct="true">C) `x | 8`</div>
-  <div class="quiz-option">D) `x | 16`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> 3. biti `1` olan sayı `00001000`'dir, bu da onluk tabanda `8`'e eşittir. `OR` işlemi, `1` olan bir bit ile yapıldığında sonucu her zaman `1` yapar. `10110000 | 00001000` işleminin sonucu `10111000` olur ve 3. bit `1`'e ayarlanmış olur.</p>
-  </div>
-</div>
+**Question 1:** The expression `(x & 1)` is used to determine if an integer `x` is odd or even. If `x = 7` (binary `0111`), what is the result and what does it mean?
+
+*   A) `0` (Number is even)
+*   B) `1` (Number is even)
+*   C) `1` (Number is odd)
+*   D) `0` (Number is odd)
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> The least significant bit (the rightmost bit) of a number is `1` if the number is odd, and `0` if it is even. The `& 1` operation (ANDing with `0001`) clears all other bits and checks only this rightmost bit. The result of `0111 & 0001` is `0001`, which is `1`, so the number is odd.</p>
+</details>
+
+**Question 2:** What `OR` operation should be applied to `x = 176` (binary `10110000`) to set its 3rd bit (from the right, starting at 0) to `1`?
+
+*   A) `x | 4`
+*   B) `x | 2`
+*   C) `x | 8`
+*   D) `x | 16`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> The number with only the 3rd bit set to `1` is `00001000`, which is `8` in decimal. The `OR` operation with a bit that is `1` always results in `1`. The result of `10110000 | 00001000` is `10111000`, setting the 3rd bit to `1`.</p>
+</details>
 
 ---
 
-## 4. Tamsayıların Temsili
+## 4. Integer Representations
 
-Bilgisayarların tamsayıları nasıl sakladığını anlamak, programlamada karşılaşılan birçok hatanın (örneğin, `overflow`) önüne geçmemizi sağlar. Sayıları temsil etmenin iki ana yolu vardır.
+Understanding how computers store integers helps us prevent many common programming errors (e.g., `overflow`). There are two main ways to represent numbers.
 
-### Unsigned (İşaretsiz) Tamsayılar
-Bu yöntemde, bir sayının sahip olduğu tüm bitler doğrudan sayının büyüklüğünü temsil eder. Negatif sayılar veya işaret bilgisi yoktur.
+### Unsigned Integers
+In this method, all bits of a number directly represent its magnitude. There are no negative numbers or sign information.
 
-*   `w` bitlik bir işaretsiz tamsayı, **0** ile **2ʷ-1** arasındaki değerleri alabilir.
-*   **Örnek (4-bit):** `0000` (0) ile `1111` (15) arasındaki 16 farklı sayıyı temsil edebilir.
+*   A `w`-bit unsigned integer can take values between **0** and **2ʷ-1**.
+*   **Example (4-bit):** Can represent 16 different numbers from `0000` (0) to `1111` (15).
 
-### Signed (İşaretli) Tamsayılar: Two's Complement (İkinin Tümleyeni)
-Modern bilgisayarlarda işaretli tamsayılar için standart olan ve aritmetik işlemleri çok basitleştiren yöntem budur.
+### Signed Integers: Two's Complement
+This is the standard method for signed integers in modern computers, which greatly simplifies arithmetic operations.
 
-*   **Sign Bit (İşaret Biti):** En soldaki bit işaret için ayrılmıştır. `0` sayının pozitif, `1` ise negatif olduğunu gösterir.
-*   **Değer Aralığı:** `w` bitlik bir işaretli tamsayı, **-2ʷ⁻¹** ile **2ʷ⁻¹-1** arasındaki değerleri alabilir.
-*   **Örnek (4-bit):** `-2³` (-8) ile `2³-1` (+7) arasındaki 16 farklı sayıyı temsil edebilir.
+*   **Sign Bit:** The leftmost bit is reserved for the sign. `0` indicates the number is positive, and `1` indicates it is negative.
+*   **Value Range:** A `w`-bit signed integer can take values between **-2ʷ⁻¹** and **2ʷ⁻¹-1**.
+*   **Example (4-bit):** Can represent 16 different numbers from `-2³` (-8) to `2³-1` (+7).
 
-Aşağıdaki tablo, 4-bitlik bir sayının işaretsiz ve işaretli (ikinin tümleyeni) olarak nasıl yorumlandığını gösterir:
+The following table shows how a 4-bit number is interpreted as unsigned and signed (two's complement):
 
-| Bit Deseni | Unsigned Değeri | Signed (Two's Complement) Değeri |
-|------------|-----------------|----------------------------------|
-|   0000     |        0        |                0                 |
-|   0001     |        1        |                1                 |
-|   0010     |        2        |                2                 |
-|   0011     |        3        |                3                 |
-|   0100     |        4        |                4                 |
-|   0101     |        5        |                5                 |
-|   0110     |        6        |                6                 |
-|   0111     |        7        |                7                 |
-|   1000     |        8        |               -8                 |
-|   1001     |        9        |               -7                 |
-|   1010     |       10        |               -6                 |
-|   1011     |       11        |               -5                 |
-|   1100     |       12        |               -4                 |
-|   1101     |       13        |               -3                 |
-|   1110     |       14        |               -2                 |
-|   1111     |       15        |               -1                 |
+| Bit Pattern | Unsigned Value | Signed (Two's Complement) Value |
+|-------------|----------------|---------------------------------|
+|    0000     |        0       |                0                |
+|    0001     |        1       |                1                |
+|    ...      |       ...      |               ...               |
+|    0111     |        7       |                7                |
+|    1000     |        8       |               -8                |
+|    1001     |        9       |               -7                |
+|    ...      |       ...      |               ...               |
+|    1111     |       15       |               -1                |
 
-**Bir Sayının Negatifini Bulma (Pratik Yöntem): `(~x + 1)`**
+**Finding the Negative of a Number (Practical Method): `(~x + 1)`**
 
-Bir `x` sayısının negatifini (`-x`) bulmak için:
-1.  Sayının tüm bitlerini ters çevir (`~` operatörü).
-2.  Sonuca 1 ekle.
+To find the negative (`-x`) of a number `x`:
+1.  Invert all bits of the number (`~` operator).
+2.  Add 1 to the result.
 
-**Örnek: 5 sayısını -5 yapalım (4-bit üzerinde)**
-1.  `5`'in bit deseni: `0101`
-2.  Tüm bitleri ters çevir (`~`): `1010`
-3.  Sonuca 1 ekle: `1010 + 1 = 1011`
-4.  Tabloya baktığımızda `1011`'in gerçekten de `-5`'e karşılık geldiğini görürüz.
+**Example: Let's make 5 into -5 (on 4 bits)**
+1.  The bit pattern for `5` is: `0101`
+2.  Invert all bits (`~`): `1010`
+3.  Add 1 to the result: `1010 + 1 = 1011`
+4.  Looking at the table, we see that `1011` indeed corresponds to `-5`.
 
-Bu sistemin en büyük avantajı, toplama ve çıkarma işlemlerinin işaretli ve işaretsiz sayılar için aynı donanım devresiyle yapılabilmesidir.
+The main advantage of this system is that addition and subtraction operations can be performed with the same hardware circuit for both signed and unsigned numbers.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> 8-bit Two's Complement temsilinde, `5` (binary `00000101`) sayısının negatifi (`-5`) nasıl temsil edilir?</p>
-  <div class="quiz-option">A) `10000101`</div>
-  <div class="quiz-option" data-correct="true">B) `11111011`</div>
-  <div class="quiz-option">C) `11111010`</div>
-  <div class="quiz-option">D) `00001010`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `x`'in negatifini bulmak için `~x + 1` formülünü kullanırız.
-    1. `x` = `00000101`
-    2. `~x` = `11111010` (tüm bitleri ters çevir)
-    3. `~x + 1` = `11111011`</p>
-  </div>
-</div>
+**Question 1:** In 8-bit Two's Complement, how is the negative of `5` (binary `00000101`), which is `-5`, represented?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> 16-bit `signed` (işaretli) bir tamsayının alabileceği en büyük pozitif değer nedir?</p>
-  <div class="quiz-option">A) `65535`</div>
-  <div class="quiz-option" data-correct="true">B) `32767`</div>
-  <div class="quiz-option">C) `65536`</div>
-  <div class="quiz-option">D) `32768`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `w` bitlik işaretli bir tamsayının aralığı `-2^(w-1)` ile `2^(w-1) - 1` arasındadır. `w=16` için en büyük değer `2^15 - 1 = 32768 - 1 = 32767`'dir.</p>
-  </div>
-</div>
+*   A) `10000101`
+*   B) `11111011`
+*   C) `11111010`
+*   D) `00001010`
 
-<div class="quiz-question">
-  <p><b>Soru:</b> 8-bit `signed char` olan `-80` (`10110000`) sayısına 3 bit aritmetik sağa kaydırma (`>> 3`) uygulanırsa sonuç ne olur?</p>
-  <div class="quiz-option">A) `20`</div>
-  <div class="quiz-option">B) `-40`</div>
-  <div class="quiz-option">C) `10`</div>
-  <div class="quiz-option" data-correct="true">D) `-10`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: D.</b> Aritmetik sağa kaydırma, sayının işaretini korumak için soldan boşalan bitlere işaret bitini (`1`) kopyalar. `10110000` >> 3 işlemi `11110110` sonucunu verir. Bu bit deseni, 8-bit Two's Complement'te `-10`'a karşılık gelir. Bu, pratikte ` -80 / (2^3) = -10` bölme işlemine eşdeğerdir.</p>
-  </div>
-</div>
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> We use the formula `~x + 1` to find the negative of `x`.
+  1. `x` = `00000101`
+  2. `~x` = `11111010` (invert all bits)
+  3. `~x + 1` = `11111011`</p>
+</details>
+
+**Question 2:** What is the largest positive value a 16-bit `signed` integer can hold?
+
+*   A) `65535`
+*   B) `32767`
+*   C) `65536`
+*   D) `32768`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> The range of a `w`-bit signed integer is from `-2^(w-1)` to `2^(w-1) - 1`. For `w=16`, the largest value is `2^15 - 1 = 32768 - 1 = 32767`.</p>
+</details>
+
+**Question 3:** What is the result of applying a 3-bit arithmetic right shift (`>> 3`) to the 8-bit `signed char` `-80` (`10110000`)?
+
+*   A) `20`
+*   B) `-40`
+*   C) `10`
+*   D) `-10`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: D.</b> An arithmetic right shift copies the sign bit (`1`) into the vacated bits on the left to preserve the sign. The operation `10110000` >> 3 results in `11110110`. This bit pattern corresponds to `-10` in 8-bit Two's Complement. This is practically equivalent to the division ` -80 / (2^3) = -10`.</p>
+</details>
 
 ---
 
-## 5. Casting (Tip Dönüşümleri), Genişletme ve Kırpma
+## 5. Casting, Expansion, and Truncation
 
-C gibi dillerde, farklı tamsayı tipleri arasında dönüşüm yapmak yaygındır (`short`'u `int`'e atamak gibi). Bu dönüşümler derleyici tarafından otomatik olarak yapılır, ancak arka planda bitlerin nasıl değiştiğini bilmek, beklenmedik hataları anlamak için kritiktir.
+In languages like C, it is common to convert between different integer types (like assigning a `short` to an `int`). These conversions are done automatically by the compiler, but knowing how the bits change behind the scenes is critical to understanding unexpected errors.
 
-### Expanding (Genişletme): Küçük Tipten Büyük Tipe
-Bir değeri daha fazla bit ile temsil etmektir (örn: 4-bit'ten 8-bit'e). Değerin korunması esastır.
+### Expanding: From Smaller to Larger Type
+This is representing a value with more bits (e.g., from 4-bit to 8-bit). Preserving the value is essential.
 
-*   **Zero Extension (Sıfırla Genişletme):** `unsigned` (işaretsiz) sayılar için kullanılır. Sayının soluna (yüksek anlamlı bitlere) `0`'lar eklenir.
-    ```
-    // 4-bit unsigned 9 sayısını 8-bit'e genişletme
-    Başlangıç (4-bit): 1001      (Değer: 9)
-    Sonuç (8-bit):     00001001  (Değer: 9)
-    ```
+*   **Zero Extension:** Used for `unsigned` numbers. `0`s are added to the left of the number (to the most significant bits).
+*   **Sign Extension:** Used for `signed` numbers. To preserve the original sign of the number, the new bits are filled by copying the **sign bit**.
 
-*   **Sign Extension (İşaretle Genişletme):** `signed` (işaretli) sayılar için kullanılır. Sayının orijinal işaretini korumak için, en soldaki **işaret biti** kopyalanarak yeni bitler doldurulur.
-    *   **Pozitif Sayı Örneği:**
-        ```
-        // 4-bit signed 7 sayısını 8-bit'e genişletme
-        Başlangıç (4-bit): 0111      (Değer: 7)
-        Sonuç (8-bit):     00000111  (Değer: 7) - İşaret biti 0 olduğu için 0'lar eklendi.
-        ```
-    *   **Negatif Sayı Örneği:**
-        ```
-        // 4-bit signed -7 sayısını 8-bit'e genişletme
-        Başlangıç (4-bit): 1001      (Değer: -7)
-        Sonuç (8-bit):     11111001  (Değer: -7) - İşaret biti 1 olduğu için 1'ler eklendi.
-        ```
+### Truncating: From Larger to Smaller Type
+This is representing a value with fewer bits (e.g., from 8-bit to 4-bit). This operation can result in data loss, and the value of the number can change completely.
 
-### Truncating (Kırpma): Büyük Tipten Küçük Tipe
-Bir değeri daha az bit ile temsil etmektir (örn: 8-bit'ten 4-bit'e). Bu işlem sırasında bilgi kaybı yaşanabilir ve sayının değeri tamamen değişebilir.
+*   The rule is simple: The most significant bits (the bits on the left) are simply **discarded**.
 
-*   Kural basittir: Yüksek anlamlı bitler (soldaki bitler) basitçe **atılır**.
+**Question 1:** If the 4-bit `signed` integer `-3` (`1101`) is expanded to an 8-bit integer using `Sign Extension`, what is the result?
 
-    *   **Unsigned (İşaretsiz) Örneği:**
-        ```
-        // 8-bit unsigned 250 sayısını 4-bit'e kırpma
-        Başlangıç (8-bit): 11111010  (Değer: 250)
-        Atılan Kısım:      1111
-        Kalan Kısım:           1010
+*   A) `00001101`
+*   B) `00000011`
+*   C) `11111101`
+*   D) `10000011`
 
-        Sonuç (4-bit):           1010  (Değer: 10) - Değer değişti.
-        ```
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> During `Sign Extension`, the original sign bit (the leftmost `1` for `-3`) is copied to the newly added bits to preserve the sign. Therefore, the result is `11111101`.</p>
+</details>
 
-    *   **Signed (İşaretli) Örneği:**
-        ```
-        // 8-bit signed -100 sayısını 4-bit'e kırpma
-        Başlangıç (8-bit): 10011100  (Değer: -100)
-        Atılan Kısım:      1001
-        Kalan Kısım:           1100
+**Question 2:** What is the result if the 32-bit `int` `260` (`...0001 0000 0100`) is truncated to an 8-bit `char`?
 
-        Sonuç (4-bit):           1100  (Değer: -4) - Hem değer hem işaret değişebilir!
-        ```
+*   A) `4`
+*   B) `-4`
+*   C) `100`
+*   D) `-260`
 
-<div class="quiz-question">
-  <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayı olan `-3` (`1101`), 8-bit bir tamsayıya `Sign Extension` ile genişletilirse sonuç ne olur?</p>
-  <div class="quiz-option">A) `00001101`</div>
-  <div class="quiz-option">B) `00000011`</div>
-  <div class="quiz-option" data-correct="true">C) `11111101`</div>
-  <div class="quiz-option">D) `10000011`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `Sign Extension` (İşaretli genişletme) sırasında, sayının işaretini korumak için orijinal işaret biti (`-3` için en soldaki `1`) yeni eklenen bitlere kopyalanır. Bu nedenle sonuç `11111101` olur.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru:</b> 32-bit `int` türündeki `260` sayısı (`...0001 0000 0100`), 8-bit `char` türüne kırpılırsa (`truncate`) sonuç ne olur?</p>
-  <div class="quiz-option" data-correct="true">A) `4`</div>
-  <div class="quiz-option">B) `-4`</div>
-  <div class="quiz-option">C) `100`</div>
-  <div class="quiz-option">D) `-260`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Kırpma işlemi, yüksek anlamlı bitleri atar. `260` sayısının son 8 biti `00000100`'dür. Bu da onluk tabanda `4`'e eşittir.</p>
-  </div>
-</div>
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: A.</b> Truncation discards the most significant bits. The last 8 bits of the number `260` are `00000100`, which is equal to `4` in decimal.</p>
+</details>
 
 ---
 
-## 6. Tamsayı Toplaması ve Overflow (Taşma)
+## 6. Integer Addition and Overflow
 
-Bilgisayar aritmetiği, gerçek dünyadaki matematikten farklıdır çünkü **sınırlı sayıda bit** ile çalışır. Bir `int` 32 bit ise, bu 2³² farklı sayıyı temsil edebilir, ama daha fazlasını edemez. Bu sınırlılık, toplama gibi basit bir işlemin sonucunun beklenenden farklı çıkmasına, yani **overflow (taşma)** adı verilen duruma yol açabilir.
+Computer arithmetic is different from real-world mathematics because it operates with a **finite number of bits**. If an `int` is 32 bits, it can represent 2³² different numbers, but no more. This limitation can cause the result of a simple operation like addition to be different than expected, a situation called **overflow**.
 
-Toplama işlemi, `unsigned` ve `signed` tamsayılar için donanım seviyesinde (bit düzeyinde) tamamen aynı şekilde yapılır. Fark, sonucun ve taşma durumunun nasıl yorumlandığında ortaya çıkar.
+### Unsigned Addition & Overflow
 
-### Unsigned Addition & Overflow (İşaretsiz Toplama ve Taşma)
+Unsigned integers can be thought of as numbers on a circle. For example, a 4-bit number ranges from 0 to 15. When you add 1 to 15, you go back to the beginning, 0. This is called **modular arithmetic**.
 
-İşaretsiz tamsayılar, bir çember üzerindeki sayılar gibi düşünülebilir. Örneğin, 4-bit'lik bir sayı 0'dan 15'e kadardır. 15'e 1 eklediğinizde, en başa, yani 0'a dönersiniz. Bu duruma **modüler aritmetik** denir.
+In unsigned addition, when the result exceeds the maximum value representable by `w` bits (2ʷ-1), the result is taken modulo `2ʷ`. This means the result "wraps around".
 
-İşaretsiz toplama işleminde, sonuç `w` bitin temsil edebileceği maksimum değeri (2ʷ-1) aştığında, sonuç `2ʷ` modunda alınır. Bu, sonucun "başa dönmesi" anlamına gelir.
+### Signed Addition & Overflow
 
-**Örnek (4-bit unsigned):** `11 + 8 = ?`
+In Two's Complement addition, overflow is detected when the result has a logically incorrect sign.
 
-```
-  11    (Decimal) ->   1011 (Binary)
-+  8    (Decimal) -> + 1000 (Binary)
-----                 ------
-  19    (Decimal) ->  10011 (Binary) -> 5-bit!
-```
+**Overflow Detection Rules:**
+1.  **Positive Overflow:** If the sum of two **positive** numbers yields a **negative** result.
+2.  **Negative Overflow:** If the sum of two **negative** numbers yields a **positive** result.
+3.  *Note:* The sum of a positive and a negative number **never** causes an overflow.
 
-*   **Sorun:** Sonuç `10011` olarak 5 bit uzunluğundadır, ancak bizim sayımız sadece 4 bit saklayabilir.
-*   **Çözüm:** En soldaki, yani 5. bit (elde biti - carry out), atılır.
-*   **Sonuç:** Geriye `0011` kalır. Bu da onluk tabanda `3`'e eşittir.
-*   **Yorum:** 4-bit'lik işaretsiz dünyada `11 + 8` işleminin sonucu `3`'tür. Matematiksel olarak bu, `(11 + 8) mod 16 = 19 mod 16 = 3` ile aynıdır.
+**Question 1:** What is the result and why, if the operation `5 + 5` is performed using 4-bit `signed` integers?
 
-### Signed Addition & Overflow (İşaretli Toplama ve Taşma)
+*   A) `10` (Correct result)
+*   B) `-6` (Positive overflow occurred)
+*   C) `10` (Correct as unsigned)
+*   D) `2` (Negative overflow occurred)
 
-İşaretli (Two's Complement) toplama işleminde taşma, sonucun mantıksal olarak yanlış bir işarete sahip olmasıyla tespit edilir.
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> The 4-bit pattern for `5` is `0101`. `0101 + 0101 = 1010`. The pattern `1010` corresponds to `-6` in 4-bit Two's Complement. Since the sum of two positive numbers is negative, this is a case of positive `overflow`.</p>
+</details>
 
-**Taşma Tespit Kuralları:**
-1.  **Pozitif Taşma:** İki **pozitif** sayının toplamı **negatif** bir sonuç verirse.
-2.  **Negatif Taşma:** İki **negatif** sayının toplamı **pozitif** bir sonuç verirse.
-3.  *Not:* Bir pozitif ve bir negatif sayının toplamı **asla** taşmaya neden olmaz.
+**Question 2:** What is the result of `250 + 10` using 8-bit `unsigned char` variables?
 
----
+*   A) `260`
+*   B) `-4`
+*   C) `4`
+*   D) `-252`
 
-**1. Pozitif Taşma Örneği (4-bit signed):** `6 + 5 = ?`
-(4-bit signed aralığı: -8 ile +7 arası)
-
-```
-   6    (Decimal) ->   0110 (Binary)
-+  5    (Decimal) -> + 0101 (Binary)
-----                 ------
-  11    (Decimal) ->   1011 (Binary) -> Bu ne anlama geliyor?
-```
-
-*   **Sorun:** Sonucun `+11` olması beklenir, ancak bu değer 4-bit'lik işaretli sayı aralığına sığmaz.
-*   **Sonuç:** Elde edilen `1011` bit deseni, Two's Complement'te `-5`'e karşılık gelir.
-*   **Yorum:** İki pozitif sayıyı topladık ve sonuç negatif çıktı. Bu, bariz bir **pozitif overflow** durumudur.
-
----
-
-**2. Negatif Taşma Örneği (4-bit signed):** `(-6) + (-5) = ?`
-
-```
-  -6    (Decimal) ->   1010 (Binary)
-+ -5    (Decimal) -> + 1011 (Binary)
-----                 ------
- -11    (Decimal) ->  10101 (Binary) -> 5-bit!
-```
-
-*   **Sorun:** Sonucun `-11` olması beklenir, ancak bu da aralığa sığmaz.
-*   **Çözüm:** 5 bitlik sonuçtan en soldaki bit (elde biti) atılır ve geriye `0101` kalır.
-*   **Sonuç:** `0101` bit deseni, Two's Complement'te `+5`'e karşılık gelir.
-*   **Yorum:** İki negatif sayıyı topladık ve sonuç pozitif çıktı. Bu da bir **negatif overflow** durumudur.
-
-
-<div class="quiz-question">
-  <p><b>Soru:</b> 4-bit `signed` (işaretli) tamsayılar kullanılarak `5 + 5` işlemi yapılırsa sonuç ne olur ve neden?</p>
-  <div class="quiz-option">A) `10` (Sonuç doğru)</div>
-  <div class="quiz-option" data-correct="true">B) `-6` (Pozitif overflow oluştu)</div>
-  <div class="quiz-option">C) `10` (Unsigned olarak doğru)</div>
-  <div class="quiz-option">D) `2` (Negatif overflow oluştu)</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `5`'in 4-bit deseni `0101`'dir. `0101 + 0101 = 1010`. `1010` deseni, 4-bit Two's Complement'te `-6`'ya karşılık gelir. İki pozitif sayının toplamı negatif çıktığı için bu bir pozitif `overflow` durumudur.</p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru:</b> 8-bit `unsigned char` (işaretsiz) değişkenler kullanılarak `250 + 10` işlemi yapılırsa sonuç ne olur?</p>
-  <div class="quiz-option">A) `260`</div>
-  <div class="quiz-option">B) `-4`</div>
-  <div class="quiz-option" data-correct="true">C) `4`</div>
-  <div class="quiz-option">D) `-252`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> 8-bit işaretsiz bir tamsayı `0` ile `255` arasında değer alabilir. `250 + 10 = 260`, bu aralığın dışındadır. Sonuç, `260 mod 256` işlemiyle bulunur, bu da `4`'tür. Bu bir `unsigned overflow` durumudur.</p>
-  </div>
-</div>
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> An 8-bit unsigned integer can hold values from `0` to `255`. `250 + 10 = 260`, which is outside this range. The result is found by `260 mod 256`, which is `4`. This is a case of `unsigned overflow`.</p>
+</details>
 
 ---

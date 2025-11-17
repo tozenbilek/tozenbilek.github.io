@@ -232,3 +232,68 @@ Farklı sayı türleri arasında dönüşüm yapmak, C'de beklenmedik sonuçlara
 </div>
 
 ---
+
+## 6. Alıştırma Soruları
+
+<div class="quiz-question">
+  <p><b>Soru:</b> `6.5` ondalık sayısının 32-bit IEEE 754 `float` temsilinin hexadecimal karşılığı nedir?</p>
+  <div class="quiz-option" data-correct="true">A) `0x40D00000`</div>
+  <div class="quiz-option">B) `0xC0D00000`</div>
+  <div class="quiz-option">C) `0x41D00000`</div>
+  <div class="quiz-option">D) `0x3F800000`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> Adım adım çözelim:
+    <ol>
+        <li><b>İşaret (s):</b> Sayı pozitif, yani `s = 0`.</li>
+        <li><b>İkiliye Çevirme:</b> `6.5` = `4 + 2 + 0.5` = `110.1`₂.</li>
+        <li><b>Normalizasyon:</b> `110.1` = `1.101 × 2²`. Buradan gerçek üs `E = 2`'dir.</li>
+        <li><b>Üs (exp) Hesaplama:</b> `exp = E + bias` = `2 + 127 = 129`. `129`'un 8-bit ikili karşılığı `10000001`₂'dir.</li>
+        <li><b>Kesir (frac) Hesaplama:</b> Normalizasyondaki `1.` den sonra gelen kısım `101`'dir. Bunu 23 bite tamamlarız: `10100000000000000000000`.</li>
+        <li><b>Birleştirme:</b> `s | exp | frac` = `0 | 10000001 | 10100000000000000000000`.</li>
+        <li><b>Hex'e Çevirme:</b> Bu 32 bitlik sayıyı 4'erli gruplara ayırıp hex'e çevirirsek: `0100 0000 1101 0000 ...` = `40D00000`.</li>
+    </ol>
+    </p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> 32-bit `float` olarak `0xC1480000` hexadecimal değeriyle temsil edilen ondalık sayı nedir?</p>
+  <div class="quiz-option">A) `12.5`</div>
+  <div class="quiz-option">B) `25.0`</div>
+  <div class="quiz-option" data-correct="true">C) `-12.5`</div>
+  <div class="quiz-option">D) `-25.0`</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> Adım adım tersten gidelim:
+    <ol>
+        <li><b>Hex'i İkiliye Çevirme:</b> `0xC1480000` = `1100 0001 0100 1000 0000 0000 0000 0000`₂.</li>
+        <li><b>Parçalara Ayırma:</b> `s | exp | frac`
+            <ul>
+                <li><b>s (işaret):</b> `1` (Sayı negatif)</li>
+                <li><b>exp (üs):</b> `10000010`₂ = `130`</li>
+                <li><b>frac (kesir):</b> `1001000...`</li>
+            </ul>
+        </li>
+        <li><b>Gerçek Üssü Bulma:</b> `E = exp - bias` = `130 - 127 = 3`.</li>
+        <li><b>Sayının Değerini Bulma:</b> Formül: `(-1)ˢ × (1.frac)₂ × 2ᴱ`. (Normal sayılarda baştaki `1.` gizlidir).
+            <ul>
+                <li>`= (-1)¹ × (1.1001)₂ × 2³`</li>
+                <li>`= -1 × (1100.1)₂` (Virgülü 3 basamak sağa kaydır)</li>
+                <li>`= -1 × (8 + 4 + 0 + 0 + 0.5)`</li>
+                <li><b>`= -12.5`</b></li>
+            </ul>
+        </li>
+    </ol>
+    </p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> IEEE 754 standardında `float` türü için `bias` (sapma) değeri 127 olarak kullanılır. Bunun temel sebebi nedir?</p>
+  <div class="quiz-option">A) 127'nin asal sayı olması.</div>
+  <div class="quiz-option">B) Bellekte temsilinin kolay olması.</div>
+  <div class="quiz-option" data-correct="true">C) Üs (exponent) alanının hem negatif hem de pozitif üsleri işaretsiz bir tamsayı olarak saklamasına olanak tanıması.</div>
+  <div class="quiz-option">D) İşlemci tarafından en hızlı işlenen sayı olması.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> 8-bitlik `exp` alanı `0` ile `255` arasında değerler alabilir. `Bias` kullanarak, bu aralığın yaklaşık yarısı negatif üslere (çok küçük sayılar için), yarısı da pozitif üslere (çok büyük sayılar için) ayrılmış olur. Örneğin, `exp` alanı `126` ise gerçek üs `126 - 127 = -1` olur. `exp` alanı `128` ise gerçek üs `128 - 127 = 1` olur. Bu sayede, üs için ayrı bir işaret biti kullanmaya gerek kalmaz ve karşılaştırma işlemleri donanım seviyesinde basitleşir.</p>
+  </div>
+</div>
