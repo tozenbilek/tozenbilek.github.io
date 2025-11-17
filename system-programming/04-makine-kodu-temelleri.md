@@ -201,7 +201,7 @@ void swap(long *xp, long *yp) {
 ```
 *   `xp`'nin adresi `%rdi`'de, `yp`'nin adresi `%rsi`'dedir.
 
-```assembly
+```asm
 swap:
     movq  (%rdi), %rax   # t0 = *xp; (xp adresindeki degeri rax'e tasi)
     movq  (%rsi), %rdx   # t1 = *yp; (yp adresindeki degeri rdx'e tasi)
