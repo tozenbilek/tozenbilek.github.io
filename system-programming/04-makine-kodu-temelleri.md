@@ -20,15 +20,44 @@ Bir C programını derlediğimizde aslında birkaç adımlık bir süreç işler
 3.  **Assembler:** Assembly kodunu, makine tarafından okunabilen ikili **object code (nesne koduna)** dönüştürür.
 4.  **Linker:** Nesne kodunu, `printf` gibi kütüphane fonksiyonlarıyla birleştirerek son **executable (yürütülebilir dosyayı)** oluşturur.
 
+### Derleme Aşamalarını `gcc` ile Gözlemlemek
+
+`gcc` derleyicisi, bu sürecin her bir adımında durup ara dosyaları incelememize olanak tanır:
+
+1.  **Preprocessor (Önişlemci): `-E`**
+    *   `#include` direktiflerini ve `#define` makrolarını koda dahil eder.
+    *   `gcc -E program.c > program.i` komutuyla sadece bu adımı çalıştırıp, genişletilmiş kaynak kodunu (`.i` dosyası) görebilirsiniz.
+2.  **Compiler (Derleyici): `-S`**
+    *   Önişlemciden geçen kodu Assembly diline çevirir.
+    *   `gcc -S program.c` komutu, `program.s` adında bir Assembly dosyası oluşturur.
+3.  **Assembler (Birleştirici): `-c`**
+    *   Assembly kodunu makine diline (nesne koduna) çevirir.
+    *   `gcc -c program.c` komutu, `program.o` adında bir nesne dosyası oluşturur.
+4.  **Linker (Bağlayıcı):** (Varsayılan)
+    *   `gcc program.o -o program` komutu, nesne dosyasını gerekli kütüphanelerle birleştirerek `program` adında yürütülebilir bir dosya oluşturur.
+
 ```mermaid
 graph LR
-    A["C Kaynak Kodu (.c)"] --> B{Compiler};
-    B --> C["Assembly Kodu (.s)"];
+    A["C Kaynak Kodu (.c)"] -- "gcc -E" --> Preprocessed["Genişletilmiş Kod (.i)"];
+    Preprocessed --> B{Compiler};
+    A --> B{Compiler};
+    B -- "gcc -S" --> C["Assembly Kodu (.s)"];
     C --> D{Assembler};
     D --> E["Nesne Kodu (.o)"];
     E --> F{Linker};
     F --> G["Executable File (.exe / .out)"];
 ```
+
+<div class="quiz-question">
+  <p><b>Soru:</b> `gcc -c program.c` komutu çalıştırıldığında hangi dosya üretilir?</p>
+  <div class="quiz-option">A) `program.s` (Assembly kodu)</div>
+  <div class="quiz-option" data-correct="true">B) `program.o` (Nesne kodu)</div>
+  <div class="quiz-option">C) `program.i` (Önişlemciden geçmiş kod)</div>
+  <div class="quiz-option">D) `program` (Yürütülebilir dosya)</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: B.</b> `-c` parametresi, `gcc`'ye derleme sürecini Assembly adımı tamamlandıktan sonra durdurmasını ve linkleme yapmadan, makine diline çevrilmiş olan nesne kodunu (`.o` dosyası) üretmesini söyler.</p>
+  </div>
+</div>
 
 <div class="quiz-question">
   <p><b>Soru:</b> Bir C programını derlerken, Assembly kodunu (`.s` dosyası) görmek için `gcc`'ye hangi parametre verilir?</p>
@@ -43,20 +72,64 @@ graph LR
 
 ---
 
-## 2. Assembly Programcısının Gözünden Donanım
+## 2. Assembly Programcısının Gözünden Donanım Mimarisi
 
-Assembly seviyesinde, C'deki soyut değişkenler yerine işlemcinin donanım kaynaklarını görürüz:
+Assembly seviyesinde programlama yaparken, C'deki değişkenler veya fonksiyonlar gibi soyut kavramlar yerine, işlemcinin doğrudan yönettiği fiziksel kaynakları görürüz. Bu kaynaklar, bir programın durumunu (state) tanımlar.
 
-*   **Program Counter (PC / `RIP`):** Yürütülecek bir sonraki komutun bellek adresini tutan özel bir register.
-*   **Registers:** İşlemcinin içindeki çok hızlı, küçük depolama birimleri.
-*   **Condition Codes (Durum Kodları):** En son yapılan işlemin sonucu hakkında bilgi tutan tek bitlik bayraklar (sonuç sıfır mıydı, negatif miydi vb.).
-*   **Memory (Bellek):** Kod, global değişkenler ve stack gibi verilerin tutulduğu büyük bir bayt dizisi.
+*   **Program Counter (PC / `%rip`):** İşlemcinin o an yürüttüğü komuttan bir sonraki komutun bellek adresini tutan en önemli register'dır. Varsayılan olarak, işlemci bir komutu yürüttükten sonra PC'yi bir sonrakini gösterecek şekilde otomatik olarak artırır. `jump` (dallanma) veya `call` (fonksiyon çağırma) gibi kontrol akışı komutları, doğrudan bu register'ın değerini değiştirerek programın akışını yönlendirir.
+
+*   **Registers (Tamsayı Yazmaçları):** İşlemcinin içinde bulunan, son derece hızlı ve küçük depolama alanlarıdır. Assembly dilinin "değişkenleri" olarak düşünülebilirler. Belleğe erişmek yavaş bir işlem olduğu için, sık kullanılan veriler ve ara hesaplamalar bu register'larda tutulur. x86-64 mimarisinde, `%rax`, `%rbx`, `%rdi` gibi isimlere sahip 16 adet genel amaçlı 64-bit register bulunur.
+
+*   **Condition Codes (Durum Kodları):** En son yürütülen aritmetik veya mantıksal işlemin sonucu hakkında bilgi tutan tek bitlik özel register'lardır. C'deki `if (a > b)` gibi koşullu ifadelerin temelini oluştururlar.
+    *   **`ZF` (Zero Flag):** Sonuç sıfır ise `1` olur.
+    *   **`SF` (Sign Flag):** Sonuç negatif ise `1` olur.
+    *   **`CF` (Carry Flag):** İşaretsiz bir toplama işleminde el de oluşursa `1` olur.
+    *   **`OF` (Overflow Flag):** İşaretli bir toplama işleminde taşma olursa `1` olur.
+    `cmp` (karşılaştırma) ve `test` gibi komutlar bu bayrakları ayarlar, `je` (jump if equal), `jg` (jump if greater) gibi koşullu dallanma komutları ise bu bayrakların değerine göre programın akışını değiştirir.
+
+*   **Memory (Bellek):** Kodun kendisi, global değişkenler, yığın (stack) ve dinamik olarak ayrılan verilerin (heap) tutulduğu devasa bir bayt dizisidir. Her baytın benzersiz bir adresi vardır. Assembly'de `movq (%rax), %rbx` gibi komutlarla belirli bellek adreslerindeki veriler okunabilir veya bu adreslere veri yazılabilir.
+
+*Görsel: İşlemci (CPU) ve Bellek (Memory) arasındaki temel ilişki. CPU, komutları ve verileri işlemek için kendi içindeki hızlı register'ları kullanır ve gerektiğinde yavaş olan ana belleğe adres veriyolu üzerinden erişir.*
+```mermaid
+graph TD
+    subgraph "CPU (İşlemci)"
+        direction LR
+        
+        subgraph "Registers (Yazmaçlar)"
+            rax["%rax"]
+            rdi["%rdi"]
+            rsp["%rsp"]
+            etc_reg["..."]
+        end
+        
+        subgraph "Control Unit (Kontrol Birimi)"
+            rip["%rip (Program Counter)"]
+            cc["Condition Codes"]
+        end
+    end
+
+    CPU -- "Address/Data Bus (Veriyolu)" --> Memory["Memory (Bellek)<br><i>Devasa bir bayt dizisi...</i>"]
+    Memory -- " " --> CPU
+
+    style CPU fill:#D2E9FF,stroke:#99C7FF
+```
+
+<div class="quiz-question">
+  <p><b>Soru:</b> C dilindeki `if (x > y)` gibi koşullu ifadelerin çalışmasını sağlayan temel donanım mekanizması nedir?</p>
+  <div class="quiz-option">A) Program Counter (`%rip`)</div>
+  <div class="quiz-option">B) Registers (Yazmaçlar)</div>
+  <div class="quiz-option" data-correct="true">C) Condition Codes (Durum Kodları)</div>
+  <div class="quiz-option">D) Bellek Adresleri</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> `cmp` gibi karşılaştırma komutları, sonucun (büyük, küçük, eşit vb.) ne olduğuna dair bilgiyi Durum Kodları'na (Condition Codes) yazar. `jg` (jump if greater) gibi koşullu dallanma komutları da bu kodları okuyarak programın akışını yönlendirir ve `if-else` mantığını oluşturur.</p>
+  </div>
+</div>
 
 ---
 
 ## 3. x86-64 Mimarisi ve Register'lar
 
-Günümüzdeki çoğu işlemci **x86-64** mimarisini kullanır ve 16 adet genel amaçlı 64-bit'lik register sunar.
+Günümüzdeki çoğu işlemci **x86-64** mimarisini kullanır ve 16 adet genel amaçlı 64-bit'lik register sunar. Bu register'ların bazıları, fonksiyon çağrıları sırasında belirli roller üstlenir:
 
 | Register Adı | Tipik Kullanım Amacı |
 | :--- | :--- |
@@ -81,7 +154,7 @@ Günümüzdeki çoğu işlemci **x86-64** mimarisini kullanır ve 16 adet genel 
 
 Assembly'deki en temel komutlardan biri `mov`'dur. Bir değeri bir yerden başka bir yere kopyalar. Komut, veri boyutunu belirten bir sonek alır: `movb` (1 byte), `movl` (4 byte), `movq` (8 byte).
 
-**`movq Kaynak, Hedef`**
+**`movq Source, Destination`**
 
 *   **Source (Kaynak):**
     *   **Immediate (Sabit):** `$0x100` gibi dolar işaretiyle başlayan sabit bir değer.
@@ -92,6 +165,17 @@ Assembly'deki en temel komutlardan biri `mov`'dur. Bir değeri bir yerden başka
     *   **Memory (Bellek):** `(%rbx)` gibi bir adres.
 
 **Kısıtlama:** Tek bir `mov` komutuyla bellekten belleğe doğrudan veri kopyalamak mümkün değildir. Veri önce bir register'a alınmalı, sonra o register'dan hedefe yazılmalıdır.
+
+<div class="quiz-question">
+  <p><b>Soru:</b> `movq` komutunun en temel kısıtlaması aşağıdakilerden hangisidir?</p>
+  <div class="quiz-option">A) Sadece 64-bit verileri taşıyabilir.</div>
+  <div class="quiz-option">B) Bir register'daki veriyi başka bir register'a kopyalayamaz.</div>
+  <div class="quiz-option" data-correct="true">C) Bir bellek adresindeki veriyi doğrudan başka bir bellek adresine kopyalayamaz.</div>
+  <div class="quiz-option">D) Sabit bir değeri (`immediate`) bir bellek adresine yazamaz.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> x86-64 mimarisinde, bellekten belleğe doğrudan bir taşıma işlemi yoktur. Bu işlem her zaman bir ara register kullanılarak iki adımda yapılır: önce bellekten register'a, sonra register'dan belleğe.</p>
+  </div>
+</div>
 
 ---
 
