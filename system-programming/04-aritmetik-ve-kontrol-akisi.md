@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Aritmetik ve Kontrol Akışı
-nav_order: 5
+nav_order: 4
 parent: System Programming
 ---
 
@@ -26,6 +26,8 @@ parent: System Programming
 | `andq S, D` | Bitwise AND (`D &= S`) | `notq D` | Bitwise NOT (`D = ~D`) |
 | `xorq S, D` | Bitwise XOR (`D ^= S`)| | |
 
+Bu komutlar yalnızca register ve bellek içeriklerini değiştirmekle kalmaz, aynı zamanda **condition code**'ları da (ZF, SF, OF, CF) etkiler. Bu sayede, bir sonraki bölümde göreceğimiz `cmp` / `test` ve `j...` dallanma komutları, bu aritmetik işlemlerin sonucuna göre karar verebilir.
+
 ### b) `leaq` Komutu: Belleğe Dokunmadan Adres Hesabı Yapma Sanatı
 `leaq Source, Destination` (Load Effective Address) komutu, Assembly'nin en ilginç ve güçlü komutlarındandır. Standart `movq` komutunun aksine, bu komut **belleğe gerçekten erişmez.**
 
@@ -39,6 +41,31 @@ parent: System Programming
 Bu özelliği sayesinde, toplama ve sınırlı çarpma işlemleri için de dahice bir şekilde kullanılabilir.
 
 *   **Örnek:** `%rax`'ta `x` değeri varken `leaq (%rax, %rax, 2), %rdx` komutu, `%rdx` register'ına `x + x*2`, yani `3*x` değerini yazar. Bu, `imul` komutundan daha hızlı olabilir.
+
+Biraz daha somutlaştıralım:
+
+**Örnek: `x * 3 - 5` Hesabını C ve Assembly ile Yazmak**
+
+**C Kodu:**
+```c
+long scale3(long x) {
+    return x * 3 - 5;
+}
+```
+
+**Assembly (olası bir çeviri):**
+```asm
+scale3:
+    leaq (%rdi, %rdi, 2), %rax   # %rax = x + 2*x  = 3*x
+    subq $5, %rax                # %rax = 3*x - 5
+    ret
+```
+
+Burada:
+
+*   Parametre `x`, çağrı kuralına göre `%rdi` register'ında gelir.
+*   `leaq` komutu, belleğe dokunmadan `3*x` ifadesini hesaplar.
+*   `subq $5, %rax` ile sonuçtan `5` çıkarılır ve fonksiyonun dönüş değeri olarak `%rax` içinde bırakılır.
 
 <div class="quiz-question">
   <p><b>Soru:</b> `leaq 8(%rdi, %rsi, 4), %rax` komutunun yaptığı işlev C dilinde neye en yakındır? (`%rdi`'de `p`, `%rsi`'de `i` olduğunu varsayın)</p>
@@ -76,6 +103,13 @@ Durum kodlarını, bir sonraki `jump` komutunun karar verebilmesi için ayarlaya
     *   Kullanım: Bir sayının belirli bitlerini kontrol etmek veya sayının sıfır olup olmadığını anlamak için çok verimlidir.
     *   `testq %rax, %rax` -> `ZF=1` ise `%rax == 0` demektir.
 
+Aşağıdaki tablo, bu iki komutun tipik kullanım farkını özetler:
+
+| Komut        | Yaptığı İş              | Tipik Kullanım                     |
+| :----------- | :---------------------- | :--------------------------------- |
+| `cmpq S2,S1` | `S1 - S2` sonucu ile CC | `if (a < b)`, `if (x == y)`       |
+| `testq S2,S1`| `S1 & S2` sonucu ile CC | `if (x != 0)`, bit mask kontrolü  |
+
 ### b) Koşullu Zıplama (Conditional Jumps)
 
 `j...` ile başlayan komutlar, durum kodlarının o anki değerine bakarak programın akışını farklı bir **etikete (label)** yönlendirir.
@@ -106,6 +140,21 @@ graph TD
   <div class="quiz-option">D) Hiçbiri</div>
   <div class="quiz-explanation">
     <p><b>Cevap: B.</b> `cmpq S2, S1` komutu `S1 - S2` işlemini yapar. Yani, `10 - 5` değil, `%rbx - %rax` (`10-5`) değil `5-10` yapılır. Sonuç `-5` olduğu için `SF` (Sign Flag) `1` olur.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Aşağıdaki kod parçası, C dilindeki hangi koşula en yakındır?</p>
+  <pre><code class="language-asm">
+testq %rdi, %rdi
+je   .Lnull
+  </code></pre>
+  <div class="quiz-option" data-correct="true">A) <code>if (p == NULL)</code></div>
+  <div class="quiz-option">B) <code>if (p != NULL)</code></div>
+  <div class="quiz-option">C) <code>if (*p == 0)</code></div>
+  <div class="quiz-option">D) <code>if (*p != 0)</code></div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: A.</b> <code>testq %rdi, %rdi</code> komutu pratikte <code>cmpq $0, %rdi</code> ile aynı etkiyi yaratır: Eğer <code>%rdi == 0</code> ise <code>ZF=1</code> olur. Ardından gelen <code>je</code> komutu, sadece ZF=1 iken dallandığı için bu yapı, C dilindeki <code>if (p == NULL)</code> koşuluna karşılık gelir.</p>
   </div>
 </div>
 
@@ -163,6 +212,40 @@ graph TD
 ```
 Bu yapı sayesinde, bir fonksiyon diğerini çağırdığında (ve o da bir başkasını), her birinin kendi özel değişken alanı olur ve program karışıklık olmadan çalışır.
 
+### Örnek: Basit Bir Fonksiyonun Stack Frame'i
+
+Aşağıdaki fonksiyonun nasıl bir çerçeve (stack frame) oluşturduğunu inceleyelim:
+
+**C Kodu:**
+```c
+long sum2(long x, long y) {
+    long z = x + y;
+    return z;
+}
+```
+
+**Olası Assembly (özetlenmiş):**
+```asm
+sum2:
+    pushq %rbp           # Eski %rbp'yi sakla
+    movq  %rsp, %rbp     # Yeni frame'in tabanı = eski stack tepesi
+    subq  $16, %rsp      # (İsteğe bağlı) yerel değişkenler için alan aç
+
+    movq  %rdi, -8(%rbp) # x'i stack'e kaydet
+    movq  %rsi, -16(%rbp)# y'yi stack'e kaydet
+
+    movq  -8(%rbp), %rax # %rax = x
+    addq  -16(%rbp), %rax# %rax = x + y
+
+    leave                # mov %rbp,%rsp; pop %rbp
+    ret                  # Dönüş adresine zıpla
+```
+
+Bu örnekte:
+
+*   `%rbp` aktif fonksiyonun çerçevesi için sabit bir referans noktası (anchor) oluşturur.
+*   `leave` komutu, fonksiyon sonunda stack frame'i temizleyip eski `%rbp` değerini geri yükler.
+
 <div class="quiz-question">
   <p><b>Soru:</b> Bir C kodunda `if (x > 0)` kontrolü yapılacaktır. `%rax` register'ında `x`'in değeri tutuluyorsa, bu kontrolü yapmak için hangi Assembly komutları en mantıklısıdır?</p>
   <div class="quiz-option">A) `movq $0, %rax` ve `je .zero_label`</div>
@@ -198,6 +281,21 @@ jle .not_positive_label # "Jump if Less or Equal". ZF=1 (eşitse) veya SF=1 (kü
   <div class="quiz-option">D) Fonksiyonun dönüş değerini saklamak.</div>
   <div class="quiz-explanation">
     <p><b>Cevap: B.</b> `%rsp` (Stack Pointer) yığına eleman eklenip çıkarıldıkça sürekli hareket eder. Bu nedenle, fonksiyonun kendi değişkenlerine `%rsp`'ye göre erişmek karmaşık olurdu. `%rbp` ise fonksiyon boyunca sabit kalarak, tüm lokal değişkenlere ve argümanlara bilinen, sabit bir ofsetle (`-8(%rbp)` gibi) erişilmesini sağlayan güvenilir bir "çapa" (anchor) görevi görür.</p>
+  </div>
+</div>
+
+<div class="quiz-question">
+  <p><b>Soru:</b> Aşağıdaki iki komut birlikte çalıştırıldığında hangi işlemi gerçekleştirir?</p>
+  <pre><code class="language-asm">
+leave
+ret
+  </code></pre>
+  <div class="quiz-option">A) Yalnızca fonksiyonun dönüş değerini ayarlar.</div>
+  <div class="quiz-option">B) Sadece eski <code>%rbp</code> değerini geri yükler.</div>
+  <div class="quiz-option" data-correct="true">C) Aktif stack frame'i temizler ve çağıran fonksiyona geri döner.</div>
+  <div class="quiz-option">D) Yerel değişkenleri sıfırlar.</div>
+  <div class="quiz-explanation">
+    <p><b>Cevap: C.</b> <code>leave</code> komutu, özetle <code>mov %rbp, %rsp</code> ve <code>pop %rbp</code> işlemlerini yaparak mevcut stack frame'i temizler. Ardından <code>ret</code> komutu, stack'teki dönüş adresini alıp programın kontrolünü çağıran fonksiyona devreder.</p>
   </div>
 </div>
 
