@@ -44,27 +44,29 @@ graph LR
     D -- "gcc <br> (Linker)" --> E["Yürütülebilir Dosya"];
 ```
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `gcc -c program.c` komutu çalıştırıldığında hangi dosya üretilir?</p>
-  <div class="quiz-option">A) `program.s` (Assembly kodu)</div>
-  <div class="quiz-option" data-correct="true">B) `program.o` (Nesne kodu)</div>
-  <div class="quiz-option">C) `program.i` (Önişlemciden geçmiş kod)</div>
-  <div class="quiz-option">D) `program` (Yürütülebilir dosya)</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `-c` parametresi, `gcc`'ye derleme sürecini Assembly adımı tamamlandıktan sonra durdurmasını ve linkleme yapmadan, makine diline çevrilmiş olan nesne kodunu (`.o` dosyası) üretmesini söyler.</p>
-  </div>
-</div>
+**Question 1:** `gcc -c program.c` komutu çalıştırıldığında hangi dosya üretilir?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir C programını derlerken, Assembly kodunu (`.s` dosyası) görmek için `gcc`'ye hangi parametre verilir?</p>
-  <div class="quiz-option">A) `-c`</div>
-  <div class="quiz-option">B) `-o`</div>
-  <div class="quiz-option" data-correct="true">C) `-S`</div>
-  <div class="quiz-option">D) `-E`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `gcc -S program.c` komutu, derleme işlemini Assembly kodu ürettikten sonra durdurur ve `program.s` adlı bir dosya oluşturur.</p>
-  </div>
-</div>
+*   A) `program.s` (Assembly kodu)
+*   B) `program.o` (Nesne kodu)
+*   C) `program.i` (Önişlemciden geçmiş kod)
+*   D) `program` (Yürütülebilir dosya)
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> `-c` parametresi, `gcc`'ye derleme sürecini Assembly adımı tamamlandıktan sonra durdurmasını ve linkleme yapmadan, makine diline çevrilmiş olan nesne kodunu (`.o` dosyası) üretmesini söyler.</p>
+</details>
+
+**Question 2:** Bir C programını derlerken, Assembly kodunu (`.s` dosyası) görmek için `gcc`'ye hangi parametre verilir?
+
+*   A) `-c`
+*   B) `-o`
+*   C) `-S`
+*   D) `-E`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> `gcc -S program.c` komutu, derleme işlemini Assembly kodu ürettikten sonra durdurur ve `program.s` adlı bir dosya oluşturur.</p>
+</details>
 
 ---
 
@@ -101,16 +103,17 @@ graph TD
 *   **Condition Codes (Durum Kodları):** En son yapılan aritmetik veya mantıksal işlemin sonucu hakkında bilgi tutan (örneğin, sonuç sıfır mıydı, negatif miydi vb.) tek bitlik bayraklardır. `if` ve `while` gibi yapıların temelini oluştururlar.
 *   **Memory (Bellek):** Kodun kendisi, global değişkenler, yığın (stack) ve programın çalışma zamanında ayırdığı diğer verilerin (heap) tutulduğu devasa bir bayt dizisidir.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> C dilindeki `if (x > y)` gibi koşullu ifadelerin çalışmasını sağlayan temel donanım mekanizması nedir?</p>
-  <div class="quiz-option">A) Program Counter (`%rip`)</div>
-  <div class="quiz-option">B) Registers (Yazmaçlar)</div>
-  <div class="quiz-option" data-correct="true">C) Condition Codes (Durum Kodları)</div>
-  <div class="quiz-option">D) Bellek Adresleri</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `cmp` gibi karşılaştırma komutları, sonucun (büyük, küçük, eşit vb.) ne olduğuna dair bilgiyi Durum Kodları'na (Condition Codes) yazar. `jg` (jump if greater) gibi koşullu dallanma komutları da bu kodları okuyarak programın akışını yönlendirir ve `if-else` mantığını oluşturur.</p>
-  </div>
-</div>
+**Question 1:** C dilindeki `if (x > y)` gibi koşullu ifadelerin çalışmasını sağlayan temel donanım mekanizması nedir?
+
+*   A) Program Counter (`%rip`)
+*   B) Registers (Yazmaçlar)
+*   C) Condition Codes (Durum Kodları)
+*   D) Bellek Adresleri
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> `cmp` gibi karşılaştırma komutları, sonucun (büyük, küçük, eşit vb.) ne olduğuna dair bilgiyi Durum Kodları'na (Condition Codes) yazar. `jg` (jump if greater) gibi koşullu dallanma komutları da bu kodları okuyarak programın akışını yönlendirir ve `if-else` mantığını oluşturur.</p>
+</details>
 
 ---
 
@@ -124,16 +127,17 @@ Günümüzdeki çoğu işlemci **x86-64** mimarisini kullanır ve 16 adet genel 
 | `%rdi`, `%rsi`, `%rdx`, `%rcx`, `%r8`, `%r9` | Fonksiyon argümanları (ilk altı) |
 | `%rsp` | Stack (Yığın) işaretçisi |
 
-<div class="quiz-question">
-  <p><b>Soru:</b> x86-64 mimarisinde, bir fonksiyondan dönen tamsayı veya pointer değeri tipik olarak hangi register'da bulunur?</p>
-  <div class="quiz-option" data-correct="true">A) `%rax`</div>
-  <div class="quiz-option">B) `%rsp`</div>
-  <div class="quiz-option">C) `%rdi`</div>
-  <div class="quiz-option">D) `%rbp`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Çağrı kurallarına göre, fonksiyonun dönüş değeri `%rax` register'ına yerleştirilerek çağıran fonksiyona döndürülür.</p>
-  </div>
-</div>
+**Question 2:** x86-64 mimarisinde, bir fonksiyondan dönen tamsayı veya pointer değeri tipik olarak hangi register'da bulunur?
+
+*   A) `%rax`
+*   B) `%rsp`
+*   C) `%rdi`
+*   D) `%rbp`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: A.</b> Çağrı kurallarına göre, fonksiyonun dönüş değeri `%rax` register'ına yerleştirilerek çağıran fonksiyona döndürülür.</p>
+</details>
 
 ---
 
@@ -153,16 +157,17 @@ Assembly'deki en temel komutlardan biri `mov`'dur. Bir değeri bir yerden başka
 
 **Kısıtlama:** Tek bir `mov` komutuyla bellekten belleğe doğrudan veri kopyalamak mümkün değildir. Veri önce bir register'a alınmalı, sonra o register'dan hedefe yazılmalıdır.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `movq` komutunun en temel kısıtlaması aşağıdakilerden hangisidir?</p>
-  <div class="quiz-option">A) Sadece 64-bit verileri taşıyabilir.</div>
-  <div class="quiz-option">B) Bir register'daki veriyi başka bir register'a kopyalayamaz.</div>
-  <div class="quiz-option" data-correct="true">C) Bir bellek adresindeki veriyi doğrudan başka bir bellek adresine kopyalayamaz.</div>
-  <div class="quiz-option">D) Sabit bir değeri (`immediate`) bir bellek adresine yazamaz.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> x86-64 mimarisinde, bellekten belleğe doğrudan bir taşıma işlemi yoktur. Bu işlem her zaman bir ara register kullanılarak iki adımda yapılır: önce bellekten register'a, sonra register'dan belleğe.</p>
-  </div>
-</div>
+**Question 1:** `movq` komutunun en temel kısıtlaması aşağıdakilerden hangisidir?
+
+*   A) Sadece 64-bit verileri taşıyabilir.
+*   B) Bir register'daki veriyi başka bir register'a kopyalayamaz.
+*   C) Bir bellek adresindeki veriyi doğrudan başka bir bellek adresine kopyalayamaz.
+*   D) Sabit bir değeri (`immediate`) bir bellek adresine yazamaz.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> x86-64 mimarisinde, bellekten belleğe doğrudan bir taşıma işlemi yoktur. Bu işlem her zaman bir ara register kullanılarak iki adımda yapılır: önce bellekten register'a, sonra register'dan belleğe.</p>
+</details>
 
 ---
 
@@ -197,16 +202,17 @@ addq %rsi, %rax   # a = a + c; (%rax = %rax + %rsi)
 
 Bu iki komut, `if (a == b)` gibi yapıların temelini oluşturur.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir `sum` fonksiyonu, kendisine argüman olarak gelen register'lar dışında `%rbx` register'ını da bir ara hesaplama için kullanmak istiyor. Fonksiyon çağrı kurallarına göre `sum` fonksiyonu ne yapmalıdır?</p>
-  <div class="quiz-option">A) Hiçbir şey yapmasına gerek yok, `%rbx`'i doğrudan kullanabilir.</div>
-  <div class="quiz-option" data-correct="true">B) `%rbx` "callee-saved" olduğu için, fonksiyonun başında orijinal değerini yığına kaydetmeli ve fonksiyondan çıkmadan önce geri yüklemelidir.</div>
-  <div class="quiz-option">C) `%rbx` "caller-saved" olduğu için, çağıran fonksiyonun sorumluluğundadır. `sum` fonksiyonu bir şey yapmaz.</div>
-  <div class="quiz-option">D) `%rbx` register'ı sadece işletim sistemi tarafından kullanılabilir.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `%rbx`, `%rbp`, ve `%r12-%r15` register'ları "callee-saved" (çağrılan tarafından korunur) olarak kabul edilir. Bu, bir fonksiyonun bu register'ları kullanabilmesi için, çağıran fonksiyona ait olan orijinal değeri bozmamakla yükümlü olduğu anlamına gelir. Bu yüzden fonksiyonun başında değeri yığına `push` eder ve sonunda `pop` ile geri alır.</p>
-  </div>
-</div>
+**Question 2:** Bir `sum` fonksiyonu, kendisine argüman olarak gelen register'lar dışında `%rbx` register'ını da bir ara hesaplama için kullanmak istiyor. Fonksiyon çağrı kurallarına göre `sum` fonksiyonu ne yapmalıdır?
+
+*   A) Hiçbir şey yapmasına gerek yok, `%rbx`'i doğrudan kullanabilir.
+*   B) `%rbx` "callee-saved" olduğu için, fonksiyonun başında orijinal değerini yığına kaydetmeli ve fonksiyondan çıkmadan önce geri yüklemelidir.
+*   C) `%rbx` "caller-saved" olduğu için, çağıran fonksiyonun sorumluluğundadır. `sum` fonksiyonu bir şey yapmaz.
+*   D) `%rbx` register'ı sadece işletim sistemi tarafından kullanılabilir.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> `%rbx`, `%rbp`, ve `%r12-%r15` register'ları "callee-saved" (çağrılan tarafından korunur) olarak kabul edilir. Bu, bir fonksiyonun bu register'ları kullanabilmesi için, çağıran fonksiyona ait olan orijinal değeri bozmamakla yükümlü olduğu anlamına gelir. Bu yüzden fonksiyonun başında değeri yığına `push` eder ve sonunda `pop` ile geri alır.</p>
+</details>
 
 ---
 
@@ -243,27 +249,29 @@ swap:
 
 Bu örnekte, `(%rdi)` ve `(%rsi)` ifadeleri **Normal Adresleme Modu**'nu kullanarak `xp` ve `yp` pointer'larının gösterdiği bellek alanlarına erişir.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `%rax` register'ında `0x100`, `%rbx` register'ında ise `0x10` değeri olduğunu varsayalım. `movq 8(%rax, %rbx, 4), %rcx` komutu çalıştırıldığında, `%rcx` register'ına hangi bellek adresindeki veri kopyalanır?</p>
-  <div class="quiz-option">A) `0x118`</div>
-  <div class="quiz-option">B) `0x148`</div>
-  <div class="quiz-option" data-correct="true">C) `0x148` adresindeki veri</div>
-  <div class="quiz-option">D) Bu komut geçersizdir</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Adres hesaplaması `Sabit + Register1 + Register2 * Olcek` formülüne göre yapılır: `8 + 0x100 + 0x10 * 4` = `8 + 256 + 16 * 4` = `8 + 256 + 64` = `328`, yani `0x148`. Komut, bu hesaplanan **adresteki 8 baytlık veriyi** `%rcx` register'ına kopyalar.</p>
-  </div>
-</div>
+**Question 1:** `%rax` register'ında `0x100`, `%rbx` register'ında ise `0x10` değeri olduğunu varsayalım. `movq 8(%rax, %rbx, 4), %rcx` komutu çalıştırıldığında, `%rcx` register'ına hangi bellek adresindeki veri kopyalanır?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Yukarıdaki `swap` fonksiyonunda, ilk iki `movq` komutundan sonra `%rax` ve `%rdx` register'ları hangi değerleri tutar?</p>
-  <div class="quiz-option">A) `xp` ve `yp`'nin bellek adreslerini</div>
-  <div class="quiz-option" data-correct="true">B) `xp` ve `yp`'nin gösterdiği yerdeki değerleri</div>
-  <div class="quiz-option">C) `t0` ve `t1`'in bellek adreslerini</div>
-  <div class="quiz-option">D) `%rdi` ve `%rsi`'nin kendisini</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `movq (%rdi), %rax` komutu, `%rdi`'nin **içindeki adrese gider** ve o adresteki 8 byte'lık değeri `%rax`'e kopyalar. Yani `*xp` işlemini yapar. Aynı durum `%rdx` için de geçerlidir.</p>
-  </div>
-</div>
+*   A) `0x118`
+*   B) `0x148`
+*   C) `0x148` adresindeki veri
+*   D) Bu komut geçersizdir
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> Adres hesaplaması `Sabit + Register1 + Register2 * Olcek` formülüne göre yapılır: `8 + 0x100 + 0x10 * 4` = `8 + 256 + 16 * 4` = `8 + 256 + 64` = `328`, yani `0x148`. Komut, bu hesaplanan **adresteki 8 baytlık veriyi** `%rcx` register'ına kopyalar.</p>
+</details>
+
+**Question 2:** Yukarıdaki `swap` fonksiyonunda, ilk iki `movq` komutundan sonra `%rax` ve `%rdx` register'ları hangi değerleri tutar?
+
+*   A) `xp` ve `yp`'nin bellek adreslerini
+*   B) `xp` ve `yp`'nin gösterdiği yerdeki değerleri
+*   C) `t0` ve `t1`'in bellek adreslerini
+*   D) `%rdi` ve `%rsi`'nin kendisini
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> `movq (%rdi), %rax` komutu, `%rdi`'nin **içindeki adrese gider** ve o adresteki 8 byte'lık değeri `%rax`'e kopyalar. Yani `*xp` işlemini yapar. Aynı durum `%rdx` için de geçerlidir.</p>
+</details>
 
 ---
 

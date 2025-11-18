@@ -67,16 +67,17 @@ Burada:
 *   `leaq` komutu, belleğe dokunmadan `3*x` ifadesini hesaplar.
 *   `subq $5, %rax` ile sonuçtan `5` çıkarılır ve fonksiyonun dönüş değeri olarak `%rax` içinde bırakılır.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `leaq 8(%rdi, %rsi, 4), %rax` komutunun yaptığı işlev C dilinde neye en yakındır? (`%rdi`'de `p`, `%rsi`'de `i` olduğunu varsayın)</p>
-  <div class="quiz-option">A) `rax = p[i*4 + 8]`</div>
-  <div class="quiz-option">B) `rax = p + i + 8`</div>
-  <div class="quiz-option" data-correct="true">C) `rax = &p[i*4 + 8]` (Adres hesabı)</div>
-  <div class="quiz-option">D) `rax = *(p + i*4 + 8)`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `leaq` komutu "Load Effective Address" anlamına gelir ve bellekten veri okumaz. Sadece adres hesaplaması yapar. Bu ifade, `p + i*4 + 8` adresini hesaplar ve bu adresi (bir pointer değeri olarak) `%rax` register'ına yükler. Bellekten okuma yapan (`*` operatörü) `D` seçeneği, `movq` komutuna karşılık gelirdi.</p>
-  </div>
-</div>
+**Question 1:** `leaq 8(%rdi, %rsi, 4), %rax` komutunun yaptığı işlev C dilinde neye en yakındır? (`%rdi`'de `p`, `%rsi`'de `i` olduğunu varsayın)
+
+*   A) `rax = p[i*4 + 8]`
+*   B) `rax = p + i + 8`
+*   C) `rax = &p[i*4 + 8]` (Adres hesabı)
+*   D) `rax = *(p + i*4 + 8)`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> `leaq` komutu "Load Effective Address" anlamına gelir ve bellekten veri okumaz. Sadece adres hesaplaması yapar. Bu ifade, `p + i*4 + 8` adresini hesaplar ve bu adresi (bir pointer değeri olarak) `%rax` register'ına yükler. Bellekten okuma yapan (`*` operatörü) `D` seçeneği, `movq` komutuna karşılık gelirdi.</p>
+</details>
 
 ---
 
@@ -132,31 +133,34 @@ graph TD
     D --> E;
 ```
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `%rax` register'ında 5, `%rbx` register'ında 10 değeri varken, `cmpq %rax, %rbx` komutu çalıştırıldıktan sonra durum kodlarından hangisi `1` olur?</p>
-  <div class="quiz-option">A) `ZF (Zero Flag)`</div>
-  <div class="quiz-option" data-correct="true">B) `SF (Sign Flag)`</div>
-  <div class="quiz-option">C) `OF (Overflow Flag)`</div>
-  <div class="quiz-option">D) Hiçbiri</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `cmpq S2, S1` komutu `S1 - S2` işlemini yapar. Yani, `10 - 5` değil, `%rbx - %rax` (`10-5`) değil `5-10` yapılır. Sonuç `-5` olduğu için `SF` (Sign Flag) `1` olur.</p>
-  </div>
-</div>
+**Question 1:** `%rax` register'ında 5, `%rbx` register'ında 10 değeri varken, `cmpq %rax, %rbx` komutu çalıştırıldıktan sonra durum kodlarından hangisi `1` olur?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Aşağıdaki kod parçası, C dilindeki hangi koşula en yakındır?</p>
-  <pre><code class="language-asm">
+*   A) `ZF (Zero Flag)`
+*   B) `SF (Sign Flag)`
+*   C) `OF (Overflow Flag)`
+*   D) Hiçbiri
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> `cmpq S2, S1` komutu `S1 - S2` işlemini yapar. Yani, `10 - 5` değil, `%rbx - %rax` (`10-5`) değil `5-10` yapılır. Sonuç `-5` olduğu için `SF` (Sign Flag) `1` olur.</p>
+</details>
+
+**Question 2:** Aşağıdaki kod parçası, C dilindeki hangi koşula en yakındır?
+
+```
 testq %rdi, %rdi
 je   .Lnull
-  </code></pre>
-  <div class="quiz-option" data-correct="true">A) <code>if (p == NULL)</code></div>
-  <div class="quiz-option">B) <code>if (p != NULL)</code></div>
-  <div class="quiz-option">C) <code>if (*p == 0)</code></div>
-  <div class="quiz-option">D) <code>if (*p != 0)</code></div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> <code>testq %rdi, %rdi</code> komutu pratikte <code>cmpq $0, %rdi</code> ile aynı etkiyi yaratır: Eğer <code>%rdi == 0</code> ise <code>ZF=1</code> olur. Ardından gelen <code>je</code> komutu, sadece ZF=1 iken dallandığı için bu yapı, C dilindeki <code>if (p == NULL)</code> koşuluna karşılık gelir.</p>
-  </div>
-</div>
+```
+
+*   A) `if (p == NULL)`
+*   B) `if (p != NULL)`
+*   C) `if (*p == 0)`
+*   D) `if (*p != 0)`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: A.</b> `testq %rdi, %rdi` komutu pratikte `cmpq $0, %rdi` ile aynı etkiyi yaratır: Eğer `%rdi == 0` ise `ZF=1` olur. Ardından gelen `je` komutu, sadece ZF=1 iken dallandığı için bu yapı, C dilindeki `if (p == NULL)` koşuluna karşılık gelir.</p>
+</details>
 
 ---
 
@@ -246,58 +250,63 @@ Bu örnekte:
 *   `%rbp` aktif fonksiyonun çerçevesi için sabit bir referans noktası (anchor) oluşturur.
 *   `leave` komutu, fonksiyon sonunda stack frame'i temizleyip eski `%rbp` değerini geri yükler.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir C kodunda `if (x > 0)` kontrolü yapılacaktır. `%rax` register'ında `x`'in değeri tutuluyorsa, bu kontrolü yapmak için hangi Assembly komutları en mantıklısıdır?</p>
-  <div class="quiz-option">A) `movq $0, %rax` ve `je .zero_label`</div>
-  <div class="quiz-option" data-correct="true">B) `testq %rax, %rax` ve `jle .not_positive_label`</div>
-  <div class="quiz-option">C) `addq $1, %rax` ve `js .negative_label`</div>
-  <div class="quiz-option">D) `leaq (%rax), %rax` ve `jmp .loop_label`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Bir sayının sıfır veya negatif olup olmadığını kontrol etmenin en verimli yollarından biri `testq` komutudur. 
-    <pre><code class="language-asm">
+**Question 1:** Bir C kodunda `if (x > 0)` kontrolü yapılacaktır. `%rax` register'ında `x`'in değeri tutuluyorsa, bu kontrolü yapmak için hangi Assembly komutları en mantıklısıdır?
+
+*   A) `movq $0, %rax` ve `je .zero_label`
+*   B) `testq %rax, %rax` ve `jle .not_positive_label`
+*   C) `addq $1, %rax` ve `js .negative_label`
+*   D) `leaq (%rax), %rax` ve `jmp .loop_label`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> Bir sayının sıfır veya negatif olup olmadığını kontrol etmenin en verimli yollarından biri `testq` komutudur. 
+  ```
 testq %rax, %rax  # %rax & %rax işlemini yap. Sonuç 0 ise ZF=1, negatifse SF=1 olur.
 jle .not_positive_label # "Jump if Less or Equal". ZF=1 (eşitse) veya SF=1 (küçükse) zıpla.
-    </code></pre>
-    Bu kod bloğu, `x <= 0` durumunda etikete zıplar, bu da `x > 0` kontrolünün tam tersidir ve `if` bloklarını uygulamak için yaygın bir yöntemdir.</p>
-  </div>
-</div>
+  ```
+  Bu kod bloğu, `x <= 0` durumunda etikete zıplar, bu da `x > 0` kontrolünün tam tersidir ve `if` bloklarını uygulamak için yaygın bir yöntemdir.</p>
+</details>
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `main` fonksiyonu içinden `sum(a, b)` fonksiyonuna `callq sum` komutuyla bir çağrı yapılıyor. `sum` fonksiyonu işini bitirip `retq` komutunu çalıştırdığında programın akışı nereye döner?</p>
-  <div class="quiz-option">A) `main` fonksiyonunun en başına.</div>
-  <div class="quiz-option">B) Programın sonuna.</div>
-  <div class="quiz-option" data-correct="true">C) `main` içindeki `callq sum` komutundan hemen sonraki komuta.</div>
-  <div class="quiz-option">D) `sum` fonksiyonunun en başına.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> `callq` komutu çalıştırılmadan hemen önce, bir sonraki komutun adresi ("dönüş adresi") yığına (stack) kaydedilir. `retq` komutunun tek görevi, yığındaki bu adresi alıp programı oradan devam ettirmektir. Bu mekanizma, fonksiyonların çağrıldıkları yere geri dönebilmelerini sağlar.</p>
-  </div>
-</div>
+**Question 2:** `main` fonksiyonu içinden `sum(a, b)` fonksiyonuna `callq sum` komutuyla bir çağrı yapılıyor. `sum` fonksiyonu işini bitirip `retq` komutunu çalıştırdığında programın akışı nereye döner?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `%rbp` (Base Pointer) register'ının temel amacı nedir?</p>
-  <div class="quiz-option">A) Yığının en tepesini göstermek.</div>
-  <div class="quiz-option" data-correct="true">B) Aktif fonksiyonun yığın çerçevesinin (stack frame) tabanını işaretleyerek lokal değişkenlere ve argümanlara sabit bir noktadan erişim sağlamak.</div>
-  <div class="quiz-option">C) Bir sonraki çalıştırılacak komutun adresini tutmak.</div>
-  <div class="quiz-option">D) Fonksiyonun dönüş değerini saklamak.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `%rsp` (Stack Pointer) yığına eleman eklenip çıkarıldıkça sürekli hareket eder. Bu nedenle, fonksiyonun kendi değişkenlerine `%rsp`'ye göre erişmek karmaşık olurdu. `%rbp` ise fonksiyon boyunca sabit kalarak, tüm lokal değişkenlere ve argümanlara bilinen, sabit bir ofsetle (`-8(%rbp)` gibi) erişilmesini sağlayan güvenilir bir "çapa" (anchor) görevi görür.</p>
-  </div>
-</div>
+*   A) `main` fonksiyonunun en başına.
+*   B) Programın sonuna.
+*   C) `main` içindeki `callq sum` komutundan hemen sonraki komuta.
+*   D) `sum` fonksiyonunun en başına.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Aşağıdaki iki komut birlikte çalıştırıldığında hangi işlemi gerçekleştirir?</p>
-  <pre><code class="language-asm">
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> `callq` komutu çalıştırılmadan hemen önce, bir sonraki komutun adresi ("dönüş adresi") yığına (stack) kaydedilir. `retq` komutunun tek görevi, yığındaki bu adresi alıp programı oradan devam ettirmektir. Bu mekanizma, fonksiyonların çağrıldıkları yere geri dönebilmelerini sağlar.</p>
+</details>
+
+**Question 3:** `%rbp` (Base Pointer) register'ının temel amacı nedir?
+
+*   A) Yığının en tepesini göstermek.
+*   B) Aktif fonksiyonun yığın çerçevesinin (stack frame) tabanını işaretleyerek lokal değişkenlere ve argümanlara sabit bir noktadan erişim sağlamak.
+*   C) Bir sonraki çalıştırılacak komutun adresini tutmak.
+*   D) Fonksiyonun dönüş değerini saklamak.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> `%rsp` (Stack Pointer) yığına eleman eklenip çıkarıldıkça sürekli hareket eder. Bu nedenle, fonksiyonun kendi değişkenlerine `%rsp`'ye göre erişmek karmaşık olurdu. `%rbp` ise fonksiyon boyunca sabit kalarak, tüm lokal değişkenlere ve argümanlara bilinen, sabit bir ofsetle (`-8(%rbp)` gibi) erişilmesini sağlayan güvenilir bir "çapa" (anchor) görevi görür.</p>
+</details>
+
+**Question 4:** Aşağıdaki iki komut birlikte çalıştırıldığında hangi işlemi gerçekleştirir?
+
+```
 leave
 ret
-  </code></pre>
-  <div class="quiz-option">A) Yalnızca fonksiyonun dönüş değerini ayarlar.</div>
-  <div class="quiz-option">B) Sadece eski <code>%rbp</code> değerini geri yükler.</div>
-  <div class="quiz-option" data-correct="true">C) Aktif stack frame'i temizler ve çağıran fonksiyona geri döner.</div>
-  <div class="quiz-option">D) Yerel değişkenleri sıfırlar.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> <code>leave</code> komutu, özetle <code>mov %rbp, %rsp</code> ve <code>pop %rbp</code> işlemlerini yaparak mevcut stack frame'i temizler. Ardından <code>ret</code> komutu, stack'teki dönüş adresini alıp programın kontrolünü çağıran fonksiyona devreder.</p>
-  </div>
-</div>
+```
+
+*   A) Yalnızca fonksiyonun dönüş değerini ayarlar.
+*   B) Sadece eski `%rbp` değerini geri yükler.
+*   C) Aktif stack frame'i temizler ve çağıran fonksiyona geri döner.
+*   D) Yerel değişkenleri sıfırlar.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> `leave` komutu, özetle `mov %rbp, %rsp` ve `pop %rbp` işlemlerini yaparak mevcut stack frame'i temizler. Ardından `ret` komutu, stack'teki dönüş adresini alıp programın kontrolünü çağıran fonksiyona devreder.</p>
+</details>
 
 ---
 
@@ -355,27 +364,29 @@ main:
 *   **Satır 4: `call topla`** - `topla` fonksiyonunu çağırır. Bu komut, bir sonraki komutun (`ret`) adresini yığına kaydeder ve programın akışını `topla` etiketine yönlendirir.
 *   **Satır 5: `ret`** - `topla` fonksiyonu işini bitirip geri döndüğünde, `%eax` register'ında `30` değeri bulunur. `main` fonksiyonu da bu değeri işletim sistemine dönüş değeri olarak kullanarak sonlanır.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Yukarıdaki `main` fonksiyonunda, `call topla` komutu çalıştırılmadan hemen önce `%rdi` ve `%rsi` register'ları hangi değerleri içerir?</p>
-  <div class="quiz-option">A) `20` ve `10`</div>
-  <div class="quiz-option">B) `x` ve `y`'nin bellek adreslerini</div>
-  <div class="quiz-option" data-correct="true">C) `10` ve `20`</div>
-  <div class="quiz-option">D) `0` ve `0`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> x86-64 çağrı kurallarına göre, bir fonksiyona geçirilen ilk tamsayı argümanı `%rdi`'ye (veya 32-bit ise `%edi`'ye), ikincisi ise `%rsi`'ye (veya `%esi`'ye) yerleştirilir. Derleyici, `topla(10, 20)` çağrısı için `10`'u `%edi`'ye ve `20`'yi `%esi`'ye yükler.</p>
-  </div>
-</div>
+**Question 1:** Yukarıdaki `main` fonksiyonunda, `call topla` komutu çalıştırılmadan hemen önce `%rdi` ve `%rsi` register'ları hangi değerleri içerir?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `topla` fonksiyonu neden `pushq %rbp` ve `movq %rsp, %rbp` gibi stack frame kurma komutlarını kullanmamıştır?</p>
-  <div class="quiz-option">A) Çünkü `main` fonksiyonu tarafından çağrılmıştır.</div>
-  <div class="quiz-option" data-correct="true">B) Çünkü fonksiyon çok basittir; herhangi bir lokal değişken için yığına (stack) ihtiyaç duymamış ve başka bir fonksiyonu çağırmamıştır.</div>
-  <div class="quiz-option">C) Modern derleyiciler artık stack frame kullanmaz.</div>
-  <div class="quiz-option">D) Çünkü dönüş değeri bir register ile döndürülmüştür.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Stack frame kurmak, özellikle fonksiyonun kendi lokal değişkenleri varsa veya başka fonksiyonları çağıracaksa (dönüş adresini korumak için) gereklidir. `topla` fonksiyonu o kadar basittir ki, tüm işlemlerini sadece register'lar üzerinde yapabilir. `-O1` gibi optimizasyon seviyelerinde derleyici, bu gereksiz stack operasyonlarını koddran çıkararak daha verimli bir makine kodu üretir. Bu tür fonksiyonlara "leaf function" (yaprak fonksiyon) denir.</p>
-  </div>
-</div>
+*   A) `20` ve `10`
+*   B) `x` ve `y`'nin bellek adreslerini
+*   C) `10` ve `20`
+*   D) `0` ve `0`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> x86-64 çağrı kurallarına göre, bir fonksiyona geçirilen ilk tamsayı argümanı `%rdi`'ye (veya 32-bit ise `%edi`'ye), ikincisi ise `%rsi`'ye (veya `%esi`'ye) yerleştirilir. Derleyici, `topla(10, 20)` çağrısı için `10`'u `%edi`'ye ve `20`'yi `%esi`'ye yükler.</p>
+</details>
+
+**Question 2:** `topla` fonksiyonu neden `pushq %rbp` ve `movq %rsp, %rbp` gibi stack frame kurma komutlarını kullanmamıştır?
+
+*   A) Çünkü `main` fonksiyonu tarafından çağrılmıştır.
+*   B) Çünkü fonksiyon çok basittir; herhangi bir lokal değişken için yığına (stack) ihtiyaç duymamış ve başka bir fonksiyonu çağırmamıştır.
+*   C) Modern derleyiciler artık stack frame kullanmaz.
+*   D) Çünkü dönüş değeri bir register ile döndürülmüştür.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> Stack frame kurmak, özellikle fonksiyonun kendi lokal değişkenleri varsa veya başka fonksiyonları çağıracaksa (dönüş adresini korumak için) gereklidir. `topla` fonksiyonu o kadar basittir ki, tüm işlemlerini sadece register'lar üzerinde yapabilir. `-O1` gibi optimizasyon seviyelerinde derleyici, bu gereksiz stack operasyonlarını koddan çıkararak daha verimli bir makine kodu üretir. Bu tür fonksiyonlara "leaf function" (yaprak fonksiyon) denir.</p>
+</details>
 
 ---
 
