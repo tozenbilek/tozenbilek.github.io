@@ -35,16 +35,17 @@ graph TD
 
 **Temel Fikir:** Her katman, bir altındaki daha yavaş ve daha büyük katman için bir **cache (önbellek)** görevi görür. En sık kullanılan veriler, piramidin en tepesine yakın tutulmaya çalışılır.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bellek hiyerarşisinin en tepesinde (işlemciye en yakın) ne bulunur ve en temel özelliği nedir?</p>
-  <div class="quiz-option">A) DRAM - En yüksek kapasite</div>
-  <div class="quiz-option">B) SSD - Kalıcı depolama</div>
-  <div class="quiz-option" data-correct="true">C) Registers (Yazmaçlar) - En yüksek hız</div>
-  <div class="quiz-option">D) L3 Cache - En iyi maliyet/performans oranı</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Hiyerarşinin en tepesinde, işlemcinin kendi içindeki yazmaçlar bulunur. Bunlar en hızlı erişilebilen ancak en küçük kapasiteli bellek türüdür.</p>
-  </div>
-</div>
+**Question 1:** Bellek hiyerarşisinin en tepesinde (işlemciye en yakın) ne bulunur ve en temel özelliği nedir?
+
+*   A) DRAM - En yüksek kapasite
+*   B) SSD - Kalıcı depolama
+*   C) Registers (Yazmaçlar) - En yüksek hız
+*   D) L3 Cache - En iyi maliyet/performans oranı
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> Hiyerarşinin en tepesinde, işlemcinin kendi içindeki yazmaçlar bulunur. Bunlar en hızlı erişilebilen ancak en küçük kapasiteli bellek türüdür.</p>
+</details>
 
 ---
 
@@ -60,16 +61,17 @@ Eğer bir veriye erişildiyse, yakın gelecekte ona **tekrar** erişilme olasıl
 Eğer bir veriye erişildiyse, onun bellekteki **komşularına** da yakın gelecekte erişilme olasılığı yüksektir.
 *   **Örnek:** Bir dizinin elemanlarını sırayla işlemek.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir döngü içinde aynı değişkene 1000 defa erişmek, hangi yerellik prensibinin bir örneğidir?</p>
-  <div class="quiz-option" data-correct="true">A) Temporal Locality (Zamansal Yerellik)</div>
-  <div class="quiz-option">B) Spatial Locality (Uzamsal Yerellik)</div>
-  <div class="quiz-option">C) Sequential Locality (Sıralı Yerellik)</div>
-  <div class="quiz-option">D) Random Locality (Rastgele Yerellik)</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Kısa bir zaman aralığında aynı bellek konumuna (değişkene) tekrar tekrar erişilmesi, zamansal yerelliğin tanımıdır.</p>
-  </div>
-</div>
+**Question 1:** Bir döngü içinde aynı değişkene 1000 defa erişmek, hangi yerellik prensibinin bir örneğidir?
+
+*   A) Temporal Locality (Zamansal Yerellik)
+*   B) Spatial Locality (Uzamsal Yerellik)
+*   C) Sequential Locality (Sıralı Yerellik)
+*   D) Random Locality (Rastgele Yerellik)
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: A.</b> Kısa bir zaman aralığında aynı bellek konumuna (değişkene) tekrar tekrar erişilmesi, zamansal yerelliğin tanımıdır.</p>
+</details>
 
 ---
 
@@ -114,26 +116,28 @@ void sum_col_major(int **matrix, int n) {
 
 `sum_col_major` ise bellekte birbirinden uzak adreslere atlayarak erişim yapar. Bu, her erişimde yeni bir "cache miss" yaşanmasına neden olabilir ve fonksiyonu diğerine göre **kat kat yavaşlatır**.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir programcının yazdığı kodun yavaş çalıştığı tespit ediliyor. Analiz sonucunda, programın "cache miss rate" (önbellek ıskalama oranı) çok yüksek çıkıyor. Programı hızlandırmak için aşağıdakilerden hangisi en etkili yaklaşım olur?</p>
-  <div class="quiz-option">A) Daha hızlı bir işlemci (CPU) kullanmak.</div>
-  <div class="quiz-option">B) Daha fazla RAM eklemek.</div>
-  <div class="quiz-option" data-correct="true">C) Kodun bellek erişim desenlerini, sıralı erişimi (stride-1) artıracak şekilde yeniden düzenlemek.</div>
-  <div class="quiz-option">D) Programı daha düşük seviyeli bir dil olan Assembly ile yeniden yazmak.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Yüksek bir "cache miss rate", programın yerellik prensibinden iyi faydalanamadığını gösterir. Bellek erişimlerini daha sıralı ve öngörülebilir hale getirmek (uzamsal yerelliği artırmak), "cache hit rate" (önbellek vuruş oranını) artıracak ve performansı önemli ölçüde iyileştirecektir.</p>
-  </div>
-</div>
+**Question 1:** Bir programcının yazdığı kodun yavaş çalıştığı tespit ediliyor. Analiz sonucunda, programın "cache miss rate" (önbellek ıskalama oranı) çok yüksek çıkıyor. Programı hızlandırmak için aşağıdakilerden hangisi en etkili yaklaşım olur?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir `struct` (yapı) içindeki birden fazla alana art arda erişmek, en çok hangi yerellik prensibinden faydalanır?</p>
-  <div class="quiz-option">A) Temporal Locality</div>
-  <div class="quiz-option" data-correct="true">B) Spatial Locality</div>
-  <div class="quiz-option">C) Her ikisinden de eşit derecede</div>
-  <div class="quiz-option">D) Hiçbirinden</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Bir `struct`'ın alanları bellekte ardışık olarak yer alır. Bir alana erişildiğinde, o `struct`'ı içeren bellek bloğu muhtemelen önbelleğe yüklenir. Bu sayede, bellekte hemen yanında bulunan diğer alanlara erişim çok daha hızlı olur. Bu, uzamsal yerelliğin tanımıdır.</p>
-  </div>
-</div>
+*   A) Daha hızlı bir işlemci (CPU) kullanmak.
+*   B) Daha fazla RAM eklemek.
+*   C) Kodun bellek erişim desenlerini, sıralı erişimi (stride-1) artıracak şekilde yeniden düzenlemek.
+*   D) Programı daha düşük seviyeli bir dil olan Assembly ile yeniden yazmak.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> Yüksek bir "cache miss rate", programın yerellik prensibinden iyi faydalanamadığını gösterir. Bellek erişimlerini daha sıralı ve öngörülebilir hale getirmek (uzamsal yerelliği artırmak), "cache hit rate" (önbellek vuruş oranını) artıracak ve performansı önemli ölçüde iyileştirecektir.</p>
+</details>
+
+**Question 2:** Bir `struct` (yapı) içindeki birden fazla alana art arda erişmek, en çok hangi yerellik prensibinden faydalanır?
+
+*   A) Temporal Locality
+*   B) Spatial Locality
+*   C) Her ikisinden de eşit derecede
+*   D) Hiçbirinden
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> Bir `struct`'ın alanları bellekte ardışık olarak yer alır. Bir alana erişildiğinde, o `struct`'ı içeren bellek bloğu muhtemelen önbelleğe yüklenir. Bu sayede, bellekte hemen yanında bulunan diğer alanlara erişim çok daha hızlı olur. Bu, uzamsal yerelliğin tanımıdır.</p>
+</details>
 
 ---

@@ -21,16 +21,17 @@ Ondalık sistemde olduğu gibi, ikili sistemde de "virgülün" (binary point) sa
 
 Bu temsilin önemli bir sonucu, `0.1` (1/10) gibi ondalık sistemde basit görünen sayıların, ikili sistemde sonsuz tekrar eden bir açılıma sahip olmasıdır. Bu durum, sonlu bit ile yapılan temsillerde kaçınılmaz olarak **hassasiyet hatalarına** yol açar.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `110.01`₂ ikili sayısının ondalık sistemdeki karşılığı nedir?</p>
-  <div class="quiz-option">A) `5.25`</div>
-  <div class="quiz-option" data-correct="true">B) `6.25`</div>
-  <div class="quiz-option">C) `6.5`</div>
-  <div class="quiz-option">D) `5.5`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> (1 × 2²) + (1 × 2¹) + (0 × 2⁰) + (0 × 2⁻¹) + (1 × 2⁻²) = 4 + 2 + 0 + 0 + 0.25 = 6.25.</p>
-  </div>
-</div>
+**Question 1:** `110.01`₂ ikili sayısının ondalık sistemdeki karşılığı nedir?
+
+*   A) `5.25`
+*   B) `6.25`
+*   C) `6.5`
+*   D) `5.5`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> (1 × 2²) + (1 × 2¹) + (0 × 2⁰) + (0 × 2⁻¹) + (1 × 2⁻²) = 4 + 2 + 0 + 0 + 0.25 = 6.25.</p>
+</details>
 
 ---
 
@@ -133,16 +134,17 @@ Artık bulmacanın tüm parçalarına sahibiz. Onları `s | exp | frac` sırası
 
 İşte `-12.75` sayısının 32-bit `float` olarak bellekteki tam karşılığı budur.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Yukarıdaki `-12.75` örneğinde, eğer sayı `+12.75` olsaydı, 32 bitlik desende toplam kaç bit değişirdi?</p>
-  <div class="quiz-option" data-correct="true">A) Sadece 1 bit</div>
-  <div class="quiz-option">B) 32 bitin hepsi</div>
-  <div class="quiz-option">C) 8 bit</div>
-  <div class="quiz-option">D) Hiçbiri</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Sayının pozitif veya negatif olması sadece en soldaki işaret bitini (`s`) etkiler. Diğer tüm `exp` ve `frac` bitleri sayının mutlak değeri (`12.75`) üzerinden hesaplandığı için aynı kalırdı. İşaret biti `1`'den `0`'a dönerdi, yani sadece 1 bit değişirdi.</p>
-  </div>
-</div>
+**Question 1:** Yukarıdaki `-12.75` örneğinde, eğer sayı `+12.75` olsaydı, 32 bitlik desende toplam kaç bit değişirdi?
+
+*   A) Sadece 1 bit
+*   B) 32 bitin hepsi
+*   C) 8 bit
+*   D) Hiçbiri
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: A.</b> Sayının pozitif veya negatif olması sadece en soldaki işaret bitini (`s`) etkiler. Diğer tüm `exp` ve `frac` bitleri sayının mutlak değeri (`12.75`) üzerinden hesaplandığı için aynı kalırdı. İşaret biti `1`'den `0`'a dönerdi, yani sadece 1 bit değişirdi.</p>
+</details>
 
 ---
 
@@ -187,16 +189,17 @@ Eğer `exp` anahtarı `11111111` konumuna getirilirse, bilgisayar "Normal bir sa
 
 Bu yapı, bilgisayarın hem çok geniş bir aralıktaki sayıları temsil etmesini hem de matematiksel olarak imkansız durumlarla başa çıkabilmesini sağlar.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir `float` sayının `exp` alanı tamamen `1`'lerden, `frac` alanı ise `0`'dan farklı bir değerden oluşuyor. Bu sayı nedir?</p>
-  <div class="quiz-option">A) Sonsuz (Infinity)</div>
-  <div class="quiz-option" data-correct="true">B) Sayı Değil (NaN)</div>
-  <div class="quiz-option">C) Sıfır (Zero)</div>
-  <div class="quiz-option">D) Denormalized bir sayı</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `exp` alanının tamamen `1` olması, sonucun özel bir durum olduğunu gösterir. `frac` alanının `0`'dan farklı olması ise bu özel durumun `NaN` (Not a Number) olduğunu belirtir.</p>
-  </div>
-</div>
+**Question 1:** Bir `float` sayının `exp` alanı tamamen `1`'lerden, `frac` alanı ise `0`'dan farklı bir değerden oluşuyor. Bu sayı nedir?
+
+*   A) Sonsuz (Infinity)
+*   B) Sayı Değil (NaN)
+*   C) Sıfır (Zero)
+*   D) Denormalized bir sayı
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> `exp` alanının tamamen `1` olması, sonucun özel bir durum olduğunu gösterir. `frac` alanının `0`'dan farklı olması ise bu özel durumun `NaN` (Not a Number) olduğunu belirtir.</p>
+</details>
 
 ---
 
@@ -220,80 +223,84 @@ Farklı sayı türleri arasında dönüşüm yapmak, C'de beklenmedik sonuçlara
     // f'nin değeri 123456792.0 gibi bir şeye dönüşebilir.
     ```
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `int x = (int)-9.99;` C kodu çalıştırıldığında `x`'in değeri ne olur?</p>
-  <div class="quiz-option">A) `-10`</div>
-  <div class="quiz-option" data-correct="true">B) `-9`</div>
-  <div class="quiz-option">C) `-9.99`</div>
-  <div class="quiz-option">D) Derleme hatası verir.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Kayan noktalı bir sayıyı `int`'e dönüştürürken, sayı en yakın tam sayıya yuvarlanmaz. Ondalık kısım (`.99`) ne olursa olsun basitçe atılır (truncate). Bu nedenle sonuç `-9`'dur.</p>
-  </div>
-</div>
+**Question 1:** `int x = (int)-9.99;` C kodu çalıştırıldığında `x`'in değeri ne olur?
+
+*   A) `-10`
+*   B) `-9`
+*   C) `-9.99`
+*   D) Derleme hatası verir.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> Kayan noktalı bir sayıyı `int`'e dönüştürürken, sayı en yakın tam sayıya yuvarlanmaz. Ondalık kısım (`.99`) ne olursa olsun basitçe atılır (truncate). Bu nedenle sonuç `-9`'dur.</p>
+</details>
 
 ---
 
 ## 6. Alıştırma Soruları
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `6.5` ondalık sayısının 32-bit IEEE 754 `float` temsilinin hexadecimal karşılığı nedir?</p>
-  <div class="quiz-option" data-correct="true">A) `0x40D00000`</div>
-  <div class="quiz-option">B) `0xC0D00000`</div>
-  <div class="quiz-option">C) `0x41D00000`</div>
-  <div class="quiz-option">D) `0x3F800000`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Adım adım çözelim:
-    <ol>
-        <li><b>İşaret (s):</b> Sayı pozitif, yani `s = 0`.</li>
-        <li><b>İkiliye Çevirme:</b> `6.5` = `4 + 2 + 0.5` = `110.1`₂.</li>
-        <li><b>Normalizasyon:</b> `110.1` = `1.101 × 2²`. Buradan gerçek üs `E = 2`'dir.</li>
-        <li><b>Üs (exp) Hesaplama:</b> `exp = E + bias` = `2 + 127 = 129`. `129`'un 8-bit ikili karşılığı `10000001`₂'dir.</li>
-        <li><b>Kesir (frac) Hesaplama:</b> Normalizasyondaki `1.` den sonra gelen kısım `101`'dir. Bunu 23 bite tamamlarız: `10100000000000000000000`.</li>
-        <li><b>Birleştirme:</b> `s | exp | frac` = `0 | 10000001 | 10100000000000000000000`.</li>
-        <li><b>Hex'e Çevirme:</b> Bu 32 bitlik sayıyı 4'erli gruplara ayırıp hex'e çevirirsek: `0100 0000 1101 0000 ...` = `40D00000`.</li>
-    </ol>
-    </p>
-  </div>
-</div>
+**Question 1:** `6.5` ondalık sayısının 32-bit IEEE 754 `float` temsilinin hexadecimal karşılığı nedir?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> 32-bit `float` olarak `0xC1480000` hexadecimal değeriyle temsil edilen ondalık sayı nedir?</p>
-  <div class="quiz-option">A) `12.5`</div>
-  <div class="quiz-option">B) `25.0`</div>
-  <div class="quiz-option" data-correct="true">C) `-12.5`</div>
-  <div class="quiz-option">D) `-25.0`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Adım adım tersten gidelim:
-    <ol>
-        <li><b>Hex'i İkiliye Çevirme:</b> `0xC1480000` = `1100 0001 0100 1000 0000 0000 0000 0000`₂.</li>
-        <li><b>Parçalara Ayırma:</b> `s | exp | frac`
-            <ul>
-                <li><b>s (işaret):</b> `1` (Sayı negatif)</li>
-                <li><b>exp (üs):</b> `10000010`₂ = `130`</li>
-                <li><b>frac (kesir):</b> `1001000...`</li>
-            </ul>
-        </li>
-        <li><b>Gerçek Üssü Bulma:</b> `E = exp - bias` = `130 - 127 = 3`.</li>
-        <li><b>Sayının Değerini Bulma:</b> Formül: `(-1)ˢ × (1.frac)₂ × 2ᴱ`. (Normal sayılarda baştaki `1.` gizlidir).
-            <ul>
-                <li>`= (-1)¹ × (1.1001)₂ × 2³`</li>
-                <li>`= -1 × (1100.1)₂` (Virgülü 3 basamak sağa kaydır)</li>
-                <li>`= -1 × (8 + 4 + 0 + 0 + 0.5)`</li>
-                <li><b>`= -12.5`</b></li>
-            </ul>
-        </li>
-    </ol>
-    </p>
-  </div>
-</div>
+*   A) `0x40D00000`
+*   B) `0xC0D00000`
+*   C) `0x41D00000`
+*   D) `0x3F800000`
 
-<div class="quiz-question">
-  <p><b>Soru:</b> IEEE 754 standardında `float` türü için `bias` (sapma) değeri 127 olarak kullanılır. Bunun temel sebebi nedir?</p>
-  <div class="quiz-option">A) 127'nin asal sayı olması.</div>
-  <div class="quiz-option">B) Bellekte temsilinin kolay olması.</div>
-  <div class="quiz-option" data-correct="true">C) Üs (exponent) alanının hem negatif hem de pozitif üsleri işaretsiz bir tamsayı olarak saklamasına olanak tanıması.</div>
-  <div class="quiz-option">D) İşlemci tarafından en hızlı işlenen sayı olması.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> 8-bitlik `exp` alanı `0` ile `255` arasında değerler alabilir. `Bias` kullanarak, bu aralığın yaklaşık yarısı negatif üslere (çok küçük sayılar için), yarısı da pozitif üslere (çok büyük sayılar için) ayrılmış olur. Örneğin, `exp` alanı `126` ise gerçek üs `126 - 127 = -1` olur. `exp` alanı `128` ise gerçek üs `128 - 127 = 1` olur. Bu sayede, üs için ayrı bir işaret biti kullanmaya gerek kalmaz ve karşılaştırma işlemleri donanım seviyesinde basitleşir.</p>
-  </div>
-</div>
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: A.</b> Adım adım çözelim:
+  <ol>
+      <li><b>İşaret (s):</b> Sayı pozitif, yani <code>s = 0</code>.</li>
+      <li><b>İkiliye Çevirme:</b> <code>6.5</code> = <code>4 + 2 + 0.5</code> = <code>110.1</code>₂.</li>
+      <li><b>Normalizasyon:</b> <code>110.1</code> = <code>1.101 × 2²</code>. Buradan gerçek üs <code>E = 2</code>'dir.</li>
+      <li><b>Üs (exp) Hesaplama:</b> <code>exp = E + bias</code> = <code>2 + 127 = 129</code>. <code>129</code>'un 8-bit ikili karşılığı <code>10000001</code>₂'dir.</li>
+      <li><b>Kesir (frac) Hesaplama:</b> Normalizasyondaki <code>1.</code> den sonra gelen kısım <code>101</code>'dir. Bunu 23 bite tamamlarız: <code>10100000000000000000000</code>.</li>
+      <li><b>Birleştirme:</b> <code>s | exp | frac</code> = <code>0 | 10000001 | 10100000000000000000000</code>.</li>
+      <li><b>Hex'e Çevirme:</b> Bu 32 bitlik sayıyı 4'erli gruplara ayırıp hex'e çevirirsek: <code>0100 0000 1101 0000 ...</code> = <code>40D00000</code>.</li>
+  </ol>
+  </p>
+</details>
+
+**Question 2:** 32-bit `float` olarak `0xC1480000` hexadecimal değeriyle temsil edilen ondalık sayı nedir?
+
+*   A) `12.5`
+*   B) `25.0`
+*   C) `-12.5`
+*   D) `-25.0`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> Adım adım tersten gidelim:
+  <ol>
+      <li><b>Hex'i İkiliye Çevirme:</b> <code>0xC1480000</code> = <code>1100 0001 0100 1000 0000 0000 0000 0000</code>₂.</li>
+      <li><b>Parçalara Ayırma:</b> <code>s | exp | frac</code>
+          <ul>
+              <li><b>s (işaret):</b> <code>1</code> (Sayı negatif)</li>
+              <li><b>exp (üs):</b> <code>10000010</code>₂ = <code>130</code></li>
+              <li><b>frac (kesir):</b> <code>1001000...</code></li>
+          </ul>
+      </li>
+      <li><b>Gerçek Üssü Bulma:</b> <code>E = exp - bias</code> = <code>130 - 127 = 3</code>.</li>
+      <li><b>Sayının Değerini Bulma:</b> Formül: <code>(-1)ˢ × (1.frac)₂ × 2ᴱ</code>. (Normal sayılarda baştaki <code>1.</code> gizlidir).
+          <ul>
+              <li><code>= (-1)¹ × (1.1001)₂ × 2³</code></li>
+              <li><code>= -1 × (1100.1)₂</code> (Virgülü 3 basamak sağa kaydır)</li>
+              <li><code>= -1 × (8 + 4 + 0 + 0 + 0.5)</code></li>
+              <li><b><code>= -12.5</code></b></li>
+          </ul>
+      </li>
+  </ol>
+  </p>
+</details>
+
+**Question 3:** IEEE 754 standardında `float` türü için `bias` (sapma) değeri 127 olarak kullanılır. Bunun temel sebebi nedir?
+
+*   A) 127'nin asal sayı olması.
+*   B) Bellekte temsilinin kolay olması.
+*   C) Üs (exponent) alanının hem negatif hem de pozitif üsleri işaretsiz bir tamsayı olarak saklamasına olanak tanıması.
+*   D) İşlemci tarafından en hızlı işlenen sayı olması.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> 8-bitlik <code>exp</code> alanı <code>0</code> ile <code>255</code> arasında değerler alabilir. <code>Bias</code> kullanarak, bu aralığın yaklaşık yarısı negatif üslere (çok küçük sayılar için), yarısı da pozitif üslere (çok büyük sayılar için) ayrılmış olur. Örneğin, <code>exp</code> alanı <code>126</code> ise gerçek üs <code>126 - 127 = -1</code> olur. <code>exp</code> alanı <code>128</code> ise gerçek üs <code>128 - 127 = 1</code> olur. Bu sayede, üs için ayrı bir işaret biti kullanmaya gerek kalmaz ve karşılaştırma işlemleri donanım seviyesinde basitleşir.</p>
+</details>
