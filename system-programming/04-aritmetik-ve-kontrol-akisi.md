@@ -299,6 +299,22 @@ ret
   </div>
 </div>
 
+### c) Security Hazard: Buffer Overflow
+
+The stack structure reveals a critical security vulnerability. Since the **Return Address** is stored on the stack just above the local variables, writing past the bounds of a local array can lead to disaster.
+
+**Question:** In a "Stack Smashing" attack, what specific value on the stack does the attacker primarily aim to overwrite?
+
+*   A) The value of the arguments.
+*   B) The Return Address.
+*   C) The `%rsp` register.
+*   D) The value of local variables.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> The attacker's goal is to take control of the program's execution flow. By overwriting the <b>Return Address</b> (which tells the function where to go back to after it finishes) with the address of their own malicious code, they can trick the CPU into executing their code when the `ret` instruction runs.</p>
+</details>
+
 ---
 
 ## 4. Örnek: C Kodundan Assembly'ye Tam Bir Dönüşüm

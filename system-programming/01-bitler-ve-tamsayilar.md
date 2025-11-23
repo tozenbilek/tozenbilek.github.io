@@ -242,6 +242,10 @@ This is the standard method for signed integers in modern computers, which great
 *   **Value Range:** A `w`-bit signed integer can take values between **-2ʷ⁻¹** and **2ʷ⁻¹-1**.
 *   **Example (4-bit):** Can represent 16 different numbers from `-2³` (-8) to `2³-1` (+7).
 
+> **Crucial Detail (TMin Anomaly):** The range of Two's Complement is asymmetric. There is one more negative number than positive numbers.
+> *   Example (8-bit): Range is `-128` to `+127`.
+> *   The value `-128` (TMin) has **no positive counterpart**. Attempting to take the negative `-(-128)` typically results in overflow and returns `-128` again!
+
 The following table shows how a 4-bit number is interpreted as unsigned and signed (two's complement):
 
 | Bit Pattern | Unsigned Value | Signed (Two's Complement) Value |
@@ -348,6 +352,28 @@ This is representing a value with fewer bits (e.g., from 8-bit to 4-bit). This o
   <summary>Show Answer</summary>
   <p><b>Answer: A.</b> Truncation discards the most significant bits. The last 8 bits of the number `260` are `00000100`, which is equal to `4` in decimal.</p>
 </details>
+
+### Implicit Casting Surprises (Signed vs Unsigned)
+
+In C, if an operation involves both `signed` and `unsigned` numbers, the `signed` number is implicitly cast to `unsigned`. This can lead to non-intuitive behavior in comparison operations (`<`, `>`).
+
+**Example:** Is `-1 < 0`?
+*   Mathematically: **Yes**.
+*   In C (`signed int` vs `unsigned int`): **No!**
+
+```c
+int x = -1;
+unsigned int u = 0;
+
+if (x < u) {
+    printf("True");
+} else {
+    // This block runs!
+    printf("False");
+}
+```
+
+**Reason:** When `-1` is cast to `unsigned`, it acts like `UMAX` (all bits are `1`, e.g., `4294967295` for 32-bit). Since `UMAX` is clearly not smaller than `0`, the condition fails. This is a common source of bugs and security vulnerabilities.
 
 ---
 

@@ -118,11 +118,39 @@ graph TD
 
 Günümüzdeki çoğu işlemci **x86-64** mimarisini kullanır ve 16 adet genel amaçlı 64-bit'lik register sunar. Bu register'ların bazıları, fonksiyon çağrıları sırasında belirli roller üstlenir:
 
-| Register Adı | Tipik Kullanım Amacı |
-| :--- | :--- |
-| `%rax` | Fonksiyon dönüş değeri |
-| `%rdi`, `%rsi`, `%rdx`, `%rcx`, `%r8`, `%r9` | Fonksiyon argümanları (ilk altı) |
-| `%rsp` | Stack (Yığın) işaretçisi |
+| Register Adı | Tipik Kullanım Amacı | Koruma Sorumluluğu |
+| :--- | :--- | :--- |
+| `%rax` | Fonksiyon dönüş değeri | Caller-Saved |
+| `%rdi`, `%rsi`, `%rdx`, `%rcx`, `%r8`, `%r9` | Fonksiyon argümanları (ilk altı) | Caller-Saved |
+| `%rsp` | Stack (Yığın) işaretçisi | Özel |
+| `%rbx`, `%rbp`, `%r12-%r15` | Kalıcı veri saklama | **Callee-Saved** |
+| `%r10`, `%r11` | Geçici veriler | Caller-Saved |
+
+**Question:** A function `foo` calls another function `bar`. `foo` wants to keep a value in a register across the call to `bar`. Which register should `foo` use to ensure `bar` does not overwrite it (or restores it)?
+
+*   A) `%rax`
+*   B) `%r10`
+*   C) `%rbx`
+*   D) `%rdi`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> `%rbx` is a **Callee-Saved** register. This means if `bar` wants to use it, `bar` MUST save its original value and restore it before returning. Therefore, `foo` can safely assume `%rbx` will have the same value after `bar` returns.</p>
+</details>
+
+> **Crucial Detail (x86-64 Anomaly):** `movl` instruction (32-bit move) implicitly **zeros out** the upper 32 bits of the destination register. However, `movb` and `movw` do **not** modify the upper bits.
+
+**Question:** What will be the value of `%rax` (64-bit) after the instruction `movl $-1, %eax` is executed? (Note: `-1` in 32-bit is `0xFFFFFFFF`)
+
+*   A) `0xFFFFFFFFFFFFFFFF`
+*   B) `0x00000000FFFFFFFF`
+*   C) `0xFFFFFFFF00000000`
+*   D) `0x0000000000000000`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> This is a special rule in x86-64: any instruction that generates a 32-bit value (like `movl`, `addl`) automatically clears the upper 32 bits of the destination register. So, even though `-1` is all 1s, the upper half becomes all 0s.</p>
+</details>
 
 <div class="quiz-question">
   <p><b>Soru:</b> x86-64 mimarisinde, bir fonksiyondan dönen tamsayı veya pointer değeri tipik olarak hangi register'da bulunur?</p>
@@ -245,4 +273,6 @@ swap:
 </code></pre>
 </div>
 
-Bu örnekte, `(%rdi)` ve `
+Bu örnekte, `(%rdi)` ve `(%rsi)` ifadeleri pointer dereferencing (`*xp`, `*yp`) işlemine karşılık gelir. Parantez içine alınan register, o register'ın tuttuğu adresteki veriye erişmek (memory access) anlamına gelir.
+
+---

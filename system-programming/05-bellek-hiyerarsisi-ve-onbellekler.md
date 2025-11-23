@@ -136,4 +136,19 @@ void sum_col_major(int **matrix, int n) {
   </div>
 </div>
 
+### Performance Killer: False Sharing
+
+**Question:** You have a multi-core processor. Two threads running on different cores constantly update two *different* variables, `A` and `B`. However, `A` and `B` happen to be located right next to each other in memory (in the same cache line). What happens to the performance?
+
+*   A) It doubles because two cores are working.
+*   B) It stays the same.
+*   C) It degrades significantly ("False Sharing").
+*   D) It causes a segmentation fault.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> Even though the variables are different, if they share the same <b>Cache Line</b> (typically 64 bytes), the cores will constantly invalidate each other's cache to ensure data consistency. This "ping-pong" effect, called <b>False Sharing</b>, kills performance.
+  <br><b>Fix:</b> Add padding (dummy variables) between `A` and `B` to push them into different cache lines.</p>
+</details>
+
 ---

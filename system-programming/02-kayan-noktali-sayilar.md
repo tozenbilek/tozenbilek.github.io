@@ -228,4 +228,40 @@ The value of the `exp` field determines how the bits are interpreted. It acts as
   </ol>
   </p>
 </details>
+
+---
+
+## 6. Floating Point Perils: Watch Out!
+
+Working with floating point numbers is full of traps. Let's test your understanding of these "edge cases".
+
+**Question 3:** In mathematics, addition is associative: `(a + b) + c = a + (b + c)`. Does this rule hold for `float` types in C?
+
+*   A) Always true.
+*   B) True only for positive numbers.
+*   C) False.
+*   D) True if compiler optimizations are enabled.
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> In floating point arithmetic, associativity does <b>NOT</b> hold due to rounding errors when adding numbers of vastly different magnitudes.
+  <br><br>
+  Example:
+  <br><code>(1e20 + -1e20) + 3.14</code> = <code>0.0 + 3.14</code> = <b>3.14</b>
+  <br><code>1e20 + (-1e20 + 3.14)</code> = <code>1e20 + -1e20</code> = <b>0.0</b> (3.14 is lost due to lack of precision!)
+  </p>
+</details>
+
+**Question 4:** Which of the following is the **SAFE** way to check if a float variable `f` is equal to `0.1`?
+
+*   A) `if (f == 0.1)`
+*   B) `if (f = 0.1)`
+*   C) `if (abs(f - 0.1) < 1e-9)`
+*   D) `if ((int)f == (int)0.1)`
+
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> Never compare floating point numbers with `==` because of potential precision errors. `0.1` cannot be exactly represented in binary. The correct way is to check if the difference is smaller than a tiny epsilon value (e.g., `1e-9`).</p>
+</details>
+
 ---
