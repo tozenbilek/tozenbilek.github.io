@@ -184,10 +184,12 @@ long a = b + c;
 ```
 
 **Assembly Karşılığı:**
-```asm
+<div class="code-container">
+<pre><code class="language-asm">
 movq %rdi, %rax   # a = b; (%rax = %rdi)
 addq %rsi, %rax   # a = a + c; (%rax = %rax + %rsi)
-```
+</code></pre>
+</div>
 Önce `b`'nin değeri `%rax`'e kopyalanır, ardından `c`'nin değeri `%rax`'e eklenir. Sonuç `%rax`'te kalır.
 
 ### b) Kontrol Akışı: `cmpq` ve `je`
@@ -232,38 +234,15 @@ void swap(long *xp, long *yp) {
 ```
 *   `xp`'nin adresi `%rdi`'de, `yp`'nin adresi `%rsi`'dedir.
 
-```asm
+<div class="code-container">
+<pre><code class="language-asm">
 swap:
     movq  (%rdi), %rax   # t0 = *xp; (xp adresindeki degeri rax'e tasi)
     movq  (%rsi), %rdx   # t1 = *yp; (yp adresindeki degeri rdx'e tasi)
     movq  %rdx, (%rdi)   # *xp = t1; (rdx'deki degeri xp adresine yaz)
     movq  %rax, (%rsi)   # *yp = t0; (rax'deki degeri yp adresine yaz)
     ret                  # Fonksiyondan don
-```
-
-Bu örnekte, `(%rdi)` ve `(%rsi)` ifadeleri **Normal Adresleme Modu**'nu kullanarak `xp` ve `yp` pointer'larının gösterdiği bellek alanlarına erişir.
-
-<div class="quiz-question">
-  <p><b>Soru:</b> `%rax` register'ında `0x100`, `%rbx` register'ında ise `0x10` değeri olduğunu varsayalım. `movq 8(%rax, %rbx, 4), %rcx` komutu çalıştırıldığında, `%rcx` register'ına hangi bellek adresindeki veri kopyalanır?</p>
-  <div class="quiz-option">A) `0x118`</div>
-  <div class="quiz-option">B) `0x148`</div>
-  <div class="quiz-option" data-correct="true">C) `0x148` adresindeki veri</div>
-  <div class="quiz-option">D) Bu komut geçersizdir</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Adres hesaplaması `Sabit + Register1 + Register2 * Olcek` formülüne göre yapılır: `8 + 0x100 + 0x10 * 4` = `8 + 256 + 16 * 4` = `8 + 256 + 64` = `328`, yani `0x148`. Komut, bu hesaplanan **adresteki 8 baytlık veriyi** `%rcx` register'ına kopyalar.</p>
-  </div>
+</code></pre>
 </div>
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Yukarıdaki `swap` fonksiyonunda, ilk iki `movq` komutundan sonra `%rax` ve `%rdx` register'ları hangi değerleri tutar?</p>
-  <div class="quiz-option">A) `xp` ve `yp`'nin bellek adreslerini</div>
-  <div class="quiz-option" data-correct="true">B) `xp` ve `yp`'nin gösterdiği yerdeki değerleri</div>
-  <div class="quiz-option">C) `t0` ve `t1`'in bellek adreslerini</div>
-  <div class="quiz-option">D) `%rdi` ve `%rsi`'nin kendisini</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `movq (%rdi), %rax` komutu, `%rdi`'nin **içindeki adrese gider** ve o adresteki 8 byte'lık değeri `%rax`'e kopyalar. Yani `*xp` işlemini yapar. Aynı durum `%rdx` için de geçerlidir.</p>
-  </div>
-</div>
-
----
-
+Bu örnekte, `(%rdi)` ve `

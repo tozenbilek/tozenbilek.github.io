@@ -89,3 +89,15 @@
 .quiz-explanation p b {
     color: var(--text-color);
 }
+
+code, pre {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 1em;
+  border-radius: 3px;
+  background-color: #f6f8fa;
+}
+
+.code-container {
+  overflow-x: auto;
+  width: 100%;
+}

@@ -1,299 +1,231 @@
 ---
 layout: default
-title: Kayan Noktalı Sayılar (Floating Point)
+title: Floating Point Numbers
 nav_order: 2
 parent: System Programming
 ---
 
-# Kayan Noktalı Sayılar (Floating Point)
+# Floating Point Numbers
 
-Tamsayılar, hesaplama dünyasının temelini oluştursa da ondalıklı sayıların temsili de bir o kadar kritiktir. Bu bölümde, bu sayıların bilgisayarda evrensel olarak kabul görmüş **IEEE 754** standardına göre nasıl temsil edildiğini ve bu yaklaşımın getirdiği önemli sonuçları ele alacağız.
+While integers form the basis of the computing world, the representation of fractional numbers is just as critical. In this section, we will discuss how these numbers are represented according to the universally accepted **IEEE 754** standard and the significant implications of this approach.
 
 ---
 
-## 1. Fractional Binary Representation (Kesirli İkili Sayıların Temsili)
+## 1. Fractional Binary Representation
 
-Ondalık sistemde olduğu gibi, ikili sistemde de "virgülün" (binary point) sağındaki basamaklar, tabanın negatif kuvvetlerini ifade eder.
+Just like in the decimal system, the digits to the right of the "binary point" in the binary system represent negative powers of the base.
 
-*   **Örnek:** `101.11`₂ ifadesinin ondalık değeri:
+*   **Example:** The decimal value of the expression `101.11`₂ is:
     *   = (1 × 2²) + (0 × 2¹) + (1 × 2⁰) + (1 × 2⁻¹) + (1 × 2⁻²)
     *   = 4 + 0 + 1 + 0.5 + 0.25 = **5.75**₁₀
 
-Bu temsilin önemli bir sonucu, `0.1` (1/10) gibi ondalık sistemde basit görünen sayıların, ikili sistemde sonsuz tekrar eden bir açılıma sahip olmasıdır. Bu durum, sonlu bit ile yapılan temsillerde kaçınılmaz olarak **hassasiyet hatalarına** yol açar.
+A significant consequence of this representation is that numbers that seem simple in the decimal system, like `0.1` (1/10), have an infinitely repeating expansion in the binary system. This inevitably leads to **precision errors** in representations with a finite number of bits.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `110.01`₂ ikili sayısının ondalık sistemdeki karşılığı nedir?</p>
-  <div class="quiz-option">A) `5.25`</div>
-  <div class="quiz-option" data-correct="true">B) `6.25`</div>
-  <div class="quiz-option">C) `6.5`</div>
-  <div class="quiz-option">D) `5.5`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> (1 × 2²) + (1 × 2¹) + (0 × 2⁰) + (0 × 2⁻¹) + (1 × 2⁻²) = 4 + 2 + 0 + 0 + 0.25 = 6.25.</p>
-  </div>
-</div>
+**Question:** What is the decimal equivalent of the binary number `110.01`₂?
 
----
+*   A) `5.25`
+*   B) `6.25`
+*   C) `6.5`
+*   D) `5.5`
 
-## 2. IEEE 754 Standard: Fitting Numbers into Bits (Sayıları Bitlere Sığdırmak)
-
-Ondalıklı sayıların farklı sistemlerde tutarlı bir şekilde temsil edilmesi için evrensel **IEEE 754** standardı kullanılır. Bu standart, bir sayıyı bilimsel gösterime benzer şekilde üç parçaya ayırır:
-
-**Sayı = (-1)ˢ × M × 2ᴱ**
-
-*   **`s` - Sign (İşaret):** Sayının pozitif (`0`) mi yoksa negatif (`1`) mi olduğunu belirler.
-*   **`E` - Exponent (Üs):** Sayının büyüklük mertebesini (ne kadar büyük veya küçük olduğunu) belirler.
-*   **`M` - Mantissa (Kesir):** Sayının hassasiyetini (ondalık kısmını) belirler.
-
-Bu üç parça, bellekte belirli bit alanlarına yerleştirilir:
-
-| İşaret (s) | Üs (exp) | Kesir (frac) |
-|:----------:|:--------:|:------------:|
-| 1 bit      | k bit    | n bit        |
-
-
-C dilindeki `float` ve `double` türleri, bu standardın iki yaygın uygulamasıdır ve farklı hassasiyet seviyeleri sunarlar:
-
-| Tür      | Toplam Bit | İşaret (s) | Üs (exp) | Kesir (frac) |
-|:---------|:----------:|:----------:|:--------:|:------------:|
-| `float`  |     32     |    1 bit   |   8 bit  |     23 bit     |
-| `double` |     64     |    1 bit   |  11 bit  |     52 bit     |
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> (1 × 2²) + (1 × 2¹) + (0 × 2⁰) + (0 × 2⁻¹) + (1 × 2⁻²) = 4 + 2 + 0 + 0 + 0.25 = 6.25.</p>
+</details>
 
 ---
 
-## 3. Örnek: -12.75 Sayısını `float`'a Dönüştürme (Basit Anlatım)
+## 2. IEEE 754 Standard: The Main Idea
 
-Teoriyi pratiğe dökelim ve `-12.75` sayısını, sanki bir bulmacanın parçalarını birleştirir gibi, adım adım 32-bit `float`'a çevirelim. Amacımız 32 bitlik kutucuğu `s | exp | frac` kuralına göre doldurmak.
+To consistently represent fractional numbers across different systems, the universal **IEEE 754** standard is used. This standard breaks a number into three parts, similar to scientific notation:
 
----
+**Number = (-1)ˢ × M × 2ᴱ**
 
-### **Adım 1: Sayının İşaretini Belirle (`s`)**
+*   **`s` - Sign:** Determines if the number is positive (`0`) or negative (`1`).
+*   **`M` - Mantissa:** Determines the precision (the significant digits) of the number. It's also called the significand.
+*   **`E` - Exponent:** Determines the magnitude of the number (how large or small it is).
 
-*   **Ne yapıyoruz?** Sayımızın pozitif mi negatif mi olduğuna bakıyoruz.
-*   **Analiz:** Sayımız `-12.75`, yani negatif.
-*   **Sonuç:** IEEE 754 standardına göre negatif sayılar için işaret biti **`1`**'dir.
+These three parts are placed into specific bit fields in memory:
 
-> **Bulduk:** `s = 1`
+| Sign (s) | Exponent (exp) | Fraction (frac) |
+|:--------:|:--------------:|:---------------:|
+|  1 bit   |     k bits     |     n bits      |
 
----
+The `float` and `double` types in C are two common implementations of this standard, offering different levels of precision:
 
-### **Adım 2: Sayıyı İkili (Binary) Sisteme Çevir**
+| Type     | Total Bits | Sign (s) | Exponent (exp) | Fraction (frac) |
+|:---------|:----------:|:--------:|:--------------:|:---------------:|
+| `float`  |     32     |  1 bit   |     8 bits     |     23 bits     |
+| `double` |     64     |  1 bit   |     11 bits    |     52 bits     |
 
-*   **Ne yapıyoruz?** Sayının pozitif halini (`12.75`) ikili sisteme çeviriyoruz. Bunu iki parça halinde yaparız: virgülden öncesi ve sonrası.
-*   **Analiz:**
-    *   **Tam Kısım (12):** 12'yi ikiliye çevirirsek `1100`₂ elde ederiz. (8 + 4)
-    *   **Ondalık Kısım (0.75):** 0.75'i ikiliye çevirirsek `.11`₂ elde ederiz. (0.5 + 0.25 yani 2⁻¹ + 2⁻²)
-*   **Sonuç:** Bu iki parçayı birleştirdiğimizde `1100.11`₂ sayısını elde ederiz.
-
-> **Bulduk:** Sayımızın ikili hali `1100.11`
-
----
-
-### **Adım 3: Sayıyı Normalize Et (Bilimsel Gösterim)**
-
-*   **Ne yapıyoruz?** İkili sayımızı, `1.` ile başlayacak şekilde bilimsel gösterim formatına getiriyoruz. Tıpkı onluk sistemde `1234` sayısını `1.234 × 10³` olarak yazmak gibi.
-*   **Analiz:** `1100.11` sayısında, virgülü 3 basamak sola kaydırarak `1.` formatına ulaşırız.
-*   **Sonuç:** `1.10011 × 2³`.
-    *   Bu gösterimdeki üs (`3`), bizim **gerçek üs değerimizdir (`E`)**.
-    *   Virgülden sonraki kısım (`10011`), bizim **kesir (mantissa) başlangıcımızdır**.
-
-> **Bulduk:** Gerçek üs `E = 3`, Kesir başlangıcı `10011`
+The `exp` field doesn't store the exponent `E` directly. It stores a biased value. The `frac` field stores the fractional part of the mantissa `M`.
 
 ---
 
-### **Adım 4: Üs Alanını Hesapla (`exp`)**
+## 3. Converting a Decimal Number to `float` Step-by-Step
 
-*   **Ne yapıyoruz?** `float`'ın 8 bitlik `exp` alanını dolduracağız. Bu alanda gerçek üs değeri doğrudan saklanmaz. Bunun yerine, "sapmalı" (biased) bir değer saklanır. `float` için bu sapma (bias) değeri **127**'dir.
-*   **Analiz:** Formülümüz basit: `exp = E + Bias`
-*   **Sonuç:** `exp = 3 + 127 = 130`. Şimdi `130`'u 8-bit ikili sayıya çeviriyoruz: `10000010`.
+Let's convert the number `-12.75` into a 32-bit `float` piece by piece. Our goal is to fill the 32-bit `s | exp | frac` structure.
 
-> **Bulduk:** `exp = 10000010`
+### **Step 1: Determine the Sign (`s`)**
 
----
-
-### **Adım 5: Kesir Alanını Doldur (`frac`)**
-
-*   **Ne yapıyoruz?** `float`'ın 23 bitlik `frac` alanını dolduracağız.
-*   **Analiz:** 3. adımda bulduğumuz kesir başlangıcı `10011` idi. Bu kısmı, toplam 23 bit olacak şekilde sonuna sıfırlar ekleyerek tamamlarız.
-*   **Sonuç:** `10011`**`000000000000000000`** (5 bit + 18 tane 0)
-
-> **Bulduk:** `frac = 10011000000000000000000`
+*   **Task:** We look at whether our number is positive or negative.
+*   **Analysis:** Our number is `-12.75`, which is negative.
+*   **Result:** According to the IEEE 754 standard, the sign bit for negative numbers is **`1`**.
+> **Found:** `s = 1`
 
 ---
 
-### **Final: Parçaları Birleştir!**
+### **Step 2: Convert the Absolute Value to Binary**
 
-Artık bulmacanın tüm parçalarına sahibiz. Onları `s | exp | frac` sırasına göre birleştirelim:
+*   **Task:** We convert the positive version of the number (`12.75`) to binary. We do this in two parts: the integer part and the fractional part.
+*   **Analysis (Integer Part):**
+    *   The integer part is `12`. Converting 12 to binary gives `1100`₂. (8 + 4)
+*   **Analysis (Fractional Part):**
+    *   The fractional part is `0.75`. We can find the binary representation by checking powers of 2: `0.75 = 0.5 + 0.25 = 2⁻¹ + 2⁻²`. This gives `.11`₂.
+    *   **Alternative Method (for any fraction):** Repeatedly multiply the fractional part by 2 and record the integer part.
+        *   0.75 * 2 = **1**.50 -> First digit is 1
+        *   0.50 * 2 = **1**.00 -> Second digit is 1
+        *   Stop when the fractional part is 0. Reading the digits from top to bottom gives `.11`₂.
+*   **Result:** Combining the two parts gives `1100.11`₂.
+> **Found:** The binary form of the number is `1100.11`
+
+---
+
+### **Step 3: Normalize the Binary Number**
+
+*   **Task:** We put our binary number into a scientific notation format that starts with `1.`, just like writing `1234` as `1.234 × 10³` in decimal.
+*   **Analysis:** For `1100.11`, we need to move the binary point 3 places to the left to get the `1.` format.
+*   **Result:** `1.10011 × 2³`.
+    *   The exponent in this notation (`3`) is our **actual exponent (`E`)**.
+    *   The part after the binary point (`10011`) is the start of our **fraction (`frac`)**.
+> **Found:** Actual exponent `E = 3`, initial fraction `10011`
+
+---
+
+### **Step 4: Calculate the Biased Exponent (`exp`)**
+
+*   **Task:** We need to fill the 8-bit `exp` field of the `float`. This field doesn't store the actual exponent `E` directly. Instead, it stores a "biased" value. For `float`, this bias is **127**.
+*   **Analysis:** The formula is simple: `exp = E + Bias`
+*   **Result:** `exp = 3 + 127 = 130`. Now we convert `130` to an 8-bit binary number: `10000010`.
+> **Found:** `exp = 10000010`
+
+---
+
+### **Step 5: Fill the Fraction Field (`frac`)**
+
+*   **Task:** We need to fill the 23-bit `frac` field of the `float`.
+*   **Analysis:** The initial fraction we found in Step 3 was `10011`. This is the part of the mantissa that comes after the implicit leading `1.`. We complete this by adding zeros to the end until it is 23 bits long.
+*   **Result:** `10011`**`000000000000000000`** (5 bits + 18 zeros)
+> **Found:** `frac = 10011000000000000000000`
+
+---
+
+### **Final Step: Assemble the Pieces!**
+
+Now we have all the parts of the puzzle. Let's combine them in the `s | exp | frac` order:
 
 *   **s:** `1`
 *   **exp:** `10000010`
 *   **frac:** `10011000000000000000000`
 
-**Sonuç:**
+**Result:**
 `1 10000010 10011000000000000000000`
 
-İşte `-12.75` sayısının 32-bit `float` olarak bellekteki tam karşılığı budur.
+This is the exact 32-bit `float` representation of `-12.75` in memory.
 
-<div class="quiz-question">
-  <p><b>Soru:</b> Yukarıdaki `-12.75` örneğinde, eğer sayı `+12.75` olsaydı, 32 bitlik desende toplam kaç bit değişirdi?</p>
-  <div class="quiz-option" data-correct="true">A) Sadece 1 bit</div>
-  <div class="quiz-option">B) 32 bitin hepsi</div>
-  <div class="quiz-option">C) 8 bit</div>
-  <div class="quiz-option">D) Hiçbiri</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Sayının pozitif veya negatif olması sadece en soldaki işaret bitini (`s`) etkiler. Diğer tüm `exp` ve `frac` bitleri sayının mutlak değeri (`12.75`) üzerinden hesaplandığı için aynı kalırdı. İşaret biti `1`'den `0`'a dönerdi, yani sadece 1 bit değişirdi.</p>
-  </div>
-</div>
+**Question:** In the `-12.75` example above, if the number were `+12.75`, how many bits in total would change in the 32-bit pattern?
 
----
+*   A) Only 1 bit
+*   B) All 32 bits
+*   C) 8 bits
+*   D) None
 
-## 4. Üs Alanının Sırrı: Sayının Kategorisini Anlamak
-
-Bir `float` sayısının 32 bitine baktığımızda, bu bitlerin ne anlama geldiğini çözen bir **anahtar** vardır: 8 bitlik **`exp` (üs)** alanı.
-
-Bu alanı, bir sayının hangi "kategoride" olduğunu belirleyen bir **mod seçme anahtarı** gibi düşünebilirsiniz. `exp` alanının değeri, bilgisayara şunu söyler: "Karşındaki bitleri normal bir sayı gibi mi okuyacaksın, yoksa bu özel bir durum mu?"
-
-Bu anahtarın üç temel konumu vardır:
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: A.</b> The sign of the number only affects the leftmost sign bit (`s`). All other `exp` and `frac` bits are calculated based on the absolute value of the number (`12.75`), so they would remain the same. The sign bit would change from `1` to `0`, meaning only 1 bit would change.</p>
+</details>
 
 ---
 
-### **Konum 1: Normal Sayılar (exp ne `00...0` ne de `11...1` ise)**
+## 4. Special Cases: Zero, Infinity, and NaN
 
-Bu, en sık karşılaşacağımız, "standart" konumdur. `exp` alanı `00000000` veya `11111111` **değilse**, bilgisayar bunun normal bir ondalıklı sayı olduğunu anlar.
+The value of the `exp` field determines how the bits are interpreted. It acts as a switch for different categories of numbers.
 
-*   **Ne Anlama Gelir?** `12.75`, `-0.5`, `10000.0` gibi aklınıza gelebilecek sayıların neredeyse tamamı bu kategoridedir.
-*   **En Önemli Kural (Gizli Bit Hilesi):** Bu modda bilgisayar, sayının kesir kısmının (`frac`) başında gizli bir `1.` olduğunu varsayar. Yani, `frac` alanı `10011...` ise, bilgisayar bunu `1.10011...` olarak okur. Bu akıllıca hile, bize fazladan 1 bitlik hassasiyet kazandırır ve sayıları daha verimli saklamamızı sağlar.
+*   **Normalized Numbers (`exp` is not all `0`s or all `1`s):** This is the most common case. The mantissa is assumed to have an implicit leading `1.` (e.g., `1.frac`).
 
----
+*   **Denormalized Numbers (`exp` is all `0`s):** This represents very small numbers close to zero. The implicit leading bit is `0.` (e.g., `0.frac`). If `frac` is also all zeros, the number is **Zero** (`+0.0` or `-0.0`).
 
-### **Konum 2: Sıfır ve Sıfıra Çok Yakın Sayılar (exp `00...0` ise)**
+*   **Special Values (`exp` is all `1`s):**
+    *   If `frac` is all zeros, the value is **Infinity**. This is the result of operations like `1.0 / 0.0`.
+    *   If `frac` is not all zeros, the value is **NaN (Not a Number)**. This represents the result of invalid operations like `sqrt(-1)` or `0.0 / 0.0`.
 
-Eğer `exp` anahtarı `00000000` konumuna getirilirse, bilgisayar "Dikkat, bu sayı ya sıfır ya da sıfıra aşırı yakın!" moduna geçer.
+**Question:** A `float` number has an `exp` field of all `1`s and a `frac` field that is not zero. What is this number?
 
-*   **Bu ne anlama gelir?** Bu mod, normal sayıların temsil edemeyeceği kadar küçük değerler için kullanılır.
-*   **İki alt durumu vardır:**
-    1.  Eğer `frac` alanı da tamamen `0` ise, sayı tam olarak **Sıfır**'dır (`+0.0` veya `-0.0`).
-    2.  Eğer `frac` alanında `1`'ler varsa, sayı **Denormalized**'dir. Bunlar, o kadar küçük sayılardır ki, "gizli `1.`" hilesini kullanamayız. Bu mod, sayıların aniden sıfıra düşmesi yerine, yavaşça sıfıra yaklaşmasını sağlar ("gradual underflow").
+*   A) Infinity
+*   B) Not a Number (NaN)
+*   C) Zero
+*   D) A denormalized number
 
----
-
-### **Konum 3: Özel Değerler - Sonsuz ve Hata Kodları (exp `11...1` ise)**
-
-Eğer `exp` anahtarı `11111111` konumuna getirilirse, bilgisayar "Normal bir sayıyla uğraşmıyoruz, bu özel bir durum!" moduna geçer. Bu, programın çökmesini önleyen bir güvenlik mekanizmasıdır.
-
-*   **Bu ne anlama gelir?** Sonuç, matematiksel bir sayı değildir.
-*   **İki alt durumu vardır:**
-    1.  Eğer `frac` alanı tamamen `0` ise, sonuç **Sonsuz (Infinity)**'dur. Bu, `1.0 / 0.0` gibi bir işlemin sonucudur.
-    2.  Eğer `frac` alanında `1`'ler varsa, sonuç **NaN (Not a Number - Sayı Değil)**'dir. Bu, `sqrt(-1)` veya `0.0 / 0.0` gibi geçersiz işlemlerin sonucunu temsil eden bir tür "hata kodudur".
-
-Bu yapı, bilgisayarın hem çok geniş bir aralıktaki sayıları temsil etmesini hem de matematiksel olarak imkansız durumlarla başa çıkabilmesini sağlar.
-
-<div class="quiz-question">
-  <p><b>Soru:</b> Bir `float` sayının `exp` alanı tamamen `1`'lerden, `frac` alanı ise `0`'dan farklı bir değerden oluşuyor. Bu sayı nedir?</p>
-  <div class="quiz-option">A) Sonsuz (Infinity)</div>
-  <div class="quiz-option" data-correct="true">B) Sayı Değil (NaN)</div>
-  <div class="quiz-option">C) Sıfır (Zero)</div>
-  <div class="quiz-option">D) Denormalized bir sayı</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> `exp` alanının tamamen `1` olması, sonucun özel bir durum olduğunu gösterir. `frac` alanının `0`'dan farklı olması ise bu özel durumun `NaN` (Not a Number) olduğunu belirtir.</p>
-  </div>
-</div>
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: B.</b> An `exp` field of all `1`s indicates a special case. A non-zero `frac` field specifies that this special case is `NaN` (Not a Number).</p>
+</details>
 
 ---
 
-## 5. Rounding and Type Casting in C (C'de Yuvarlama ve Tip Dönüşümleri)
+## 5. Floating Point Practice Problems
 
-Farklı sayı türleri arasında dönüşüm yapmak, C'de beklenmedik sonuçlara yol açabilir. İşte en önemli kurallar:
+**Question 1:** What is the hexadecimal representation of the decimal number `6.5` as a 32-bit IEEE 754 `float`?
 
-*   **`float`/`double` → `int`:** Bu en tehlikeli dönüşümdür. Sayı **yuvarlanmaz**, ondalık kısmı ne olursa olsun basitçe **atılır (truncate)**.
-    ```c
-    int x = 3.99;  // x'in değeri 3 olur.
-    int y = -3.99; // y'nin değeri -3 olur.
-    ```
+*   A) `0x40D00000`
+*   B) `0xC0D00000`
+*   C) `0x41D00000`
+*   D) `0x3F800000`
 
-*   **`int` → `double`:** Bu genellikle güvenlidir. `double`'ın hassasiyeti çok yüksek olduğu için veri kaybı yaşanmaz.
+<details>
+  <summary>Show Answer</p>
+  <p><b>Answer: A.</b> Let's solve it step-by-step:
+  <ol>
+      <li><b>Sign (s):</b> The number is positive, so `s = 0`.</li>
+      <li><b>Binary Conversion:</b> `6.5` = `4 + 2 + 0.5` = `110.1`₂.</li>
+      <li><b>Normalization:</b> `110.1` = `1.101 × 2²`. The actual exponent is `E = 2`.</li>
+      <li><b>Exponent (exp) Calculation:</b> `exp = E + bias` = `2 + 127 = 129`. The 8-bit binary for `129` is `10000001`₂.</li>
+      <li><b>Fraction (frac) Calculation:</b> The part after the `1.` in normalization is `101`. We pad it to 23 bits: `10100000000000000000000`.</li>
+      <li><b>Combine:</b> `s | exp | frac` = `0 | 10000001 | 10100000000000000000000`.</li>
+      <li><b>Convert to Hex:</b> Grouping these 32 bits into 4-bit chunks gives `0100 0000 1101 0000 ...` = `40D00000`.</li>
+  </ol>
+  </p>
+</details>
 
-*   **`int` → `float`:** Bu riskli olabilir. `int` çok büyük bir değerse, `float`'ın sınırlı hassasiyetine sığmayabilir. Bu durumda sayı, en yakın temsil edilebilir `float` değerine **yuvarlanır** ve hassasiyet kaybolur.
-    ```c
-    // Bu sonucun tam değeri sisteme göre değişebilir ama fikir aynıdır.
-    int big_integer = 123456789;
-    float f = (float)big_integer; 
-    // f'nin değeri 123456792.0 gibi bir şeye dönüşebilir.
-    ```
+**Question 2:** What is the decimal number represented by the 32-bit `float` hexadecimal value `0xC1480000`?
 
-<div class="quiz-question">
-  <p><b>Soru:</b> `int x = (int)-9.99;` C kodu çalıştırıldığında `x`'in değeri ne olur?</p>
-  <div class="quiz-option">A) `-10`</div>
-  <div class="quiz-option" data-correct="true">B) `-9`</div>
-  <div class="quiz-option">C) `-9.99`</div>
-  <div class="quiz-option">D) Derleme hatası verir.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: B.</b> Kayan noktalı bir sayıyı `int`'e dönüştürürken, sayı en yakın tam sayıya yuvarlanmaz. Ondalık kısım (`.99`) ne olursa olsun basitçe atılır (truncate). Bu nedenle sonuç `-9`'dur.</p>
-  </div>
-</div>
+*   A) `12.5`
+*   B) `25.0`
+*   C) `-12.5`
+*   D) `-25.0`
 
+<details>
+  <summary>Show Answer</summary>
+  <p><b>Answer: C.</b> Let's go in reverse, step-by-step:
+  <ol>
+      <li><b>Convert Hex to Binary:</b> `0xC1480000` = `1100 0001 0100 1000 0000 0000 0000 0000`₂.</li>
+      <li><b>Split into Parts:</b> `s | exp | frac`
+          <ul>
+              <li><b>s (sign):</b> `1` (The number is negative)</li>
+              <li><b>exp (exponent):</b> `10000010`₂ = `130`</li>
+              <li><b>frac (fraction):</b> `1001000...`</li>
+          </ul>
+      </li>
+      <li><b>Find the Actual Exponent:</b> `E = exp - bias` = `130 - 127 = 3`.</li>
+      <li><b>Find the Value:</b> The formula is `(-1)ˢ × (1.frac)₂ × 2ᴱ`. (The leading `1.` is implicit for normalized numbers).
+          <ul>
+              <li>`= (-1)¹ × (1.1001)₂ × 2³`</li>
+              <li>`= -1 × (1100.1)₂` (Move the binary point 3 places to the right)</li>
+              <li>`= -1 × (8 + 4 + 0 + 0 + 0.5)`</li>
+              <li><b>`= -12.5`</b></li>
+          </ul>
+      </li>
+  </ol>
+  </p>
+</details>
 ---
-
-## 6. Alıştırma Soruları
-
-<div class="quiz-question">
-  <p><b>Soru:</b> `6.5` ondalık sayısının 32-bit IEEE 754 `float` temsilinin hexadecimal karşılığı nedir?</p>
-  <div class="quiz-option" data-correct="true">A) `0x40D00000`</div>
-  <div class="quiz-option">B) `0xC0D00000`</div>
-  <div class="quiz-option">C) `0x41D00000`</div>
-  <div class="quiz-option">D) `0x3F800000`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: A.</b> Adım adım çözelim:
-    <ol>
-        <li><b>İşaret (s):</b> Sayı pozitif, yani `s = 0`.</li>
-        <li><b>İkiliye Çevirme:</b> `6.5` = `4 + 2 + 0.5` = `110.1`₂.</li>
-        <li><b>Normalizasyon:</b> `110.1` = `1.101 × 2²`. Buradan gerçek üs `E = 2`'dir.</li>
-        <li><b>Üs (exp) Hesaplama:</b> `exp = E + bias` = `2 + 127 = 129`. `129`'un 8-bit ikili karşılığı `10000001`₂'dir.</li>
-        <li><b>Kesir (frac) Hesaplama:</b> Normalizasyondaki `1.` den sonra gelen kısım `101`'dir. Bunu 23 bite tamamlarız: `10100000000000000000000`.</li>
-        <li><b>Birleştirme:</b> `s | exp | frac` = `0 | 10000001 | 10100000000000000000000`.</li>
-        <li><b>Hex'e Çevirme:</b> Bu 32 bitlik sayıyı 4'erli gruplara ayırıp hex'e çevirirsek: `0100 0000 1101 0000 ...` = `40D00000`.</li>
-    </ol>
-    </p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru:</b> 32-bit `float` olarak `0xC1480000` hexadecimal değeriyle temsil edilen ondalık sayı nedir?</p>
-  <div class="quiz-option">A) `12.5`</div>
-  <div class="quiz-option">B) `25.0`</div>
-  <div class="quiz-option" data-correct="true">C) `-12.5`</div>
-  <div class="quiz-option">D) `-25.0`</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> Adım adım tersten gidelim:
-    <ol>
-        <li><b>Hex'i İkiliye Çevirme:</b> `0xC1480000` = `1100 0001 0100 1000 0000 0000 0000 0000`₂.</li>
-        <li><b>Parçalara Ayırma:</b> `s | exp | frac`
-            <ul>
-                <li><b>s (işaret):</b> `1` (Sayı negatif)</li>
-                <li><b>exp (üs):</b> `10000010`₂ = `130`</li>
-                <li><b>frac (kesir):</b> `1001000...`</li>
-            </ul>
-        </li>
-        <li><b>Gerçek Üssü Bulma:</b> `E = exp - bias` = `130 - 127 = 3`.</li>
-        <li><b>Sayının Değerini Bulma:</b> Formül: `(-1)ˢ × (1.frac)₂ × 2ᴱ`. (Normal sayılarda baştaki `1.` gizlidir).
-            <ul>
-                <li>`= (-1)¹ × (1.1001)₂ × 2³`</li>
-                <li>`= -1 × (1100.1)₂` (Virgülü 3 basamak sağa kaydır)</li>
-                <li>`= -1 × (8 + 4 + 0 + 0 + 0.5)`</li>
-                <li><b>`= -12.5`</b></li>
-            </ul>
-        </li>
-    </ol>
-    </p>
-  </div>
-</div>
-
-<div class="quiz-question">
-  <p><b>Soru:</b> IEEE 754 standardında `float` türü için `bias` (sapma) değeri 127 olarak kullanılır. Bunun temel sebebi nedir?</p>
-  <div class="quiz-option">A) 127'nin asal sayı olması.</div>
-  <div class="quiz-option">B) Bellekte temsilinin kolay olması.</div>
-  <div class="quiz-option" data-correct="true">C) Üs (exponent) alanının hem negatif hem de pozitif üsleri işaretsiz bir tamsayı olarak saklamasına olanak tanıması.</div>
-  <div class="quiz-option">D) İşlemci tarafından en hızlı işlenen sayı olması.</div>
-  <div class="quiz-explanation">
-    <p><b>Cevap: C.</b> 8-bitlik `exp` alanı `0` ile `255` arasında değerler alabilir. `Bias` kullanarak, bu aralığın yaklaşık yarısı negatif üslere (çok küçük sayılar için), yarısı da pozitif üslere (çok büyük sayılar için) ayrılmış olur. Örneğin, `exp` alanı `126` ise gerçek üs `126 - 127 = -1` olur. `exp` alanı `128` ise gerçek üs `128 - 127 = 1` olur. Bu sayede, üs için ayrı bir işaret biti kullanmaya gerek kalmaz ve karşılaştırma işlemleri donanım seviyesinde basitleşir.</p>
-  </div>
-</div>
