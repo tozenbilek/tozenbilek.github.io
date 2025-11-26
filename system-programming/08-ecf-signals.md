@@ -1,70 +1,118 @@
 ---
 layout: default
-title: ECF Signals & Nonlocal Jumps
+title: Signals & Nonlocal Jumps
 nav_order: 8
 parent: System Programming
+mermaid: true
 ---
 
-# Exceptional Control Flow (ECF): Signals and Nonlocal Jumps
+# ECF: Signals and Nonlocal Jumps
+{: .no_toc }
 
-## 1. Signals (Software Interrupts)
+Yazılımsal kesmeler (Software Interrupts) ve güvenli sinyal işleme teknikleri.
 
-A message to a process notifying it of an event.
+## İçindekiler
+{: .no_toc .text-delta }
 
-| Signal | Name | Default Action | Event |
-|:---|:---|:---|:---|
-| 2 | `SIGINT` | Terminate | Ctrl+C (Interrupt) |
-| 9 | `SIGKILL` | Terminate | Kill immediately (Cannot catch/ignore) |
-| 11 | `SIGSEGV` | Dump Core | Segmentation Fault (Bad memory access) |
-| 14 | `SIGALRM` | Terminate | Timer expired |
-| 17 | `SIGCHLD` | Ignore | Child process stopped/terminated |
+1. TOC
+{:toc}
 
-## 2. Sending Signals
+---
 
-*   **Kernel:** Sends signals on events (Div by zero, Ctrl+C).
-*   **Kill Command:** `/bin/kill -9 1234` (Sends SIGKILL to PID 1234).
-*   **System Call:** `kill(pid, sig)` function in C.
+## 1. Signals (Sinyaller)
 
-## 3. Receiving Signals
+Processlere gönderilen küçük mesajlardır (sadece ID taşır).
 
-A destination process receives a signal when the kernel forces it to react.
-Possible reactions:
-1.  **Ignore:** Do nothing.
-2.  **Terminate:** (With or without core dump).
-3.  **Catch:** Execute a user-level function called a **Signal Handler**.
+| Signal | İsim | Default Action | Olay |
+|:---:|:---|:---|:---|
+| 2 | `SIGINT` | Terminate | **Ctrl+C** (Interrupt) |
+| 9 | `SIGKILL` | Terminate | **Kill Immediately** (Durdurulamaz!) |
+| 11 | `SIGSEGV` | Dump Core | Segmentation Fault (Hatalı bellek) |
+| 14 | `SIGALRM` | Terminate | Timer süresi doldu |
+| 17 | `SIGCHLD` | Ignore | Child process öldü |
 
-```c
-void handler(int sig) {
-    printf("Received SIGINT\n");
-    // Danger: Do not use printf in real handlers (not async-signal-safe)!
-}
-// Registering
-signal(SIGINT, handler);
+---
+
+## 2. Signal Life Cycle (Yaşam Döngüsü)
+
+Bir sinyal gönderildiğinde hemen işlenmeyebilir.
+
+```mermaid
+graph LR
+    K[Kernel] --Sends--> P[Pending Bit]
+    P --Not Blocked?--> D[Delivered/Received]
+    D --> H[Handler Çalışır]
+    
+    subgraph Process_Context
+    P
+    B[Blocked Bit]
+    end
+    
+    B -.->|Blocks| P
+    
+    style P fill:#f99,stroke:#333
+    style B fill:#99f,stroke:#333
 ```
 
-### Critical Issues in Handlers
-*   **Async-Signal-Safety:** Handlers can interrupt main program at ANY time. Only call safe functions (e.g., `write`, `_exit`). Do NOT call `printf`, `malloc`, `exit`.
-*   **Concurrency:** Save/restore global `errno`.
-*   **Volatile:** Declare global flags shared with main as `volatile sig_atomic_t`.
+*   **Pending:** Gönderilmiş ama henüz alınmamış sinyal. (Her türden en fazla 1 tane olabilir! Kuyruk yoktur).
+*   **Blocked:** Process'in "Şu an meşgulüm, bu sinyali beklet" demesi. (`sigprocmask`).
 
-## 4. Blocking Signals
-To prevent race conditions, signals can be blocked (postponed) temporarily.
-*   **Implicit Blocking:** Kernel blocks signal `k` while handler for `k` is running.
-*   **Explicit Blocking:** Use `sigprocmask()` to block specific signals during critical sections.
+---
 
-## 5. Nonlocal Jumps
+## 3. Güvenli Sinyal İşleme (Handler)
 
-A way to jump from one function to another (breaking normal call/return stack rules). Like a "Try-Catch" in C.
+Sinyal yakalamak için `signal()` veya `sigaction()` kullanılır. Ancak Handler yazmak zordur.
 
-### `setjmp(jmp_buf env)`
-*   Saves current stack context/regs into `env`.
-*   Returns `0` when called directly.
-*   Returns `nonzero` when returning from `longjmp`.
+### Altın Kurallar
 
-### `longjmp(jmp_buf env, int val)`
-*   Restores context from `env`.
-*   Jumps back to the `setjmp` call location.
-*   `setjmp` returns `val`.
+1.  **Keep it Simple:** Mümkünse sadece bir bayrak (flag) set et ve çık.
+2.  **Async-Signal-Safety:** Sadece güvenli fonksiyonları çağır (`write`, `_exit`, `strlen`).
+    *   ❌ `printf`, `malloc`, `exit` **YASAKTIR!** (Deadlock veya Heap bozulması riski).
+3.  **Save `errno`:** Handler başında `errno`'yu kaydet, çıkarken geri yükle.
+4.  **Volatile:** Ana programla paylaşılan değişkenler `volatile sig_atomic_t` olmalıdır.
+    *   `volatile`: "Derleyici! Bu değişken her an değişebilir, sakın register'a optimize etme, hep RAM'den oku."
 
-**Use Case:** Error recovery (jump back to main loop on deep error) without checking return codes up the entire stack.
+```c
+volatile sig_atomic_t flag = 0;
 
+void handler(int sig) {
+    flag = 1; // Güvenli
+}
+```
+
+---
+
+## 4. Nonlocal Jumps (`setjmp` / `longjmp`)
+
+C dilinde `goto` sadece fonksiyon içine zıplar. `setjmp/longjmp` ise fonksiyonlar arası zıplar (Stack'i deler geçer). Exception Handling (Try-Catch) mekanizmasının atasıdır.
+
+*   **`setjmp(env)`:** "Buraya bir checkpoint koy." (0 döner).
+*   **`longjmp(env, val)`:** "Checkpoint'e geri dön!" (val döner).
+
+{: .warning }
+> **Dikkat:**
+> `longjmp` yapıldığında, aradaki fonksiyonların stack frame'leri yok edilir ama **destructor** gibi temizlik işlemleri (C++ olmadığı için) çalışmaz. Memory leak riski vardır.
+
+---
+
+## 5. Alıştırmalar (Self-Quiz)
+
+<details>
+<summary><strong>Soru 1:</strong> Bir process'e ardı ardına 5 tane <code>SIGINT</code> gönderilirse handler kaç kere çalışır?</summary>
+<br>
+Cevap: <strong>Garanti Değil (Genelde 1 veya 2).</strong>
+Linux sinyalleri <strong>kuyruğa atmaz (No Queuing)</strong>. Sinyal handler çalışırken gelen aynı tip sinyaller "Pending" bitini set eder. 1 tane pending olabilir. Handler bitince o işlenir. Arada gelen diğer 3 sinyal <strong>kaybolur</strong>.
+</details>
+
+<details>
+<summary><strong>Soru 2:</strong> <code>SIGKILL</code> sinyalini yakalayıp (catch) "Kapanmıyorum!" diyebilir miyiz?</summary>
+<br>
+Cevap: <strong>HAYIR.</strong>
+<code>SIGKILL</code> (9) ve <code>SIGSTOP</code> (19) sinyalleri kernel tarafından zorla uygulanır. Yakalanamaz, bloklanamaz veya ignore edilemez.
+</details>
+
+<details>
+<summary><strong>Soru 3:</strong> Handler içinde neden <code>printf</code> kullanılmaz?</summary>
+<br>
+Cevap: <code>printf</code> thread-safe değildir ve içerde kilit (lock) tutabilir. Ana program <code>printf</code> içindeyken sinyal gelirse ve handler da <code>printf</code> çağırırsa, aynı kilidi beklerken <strong>Deadlock</strong> (Kilitlenme) oluşur.
+</details>

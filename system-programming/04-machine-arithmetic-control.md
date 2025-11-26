@@ -1,96 +1,138 @@
 ---
 layout: default
-title: Machine-Level Programming Arithmetic & Control
+title: Arithmetic & Control
 nav_order: 4
 parent: System Programming
+mermaid: true
 ---
 
-# Machine-Level Programming: Arithmetic & Control
+# Arithmetic & Control
+{: .no_toc }
 
-## 1. The `leaq` Instruction (Load Effective Address)
+İşlemci nasıl hesap yapar, karar verir (if/else) ve döngü kurar?
 
-Although designed for memory calculation, it's often used for **arithmetic**.
+## İçindekiler
+{: .no_toc .text-delta }
 
-*   **Logic:** `leaq S(Rb, Ri), D` $\to$ `D = Rb + S*Ri`.
-*   **Key:** Does NOT access memory. Just computes the address.
-*   **Usage:** Fast multiplication by constants (e.g., `x * 12`).
-    *   `leaq (%rdi, %rdi, 2), %rax` $\to$ `rax = rdi * 3`
-    *   `shlq $2, %rax` $\to$ `rax = rax * 4` (Total: `rdi * 12`)
+1. TOC
+{:toc}
 
-## 2. Arithmetic Operations
+---
 
-| Instruction | Effect | Description |
-|:---|:---|:---|
-| `incq D` | `D++` | Increment |
-| `decq D` | `D--` | Decrement |
-| `negq D` | `D = -D` | Negate |
-| `notq D` | `D = ~D` | Bitwise Complement |
-| `addq S, D` | `D += S` | Add |
-| `subq S, D` | `D -= S` | Subtract |
-| `imulq S, D` | `D *= S` | Multiply (Signed) |
-| `xorq S, D` | `D ^= S` | Exclusive-OR (Zeroing: `xorq %rax, %rax`) |
-| `andq S, D` | `D &= S` | Bitwise AND |
-| `orq S, D` | `D \|= S` | Bitwise OR |
-| `salq k, D` | `D <<= k` | Left Shift |
-| `sarq k, D` | `D >>= k` | Arithmetic Right Shift (Sign extend) |
-| `shrq k, D` | `D >>= k` | Logical Right Shift (Zero fill) |
+## 1. `leaq`: The Swiss Army Knife
 
-## 3. Condition Codes (Flags)
+`leaq` (Load Effective Address) aslında bir hafıza komutu gibi görünür ama işlemcideki en hızlı aritmetikçidir.
 
-Single-bit registers set by arithmetic/logical ops (but NOT by `leaq`).
+*   **Amaç:** Adres hesaplamak ($D + R_b + R_i \times S$).
+*   **Hile:** Bu formülü sadece sayıları çarpmak ve toplamak için kullanır. **Belleğe GİTMEZ.**
 
-*   **ZF (Zero Flag):** Result is `0`.
-*   **SF (Sign Flag):** Result is negative (MSB is 1).
-*   **CF (Carry Flag):** Unsigned overflow (Carry out of MSB).
-*   **OF (Overflow Flag):** Signed overflow (Two pos add to neg, etc.).
+{: .highlight }
+> **Örnek:** `x * 12` hesaplamak.
+> 1. `leaq (%rdi, %rdi, 2), %rax` $\to$ `rax = x + x*2` = **3x**
+> 2. `shlq $2, %rax` $\to$ `rax = 3x << 2` = $3x \times 4$ = **12x**
 
-> **`cmpq S2, S1`:** Computes `S1 - S2`, sets flags, discards result.
-> **`testq S2, S1`:** Computes `S1 & S2`, sets flags (ZF, SF), discards result.
+---
 
-## 4. Jumps & Control Flow
+## 2. Condition Codes (Flags)
 
-Instructions that change the `%rip` based on flags.
+İşlemci son yaptığı aritmetik işlemden sonra "notlar" alır. Bu notlar 1 bitlik `RFLAGS` registerında tutulur.
 
-| Instruction | Condition | Description |
-|:---|:---|:---|
-| `jmp` | 1 | Unconditional |
-| `je` / `jz` | ZF | Equal / Zero |
-| `jne` / `jnz` | ~ZF | Not Equal / Not Zero |
-| `js` | SF | Negative |
-| `jns` | ~SF | Non-Negative |
-| `jg` / `jnle` | ~(SF^OF) & ~ZF | Greater (Signed) |
-| `jl` / `jnge` | SF^OF | Less (Signed) |
-| `ja` / `jnbe` | ~CF & ~ZF | Above (Unsigned >) |
-| `jb` / `jnae` | CF | Below (Unsigned <) |
+| Flag | İsim | Anlamı | Hangi Durumda 1 Olur? |
+|:---:|:---|:---|:---|
+| **ZF** | Zero Flag | Sonuç Sıfır | `res == 0` |
+| **SF** | Sign Flag | Sonuç Negatif | `res < 0` (MSB == 1) |
+| **CF** | Carry Flag | Unsigned Overflow | Elde var (Unsigned sınırını aştı) |
+| **OF** | Overflow Flag | Signed Overflow | `Pos + Pos = Neg` veya `Neg + Neg = Pos` |
 
-## 5. Control Structures
+### `cmp` ve `test` Komutları
+Bu komutlar işlem yapar ama **sonucu kaydetmez**, sadece Flagleri günceller.
 
-### A. Conditional Move (`cmov`)
-Avoids branching (and prediction errors) by computing both values and selecting one.
-*   `val = Test ? Then_Val : Else_Val;`
-*   Computed as: Calculate both `Then` and `Else`, then `cmove` based on `Test`.
+*   **`cmpq b, a`**: `a - b` hesaplar. (`subq` gibi ama `a` değişmez).
+    *   Kullanım: `if (a == b)`
+*   **`testq b, a`**: `a & b` hesaplar. (`andq` gibi ama `a` değişmez).
+    *   Kullanım: `testq %rax, %rax` (Hızlıca "sıfır mı, negatif mi" kontrolü).
 
-### B. Loops
-All loops (`while`, `for`) are translated into `cmp` + `jmp`.
-*   **Do-While:** Simplest. Body $\to$ Test $\to$ Jump Back.
-*   **While:** Jump to Test $\to$ Test $\to$ Body $\to$ Jump to Test.
-*   **For:** Init $\to$ While Loop.
+---
 
-### C. Switch Statements
-Implemented using a **Jump Table** for efficiency when cases are dense (e.g., case 0, 1, 2, 3).
-*   Table is an array of code addresses.
-*   `jmp *.L4(,%rdi,8)` (Indirect jump using table entry).
+## 3. Jumps (Zıplamalar)
 
-## 6. Procedures & The Stack (Brief)
+Flaglere bakarak kodun akışını değiştiren komutlardır.
 
-*   **Stack:** Grows **down** (high addr $\to$ low addr). `%rsp` points to top.
-*   **`pushq S`:** `rsp -= 8`; `Mem[rsp] = S`.
-*   **`popq D`:** `D = Mem[rsp]`; `rsp += 8`.
-*   **`call Label`:** Push return address, Jump to Label.
-*   **`ret`:** Pop return address, Jump to it.
+| Jump | Okunuşu | Koşul | Açıklama |
+|:---|:---|:---|:---|
+| `jmp` | Jump | 1 | Koşulsuz şartsız git. |
+| `je` / `jz` | Jump Equal / Zero | ZF=1 | Eşitse (veya sonuç sıfırsa). |
+| `jne` / `jnz` | Jump Not Equal | ZF=0 | Eşit değilse. |
+| `js` | Jump Signed | SF=1 | Negatifse. |
+| `jg` | Jump Greater | ~(SF^OF) & ~ZF | Büyüktür (Signed). |
+| `ja` | Jump Above | ~CF & ~ZF | Büyüktür (Unsigned). |
 
-### Calling Conventions (System V AMD64)
-*   **Passing Args:** `%rdi`, `%rsi`, `%rdx`, `%rcx`, `%r8`, `%r9`. (Others on stack).
-*   **Caller-Saved:** `%rax`, `%rcx`, `%rdx`, `%r8-11`. (Can be overwritten by function).
-*   **Callee-Saved:** `%rbx`, `%rbp`, `%r12-15`. (Must be restored if used).
+{: .warning }
+> **Signed vs Unsigned Jumps:**
+> *   Signed karşılaştırma için: `jg` (Greater), `jl` (Less).
+> *   Unsigned karşılaştırma için: `ja` (Above), `jb` (Below).
+> Yanlış jump kullanmak mantık hatasına yol açar!
 
+---
+
+## 4. The Stack (Yığın)
+
+Hafızanın özel bir bölgesidir. Fonksiyon çağırma (Function Calls) ve yerel değişkenler burada yönetilir.
+
+*   **Yön:** Yüksek adresten düşük adrese doğru (Downwards) büyür.
+*   **%rsp:** Stack Pointer. En son eklenen elemanın adresini (Stack Top) tutar.
+
+### Push ve Pop İşlemleri (Görsel)
+
+```mermaid
+graph TD
+    subgraph Stack_Memory
+        HighAddr[0x1000: Eski Veri]
+        MidAddr[0x0FF8: Dolu]
+        LowAddr[0x0FF0: ???]
+    end
+    
+    RSP_Before[%rsp: 0x0FF8] --> MidAddr
+    
+    Note[pushq $Değer]
+    
+    RSP_After[%rsp: 0x0FF0] -.-> LowAddr
+    
+    style HighAddr fill:#ddd
+    style MidAddr fill:#bbb
+    style LowAddr fill:#afa
+    style Note fill:#ff9
+```
+
+*   **`pushq Src`**:
+    1.  `%rsp`'yi 8 azalt (`%rsp -= 8`).
+    2.  Değeri o adrese yaz.
+*   **`popq Dest`**:
+    1.  Değeri `%rsp` adresinden oku.
+    2.  `%rsp`'yi 8 artır (`%rsp += 8`).
+
+---
+
+## 5. Alıştırmalar (Self-Quiz)
+
+<details>
+<summary><strong>Soru 1:</strong> <code>testq %rax, %rax</code> komutu ne zaman ZF (Zero Flag) set eder?</summary>
+<br>
+Cevap: <strong>%rax sıfır olduğunda.</strong>
+<code>0 & 0 = 0</code> olduğu için sonuç sıfır çıkar ve ZF=1 olur. Bu, bir registerın 0 olup olmadığını kontrol etmenin en hızlı yoludur.
+</details>
+
+<details>
+<summary><strong>Soru 2:</strong> Stack pointer <code>0x108</code> iken <code>pushq %rax</code> çalışırsa yeni stack pointer ne olur?</summary>
+<br>
+Cevap: <strong>0x100</strong>.
+Stack aşağı (küçük adreslere) büyür. 64-bit sistemde her eleman 8 byte'tır. <code>0x108 - 8 = 0x100</code>.
+</details>
+
+<details>
+<summary><strong>Soru 3:</strong> <code>cmpq %rsi, %rdi</code> yaptık (yani <code>rdi - rsi</code>). Sonuç pozitif ama Overflow Flag (OF) yandı. Bu ne anlama gelir?</summary>
+<br>
+Cevap: <strong>Gerçek sonuç aslında negatiftir.</strong>
+Signed Overflow (OF) olduysa işaretler karışmıştır. Pozitif - Negatif = Pozitif (ama taşma sonucu negatif görünebilir veya tam tersi).
+Matematiksel olarak: <code>rdi < rsi</code>.
+</details>

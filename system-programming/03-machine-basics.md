@@ -1,91 +1,154 @@
 ---
 layout: default
-title: Machine-Level Programming Basics
+title: Machine-Level Basics
 nav_order: 3
 parent: System Programming
+mermaid: true
 ---
 
 # Machine-Level Programming: Basics
+{: .no_toc }
 
-## 1. Architecture Overview (Programmer's View)
+x86-64 mimarisinin temelleri: Registerlar, Operands ve Hafıza Erişimi.
 
-*   **PC (Program Counter):** Called `%rip` (Instruction Pointer) in x86-64. Stores address of next instruction.
-*   **Register File:** 16 named locations storing 64-bit values (heavily used).
-*   **Condition Codes:** Store status of most recent arithmetic operation (CF, ZF, SF, OF).
-*   **Memory:** Byte-addressable array. Code, user data, stack all live here.
+## İçindekiler
+{: .no_toc .text-delta }
 
-## 2. Data Formats & Suffixes
+1. TOC
+{:toc}
 
-Assembly instructions often have a suffix indicating operation size.
+---
 
-| C Declaration | Intel Data Type | Assembly Suffix | Size (Bytes) |
-|:---|:---|:---:|:---:|
-| `char` | Byte | `b` | 1 |
-| `short` | Word | `w` | 2 |
-| `int` | Double Word | `l` | 4 |
-| `long` / `char *` | Quad Word | `q` | 8 |
-| `float` | Single Precision | `s` | 4 |
-| `double` | Double Precision | `l` (or `d` in AVX) | 8 |
+## 1. Mimarinin Görünümü
 
-> **Note:** `movl` moves 4 bytes, `movq` moves 8 bytes.
+Bir C programcısı için soyut olan donanım, Assembly programcısı için görünür hale gelir.
 
-## 3. x86-64 Integer Registers
+*   **Program Counter (%rip):** Bir sonraki çalışacak komutun adresi.
+*   **Register File:** İşlemcinin "çalışma masası". Çok hızlı erişilen 16 adet değişken.
+*   **Condition Codes:** Son işlemin durumu (Negatif mi? Sıfır mı? Taşma var mı?).
+*   **Memory:** Byte dizisi olarak görülen devasa saklama alanı.
 
-16 General Purpose Registers. All 64-bits wide.
-*   Lower bits can be accessed independently for backward compatibility.
+---
 
-| 64-bit (Quad) | 32-bit (Double) | 16-bit (Word) | 8-bit (Byte) | Purpose / Convention |
-|:---|:---|:---|:---|:---|
-| `%rax` | `%eax` | `%ax` | `%al` | **Return Value** |
-| `%rbx` | `%ebx` | `%bx` | `%bl` | Callee Saved |
-| `%rcx` | `%ecx` | `%cx` | `%cl` | 4th Arg |
-| `%rdx` | `%edx` | `%dx` | `%dl` | 3rd Arg |
-| `%rsi` | `%esi` | `%si` | `%sil` | 2nd Arg |
-| `%rdi` | `%edi` | `%di` | `%dil` | **1st Arg** |
-| `%rbp` | `%ebp` | `%bp` | `%bpl` | Callee Saved (Base Ptr) |
-| `%rsp` | `%esp` | `%sp` | `%spl` | **Stack Pointer** |
-| `%r8` - `%r15` | `%r8d`... | `%r8w`... | `%r8b`... | 5th, 6th Args, etc. |
+## 2. x86-64 Register Hiyerarşisi
 
-> **Crucial Rule:** Instructions generating a **32-bit** result (e.g., `addl`, `movl`) set the **upper 32 bits of the destination register to ZERO**.
+64-bitlik bir register'ın (`%rax`) alt parçalarına farklı isimlerle erişilebilir. Bu, geriye dönük uyumluluk (backward compatibility) içindir.
 
-## 4. Operand Types
+### Görsel Yapı (Mermaid)
 
-1.  **Immediate:** Constant integer data. Prefixed with `$`.
-    *   Example: `$0x400`, `$-53`.
-2.  **Register:** One of the 16 registers.
-    *   Example: `%rax`, `%r13`.
-3.  **Memory:** 8 consecutive bytes of memory at address given by register.
-    *   Example: `(%rax)`.
+```mermaid
+graph LR
+    subgraph Register_RAX_64_bit
+        direction LR
+        
+        subgraph EAX_32_bit
+            direction LR
+            
+            subgraph AX_16_bit
+                AH[AH: 8 bit] --- AL[AL: 8 bit]
+            end
+        end
+        High32[Upper 32 bits] --- EAX_32_bit
+    end
+    
+    style Register_RAX_64_bit fill:#eee,stroke:#333
+    style EAX_32_bit fill:#ccf,stroke:#333
+    style AX_16_bit fill:#aaf,stroke:#333
+    style AL fill:#f99,stroke:#333
+```
 
-## 5. Memory Addressing Modes
+### Önemli Kural: 32-bit Yazma
+{: .warning }
+> **Zero Extension Kuralı:**
+> Eğer bir register'ın 32-bitlik kısmına (`%eax`) yazarsanız, üstteki 32-bit **OTOMATİK OLARAK SIFIRLANIR**.
+> *   `movl $1, %eax` $\to$ `%rax` tamamen `0x0000000000000001` olur.
+> *   `movb`, `movw` komutlarında bu temizleme **YOKTUR**.
 
-The most powerful feature of x86-64. Used for array indexing and pointer arithmetic.
+### Register Görevleri
 
-### General Form
-$$ D(R_b, R_i, S) $$
+| Register | 32-bit | Görev / Rol |
+|:---|:---|:---|
+| `%rax` | `%eax` | **Return Value** (Dönüş Değeri) |
+| `%rdi` | `%edi` | **1. Argüman** |
+| `%rsi` | `%esi` | **2. Argüman** |
+| `%rdx` | `%edx` | **3. Argüman** |
+| `%rcx` | `%ecx` | **4. Argüman** |
+| `%r8` - `%r9` | ... | 5. ve 6. Argümanlar |
+| `%rsp` | `%esp` | **Stack Pointer** (Sakın elleme!) |
+| `%rbp` | `%ebp` | Base Pointer / Callee Saved |
 
-*   **Effective Address** = $Mem[Reg[R_b] + Reg[R_i] \times S + D]$
-*   **$D$ (Displacement):** Constant "offset" (1, 2, or 4 bytes).
-*   **$R_b$ (Base Register):** Any register.
-*   **$R_i$ (Index Register):** Any register except `%rsp`.
-*   **$S$ (Scale):** Must be **1, 2, 4, or 8**.
+---
 
-### Examples
-Assume `%rdx = 0xf000`, `%rcx = 0x100`.
+## 3. Operand Tipleri
 
-| Syntax | Calculation | Address Result | Use Case |
+Bir assembly komutu veriyi nereden alabilir?
+
+1.  **Immediate ($):** Sabit sayı.
+    *   `$0x1F`, `$-5`. (Dolar işareti şart!)
+2.  **Register (%):** Register içindeki değer.
+    *   `%rax`, `%r13`.
+3.  **Memory (parantez):** O adresteki değer. Pointer dereferencing gibidir `*ptr`.
+    *   `(%rax)` $\to$ `%rax` içindeki adrese git, veriyi al.
+
+---
+
+## 4. Memory Addressing Modes
+
+En güçlü ve en karmaşık kısım burasıdır. Dizi ve pointer aritmetiği burada yapılır.
+
+**Genel Formül:**
+$$ D(R_b, R_i, S) \to Mem[Reg[R_b] + Reg[R_i] \times S + D] $$
+
+*   **D:** Displacement (Sabit sayı).
+*   **Rb:** Base Register (Başlangıç adresi).
+*   **Ri:** Index Register (Döngü değişkeni gibi).
+*   **S:** Scale (1, 2, 4, 8). (Veri tipi boyutu).
+
+### Örnek Tablosu
+Varsayalım: `%rdx = 0xF000`, `%rcx = 0x0100`
+
+| İfade | Hesaplama | Adres Sonucu | Anlamı |
 |:---|:---|:---|:---|
-| `0x8(%rdx)` | $0xf000 + 8$ | `0xf008` | Struct field access |
-| `(%rdx, %rcx)` | $0xf000 + 0x100$ | `0xf100` | Array element |
-| `4(%rdx, %rcx)` | $0xf000 + 0x100 + 4$ | `0xf104` | Array + Offset |
-| `(%rdx, %rcx, 4)` | $0xf000 + 0x100 \times 4$ | `0xf400` | Int array access |
-| `0x80( , %rdx, 2)` | $0xf000 \times 2 + 0x80$ | `0x1e080` | Weird math |
+| `0x8(%rdx)` | $0xF000 + 8$ | `0xF008` | `p->field` (Struct) |
+| `(%rdx, %rcx)` | $0xF000 + 0x0100$ | `0xF100` | `A[i]` (Byte dizisi) |
+| `(%rdx, %rcx, 4)` | $0xF000 + 0x0100 \times 4$ | `0xF400` | `int A[i]` |
+| `0x80(,%rdx,2)` | $0xF000 \times 2 + 0x80$ | `0x1E080` | Karmaşık aritmetik |
 
-## 6. Data Movement (MOV)
+---
 
-*   `movq Source, Dest`
-*   **Constraint:** Cannot move from **Memory to Memory** in a single instruction!
-    *   Must load to register first.
-    *   Valid: `movq $5, %rax`, `movq %rax, (%rbx)`.
-    *   Invalid: `movq (%rax), (%rbx)`.
+## 5. Data Movement (MOV)
 
+`movq Source, Dest`
+
+{: .note }
+> **Altın Kural:**
+> İki operand AYNI ANDA **Memory** olamaz.
+> *   Yanlış: `movq (%rax), (%rbx)`
+> *   Doğru: `movq (%rax), %r8` sonra `movq %r8, (%rbx)`
+
+---
+
+## 6. Alıştırmalar (Self-Quiz)
+
+<details>
+<summary><strong>Soru 1:</strong> <code>movl $-1, %eax</code> komutu sonrası <code>%rax</code> registerının değeri hex olarak nedir?</summary>
+<br>
+Cevap: <strong>0x00000000FFFFFFFF</strong>.
+Yanlış cevap: <code>0xFFFFFFFFFFFFFFFF</code>.
+Neden? Çünkü <code>movl</code> (32-bit move) hedef registerın üst 32 bitini <strong>sıfırlar</strong>. Eğer <code>movq $-1, %rax</code> olsaydı hepsi F olurdu.
+</details>
+
+<details>
+<summary><strong>Soru 2:</strong> <code>%rdx=0x100</code>, <code>%rcx=2</code> ise <code>0x10(%rdx, %rcx, 8)</code> adresi kaçtır?</summary>
+<br>
+Cevap: <strong>0x120</strong>.
+Hesap: <code>0x100 + (2 * 8) + 0x10</code>
+<code>0x100 + 0x10 + 0x10</code> = <code>0x120</code>.
+</details>
+
+<details>
+<summary><strong>Soru 3:</strong> <code>(%rax)</code> ile <code>%rax</code> arasındaki fark nedir?</summary>
+<br>
+Cevap: <code>%rax</code> registerın içindeki <strong>değerdir</strong> (örneğin bir adres).
+<code>(%rax)</code> ise o <strong>adreste saklanan veridir</strong> (Memory Access / Dereference). C dilindeki <code>p</code> vs <code>*p</code> farkı gibidir.
+</details>
