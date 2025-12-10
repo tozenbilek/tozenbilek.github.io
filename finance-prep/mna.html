@@ -3,176 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M&A Masterclass | IB Prep</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Advanced M&A Structuring | IB Reference</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --border-hover:#cbd5e1; --text-primary:#1f2933; --text-secondary:#52606d; --text-tertiary:#7b8794; --accent-green:#16a34a; --shadow:0 6px 20px rgba(0,0,0,0.06); }
+        :root { 
+            --bg-color:#ffffff; 
+            --text-primary:#111827; 
+            --text-secondary:#374151; 
+            --text-tertiary:#6b7280; 
+            --accent-blue:#064e3b; /* Deep Green for Money/Deals */
+            --accent-gold:#d97706; 
+            --border-light:#e5e7eb;
+            --code-bg:#f3f4f6;
+        }
         *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.6;padding:40px 24px;max-width:960px;margin:0 auto;font-size:15px}
-        .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
-        .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
-        .back-btn:hover{border-color:var(--border-hover);color:var(--text-primary)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:8px;display:flex;align-items:center;gap:12px}
-        .tag-ib{background:rgba(22,163,74,0.12);color:var(--accent-green);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Merriweather', serif;line-height:1.8;max-width:900px;margin:0 auto;padding:60px 24px;font-size:16px}
         
-        .toc{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:40px}
-        .toc-title{font-weight:600;margin-bottom:12px;color:var(--text-primary);font-size:14px;text-transform:uppercase;letter-spacing:1px}
-        .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-        .toc-link{text-decoration:none;color:var(--text-secondary);font-size:14px;display:flex;align-items:center;gap:8px;transition:color 0.2s}
-        .toc-link:hover{color:var(--accent-green)}
+        h1{font-family:'Inter', sans-serif; font-size:42px; font-weight:800; letter-spacing:-1px; margin-bottom:10px; color:var(--accent-blue); line-height:1.2;}
+        .subtitle{font-family:'Inter', sans-serif; font-size:18px; color:var(--text-tertiary); margin-bottom:60px; font-weight:400; border-bottom:1px solid var(--border-light); padding-bottom:20px;}
         
-        section{margin-bottom:60px;scroll-margin-top:20px}
-        h2{font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border-color);display:flex;align-items:center;gap:10px}
-        h2 i{color:var(--accent-green);font-size:20px}
-        h3{font-size:18px;font-weight:600;color:var(--text-primary);margin-top:30px;margin-bottom:12px}
+        h2{font-family:'Inter', sans-serif; font-size:28px; font-weight:700; margin-top:60px; margin-bottom:20px; color:var(--accent-blue); border-left:4px solid var(--accent-gold); padding-left:16px;}
+        h3{font-family:'Inter', sans-serif; font-size:20px; font-weight:600; margin-top:40px; margin-bottom:12px; color:var(--text-primary);}
         
-        .definition-box{border-left:3px solid var(--text-tertiary);padding-left:16px;margin-bottom:12px;color:var(--text-secondary);font-style:italic;font-size:14px}
-        .analogy-card{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:16px;color:#1e3a8a;font-size:14px;display:flex;gap:12px;align-items:flex-start}
+        p{margin-bottom:24px; color:var(--text-secondary);}
+        strong{color:var(--text-primary); font-weight:700;}
         
-        .qa-card{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px}
-        .qa-header{padding:16px;background:#f8fafc;border-bottom:1px solid var(--border-color);font-weight:600;color:var(--text-primary);display:flex;justify-content:space-between;align-items:center;}
-        .qa-body{padding:16px;font-size:14px;color:var(--text-secondary)}
+        .nav-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; font-family:'Inter',sans-serif; font-size:14px;}
+        .nav-link{text-decoration:none; color:var(--text-tertiary); transition:color 0.2s; display:flex; align-items:center; gap:8px;}
+        .nav-link:hover{color:var(--accent-blue);}
+
+        .toc-box{background:#f9fafb; border:1px solid var(--border-light); padding:30px; margin-bottom:60px; border-radius:4px;}
+        .toc-header{font-family:'Inter',sans-serif; font-weight:700; text-transform:uppercase; font-size:12px; letter-spacing:1px; color:var(--text-tertiary); margin-bottom:16px;}
+        .toc-list{list-style:none; column-count:2; column-gap:40px;}
+        .toc-list li{margin-bottom:10px;}
+        .toc-list a{text-decoration:none; color:var(--text-secondary); font-family:'Inter',sans-serif; font-size:14px; font-weight:500; transition:color 0.2s;}
+        .toc-list a:hover{color:var(--accent-gold); text-decoration:underline;}
+
+        .concept-box{background:#fff; border:1px solid var(--border-light); border-top:3px solid var(--accent-blue); padding:24px; margin:32px 0; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);}
+        .concept-title{font-family:'Inter',sans-serif; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:0.5px; color:var(--accent-blue); margin-bottom:12px; display:block;}
         
-        .technical-box{background:#fff;border:1px dashed var(--text-tertiary);padding:20px;border-radius:8px;margin-top:24px;position:relative}
-        .tech-tag{position:absolute;top:-10px;left:20px;background:var(--text-primary);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace}
-        .difficulty-badge{font-size:10px;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
-        .diff-easy{background:#dcfce7;color:#166534}
-        .diff-mid{background:#fef9c3;color:#854d0e}
-        .diff-hard{background:#fee2e2;color:#991b1b}
+        .math-block{font-family:'JetBrains Mono', monospace; background:var(--code-bg); padding:16px; border-radius:4px; font-size:14px; color:#374151; overflow-x:auto; border-left:4px solid #d1d5db; margin-bottom:24px;}
+        
+        .eng-note{background:#ecfdf5; border-left:4px solid #059669; padding:20px; font-size:15px; color:#065f46; margin-top:40px;}
+        .eng-title{font-weight:700; font-family:'Inter',sans-serif; margin-bottom:8px; display:block; text-transform:uppercase; font-size:12px; letter-spacing:1px;}
+
+        table{width:100%; border-collapse:collapse; margin-bottom:30px; font-family:'Inter',sans-serif; font-size:14px;}
+        th{text-align:left; border-bottom:2px solid var(--border-light); padding:12px; color:var(--text-tertiary); font-weight:600;}
+        td{border-bottom:1px solid var(--border-light); padding:12px; color:var(--text-secondary);}
+        tr:last-child td{border-bottom:none;}
     </style>
 </head>
 <body>
 
-    <div class="nav-bar">
-        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> IB Prep</a>
-        <a href="../index.html" class="back-btn"><i class="fa-solid fa-terminal"></i> Main</a>
+    <div class="nav-header">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Return to Index</a>
+        <span style="color:var(--text-tertiary)">Advanced Deal Structuring</span>
     </div>
 
-    <h1>M&A Masterclass <span class="tag-ib">Deal Structuring</span></h1>
+    <h1>Merger Math & Structuring</h1>
+    <div class="subtitle">A comprehensive analysis of Purchase Price Allocation, Tax Basis (Step-ups), and rigorous accretion/dilution mechanics.</div>
 
-    <div class="toc">
-        <div class="toc-title">İçindekiler</div>
-        <div class="toc-grid">
-            <a href="#logic" class="toc-link"><i class="fa-solid fa-puzzle-piece"></i> 1. M&A Mantığı</a>
-            <a href="#accretion" class="toc-link"><i class="fa-solid fa-chart-line"></i> 2. Accretion / Dilution</a>
-            <a href="#structuring" class="toc-link"><i class="fa-solid fa-handshake"></i> 3. Deal Structuring</a>
-            <a href="#questions" class="toc-link"><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</a>
-        </div>
+    <div class="toc-box">
+        <div class="toc-header">Table of Contents</div>
+        <ul class="toc-list">
+            <li><a href="#ppa">1. Purchase Price Allocation (PPA)</a></li>
+            <li><a href="#tax">2. Tax Structuring: Stock vs Asset</a></li>
+            <li><a href="#accretion">3. Advanced Accretion Math</a></li>
+            <li><a href="#contribution">4. Contribution Analysis</a></li>
+            <li><a href="#game-theory">5. Game Theory in Bidding</a></li>
+        </ul>
     </div>
 
-    <!-- 1. Logic -->
-    <section id="logic">
-        <h2><i class="fa-solid fa-puzzle-piece"></i> 1. Why M&A? (Sinerjiler)</h2>
-        <div class="definition-box">İki şirketin birleşmesi sonucu ortaya çıkan değerin, şirketlerin bağımsız değerleri toplamından büyük olması (1+1=3).</div>
-        
-        <div class="analogy-card">
-            <i class="fa-solid fa-users"></i>
-            <div>
-                <strong>Analoji: Evlilik Masrafları</strong><br>
-                İki bekar ayrı evlerde yaşarken 2 kira, 2 elektrik faturası öderler.<br>
-                Evlenip aynı eve çıkarlarsa, kira ve fatura yarıya düşer (Cost Synergy).
-            </div>
-        </div>
+    <!-- 1. PPA -->
+    <section id="ppa">
+        <h2>1. Purchase Price Allocation (PPA) Mechanics</h2>
+        <p>When Company A buys Company B for $100M, but Company B's Book Value is only $40M, the remaining $60M is not just "Goodwill". We must allocate this excess purchase price to specific assets first.</p>
 
-        <div class="technical-box">
-            <span class="tech-tag">SYNERGY TYPES</span>
-            <ul style="margin-left:20px; font-size:14px; color:var(--text-secondary);">
-                <li><strong>Hard Synergies (Cost):</strong> Kesin olanlardır. Lojistik birleşmesi, İK departmanı azaltılması. Değerlemede ciddiye alınır.</li>
-                <li><strong>Soft Synergies (Revenue):</strong> "Onların müşterisine bizim malı satarız". Belirsizdir. Değerlemede genelde ihmal edilir (Conservative).</li>
+        <div class="concept-box">
+            <span class="concept-title">The Write-Up Process</span>
+            <p>We "Write Up" (Increase the value of) tangible and intangible assets to their Fair Market Value (FMV). This creates a new accounting reality:</p>
+            <ul style="margin-left:20px; color:var(--text-secondary);">
+                <li><strong>Identifiable Intangibles:</strong> Customer lists, Patents, Trademarks. These have finite lives and must be amortized.</li>
+                <li><strong>Deferred Tax Liability (DTL):</strong> If we write up an asset on GAAP books but not Tax books, we create a DTL.
+                    <br><code>DTL = (Write_Up_Amount) * Tax_Rate</code>
+                </li>
+                <li><strong>Goodwill:</strong> The "Plug" variable. Whatever remains after allocating to Intangibles and DTLs.</li>
             </ul>
         </div>
     </section>
 
-    <!-- 2. Accretion / Dilution -->
+    <!-- 2. Tax Structuring -->
+    <section id="tax">
+        <h2>2. Tax Structuring: Stock vs Asset Deals</h2>
+        <p>The structure of the deal defines the cash flow available for debt service. This is often more important than the price itself.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Stock Deal (Common)</th>
+                    <th>Asset Deal / 338(h)(10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>What is bought?</strong></td>
+                    <td>Legal Entity (and all hidden liabilities).</td>
+                    <td>Specific Assets & Liabilities only.</td>
+                </tr>
+                <tr>
+                    <td><strong>Tax Basis</strong></td>
+                    <td><strong>Carryover Basis:</strong> No change in asset values for tax purposes.</td>
+                    <td><strong>Step-up Basis:</strong> Assets re-valued to purchase price for tax.</td>
+                </tr>
+                <tr>
+                    <td><strong>Depreciation</strong></td>
+                    <td>Based on old (low) book value. Low tax shield.</td>
+                    <td>Based on new (high) price. <strong>Massive Tax Shield.</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Seller Preference</strong></td>
+                    <td>High (Single layer of tax on capital gains).</td>
+                    <td>Low (Double taxation: Corporate + Individual).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="eng-note">
+            <span class="eng-title">Optimization Algo</span>
+            <p>An Asset Deal creates value (Tax Shield) but costs the Seller more (Double Tax).<br>
+            <strong>The Solution:</strong> The Buyer pays the Seller slightly more to cover their extra tax bill, and they split the remaining Tax Shield value (Pareto Improvement).</p>
+        </div>
+    </section>
+
+    <!-- 3. Accretion Math -->
     <section id="accretion">
-        <h2><i class="fa-solid fa-chart-line"></i> 2. Accretion / Dilution Analysis</h2>
-        <p>Hissedar için en önemli soru: "Bu satın alma benim Hisse Başına Kârımı (EPS) artıracak mı?"</p>
+        <h2>3. Advanced Accretion/Dilution Math</h2>
+        <p>Forget the shortcuts. To calculate the exact impact, you must solve for the <strong>Breakeven Synergies</strong>.</p>
 
-        <div class="qa-card">
-            <div class="qa-header"><span>Nasıl Hesaplanır? (4 Adım)</span></div>
-            <div class="qa-body">
-                <ol style="margin-left:20px;">
-                    <li><strong>Pro-Forma Net Income:</strong> (Alıcı Net Kâr + Hedef Net Kâr + Sinerjiler) - (Borç Faizi + Yeni Vergiler).</li>
-                    <li><strong>New Share Count:</strong> Alıcının mevcut hisseleri + Satın alma için basılan yeni hisseler.</li>
-                    <li><strong>New EPS:</strong> Pro-Forma Net Income / New Share Count.</li>
-                    <li><strong>Karşılaştır:</strong> New EPS > Old EPS ise <strong>Accretive (Pozitif)</strong>.</li>
-                </ol>
-            </div>
+        <div class="math-block">
+            <strong>Breakeven Pre-Tax Synergies Formula:</strong><br><br>
+            Synergies = [ (Acq_PE / Target_PE) * (1 + Premium) - 1 ] * Target_NI<br>
+            -------------------------------------------------------------<br>
+                                   (1 - Tax_Rate)
         </div>
 
-        <div class="technical-box">
-            <span class="tech-tag">RULE OF THUMB (EZBERLE)</span>
-            <p style="margin-top:10px;">Eğer işlem <strong>%100 Hisse (All-Stock)</strong> ile yapılıyorsa:</p>
-            <code>Alıcının P/E > Hedefin P/E = ACCRETIVE</code><br>
-            <code>Alıcının P/E < Hedefin P/E = DILUTIVE</code><br>
-            <p style="font-size:13px; color:var(--text-tertiary); margin-top:5px;">(Yüksek F/K'lı pahalı hisseni verip, düşük F/K'lı ucuz kâr satın alıyorsun.)</p>
+        <p>This formula tells you: "How much cost cutting ($) do I need just to stop my EPS from falling?" If the required number is realistic, the deal proceeds. If it requires cutting 50% of staff, the deal is dead.</p>
+    </section>
+
+    <!-- 4. Contribution Analysis -->
+    <section id="contribution">
+        <h2>4. Contribution Analysis</h2>
+        <p>In a Merger of Equals (MOE), how do we decide ownership split? We look at what each party "Contributes".</p>
+
+        <div class="concept-box">
+            <span class="concept-title">The Ownership Matrix</span>
+            We calculate ownership % implied by various metrics:
+            <ul style="margin-left:20px; font-family:'JetBrains Mono', monospace; font-size:13px; margin-top:10px;">
+                <li>Based on Revenue:   Co_A contributes 60%</li>
+                <li>Based on EBITDA:    Co_A contributes 75% (More profitable)</li>
+                <li>Based on Net Income: Co_A contributes 50% (High leverage)</li>
+            </ul>
+            <p style="margin-top:10px"><strong>Conclusion:</strong> If Co_A gets only 50% ownership (based on NI), they are being diluted on an EBITDA basis. They will demand a higher ownership stake.</p>
         </div>
     </section>
 
-    <!-- 3. Deal Structuring -->
-    <section id="structuring">
-        <h2><i class="fa-solid fa-handshake"></i> 3. Deal Structuring (Cash vs Stock)</h2>
+    <!-- 5. Game Theory -->
+    <section id="game-theory">
+        <h2>5. Game Theory in Bidding (The Winner's Curse)</h2>
+        <p>M&A is an auction. The winner is often the one who <em>overestimates</em> the value the most.</p>
         
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>1. Cash (Nakit) ile Alım</span>
-                <span class="difficulty-badge diff-easy">EN UCUZ</span>
-            </div>
-            <div class="qa-body">
-                <strong>Mantık:</strong> Bankadaki paranı kullanırsın veya kredi çekersin.<br>
-                <strong>Maliyet:</strong> Kaybettiğin mevduat faizi veya ödediğin kredi faizi (Vergiden düşülür!).<br>
-                <strong>Risk:</strong> Alıcı tüm riski alır. Hedef şirket hissedarları parayı alır ve kaçar.
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>2. Stock (Hisse) ile Alım</span>
-                <span class="difficulty-badge diff-hard">EN RİSKLİ</span>
-            </div>
-            <div class="qa-body">
-                <strong>Mantık:</strong> Kendi şirketinden pay verirsin.<br>
-                <strong>Maliyet:</strong> "Cost of Equity" (Genelde borçtan çok daha pahalıdır).<br>
-                <strong>Risk:</strong> Risk paylaşılır. Eğer birleşen şirket batarsa, hedef şirket hissedarları da batar.
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Sorular -->
-    <section id="questions">
-        <h2><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</h2>
-
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>1. Accretive bir işlem hisse fiyatını kesin artırır mı?</span>
-                <span class="difficulty-badge diff-mid">TRICK</span>
-            </div>
-            <div class="qa-body">
-                <strong>Hayır.</strong> EPS artsa bile, piyasa bu birleşmeyi sevmeyebilir (Sinerjiye inanmaz, kültürel uyumsuzluk görür). Bu durumda F/K çarpanı düşer ve hisse fiyatı çakılabilir. EPS her şey değildir.
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>2. Goodwill (Şerefiye) nasıl oluşur?</span>
-                <span class="difficulty-badge diff-mid">MUHASEBE</span>
-            </div>
-            <div class="qa-body">
-                <code>Satın Alma Bedeli (Equity Purchase Price) - Hedefin Defter Değeri (Book Value of Equity)</code><br>
-                Aradaki fark Goodwill'dir. Marka değeri, patentler ve müşteri sadakati gibi "elle tutulmayan" varlıkları temsil eder.
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>3. Asset Deal vs Stock Deal?</span>
-                <span class="difficulty-badge diff-hard">VERGİ</span>
-            </div>
-            <div class="qa-body">
-                <strong>Asset Deal:</strong> Sadece varlıkları alırsın. Varlık değerini güncel fiyata çekersin (Step-up). Yüksek amortisman → Düşük Vergi (Alıcı Sever).<br>
-                <strong>Stock Deal:</strong> Şirketin hissesini alırsın. Vergi avantajı yoktur ama satıcı için temizdir (Satıcı Sever).
-            </div>
+        <div class="eng-note">
+            <span class="eng-title">Engineering Perspective: Nash Equilibrium</span>
+            <p>In a blind auction, your optimal bid $B$ is a function of your valuation $V$ and the number of bidders $n$.</p>
+            <p>The <strong>Winner's Curse</strong> states that if you win, you likely paid more than the consensus value. To avoid this, rational bidders shade their bids downwards. In M&A modeling, we must perform "Accretion at various Bid Prices" to find the "Walk-Away Price" (The Reservation Price).</p>
         </div>
     </section>
 

@@ -3,182 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valuation Masterclass | IB Prep</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Advanced Valuation | IB Reference</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --border-hover:#cbd5e1; --text-primary:#1f2933; --text-secondary:#52606d; --text-tertiary:#7b8794; --accent-green:#16a34a; --shadow:0 6px 20px rgba(0,0,0,0.06); }
+        :root { 
+            --bg-color:#ffffff; 
+            --text-primary:#111827; 
+            --text-secondary:#374151; 
+            --text-tertiary:#6b7280; 
+            --accent-blue:#1e3a8a; 
+            --accent-gold:#b45309; 
+            --border-light:#e5e7eb;
+            --code-bg:#f3f4f6;
+        }
         *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.6;padding:40px 24px;max-width:960px;margin:0 auto;font-size:15px}
-        .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
-        .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
-        .back-btn:hover{border-color:var(--border-hover);color:var(--text-primary)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:8px;display:flex;align-items:center;gap:12px}
-        .tag-ib{background:rgba(22,163,74,0.12);color:var(--accent-green);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Merriweather', serif;line-height:1.8;max-width:900px;margin:0 auto;padding:60px 24px;font-size:16px}
         
-        .toc{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:40px}
-        .toc-title{font-weight:600;margin-bottom:12px;color:var(--text-primary);font-size:14px;text-transform:uppercase;letter-spacing:1px}
-        .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-        .toc-link{text-decoration:none;color:var(--text-secondary);font-size:14px;display:flex;align-items:center;gap:8px;transition:color 0.2s}
-        .toc-link:hover{color:var(--accent-green)}
+        h1{font-family:'Inter', sans-serif; font-size:42px; font-weight:800; letter-spacing:-1px; margin-bottom:10px; color:var(--accent-blue); line-height:1.2;}
+        .subtitle{font-family:'Inter', sans-serif; font-size:18px; color:var(--text-tertiary); margin-bottom:60px; font-weight:400; border-bottom:1px solid var(--border-light); padding-bottom:20px;}
         
-        section{margin-bottom:60px;scroll-margin-top:20px}
-        h2{font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border-color);display:flex;align-items:center;gap:10px}
-        h2 i{color:var(--accent-green);font-size:20px}
-        h3{font-size:18px;font-weight:600;color:var(--text-primary);margin-top:30px;margin-bottom:12px}
+        h2{font-family:'Inter', sans-serif; font-size:28px; font-weight:700; margin-top:60px; margin-bottom:20px; color:var(--accent-blue); border-left:4px solid var(--accent-gold); padding-left:16px;}
+        h3{font-family:'Inter', sans-serif; font-size:20px; font-weight:600; margin-top:40px; margin-bottom:12px; color:var(--text-primary);}
         
-        .definition-box{border-left:3px solid var(--text-tertiary);padding-left:16px;margin-bottom:12px;color:var(--text-secondary);font-style:italic;font-size:14px}
-        .analogy-card{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:16px;color:#1e3a8a;font-size:14px;display:flex;gap:12px;align-items:flex-start}
+        p{margin-bottom:24px; color:var(--text-secondary);}
+        strong{color:var(--text-primary); font-weight:700;}
         
-        .qa-card{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px}
-        .qa-header{padding:16px;background:#f8fafc;border-bottom:1px solid var(--border-color);font-weight:600;color:var(--text-primary);display:flex;justify-content:space-between}
-        .qa-body{padding:16px;font-size:14px;color:var(--text-secondary)}
+        .nav-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; font-family:'Inter',sans-serif; font-size:14px;}
+        .nav-link{text-decoration:none; color:var(--text-tertiary); transition:color 0.2s; display:flex; align-items:center; gap:8px;}
+        .nav-link:hover{color:var(--accent-blue);}
+
+        .toc-box{background:#f9fafb; border:1px solid var(--border-light); padding:30px; margin-bottom:60px; border-radius:4px;}
+        .toc-header{font-family:'Inter',sans-serif; font-weight:700; text-transform:uppercase; font-size:12px; letter-spacing:1px; color:var(--text-tertiary); margin-bottom:16px;}
+        .toc-list{list-style:none; column-count:2; column-gap:40px;}
+        .toc-list li{margin-bottom:10px;}
+        .toc-list a{text-decoration:none; color:var(--text-secondary); font-family:'Inter',sans-serif; font-size:14px; font-weight:500; transition:color 0.2s;}
+        .toc-list a:hover{color:var(--accent-gold); text-decoration:underline;}
+
+        .concept-box{background:#fff; border:1px solid var(--border-light); border-top:3px solid var(--accent-blue); padding:24px; margin:32px 0; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);}
+        .concept-title{font-family:'Inter',sans-serif; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:0.5px; color:var(--accent-blue); margin-bottom:12px; display:block;}
         
-        .technical-box{background:#fff;border:1px dashed var(--text-tertiary);padding:20px;border-radius:8px;margin-top:24px;position:relative}
-        .tech-tag{position:absolute;top:-10px;left:20px;background:var(--text-primary);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace}
-        .difficulty-badge{font-size:10px;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
-        .diff-mid{background:#fef9c3;color:#854d0e}
+        .math-block{font-family:'JetBrains Mono', monospace; background:var(--code-bg); padding:16px; border-radius:4px; font-size:14px; color:#374151; overflow-x:auto; border-left:4px solid #d1d5db; margin-bottom:24px;}
+        
+        .eng-note{background:#eff6ff; border-left:4px solid #3b82f6; padding:20px; font-size:15px; color:#1e40af; margin-top:40px;}
+        .eng-title{font-weight:700; font-family:'Inter',sans-serif; margin-bottom:8px; display:block; text-transform:uppercase; font-size:12px; letter-spacing:1px;}
     </style>
 </head>
 <body>
 
-    <div class="nav-bar">
-        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> IB Prep</a>
-        <a href="../index.html" class="back-btn"><i class="fa-solid fa-terminal"></i> Main</a>
+    <div class="nav-header">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Return to Index</a>
+        <span style="color:var(--text-tertiary)">Advanced Valuation Theory</span>
     </div>
 
-    <h1>Valuation Masterclass <span class="tag-ib">The Core Skill</span></h1>
+    <h1>Valuation Methodologies</h1>
+    <div class="subtitle">A theoretical and computational framework for intrinsic (DCF) and relative (Comps) valuation, including stochastic modeling.</div>
 
-    <div class="toc">
-        <div class="toc-title">İçindekiler</div>
-        <div class="toc-grid">
-            <a href="#methods" class="toc-link"><i class="fa-solid fa-scale-balanced"></i> 1. Üç Büyük Metot</a>
-            <a href="#dcf-deep" class="toc-link"><i class="fa-solid fa-calculator"></i> 2. DCF Derin Dalış</a>
-            <a href="#wacc" class="toc-link"><i class="fa-solid fa-percent"></i> 3. WACC & Beta</a>
-            <a href="#questions" class="toc-link"><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</a>
-        </div>
+    <div class="toc-box">
+        <div class="toc-header">Table of Contents</div>
+        <ul class="toc-list">
+            <li><a href="#dcf-theory">1. DCF Theory & Derivation</a></li>
+            <li><a href="#mid-year">2. Mid-Year Convention</a></li>
+            <li><a href="#wacc">3. WACC & Beta Mechanics</a></li>
+            <li><a href="#terminal">4. Terminal Value Math</a></li>
+            <li><a href="#comps">5. Relative Valuation Logic</a></li>
+            <li><a href="#engineering">6. Engineering: Monte Carlo DCF</a></li>
+        </ul>
     </div>
 
-    <!-- 1. Üç Büyük Metot -->
-    <section id="methods">
-        <h2><i class="fa-solid fa-scale-balanced"></i> 1. The 3 Valuation Methodologies</h2>
-        <p>Hiçbir şirket için tek bir "Doğru Fiyat" yoktur. Bir "Fiyat Aralığı" (Football Field) bulmaya çalışırız.</p>
+    <!-- 1. DCF Theory -->
+    <section id="dcf-theory">
+        <h2>1. The Discounted Cash Flow (DCF) Theorem</h2>
+        <p>The fundamental axiom of finance states that the value of an asset is the present value of its future expected cash flows.</p>
 
-        <div class="qa-card">
-            <div class="qa-header"><span>1. Comparable Companies (Comps)</span></div>
-            <div class="qa-body">
-                <strong>Mantık:</strong> Borsadaki rakiplerine bak (Apple vs Samsung).<br>
-                <strong>Artısı:</strong> Piyasa verisine dayanır (Gerçekçidir).<br>
-                <strong>Eksisi:</strong> Piyasa irrasyonel olabilir (Balon veya Kriz anı).<br>
-                <strong>Ne Zaman Kullanılır:</strong> Standart değerlemede her zaman.
-            </div>
+        <div class="math-block">
+            Value = &Sigma; [ FCF<span class="sub">t</span> / (1 + WACC)<sup>t</sup> ]
         </div>
 
-        <div class="qa-card">
-            <div class="qa-header"><span>2. Precedent Transactions (Emsaller)</span></div>
-            <div class="qa-body">
-                <strong>Mantık:</strong> Geçmişte satılan benzer şirketlere bak.<br>
-                <strong>Özelliği:</strong> Genelde <strong>EN YÜKSEK</strong> değeri verir. Çünkü "Kontrol Primi" (Control Premium) içerir. Şirketi ele geçirmek için fazladan ödenen para.
-            </div>
-        </div>
+        <p>Why do we use <strong>Unlevered Free Cash Flow (UFCF)</strong>? Because we want to value the <em>operations</em> of the business (Enterprise Value), independent of its capital structure (Debt vs Equity). We are assessing the engine, not how the car was financed.</p>
 
-        <div class="qa-card">
-            <div class="qa-header"><span>3. DCF (Discounted Cash Flow)</span></div>
-            <div class="qa-body">
-                <strong>Mantık:</strong> Şirketin kendi içsel potansiyeline bak (Intrinsic Value).<br>
-                <strong>Artısı:</strong> Piyasa dalgalanmasından etkilenmez.<br>
-                <strong>Eksisi:</strong> Varsayımlara (Büyüme oranı, WACC) çok duyarlıdır. "Garbage in, garbage out".
+        <div class="concept-box">
+            <span class="concept-title">Derivation of UFCF</span>
+            <div class="math-block">
+                EBIT * (1 - Tax_Rate)   <span style="color:#6b7280">// NOPAT (Net Operating Profit After Tax)</span><br>
+                + Depreciation & Amortization <span style="color:#6b7280">// Non-cash add-back</span><br>
+                - Change in Net Working Capital <span style="color:#6b7280">// Cash trapped in operations</span><br>
+                - Capital Expenditures (CapEx)  <span style="color:#6b7280">// Reinvestment needed to grow</span><br>
+                = <strong>Unlevered Free Cash Flow</strong>
             </div>
         </div>
     </section>
 
-    <!-- 2. DCF Derin Dalış -->
-    <section id="dcf-deep">
-        <h2><i class="fa-solid fa-calculator"></i> 2. DCF Deep Dive</h2>
-        <div class="analogy-card">
-            <i class="fa-solid fa-clock-rotate-left"></i>
-            <div>
-                <strong>Analoji:</strong> Emekliliğini hesaplamak gibidir. "Önümüzdeki 5 yıl ne kadar biriktiririm?" (Forecast Period) + "5 yıldan sonra ölene kadar bankadaki param ne kadar faiz getirir?" (Terminal Value).
-            </div>
+    <!-- 2. Mid-Year Convention -->
+    <section id="mid-year">
+        <h2>2. Mid-Year Convention: The Integral Approach</h2>
+        <p>Standard DCF assumes cash flows arrive at $t=1, 2, 3...$ (December 31st). In reality, revenue is earned continuously throughout the year ($t=0.5, 1.5, 2.5...$).</p>
+        <p>Without this adjustment, we discount cash flows too aggressively (by an extra 6 months on average), understating the valuation.</p>
+
+        <div class="math-block">
+            Discount_Factor_Standard = 1 / (1 + WACC)<sup>t</sup><br>
+            Discount_Factor_MidYear = 1 / (1 + WACC)<sup>t - 0.5</sup>
         </div>
 
-        <h3>Adım 1: Free Cash Flow (FCF) Hesapla</h3>
-        <div class="technical-box">
-            <span class="tech-tag">UNLEVERED FCF FORMÜLÜ</span>
-            <ul style="margin-left:20px; font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--text-primary);">
-                <li>EBIT * (1 - Tax Rate) <span style="color:var(--text-tertiary);">// Net Operasyonel Kâr (NOPAT)</span></li>
-                <li>+ Depreciation & Amortization <span style="color:var(--text-tertiary);">// Nakit olmayan gideri ekle</span></li>
-                <li>- Capital Expenditures (CapEx) <span style="color:var(--text-tertiary);">// Makine yatırımını düş</span></li>
-                <li>- Change in Net Working Capital <span style="color:var(--text-tertiary);">// İşletme sermayesi artışını düş</span></li>
-                <li>= <strong>Unlevered Free Cash Flow</strong></li>
-            </ul>
-        </div>
-
-        <h3>Adım 2: Terminal Value (Sonsuzluk Değeri)</h3>
-        <p>5 yıl bitti. Şirket sonsuza kadar yaşamaya devam edecek. Bu değeri nasıl buluruz? İki yol var:</p>
-        <div class="qa-card">
-            <div class="qa-body">
-                <strong>1. Gordon Growth Method:</strong> <code>FCF * (1+g) / (WACC - g)</code>. Teorik olarak en doğrusu. (g = Ülke büyüme oranı, %2-3).<br><br>
-                <strong>2. Exit Multiple Method:</strong> <code>Son Yıl EBITDA * Çarpan</code>. Piyasa odaklıdır. M&A'de daha sık kullanılır.
-            </div>
-        </div>
+        <p>Mathematically, this approximates the integral of the continuous cash flow function $f(t) * e^{-rt} dt$.</p>
     </section>
 
     <!-- 3. WACC -->
     <section id="wacc">
-        <h2><i class="fa-solid fa-percent"></i> 3. WACC & Beta</h2>
-        <p>WACC (Weighted Average Cost of Capital), gelecekteki parayı bugüne indirmek için kullandığımız "Ceza Oranı"dır.</p>
-        
-        <div class="definition-box">WACC ne kadar yüksekse, şirket değeri o kadar DÜŞÜK çıkar. (Risk arttıkça değer düşer).</div>
+        <h2>3. WACC & Beta Re-levering Mechanics</h2>
+        <p>WACC (Weighted Average Cost of Capital) represents the opportunity cost of investing in this specific asset class.</p>
 
-        <div class="technical-box">
-            <span class="tech-tag">COST OF EQUITY (CAPM)</span>
-            <p style="margin-bottom:8px;">Hissedarın beklediği getiri oranıdır.</p>
-            <code>Risk Free Rate + Beta * (Market Return - Risk Free Rate)</code>
-            <ul style="font-size:13px; margin-top:8px; color:var(--text-secondary);">
-                <li><strong>Risk Free:</strong> 10 Yıllık ABD Tahvili (~%4).</li>
-                <li><strong>Beta:</strong> Şirketin risk katsayısı (1.2 = Piyasadan %20 daha riskli).</li>
-                <li><strong>Market Risk Premium:</strong> Borsanın tarihsel getirisi (~%5-7).</li>
-            </ul>
+        <h3>The Beta Problem</h3>
+        <p>You cannot simply average the Betas of peer companies. Beta measures volatility, and debt increases volatility (financial leverage). To compare "Apples to Apples", we must strip out the debt effect (Unlever) and then put our target's debt effect back in (Relever).</p>
+
+        <div class="math-block">
+            <strong>Step 1: Unlever Peer Beta</strong><br>
+            &beta;<span class="sub">Asset</span> = &beta;<span class="sub">Equity</span> / [1 + (1 - Tax) * (Debt/Equity)]<br><br>
+            <strong>Step 2: Relever for Target</strong><br>
+            &beta;<span class="sub">Target</span> = &beta;<span class="sub">Asset_Avg</span> * [1 + (1 - Tax) * (Target_Debt/Equity)]
         </div>
     </section>
 
-    <!-- 4. Sorular -->
-    <section id="questions">
-        <h2><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</h2>
+    <!-- 4. Terminal Value -->
+    <section id="terminal">
+        <h2>4. Terminal Value: Infinite Geometric Series</h2>
+        <p>Since companies are assumed to exist into perpetuity, we must calculate the value from Year 5 to $\infty$. The <strong>Gordon Growth Model</strong> is derived from the sum of an infinite geometric series.</p>
+
+        <div class="math-block">
+            Sum = a / (1 - r)  <span style="color:#6b7280">// Standard Geometric Series Formula</span><br>
+            <br>
+            TV = [ FCF<span class="sub">Final</span> * (1 + g) ] / (WACC - g)
+        </div>
+
+        <p><strong>Constraints:</strong> $g$ (Growth Rate) cannot exceed the GDP growth rate (otherwise the company would eventually become larger than the entire economy). Typically 2-3%.</p>
+    </section>
+
+    <!-- 5. Relative Valuation -->
+    <section id="comps">
+        <h2>5. Relative Valuation (Comps)</h2>
+        <p>Valuation by analogy. If a similar house sold for $100/sqft, this house is worth $100/sqft.</p>
         
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>1. Hangi değerleme en yüksek sonucu verir?</span>
-                <span class="difficulty-badge diff-mid">KLASİK</span>
-            </div>
-            <div class="qa-body">
-                Genelde <strong>Precedent Transactions</strong> en yüksek çıkar. Çünkü içinde "Kontrol Primi" vardır. Alıcı, şirketi ele geçirmek için %20-30 fazla öder.<br>
-                En düşük ise genelde LBO analizidir (Çünkü finansal yatırımcı ("Floor Valuation") sadece getiriye bakar, sinerji ödemez).
-            </div>
+        <div class="concept-box">
+            <span class="concept-title">Why EV/EBITDA and not P/E?</span>
+            <p><strong>P/E</strong> is affected by capital structure (Interest Expense) and tax jurisdictions. <strong>EV/EBITDA</strong> is capital structure neutral and tax neutral. It allows for a pure operational comparison between companies in different countries with different debt loads.</p>
         </div>
+    </section>
 
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>2. Enterprise Value'dan Equity Value'ya nasıl geçersin?</span>
-                <span class="difficulty-badge diff-mid">BRIDGE</span>
+    <!-- 6. Engineering Perspective -->
+    <section id="engineering">
+        <h2>6. Engineering Perspective: Stochastic DCF</h2>
+        <div class="eng-note">
+            <span class="eng-title">From Deterministic to Probabilistic</span>
+            <p>A standard Excel DCF is "Deterministic" (Single Input → Single Output). This is scientifically flawed because inputs (Growth, WACC) are uncertain variables, not constants.</p>
+            
+            <p style="margin-top:12px"><strong>The Engineer's Solution: Monte Carlo Simulation</strong></p>
+            <ul style="margin-left:20px; font-size:14px; margin-top:8px;">
+                <li>Define inputs as Probability Distributions (e.g., Growth ~ Normal($\mu=3\%$, $\sigma=0.5\%$)).</li>
+                <li>Run 10,000 iterations using Python (`numpy.random`).</li>
+                <li>Output is not a number, but a <strong>Probability Density Function (PDF)</strong> of the share price.</li>
+            </ul>
+
+            <div class="math-block" style="background:#1e293b; color:#e2e8f0; border-left:4px solid #10b981;">
+# Python Pseudo-code for Monte Carlo DCF
+import numpy as np
+
+simulations = 10000
+growth_rates = np.random.normal(0.03, 0.005, simulations)
+wacc_values = np.random.normal(0.09, 0.01, simulations)
+
+valuations = []
+for g, wacc in zip(growth_rates, wacc_values):
+    tv = final_fcf * (1 + g) / (wacc - g)
+    enterprise_value = np.sum(discounted_fcfs) + (tv / (1+wacc)**5)
+    valuations.append(enterprise_value)
+
+print(f"95% Confidence Interval: {np.percentile(valuations, [2.5, 97.5])}")
             </div>
-            <div class="qa-body">
-                <code>Enterprise Value - Net Debt - Preferred Stock - Minority Interest = Equity Value</code><br>
-                Burada <strong>Net Debt = Toplam Borç - Nakit</strong> demektir.
-            </div>
+            <p>This approach transforms you from a "Spreadsheet Monkey" to a "Financial Modeler".</p>
         </div>
-
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>3. Beta negatif olabilir mi?</span>
-                <span class="difficulty-badge diff-mid">TRICK</span>
-            </div>
-            <div class="qa-body">
-                Teorik olarak evet. Altın (Gold) gibi kriz anında değeri artan varlıkların betası negatif olabilir. Ama şirketler için neredeyse hiç görülmez.
-            </div>
-        </div>
-
     </section>
 
 </body>

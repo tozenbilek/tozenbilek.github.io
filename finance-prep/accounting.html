@@ -3,290 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accounting Masterclass | IB Prep</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Advanced Accounting | IB Reference</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Tema Ayarları */
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --border-hover: #cbd5e1;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --text-tertiary: #7b8794;
-            --accent-green: #16a34a;
-            --accent-blue: #0ea5e9;
-            --shadow: 0 6px 20px rgba(0,0,0,0.06);
+        :root { 
+            --bg-color:#ffffff; 
+            --text-primary:#111827; 
+            --text-secondary:#374151; 
+            --text-tertiary:#6b7280; 
+            --accent-blue:#0f172a; 
+            --accent-gold:#b45309; 
+            --border-light:#e5e7eb;
+            --code-bg:#f3f4f6;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            padding: 40px 24px;
-            max-width: 960px;
-            margin: 0 auto;
-            font-size: 15px;
-        }
-
-        /* Header & Nav */
-        .nav-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
-        .back-btn {
-            text-decoration: none; color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace; font-size: 12px;
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 12px; border: 1px solid var(--border-color);
-            border-radius: 4px; background: var(--surface-color);
-            transition: all 0.2s; box-shadow: var(--shadow);
-        }
-        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); }
-
-        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
-        .tag-ib { background: rgba(22, 163, 74, 0.12); color: var(--accent-green); font-size: 11px; padding: 4px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* Table of Contents */
-        .toc {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 40px;
-        }
-        .toc-title { font-weight: 600; margin-bottom: 12px; color: var(--text-primary); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
-        .toc-link {
-            text-decoration: none; color: var(--text-secondary); font-size: 14px;
-            display: flex; align-items: center; gap: 8px; transition: color 0.2s;
-        }
-        .toc-link:hover { color: var(--accent-green); }
-        .toc-link i { font-size: 12px; color: var(--text-tertiary); }
-
-        /* Section Styling */
-        section { margin-bottom: 60px; scroll-margin-top: 20px; }
-        h2 { font-size: 24px; font-weight: 600; color: var(--text-primary); margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--border-color); display: flex; align-items: center; gap: 10px; }
-        h2 i { color: var(--accent-green); font-size: 20px; }
-        h3 { font-size: 18px; font-weight: 600; color: var(--text-primary); margin-top: 30px; margin-bottom: 12px; }
-
-        /* Component: Definition & Analogy */
-        .concept-block { margin-bottom: 24px; }
-        .definition-box {
-            border-left: 3px solid var(--text-tertiary); padding-left: 16px; margin-bottom: 12px;
-            color: var(--text-secondary); font-style: italic; font-size: 14px;
-        }
-        .analogy-card {
-            background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px;
-            padding: 16px; color: #1e3a8a; font-size: 14px; display: flex; gap: 12px; align-items: flex-start;
-        }
-
-        /* Component: Scenario Analysis (Interview Q&A) */
-        .scenario-grid { display: grid; gap: 16px; }
-        .qa-card {
-            background: var(--surface-color); border: 1px solid var(--border-color);
-            border-radius: 8px; overflow: hidden; box-shadow: var(--shadow);
-            transition: transform 0.2s;
-        }
-        .qa-card:hover { transform: translateY(-2px); border-color: var(--accent-green); }
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Merriweather', serif;line-height:1.8;max-width:900px;margin:0 auto;padding:60px 24px;font-size:16px}
         
-        .qa-header {
-            padding: 16px; background: #f8fafc; border-bottom: 1px solid var(--border-color);
-            font-weight: 600; color: var(--text-primary); display: flex; justify-content: space-between; align-items: center;
-        }
-        .difficulty-badge {
-            font-size: 10px; padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase;
-        }
-        .diff-easy { background: #dcfce7; color: #166534; }
-        .diff-mid { background: #fef9c3; color: #854d0e; }
-        .diff-hard { background: #fee2e2; color: #991b1b; }
+        /* Typography akin to an Academic Textbook */
+        h1{font-family:'Inter', sans-serif; font-size:42px; font-weight:800; letter-spacing:-1px; margin-bottom:10px; color:var(--accent-blue); line-height:1.2;}
+        .subtitle{font-family:'Inter', sans-serif; font-size:18px; color:var(--text-tertiary); margin-bottom:60px; font-weight:400; border-bottom:1px solid var(--border-light); padding-bottom:20px;}
+        
+        h2{font-family:'Inter', sans-serif; font-size:28px; font-weight:700; margin-top:60px; margin-bottom:20px; color:var(--accent-blue); border-left:4px solid var(--accent-gold); padding-left:16px;}
+        h3{font-family:'Inter', sans-serif; font-size:20px; font-weight:600; margin-top:40px; margin-bottom:12px; color:var(--text-primary);}
+        
+        p{margin-bottom:24px; color:var(--text-secondary);}
+        strong{color:var(--text-primary); font-weight:700;}
+        
+        /* Navigation */
+        .nav-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; font-family:'Inter',sans-serif; font-size:14px;}
+        .nav-link{text-decoration:none; color:var(--text-tertiary); transition:color 0.2s; display:flex; align-items:center; gap:8px;}
+        .nav-link:hover{color:var(--accent-blue);}
 
-        .qa-body { padding: 16px; font-size: 14px; color: var(--text-secondary); }
-        .step-list { margin-top: 8px; padding-left: 20px; }
-        .step-list li { margin-bottom: 4px; }
+        /* Table of Contents Box */
+        .toc-box{background:#f9fafb; border:1px solid var(--border-light); padding:30px; margin-bottom:60px; border-radius:4px;}
+        .toc-header{font-family:'Inter',sans-serif; font-weight:700; text-transform:uppercase; font-size:12px; letter-spacing:1px; color:var(--text-tertiary); margin-bottom:16px;}
+        .toc-list{list-style:none; column-count:2; column-gap:40px;}
+        .toc-list li{margin-bottom:10px;}
+        .toc-list a{text-decoration:none; color:var(--text-secondary); font-family:'Inter',sans-serif; font-size:14px; font-weight:500; transition:color 0.2s;}
+        .toc-list a:hover{color:var(--accent-gold); text-decoration:underline;}
 
-        /* Technical Deep Dive */
-        .technical-box {
-            background: #fff; border: 1px dashed var(--text-tertiary); padding: 20px;
-            border-radius: 8px; margin-top: 24px; position: relative;
-        }
-        .tech-tag {
-            position: absolute; top: -10px; left: 20px; background: var(--text-primary); color: #fff;
-            font-size: 10px; padding: 2px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace;
-        }
+        /* Concept Boxes */
+        .concept-box{background:#fff; border:1px solid var(--border-light); border-top:3px solid var(--accent-blue); padding:24px; margin:32px 0; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);}
+        .concept-title{font-family:'Inter',sans-serif; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:0.5px; color:var(--accent-blue); margin-bottom:12px; display:block;}
+        
+        /* Mathematical/Logic Notation */
+        .math-block{font-family:'JetBrains Mono', monospace; background:var(--code-bg); padding:16px; border-radius:4px; font-size:14px; color:#374151; overflow-x:auto; border-left:4px solid #d1d5db; margin-bottom:24px;}
+        .var{color:#b91c1c;} /* Variables */
+        .op{color:#4b5563;}  /* Operators */
+        .val{color:#059669;} /* Values */
 
+        /* Tables */
+        table{width:100%; border-collapse:collapse; margin-bottom:30px; font-family:'Inter',sans-serif; font-size:14px;}
+        th{text-align:left; border-bottom:2px solid var(--border-light); padding:12px; color:var(--text-tertiary); font-weight:600;}
+        td{border-bottom:1px solid var(--border-light); padding:12px; color:var(--text-secondary);}
+        tr:last-child td{border-bottom:none;}
+        .num{font-family:'JetBrains Mono', monospace; text-align:right;}
+
+        /* Engineering Perspective */
+        .eng-note{background:#eff6ff; border-left:4px solid #3b82f6; padding:20px; font-size:15px; color:#1e40af; margin-top:40px;}
+        .eng-title{font-weight:700; font-family:'Inter',sans-serif; margin-bottom:8px; display:block; text-transform:uppercase; font-size:12px; letter-spacing:1px;}
     </style>
 </head>
 <body>
 
-    <div class="nav-bar">
-        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> IB Prep</a>
-        <a href="../index.html" class="back-btn"><i class="fa-solid fa-terminal"></i> Main</a>
+    <div class="nav-header">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Return to Index</a>
+        <span style="color:var(--text-tertiary)">Advanced Financial Reporting</span>
     </div>
 
-    <h1>Accounting Masterclass <span class="tag-ib">The Language of Finance</span></h1>
-    
-    <!-- İçindekiler -->
-    <div class="toc">
-        <div class="toc-title">İçindekiler</div>
-        <div class="toc-grid">
-            <a href="#statements" class="toc-link"><i class="fa-solid fa-layer-group"></i> 1. Üç Temel Tablo</a>
-            <a href="#linkage" class="toc-link"><i class="fa-solid fa-link"></i> 2. Bağlantı Mekanizması</a>
-            <a href="#scenarios" class="toc-link"><i class="fa-solid fa-chess-board"></i> 3. Senaryo Analizleri (Soru Bankası)</a>
-            <a href="#advanced" class="toc-link"><i class="fa-solid fa-flask"></i> 4. İleri Düzey Konular</a>
-        </div>
+    <h1>Advanced Accounting Mechanics</h1>
+    <div class="subtitle">A rigorous analysis of financial statement linkage, deferred taxation, and complex consolidation for investment banking modeling.</div>
+
+    <div class="toc-box">
+        <div class="toc-header">Table of Contents</div>
+        <ul class="toc-list">
+            <li><a href="#linkage">1. The Fundamental Linkage</a></li>
+            <li><a href="#dta-dtl">2. Deferred Taxes (DTA/DTL)</a></li>
+            <li><a href="#stock-comp">3. Stock-Based Compensation</a></li>
+            <li><a href="#pik">4. PIK Interest (Circular)</a></li>
+            <li><a href="#nwc">5. Net Working Capital Mechanics</a></li>
+            <li><a href="#consolidation">6. Consolidation & NCI</a></li>
+        </ul>
     </div>
 
-    <!-- Bölüm 1: 3 Temel Tablo -->
-    <section id="statements">
-        <h2><i class="fa-solid fa-layer-group"></i> 1. The 3 Financial Statements</h2>
-        <p>Her tablonun tek bir görevi vardır. Görevini yapmayan tabloyu kimse sevmez.</p>
-
-        <div class="concept-block">
-            <h3>A. Income Statement (Gelir Tablosu)</h3>
-            <div class="definition-box">Kârlılığı gösterir. Gelirler - Giderler = Net Kâr.</div>
-            <div class="analogy-card">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <div><strong>Analoji: Okul Karnesi.</strong> Dönem boyunca ne yaptın? (Süreç odaklı). Yıl bittiğinde karne arşive kalkar, yeni yıl sıfırdan başlar.</div>
-            </div>
-            <ul style="margin-top:10px; margin-left:20px; font-size:14px; color:var(--text-secondary);">
-                <li><strong>Revenue:</strong> Satışlar (Top Line).</li>
-                <li><strong>COGS:</strong> Malın maliyeti.</li>
-                <li><strong>Operating Expenses:</strong> Pazarlama, Kira, Maaşlar.</li>
-                <li><strong>EBITDA:</strong> Finansçıların en sevdiği kâr metriği (Amortisman öncesi).</li>
-                <li><strong>Net Income:</strong> Hissedara kalan son para (Bottom Line).</li>
-            </ul>
-        </div>
-
-        <div class="concept-block">
-            <h3>B. Balance Sheet (Bilanço)</h3>
-            <div class="definition-box">Sağlığı gösterir. Varlıklar = Borçlar + Özkaynak.</div>
-            <div class="analogy-card">
-                <i class="fa-solid fa-image"></i>
-                <div><strong>Analoji: Cüzdan Fotoğrafı.</strong> Tam şu saniye cebinde ne var? (Anlık durum). Geçmiş yılların birikimini taşır.</div>
-            </div>
-        </div>
-
-        <div class="concept-block">
-            <h3>C. Cash Flow Statement (Nakit Akış)</h3>
-            <div class="definition-box">Likiditeyi gösterir. Kasaya giren/çıkan gerçek para.</div>
-            <div class="analogy-card">
-                <i class="fa-solid fa-money-bill-wave"></i>
-                <div><strong>Analoji: Banka Hesap Dökümü.</strong> Karne (Income Statement) "Çok kâr ettin" diyebilir ama müşteri parayı ödememiştir. Banka hesabı yalan söylemez.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bölüm 2: Bağlantı -->
+    <!-- 1. The Fundamental Linkage -->
     <section id="linkage">
-        <h2><i class="fa-solid fa-link"></i> 2. The Linkage (Bağlantı)</h2>
-        <p>Mülakatta "Bu tablolar nasıl bağlanır?" diye sorarlarsa, şu 3 adımı ezbere söyle:</p>
+        <h2>1. The Fundamental Linkage Logic</h2>
+        <p>The three financial statements are not independent silos; they represent a closed-loop system. Mathematically, the Cash Flow Statement is the derivative of the Balance Sheet with respect to time, adjusted for non-cash items from the Income Statement.</p>
         
-        <div class="technical-box">
-            <span class="tech-tag">EZBERLE</span>
-            <ol style="margin-left: 20px; color: var(--text-secondary);">
-                <li><strong>Net Income</strong> (IS en altı) → <strong>Cash Flow Statement</strong>'ın en başına gelir (Çünkü Nakit Akışı Net Kâr ile başlar).</li>
-                <li><strong>Net Income</strong> aynı zamanda Bilanço'da <strong>Retained Earnings</strong> (Geçmiş Yıl Kârları) kalemine eklenir (Özkaynağı büyütür).</li>
-                <li><strong>Ending Cash Balance</strong> (CFS en altı) → Bilanço'daki <strong>Cash</strong> kalemi olur.</li>
+        <div class="concept-box">
+            <span class="concept-title">The Retained Earnings Identity</span>
+            <p>The "Bridge" between the Income Statement (Flow) and Balance Sheet (Snapshot) is strictly defined as:</p>
+            <div class="math-block">
+                Retained_Earnings<span class="sub">t</span> = Retained_Earnings<span class="sub">t-1</span> + Net_Income<span class="sub">t</span> - Dividends<span class="sub">t</span>
+            </div>
+            <p>If this equation does not hold, the Balance Sheet will not balance. In modeling, this is often the primary source of error.</p>
+        </div>
+
+        <div class="eng-note">
+            <span class="eng-title">Engineering Perspective: State Machine</span>
+            Think of the <strong>Balance Sheet</strong> as the <code>State Vector</code> of the system at time $t$.<br>
+            Think of the <strong>Income Statement</strong> as the <code>Transition Function</code> that computes the $\Delta$ (delta).<br>
+            Think of the <strong>Cash Flow Statement</strong> as the <code>reconciliation log</code> of these state changes.<br>
+            $S_{t+1} = S_t + f(Input_t)$
+        </div>
+    </section>
+
+    <!-- 2. Deferred Taxes -->
+    <section id="dta-dtl">
+        <h2>2. Deferred Tax Assets & Liabilities (DTA/DTL)</h2>
+        <p>This is arguably the most complex topic in standard modeling. It arises because companies maintain two sets of books: <strong>GAAP Books</strong> (for shareholders) and <strong>Tax Books</strong> (for the IRS/Government).</p>
+
+        <h3>The Logic of Temporary Differences</h3>
+        <p>GAAP prefers "Straight Line Depreciation" (smooth earnings). The IRS allows "Accelerated Depreciation" (bonus depreciation) to incentivize CapEx. This creates a timing mismatch.</p>
+
+        <div class="math-block">
+            Tax_Expense_GAAP = Pre_Tax_Income_GAAP * Statutory_Rate<br>
+            Tax_Payable_Cash = (Pre_Tax_Income_GAAP - Depreciation_Diff) * Statutory_Rate<br>
+            <br>
+            <span class="op">If</span> Tax_Expense_GAAP > Tax_Payable_Cash:<br>
+            &nbsp;&nbsp;Create <strong>Deferred Tax Liability (DTL)</strong> (Owe it later)<br>
+            <span class="op">If</span> Tax_Expense_GAAP < Tax_Payable_Cash:<br>
+            &nbsp;&nbsp;Create <strong>Deferred Tax Asset (DTA)</strong> (Prepaid/Shield)
+        </div>
+
+        <p>In an LBO model, DTLs often serve as an interest-free loan from the government, improving IRR.</p>
+    </section>
+
+    <!-- 3. Stock-Based Compensation -->
+    <section id="stock-comp">
+        <h2>3. Stock-Based Compensation (SBC)</h2>
+        <p>SBC is a non-cash expense recognized on the Income Statement. However, unlike Depreciation, it has unique equity implications.</p>
+
+        <div class="concept-box">
+            <span class="concept-title">Modeling Workflow</span>
+            <ol style="margin-left:20px; color:var(--text-secondary);">
+                <li><strong>Income Statement:</strong> Recognize Expense (Reduces Net Income).</li>
+                <li><strong>Cash Flow Statement:</strong> Add back Expense (Non-cash).</li>
+                <li><strong>Balance Sheet (Equity):</strong> Increase <code>Additional Paid-In Capital (APIC)</code>.</li>
             </ol>
+            <p style="margin-top:10px;"><strong>Crucial Detail:</strong> SBC creates a permanent difference for tax purposes (in some jurisdictions), but usually, it creates a DTA because the expense is recognized in GAAP now but only tax-deductible when exercised by employees.</p>
         </div>
     </section>
 
-    <!-- Bölüm 3: Senaryo Analizleri -->
-    <section id="scenarios">
-        <h2><i class="fa-solid fa-chess-board"></i> 3. Scenario Analysis (Interview Q&A)</h2>
-        <p>Mülakatın kalbi burasıdır. "Şu değişirse 3 tablo nasıl etkilenir?"</p>
-        
-        <div class="scenario-grid">
-            
-            <!-- Soru 1: Depreciation -->
-            <div class="qa-card">
-                <div class="qa-header">
-                    <span>1. Depreciation 10$ Artarsa? (Vergi %40)</span>
-                    <span class="difficulty-badge diff-mid">KLASİK</span>
-                </div>
-                <div class="qa-body">
-                    <ul class="step-list">
-                        <li><strong>IS:</strong> Gider artar, Net Kâr 6$ düşer (10$ * (1-%40)).</li>
-                        <li><strong>CFS:</strong> Net Kâr -6$ ile başlar. Depreciation (+10$) nakit olmadığı için geri eklenir. Net Nakit +4$ artar.</li>
-                        <li><strong>BS:</strong> Cash +4$ artar. PP&E (Makineler) -10$ azalır. Varlıklar toplam -6$ azalır. Diğer tarafta Retained Earnings -6$ azalır. Denge sağlanır.</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- 4. PIK Interest -->
+    <section id="pik">
+        <h2>4. Payment-in-Kind (PIK) Interest</h2>
+        <p>PIK is interest that is not paid in cash but added to the principal balance of the debt. It is common in distressed debt or aggressive LBO structures.</p>
 
-            <!-- Soru 2: Inventory -->
-            <div class="qa-card">
-                <div class="qa-header">
-                    <span>2. 10$'lık Stok (Inventory) Satın Aldık (Nakit)</span>
-                    <span class="difficulty-badge diff-easy">KOLAY</span>
-                </div>
-                <div class="qa-body">
-                    <ul class="step-list">
-                        <li><strong>IS:</strong> Etki yok. (Henüz satmadık, gider yazılmaz).</li>
-                        <li><strong>CFS:</strong> Stok artışı (Working Capital artışı) nakit çıkışıdır. Cash from Operations -10$ azalır.</li>
-                        <li><strong>BS:</strong> Cash -10$ azalır. Inventory +10$ artar. Varlıkların toplamı değişmez. Denge bozulmaz.</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="math-block">
+            Interest_Expense = Principal * Rate<br>
+            Net_Income = Operating_Income - Interest_Expense - Taxes<br>
+            <br>
+            CF_Operating = Net_Income + <strong>PIK_Add_Back</strong><br>
+            Debt_Balance<span class="sub">t</span> = Debt_Balance<span class="sub">t-1</span> + <strong>PIK_Interest</strong>
+        </div>
 
-            <!-- Soru 3: Inventory Write-down -->
-            <div class="qa-card">
-                <div class="qa-header">
-                    <span>3. Stoklar Çürüdü, 10$ Değer Düşürdük (Write-down)</span>
-                    <span class="difficulty-badge diff-hard">ZOR</span>
-                </div>
-                <div class="qa-body">
-                    <div class="definition-box" style="margin-bottom:8px;">Mantık: Depreciation ile aynıdır. Nakit çıkmaz ama gider yazılır.</div>
-                    <ul class="step-list">
-                        <li><strong>IS:</strong> Gider yazılır. Net Kâr -6$ düşer.</li>
-                        <li><strong>CFS:</strong> Net Kâr -6$. Write-down (+10$) geri eklenir. Net Nakit +4$ artar (Vergi avantajı).</li>
-                        <li><strong>BS:</strong> Cash +4$. Inventory -10$. Varlıklar -6$. Retained Earnings -6$.</li>
-                    </ul>
-                </div>
-            </div>
+        <p><strong>The Circularity:</strong> Higher Debt → Higher PIK Interest → Lower Net Income → Less Cash to pay down other debt → Higher Debt. This requires "Iterative Calculation" settings in Excel.</p>
+    </section>
 
-            <!-- Soru 4: Debt Repayment -->
-            <div class="qa-card">
-                <div class="qa-header">
-                    <span>4. 100$ Anapara Borç Ödedik</span>
-                    <span class="difficulty-badge diff-mid">DİKKAT</span>
-                </div>
-                <div class="qa-body">
-                    <div class="definition-box" style="margin-bottom:8px;">Tuzak: Anapara ödemesi GİDER DEĞİLDİR. Gelir tablosuna girmez.</div>
-                    <ul class="step-list">
-                        <li><strong>IS:</strong> Etki yok.</li>
-                        <li><strong>CFS:</strong> Cash from Financing (CFF) altında -100$ çıkış olur.</li>
-                        <li><strong>BS:</strong> Cash -100$ azalır. Debt (Liability) -100$ azalır. Denge sağlanır.</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- 5. Net Working Capital -->
+    <section id="nwc">
+        <h2>5. Net Working Capital (NWC) Deep Dive</h2>
+        <p>NWC is not just $(Current Assets - Current Liabilities)$. It represents the operational liquidity efficiency. In modeling, we project it using days metrics.</p>
 
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Formula</th>
+                    <th>Interpretation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DSO (Days Sales Outstanding)</td>
+                    <td>(AR / Sales) * 365</td>
+                    <td>How fast customers pay.</td>
+                </tr>
+                <tr>
+                    <td>DIO (Days Inventory Outstanding)</td>
+                    <td>(Inventory / COGS) * 365</td>
+                    <td>How long goods sit on shelves.</td>
+                </tr>
+                <tr>
+                    <td>DPO (Days Payable Outstanding)</td>
+                    <td>(AP / COGS) * 365</td>
+                    <td>How slowly we pay suppliers.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="eng-note">
+            <span class="eng-title">Optimization Problem</span>
+            An engineer views NWC as a latency optimization.<br>
+            Goal: Minimize <strong>Cash Conversion Cycle (CCC)</strong> = $DSO + DIO - DPO$.<br>
+            If $CCC$ is negative (e.g., Amazon, Apple), the company operates on suppliers' cash (Negative Working Capital). This is a massive valuation booster.
         </div>
     </section>
 
-    <!-- Bölüm 4: İleri Düzey -->
-    <section id="advanced">
-        <h2><i class="fa-solid fa-flask"></i> 4. Advanced Concepts</h2>
-        
-        <div class="concept-block">
-            <h3>Deferred Tax Asset / Liability (DTA / DTL)</h3>
-            <p>Vergi dairesi ve hissedarlar farklı defter tutar.</p>
-            <ul>
-                <li><strong>DTL (Liability):</strong> Hissedara "Çok vergi ödedim" dersin ama devlete az ödersin. Aradaki farkı ilerde ödeyeceğin için Borç (Liability) olur.</li>
-                <li><strong>DTA (Asset):</strong> Şirket zarar ederse (NOLs), bu zararı ilerdeki kârlarından düşebilir (Vergi ödemez). Bu bir hak olduğu için Varlık (Asset) olur.</li>
-            </ul>
-        </div>
+    <!-- 6. Consolidation -->
+    <section id="consolidation">
+        <h2>6. Consolidation & Non-Controlling Interest (NCI)</h2>
+        <p>When you own >50% but <100% of a company, you must consolidate 100% of their financial statements into yours, even though you don't own it all.</p>
 
-        <div class="concept-block">
-            <h3>Working Capital (NWC) Değişimi</h3>
-            <p>NWC Artışı = Nakit Çıkışı (Kötü). NWC Azalışı = Nakit Girişi (İyi).</p>
-            <div class="analogy-card">
-                <i class="fa-solid fa-rotate"></i>
-                <div>
-                    <strong>Analoji:</strong> Walmart tedarikçiye parayı 90 gün sonra ödüyorsa (AP artışı), o parayı 90 gün boyunca işletir. Bu "Bedava Finansman"dır. Bu yüzden negatif Working Capital bazen harikadır.
-                </div>
+        <div class="concept-box">
+            <span class="concept-title">The NCI Creation Logic</span>
+            <p>Since you report 100% of Revenue and Net Income, but only own (say) 80%, you are overstating your earnings.</p>
+            <p><strong>The Fix:</strong> You subtract the portion you don't own as "Net Income Attributable to NCI" at the bottom of the Income Statement.</p>
+            <div class="math-block">
+                Consolidated_NI = Parent_NI + (100% * Sub_NI)<br>
+                NCI_Expense = (100% - Ownership%) * Sub_NI<br>
+                <strong>Net Income to Parent</strong> = Consolidated_NI - NCI_Expense
             </div>
         </div>
     </section>

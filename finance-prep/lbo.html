@@ -3,169 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LBO Masterclass | IB Prep</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Advanced LBO Modeling | IB Reference</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --border-hover:#cbd5e1; --text-primary:#1f2933; --text-secondary:#52606d; --text-tertiary:#7b8794; --accent-green:#d97706; /* LBO Orange */ --shadow:0 6px 20px rgba(0,0,0,0.06); }
+        :root { 
+            --bg-color:#ffffff; 
+            --text-primary:#111827; 
+            --text-secondary:#374151; 
+            --text-tertiary:#6b7280; 
+            --accent-blue:#7c2d12; /* Deep Orange/Brown for PE/Debt */
+            --accent-gold:#f59e0b; 
+            --border-light:#e5e7eb;
+            --code-bg:#f3f4f6;
+        }
         *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.6;padding:40px 24px;max-width:960px;margin:0 auto;font-size:15px}
-        .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
-        .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
-        .back-btn:hover{border-color:var(--border-hover);color:var(--text-primary)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:8px;display:flex;align-items:center;gap:12px}
-        .tag-ib{background:rgba(217, 119, 6, 0.12);color:var(--accent-green);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Merriweather', serif;line-height:1.8;max-width:900px;margin:0 auto;padding:60px 24px;font-size:16px}
         
-        .toc{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:40px}
-        .toc-title{font-weight:600;margin-bottom:12px;color:var(--text-primary);font-size:14px;text-transform:uppercase;letter-spacing:1px}
-        .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-        .toc-link{text-decoration:none;color:var(--text-secondary);font-size:14px;display:flex;align-items:center;gap:8px;transition:color 0.2s}
-        .toc-link:hover{color:var(--accent-green)}
+        h1{font-family:'Inter', sans-serif; font-size:42px; font-weight:800; letter-spacing:-1px; margin-bottom:10px; color:var(--accent-blue); line-height:1.2;}
+        .subtitle{font-family:'Inter', sans-serif; font-size:18px; color:var(--text-tertiary); margin-bottom:60px; font-weight:400; border-bottom:1px solid var(--border-light); padding-bottom:20px;}
         
-        section{margin-bottom:60px;scroll-margin-top:20px}
-        h2{font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border-color);display:flex;align-items:center;gap:10px}
-        h2 i{color:var(--accent-green);font-size:20px}
-        h3{font-size:18px;font-weight:600;color:var(--text-primary);margin-top:30px;margin-bottom:12px}
+        h2{font-family:'Inter', sans-serif; font-size:28px; font-weight:700; margin-top:60px; margin-bottom:20px; color:var(--accent-blue); border-left:4px solid var(--accent-gold); padding-left:16px;}
+        h3{font-family:'Inter', sans-serif; font-size:20px; font-weight:600; margin-top:40px; margin-bottom:12px; color:var(--text-primary);}
         
-        .definition-box{border-left:3px solid var(--text-tertiary);padding-left:16px;margin-bottom:12px;color:var(--text-secondary);font-style:italic;font-size:14px}
-        .analogy-card{background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:16px;color:#92400e;font-size:14px;display:flex;gap:12px;align-items:flex-start}
+        p{margin-bottom:24px; color:var(--text-secondary);}
+        strong{color:var(--text-primary); font-weight:700;}
         
-        .qa-card{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px}
-        .qa-header{padding:16px;background:#f8fafc;border-bottom:1px solid var(--border-color);font-weight:600;color:var(--text-primary);display:flex;justify-content:space-between;align-items:center;}
-        .qa-body{padding:16px;font-size:14px;color:var(--text-secondary)}
+        .nav-header{display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; font-family:'Inter',sans-serif; font-size:14px;}
+        .nav-link{text-decoration:none; color:var(--text-tertiary); transition:color 0.2s; display:flex; align-items:center; gap:8px;}
+        .nav-link:hover{color:var(--accent-blue);}
+
+        .toc-box{background:#f9fafb; border:1px solid var(--border-light); padding:30px; margin-bottom:60px; border-radius:4px;}
+        .toc-header{font-family:'Inter',sans-serif; font-weight:700; text-transform:uppercase; font-size:12px; letter-spacing:1px; color:var(--text-tertiary); margin-bottom:16px;}
+        .toc-list{list-style:none; column-count:2; column-gap:40px;}
+        .toc-list li{margin-bottom:10px;}
+        .toc-list a{text-decoration:none; color:var(--text-secondary); font-family:'Inter',sans-serif; font-size:14px; font-weight:500; transition:color 0.2s;}
+        .toc-list a:hover{color:var(--accent-gold); text-decoration:underline;}
+
+        .concept-box{background:#fff; border:1px solid var(--border-light); border-top:3px solid var(--accent-blue); padding:24px; margin:32px 0; box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);}
+        .concept-title{font-family:'Inter',sans-serif; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:0.5px; color:var(--accent-blue); margin-bottom:12px; display:block;}
         
-        .technical-box{background:#fff;border:1px dashed var(--text-tertiary);padding:20px;border-radius:8px;margin-top:24px;position:relative}
-        .tech-tag{position:absolute;top:-10px;left:20px;background:var(--text-primary);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace}
-        .difficulty-badge{font-size:10px;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
-        .diff-mid{background:#fef9c3;color:#854d0e}
+        .math-block{font-family:'JetBrains Mono', monospace; background:var(--code-bg); padding:16px; border-radius:4px; font-size:14px; color:#374151; overflow-x:auto; border-left:4px solid #d1d5db; margin-bottom:24px;}
+        
+        .eng-note{background:#fff7ed; border-left:4px solid #f97316; padding:20px; font-size:15px; color:#9a3412; margin-top:40px;}
+        .eng-title{font-weight:700; font-family:'Inter',sans-serif; margin-bottom:8px; display:block; text-transform:uppercase; font-size:12px; letter-spacing:1px;}
+
+        table{width:100%; border-collapse:collapse; margin-bottom:30px; font-family:'Inter',sans-serif; font-size:14px;}
+        th{text-align:left; border-bottom:2px solid var(--border-light); padding:12px; color:var(--text-tertiary); font-weight:600;}
+        td{border-bottom:1px solid var(--border-light); padding:12px; color:var(--text-secondary);}
+        tr:last-child td{border-bottom:none;}
     </style>
 </head>
 <body>
 
-    <div class="nav-bar">
-        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> IB Prep</a>
-        <a href="../index.html" class="back-btn"><i class="fa-solid fa-terminal"></i> Main</a>
+    <div class="nav-header">
+        <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Return to Index</a>
+        <span style="color:var(--text-tertiary)">Private Equity Mechanics</span>
     </div>
 
-    <h1>LBO Masterclass <span class="tag-ib">Private Equity</span></h1>
+    <h1>LBO Mechanics & Structuring</h1>
+    <div class="subtitle">A deep dive into Leveraged Buyouts, covering the Debt Waterfall, Returns Attribution, and Sources & Uses construction.</div>
 
-    <div class="toc">
-        <div class="toc-title">İçindekiler</div>
-        <div class="toc-grid">
-            <a href="#logic" class="toc-link"><i class="fa-solid fa-building-columns"></i> 1. LBO Mantığı</a>
-            <a href="#returns" class="toc-link"><i class="fa-solid fa-money-bill-trend-up"></i> 2. Getiri Hesaplama</a>
-            <a href="#paper" class="toc-link"><i class="fa-solid fa-pencil"></i> 3. Paper LBO (Uygulama)</a>
-            <a href="#questions" class="toc-link"><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</a>
-        </div>
+    <div class="toc-box">
+        <div class="toc-header">Table of Contents</div>
+        <ul class="toc-list">
+            <li><a href="#logic">1. The "Uses" of Debt</a></li>
+            <li><a href="#stack">2. The Capital Stack Hierarchy</a></li>
+            <li><a href="#waterfall">3. The Cash Sweep Waterfall</a></li>
+            <li><a href="#attribution">4. Returns Attribution Math</a></li>
+            <li><a href="#moic-math">5. MOIC vs IRR Rules</a></li>
+        </ul>
     </div>
 
-    <!-- 1. Logic -->
+    <!-- 1. Sources & Uses -->
     <section id="logic">
-        <h2><i class="fa-solid fa-building-columns"></i> 1. LBO Logic (Mantık)</h2>
-        <div class="definition-box">Bir şirketi ağırlıklı olarak Borç (Debt) ile satın alıp, şirketin nakit akışlarıyla borcu ödetmek ve 5 yıl sonra satmaktır.</div>
+        <h2>1. Sources & Uses: The Fundamental Equation</h2>
+        <p>Before any model works, you must balance the transaction. This is the "Setup" phase.</p>
+
+        <div class="math-block">
+            <strong>Uses (Where the money goes):</strong><br>
+            + Equity Purchase Price (Buying the shares)<br>
+            + Refinancing Existing Debt (Paying off old loans)<br>
+            + Transaction Fees (Bankers, Lawyers)<br>
+            = Total Uses<br><br>
+            <strong>Sources (Where the money comes from):</strong><br>
+            + New Debt (Loans, Bonds)<br>
+            + New Equity (Check from the PE Firm)<br>
+            = Total Sources (Must equal Uses)
+        </div>
         
-        <div class="analogy-card">
-            <i class="fa-solid fa-house-chimney"></i>
-            <div>
-                <strong>Analoji: Mortgage ile Ev Alıp Kiralamak</strong><br>
-                100 TL'lik ev alıyorsun. 20 TL cebinden (Equity), 80 TL kredi (Debt).<br>
-                Kiracı (Şirket Nakit Akışı) krediyi ödüyor.<br>
-                5 yıl sonra borç bitiyor. Evi satıyorsun (120 TL).<br>
-                Tüm para sana kalıyor. 20 TL koymuştun, 120 TL aldın (6 Kat getiri!).
-            </div>
-        </div>
-
-        <div class="technical-box">
-            <span class="tech-tag">IDEAL LBO CANDIDATE</span>
-            <ul style="margin-left:20px; font-size:14px; color:var(--text-secondary);">
-                <li><strong>Stable Cash Flows:</strong> Borç faizini ödeyebilmek için düzenli gelir şart. (Abonelik sistemleri harikadır).</li>
-                <li><strong>Low CapEx:</strong> Parayı makineye değil, borca yatırmalı.</li>
-                <li><strong>Asset Base:</strong> Bankaya teminat gösterecek varlıkları olmalı.</li>
-                <li><strong>Strong Management:</strong> Şirketi büyütecek ekip.</li>
-            </ul>
-        </div>
+        <p><strong>Critical Insight:</strong> The size of the "New Equity" check is the "Plug". We calculate uses, raise max debt, and the difference is what we must pay.</p>
     </section>
 
-    <!-- 2. Returns -->
-    <section id="returns">
-        <h2><i class="fa-solid fa-money-bill-trend-up"></i> 2. Returns Analysis (IRR & MOIC)</h2>
-        <p>Private Equity firmaları ne kadar kazanır?</p>
+    <!-- 2. Capital Stack -->
+    <section id="stack">
+        <h2>2. The Capital Stack Hierarchy</h2>
+        <p>Not all debt is created equal. Think of it like a sinking ship; who gets into the lifeboats first?</p>
 
-        <div class="qa-card">
-            <div class="qa-header"><span>1. MOIC (Multiple on Invested Capital)</span></div>
-            <div class="qa-body">
-                <strong>Formül:</strong> Çıkışta Aldığın Para / Girişte Koyduğun Para.<br>
-                20 TL koydun, 60 TL aldın → <strong>3.0x MOIC</strong>. "Paramı 3'e katladım".<br>
-                Zamanı dikkate almaz.
-            </div>
-        </div>
-
-        <div class="qa-card">
-            <div class="qa-header"><span>2. IRR (Internal Rate of Return)</span></div>
-            <div class="qa-body">
-                <strong>Formül:</strong> Yıllık ortalama getiri oranı.<br>
-                Zamanı dikkate alır. 3.0x katlamayı 3 yılda yaparsan müthiş (%44 IRR), 10 yılda yaparsan vasattır (%12 IRR).
-            </div>
-        </div>
-
-        <div class="technical-box">
-            <span class="tech-tag">EZBERLE (QUICK IRR)</span>
-            <ul style="font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--text-secondary);">
-                <li>2.0x in 5 Years ≈ 15% IRR</li>
-                <li>2.5x in 5 Years ≈ 20% IRR (Target)</li>
-                <li>3.0x in 5 Years ≈ 25% IRR</li>
-                <li>2.0x in 3 Years ≈ 25% IRR</li>
-            </ul>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Seniority</th>
+                    <th>Cost (Interest)</th>
+                    <th>Flexibility</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Revolver</strong></td>
+                    <td>#1 (Super Senior)</td>
+                    <td>Lowest (L+200)</td>
+                    <td>Credit Card (Draw/Repay)</td>
+                </tr>
+                <tr>
+                    <td><strong>Term Loan A</strong></td>
+                    <td>#2 (Senior Secured)</td>
+                    <td>Low (L+300)</td>
+                    <td>High Amortization (Must pay principal)</td>
+                </tr>
+                <tr>
+                    <td><strong>Term Loan B</strong></td>
+                    <td>#3 (Senior Secured)</td>
+                    <td>Medium (L+400)</td>
+                    <td>Bullet (Pay principal at end)</td>
+                </tr>
+                <tr>
+                    <td><strong>Mezzanine</strong></td>
+                    <td>#4 (Junior/Unsecured)</td>
+                    <td>High (10-12%)</td>
+                    <td>Often PIK (Pay in Kind)</td>
+                </tr>
+                <tr>
+                    <td><strong>Equity</strong></td>
+                    <td>Last</td>
+                    <td>Highest (20%+)</td>
+                    <td>Residual Claim</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
-    <!-- 3. Paper LBO -->
-    <section id="paper">
-        <h2><i class="fa-solid fa-pencil"></i> 3. Paper LBO (Mülakat Sorusu)</h2>
-        <p>Kağıt kalemle şu hesabı yapman istenir:</p>
+    <!-- 3. Waterfall -->
+    <section id="waterfall">
+        <h2>3. The Cash Sweep Waterfall Algorithm</h2>
+        <p>This is the engine of the LBO. How do we pay down debt using free cash flow?</p>
 
-        <div class="qa-card">
-            <div class="qa-body">
-                <strong>Senaryo:</strong><br>
-                - Giriş: 100$ Fiyat. 40$ Equity, 60$ Borç.<br>
-                - Süre: 5 Yıl.<br>
-                - Performans: Şirket borcun yarısını (30$) ödedi. Değeri artmadı (Yine 100$).<br><br>
-                <strong>Çıkış:</strong><br>
-                - Satış Fiyatı: 100$.<br>
-                - Kalan Borç: 30$ (60 - 30).<br>
-                - Bize Kalan (Equity): 100 - 30 = 70$.<br><br>
-                <strong>Sonuç:</strong><br>
-                40$ koyduk, 70$ aldık. (1.75x MOIC).<br>
-                Değer artmasa bile para kazandık. İşte LBO budur.
+        <div class="eng-note">
+            <span class="eng-title">Engineering Perspective: The Algorithm</span>
+            <p>Every year, the company generates Cash Flow Available for Debt Repayment (CFADS). The logic follows a strict <code>if/else</code> sequence:</p>
+            <div class="math-block">
+                1. <strong>Mandatory Amortization:</strong> Pay required TLA principal.<br>
+                2. <strong>Cash Sweep:</strong> Calculate (CFADS - Mandatory Amort).<br>
+                3. <strong>Sweep Logic:</strong><br>
+                &nbsp;&nbsp; IF (Revolver Balance > 0): Pay Revolver.<br>
+                &nbsp;&nbsp; ELSE IF (Term Loan A > 0): Pay Term Loan A.<br>
+                &nbsp;&nbsp; ELSE IF (Term Loan B > 0): Pay Term Loan B.<br>
+                &nbsp;&nbsp; ELSE: Accumulate Cash on Balance Sheet.
             </div>
         </div>
     </section>
 
-    <!-- 4. Sorular -->
-    <section id="questions">
-        <h2><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</h2>
+    <!-- 4. Returns Attribution -->
+    <section id="attribution">
+        <h2>4. Returns Attribution Analysis</h2>
+        <p>You made a 25% IRR. Great. <strong>Why?</strong> Did you create value, or did you just get lucky with the market?</p>
 
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>1. LBO'da getiriyi en çok ne artırır?</span>
-                <span class="difficulty-badge diff-mid">SIRALAMA</span>
-            </div>
-            <div class="qa-body">
-                1. <strong>Exit Multiple:</strong> Pahalıya satmak.<br>
-                2. <strong>Leverage:</strong> Başlangıçta daha çok borç kullanmak.<br>
-                3. <strong>Growth:</strong> Şirketi büyütmek.
-            </div>
+        <div class="concept-box">
+            <span class="concept-title">Decomposing the MOIC</span>
+            <p>We break down the returns into three distinct drivers:</p>
+            <ol style="margin-left:20px; color:var(--text-secondary); margin-top:10px;">
+                <li><strong>EBITDA Growth:</strong> Operational improvement. (The best kind of return).</li>
+                <li><strong>Multiple Expansion:</strong> Selling at a higher P/E than you bought. (Luck/Market sentiment).</li>
+                <li><strong>Deleveraging:</strong> Paying down debt using cash flow. (The mechanics of LBO).</li>
+            </ol>
         </div>
 
-        <div class="qa-card">
-            <div class="qa-header">
-                <span>2. Dividend Recap nedir?</span>
-                <span class="difficulty-badge diff-mid">TERİM</span>
-            </div>
-            <div class="qa-body">
-                PE firması şirketi satmayı beklemeden parasını geri almak isterse, şirkete <strong>Ekstra Borç</strong> aldırır ve bu parayı kendine <strong>Temettü</strong> olarak dağıtır. Risk şirkete kalır, PE parasını kurtarır.
-            </div>
+        <div class="math-block">
+            Total_Return ($) = Exit_Equity - Entry_Equity<br><br>
+            Return_Growth = (EBITDA_Exit - EBITDA_Entry) * Entry_Multiple<br>
+            Return_Multiple = EBITDA_Exit * (Exit_Multiple - Entry_Multiple)<br>
+            Return_DebtPaydown = Total_Return - Return_Growth - Return_Multiple
         </div>
+    </section>
+
+    <!-- 5. MOIC Rules -->
+    <section id="moic-math">
+        <h2>5. The Math of MOIC & IRR</h2>
+        <p>A "Paper LBO" requires instant mental math. Memorize these geometric relationships.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>MOIC</th>
+                    <th>Time Horizon</th>
+                    <th>Implied IRR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2.0x</td>
+                    <td>5 Years</td>
+                    <td>~15%</td>
+                </tr>
+                <tr>
+                    <td>2.5x</td>
+                    <td>5 Years</td>
+                    <td>~20%</td>
+                </tr>
+                <tr>
+                    <td>3.0x</td>
+                    <td>5 Years</td>
+                    <td>~25%</td>
+                </tr>
+                <tr>
+                    <td>2.0x</td>
+                    <td>3 Years</td>
+                    <td>~25%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><strong>Rule of 72 / 115 / 144:</strong><br>
+        To double your money (2x) in 5 years: 72 / 5 = 14.4% IRR.<br>
+        To triple your money (3x) in 5 years: 115 / 5 = 23% IRR.</p>
     </section>
 
 </body>
