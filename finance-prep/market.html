@@ -7,137 +7,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Finance Prep Ortak Stil - Market için Mavi */
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --border-hover: #cbd5e1;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --text-tertiary: #7b8794;
-            --accent-green: #0ea5e9;
-            --shadow: 0 6px 20px rgba(0,0,0,0.06);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            padding: 40px 24px;
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 15px;
-        }
-
-        .nav-bar { display: flex; gap: 12px; margin-bottom: 40px; }
-        .back-btn {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--surface-color);
-            transition: all 0.2s;
-            box-shadow: var(--shadow);
-        }
-        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
-
-        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
-        h2 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --border-hover:#cbd5e1; --text-primary:#1f2933; --text-secondary:#52606d; --text-tertiary:#7b8794; --accent-green:#0ea5e9; --shadow:0 6px 20px rgba(0,0,0,0.06); }
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.6;padding:40px 24px;max-width:960px;margin:0 auto;font-size:15px}
+        .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+        .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
+        .back-btn:hover{border-color:var(--border-hover);color:var(--text-primary)}
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:8px;display:flex;align-items:center;gap:12px}
+        .tag-ib{background:rgba(14, 165, 233, 0.12);color:var(--accent-green);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px}
         
-        p { color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; }
-        ul { list-style: none; padding: 0; margin-bottom: 24px; }
-        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); }
-        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
-
-        .market-card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 16px;
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+        .market-card{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+        .market-label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--text-tertiary);font-weight:600}
+        .market-value{font-size:24px;font-weight:700;color:var(--text-primary);font-family:'JetBrains Mono',monospace}
+        .market-desc{font-size:14px;color:var(--text-secondary);margin-top:4px}
+        .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:40px}
         
-        .market-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-tertiary);
-            font-weight: 600;
-        }
+        section{margin-bottom:60px;scroll-margin-top:20px}
+        h2{font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border-color);display:flex;align-items:center;gap:10px}
         
-        .market-value {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .market-desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
-            margin-bottom: 40px;
-        }
+        .scenario-box{background:#f8fafc;border:1px solid var(--border-color);border-left:4px solid var(--text-tertiary);padding:16px;margin-bottom:16px;border-radius:4px}
+        .scenario-title{font-weight:600;color:var(--text-primary);margin-bottom:6px;display:block}
     </style>
 </head>
 <body>
 
     <div class="nav-bar">
-        <a href="index.html" class="back-btn">← Back to IB Prep</a>
-        <a href="../index.html" class="back-btn">↩ Main Terminal</a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> IB Prep</a>
+        <a href="../index.html" class="back-btn"><i class="fa-solid fa-terminal"></i> Main</a>
     </div>
 
-    <h1>Market Awareness</h1>
-    <p>
-        "Piyasa ne durumda?" sorusuna verilecek 30 saniyelik, veriye dayalı cevaplar. 
-        Ezbere konuşma, veriyle konuş.
-    </p>
+    <h1>Market Awareness <span class="tag-ib">Daily Pulse</span></h1>
 
-    <h2>1. Ana Göstergeler (Key Indicators)</h2>
-    <div class="grid-3">
-        <div class="market-card">
-            <span class="market-label">10-Year Treasury</span>
-            <span class="market-value">~4.20%</span>
-            <span class="market-desc">Risksiz faiz oranı. Tüm değerlemelerin (DCF) tabanı. Yükselirse şirket değerleri düşer.</span>
+    <!-- 1. Canlı Göstergeler -->
+    <section>
+        <h2><i class="fa-solid fa-chart-simple"></i> 1. Key Indicators (Ezberle)</h2>
+        <div class="grid-3">
+            <div class="market-card">
+                <span class="market-label">10-Year Treasury</span>
+                <span class="market-value">~4.20%</span>
+                <span class="market-desc">
+                    <strong>Neden Önemli:</strong> Risksiz Faiz (Risk Free Rate).<br>
+                    Bu artarsa; Borsa Düşer, Ev Fiyatları Düşer, Şirket Değerleri Düşer. (Yerçekimi gibi).
+                </span>
+            </div>
+            <div class="market-card">
+                <span class="market-label">Fed Funds Rate</span>
+                <span class="market-value">5.25% - 5.50%</span>
+                <span class="market-desc">
+                    <strong>Neden Önemli:</strong> Kredi Maliyeti.<br>
+                    LBO ve M&A yapmak için bankadan kredi çekerken bu oranın üstüne spread ödersin.
+                </span>
+            </div>
+            <div class="market-card">
+                <span class="market-label">S&P 500 / Nasdaq</span>
+                <span class="market-value">All-Time Highs</span>
+                <span class="market-desc">
+                    <strong>Neden Önemli:</strong> Yatırımcı İştahı (Sentiment).<br>
+                    Şu an "AI Boom" (Yapay Zeka Çılgınlığı) ile zirvede.
+                </span>
+            </div>
         </div>
-        <div class="market-card">
-            <span class="market-label">Fed Funds Rate</span>
-            <span class="market-value">5.25% - 5.50%</span>
-            <span class="market-desc">Merkez bankası faizi. Borçlanma maliyetini (Cost of Debt) ve LBO iştahını belirler.</span>
-        </div>
-        <div class="market-card">
-            <span class="market-label">S&P 500 / Nasdaq</span>
-            <span class="market-value">All-Time Highs</span>
-            <span class="market-desc">Piyasa duyarlılığı (Sentiment). Teknoloji (AI) rallisi endeksleri yukarı taşıyor.</span>
-        </div>
-    </div>
+    </section>
 
-    <h2>2. Mülakat Cevabı: "Piyasayı Nasıl Görüyorsun?"</h2>
-    <div class="market-card" style="border-left: 4px solid var(--accent-green);">
-        <p style="margin: 0; font-style: italic;">
-            "Piyasa şu an <strong>'Higher for Longer'</strong> (Uzun süre yüksek faiz) beklentisi ile <strong>AI/Tech büyümesi</strong> arasında bir denge arıyor. <br><br>
-            1. Enflasyon düşüş eğiliminde ama Fed faiz indiriminde aceleci değil.<br>
-            2. Bu durum LBO ve M&A aktivitelerini baskılıyor çünkü borçlanma maliyetleri (Cost of Capital) hala çok yüksek.<br>
-            3. Ancak nakit zengini stratejik alıcılar (Strategic Buyers) için fırsatlar var."
-        </p>
-    </div>
+    <!-- 2. Pitch -->
+    <section>
+        <h2><i class="fa-solid fa-microphone"></i> 2. "Piyasa Nasıl?" (30 Sn Cevap)</h2>
+        <p>Mülakatta sana "Piyasayı anlat" dediklerinde seçmen gereken 3 senaryo:</p>
+
+        <div class="scenario-box" style="border-left-color: #16a34a;">
+            <span class="scenario-title">1. BULL CASE (İyimser)</span>
+            "Enflasyon düşüyor, Fed yakında faiz indirecek (Soft Landing). Yapay zeka verimliliği artırıyor. Şirket kârları güçlü. M&A patlaması yakındır."
+        </div>
+
+        <div class="scenario-box" style="border-left-color: #dc2626;">
+            <span class="scenario-title">2. BEAR CASE (Kötümser)</span>
+            "Enflasyon yapışkan (Sticky Inflation), Fed faiz indiremez (Higher for Longer). Tüketici kredileri patlayabilir. Resesyon riski hala masada."
+        </div>
+
+        <div class="scenario-box" style="border-left-color: #0ea5e9;">
+            <span class="scenario-title">3. SENİN CEVABIN (Dengeli)</span>
+            "Piyasa şu an <strong>ikiye bölünmüş durumda</strong>. Teknoloji hisseleri rekor kırarken, geleneksel sanayi yüksek faizden eziliyor. <br>
+            M&A açısından; stratejik alıcılar (Nakit zengini şirketler) aktif, ama Private Equity (Borçla alanlar) faizlerin düşmesini bekliyor."
+        </div>
+    </section>
 
 </body>
 </html>

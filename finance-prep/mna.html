@@ -3,126 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>M&A Guide | IB Prep</title>
+    <title>M&A Masterclass | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Finance Prep Ortak Stil */
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --border-hover: #cbd5e1;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --text-tertiary: #7b8794;
-            --accent-green: #16a34a;
-            --shadow: 0 6px 20px rgba(0,0,0,0.06);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            padding: 40px 24px;
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 15px;
-        }
-
-        .nav-bar { display: flex; gap: 12px; margin-bottom: 40px; }
-        .back-btn {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--surface-color);
-            transition: all 0.2s;
-            box-shadow: var(--shadow);
-        }
-        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
-
-        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
-        h2 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --border-hover:#cbd5e1; --text-primary:#1f2933; --text-secondary:#52606d; --text-tertiary:#7b8794; --accent-green:#16a34a; --shadow:0 6px 20px rgba(0,0,0,0.06); }
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.6;padding:40px 24px;max-width:960px;margin:0 auto;font-size:15px}
+        .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+        .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
+        .back-btn:hover{border-color:var(--border-hover);color:var(--text-primary)}
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:8px;display:flex;align-items:center;gap:12px}
+        .tag-ib{background:rgba(22,163,74,0.12);color:var(--accent-green);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px}
         
-        p { color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; }
-        ul { list-style: none; padding: 0; margin-bottom: 24px; }
-        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); }
-        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
-
-        .qa-card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--accent-green);
-            border-radius: 8px;
-            padding: 24px;
-            margin: 24px 0;
-            box-shadow: var(--shadow);
-        }
-        .question { font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 12px; font-size: 16px; }
-        .answer { color: var(--text-secondary); font-size: 15px; }
+        .toc{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:40px}
+        .toc-title{font-weight:600;margin-bottom:12px;color:var(--text-primary);font-size:14px;text-transform:uppercase;letter-spacing:1px}
+        .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+        .toc-link{text-decoration:none;color:var(--text-secondary);font-size:14px;display:flex;align-items:center;gap:8px;transition:color 0.2s}
+        .toc-link:hover{color:var(--accent-green)}
         
-        .highlight-box {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #166534;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
+        section{margin-bottom:60px;scroll-margin-top:20px}
+        h2{font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border-color);display:flex;align-items:center;gap:10px}
+        h2 i{color:var(--accent-green);font-size:20px}
+        h3{font-size:18px;font-weight:600;color:var(--text-primary);margin-top:30px;margin-bottom:12px}
+        
+        .definition-box{border-left:3px solid var(--text-tertiary);padding-left:16px;margin-bottom:12px;color:var(--text-secondary);font-style:italic;font-size:14px}
+        .analogy-card{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:16px;color:#1e3a8a;font-size:14px;display:flex;gap:12px;align-items:flex-start}
+        
+        .qa-card{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px}
+        .qa-header{padding:16px;background:#f8fafc;border-bottom:1px solid var(--border-color);font-weight:600;color:var(--text-primary);display:flex;justify-content:space-between;align-items:center;}
+        .qa-body{padding:16px;font-size:14px;color:var(--text-secondary)}
+        
+        .technical-box{background:#fff;border:1px dashed var(--text-tertiary);padding:20px;border-radius:8px;margin-top:24px;position:relative}
+        .tech-tag{position:absolute;top:-10px;left:20px;background:var(--text-primary);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace}
+        .difficulty-badge{font-size:10px;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+        .diff-easy{background:#dcfce7;color:#166534}
+        .diff-mid{background:#fef9c3;color:#854d0e}
+        .diff-hard{background:#fee2e2;color:#991b1b}
     </style>
 </head>
 <body>
 
     <div class="nav-bar">
-        <a href="index.html" class="back-btn">← Back to IB Prep</a>
-        <a href="../index.html" class="back-btn">↩ Main Terminal</a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> IB Prep</a>
+        <a href="../index.html" class="back-btn"><i class="fa-solid fa-terminal"></i> Main</a>
     </div>
 
-    <h1>Mergers & Acquisitions (M&A)</h1>
-    <p>
-        Şirket birleşmelerinin matematiği. Mülakatlarda en sık sorulan konu "Accretion/Dilution" analizidir.
-    </p>
+    <h1>M&A Masterclass <span class="tag-ib">Deal Structuring</span></h1>
 
-    <h2>1. Accretion / Dilution Analizi</h2>
-    <p>Bir şirket (Alıcı), başka bir şirketi (Hedef) satın aldığında, Alıcı'nın hisse başına kârı (EPS) artıyor mu (Accretive), azalıyor mu (Dilutive)?</p>
-    
-    <div class="highlight-box">
-        <strong>Altın Kural:</strong> Eğer Alıcı'nın Fiyat/Kazanç (P/E) oranı, Hedef şirketin P/E oranından YÜKSEKSE ve işlem %100 hisse ile yapılıyorsa, işlem <strong>Accretive</strong> (Kâr Artırıcı) olur.
-    </div>
-
-    <div class="qa-card">
-        <span class="question">Soru: Bir M&A işleminin Accretive mi Dilutive mi olduğunu nasıl hesaplarsın?</span>
-        <div class="answer">
-            1. Alıcı ve Hedef'in Net Kârlarını topla.<br>
-            2. Varsa Sinerjileri ekle, işlem masraflarını çıkar.<br>
-            3. Satın alma için çıkarılan YENİ hisse sayısını hesapla.<br>
-            4. (Toplam Net Kâr) / (Eski Hisseler + Yeni Hisseler) = <strong>Yeni EPS</strong>.<br>
-            Eğer Yeni EPS > Eski EPS ise → <strong>Accretive</strong>.
+    <div class="toc">
+        <div class="toc-title">İçindekiler</div>
+        <div class="toc-grid">
+            <a href="#logic" class="toc-link"><i class="fa-solid fa-puzzle-piece"></i> 1. M&A Mantığı</a>
+            <a href="#accretion" class="toc-link"><i class="fa-solid fa-chart-line"></i> 2. Accretion / Dilution</a>
+            <a href="#structuring" class="toc-link"><i class="fa-solid fa-handshake"></i> 3. Deal Structuring</a>
+            <a href="#questions" class="toc-link"><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</a>
         </div>
     </div>
 
-    <h2>2. Goodwill (Şerefiye)</h2>
-    <p>Bir şirketi defter değerinin (Book Value) üzerinde bir fiyata satın alırsan, aradaki fark Bilançoda "Goodwill" olarak yazılır.</p>
-    <ul>
-        <li>Goodwill amorti edilmez (değer kaybetmez), ancak her yıl "Impairment Test" yapılır.</li>
-        <li>Marka değeri, müşteri sadakati gibi soyut varlıkları temsil eder.</li>
-    </ul>
+    <!-- 1. Logic -->
+    <section id="logic">
+        <h2><i class="fa-solid fa-puzzle-piece"></i> 1. Why M&A? (Sinerjiler)</h2>
+        <div class="definition-box">İki şirketin birleşmesi sonucu ortaya çıkan değerin, şirketlerin bağımsız değerleri toplamından büyük olması (1+1=3).</div>
+        
+        <div class="analogy-card">
+            <i class="fa-solid fa-users"></i>
+            <div>
+                <strong>Analoji: Evlilik Masrafları</strong><br>
+                İki bekar ayrı evlerde yaşarken 2 kira, 2 elektrik faturası öderler.<br>
+                Evlenip aynı eve çıkarlarsa, kira ve fatura yarıya düşer (Cost Synergy).
+            </div>
+        </div>
 
-    <h2>3. Sinerjiler (Synergies)</h2>
-    <p>İki şirketin birleşince, ayrı ayrı olduklarından daha değerli olmasıdır (1+1=3).</p>
-    <ul>
-        <li><strong>Cost Synergies (Maliyet):</strong> Gereksiz departmanları kapatmak, daha ucuza hammadde almak. (Daha güvenilirdir).</li>
-        <li><strong>Revenue Synergies (Gelir):</strong> Çapraz satış yapmak (Cross-sell). (Tahmin etmesi zordur).</li>
-    </ul>
+        <div class="technical-box">
+            <span class="tech-tag">SYNERGY TYPES</span>
+            <ul style="margin-left:20px; font-size:14px; color:var(--text-secondary);">
+                <li><strong>Hard Synergies (Cost):</strong> Kesin olanlardır. Lojistik birleşmesi, İK departmanı azaltılması. Değerlemede ciddiye alınır.</li>
+                <li><strong>Soft Synergies (Revenue):</strong> "Onların müşterisine bizim malı satarız". Belirsizdir. Değerlemede genelde ihmal edilir (Conservative).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 2. Accretion / Dilution -->
+    <section id="accretion">
+        <h2><i class="fa-solid fa-chart-line"></i> 2. Accretion / Dilution Analysis</h2>
+        <p>Hissedar için en önemli soru: "Bu satın alma benim Hisse Başına Kârımı (EPS) artıracak mı?"</p>
+
+        <div class="qa-card">
+            <div class="qa-header"><span>Nasıl Hesaplanır? (4 Adım)</span></div>
+            <div class="qa-body">
+                <ol style="margin-left:20px;">
+                    <li><strong>Pro-Forma Net Income:</strong> (Alıcı Net Kâr + Hedef Net Kâr + Sinerjiler) - (Borç Faizi + Yeni Vergiler).</li>
+                    <li><strong>New Share Count:</strong> Alıcının mevcut hisseleri + Satın alma için basılan yeni hisseler.</li>
+                    <li><strong>New EPS:</strong> Pro-Forma Net Income / New Share Count.</li>
+                    <li><strong>Karşılaştır:</strong> New EPS > Old EPS ise <strong>Accretive (Pozitif)</strong>.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="technical-box">
+            <span class="tech-tag">RULE OF THUMB (EZBERLE)</span>
+            <p style="margin-top:10px;">Eğer işlem <strong>%100 Hisse (All-Stock)</strong> ile yapılıyorsa:</p>
+            <code>Alıcının P/E > Hedefin P/E = ACCRETIVE</code><br>
+            <code>Alıcının P/E < Hedefin P/E = DILUTIVE</code><br>
+            <p style="font-size:13px; color:var(--text-tertiary); margin-top:5px;">(Yüksek F/K'lı pahalı hisseni verip, düşük F/K'lı ucuz kâr satın alıyorsun.)</p>
+        </div>
+    </section>
+
+    <!-- 3. Deal Structuring -->
+    <section id="structuring">
+        <h2><i class="fa-solid fa-handshake"></i> 3. Deal Structuring (Cash vs Stock)</h2>
+        
+        <div class="qa-card">
+            <div class="qa-header">
+                <span>1. Cash (Nakit) ile Alım</span>
+                <span class="difficulty-badge diff-easy">EN UCUZ</span>
+            </div>
+            <div class="qa-body">
+                <strong>Mantık:</strong> Bankadaki paranı kullanırsın veya kredi çekersin.<br>
+                <strong>Maliyet:</strong> Kaybettiğin mevduat faizi veya ödediğin kredi faizi (Vergiden düşülür!).<br>
+                <strong>Risk:</strong> Alıcı tüm riski alır. Hedef şirket hissedarları parayı alır ve kaçar.
+            </div>
+        </div>
+
+        <div class="qa-card">
+            <div class="qa-header">
+                <span>2. Stock (Hisse) ile Alım</span>
+                <span class="difficulty-badge diff-hard">EN RİSKLİ</span>
+            </div>
+            <div class="qa-body">
+                <strong>Mantık:</strong> Kendi şirketinden pay verirsin.<br>
+                <strong>Maliyet:</strong> "Cost of Equity" (Genelde borçtan çok daha pahalıdır).<br>
+                <strong>Risk:</strong> Risk paylaşılır. Eğer birleşen şirket batarsa, hedef şirket hissedarları da batar.
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Sorular -->
+    <section id="questions">
+        <h2><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</h2>
+
+        <div class="qa-card">
+            <div class="qa-header">
+                <span>1. Accretive bir işlem hisse fiyatını kesin artırır mı?</span>
+                <span class="difficulty-badge diff-mid">TRICK</span>
+            </div>
+            <div class="qa-body">
+                <strong>Hayır.</strong> EPS artsa bile, piyasa bu birleşmeyi sevmeyebilir (Sinerjiye inanmaz, kültürel uyumsuzluk görür). Bu durumda F/K çarpanı düşer ve hisse fiyatı çakılabilir. EPS her şey değildir.
+            </div>
+        </div>
+
+        <div class="qa-card">
+            <div class="qa-header">
+                <span>2. Goodwill (Şerefiye) nasıl oluşur?</span>
+                <span class="difficulty-badge diff-mid">MUHASEBE</span>
+            </div>
+            <div class="qa-body">
+                <code>Satın Alma Bedeli (Equity Purchase Price) - Hedefin Defter Değeri (Book Value of Equity)</code><br>
+                Aradaki fark Goodwill'dir. Marka değeri, patentler ve müşteri sadakati gibi "elle tutulmayan" varlıkları temsil eder.
+            </div>
+        </div>
+
+        <div class="qa-card">
+            <div class="qa-header">
+                <span>3. Asset Deal vs Stock Deal?</span>
+                <span class="difficulty-badge diff-hard">VERGİ</span>
+            </div>
+            <div class="qa-body">
+                <strong>Asset Deal:</strong> Sadece varlıkları alırsın. Varlık değerini güncel fiyata çekersin (Step-up). Yüksek amortisman → Düşük Vergi (Alıcı Sever).<br>
+                <strong>Stock Deal:</strong> Şirketin hissesini alırsın. Vergi avantajı yoktur ama satıcı için temizdir (Satıcı Sever).
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>

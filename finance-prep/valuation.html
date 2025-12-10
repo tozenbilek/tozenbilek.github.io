@@ -3,143 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valuation Guide | IB Prep</title>
+    <title>Valuation Masterclass | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Finance Prep Index ile Birebir Uyumlu Stil */
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --border-hover: #cbd5e1;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --text-tertiary: #7b8794;
-            --accent-green: #16a34a; /* Valuation için mavi yerine standart yeşil kullanımı daha tutarlı */
-            --shadow: 0 6px 20px rgba(0,0,0,0.06);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            padding: 40px 24px;
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 15px;
-        }
-
-        .nav-bar { display: flex; gap: 12px; margin-bottom: 40px; }
-        .back-btn {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            display: flex; align-items: center; gap: 8px;
-            padding: 8px 16px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            background: var(--surface-color);
-            transition: all 0.2s;
-            box-shadow: var(--shadow);
-        }
-        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
-
-        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
-        h2 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
-        h3 { font-size: 18px; font-weight: 600; color: var(--text-secondary); margin-top: 24px; margin-bottom: 8px; }
+        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --border-hover:#cbd5e1; --text-primary:#1f2933; --text-secondary:#52606d; --text-tertiary:#7b8794; --accent-green:#16a34a; --shadow:0 6px 20px rgba(0,0,0,0.06); }
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.6;padding:40px 24px;max-width:960px;margin:0 auto;font-size:15px}
+        .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+        .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
+        .back-btn:hover{border-color:var(--border-hover);color:var(--text-primary)}
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:8px;display:flex;align-items:center;gap:12px}
+        .tag-ib{background:rgba(22,163,74,0.12);color:var(--accent-green);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px}
         
-        p { color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; }
-        ul { list-style: none; padding: 0; margin-bottom: 24px; }
-        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); }
-        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
-
-        .qa-card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--accent-green);
-            border-radius: 8px;
-            padding: 24px;
-            margin: 24px 0;
-            box-shadow: var(--shadow);
-        }
-        .question { font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 12px; font-size: 16px; }
-        .answer { color: var(--text-secondary); font-size: 15px; }
+        .toc{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:40px}
+        .toc-title{font-weight:600;margin-bottom:12px;color:var(--text-primary);font-size:14px;text-transform:uppercase;letter-spacing:1px}
+        .toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+        .toc-link{text-decoration:none;color:var(--text-secondary);font-size:14px;display:flex;align-items:center;gap:8px;transition:color 0.2s}
+        .toc-link:hover{color:var(--accent-green)}
         
-        .highlight-box {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #166534;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
+        section{margin-bottom:60px;scroll-margin-top:20px}
+        h2{font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border-color);display:flex;align-items:center;gap:10px}
+        h2 i{color:var(--accent-green);font-size:20px}
+        h3{font-size:18px;font-weight:600;color:var(--text-primary);margin-top:30px;margin-bottom:12px}
+        
+        .definition-box{border-left:3px solid var(--text-tertiary);padding-left:16px;margin-bottom:12px;color:var(--text-secondary);font-style:italic;font-size:14px}
+        .analogy-card{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:16px;color:#1e3a8a;font-size:14px;display:flex;gap:12px;align-items:flex-start}
+        
+        .qa-card{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:16px}
+        .qa-header{padding:16px;background:#f8fafc;border-bottom:1px solid var(--border-color);font-weight:600;color:var(--text-primary);display:flex;justify-content:space-between}
+        .qa-body{padding:16px;font-size:14px;color:var(--text-secondary)}
+        
+        .technical-box{background:#fff;border:1px dashed var(--text-tertiary);padding:20px;border-radius:8px;margin-top:24px;position:relative}
+        .tech-tag{position:absolute;top:-10px;left:20px;background:var(--text-primary);color:#fff;font-size:10px;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace}
+        .difficulty-badge{font-size:10px;padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+        .diff-mid{background:#fef9c3;color:#854d0e}
     </style>
 </head>
 <body>
 
     <div class="nav-bar">
-        <a href="index.html" class="back-btn">← Back to IB Prep</a>
-        <a href="../index.html" class="back-btn">↩ Main Terminal</a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> IB Prep</a>
+        <a href="../index.html" class="back-btn"><i class="fa-solid fa-terminal"></i> Main</a>
     </div>
 
-    <h1>Valuation Methodologies</h1>
-    <p>
-        "Bu şirket kaç para eder?" sorusunun cevabı. 
-        Mülakatlarda 3 ana yöntemi (Comps, Precedent, DCF) ve bunların sıralamasını savunmanız istenir.
-    </p>
+    <h1>Valuation Masterclass <span class="tag-ib">The Core Skill</span></h1>
 
-    <div class="highlight-box">
-        <strong>Kural:</strong> Tek bir doğru değer yoktur, bir "değer aralığı" (Valuation Range / Football Field) vardır.
-    </div>
-
-    <h2>1. Comparable Company Analysis (Comps)</h2>
-    <p><strong>Mantık:</strong> "Rakip şirketler borsada hangi çarpanlarla (Multiples) işlem görüyor?"</p>
-    <ul>
-        <li><strong>EV / EBITDA:</strong> En yaygın kullanılan çarpan. Sermaye yapısından bağımsızdır.</li>
-        <li><strong>P / E (Fiyat/Kazanç):</strong> Bankalar ve finans şirketleri için kullanılır.</li>
-    </ul>
-    <div class="qa-card">
-        <span class="question">Soru: Nasıl Peer Group (Rakip Seti) seçersin?</span>
-        <div class="answer">
-            1. Sektör (Industry)<br>
-            2. Coğrafya (Geography)<br>
-            3. Büyüklük (Financial Size: Revenue, EBITDA)<br>
-            Örn: "Türk Hava Yolları için Lufthansa, Pegasus ve British Airways'e bakarım."
+    <div class="toc">
+        <div class="toc-title">İçindekiler</div>
+        <div class="toc-grid">
+            <a href="#methods" class="toc-link"><i class="fa-solid fa-scale-balanced"></i> 1. Üç Büyük Metot</a>
+            <a href="#dcf-deep" class="toc-link"><i class="fa-solid fa-calculator"></i> 2. DCF Derin Dalış</a>
+            <a href="#wacc" class="toc-link"><i class="fa-solid fa-percent"></i> 3. WACC & Beta</a>
+            <a href="#questions" class="toc-link"><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</a>
         </div>
     </div>
 
-    <h2>2. Precedent Transactions (Emsal İşlemler)</h2>
-    <p><strong>Mantık:</strong> "Geçmişte benzer şirketler kaça SATILDI?"</p>
-    <p>Sadece borsadaki fiyata değil, satın alma anında ödenen fiyata bakarız.</p>
-    <div class="highlight-box">
-        <strong>Önemli:</strong> Bu yöntem genelde en yüksek değeri verir. Çünkü alıcı, şirketi ele geçirmek için <strong>"Control Premium" (%20-%30)</strong> öder.
-    </div>
+    <!-- 1. Üç Büyük Metot -->
+    <section id="methods">
+        <h2><i class="fa-solid fa-scale-balanced"></i> 1. The 3 Valuation Methodologies</h2>
+        <p>Hiçbir şirket için tek bir "Doğru Fiyat" yoktur. Bir "Fiyat Aralığı" (Football Field) bulmaya çalışırız.</p>
 
-    <h2>3. DCF (Discounted Cash Flow)</h2>
-    <p><strong>Mantık:</strong> "Şirketin gelecekte üreteceği nakdin bugünkü değeri nedir?" Piyasa dalgalanmalarından etkilenmez (Intrinsic Value).</p>
-
-    <div class="qa-card">
-        <span class="question">Soru: Bana DCF'i adım adım anlat ("Walk me through a DCF").</span>
-        <div class="answer">
-            1. Şirketin gelecekteki <strong>Free Cash Flow</strong>'larını (FCF) tahmin et (Genelde 5-10 yıl).<br>
-            2. <strong>Terminal Value</strong> (Sonsuza kadar sürecek değer) hesapla (Gordon Growth veya Exit Multiple ile).<br>
-            3. Bu nakitleri <strong>WACC</strong> (Weighted Average Cost of Capital) ile bugüne indir (Discount).<br>
-            4. Hepsini topla = <strong>Enterprise Value</strong>.
+        <div class="qa-card">
+            <div class="qa-header"><span>1. Comparable Companies (Comps)</span></div>
+            <div class="qa-body">
+                <strong>Mantık:</strong> Borsadaki rakiplerine bak (Apple vs Samsung).<br>
+                <strong>Artısı:</strong> Piyasa verisine dayanır (Gerçekçidir).<br>
+                <strong>Eksisi:</strong> Piyasa irrasyonel olabilir (Balon veya Kriz anı).<br>
+                <strong>Ne Zaman Kullanılır:</strong> Standart değerlemede her zaman.
+            </div>
         </div>
-    </div>
 
-    <h3>İleri Düzey: WACC ve Beta</h3>
-    <p>WACC, şirketin hem borç hem de hisse senedi yatırımcılarına ödemesi gereken ortalama getiridir.</p>
-    <ul>
-        <li><strong>Cost of Equity (CAPM):</strong> Risksiz Faiz + (Beta * Piyasa Risk Primi).</li>
-        <li><strong>Beta:</strong> Hisse senedinin piyasaya göre ne kadar oynak olduğu. (Beta > 1 ise piyasadan daha riskli/oynak).</li>
-    </ul>
+        <div class="qa-card">
+            <div class="qa-header"><span>2. Precedent Transactions (Emsaller)</span></div>
+            <div class="qa-body">
+                <strong>Mantık:</strong> Geçmişte satılan benzer şirketlere bak.<br>
+                <strong>Özelliği:</strong> Genelde <strong>EN YÜKSEK</strong> değeri verir. Çünkü "Kontrol Primi" (Control Premium) içerir. Şirketi ele geçirmek için fazladan ödenen para.
+            </div>
+        </div>
+
+        <div class="qa-card">
+            <div class="qa-header"><span>3. DCF (Discounted Cash Flow)</span></div>
+            <div class="qa-body">
+                <strong>Mantık:</strong> Şirketin kendi içsel potansiyeline bak (Intrinsic Value).<br>
+                <strong>Artısı:</strong> Piyasa dalgalanmasından etkilenmez.<br>
+                <strong>Eksisi:</strong> Varsayımlara (Büyüme oranı, WACC) çok duyarlıdır. "Garbage in, garbage out".
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. DCF Derin Dalış -->
+    <section id="dcf-deep">
+        <h2><i class="fa-solid fa-calculator"></i> 2. DCF Deep Dive</h2>
+        <div class="analogy-card">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <div>
+                <strong>Analoji:</strong> Emekliliğini hesaplamak gibidir. "Önümüzdeki 5 yıl ne kadar biriktiririm?" (Forecast Period) + "5 yıldan sonra ölene kadar bankadaki param ne kadar faiz getirir?" (Terminal Value).
+            </div>
+        </div>
+
+        <h3>Adım 1: Free Cash Flow (FCF) Hesapla</h3>
+        <div class="technical-box">
+            <span class="tech-tag">UNLEVERED FCF FORMÜLÜ</span>
+            <ul style="margin-left:20px; font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--text-primary);">
+                <li>EBIT * (1 - Tax Rate) <span style="color:var(--text-tertiary);">// Net Operasyonel Kâr (NOPAT)</span></li>
+                <li>+ Depreciation & Amortization <span style="color:var(--text-tertiary);">// Nakit olmayan gideri ekle</span></li>
+                <li>- Capital Expenditures (CapEx) <span style="color:var(--text-tertiary);">// Makine yatırımını düş</span></li>
+                <li>- Change in Net Working Capital <span style="color:var(--text-tertiary);">// İşletme sermayesi artışını düş</span></li>
+                <li>= <strong>Unlevered Free Cash Flow</strong></li>
+            </ul>
+        </div>
+
+        <h3>Adım 2: Terminal Value (Sonsuzluk Değeri)</h3>
+        <p>5 yıl bitti. Şirket sonsuza kadar yaşamaya devam edecek. Bu değeri nasıl buluruz? İki yol var:</p>
+        <div class="qa-card">
+            <div class="qa-body">
+                <strong>1. Gordon Growth Method:</strong> <code>FCF * (1+g) / (WACC - g)</code>. Teorik olarak en doğrusu. (g = Ülke büyüme oranı, %2-3).<br><br>
+                <strong>2. Exit Multiple Method:</strong> <code>Son Yıl EBITDA * Çarpan</code>. Piyasa odaklıdır. M&A'de daha sık kullanılır.
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. WACC -->
+    <section id="wacc">
+        <h2><i class="fa-solid fa-percent"></i> 3. WACC & Beta</h2>
+        <p>WACC (Weighted Average Cost of Capital), gelecekteki parayı bugüne indirmek için kullandığımız "Ceza Oranı"dır.</p>
+        
+        <div class="definition-box">WACC ne kadar yüksekse, şirket değeri o kadar DÜŞÜK çıkar. (Risk arttıkça değer düşer).</div>
+
+        <div class="technical-box">
+            <span class="tech-tag">COST OF EQUITY (CAPM)</span>
+            <p style="margin-bottom:8px;">Hissedarın beklediği getiri oranıdır.</p>
+            <code>Risk Free Rate + Beta * (Market Return - Risk Free Rate)</code>
+            <ul style="font-size:13px; margin-top:8px; color:var(--text-secondary);">
+                <li><strong>Risk Free:</strong> 10 Yıllık ABD Tahvili (~%4).</li>
+                <li><strong>Beta:</strong> Şirketin risk katsayısı (1.2 = Piyasadan %20 daha riskli).</li>
+                <li><strong>Market Risk Premium:</strong> Borsanın tarihsel getirisi (~%5-7).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 4. Sorular -->
+    <section id="questions">
+        <h2><i class="fa-solid fa-question-circle"></i> 4. Mülakat Soruları</h2>
+        
+        <div class="qa-card">
+            <div class="qa-header">
+                <span>1. Hangi değerleme en yüksek sonucu verir?</span>
+                <span class="difficulty-badge diff-mid">KLASİK</span>
+            </div>
+            <div class="qa-body">
+                Genelde <strong>Precedent Transactions</strong> en yüksek çıkar. Çünkü içinde "Kontrol Primi" vardır. Alıcı, şirketi ele geçirmek için %20-30 fazla öder.<br>
+                En düşük ise genelde LBO analizidir (Çünkü finansal yatırımcı ("Floor Valuation") sadece getiriye bakar, sinerji ödemez).
+            </div>
+        </div>
+
+        <div class="qa-card">
+            <div class="qa-header">
+                <span>2. Enterprise Value'dan Equity Value'ya nasıl geçersin?</span>
+                <span class="difficulty-badge diff-mid">BRIDGE</span>
+            </div>
+            <div class="qa-body">
+                <code>Enterprise Value - Net Debt - Preferred Stock - Minority Interest = Equity Value</code><br>
+                Burada <strong>Net Debt = Toplam Borç - Nakit</strong> demektir.
+            </div>
+        </div>
+
+        <div class="qa-card">
+            <div class="qa-header">
+                <span>3. Beta negatif olabilir mi?</span>
+                <span class="difficulty-badge diff-mid">TRICK</span>
+            </div>
+            <div class="qa-body">
+                Teorik olarak evet. Altın (Gold) gibi kriz anında değeri artan varlıkların betası negatif olabilir. Ama şirketler için neredeyse hiç görülmez.
+            </div>
+        </div>
+
+    </section>
 
 </body>
 </html>
