@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCF Mechanics | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Mechanics</span>
+        </nav>
+
+        <h1>DCF Mechanics</h1>
+        <p>İnce ayarlar ve zamanlama faktörleri.</p>
+
+        <h2 style="color: var(--accent-blue);">Mid-Year Convention</h2>
+        <p>Nakit yıl sonunda değil, yıl ortasında gelir. Bu yüzden üs olarak (0.5, 1.5, 2.5) kullanılır.</p>
+        <div class="math-block">
+            \[ PV = \frac{CF_1}{(1+r)^{0.5}} + \frac{CF_2}{(1+r)^{1.5}} + \dots \]
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Stub Period</h2>
+        <p>Değerlemeyi yıl ortasında yapıyorsanız (Örn: 30 Haziran), yılın geri kalan kısmını (0.5 yıl) ayrıca hesaplamalısınız.</p>
+
+        <div class="lesson-nav">
+            <a href="terminal-value.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Terminal Value</a>
+            <a href="enterprise-value.html" class="btn-nav">Sonraki: Enterprise Value <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

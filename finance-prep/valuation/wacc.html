@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WACC | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">WACC</span>
+        </nav>
+
+        <h1>WACC (Weighted Average Cost of Capital)</h1>
+        <p>Paranın bir maliyeti vardır. WACC, şirketin hem borç hem de hisse senedi sahiplerine ödemesi gereken ortalama getiridir.</p>
+
+        <h2 style="color: var(--accent-blue);">The Formula</h2>
+        <div class="math-block">
+            \[ WACC = (K_e \times W_e) + (K_d \times W_d \times (1-t)) \]
+        </div>
+        
+        <h2 style="color: var(--accent-blue);">CAPM (Cost of Equity)</h2>
+        <p>Hissedarın beklediği getiri (Ke) nasıl bulunur?</p>
+        <div class="math-block">
+            \[ K_e = R_f + \beta \times (R_m - R_f) \]
+        </div>
+        <p>
+            <strong>Risk Free Rate (Rf):</strong> 10 Yıllık ABD Hazinesi.<br>
+            <strong>Beta:</strong> Şirketin piyasaya göre riski (Volatilite).<br>
+            <strong>Market Risk Premium:</strong> Borsanın hazineden fazla getirmesi beklenen fark (%5-6).
+        </p>
+
+        <div class="lesson-nav">
+            <a href="fcf.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: FCF</a>
+            <a href="terminal-value.html" class="btn-nav">Sonraki: Terminal Value <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

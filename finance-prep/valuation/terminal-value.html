@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Value | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Terminal Value</span>
+        </nav>
+
+        <h1>Terminal Value</h1>
+        <p>5 yıllık projeksiyondan sonra şirketin sonsuza kadar değeri.</p>
+
+        <h2 style="color: var(--accent-blue);">Method 1: Gordon Growth Model</h2>
+        <div class="math-block">
+            \[ TV = \frac{FCF_{final} \times (1+g)}{WACC - g} \]
+        </div>
+        <p>Şirketin sonsuza kadar sabit bir hızla (g: %2-3) büyüyeceğini varsayar.</p>
+
+        <h2 style="color: var(--accent-blue);">Method 2: Exit Multiple Method</h2>
+        <div class="math-block">
+            \[ TV = EBITDA_{final} \times \text{Exit Multiple} \]
+        </div>
+        <p>Şirketi 5 yıl sonra birine satarsak kaça satarız? (Örn: 10x EBITDA).</p>
+
+        <div class="lesson-nav">
+            <a href="wacc.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: WACC</a>
+            <a href="dcf-mechanics.html" class="btn-nav">Sonraki: DCF Mechanics <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
