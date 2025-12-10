@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comps & EV Bridge | Valuation</title>
+    <title>Comps & Calendarization | Valuation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -11,103 +11,82 @@
 <body>
 
     <div class="container">
-        <div class="nav-header">
+        <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
             <a href="index.html" class="nav-link">Valuation</a>
             <span class="nav-sep">/</span>
             <span style="color: var(--text-primary);">Relative Valuation</span>
-        </div>
+        </nav>
 
         <h1>Comps Analysis: The Art of Multiples</h1>
         <p>
-            Relative Valuation (Comps), bir evi "komşu ev kaça satıldı"ya bakarak değerlemektir. 
-            Kolay görünür ama "The Bridge" (Köprü) kurulurken ölümcül hatalar yapılır.
-            Kural şudur: Pay ve Payda tutarlı olmalıdır.
+            Herkes "Apple 30x P/E ile işlem görüyor" der. Ama profesyonel değerlemede işler bu kadar basit değildir. 
+            Burada <strong>Calendarization</strong>, <strong>LTM (Last Twelve Months)</strong> ve <strong>Non-Recurring Items</strong> düzeltmelerini öğreneceksiniz.
         </p>
 
-        <h2 style="color: var(--accent-blue);">1. The Consistency Rule</h2>
+        <h2 style="color: var(--accent-blue);">1. Calendarization (Takvim Uyarlaması)</h2>
         <p>
-            Elma ile Elma kıyaslanmalıdır.
-            <br>• Eğer Payda (Denominator) <strong>EBITDA</strong> ise (Tüm sermaye sahiplerine ait kar), Pay (Numerator) <strong>Enterprise Value</strong> olmalıdır.
-            <br>• Eğer Payda <strong>Net Income</strong> ise (Sadece hissedara ait kar), Pay <strong>Equity Value</strong> (P/E) olmalıdır.
+            Şirket A'nın mali yılı Aralık'ta biter. Şirket B'nin Mart'ta biter. Bu ikisini doğrudan kıyaslayamazsınız.
+            Hepsini aynı zaman dilimine (genellikle LTM veya takvim yılı sonuna) çekmeniz gerekir.
         </p>
+        
         <div class="mech-box">
-            Doğru: EV / EBITDA, EV / Sales, EV / EBIT
+            <strong>LTM Formula (The Holy Grail):</strong>
             <br>
-            Doğru: Equity Value / Net Income (P/E), Equity Value / Book Value
-            <br>
-            YANLIŞ: EV / Net Income (Kırmızı Bayrak!)
+            LTM = Current Year Q3 YTD + Prior Year Full Year - Prior Year Q3 YTD
+            <br><br>
+            <em>Mantık: Son 9 ayı al, geçen senenin tamamını ekle, geçen senenin ilk 9 ayını çıkar. Geriye son 12 ay kalır.</em>
         </div>
 
-        <h2 style="color: var(--accent-blue);">2. Enterprise Value: The Real Bridge</h2>
-        <p>
-            Equity Value (Market Cap) sadece buzdağının görünen kısmıdır. Şirketin "Gerçek Devralma Maliyeti" (Takeover Price) Enterprise Value'dur.
-            Formülü ezberleme, mantığı kavra: <strong>Core Business</strong> değerini arıyoruz.
-        </p>
-        <div class="mech-box">
-            Enterprise Value = Equity Value + Debt + Preferred Stock + Non-Controlling Interest - Cash
-        </div>
-        <p>
-            <strong>Neden Cash çıkarıyoruz?</strong>
-            Çünkü şirketi satın aldığınızda kasadaki nakit de size geçer. O parayı borcu ödemek için kullanabilirsiniz. 
-            Yani cebinizden çıkan net para azalır. 
-            (Ev alırken, evin içindeki kasada 10.000 $ bulmak gibi. Evin fiyatından düşersiniz).
-        </p>
-        <p>
-            <strong>Neden NCI ekliyoruz?</strong>
-            Çünkü EBITDA %100 konsolidedir (Tüm şirketin karı görünür). 
-            Eğer NCI'ı (Azınlık payı) EV'ye eklemezsen, Pay (EV) %X şirketi temsil ederken, Payda (EBITDA) %100 şirketi temsil eder. 
-            Tutarsızlık olur (Mismatch).
-        </p>
+        <h2 style="color: var(--accent-blue);">2. EV/EBITDA vs P/E: The Showdown</h2>
+        <table style="width:100%; border-collapse: collapse; margin-bottom: 24px; font-size: 14px;">
+            <tr style="background-color: #f1f5f9;">
+                <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Özellik</th>
+                <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">EV / EBITDA</th>
+                <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">P / E (Price to Earnings)</th>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Kimin Değeri?</strong></td>
+                <td style="padding: 12px; border: 1px solid #e2e8f0;">Enterprise (Şirketin Tamamı)</td>
+                <td style="padding: 12px; border: 1px solid #e2e8f0;">Equity (Sadece Hissedar)</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Sermaye Yapısı</strong></td>
+                <td style="padding: 12px; border: 1px solid #e2e8f0; color: green;">Nötr (Borçtan etkilenmez)</td>
+                <td style="padding: 12px; border: 1px solid #e2e8f0; color: red;">Bağımlı (Borç artarsa P/E değişir)</td>
+            </tr>
+            <tr>
+                <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Kullanım Yeri</strong></td>
+                <td style="padding: 12px; border: 1px solid #e2e8f0;">M&A, LBO, Genel Değerleme</td>
+                <td style="padding: 12px; border: 1px solid #e2e8f0;">Perakende Yatırımcı, Bankalar</td>
+            </tr>
+        </table>
 
-        <h2 style="color: var(--accent-blue);">3. Picking The Right Peers</h2>
+        <h2 style="color: var(--accent-blue);">3. Sum-of-the-Parts (SOTP)</h2>
         <p>
-            Her şirket Comp (Emsal) olamaz. En iyi Comp setini seçmek için <strong>"G.I.S.F."</strong> filtresini kullan:
+            Amazon hem bir perakendeci (Retail) hem de bir bulut şirketidir (AWS). İkisini tek bir çarpanla (örn. 20x EBITDA) değerlemek yanlıştır.
         </p>
+        <div class="proof-box">
+            <div class="proof-title"><i class="fa-solid fa-puzzle-piece"></i> Parçala ve Yönet</div>
+            <p style="color: #1e3a8a; margin: 0;">
+                1. Retail Segment: 10 Milyar EBITDA * 10x (Walmart Çarpanı) = 100 Milyar
+                <br>
+                2. AWS Segment: 5 Milyar EBITDA * 25x (Salesforce Çarpanı) = 125 Milyar
+                <br>
+                <strong>Toplam Değer = 225 Milyar</strong>
+                <br>
+                (Tek çarpan kullansaydık 15 * 15x = 225? Belki. Ama SOTP daha hassastır.)
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">4. Industry Specific Multiples</h2>
         <ul>
-            <li><strong>Geography:</strong> Aynı bölgede mi? (US vs Emerging Markets risk primi farklıdır).</li>
-            <li><strong>Industry:</strong> Aynı işi mi yapıyor?</li>
-            <li><strong>Size:</strong> Market Cap yakın mı? (Small Cap iskontosu).</li>
-            <li><strong>Financials:</strong> Büyüme ve Marjlar benzer mi? (%40 büyüyen SaaS ile %5 büyüyen Oracle kıyaslanamaz).</li>
+            <li><strong>Tech / SaaS:</strong> EV / Revenue (Çünkü çoğu kâr etmez).</li>
+            <li><strong>Energy (Oil & Gas):</strong> EV / EBITDAX (Exploration maliyetlerini nötrlemek için).</li>
+            <li><strong>REITs (Gayrimenkul):</strong> Price / FFO (Funds From Operations). Net Income anlamsızdır çünkü amortisman çok yüksektir.</li>
+            <li><strong>Banks:</strong> P / BV (Price to Book Value). Bankanın varlığı nakittir, defter değeri piyasa değerine yakındır.</li>
         </ul>
-
-        <div class="drill-section">
-            <h3>Rapid Fire Drills</h3>
-            
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Unlevered Free Cash Flow (UFCF) çarpanı kullanabilir miyim?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Evet, EV / UFCF geçerli bir çarpandır. Ancak P/E gibi Equity Value tabanlı çarpanlarda Levered FCF kullanılmalıdır.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Hangi durumda P/E yerine EV/EBITDA tercih edilir?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Sermaye yapısı (Borçluluk oranı) çok farklı şirketleri kıyaslarken. 
-                    P/E borçtan (faiz giderinden) etkilenir. EV/EBITDA ise "Capital Structure Neutral"dır (Nötr). 
-                    Operasyonel performansı daha saf ölçer.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Convertible Bond'lar Enterprise Value'yu nasıl etkiler?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    "In the Money" ise (Hisse fiyatı > Dönüştürme fiyatı), borç olarak değil, hisse senedi olarak (Diluted Equity Value içinde) işlem görür. 
-                    "Out of the Money" ise borç olarak (Debt) kalır.
-                </div>
-            </div>
-        </div>
 
     </div>
 </body>

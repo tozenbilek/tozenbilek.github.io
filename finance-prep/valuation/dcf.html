@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DCF Modeling | Valuation</title>
+    <title>DCF Masterclass | Valuation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -13,102 +13,129 @@
 <body>
 
     <div class="container">
-        <div class="nav-header">
+        <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
             <a href="index.html" class="nav-link">Valuation</a>
             <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">DCF Analysis</span>
-        </div>
+            <span style="color: var(--text-primary);">DCF Masterclass</span>
+        </nav>
 
         <h1>DCF: The Intrinsic Value Engine</h1>
         <p>
             Discounted Cash Flow (DCF), bir varlığın değerinin, üreteceği nakit akışlarının bugünkü değeri olduğu ilkesine dayanır. 
+            Bu sayfada, sadece formülleri değil, Wall Street'te yapılan hataları ve <strong>"Mid-Year Convention"</strong> gibi ince ayarları öğreneceksiniz.
         </p>
 
+        <h2 style="color: var(--accent-blue);">1. The Projection Phase (UFCF)</h2>
+        <p>
+            Amaç "Unlevered Free Cash Flow" (UFCF) üretmektir. Bu, borç ödemeleri yapılmadan <strong>önce</strong> şirketin elinde kalan nakittir (Tüm sermaye sahiplerine aittir).
+        </p>
+        
+        <div class="mech-box">
+            <strong>EBIT</strong> (Operating Income)
+            <br> (-) Taxes on EBIT (EBIT * Tax Rate) --> <em>Gerçek ödenen vergi değil, teorik vergi</em>
+            <br> <strong>= NOPAT (Net Operating Profit After Tax)</strong>
+            <br> (+) D&A (Non-Cash Giderleri Ekle)
+            <br> (-) Change in Net Working Capital (İşletme Sermayesi Artışı Nakit Yer)
+            <br> (-) CapEx (Yatırım Harcaması Nakit Yer)
+            <br> <strong>= Unlevered Free Cash Flow</strong>
+        </div>
+
         <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> TL;DR: DCF Mantığı</div>
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> "Why Unlevered?"</div>
             <p style="color: #1f2933; margin: 0;">
-                DCF şudur: "Sana bugün 100 TL mi vereyim, yoksa seneye 110 TL mi?" sorusunun cevabıdır.<br><br>
-                Eğer seneye 110 TL almayı kabul ediyorsan, senin iskonto oranın (WACC) %10'dur. 
-                Şirket değerleme de aynıdır: Gelecekteki o devasa kârları alıp, risk oranımıza göre törpüleyerek (iskonto ederek) bugünkü fiyatını buluruz.
-                WACC ne kadar yüksekse (Risk o kadar büyükse), şirketin bugünkü değeri o kadar düşük çıkar.
+                Neden faiz giderini düşmüyoruz? Çünkü DCF, bir evi mortgage ile de alsan, peşin de alsan evin değerinin (Enterprise Value) değişmeyeceği mantığına dayanır.
+                Biz evin (şirketin) değerini buluyoruz, senin onu nasıl finanse ettiğin (Borç vs Özkaynak) sonraki iş.
             </p>
         </div>
 
-        <h2 style="color: var(--accent-blue);">1. UFCF Derivation (Unlevered Free Cash Flow)</h2>
+        <h2 style="color: var(--accent-blue);">2. The Discount Rate (WACC)</h2>
         <p>
-            Tüm sermaye sahiplerine (Borç + Hisse) ait olan nakit akışıdır.
+            Gelecekteki parayı bugüne getirmek için bir "Ceza Oranı" (Discount Rate) belirlemeliyiz. Bu oran WACC'tir.
         </p>
         <div class="math-block">
-            \[ \text{EBIT} \times (1 - \text{Tax Rate}) \quad \text{(NOPAT)} \]
-            \[ + \quad \text{D\&A} \quad \text{(Non-cash ekle)} \]
-            \[ - \quad \Delta \text{NWC} \quad \text{(İşletme sermayesi yatırımı)} \]
-            \[ - \quad \text{Capex} \quad \text{(Yatırım harcaması)} \]
-            \[ = \quad \text{UFCF} \]
+            \[ WACC = (K_e \times W_e) + (K_d \times W_d \times (1-t)) \]
+            <br>
+            <strong>Kilit Soru:</strong> Neden Borç maliyetini (1-t) ile çarpıyoruz da Hisse maliyetini çarpmıyoruz?
+            <br><strong>Cevap:</strong> Çünkü faiz vergiden düşer (Tax Shield), temettü düşmez. Devlet borçlanmayı sübvanse eder.
         </div>
 
-        <h2 style="color: var(--accent-blue);">2. Mathematical Proof: Terminal Value</h2>
+        <h2 style="color: var(--accent-blue);">3. Mid-Year Convention (İnce Ayar)</h2>
         <p>
-            DCF'in %70'i Terminal Value'dan gelir. Genellikle <strong>Gordon Growth Model</strong> kullanılır. 
+            Standart formül \( \frac{CF}{(1+r)^1} \) paranın yıl sonunda (31 Aralık 23:59) geldiğini varsayar. 
+            Oysa şirketler parayı yıl boyunca kazanır (Ocak, Şubat...). 
+            Ortalamada para yılın ortasında (30 Haziran) gelir. Bu yüzden üs olarak \( 0.5, 1.5, 2.5 \) kullanırız.
         </p>
-
         <div class="proof-box">
-            <div class="proof-title"><i class="fa-solid fa-calculator"></i> The Engineering Proof</div>
-            <p style="color: #1e3a8a; margin-bottom: 16px;">
-                Bir nakit akışı \( CF \) her yıl \( g \) oranında büyüsün ve \( r \) (WACC) ile iskonto edilsin.
+            <div class="proof-title"><i class="fa-solid fa-calculator"></i> The Math Impact</div>
+            <p style="color: #1e3a8a; margin: 0;">
+                Normal: \( \frac{100}{(1.10)^1} = 90.90 \)
+                <br>
+                Mid-Year: \( \frac{100}{(1.10)^{0.5}} = 95.34 \)
+                <br>
+                <strong>Sonuç:</strong> Mid-Year kullanmak şirket değerini %5-10 artırır. Satıcı tarafı (Sell-side) bunu sever, alıcı tarafı sevmez.
             </p>
-            <div class="math-block" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-                \[ PV = \frac{CF_1}{(1+r)} + \frac{CF_1(1+g)}{(1+r)^2} + \dots \]
-                <br>
-                Ortak çarpan \( x = \frac{1+g}{1+r} \). Yakınsama koşulu \( r > g \) olmalıdır.
-                <br>
-                \[ \text{Terminal Value} = \frac{CF_{final} \times (1+g)}{r - g} \]
-            </div>
         </div>
 
-        <h2 style="color: var(--accent-blue);">3. WACC & Beta Unlevering</h2>
+        <h2 style="color: var(--accent-blue);">4. Terminal Value (The 70% Chunk)</h2>
         <p>
-            Beta (\( \beta \)), risk ölçüsüdür. Ancak halka açık betalar "Levered"dır (Borç riski içerir). 
+            5 yıl tahmin yaptık, peki şirket 6. yıl ölüyor mu? Hayır. Sonsuza kadar (Going Concern) yaşadığını varsayarız. İki yöntem vardır:
         </p>
+        <ul>
+            <li><strong>Exit Multiple Method:</strong> "5 yıl sonra bu şirketi 10x EBITDA'ya satarız" deriz. (Piyasa odaklı).</li>
+            <li><strong>Gordon Growth Method:</strong> "Şirket sonsuza kadar enflasyon oranında (%2-3) büyür" deriz. (Akademik).</li>
+        </ul>
 
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> The "Unlevering" Analogy</div>
-            <p style="color: #1f2933; margin: 0;">
-                Beta'yı "Risk Sırt Çantası" olarak düşünün. <br><br>
-                Her şirketin sırtında iki yük vardır:<br>
-                1. <strong>Business Risk (Unlevered Beta):</strong> Yaptığı işin zorluğu (Yazılım vs İnşaat).<br>
-                2. <strong>Financial Risk (Leverage):</strong> Sırtındaki borç yükü.<br><br>
-                İki şirketi kıyaslarken, borç yükünü (sırt çantasını) çıkarıp, sadece kas gücünü (Business Risk) kıyaslamalıyız. İşte bu işleme "Unlevering" denir. Sonra kendi şirketimizin borç yükünü tekrar ekleriz (Relevering).
-            </p>
-        </div>
-
-        <div class="math-block">
-            \[ \beta_{unlevered} = \frac{\beta_{levered}}{1 + (1-t)(\frac{D}{E})} \]
-        </div>
+        <h2 style="color: var(--accent-blue);">5. Sensitivity Analysis (Football Field)</h2>
+        <p>
+            Tek bir değer (100 Milyon $) vermek amatörlüktür. "Değer Aralığı" (Range) vermelisiniz. 
+            WACC ve Terminal Growth oranlarını değiştirerek bir matris oluştururuz.
+        </p>
+        <table style="width:100%; text-align:center; border-collapse:collapse; font-family:'JetBrains Mono'; font-size:12px; margin: 24px 0;">
+            <tr style="background:#f1f5f9;">
+                <td style="padding:8px; border:1px solid #e2e8f0;">WACC / Growth</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">2.0%</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">2.5%</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">3.0%</td>
+            </tr>
+            <tr>
+                <td style="padding:8px; border:1px solid #e2e8f0; font-weight:bold;">8.0%</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$150</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$165</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$185</td>
+            </tr>
+            <tr>
+                <td style="padding:8px; border:1px solid #e2e8f0; font-weight:bold;">10.0%</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$120</td>
+                <td style="padding:8px; border:1px solid #e2e8f0; background:#dbeafe; font-weight:bold;">$130</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$140</td>
+            </tr>
+        </table>
 
         <div class="drill-section">
-            <h3>Rapid Fire Drills</h3>
+            <h3>Interview Pitfalls</h3>
             
             <div class="drill-item" tabindex="0">
                 <div class="drill-q">
-                    <span>Terminal Value'da Exit Multiple mı Growth Method mu kullanmalıyım?</span>
+                    <span>Levered FCF kullanıp WACC ile iskonto edersem ne olur?</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
                 <div class="drill-a">
-                    İkisini de yap ve "Sanity Check" (Mantık Kontrolü) uygula. 
-                    Growth Method ile bulduğun değerin ima ettiği (Implied) çarpan, sektör ortalamasının çok üzerindeyse, \( g \) varsayımın hatalıdır.
+                    <strong>Felaket olur.</strong> "Double Counting" yapmış olursun. 
+                    Levered FCF zaten faiz ödenmiş (borç düşülmüş) halidir. WACC ise borç maliyetini de içerir. 
+                    Hem paydan hem paydadan düşmüş olursun.
                 </div>
             </div>
 
             <div class="drill-item" tabindex="0">
                 <div class="drill-q">
-                    <span>Cost of Equity neden Cost of Debt'ten yüksektir?</span>
+                    <span>Hangi şirkete DCF yapılmaz?</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
                 <div class="drill-a">
-                    1) Borç garantidir, Hisse garanti değildir (Risk Premium).
-                    2) Faiz vergiden düşer, temettü düşmez.
+                    1) Bankalar (Nakit akışı tanımlanamaz, işletme sermayesi yoktur. DDM kullanılır).
+                    2) Erken aşama start-up'lar (Nakit akışları tahmin edilemez, negatiftir).
                 </div>
             </div>
         </div>
