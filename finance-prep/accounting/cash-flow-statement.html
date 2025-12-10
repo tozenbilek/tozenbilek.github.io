@@ -6,6 +6,8 @@
     <title>Cash Flow Statement | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -20,51 +22,95 @@
 
         <h1>1.3 Cash Flow Statement (Nakit Akış Tablosu)</h1>
         <p>
-            Gelir tablosu "Görüş" bildirir (Accrual), Nakit Akış tablosu "Gerçeği" söyler (Cash).
-            Bir şirket kâr edebilir ama nakitsizlikten batabilir.
+            Muhasebedeki en dürüst tablodur. "Kâr bir fikirdir, Nakit bir gerçektir."
+            Income Statement (Kâr) yalan söyleyebilir ama Banka Hesabı (Cash Flow) yalan söylemez.
         </p>
 
-        <h2 style="color: var(--accent-green);">Neden İhtiyacımız Var?</h2>
+        <h2 style="color: var(--accent-green);">1. The "Cüzdan" Analogy</h2>
+        <div class="mech-box">
+            Gelir Tablosu diyor ki: "Bu ay 10.000 TL kazandın." (Maaş bordrosu).
+            <br>Ama cüzdanına bakıyorsun, sadece 2.000 TL var. <strong>Geri kalan 8.000 TL nerede?</strong>
+            <br><br>
+            İşte Cash Flow Statement bu 8.000 TL'nin hikayesini anlatır:
+            <ul>
+                <li>"Arkadaşın Ahmet'e 3.000 TL borç verdin." (Accounts Receivable - Nakit Çıkışı).</li>
+                <li>"Gelecek ayın kirasını (5.000 TL) peşin ödedin." (Prepaid Expense - Nakit Çıkışı).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. The Structure (Yapı)</h2>
+        <p>Paranın şirkete giriş ve çıkış yolları 3 ana başlıkta toplanır.</p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> CFS_Breakdown.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 150px;">
+                <div class="excel-cell header">Category</div>
+                <div class="excel-cell header">Anlamı</div>
+
+                <!-- CFO -->
+                <div class="excel-cell bold" style="background:#f0fdf4;">1. Cash from Operations (CFO)</div>
+                <div class="excel-cell" style="background:#f0fdf4;">İşletme Faaliyetleri</div>
+                
+                <div class="excel-cell indent">Net Income</div>
+                <div class="excel-cell">Başlangıç (Kâr)</div>
+
+                <div class="excel-cell indent">(+) D&A</div>
+                <div class="excel-cell">Amortismanı geri ekle (Nakit çıkmadı)</div>
+
+                <div class="excel-cell indent">(-) Change in Working Capital</div>
+                <div class="excel-cell">Stok aldım (Para çıktı), Borç taktım (Para kaldı)</div>
+
+                <!-- CFI -->
+                <div class="excel-cell bold" style="background:#eff6ff;">2. Cash from Investing (CFI)</div>
+                <div class="excel-cell" style="background:#eff6ff;">Yatırım Faaliyetleri</div>
+
+                <div class="excel-cell indent">(-) CapEx</div>
+                <div class="excel-cell">Fabrika/Makine aldım (Para Çıktı)</div>
+
+                <div class="excel-cell indent">(+) Asset Sales</div>
+                <div class="excel-cell">Eski arabayı sattım (Para Girdi)</div>
+
+                <!-- CFF -->
+                <div class="excel-cell bold" style="background:#f5f3ff;">3. Cash from Financing (CFF)</div>
+                <div class="excel-cell" style="background:#f5f3ff;">Finansman Faaliyetleri</div>
+
+                <div class="excel-cell indent">(+) Debt Issuance</div>
+                <div class="excel-cell">Borç aldım (Para Girdi)</div>
+
+                <div class="excel-cell indent">(-) Dividends</div>
+                <div class="excel-cell">Ortaklara para dağıttım (Para Çıktı)</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Indirect Method Logic</h2>
         <p>
-            Çünkü Net Income (Kâr) içinde nakit olmayan (Non-Cash) giderler vardır (Amortisman gibi). 
-            Ayrıca İşletme Sermayesi değişimleri (Stok almak) kârı etkilemez ama nakdi bitirir.
+            Neden doğrudan "Şuradan şu kadar para geldi" diye yazmıyoruz da Net Income'dan başlayıp tersten gidiyoruz?
         </p>
-
-        <h2 style="color: var(--accent-green);">The 3 Sections (CFO, CFI, CFF)</h2>
-        
-        <div class="mech-box" style="border-left: 4px solid var(--accent-green);">
-            <h3>1. Cash from Operations (CFO)</h3>
-            <p>Ana faaliyetten gelen nakit. En önemli kısımdır.</p>
-            <ul>
-                <li><strong>Net Income:</strong> Başlangıç noktası.</li>
-                <li><strong>(+) D&A:</strong> Amortismanı geri ekle (Çünkü para çıkmadı).</li>
-                <li><strong>(-) Change in Working Capital:</strong> Stok artarsa para çıkar (-), Borç artarsa para cepte kalır (+).</li>
-            </ul>
+        <div class="content-box-base">
+            Çünkü muhasebe kayıtları <strong>Accrual (Tahakkuk)</strong> esaslıdır.
+            <br>
+            CFO hesaplarken aslında şunu yapıyoruz:
+            <br>
+            <em>"Sevgili Net Income, sen harikasın ama içinde çok fazla 'sanal' (nakit olmayan) şey var. Gel senin içindeki sanal köpükleri (Amortisman) alalım ve zamanlama farklarını (Working Capital) düzeltelim."</em>
         </div>
 
-        <div class="mech-box" style="border-left: 4px solid var(--accent-blue);">
-            <h3>2. Cash from Investing (CFI)</h3>
-            <p>Geleceğe yapılan yatırımlar.</p>
+        <h2 style="color: var(--accent-green);">4. Working Capital Rules (Ezberleyin)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-brain"></i> The Golden Rules</div>
             <ul>
-                <li><strong>(-) CapEx:</strong> Fabrika/Makine alımı (Para Çıkışı).</li>
-                <li><strong>(+) Asset Sales:</strong> Eski makine satışı (Para Girişi).</li>
+                <li><strong>Asset Artarsa -> Nakit Azalır (-)</strong>
+                    <br>(Stok arttı = Para verip stok aldım = Para gitti).
+                </li>
+                <li><strong>Asset Azalırsa -> Nakit Artar (+)</strong>
+                    <br>(Stok azaldı = Malı sattım = Para geldi).
+                </li>
+                <li><strong>Liability Artarsa -> Nakit Artar (+)</strong>
+                    <br>(Borç arttı = Tedarikçiye ödemedim, para cebimde kaldı).
+                </li>
+                <li><strong>Liability Azalırsa -> Nakit Azalır (-)</strong>
+                    <br>(Borç azaldı = Borcumu ödedim = Para gitti).
+                </li>
             </ul>
-        </div>
-
-        <div class="mech-box" style="border-left: 4px solid var(--accent-cyan);">
-            <h3>3. Cash from Financing (CFF)</h3>
-            <p>Yatırımcılarla para trafiği.</p>
-            <ul>
-                <li><strong>(+) Debt Issuance:</strong> Borç alma (Para Girişi).</li>
-                <li><strong>(-) Debt Repayment:</strong> Borç ödeme (Para Çıkışı).</li>
-                <li><strong>(-) Dividends:</strong> Temettü ödemesi (Para Çıkışı).</li>
-            </ul>
-        </div>
-
-        <div class="algo-box">
-            <strong>Grand Finale:</strong><br>
-            CFO + CFI + CFF = <strong>Net Change in Cash</strong><br>
-            Bu rakam, Bilançodaki "Cash" kaleminin ne kadar arttığını veya azaldığını gösterir.
         </div>
 
         <div class="lesson-nav">
