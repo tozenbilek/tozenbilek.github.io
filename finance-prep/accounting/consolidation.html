@@ -6,6 +6,8 @@
     <title>Consolidation | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -19,35 +21,54 @@
             <span style="color: var(--text-primary);">Consolidation</span>
         </nav>
 
-        <h1>Consolidation & Non-Controlling Interest</h1>
+        <h1>Consolidation Logic & NCI Formula</h1>
         <p>
-            Bir şirket başka bir şirketi satın aldığında, bilançoları nasıl birleşir? 
-            Kural basit: <strong>"Kontrol kimdeyse (%50+), kalemi eline o alır."</strong>
+            Ev arkadaşı analojisini anladıysanız, şimdi konsolidasyon matematiğine (Acquisition Math) geçelim.
         </p>
 
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> Analoji: Ev Arkadaşı</div>
-            <p style="color: #1f2933; margin: 0;">
-                Siz ve arkadaşınız bir eve çıktınız. Kirayı (Kontrolü) %60 siz ödüyorsunuz.
-                <br>
-                Muhasebe kuralı der ki: "Eğer evin patronu sensen (%50+), sanki evin <strong>TAMAMI (%100)</strong> seninmiş gibi davranacaksın."
-                <br><br>
-                Bilançona evin değerini (1 Milyon TL) tam yazarsın. 
-                Ama evin %40'ı arkadaşının. Bu haksızlık değil mi?
-                <br>
-                Haksızlığı düzeltmek için Bilançonun "Yükümlülükler" kısmına küçük bir not düşersin: 
-                <strong>"Non-Controlling Interest (NCI): Evin %40'ı arkadaşıma aittir."</strong>
-                <br><br>
-                Böylece hem evin tamamını gösterirsin (büyüklüğünü göstermek için), hem de hakkı olana hakkını teslim edersin.
-            </p>
+        <h2 style="color: var(--accent-green);">1. Goodwill Calculation (Şerefiye Hesabı)</h2>
+        <p>
+            Bir şirkete "Defter Değeri"nden (Book Value) daha fazla öderseniz, aradaki fark "Hava Parası" yani Goodwill'dir.
+        </p>
+        <div class="math-block">
+            \[ \text{Goodwill} = \text{Purchase Price} - (\text{Fair Value of Net Assets}) \]
+        </div>
+        <div class="mech-box">
+            <strong>Örnek:</strong>
+            <br>Şirket A'nın Defter Değeri (Assets - Liabilities): 100 TL.
+            <br>Şirket B, bu şirketi 150 TL'ye satın aldı.
+            <br><strong>Goodwill = 150 - 100 = 50 TL.</strong>
+            <br>(Bu 50 TL bilançoya "Varlık" olarak girer).
         </div>
 
-        <h2 style="color: var(--accent-green);">1. Konsolidasyon Yöntemleri</h2>
-        <ul>
-            <li><strong>%0 - %20 (Küçük Yatırım):</strong> Sadece bir hisse senedi yatırımı gibi görünür.</li>
-            <li><strong>%20 - %50 (Equity Method):</strong> Ortaklık (Joint Venture). Şirketin tamamını göstermezsin, sadece kârından payını tek satırda gösterirsin.</li>
-            <li><strong>%50+ (Consolidation):</strong> Tam birleşme. Şirketin tüm gelirini, tüm borcunu kendi üzerine alırsın. Sonra NCI kalemiyle düzeltme yaparsın.</li>
-        </ul>
+        <h2 style="color: var(--accent-green);">2. Non-Controlling Interest (NCI) Formula</h2>
+        <p>
+            Şirketin sadece %60'ını satın alırsanız ne olur? (Değeri 100 TL olsun).
+        </p>
+        <div class="math-block">
+            \[ \text{NCI Value} = \text{Book Value of Target} \times \text{Minority \%} \]
+        </div>
+        
+        <div class="mech-box">
+            <strong>Adım Adım Konsolidasyon:</strong>
+            <br>1. Hedef şirketin Assets & Liabilities'ını %100 kendi bilançona ekle. (Evet, %100'ünü).
+            <br>2. Hedef şirketin Equity'sini (Sermayesini) sil (Wipe out).
+            <br>3. Kendi Equity kısmına <strong>NCI</strong> kalemi ekle.
+            <br><br>
+            <strong>Hesap:</strong> 100 TL * %40 (Bizim olmayan kısım) = <strong>40 TL (NCI)</strong>.
+            <br>Böylece bilanço dengelenir.
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Income Statement Consolidation</h2>
+        <p>
+            Sadece Bilanço değil, Gelir Tablosu da birleşir.
+        </p>
+        <div class="math-block">
+            \[ \text{Consolidated Net Income} = \text{Parent NI} + \text{Target NI} - (\text{Target NI} \times \text{NCI \%}) \]
+        </div>
+        <p>
+            Yani, Hedefin tüm kârını (%100) ekleriz, sonra bize ait olmayan kısmı (%40) "Net Income Attributable to NCI" satırında düşeriz.
+        </p>
 
     </div>
 </body>

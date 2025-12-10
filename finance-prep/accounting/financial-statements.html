@@ -6,6 +6,8 @@
     <title>3 Financial Statements | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -19,76 +21,92 @@
             <span style="color: var(--text-primary);">3-Statement Logic</span>
         </nav>
 
-        <h1>Muhasebe 101: Limonata Tezgahı</h1>
+        <h1>The 3 Statements: The Integrated Machine</h1>
         <p>
-            Finansal tabloları anlamak için Wall Street'e gitmeye gerek yok. Mahalledeki limonata tezgahına bakalım.
-            Her şey <strong>100 TL sermaye</strong> ile başlıyor.
+            Basit limonata hikayesini anladıysanız, şimdi işin mühendisliğine geçelim.
+            Wall Street'te bu tablolar matematiksel bir kesinlikle birbirine bağlanır.
         </p>
 
-        <h2 style="color: var(--accent-green);">Bölüm 1: Bilanço (Fotoğraf Çekmek)</h2>
+        <!-- Layer 1: Intuition (Already there, kept brief) -->
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> ELI5: Cüzdan Analojisi</div>
+            <p style="color: #1f2933; margin: 0;">
+                <strong>Income Statement:</strong> Film (Süreli performans).<br>
+                <strong>Balance Sheet:</strong> Fotoğraf (Anlık durum).<br>
+                <strong>Cash Flow:</strong> Cüzdan (Gerçek nakit).<br>
+                Bu üçü, aşağıda göreceğiniz <strong>"Linkage Equations"</strong> ile birbirine kilitlenir.
+            </p>
+        </div>
+
+        <!-- Layer 2: The Formulas (Enrichment) -->
+        <h2 style="color: var(--accent-green);">1. The Fundamental Equation (Bilanço Dengesi)</h2>
         <p>
-            Bilanço (Balance Sheet), o anlık durumdur. "Şu an neyim var?" sorusudur.
+            Bu denklem muhasebenin Newton Kanunu'dur. Asla bozulamaz.
         </p>
-        <div class="mech-box">
-            <strong>BAŞLANGIÇ (Sabah 08:00)</strong><br><br>
-            <strong>Sol Taraf (Varlıklar - Assets):</strong><br>
-            - Kasa (Nakit): 100 TL<br>
+        <div class="math-block">
+            \[ \text{Assets} = \text{Liabilities} + \text{Shareholders' Equity} \]
             <br>
-            <strong>Sağ Taraf (Kaynaklar - Liabilities & Equity):</strong><br>
-            - Benim Param (Equity): 100 TL<br>
+            <strong>Assets (Kullanım):</strong> Şirketin sahip olduğu kaynaklar (Nakit, Fabrika, Stok).
             <br>
-            <em>* Gördüğünüz gibi Sol = Sağ (100 = 100). Denge asla bozulmaz.</em>
+            <strong>L + E (Kaynak):</strong> Bu varlıkları kim finanse etti? (Banka Borcu veya Ortak Sermayesi).
         </div>
 
-        <h2 style="color: var(--accent-green);">Bölüm 2: Gelir Tablosu (Film İzlemek)</h2>
+        <h2 style="color: var(--accent-green);">2. The Linkage Mechanisms (Bağlantı Denklemleri)</h2>
         <p>
-            Gün boyunca satış yaptınız. Akşam oldu. "Bugün ne kazandım?" sorusu Gelir Tablosudur (Income Statement).
+            3 Tabloyu birbirine bağlayan "Köprüler" şunlardır:
         </p>
-        <div class="mech-box" style="background: #fff7ed; border-color: #fed7aa;">
-            <strong>GÜN SONU RAPORU</strong><br><br>
-            + Satışlar (Revenue): 200 TL (Limonata sattık)<br>
-            - Maliyetler (COGS): 50 TL (Limon ve şeker parası)<br>
-            ---------------------------<br>
-            <strong>= Brüt Kâr: 150 TL</strong><br>
-            - Kira (OpEx): 10 TL (Tezgah kirası)<br>
-            ---------------------------<br>
-            <strong>= Net Kâr (Net Income): 140 TL</strong>
+
+        <div class="mech-box" style="border-left: 4px solid var(--accent-green);">
+            <h3 style="margin-top:0; font-size:14px; color:var(--text-primary);">A. Retained Earnings Roll-Forward</h3>
+            <p style="font-size:13px; margin-bottom:12px;">Gelir Tablosu (IS) ile Bilanço (BS) arasındaki ana bağlantıdır.</p>
+            <div class="math-block" style="background:transparent; padding:0; box-shadow:none; border:none; margin:0;">
+                \[ \text{Ending R.E.} = \text{Beginning R.E.} + \text{Net Income} - \text{Dividends} \]
+            </div>
         </div>
 
-        <h2 style="color: var(--accent-green);">Bölüm 3: Nakit Akışı (Cüzdan Kontrolü)</h2>
-        <p>
-            "140 TL kâr ettim, süper!" dediniz. Cüzdanı açtınız... Ama içinde o kadar para yok. Neden?
-        </p>
-        <p>
-            Çünkü komşu Ahmet Abi 50 TL'lik limonata içti ama "Yarın öderim" dedi (Veresiye - Accounts Receivable).
-            Kağıt üzerinde kâr ettiniz ama para kasaya girmedi.
-        </p>
-        <div class="mech-box" style="background: #eff6ff; border-color: #bfdbfe;">
-            <strong>NAKİT AKIŞ TABLOSU</strong><br><br>
-            + Net Kâr: 140 TL (Kağıt üzerindeki kâr)<br>
-            - Ahmet Abi'nin Borcu: 50 TL (Para gelmedi, çıkarıyoruz)<br>
-            ---------------------------<br>
-            <strong>= Gerçek Nakit Artışı: 90 TL</strong>
+        <div class="mech-box" style="border-left: 4px solid var(--accent-blue);">
+            <h3 style="margin-top:0; font-size:14px; color:var(--text-primary);">B. Cash Flow Indirect Method</h3>
+            <p style="font-size:13px; margin-bottom:12px;">Gelir Tablosundan (IS) Nakit Akışına (CFS) geçiş formülü.</p>
+            <div class="math-block" style="background:transparent; padding:0; box-shadow:none; border:none; margin:0;">
+                \[ \text{CFO} = \text{Net Income} + \text{D\&A} - \Delta \text{Net Working Capital} \]
+            </div>
+            <ul style="font-size:13px; margin-top:8px; padding-left:20px;">
+                <li><strong>(+) D&A:</strong> Nakit çıkışı olmayan gideri geri ekle.</li>
+                <li><strong>(-) \(\Delta\)NWC:</strong> İşletme sermayesi artışı nakit yer (Use of Cash).</li>
+            </ul>
         </div>
 
-        <h2 style="color: var(--accent-green);">Sonuç: Gün Sonu Bilançosu</h2>
-        <p>Akşam eve dönerken durumumuz ne?</p>
-        <div class="mech-box">
-            <strong>AKŞAM (Saat 20:00)</strong><br><br>
-            <strong>Varlıklar (Assets):</strong><br>
-            - Kasa (Nakit): 190 TL (Sabahki 100 + Bugün kazandığım 90)<br>
-            - Alacaklar (AR): 50 TL (Ahmet Abi'den alacağım)<br>
-            <strong>Toplam Varlık: 240 TL</strong><br>
-            <br>
-            <strong>Kaynaklar (Equity):</strong><br>
-            - Başlangıç Sermayem: 100 TL<br>
-            - Bugünkü Kârım (Retained Earnings): 140 TL<br>
-            <strong>Toplam Kaynak: 240 TL</strong>
+        <div class="mech-box" style="border-left: 4px solid var(--accent-cyan);">
+            <h3 style="margin-top:0; font-size:14px; color:var(--text-primary);">C. The Cash Plug</h3>
+            <p style="font-size:13px; margin-bottom:12px;">CFS ile Bilanço (BS) arasındaki son bağlantı.</p>
+            <div class="math-block" style="background:transparent; padding:0; box-shadow:none; border:none; margin:0;">
+                \[ \text{Ending Cash}_{BS} = \text{Beginning Cash}_{BS} + \text{Net Change in Cash}_{CFS} \]
+            </div>
         </div>
+
+        <h2 style="color: var(--accent-green);">3. Real-World Drill: Depreciation Impact</h2>
         <p>
-            İşte "3 Tablo Nasıl Bağlanır?" sorusunun cevabı budur. 
-            Kâr (140 TL) bilançonun sağ tarafına eklenir. Nakit farkı (Ahmet Abi) ise sol tarafta (Alacaklar ve Nakit) dengelenir.
+            <strong>Soru:</strong> Amortisman (Depreciation) 10$ artarsa ne olur? (Tax Rate: 40%)
         </p>
+        <div class="algo-box">
+            1. Income Statement:
+               EBIT düşer (-10) -> Tax düşer (+4) -> Net Income düşer (-6).
+
+            2. Cash Flow Statement:
+               Net Income (-6) ile başla.
+               Depreciation (+10) geri ekle (Add-back).
+               Net Cash Change = +4 (Vergi kalkanı etkisi).
+
+            3. Balance Sheet:
+               Cash artar (+4).
+               PP&E düşer (-10).
+               Assets Net Değişim = -6.
+               
+               Retained Earnings düşer (-6).
+               Liabilities+Equity Net Değişim = -6.
+               
+               DENGE: -6 = -6 (OK).
+        </div>
 
     </div>
 </body>
