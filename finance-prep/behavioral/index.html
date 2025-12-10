@@ -6,133 +6,58 @@
     <title>Behavioral Prep | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --accent-beh: #be185d;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
-        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
-        .nav-link:hover { color: var(--accent-beh); }
-        .nav-sep { color: var(--border-color); }
-
-        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
-        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-beh); padding-left: 16px; }
-        p { margin-bottom: 20px; color: var(--text-secondary); }
-        strong { color: var(--text-primary); font-weight: 600; }
-        
-        .story-box {
-            background: #fff;
-            border: 1px solid var(--border-color);
-            padding: 24px;
-            border-radius: 8px;
-            margin: 24px 0;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-        
-        .star-grid {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 16px;
-            margin-top: 16px;
-        }
-        .star-label {
-            font-weight: 600;
-            color: var(--accent-beh);
-            text-align: right;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            padding-top: 2px;
-        }
-        .star-content {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .tip-box {
-            background: #fdf2f8;
-            border: 1px solid #fce7f3;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 24px 0;
-        }
-        .tip-title { color: #831843; font-weight: 600; font-size: 13px; margin-bottom: 8px; text-transform: uppercase; }
-
-        .question-card {
-            background: white;
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 24px;
-        }
-        .q-header { font-weight: 600; margin-bottom: 12px; color: var(--text-primary); font-size: 17px; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
     <div class="container">
-        <div class="nav-header">
-            <a href="../index.html" class="nav-link">Dashboard</a>
-            <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Behavioral & Fit</span>
-        </div>
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+        </nav>
 
-        <h1>The Behavioral Interview</h1>
-        <p>
-            Teknik sorular sizi kapıdan içeri sokar, Behavioral sorular işi alıp almayacağınızı belirler. 
-            MD (Managing Director) şuna bakar: <strong>"Gece saat 2'de ofiste bu çocukla baş başa kalsam, onu camdan aşağı atmak ister miyim?"</strong>
-            Buna "The Airport Test" denir.
-        </p>
+        <header>
+            <h1>The Behavioral Interview <span class="tag-ib" style="color: var(--accent-red); background: rgba(190, 24, 93, 0.1);">Critical</span></h1>
+            <p class="desc">
+                Teknik sorular sizi kapıdan içeri sokar, Behavioral sorular işi alıp almayacağınızı belirler. 
+                MD (Managing Director) şuna bakar: <strong>"Gece saat 2'de ofiste bu çocukla baş başa kalsam, onu camdan aşağı atmak ister miyim?"</strong>
+            </p>
+        </header>
 
-        <div class="tip-box">
-            <div class="tip-title"><i class="fa-solid fa-bullseye"></i> The Golden Rule</div>
+        <div class="content-box-base" style="background: #fdf2f8; border-color: #fce7f3;">
+            <h3 style="margin-top: 0; color: #831843; font-size: 14px; text-transform: uppercase;">The Golden Rule</h3>
             <p style="color: #831843; margin: 0;">
                 Asla ezberlenmiş cevaplar verme. Cevapların "Structured" (Yapılandırılmış) olsun ama doğal akışta konuş. 
                 Her hikayen şu 3 özelliği göstermeli: <strong>Grit (Azim), Analytical Ability (Analitik Zeka), Teamwork (Takım Oyunu).</strong>
             </p>
         </div>
 
-        <h2>1. "Tell Me About Yourself" (The Walkthrough)</h2>
+        <h2 style="color: var(--accent-red);">1. "Tell Me About Yourself" (The Walkthrough)</h2>
         <p>
             Bu soru mülakatın %90'ıdır. İlk 2 dakikada izlenim oluşur. Kronolojik gitme, <strong>Tematik</strong> git.
             Hikayen bir huni gibi daralmalı ve "Neden Şimdi, Neden IB, Neden Bu Banka" noktasında bitmeli.
         </p>
         
-        <div class="story-box">
-            <h3>Framework: The Spark, The Growing Interest, The Confirmation</h3>
-            <div class="star-grid">
-                <div class="star-label">THE SPARK</div>
-                <div class="star-content">
+        <div class="content-box-base">
+            <h3 style="margin-top: 0;">Framework: The Spark, The Growing Interest, The Confirmation</h3>
+            <div style="display: grid; grid-template-columns: 100px 1fr; gap: 16px; margin-top: 16px;">
+                <div style="font-weight: 600; color: var(--accent-red); text-align: right; font-family: 'JetBrains Mono'; font-size: 12px;">THE SPARK</div>
+                <div style="font-size: 14px; color: var(--text-secondary);">
                     "Computer Engineering okurken, algoritmaların sadece kodlarda değil, finansal piyasalarda da dünyayı nasıl şekillendirdiğini fark ettim. IEEE'de bir Fintech projesi yaparken, finansın mühendislik kadar analitik ama çok daha dinamik olduğunu gördüm."
                 </div>
 
-                <div class="star-label">GROWING</div>
-                <div class="star-content">
+                <div style="font-weight: 600; color: var(--accent-red); text-align: right; font-family: 'JetBrains Mono'; font-size: 12px;">GROWING</div>
+                <div style="font-size: 14px; color: var(--text-secondary);">
                     "Bu ilgiyi derinleştirmek için kendimi Accounting ve Valuation konularında eğittim. Sadece teoriyle kalmadım, Python ile Monte Carlo simülasyonları yazarak değerlemeyi bir mühendis gözüyle analiz ettim. Twitter LBO case'ini inceledim."
                 </div>
 
-                <div class="star-label">CONFIRMATION</div>
-                <div class="star-content">
+                <div style="font-weight: 600; color: var(--accent-red); text-align: right; font-family: 'JetBrains Mono'; font-size: 12px;">CONFIRMATION</div>
+                <div style="font-size: 14px; color: var(--text-secondary);">
                     "Şimdi, analitik yeteneklerimi (Engineering Background) ve finansal bilgimi (Valuation Prep) birleştirerek, yüksek tempolu ve sonuç odaklı bir ortamda, yani M&A ekibinizde kullanmak istiyorum."
                 </div>
             </div>
         </div>
 
-        <h2>2. "Why Investment Banking?"</h2>
-        <p>
-            Sakın "Çok para kazanmak için" veya "Finansı seviyorum" deme. Herkes seviyor.
-            Daha somut ve "Transaction-Oriented" cevaplar ver.
-        </p>
-        <div class="question-card">
-            <div class="q-header">The Best Answer Structure</div>
+        <h2 style="color: var(--accent-red);">2. "Why Investment Banking?"</h2>
+        <div class="content-box-base">
             <p>
                 <strong>1. Fast-Paced Learning Environment:</strong> "10 yılda öğreneceğim şeyi 2 yılda öğrenmek istiyorum. Mühendislikte olduğu gibi dik bir öğrenme eğrisini (Steep Learning Curve) seviyorum."
                 <br><br>
@@ -142,50 +67,9 @@
             </p>
         </div>
 
-        <h2>3. The STAR Method (For Competency Questions)</h2>
-        <p>
-            "Bana liderlik ettiğin bir zamanı anlat" veya "Zor bir durumla nasıl başa çıktın" soruları için <strong>S.T.A.R.</strong> metodunu kullan.
-        </p>
-
-        <div class="story-box">
-            <h3>Example: "Tell me about a time you failed."</h3>
-            <div class="star-grid">
-                <div class="star-label">SITUATION</div>
-                <div class="star-content">
-                    "IEEE'de büyük bir hackathon organize ediyorduk. Sponsorluk görüşmelerini ben yürütüyordum."
-                </div>
-                
-                <div class="star-label">TASK</div>
-                <div class="star-content">
-                    "Hedefimiz 50.000 TL bütçe toplamaktı. Etkinliğe 2 hafta kala hala 20.000 TL açığımız vardı."
-                </div>
-
-                <div class="star-label">ACTION</div>
-                <div class="star-content">
-                    "Hatayı analiz ettim: Sadece büyük firmalara odaklanmıştık. Stratejiyi değiştirdim (Pivot). Ekibi topladım ve küçük start-up'lara 'Recruitment Booth' satmayı teklif ettik. Daha düşük tutarlı ama daha çok sayıda anlaşma yapmaya odaklandık."
-                </div>
-
-                <div class="star-label">RESULT</div>
-                <div class="star-content">
-                    "3 gün içinde 10 start-up ile anlaştık ve bütçeyi 55.000 TL ile kapattık. Bu bana, B planının önemini ve çevik (agile) olmanın değerini öğretti."
-                </div>
-            </div>
-        </div>
-
-        <h2>4. "Greatest Weakness" (The Trap Question)</h2>
-        <p>
-            "Çok çalışırım" veya "Mükemmeliyetçiyim" deme (Humblebrag yasak). Gerçek bir zayıflık söyle ama onu nasıl yönettiğini de ekle.
-        </p>
-        <div class="question-card">
-            <div class="q-header">Good Example: Public Speaking / Delegation</div>
-            <p>
-                "Bazen detaylara fazla odaklanıp büyük resmi (Big Picture) kaçırabiliyorum veya delegasyon yapmakta zorlanıyorum çünkü işin mükemmel olmasını istiyorum. 
-                <br><br>
-                <strong>Fix:</strong> Bunun farkındayım. Artık projelerde düzenli 'Zoom Out' molaları veriyorum ve takım arkadaşlarıma güvenip iş bölüşümü yapmaya, sadece kritik kontrol noktalarında denetlemeye (Trust but Verify) başladım."
-            </p>
-        </div>
+        <h2 style="color: var(--accent-red);">3. The STAR Method</h2>
+        <p>"Bana liderlik ettiğin bir zamanı anlat" sorusuna cevap verirken: <strong>S.T.A.R.</strong> (Situation, Task, Action, Result) kullan.</p>
 
     </div>
-
 </body>
 </html>

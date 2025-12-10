@@ -1,46 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Macro Indicators | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f8fafc; --surface-color: #ffffff; --border-color: #e2e8f0;
-            --text-primary: #1f2933; --text-secondary: #52606d; --accent-market: #ea580c;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; }
-        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
-        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
-        .nav-link:hover { color: var(--accent-market); }
-        .nav-sep { color: var(--border-color); }
-
-        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
-        h2 { font-size: 20px; margin-top: 40px; margin-bottom: 16px; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
-        p { margin-bottom: 16px; color: var(--text-secondary); }
-        strong { color: var(--text-primary); font-weight: 600; }
-        
-        .intuition-box {
-            background: #fff7ed; border: 1px solid #ffedd5;
-            padding: 24px; border-radius: 8px; margin: 32px 0;
-        }
-        .intuition-title {
-            color: #9a3412; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
-            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
-        }
-
-        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
-        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 12px 0; display: flex; justify-content: space-between; align-items: center; }
-        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 16px; font-size: 14px; }
-        .drill-item { border-bottom: 1px solid var(--border-color); }
-        .drill-item:hover .drill-q { color: var(--accent-market); }
-        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -48,15 +14,15 @@
         <div class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
-            <a href="index.html" class="nav-link">Market Mechanics</a>
+            <a href="index.html" class="nav-link">Market</a>
             <span class="nav-sep">/</span>
             <span style="color: var(--text-primary);">Macro Indicators</span>
         </div>
 
         <h1>Economic Indicators: Reading the Dashboard</h1>
         
-        <div class="intuition-box">
-            <div class="intuition-title"><i class="fa-solid fa-lightbulb"></i> Executive Intuition</div>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-lightbulb"></i> Executive Intuition</div>
             <p style="color: #9a3412; margin: 0;">
                 Ekonomiyi bir araba gibi düşünün.
                 <br>- <strong>NFP (İstihdam):</strong> Motorun gücü.
@@ -67,19 +33,19 @@
             </p>
         </div>
 
-        <h2>1. Inflation: CPI vs PCE</h2>
+        <h2 style="color: var(--accent-market);">1. Inflation: CPI vs PCE</h2>
         <p><strong>CPI (Consumer Price Index):</strong> Tüketicinin cebinden çıkan parayı ölçer. Manşet enflasyondur.</p>
         <p><strong>Core CPI:</strong> Gıda ve Enerji fiyatlarını çıkarır (çünkü bunlar çok oynaktır). Enflasyonun kalıcı trendini (Sticky) daha iyi gösterir.</p>
         <p><strong>PCE (Personal Consumption Expenditures):</strong> Fed'in favori göstergesidir. Tüketici davranışlarını (Substitution Bias - Kırmızı et pahalıysa tavuğa yönelme) daha iyi yansıtır.</p>
 
-        <h2>2. Labor Market: NFP</h2>
+        <h2 style="color: var(--accent-market);">2. Labor Market: NFP</h2>
         <p>
             <strong>Non-Farm Payrolls (Tarım Dışı İstihdam):</strong> Her ayın ilk Cuma günü açıklanır. Piyasanın en volatil olduğu andır.
             <br>Beklentinin üzerinde gelirse: Ekonomi çok güçlü -> Enflasyon riski -> Fed faiz artırabilir -> <strong>Piyasa düşer.</strong>
         </p>
         <p><strong>Initial Jobless Claims:</strong> Her Perşembe açıklanır. İşsizlik maaşına ilk kez başvuranlar. Ekonominin gidişatı hakkında en güncel (Leading) sinyali verir.</p>
 
-        <h2>3. Growth: GDP vs PMI</h2>
+        <h2 style="color: var(--accent-market);">3. Growth: GDP vs PMI</h2>
         <p><strong>GDP (GSYİH):</strong> Lagging indicator (Geriden gelir). Resesyon olup olmadığını 6 ay sonra söyler.</p>
         <p>
             <strong>PMI (Purchasing Managers Index):</strong> Satın alma yöneticilerine "Siparişler nasıl?" diye sorulur.
@@ -124,6 +90,5 @@
         </div>
 
     </div>
-
 </body>
 </html>

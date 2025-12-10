@@ -8,80 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --accent-market: #ea580c;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
-        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
-        .nav-link:hover { color: var(--accent-market); }
-        .nav-sep { color: var(--border-color); }
-
-        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
-        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-market); padding-left: 16px; }
-        h3 { font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-weight: 600; color: var(--text-primary); }
-        p { margin-bottom: 20px; color: var(--text-secondary); }
-        strong { color: var(--text-primary); font-weight: 600; }
-        
-        .math-block {
-            background: #ffffff;
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin: 24px 0;
-            overflow-x: auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .engineering-box {
-            background: #f0f9ff;
-            border: 1px solid #bae6fd;
-            padding: 24px;
-            border-radius: 8px;
-            margin: 32px 0;
-        }
-        .eng-title {
-            color: #0369a1;
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            display: flex; align-items: center; gap: 8px;
-        }
-
-        .intuition-box {
-            background: #fff7ed;
-            border: 1px solid #ffedd5;
-            padding: 24px;
-            border-radius: 8px;
-            margin: 32px 0;
-        }
-        .intuition-title {
-            color: #9a3412;
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            display: flex; align-items: center; gap: 8px;
-        }
-
-        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
-        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
-        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
-        .drill-item:hover .drill-q { color: var(--accent-market); }
-        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -89,7 +16,7 @@
         <div class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
-            <a href="index.html" class="nav-link">Market Mechanics</a>
+            <a href="index.html" class="nav-link">Market</a>
             <span class="nav-sep">/</span>
             <span style="color: var(--text-primary);">Bond Math</span>
         </div>
@@ -102,8 +29,8 @@
             Burada olaya bir mühendis gözüyle, Calculus kullanarak yaklaşacağız.
         </p>
 
-        <div class="engineering-box">
-            <div class="eng-title"><i class="fa-solid fa-microchip"></i> Engineering Perspective</div>
+        <div class="proof-box">
+            <div class="proof-title"><i class="fa-solid fa-microchip"></i> Engineering Perspective</div>
             <p style="color: #0c4a6e; margin: 0;">
                 Tahvil Fiyatı \( P(y) \), faiz oranı \( y \)'nin (yield) bir fonksiyonudur. 
                 Faizler değiştiğinde fiyatın nasıl değişeceğini bulmak için <strong>Taylor Serisi</strong> açılımını kullanırız.
@@ -114,7 +41,7 @@
             </p>
         </div>
 
-        <h2>1. The Fundamental Equation</h2>
+        <h2 style="color: var(--accent-market);">1. The Fundamental Equation</h2>
         <p>
             Sürekli zamanlı (continuous compounding) bir dünyada, tahvil fiyatı nakit akışlarının bugünkü değeridir:
         </p>
@@ -128,7 +55,7 @@
             Amacımız \( y \) değiştiğinde \( P \)'nin değişimini (\( dP \)) bulmaktır.
         </p>
 
-        <h2>2. First Derivative: Duration (Hız)</h2>
+        <h2 style="color: var(--accent-market);">2. First Derivative: Duration (Hız)</h2>
         <p>
             Fonksiyonun \( y \)'ye göre birinci türevini alırsak:
         </p>
@@ -144,7 +71,7 @@
             <strong>Engineering Rule:</strong> \( \frac{\Delta P}{P} \approx - D_{mod} \times \Delta y \)
         </p>
 
-        <h2>3. Second Derivative: Convexity (İvme)</h2>
+        <h2 style="color: var(--accent-market);">3. Second Derivative: Convexity (İvme)</h2>
         <p>
             Duration doğrusal (linear) bir yaklaşımdır. Ancak \( P(y) \) eğriseldir (convex). 
             Büyük faiz hareketlerinde doğrusal tahmin hata yapar. Bu hatayı düzeltmek için ikinci türevi alırız:
@@ -157,8 +84,8 @@
             \[ \frac{\Delta P}{P} \approx \underbrace{- D_{mod} \Delta y}_{\text{Duration Effect}} + \underbrace{\frac{1}{2} C (\Delta y)^2}_{\text{Convexity Adjustment}} \]
         </div>
         
-        <div class="intuition-box">
-            <div class="intuition-title"><i class="fa-solid fa-lightbulb"></i> Market Intuition</div>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-lightbulb"></i> Market Intuition</div>
             <p style="color: #9a3412; margin: 0;">
                 <strong>Neden 1/2 var?</strong> Taylor serisinden gelir ($ \frac{f''(x)}{2!} $). 
                 <br>
@@ -168,7 +95,7 @@
             </p>
         </div>
 
-        <h2>4. DV01 & Hedging (Risk Yönetimi)</h2>
+        <h2 style="color: var(--accent-market);">4. DV01 & Hedging (Risk Yönetimi)</h2>
         <p>
             Trading masasında "Duration 8.4 yıl" denmez. <strong>"DV01" (Dollar Value of an 01)</strong> konuşulur.
             Faizler 1 baz puan (0.01%) değişirse cebimden kaç dolar çıkar?
@@ -226,10 +153,8 @@
                     Eğri dikleşirse (Steepening) bu hesap tutmaz. (Key Rate Duration gerekir).
                 </div>
             </div>
-
         </div>
 
     </div>
-
 </body>
 </html>
