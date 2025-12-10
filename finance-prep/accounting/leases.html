@@ -6,6 +6,8 @@
     <title>Leases IFRS 16 | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,21 +20,60 @@
             <span style="color: var(--text-primary);">Leases</span>
         </nav>
 
-        <h1>4.4 Leases (IFRS 16)</h1>
+        <h1>4.4 Leases (IFRS 16 / ASC 842)</h1>
         <p>
-            Eskiden kiralama "Off-Balance Sheet" idi (Gizli Borç). Artık her şey bilançoda.
+            Eskiden şirketler uçak kiralayıp "Borcum yok" derdi (Off-Balance Sheet). 
+            Artık bu yasak. Her kira sözleşmesi bir borçtur.
         </p>
 
-        <h2 style="color: var(--accent-green);">The Mechanism</h2>
+        <h2 style="color: var(--accent-green);">1. The "Right of Use" Concept</h2>
         <div class="mech-box">
-            <strong>1. Balance Sheet:</strong>
-            <br>Asset Tarafı: "Right of Use (ROU) Asset" yaratılır (Kullanım Hakkı).
-            <br>Liability Tarafı: "Lease Liability" yaratılır (Kira ödemelerinin bugünkü değeri).
-            <br><br>
-            <strong>2. Income Statement:</strong>
-            <br>Eskiden tek kalem "Kira Gideri" (Rent Expense) vardı.
-            <br>Şimdi ikiye bölündü: <strong>Amortisman</strong> (ROU Asset için) + <strong>Faiz</strong> (Liability için).
-            <br>Sonuç: <strong>EBITDA Artar</strong> (Çünkü kira gideri artık operasyonel gider değil, faiz ve amortisman oldu).
+            Bir ofisi 10 yıllığına kiraladınız.
+            <br>
+            <ul>
+                <li><strong>Varlık (Asset):</strong> O ofisi 10 yıl kullanma hakkınız var. Buna <strong>ROU Asset</strong> denir.</li>
+                <li><strong>Borç (Liability):</strong> 10 yıl boyunca kira ödeme sözünüz var. Buna <strong>Lease Liability</strong> denir. (Kiraların bugünkü değeri).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Visual Walkthrough (Calculation)</h2>
+        <p>100 TL Kira Ödemesi, %5 Faiz Oranı.</p>
+        
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Lease_Schedule.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 100px 100px 100px 100px 100px;">
+                <div class="excel-cell header">Yıl</div>
+                <div class="excel-cell header">Beg. Liability</div>
+                <div class="excel-cell header">Interest Exp</div>
+                <div class="excel-cell header">Rent Payment</div>
+                <div class="excel-cell header">End. Liability</div>
+
+                <div class="excel-cell">1</div>
+                <div class="excel-cell">1,000</div>
+                <div class="excel-cell" style="color:red;">50</div>
+                <div class="excel-cell">(100)</div>
+                <div class="excel-cell">950</div>
+
+                <div class="excel-cell">2</div>
+                <div class="excel-cell">950</div>
+                <div class="excel-cell" style="color:red;">47.5</div>
+                <div class="excel-cell">(100)</div>
+                <div class="excel-cell">897.5</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. EBITDA Impact (Hile Gibi)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-magic"></i> EBITDA Neden Artar?</div>
+            <p>
+                <strong>Eski (Operating Lease):</strong> 100 TL "Kira Gideri" vardı (EBITDA'nın üstündeydi).
+                <br>
+                <strong>Yeni (Finance Lease):</strong> Kira gideri yok oldu! Yerine "Faiz" (50 TL) ve "Amortisman" (ROU Asset'in eskimesi) geldi.
+                <br><br>
+                Faiz ve Amortisman, EBITDA'nın <strong>altındadır</strong>.
+                <br>
+                <strong>Sonuç:</strong> Şirket aynı parayı öder ama EBITDA'sı yapay olarak yükselir. (Değerleme çarpanlarına dikkat!).
+            </p>
         </div>
 
         <div class="lesson-nav">
