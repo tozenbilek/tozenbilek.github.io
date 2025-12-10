@@ -6,6 +6,8 @@
     <title>Income Statement | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,36 +20,31 @@
             <span style="color: var(--text-primary);">Income Statement</span>
         </nav>
 
-        <h1>1.1 Income Statement (Gelir Tablosu)</h1>
+        <h1>Income Statement (Gelir Tablosu)</h1>
         <p>
-            Şirketin belirli bir dönemdeki (1 yıl veya 1 çeyrek) performansıdır. 
-            "Para kazandık mı?" sorusunun cevabıdır.
+            Gelir tablosu, şirketin bir film şeridi gibidir. Belli bir dönemdeki (1 Ocak - 31 Aralık) performansını gösterir.
         </p>
 
-        <h2 style="color: var(--accent-green);">The Structure</h2>
+        <h2 style="color: var(--accent-green);">1. Temel Yapı</h2>
         <div class="mech-box">
-            <strong>Revenue (Satışlar)</strong>
-            <br> (-) COGS (Satılan Malın Maliyeti)
-            <br> <strong>= Gross Profit (Brüt Kâr)</strong>
-            <br> (-) OpEx (Faaliyet Giderleri: Kira, Maaş, Pazarlama)
-            <br> <strong>= Operating Income (EBIT)</strong>
-            <br> (-) Interest Expense (Faiz Gideri)
-            <br> (-) Taxes (Vergi)
-            <br> <strong>= Net Income (Net Kâr)</strong>
+            <strong>Revenue (Satışlar)</strong><br>
+            (-) COGS (Satılan Malın Maliyeti)<br>
+            <strong>= Gross Profit (Brüt Kâr)</strong><br>
+            (-) OpEx (Faaliyet Giderleri: Kira, Maaş, Pazarlama)<br>
+            <strong>= Operating Income (EBIT)</strong><br>
+            (-) Interest Expense (Faiz)<br>
+            (-) Taxes (Vergi)<br>
+            <strong>= Net Income (Net Kâr)</strong>
         </div>
 
-        <h2 style="color: var(--accent-green);">Revenue Recognition (Gelir Ne Zaman Yazılır?)</h2>
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> Kural</div>
-            <p style="color: #1f2933; margin: 0;">
-                Parayı tahsil ettiğinde değil, <strong>hizmeti verdiğinde</strong> gelir yazarsın.
-                <br>Örn: Netflix üyeliğini 1 yıllık peşin sattın. Parayı ocak ayında aldın.
-                <br>Ama Ocak ayında gelirin sadece 1/12'sidir. Kalanı borçtur (Deferred Revenue).
-            </p>
-        </div>
+        <h2 style="color: var(--accent-green);">2. EBIT vs EBITDA</h2>
+        <p>
+            <strong>EBIT:</strong> Amortisman düşülmüş kârdır. Muhasebesel kâra yakındır.<br>
+            <strong>EBITDA:</strong> Amortisman düşülmemiş kârdır. Nakit yaratma kapasitesine yakındır (Proxy for Cash Flow).
+        </p>
 
         <div class="lesson-nav">
-            <span class="btn-nav disabled">Başlangıç</span>
+            <a href="financial-statements.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: 3 Statements</a>
             <a href="balance-sheet.html" class="btn-nav">Sonraki: Balance Sheet <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
