@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Types | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Debt Types</span>
+        </nav>
+
+        <h1>1.3 Debt Types (Capital Structure)</h1>
+        <p>
+            LBO'da borç tek parça değildir. Katmanlıdır (Tranches).
+            En güvenliden (Senior), en riskiyiye (Junior) doğru sıralanır.
+        </p>
+
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">1. Bank Debt (Senior Secured)</h3>
+            <ul>
+                <li><strong>Örnek:</strong> Revolver, Term Loan A, Term Loan B.</li>
+                <li><strong>Faiz:</strong> Düşük (Floating Rate - Örn: SOFR + 300bps).</li>
+                <li><strong>Güvence:</strong> Şirketin varlıkları ipoteklidir (Secured).</li>
+                <li><strong>Amortization:</strong> Her yıl düzenli ana para ödemesi zorunludur.</li>
+                <li><strong>Covenants:</strong> Sıkı kurallar vardır (Maintenance Covenants - Örn: Borç/EBITDA 4x'i geçemez).</li>
+            </ul>
+        </div>
+
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">2. High Yield Bonds (Junior Unsecured)</h3>
+            <ul>
+                <li><strong>Örnek:</strong> Senior Notes, Subordinated Notes.</li>
+                <li><strong>Faiz:</strong> Yüksek (Fixed Rate - Örn: %8-10).</li>
+                <li><strong>Güvence:</strong> Yoktur (Unsecured). Bankadan sonra gelirler.</li>
+                <li><strong>Amortization:</strong> Yok (Bullet Payment). Tüm ana para vade sonunda (7-10 yıl) tek seferde ödenir.</li>
+                <li><strong>Covenants:</strong> Daha gevşektir (Incurrence Covenants - Sadece yeni borç alırken bakılır).</li>
+            </ul>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="sources-uses.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Sources & Uses</a>
+            <a href="debt-schedule.html" class="btn-nav">Sonraki: Debt Schedule <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

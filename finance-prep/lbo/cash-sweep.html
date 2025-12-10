@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Sweep | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Cash Sweep</span>
+        </nav>
+
+        <h1>2.2 Cash Sweep (Optional Repayment)</h1>
+        <p>
+            LBO'nun sihirli değneği budur. Şirketin yıl sonunda kasasında kalan "Fazla Nakit" (Free Cash Flow), 
+            <strong>borcu erken kapatmak</strong> için kullanılır.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">The Waterfall Logic</h2>
+        <div class="algo-box">
+            <strong>1. Cash Flow Available for Debt Repayment (CFADS):</strong>
+            <br>Tüm operasyonel giderler, vergiler ve zorunlu yatırımlar (CapEx) düştükten sonra kalan para.
+            <br><br>
+            <strong>2. Minimum Cash:</strong> Şirket kasayı sıfırlayamaz. Günlük işler için (Örn: 10M $) nakit bırakılmalıdır.
+            <br><br>
+            <strong>3. Sweep Amount:</strong> (CFADS - Minimum Cash). Bu tutar borç ödemeye gider.
+            <br><br>
+            <strong>4. Repayment Order (Sıralama):</strong>
+            <br>Önce -> Revolver (Kredi Kartı gibi, en kısa vadeli).
+            <br>Sonra -> Term Loan A.
+            <br>Sonra -> Term Loan B.
+            <br>En Son -> Senior Notes (Genellikle erken ödeme cezası vardır, o yüzden dokunulmaz).
+        </div>
+
+        <div class="lesson-nav">
+            <a href="debt-schedule.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Debt Schedule</a>
+            <a href="irr-moic.html" class="btn-nav">Sonraki: IRR & MOIC <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

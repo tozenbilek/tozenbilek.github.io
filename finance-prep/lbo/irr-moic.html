@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRR & MOIC | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">IRR & MOIC</span>
+        </nav>
+
+        <h1>3.1 Returns (IRR & MOIC)</h1>
+        <p>
+            Private Equity firmaları sadece iki sayıya bakar.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">MOIC (Multiple on Invested Capital)</h2>
+        <p>
+            "Paramı kaça katladım?" (Zaman faktörü yoktur).
+        </p>
+        <div class="math-block">
+            \[ \text{MOIC} = \frac{\text{Total Cash Returned}}{\text{Initial Investment}} \]
+        </div>
+        <p>Örn: 100M yatırdım, 250M aldım. MOIC = 2.5x.</p>
+
+        <h2 style="color: var(--accent-purple);">IRR (Internal Rate of Return)</h2>
+        <p>
+            "Yıllık bileşik getirim ne?" (Zaman çok önemlidir).
+            PE firmaları genellikle 5 yılda <strong>%20-25 IRR</strong> ve <strong>2.0-2.5x MOIC</strong> hedefler.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">Memorize These (Mental Math)</h2>
+        <div class="mech-box">
+            <ul>
+                <li>2.0x in 5 Years = ~15% IRR</li>
+                <li>2.5x in 5 Years = ~20% IRR</li>
+                <li>3.0x in 5 Years = ~25% IRR</li>
+                <li>2.0x in 3 Years = ~26% IRR</li>
+            </ul>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="cash-sweep.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Cash Sweep</a>
+            <a href="value-creation.html" class="btn-nav">Sonraki: Value Creation <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
