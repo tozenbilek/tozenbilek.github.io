@@ -6,46 +6,7 @@
     <title>3 Financial Statements | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --accent-acc: #16a34a;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
-        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
-        .nav-link:hover { color: var(--accent-acc); }
-        .nav-sep { color: var(--border-color); }
-
-        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
-        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-acc); padding-left: 16px; }
-        h3 { font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-weight: 600; color: var(--text-primary); }
-        p { margin-bottom: 20px; color: var(--text-secondary); }
-        strong { color: var(--text-primary); font-weight: 600; }
-        
-        .logic-box {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            padding: 24px;
-            border-radius: 8px;
-            margin: 24px 0;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-        }
-
-        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
-        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
-        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
-        .drill-item:hover .drill-q { color: var(--accent-acc); }
-        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -65,16 +26,16 @@
             Buna <strong>"Articulation"</strong> denir.
         </p>
 
-        <h2>1. The Fundamental Identity (Mühendislik Denklemi)</h2>
+        <h2 style="color: var(--accent-green);">1. The Fundamental Identity (Mühendislik Denklemi)</h2>
         <p>
             Bilanço (Balance Sheet) her zaman dengede olmak zorundadır. Neden? Çünkü fizik kanunu gibidir: 
             "Bir varlık (Asset) ya borçla (Liability) ya da özsermaye ile (Equity) finanse edilmiştir."
         </p>
-        <div class="logic-box">
+        <div class="mech-box">
             Assets = Liabilities + Shareholders' Equity
         </div>
 
-        <h2>2. The Linkage Mechanism (Bağlantı Noktaları)</h2>
+        <h2 style="color: var(--accent-green);">2. The Linkage Mechanism (Bağlantı Noktaları)</h2>
         <p>
             Mülakatların %100'ünde sorulan "Bu 3 tablo nasıl bağlanır?" sorusunun PhD seviyesindeki cevabı şudur:
         </p>
@@ -85,7 +46,7 @@
             Aynı zamanda, Bilanço'daki <strong>Retained Earnings</strong> (Geçmiş Yıl Karları) kalemine eklenir. 
             Bu, Bilançoyu dengeleyen ana mekanizmadır.
         </p>
-        <div class="logic-box">
+        <div class="mech-box">
             Ending R.E. = Beginning R.E. + Net Income - Dividends
         </div>
 
@@ -103,12 +64,12 @@
             <br>• Yükümlülük Artışı (Örn: Borç) = Nakit Girişi (Source of Cash)
         </p>
 
-        <h2>3. The "Depreciation Shock" Drill</h2>
+        <h2 style="color: var(--accent-green);">3. The "Depreciation Shock" Drill</h2>
         <p>
             <strong>Soru:</strong> Amortisman (Depreciation) 10 TL artarsa 3 tablo nasıl etkilenir? (Vergi Oranı: %40)
         </p>
         
-        <div class="logic-box">
+        <div class="mech-box">
             <strong>1. Income Statement:</strong><br>
             - Operating Expense (D&A) artar: +10<br>
             - Pre-Tax Income düşer: -10<br>
