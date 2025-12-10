@@ -6,6 +6,8 @@
     <title>EBITDA | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -39,16 +41,28 @@
         </div>
 
         <h2 style="color: var(--accent-green);">2. The Calculation (Bridge)</h2>
+        <div class="formula-box">
+            \[ \text{EBITDA} = \text{Net Income} + \text{Interest} + \text{Taxes} + \text{D\&A} \]
+        </div>
+        <p>Veya yukarıdan aşağıya (Top-Down):</p>
+        <div class="formula-box">
+            \[ \text{EBITDA} = \text{Operating Income (EBIT)} + \text{D\&A} \]
+        </div>
+        
         <div class="mech-box">
-            <strong>Operating Income (EBIT)</strong>
+            <strong>Adjusted EBITDA Bridge:</strong>
+            <br>
+            Operating Income (EBIT)
             <br>
             (+) Depreciation & Amortization
             <br>
-            (+) Stock Based Compensation (Bazen eklenir)
+            (+) Stock Based Compensation (Nakit çıkışı yok)
             <br>
-            (+) One-time Charges (Dava cezaları, Yeniden yapılanma)
+            (+) Restructuring Charges (Tek seferlik)
             <br>
-            <strong>= Adjusted EBITDA</strong>
+            (-) Gain on Sale of Asset (Tek seferlik gelir)
+            <br>
+            <strong style="color: var(--accent-green); border-top: 1px solid #ccc; padding-top:4px; margin-top:4px; display:inline-block;">= Adjusted EBITDA</strong>
         </div>
 
         <h2 style="color: var(--accent-green);">3. The Criticism (Warren Buffett)</h2>
