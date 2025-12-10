@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nezih Arhan Tözenbilek</title>
     
-    <!-- Font: Inter & Geist Mono -->
+    <!-- Font: Inter (UI) & JetBrains Mono (Code/Data) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -18,10 +18,10 @@
             --surface-color: #0A0A0A;
             --border-color: #1F1F1F;
             --border-hover: #333333;
-            --text-primary: #EAEAEA;
-            --text-secondary: #888888;
-            --accent-green: #30D158; /* Sinyal Rengi */
-            --accent-blue: #0A84FF;
+            --text-primary: #EDEDED;      /* Tam beyaz değil, göz yormayan açık gri */
+            --text-secondary: #888888;    /* İkincil bilgiler */
+            --text-tertiary: #555555;     /* Çok silik detaylar */
+            --accent-green: #30D158;
         }
 
         * {
@@ -39,6 +39,7 @@
             overflow-x: hidden;
             overflow-y: auto;
             display: block;
+            font-size: 14px; /* Taban font boyutu */
         }
 
         .bg-grid {
@@ -57,8 +58,8 @@
 
         .dashboard {
             width: 100%;
-            max-width: 900px;
-            padding: 40px 24px;
+            max-width: 840px; /* Biraz daha daraltarak okuma kolaylığı */
+            padding: 60px 24px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -66,10 +67,9 @@
         }
 
         .panel {
-            background: rgba(10, 10, 10, 0.85);
+            background: rgba(10, 10, 10, 0.9);
             border: 1px solid var(--border-color);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             padding: 24px;
             display: flex;
             flex-direction: column;
@@ -80,27 +80,23 @@
             border-color: var(--border-hover);
         }
 
-        /* Başlık Alanı */
+        /* HEADER: Net ve Güçlü */
         .header-panel {
             grid-column: span 12;
-            padding: 40px;
+            padding: 40px 24px;
             border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
         }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-            color: #fff;
-        }
-
-        .subtitle {
+        .system-status {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 11px;
             color: var(--accent-green);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 1px;
             margin-bottom: 16px;
             display: flex;
             align-items: center;
@@ -108,240 +104,225 @@
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background-color: var(--accent-green);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-green);
-            animation: pulse 2s infinite;
+            box-shadow: 0 0 8px var(--accent-green);
         }
-        
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
         }
 
         .bio {
-            font-size: 1rem;
+            font-size: 15px;
             line-height: 1.6;
             color: var(--text-secondary);
-            max-width: 650px;
-            margin-top: 16px;
+            max-width: 600px;
         }
-
+        
         .bio strong { color: var(--text-primary); font-weight: 500; }
 
-        /* Bölüm Başlıkları */
-        .section-header {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* Kariyer Yolu (Trajectory) - YENİLENMİŞ */
+        /* TRAJECTORY: Pipeline Görünümü */
         .trajectory-panel {
             grid-column: span 12;
             display: grid;
             grid-template-columns: 1fr auto 1fr auto 1fr;
             align-items: center;
             gap: 12px;
-            background: rgba(10, 10, 10, 0.6);
+            background: transparent;
+            border: none;
+            padding: 0 0 24px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
         }
 
         .traj-step {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            padding: 12px;
-            border: 1px solid transparent;
-            border-radius: 6px;
-            transition: all 0.2s;
-        }
-
-        .traj-step.current {
-            background: rgba(48, 209, 88, 0.05);
-            border-color: rgba(48, 209, 88, 0.2);
+            gap: 4px;
         }
 
         .traj-label {
-            font-size: 0.75rem;
+            font-size: 10px;
             font-family: 'JetBrains Mono', monospace;
-            color: var(--text-secondary);
+            color: var(--text-tertiary);
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .traj-step.current .traj-label { color: var(--accent-green); }
 
         .traj-title {
-            font-size: 0.95rem;
+            font-size: 13px;
             font-weight: 500;
             color: var(--text-primary);
         }
 
-        .traj-arrow {
-            color: var(--border-hover);
-            font-size: 0.8rem;
+        .traj-arrow { color: var(--border-hover); font-size: 10px; }
+
+        /* GENEL BAŞLIKLAR (Section Headers) - LinkedIn Tarzı */
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            display: block;
         }
 
-        /* Deneyim & Eğitim Kartları */
-        .full-width { grid-column: span 12; }
-        .half-width { grid-column: span 6; }
-
+        /* LİSTE ÖĞELERİ (Timeline Items) */
         .timeline-item {
-            margin-bottom: 24px;
+            margin-bottom: 28px;
+            position: relative;
         }
 
         .timeline-item:last-child { margin-bottom: 0; }
 
-        .timeline-header {
+        .item-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: baseline;
+            margin-bottom: 6px;
+        }
+
+        .role {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .institution {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: block;
             margin-bottom: 8px;
         }
 
-        /* Eğitim ve Deneyim Başlıkları İçin Ortak Stil */
-        .company-name {
-            font-size: 0.85rem;
-            color: var(--accent-green); /* Yeşil yerine Gri/Beyaz yapılmalıydı, aşağıda düzelttim */
-            margin-bottom: 4px;
-            display: block;
-            font-family: 'JetBrains Mono', monospace; /* Kurum isimleri kod gibi dursun */
-            text-transform: uppercase;
-            opacity: 0.8;
-        }
-
-        /* Düzeltme: Şirket isimleri gri olsun, yeşil değil */
-        .timeline-header .company-name {
-             color: var(--text-secondary);
-        }
-
-        .role-title {
-            font-size: 1.1rem; /* Biraz büyüttüm */
-            font-weight: 600;
-            color: var(--text-primary);
-            letter-spacing: -0.01em;
-        }
-
-        .date {
+        .date-badge {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            background: rgba(255,255,255,0.05);
+            font-size: 11px;
+            color: var(--text-tertiary);
+            background: rgba(255,255,255,0.03);
             padding: 2px 6px;
             border-radius: 4px;
         }
 
-        .description {
-            font-size: 0.9rem;
+        .desc-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .desc-list li {
+            font-size: 13px;
             color: var(--text-secondary);
-            line-height: 1.5;
-        }
-        
-        .description ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .description li {
+            line-height: 1.6;
+            margin-bottom: 6px;
+            padding-left: 14px;
             position: relative;
-            padding-left: 16px;
-            margin-bottom: 4px;
         }
 
-        .description li::before {
-            content: "›";
+        .desc-list li::before {
+            content: "•";
+            color: var(--border-hover);
             position: absolute;
             left: 0;
-            color: var(--accent-green); /* Liste işaretçileri yeşil yapıldı */
+            font-weight: bold;
         }
 
-        /* Etiketler */
-        .tag-container {
+        /* GRID YAPISI */
+        .full-width { grid-column: span 12; }
+        .half-width { grid-column: span 6; }
+
+        /* SKILLS (Yetenekler) */
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 12px;
         }
 
-        .tag {
+        .skill-tag {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 11px;
             color: var(--text-secondary);
             background: rgba(255,255,255,0.03);
             border: 1px solid var(--border-color);
-            padding: 4px 8px;
+            padding: 6px 10px;
             border-radius: 4px;
-        }
-
-        /* Linkler */
-        .links-panel {
-            grid-column: span 12;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1px;
-            background: var(--border-color);
-            border: 1px solid var(--border-color);
-            padding: 0;
-            overflow: hidden;
-            margin-top: 16px;
-        }
-
-        .link-item {
-            background: var(--surface-color);
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 0.85rem;
-            transition: all 0.2s ease;
-        }
-
-        .link-item:hover { background: #111; color: #fff; }
-        .link-item i { font-size: 1.2rem; }
-
-        /* Spotify Widget */
-        .spotify-mini {
-            grid-column: span 12;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 16px 24px;
-            background: rgba(29, 185, 84, 0.05);
-            border: 1px solid rgba(29, 185, 84, 0.2);
-            border-radius: 4px;
-            color: #fff;
-            text-decoration: none;
-            transition: background 0.2s;
-            margin-top: 16px;
+            transition: all 0.2s;
         }
         
-        .spotify-mini:hover { background: rgba(29, 185, 84, 0.1); }
-        .spotify-icon { color: #1db954; font-size: 1.5rem; }
+        .skill-tag:hover {
+            border-color: var(--text-tertiary);
+            color: var(--text-primary);
+        }
 
+        /* LINKLER */
+        .links-bar {
+            grid-column: span 12;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.02);
+            transition: all 0.2s;
+        }
+
+        .social-link:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-primary);
+        }
+        
+        /* Spotify Minimal */
+        .spotify-link {
+            margin-left: auto; /* Sağa yasla */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-tertiary);
+            text-decoration: none;
+        }
+        
+        .spotify-link i { color: #1db954; font-size: 14px; }
+        .spotify-link:hover { color: var(--text-secondary); }
+
+        /* MOBİL */
         @media (max-width: 768px) {
-            .dashboard { grid-template-columns: 1fr; padding: 16px; }
-            .header-panel, .trajectory-panel, .full-width, .half-width, .links-panel, .spotify-mini { grid-column: span 1; }
-            .links-panel { grid-template-columns: 1fr 1fr; }
+            .dashboard { padding: 32px 20px; grid-template-columns: 1fr; }
+            .header-panel, .trajectory-panel, .full-width, .half-width, .links-bar { grid-column: span 1; }
+            .links-bar { flex-direction: column; }
+            .spotify-link { margin-left: 0; }
             
-            /* Trajectory Mobilde Dikey */
             .trajectory-panel { 
                 grid-template-columns: 1fr; 
-                grid-template-rows: auto auto auto auto auto;
-                gap: 8px;
+                gap: 16px;
+                background: var(--surface-color);
+                padding: 16px;
+                border-radius: 8px;
+                border: 1px solid var(--border-color);
             }
-            .traj-arrow { transform: rotate(90deg); margin: 0 auto; }
+            .traj-arrow { display: none; }
         }
     </style>
 </head>
@@ -351,11 +332,11 @@
 
     <div class="dashboard">
         
-        <!-- HEADER -->
-        <div class="panel header-panel">
-            <div class="subtitle">
-                <div class="status-dot"></div>
-                SYSTEM_ONLINE
+        <!-- HEADER: Sade ve Net -->
+        <div class="header-panel">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
             </div>
             <h1>Nezih Arhan Tözenbilek</h1>
             <p class="bio">
@@ -364,152 +345,124 @@
             </p>
         </div>
 
-        <!-- TRAJECTORY - DÜZELTİLDİ -->
-        <div class="panel trajectory-panel">
+        <!-- TRAJECTORY: Pipeline -->
+        <div class="trajectory-panel">
             <div class="traj-step current">
                 <span class="traj-label">Targeting</span>
                 <span class="traj-title">Investment Banking</span>
             </div>
-            
-            <i class="fa-solid fa-arrow-right traj-arrow"></i>
-            
+            <i class="fa-solid fa-chevron-right traj-arrow"></i>
             <div class="traj-step">
-                <span class="traj-label">Next</span>
+                <span class="traj-label">Next Phase</span>
                 <span class="traj-title">Private Equity</span>
             </div>
-            
-            <i class="fa-solid fa-arrow-right traj-arrow"></i>
-            
+            <i class="fa-solid fa-chevron-right traj-arrow"></i>
             <div class="traj-step">
-                <span class="traj-label">Goal</span>
+                <span class="traj-label">Ultimate Goal</span>
                 <span class="traj-title">Hedge Fund</span>
             </div>
         </div>
 
         <!-- EXPERIENCE -->
         <div class="panel full-width">
-            <div class="section-header">PROFESSIONAL EXPERIENCE</div>
+            <span class="section-label">Professional Experience</span>
             
             <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>
-                        <span class="company-name">IEEE Hacettepe University Student Branch</span>
-                        <span class="role-title">Coordinator of Industry Applications Society</span>
-                    </div>
-                    <span class="date">May 2022 - Jan 2023</span>
+                <div class="item-header">
+                    <span class="role">Coordinator of Industry Applications Society</span>
+                    <span class="date-badge">May 2022 - Jan 2023</span>
                 </div>
-                <div class="description">
-                    <ul>
-                        <li>Directed and led the Industry Applications Society, overseeing a membership of more than 200 individuals.</li>
-                        <li>Served as an Organisation Committee Member for the organization of <strong>DevFest’22 Ankara</strong>.</li>
-                        <li>Organized and coordinated training programs, including Excel and e-commerce courses.</li>
-                        <li>Contributed to the coordination of university promotional video shoots.</li>
-                        <li>Participated as a coordinator in the <strong>Eurosomt Medical Printing and Simulation Congress</strong>.</li>
-                        <li>Prior to administrative role: Participated in events such as the Hacettepe Career Fair, Crystal Deer Awards, GameJam.</li>
-                    </ul>
-                </div>
+                <span class="institution">IEEE Hacettepe University Student Branch</span>
+                <ul class="desc-list">
+                    <li>Directed the Industry Applications Society, overseeing 200+ members.</li>
+                    <li>Organizing Committee Member for <strong>DevFest’22 Ankara</strong> (sponsored by Google).</li>
+                    <li>Coordinated training programs (Excel, E-commerce) and promotional shoots.</li>
+                    <li>Coordinator for Eurosomt Medical Printing and Simulation Congress.</li>
+                </ul>
             </div>
 
             <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>
-                        <span class="company-name">DenizBank</span>
-                        <span class="role-title">Intern</span>
-                    </div>
-                    <span class="date">Jun 2022 - Jul 2022</span>
+                <div class="item-header">
+                    <span class="role">Intern</span>
+                    <span class="date-badge">Jun 2022 - Jul 2022</span>
                 </div>
-                <div class="description">
-                    <ul>
-                        <li>Gained experience in financial analysis, banking operations, and customer relations.</li>
-                        <li>Enhanced teamwork and communication skills within a corporate financial environment.</li>
-                    </ul>
-                </div>
+                <span class="institution">DenizBank</span>
+                <ul class="desc-list">
+                    <li>Financial analysis, banking operations, and customer relations.</li>
+                    <li>Enhanced teamwork and communication skills in corporate finance.</li>
+                </ul>
             </div>
         </div>
 
         <!-- EDUCATION -->
         <div class="panel half-width">
-            <div class="section-header">EDUCATION</div>
+            <span class="section-label">Education</span>
             
             <div class="timeline-item">
-                <div class="timeline-header">
-                    <div>
-                        <span class="company-name" style="color: var(--text-secondary);">Hacettepe University</span>
-                        <span class="role-title">B.S. Computer Engineering</span>
-                    </div>
-                    <span class="date">Exp. 2027</span>
+                <div class="item-header">
+                    <span class="role">B.S. Computer Engineering</span>
+                    <span class="date-badge">Exp. 2027</span>
                 </div>
-                <div class="description" style="margin-top: 8px;">
-                     Focused on Algorithm Analysis, System Programming, and Financial Applications.
-                </div>
+                <span class="institution">Hacettepe University</span>
             </div>
 
-            <div class="timeline-item" style="margin-top: 24px;">
-                <div class="timeline-header">
-                    <div>
-                        <span class="company-name" style="color: var(--text-secondary);">Eskişehir Anatolian High School</span>
-                        <span class="role-title">High School Diploma</span>
-                    </div>
-                    <span class="date">Grad. 2019</span>
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">High School Diploma</span>
+                    <span class="date-badge">Grad. 2019</span>
                 </div>
+                <span class="institution">Eskişehir Anatolian High School</span>
             </div>
         </div>
 
-        <!-- SKILLS -->
+        <!-- COMPETENCIES -->
         <div class="panel half-width">
-            <div class="section-header">CORE COMPETENCIES</div>
+            <span class="section-label">Core Competencies</span>
             
             <div class="timeline-item">
-                <span class="role-title" style="font-size: 0.9rem;">Technical Arsenal</span>
-                <div class="tag-container">
-                    <span class="tag">Python (Pandas/NumPy)</span>
-                    <span class="tag">C++</span>
-                    <span class="tag">Java</span>
-                    <span class="tag">Scheme</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">VHDL/Verilog</span>
+                <span class="institution" style="margin-bottom: 8px;">Technical Arsenal</span>
+                <div class="skills-grid">
+                    <span class="skill-tag">Python (Pandas)</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Scheme</span>
+                    <span class="skill-tag">SQL</span>
                 </div>
             </div>
 
-            <div class="timeline-item" style="margin-top: 24px;">
-                <span class="role-title" style="font-size: 0.9rem;">Domain Knowledge</span>
-                <div class="tag-container">
-                    <span class="tag">Computer Vision</span>
-                    <span class="tag">Blockchain</span>
-                    <span class="tag">Algorithm Analysis</span>
-                    <span class="tag">System Architecture</span>
-                    <span class="tag">Data Structures</span>
+            <div class="timeline-item">
+                <span class="institution" style="margin-bottom: 8px;">Domain Knowledge</span>
+                <div class="skills-grid">
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Blockchain</span>
+                    <span class="tag skill-tag">Algo Analysis</span>
+                    <span class="tag skill-tag">System Arch</span>
                 </div>
             </div>
         </div>
 
-        <!-- LINKS -->
-        <div class="links-panel">
-            <a href="https://www.linkedin.com/in/neziharhantozenbilek/" target="_blank" class="link-item">
+        <!-- LINKS FOOTER -->
+        <div class="links-bar">
+            <a href="https://www.linkedin.com/in/neziharhantozenbilek/" target="_blank" class="social-link">
                 <i class="fa-brands fa-linkedin"></i> LinkedIn
             </a>
-            <a href="https://github.com/tozenbilek" target="_blank" class="link-item">
+            <a href="https://github.com/tozenbilek" target="_blank" class="social-link">
                 <i class="fa-brands fa-github"></i> GitHub
             </a>
-            <a href="https://www.instagram.com/neziharhantozenbilek/" target="_blank" class="link-item">
+            <a href="https://www.instagram.com/neziharhantozenbilek/" target="_blank" class="social-link">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
-            <a href="mailto:natozenbilek@gmail.com" class="link-item">
+            <a href="mailto:natozenbilek@gmail.com" class="social-link">
                 <i class="fa-solid fa-envelope"></i> Email
             </a>
-            <a href="private_docs/resume.md" class="link-item">
-                <i class="fa-solid fa-file-lines"></i> CV File
+            <a href="private_docs/resume.md" class="social-link">
+                <i class="fa-solid fa-file-lines"></i> Resume
+            </a>
+            
+            <a href="https://open.spotify.com/user/31ysr5yumx5wfhltp375xdmzi2na" target="_blank" class="spotify-link">
+                <i class="fa-brands fa-spotify"></i> On Focus
             </a>
         </div>
-        
-        <!-- SPOTIFY -->
-        <a href="https://open.spotify.com/user/31ysr5yumx5wfhltp375xdmzi2na" target="_blank" class="spotify-mini">
-            <i class="fa-brands fa-spotify spotify-icon"></i>
-            <div style="font-size: 0.9rem;">
-                <span style="display: block; font-weight: 500; color: #fff;">On Focus</span>
-                <span style="color: var(--text-secondary); font-size: 0.8rem;">Nezih's Rotation</span>
-            </div>
-        </a>
 
     </div>
 
