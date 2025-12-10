@@ -4,62 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valuation Guide | IB Prep</title>
-    <!-- Stil (Accounting ile aynı) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #050505; --text-primary: #EDEDED; --text-secondary: #888888; --accent-blue: #0A84FF; --border-color: #1F1F1F;
-        }
-        body { background-color: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px; max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 28px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px; }
-        h2 { font-size: 20px; margin-top: 40px; color: var(--accent-blue); font-family: 'JetBrains Mono', monospace; }
-        p { margin-bottom: 16px; color: var(--text-secondary); }
-        .qa-box { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent-blue); padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        :root { --bg: #050505; --t1: #EDEDED; --t2: #888; --t3: #555; --acc: #0A84FF; --bd: #1F1F1F; }
+        body { background: var(--bg); color: var(--t1); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 24px; max-width: 880px; margin: 0 auto; }
+        h1 { font-size: 28px; font-weight: 600; border-bottom: 1px solid var(--bd); padding-bottom: 14px; margin-bottom: 20px; }
+        h2 { font-size: 20px; font-weight: 600; color: var(--acc); margin-top: 36px; font-family: 'JetBrains Mono', monospace; }
+        p { color: var(--t2); margin-bottom: 14px; }
+        ul { color: var(--t2); margin-bottom: 12px; }
+        .nav { display: flex; gap: 12px; margin-bottom: 20px; }
+        .link { color: var(--t2); text-decoration: none; font-size: 14px; padding: 8px 12px; border: 1px solid var(--bd); border-radius: 4px; background: rgba(255,255,255,0.02); }
+        .link:hover { color: #fff; border-color: #333; }
+        .qa-box { background: rgba(255,255,255,0.03); border-left: 3px solid var(--acc); padding: 16px; margin: 18px 0; border-radius: 0 8px 8px 0; }
         .question { font-weight: 600; color: #fff; margin-bottom: 8px; display: block; }
-        .answer { color: var(--text-secondary); font-size: 14px; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: var(--text-secondary); text-decoration: none; font-size: 14px; }
-        .back-link:hover { color: #fff; }
+        .answer { color: var(--t2); font-size: 14px; }
+        .badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--t3); padding: 2px 6px; border: 1px solid var(--bd); border-radius: 3px; margin-bottom: 10px; }
+        .mini { font-size: 13px; color: var(--t2); }
+        .divider { border-top: 1px solid var(--bd); margin: 24px 0; }
+        .list-inline li { margin-bottom: 6px; }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="back-link">← Back to Dashboard</a>
-    
-    <h1>Valuation Methodologies</h1>
-    <p>Bir şirketin ne kadar ettiğini bulmanın 3 ana yolu vardır. Mülakatlarda bu yöntemleri sıralamanız ve artısını/eksisini bilmeniz istenir.</p>
+    <div class="nav">
+        <a class="link" href="index.html">← Back to IB Prep</a>
+        <a class="link" href="../index.html">↩ Main Terminal</a>
+        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+    </div>
 
-    <h2>1. Comparable Company Analysis (Comps)</h2>
-    <p><strong>Mantık:</strong> "Rakip şirketler ne kadara işlem görüyor?"</p>
-    <p>Benzer sektördeki halka açık şirketlerin çarpanlarına (Multiples) bakarız. Örn: Apple'ın F/K oranı 30 ise, benzer bir teknoloji şirketi de 30 civarında olmalı.</p>
-    <ul>
-        <li><strong>Artısı:</strong> Piyasa verisine dayanır, gerçekçidir.</li>
-        <li><strong>Eksisi:</strong> Piyasa rasyonel olmayabilir (Balon varsa değerleme şişer). Hiçbir şirket %100 benzer değildir.</li>
+    <h1>Valuation Methodologies</h1>
+    <p>Üç ana değerleme yaklaşımı: <strong>Comps</strong>, <strong>Precedent Transactions</strong>, <strong>DCF</strong>. Mülakatta artı/eksi, temel adımlar ve sık sorulanları bilmek yeterli.</p>
+
+    <h2>1) Comparable Company Analysis (Comps)</h2>
+    <p><strong>Mantık:</strong> Benzer şirketlerin piyasa çarpanlarına bakarak değer çıkar.</p>
+    <ul class="list-inline">
+        <li><strong>Adımlar:</strong> Doğru peer seç (sektör, büyüme, marj), LTM/NTM finansalları temizle, çarpanları (EV/EBITDA, EV/Sales, P/E) hesapla, outlier temizle, medyan/ortalama al.</li>
+        <li><strong>Artı:</strong> Piyasa bazlı, hızlı.</li>
+        <li><strong>Eksi:</strong> Piyasa irrasyonel olabilir; %100 benzer şirket yok.</li>
     </ul>
 
-    <h2>2. Precedent Transactions (Emsal İşlemler)</h2>
-    <p><strong>Mantık:</strong> "Geçmişte benzer şirketler kaça SATILDI?"</p>
-    <p>Sadece borsadaki fiyata değil, geçmişteki satın almalara (M&A deals) bakarız.</p>
+    <h2>2) Precedent Transactions</h2>
+    <p><strong>Mantık:</strong> Geçmiş M&A işlemlerinde benzer şirketler kaça satıldı?</p>
     <div class="qa-box">
-        <span class="question">Soru: Precedent Transactions neden Comps'tan daha yüksek değer verir?</span>
+        <span class="question">Neden genelde Comps’tan yüksek çıkar?</span>
+        <div class="answer">Kontrol primi ve sinerji beklentisi nedeniyle alıcı, borsa fiyatının üstüne (genelde %20-30) ödeme yapar.</div>
+    </div>
+    <p><strong>İpuçları:</strong> İşlem tarihini, piyasa koşullarını, hedef/alıcı stratejisini ve satın alma yapısını (nakit/hisse) kontrol et; veriler eskiyse güncellemek gerekebilir.</p>
+
+    <h2>3) DCF (Discounted Cash Flow)</h2>
+    <p><strong>Mantık:</strong> Gelecekteki FCF’leri WACC ile bugüne indir, Terminal Value ekle → Enterprise Value.</p>
+    <div class="qa-box">
+        <span class="question">Walk me through a DCF</span>
         <div class="answer">
-            Çünkü bir şirketi satın alırken, borsadaki fiyatının üzerine <strong>"Control Premium"</strong> (Kontrol Primi) ödenir. Yani şirketin yönetimini ele geçirmek için %20-%30 fazladan para verilir.
+            1) 5-10 yıl FCF projeksiyonu (EBIT → NOPAT → +D&A, -CapEx, -ΔNWC).<br>
+            2) WACC ile indirgeme (discount).<br>
+            3) Terminal Value: <em>Gordon</em> (FCF<sub>t+1</sub> / (WACC - g)) veya <em>Exit Multiple</em> yöntemi.<br>
+            4) PV(FCFs) + PV(TV) = EV.<br>
+            5) EV → Equity Value: EV - Net Debt - Preferred + Cash & non-op assets - Minority + Associates.<br>
+            6) Equity / Diluted Shares = Implied Price.
         </div>
     </div>
 
-    <h2>3. DCF (Discounted Cash Flow)</h2>
-    <p><strong>Mantık:</strong> "Şirketin gelecekte üreteceği nakdin bugünkü değeri nedir?"</p>
-    <p>En teknik ve akademik yöntemdir. Piyasa dalgalanmalarından etkilenmez, şirketin içsel değerini (Intrinsic Value) bulur.</p>
+    <h2>WACC (Weighted Average Cost of Capital)</h2>
+    <p><strong>Formül:</strong> Wd * Cd * (1 - Tax) + We * Ce</p>
+    <ul class="list-inline">
+        <li><strong>Cd (Cost of Debt):</strong> Borç maliyeti; vergi sonrası alınır (1-Tax).</li>
+        <li><strong>Ce (Cost of Equity):</strong> CAPM ≈ Rf + β * (Rm - Rf) (+/− small size/industry premia).</li>
+        <li><strong>Sermaye yapısı:</strong> Genelde hedef/market weight (D/V, E/V) kullan.</li>
+    </ul>
 
+    <h2>Beta Unlever / Relever</h2>
     <div class="qa-box">
-        <span class="question">Soru: Bana DCF'i adım adım anlat ("Walk me through a DCF").</span>
-        <div class="answer">
-            1. Şirketin gelecekteki <strong>Free Cash Flow</strong>'larını (FCF) tahmin et (Genelde 5-10 yıl).<br>
-            2. Bu nakit akışlarının bugünkü değerini bulmak için <strong>WACC</strong> (Weighted Average Cost of Capital) ile iskonto et (Discount).<br>
-            3. Şirketin sonsuza kadar devam edeceği değeri (Terminal Value) hesapla ve onu da iskonto et.<br>
-            4. İskonto edilmiş FCF'ler + İskonto edilmiş Terminal Value = <strong>Enterprise Value</strong>.
-        </div>
+        <span class="question">Unlevered beta formülü</span>
+        <div class="answer">β<sub>unlevered</sub> = β<sub>equity</sub> / [1 + (1 - Tax) * (Debt/Equity)]</div>
     </div>
+    <div class="qa-box">
+        <span class="question">Re-lever formülü</span>
+        <div class="answer">β<sub>relevered</sub> = β<sub>unlevered</sub> * [1 + (1 - Tax) * (Debt/Equity)<sub>target</sub>]</div>
+    </div>
+    <p><strong>Neden?</strong> Peer betalarını kaldıraçtan arındırıp (unlever), hedef sermaye yapısına göre yeniden kaldıraçlarsın (relever). Böylece şirketin kendi risk profilini yakalarsın.</p>
+
+    <h2>Terminal Value: Gordon vs Exit Multiple</h2>
+    <ul class="list-inline">
+        <li><strong>Gordon:</strong> TV = FCF<sub>t+1</sub> / (WACC - g). g makul olmalı (uzun vadeli GDP enflasyon + reel büyüme). Çok yüksek g → şişik değer.</li>
+        <li><strong>Exit Multiple:</strong> Son yıl EBITDA * çıkış çarpanı (sector median). Piyasa çarpanına dayanır, gürültülü olabilir.</li>
+    </ul>
+
+    <h2>EV → Equity Bridge</h2>
+    <ul class="list-inline">
+        <li>EV - Net Debt - Preferred + Cash & Non-Op Assets - Minority Interest + Associates = Equity Value.</li>
+        <li>Equity Value / Diluted Shares = Implied Price.</li>
+    </ul>
+
+    <div class="divider"></div>
+    <p class="mini">Kontrol listesi: Comps adımları, Control Premium mantığı, DCF walkthrough, WACC formülü, Unlever/Relever beta, TV yöntemleri, EV→Equity köprüsü.</p>
 
 </body>
 </html>
