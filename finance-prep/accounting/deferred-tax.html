@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deferred Taxes | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#0f172a; --code-bg:#f1f5f9; --quiz-bg:#f0fdf4; --quiz-text:#166534; --border-color:#e2e8f0; }
+        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
+        
+        .nav-header{margin-bottom:40px;}
+        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
+        .back-link:hover{color:var(--accent-color)}
+        
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
+        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
+        
+        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
+        p{margin-bottom:20px;color:var(--text-secondary)}
+        ul{margin-bottom:24px;padding-left:24px;color:var(--text-secondary)}
+        li{margin-bottom:8px}
+        
+        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        
+        .quiz-box{background:var(--quiz-bg);border:1px solid #bbf7d0;padding:24px;border-radius:8px;margin-top:40px}
+        .quiz-title{font-weight:600;color:var(--quiz-text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .quiz-item{margin-bottom:16px;cursor:pointer}
+        .q-text{font-weight:500;margin-bottom:4px;color:#14532d;display:block}
+        .a-text{display:none;font-size:14px;color:#166534;padding:8px;background:rgba(255,255,255,0.6);border-radius:4px;margin-top:4px}
+        .quiz-item:hover .a-text{display:block}
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+    </div>
+
+    <h1>Deferred Taxes (DTA & DTL)</h1>
+    <div class="meta">
+        <span><i class="fa-regular fa-clock"></i> 45 min</span>
+        <span><i class="fa-solid fa-scale-balanced"></i> Advanced</span>
+    </div>
+
+    <p>Ertelenmiş vergileri (Deferred Taxes) anlamak sizi "muhasebeci"den "finansal modelci"ye terfi ettirir. Bu kavramın sebebi basittir: Şirketler Hissedarlara (GAAP) ve Devlete (Vergi Kanunu) iki ayrı defter tutar.</p>
+
+    <h2>1. "İki Defter" (Two Books) Mantığı</h2>
+    <p>Bir limonata tezgahınız olduğunu düşünün.</p>
+    <ul>
+        <li><strong>Hissedara (GAAP):</strong> Kârınızı yüksek ve düzenli göstermek istersiniz. Amortismanı yavaş düşersiniz (Straight Line).</li>
+        <li><strong>Vergi Dairesine (Tax):</strong> Kârınızı düşük gösterip az vergi ödemek istersiniz. Amortismanı hemen düşersiniz (Accelerated).</li>
+    </ul>
+    <p>Bu durum geçici bir fark yaratır. Hissedara "20 TL vergi ödedim" dersiniz ama devlete aslında 5 TL çek yazmışsınızdır. Aradaki 15 TL fark <strong>Deferred Tax Liability (DTL)</strong> yani "Ertelenmiş Vergi Yükümlülüğü"dür. Bunu ileride ödeyeceksiniz.</p>
+
+    <div class="math-block">
+        <strong>Örnek Hesaplama:</strong><br>
+        Amortisman Öncesi Gelir: 100 TL<br><br>
+        <strong>GAAP Defteri (Straight Line):</strong><br>
+        Amortisman: 10 TL<br>
+        Vergi Öncesi Kâr: 90 TL<br>
+        Vergi Gideri (%25): <strong>22.5 TL</strong> (Gelir Tablosunda görünen)<br><br>
+        <strong>Vergi Defteri (Hızlandırılmış):</strong><br>
+        Amortisman: 50 TL<br>
+        Vergi Matrahı: 50 TL<br>
+        Ödenecek Vergi (%25): <strong>12.5 TL</strong> (Devlete ödenen nakit)<br><br>
+        <strong>Sonuç:</strong><br>
+        Oluşan DTL = 22.5 - 12.5 = <strong>10.0 TL</strong>
+    </div>
+
+    <h2>2. LBO'da DTL Neden İyidir?</h2>
+    <p>DTL aslında devletten alınan <strong>faizsiz kredidir</strong>. Gideri hemen yazarsınız (Net Income düşer), ama nakit cebinizde kalır. LBO modellemesinde nakit kraldır (Cash is King).</p>
+
+    <h2>3. NOLs ve DTA (Varlık)</h2>
+    <p>Eğer şirket zarar ederse vergi ödemez. Ama gelecekteki vergilerden düşmek üzere bir "indirim kuponu" kazanır. Buna <strong>Deferred Tax Asset (DTA)</strong> denir.</p>
+
+    <div class="quiz-box">
+        <div class="quiz-title"><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</div>
+        
+        <div class="quiz-item">
+            <span class="q-text">1. DTL artışı Nakit Akışını nasıl etkiler?</span>
+            <div class="a-text"><strong>Artırır.</strong> DTL artışı, nakit olarak ödenmemiş bir vergi gideridir. CFO hesaplanırken Net Income'a geri eklenir (Non-cash expense gibi davranır).</div>
+        </div>
+
+        <div class="quiz-item">
+            <span class="q-text">2. DTA ne zaman "Write-down" (değersiz) olur?</span>
+            <div class="a-text">Şirketin gelecekte kâr etmesi beklenmiyorsa. Kâr yoksa vergi de yoktur, dolayısıyla vergi indirim kuponunun (DTA) bir değeri kalmaz.</div>
+        </div>
+    </div>
+
+</body>
+</html>

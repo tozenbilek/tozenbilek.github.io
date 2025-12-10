@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Statement Linkage | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#0f172a; --code-bg:#f1f5f9; --quiz-bg:#f0fdf4; --quiz-text:#166534; --border-color:#e2e8f0; }
+        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
+        
+        .nav-header{margin-bottom:40px;}
+        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
+        .back-link:hover{color:var(--accent-color)}
+        
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
+        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
+        
+        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
+        p{margin-bottom:20px;color:var(--text-secondary)}
+        ul{margin-bottom:24px;padding-left:24px;color:var(--text-secondary)}
+        li{margin-bottom:8px}
+        strong{color:var(--text-primary);font-weight:600}
+
+        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        
+        .quiz-box{background:var(--quiz-bg);border:1px solid #bbf7d0;padding:24px;border-radius:8px;margin-top:40px}
+        .quiz-title{font-weight:600;color:var(--quiz-text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .quiz-item{margin-bottom:16px;cursor:pointer}
+        .q-text{font-weight:500;margin-bottom:4px;color:#14532d;display:block}
+        .a-text{display:none;font-size:14px;color:#166534;padding:8px;background:rgba(255,255,255,0.6);border-radius:4px;margin-top:4px}
+        .quiz-item:hover .a-text{display:block}
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+    </div>
+
+    <h1>3-Statement Linkage</h1>
+    <div class="meta">
+        <span><i class="fa-regular fa-clock"></i> 60 min</span>
+        <span><i class="fa-solid fa-layer-group"></i> Fundamental</span>
+    </div>
+
+    <p>3 finansal tablonun birbirine nasıl bağlandığını uykunuzda bile söyleyebilmelisiniz. Tüm finansal modelleme evreni <strong>"Retained Earnings Identity"</strong> (Dağıtılmamış Karlar Özdeşliği) üzerine kuruludur.</p>
+
+    <h2>1. The Holy Trinity (Kutsal Üçlü)</h2>
+    <p>Bu tablolar birbirinden bağımsız değildir. Aynı gerçeğin farklı açılardan fotoğrafıdır.</p>
+    <ul>
+        <li><strong>Income Statement (Gelir Tablosu):</strong> Belirli bir dönemdeki karlılık (Video).</li>
+        <li><strong>Balance Sheet (Bilanço):</strong> Belirli bir andaki finansal durum (Fotoğraf).</li>
+        <li><strong>Cash Flow Statement (Nakit Akım):</strong> Nakdin nereden gelip nereye gittiği (Gerçek).</li>
+    </ul>
+
+    <h2>2. Temel Bağlantı Mantığı (Ezberle)</h2>
+    <p>Birbiriyle nasıl konuşurlar? Net Income ve Cash aracılığıyla.</p>
+
+    <div class="math-block">
+        Adım 1: Net Income (IS) --> Cash Flow Statement'ın (CFS) en tepesine gider.<br>
+        Adım 2: CFS'deki değişimler (Operasyon, Yatırım, Finansman) "Net Change in Cash"i verir.<br>
+        Adım 3: Bilanço Cash (t) = Bilanço Cash (t-1) + Net Change in Cash.<br>
+        Adım 4: Net Income ayrıca Bilançodaki "Retained Earnings" kısmına gider.<br><br>
+        <strong>Retained Earnings (t) = Retained Earnings (t-1) + Net Income - Dividends</strong>
+    </div>
+
+    <h2>3. "Depreciation" Mülakat Sorusu</h2>
+    <p>Klasik soru: "Amortisman (Depreciation) 10$ artarsa 3 tablo nasıl etkilenir?" (Vergi: %40)</p>
+
+    <div class="math-block">
+        <strong>1. Income Statement:</strong><br>
+        Operating Income 10$ düşer.<br>
+        Vergi Kalkanı (Tax Shield) = 10 * %40 = 4$.<br>
+        Net Income <strong>6$ düşer</strong>.<br><br>
+        <strong>2. Cash Flow Statement:</strong><br>
+        Net Income en üstte -6$ başlar.<br>
+        Depreciation (Nakit olmayan gider) +10$ geri eklenir.<br>
+        Net Cash Flow = -6 + 10 = <strong>+4$ artar</strong>.<br><br>
+        <strong>3. Balance Sheet:</strong><br>
+        Assets: Cash (+4$) - PP&E (-10$) = Net Varlıklar <strong>-6$ düşer</strong>.<br>
+        Equity: Retained Earnings (Net Income düştüğü için) <strong>-6$ düşer</strong>.<br>
+        Denge: -6 = -6. (Tuttu).
+    </div>
+
+    <div class="quiz-box">
+        <div class="quiz-title"><i class="fa-solid fa-bolt"></i> Rapid Fire Drills (Cevap için üzerine gel)</div>
+        
+        <div class="quiz-item">
+            <span class="q-text">1. Şirket 100$ borç alırsa (Debt Issuance) tablolar nasıl etkilenir?</span>
+            <div class="a-text">
+                IS: Etkilenmez (Faiz henüz işlemedi).<br>
+                CFS: Cash Flow from Financing (CFF) +100$ artar.<br>
+                BS: Cash +100$, Debt +100$. Varlık = Borç artışı ile dengelenir.
+            </div>
+        </div>
+
+        <div class="quiz-item">
+            <span class="q-text">2. "Change in Working Capital" eksi ise nakit durumu nedir?</span>
+            <div class="a-text">
+                Nakit <strong>Azalmıştır</strong>. Eksi olması, Varlıkların (Stok, Alacak) arttığını gösterir. Varlık satın almak nakit çıkışıdır (Cash Outflow).
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

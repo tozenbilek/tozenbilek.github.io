@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modeling Lab | IB Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#047857; --shadow:0 6px 20px rgba(0,0,0,0.06); }
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
+        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px;padding-bottom:64px}
+        .container{max-width:900px;margin:0 auto;padding:48px 24px 0}
+        .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+        .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
+        .back-btn:hover{border-color:var(--accent-color);color:var(--text-primary)}
+        h1{font-size:24px;font-weight:600;margin-bottom:8px;color:var(--text-primary)}
+        .tag-mod{background:#dcfce7;color:var(--accent-color);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;vertical-align:middle;margin-left:8px}
+        .desc{color:var(--text-secondary);margin-bottom:40px;max-width:640px;line-height:1.6}
+        
+        .step-card{background:#fff; border:1px solid var(--border-color); padding:20px; margin-bottom:16px; border-radius:8px; display:flex; gap:16px;}
+        .step-num{background:var(--accent-color); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;}
+        .step-content{font-size:14px; color:var(--text-secondary);}
+        .step-title{font-weight:600; color:var(--text-primary); margin-bottom:4px; display:block;}
+        .formula{font-family:'JetBrains Mono',monospace; background:#f0fdf4; color:#166534; padding:2px 6px; border-radius:4px; font-size:12px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-bar"><a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Ana Terminal</a></nav>
+        <header>
+            <h1>Excel Modeling Lab <span class="tag-mod">Practice</span></h1>
+            <p class="desc">Okumak yetmez. Excel'de boş bir sayfadan başlayıp 3-Statement Model kurmalısınız. İşte adım adım reçete.</p>
+        </header>
+
+        <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <span class="step-title">Setup & Hardcodes</span>
+                Sütunları oluşturun: Geçmiş Yıllar (2021A, 2022A) ve Tahmin Yılları (2023E - 2027E). Hardcode (elle girilen) verileri <strong>Mavi</strong>, formülleri <strong>Siyah</strong> yapın.
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <span class="step-title">Income Statement Projection</span>
+                Revenue'yu % büyüme oranıyla artırın. <span class="formula">= Önceki_Ciro * (1 + Büyüme%)</span>. COGS ve Opex'i cironun yüzdesi olarak tahmin edin.
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <span class="step-title">Balance Sheet Schedules</span>
+                Working Capital'i gün (Days) bazında tahmin edin (DSO, DIO, DPO). PP&E takvimini kurun: Başlangıç + CapEx - Amortisman = Bitiş.
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <span class="step-title">Cash Flow Plug</span>
+                Nakit Akım Tablosunu oluşturun. En alttaki "Ending Cash"i Bilançodaki Cash satırına bağlayın. Eğer Varlık = Kaynak ise modeliniz çalışıyor demektir.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comps Analysis | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#1e3a8a; --code-bg:#f1f5f9; --quiz-bg:#f0fdf4; --quiz-text:#166534; --border-color:#e2e8f0; }
+        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
+        .nav-header{margin-bottom:40px;}
+        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
+        .back-link:hover{color:var(--accent-color)}
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
+        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
+        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
+        p{margin-bottom:20px;color:var(--text-secondary)}
+        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+    </style>
+</head>
+<body>
+    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Valuation Module</a></div>
+    <h1>Comps (Çarpan Analizi)</h1>
+    <div class="meta"><span><i class="fa-regular fa-clock"></i> 45 min</span><span><i class="fa-solid fa-building"></i> Relative Value</span></div>
+
+    <p>Eğer benzer bir ev 1000 TL/m2 ediyorsa, benim evim de 1000 TL/m2 eder. Mantık budur.</p>
+
+    <h2>1. EV/EBITDA vs P/E (F/K)</h2>
+    <p>Hangi çarpanı kullanmalıyız?</p>
+    <ul>
+        <li><strong>EV/EBITDA:</strong> En yaygınıdır. Sermaye yapısından (Borç) bağımsızdır. Farklı ülkelerdeki (farklı vergi oranları) şirketleri karşılaştırmak için idealdir.</li>
+        <li><strong>P/E (F/K):</strong> Sermaye yapısından etkilenir. Bankalar ve Finans şirketleri için kullanılır (çünkü bankalarda borç bir "hammadde"dir).</li>
+    </ul>
+
+    <h2>2. Peer Group Seçimi</h2>
+    <p>Kimi kiminle kıyaslayacaksınız? Sadece "Aynı sektör" yetmez.</p>
+    <div class="math-block">
+        1. Sektör (Örn: SaaS)<br>
+        2. Büyüklük (Örn: Market Cap > 10M$)<br>
+        3. Coğrafya (Örn: US Only)<br>
+        4. Büyüme Hızı (Örn: >20% Growth)
+    </div>
+</body>
+</html>
+

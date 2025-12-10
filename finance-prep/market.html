@@ -1,95 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Awareness | IB Prep</title>
+    <title>Market Mechanics | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --border-hover:#cbd5e1; --text-primary:#1f2933; --text-secondary:#52606d; --text-tertiary:#7b8794; --accent-green:#0ea5e9; --shadow:0 6px 20px rgba(0,0,0,0.06); }
+        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#0f172a; --shadow:0 6px 20px rgba(0,0,0,0.06); --quiz-bg:#f0fdf4; --quiz-text:#166534; }
         *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-        body{background-color:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.6;padding:40px 24px;max-width:960px;margin:0 auto;font-size:15px}
+        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px;padding-bottom:64px}
+        .container{max-width:900px;margin:0 auto;padding:48px 24px 0}
         .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
         .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
-        .back-btn:hover{border-color:var(--border-hover);color:var(--text-primary)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:8px;display:flex;align-items:center;gap:12px}
-        .tag-ib{background:rgba(14, 165, 233, 0.12);color:var(--accent-green);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+        .back-btn:hover{border-color:var(--accent-color);color:var(--text-primary)}
+        h1{font-size:24px;font-weight:600;margin-bottom:8px;color:var(--text-primary)}
+        .tag-mod{background:#e2e8f0;color:var(--text-primary);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;vertical-align:middle;margin-left:8px}
+        .desc{color:var(--text-secondary);margin-bottom:40px;max-width:640px;line-height:1.6}
         
-        .market-card{background:var(--surface-color);border:1px solid var(--border-color);border-radius:8px;padding:20px;margin-bottom:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
-        .market-label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--text-tertiary);font-weight:600}
-        .market-value{font-size:24px;font-weight:700;color:var(--text-primary);font-family:'JetBrains Mono',monospace}
-        .market-desc{font-size:14px;color:var(--text-secondary);margin-top:4px}
-        .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:40px}
+        .content-card{background:#fff; border:1px solid var(--border-color); padding:24px; border-radius:10px; margin-bottom:24px; box-shadow:var(--shadow);}
+        h2{font-size:18px; font-weight:600; margin-bottom:12px;}
         
-        section{margin-bottom:60px;scroll-margin-top:20px}
-        h2{font-size:24px;font-weight:600;color:var(--text-primary);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--border-color);display:flex;align-items:center;gap:10px}
-        
-        .scenario-box{background:#f8fafc;border:1px solid var(--border-color);border-left:4px solid var(--text-tertiary);padding:16px;margin-bottom:16px;border-radius:4px}
-        .scenario-title{font-weight:600;color:var(--text-primary);margin-bottom:6px;display:block}
+        .quiz-box{background:var(--quiz-bg); border:1px solid #bbf7d0; padding:16px; border-radius:8px; margin-top:20px;}
+        .quiz-q{font-weight:600; color:#14532d; display:block; margin-bottom:4px;}
+        .quiz-a{display:none; color:#166534; font-size:13px; margin-top:4px;}
+        .quiz-item:hover .quiz-a{display:block;}
     </style>
 </head>
 <body>
+    <div class="container">
+        <nav class="nav-bar"><a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Ana Terminal</a></nav>
+        <header>
+            <h1>Global Macro & Markets <span class="tag-mod">Daily Pulse</span></h1>
+            <p class="desc">Değerlemenin "Payda"sını (WACC) ve piyasa riskini anlamak. Bond Math, Fed Politikaları ve Getiri Eğrisi.</p>
+        </header>
 
-    <div class="nav-bar">
-        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> IB Prep</a>
-        <a href="../index.html" class="back-btn"><i class="fa-solid fa-terminal"></i> Main</a>
+        <div class="content-card">
+            <h2>1. Bond Math (Tahvil Matematiği)</h2>
+            <p class="desc">Finansın altın kuralı: <strong>Faizler artarsa, Tahvil Fiyatları düşer.</strong></p>
+            <div style="font-family:'JetBrains Mono',monospace; background:#f1f5f9; padding:12px; border-radius:6px; font-size:13px;">
+                Fiyat Değişimi ≈ -1 * Duration * Faiz Değişimi
+            </div>
+            <div class="quiz-box">
+                <div class="quiz-item">
+                    <span class="quiz-q">Soru: Duration 10 yıl, Faiz +%1 artarsa ne olur?</span>
+                    <span class="quiz-a">Cevap: Fiyat yaklaşık %10 düşer. (Eski düşük faizli tahvil değer kaybeder).</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2>2. Yield Curve (Getiri Eğrisi)</h2>
+            <p class="desc">Kısa vadeli (2Y) faiz, uzun vadeli (10Y) faizden yüksekse buna "Inverted Curve" denir. Resesyonun en büyük habercisidir.</p>
+        </div>
+
+        <div class="content-card">
+            <h2>3. Fed Politikası</h2>
+            <p class="desc"><strong>QE (Genişleme):</strong> Fed tahvil alır -> Piyasa coşar.<br><strong>QT (Sıkılaşma):</strong> Fed tahvil satar -> Piyasa düşer (Don't fight the Fed).</p>
+        </div>
     </div>
-
-    <h1>Market Awareness <span class="tag-ib">Daily Pulse</span></h1>
-
-    <!-- 1. Canlı Göstergeler -->
-    <section>
-        <h2><i class="fa-solid fa-chart-simple"></i> 1. Key Indicators (Ezberle)</h2>
-        <div class="grid-3">
-            <div class="market-card">
-                <span class="market-label">10-Year Treasury</span>
-                <span class="market-value">~4.20%</span>
-                <span class="market-desc">
-                    <strong>Neden Önemli:</strong> Risksiz Faiz (Risk Free Rate).<br>
-                    Bu artarsa; Borsa Düşer, Ev Fiyatları Düşer, Şirket Değerleri Düşer. (Yerçekimi gibi).
-                </span>
-            </div>
-            <div class="market-card">
-                <span class="market-label">Fed Funds Rate</span>
-                <span class="market-value">5.25% - 5.50%</span>
-                <span class="market-desc">
-                    <strong>Neden Önemli:</strong> Kredi Maliyeti.<br>
-                    LBO ve M&A yapmak için bankadan kredi çekerken bu oranın üstüne spread ödersin.
-                </span>
-            </div>
-            <div class="market-card">
-                <span class="market-label">S&P 500 / Nasdaq</span>
-                <span class="market-value">All-Time Highs</span>
-                <span class="market-desc">
-                    <strong>Neden Önemli:</strong> Yatırımcı İştahı (Sentiment).<br>
-                    Şu an "AI Boom" (Yapay Zeka Çılgınlığı) ile zirvede.
-                </span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. Pitch -->
-    <section>
-        <h2><i class="fa-solid fa-microphone"></i> 2. "Piyasa Nasıl?" (30 Sn Cevap)</h2>
-        <p>Mülakatta sana "Piyasayı anlat" dediklerinde seçmen gereken 3 senaryo:</p>
-
-        <div class="scenario-box" style="border-left-color: #16a34a;">
-            <span class="scenario-title">1. BULL CASE (İyimser)</span>
-            "Enflasyon düşüyor, Fed yakında faiz indirecek (Soft Landing). Yapay zeka verimliliği artırıyor. Şirket kârları güçlü. M&A patlaması yakındır."
-        </div>
-
-        <div class="scenario-box" style="border-left-color: #dc2626;">
-            <span class="scenario-title">2. BEAR CASE (Kötümser)</span>
-            "Enflasyon yapışkan (Sticky Inflation), Fed faiz indiremez (Higher for Longer). Tüketici kredileri patlayabilir. Resesyon riski hala masada."
-        </div>
-
-        <div class="scenario-box" style="border-left-color: #0ea5e9;">
-            <span class="scenario-title">3. SENİN CEVABIN (Dengeli)</span>
-            "Piyasa şu an <strong>ikiye bölünmüş durumda</strong>. Teknoloji hisseleri rekor kırarken, geleneksel sanayi yüksek faizden eziliyor. <br>
-            M&A açısından; stratejik alıcılar (Nakit zengini şirketler) aktif, ama Private Equity (Borçla alanlar) faizlerin düşmesini bekliyor."
-        </div>
-    </section>
-
 </body>
 </html>

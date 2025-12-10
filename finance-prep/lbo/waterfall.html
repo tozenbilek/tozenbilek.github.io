@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Waterfall | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#7c2d12; --code-bg:#f1f5f9; --border-color:#e2e8f0; }
+        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
+        .nav-header{margin-bottom:40px;}
+        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
+        .back-link:hover{color:var(--accent-color)}
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
+        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
+        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
+        p{margin-bottom:20px;color:var(--text-secondary)}
+        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        .eng-note{background:#fff7ed; border-left:4px solid #f97316; padding:20px; font-size:14px; color:#9a3412; margin-top:40px; border-radius:4px;}
+        .eng-title{font-weight:700; display:block; text-transform:uppercase; font-size:11px; letter-spacing:1px; margin-bottom:8px;}
+    </style>
+</head>
+<body>
+    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> LBO Module</a></div>
+    <h1>The Cash Sweep Waterfall</h1>
+    <div class="meta"><span><i class="fa-regular fa-clock"></i> 60 min</span><span><i class="fa-solid fa-water"></i> Modeling Logic</span></div>
+
+    <p>LBO'nun motoru budur. Şirketin her yıl ürettiği nakit (Free Cash Flow), borçları belirli bir hiyerarşide öder.</p>
+
+    <h2>1. Cash Flow Available for Debt Service (CFADS)</h2>
+    <p>Borç ödemek için elimizde ne kadar nakit var?</p>
+    <div class="math-block">
+        EBITDA<br>
+        - CapEx<br>
+        - Taxes<br>
+        - Change in NWC<br>
+        = <strong>CFADS (Dağıtılabilir Nakit)</strong>
+    </div>
+
+    <h2>2. The Algorithm (Sweep Logic)</h2>
+    <p>Elimizdeki CFADS ile borçları hangi sırayla kapatacağız?</p>
+    <div class="eng-note">
+        <span class="eng-title">Mühendis Bakışı: If/Else Döngüsü</span>
+        <div class="math-block" style="background:transparent; border:none; padding:0; margin:0;">
+            1. <strong>Mandatory Amortization:</strong> Önce TLA'nın zorunlu taksitini öde.<br>
+            2. <strong>Cash Sweep:</strong> Kalan parayı (Excess Cash) hesapla.<br>
+            3. <strong>Loop:</strong><br>
+            &nbsp;&nbsp; IF (Revolver > 0) -> Revolver'ı kapat.<br>
+            &nbsp;&nbsp; ELSE IF (Term Loan B > 0) -> TLB'yi erken kapat (Prepay).<br>
+            &nbsp;&nbsp; ELSE -> Parayı bilançoda biriktir.
+        </div>
+    </div>
+</body>
+</html>
+

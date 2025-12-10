@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns Attribution | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#7c2d12; --code-bg:#f1f5f9; --border-color:#e2e8f0; }
+        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
+        .nav-header{margin-bottom:40px;}
+        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
+        .back-link:hover{color:var(--accent-color)}
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
+        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
+        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
+        p{margin-bottom:20px;color:var(--text-secondary)}
+        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+    </style>
+</head>
+<body>
+    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> LBO Module</a></div>
+    <h1>Returns Attribution (Getiri Ayrıştırma)</h1>
+    <div class="meta"><span><i class="fa-regular fa-clock"></i> 30 min</span><span><i class="fa-solid fa-percent"></i> Return Analysis</span></div>
+
+    <p>%25 IRR ile çıktınız. Peki bu getiri nereden geldi? Şans mı, operasyonel başarı mı?</p>
+
+    <h2>1. Getirinin 3 Kaynağı</h2>
+    <div class="math-block">
+        Toplam Getiri ($) = Çıkış Equity - Giriş Equity<br><br>
+        <strong>1. EBITDA Growth ($):</strong> Şirketi büyüttünüz. (EBITDA arttı).<br>
+        <strong>2. Multiple Expansion ($):</strong> Şirketi 8x'e alıp 10x'e sattınız. (Piyasa iyi gitti).<br>
+        <strong>3. Deleveraging ($):</strong> Borcu ödediniz. (LBO'nun doğal sonucu).
+    </div>
+
+    <h2>2. MOIC vs IRR Kuralları</h2>
+    <p>Bunları ezberleyin (Rule of Thumb):</p>
+    <ul>
+        <li>2.0x MOIC / 5 Yıl = ~%15 IRR</li>
+        <li>2.5x MOIC / 5 Yıl = ~%20 IRR</li>
+        <li>3.0x MOIC / 5 Yıl = ~%25 IRR</li>
+    </ul>
+</body>
+</html>
+

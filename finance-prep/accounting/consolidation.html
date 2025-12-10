@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolidation | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#0f172a; --code-bg:#f1f5f9; --quiz-bg:#f0fdf4; --quiz-text:#166534; --border-color:#e2e8f0; }
+        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
+        
+        .nav-header{margin-bottom:40px;}
+        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
+        .back-link:hover{color:var(--accent-color)}
+        
+        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
+        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
+        
+        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
+        p{margin-bottom:20px;color:var(--text-secondary)}
+        
+        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        
+        .quiz-box{background:var(--quiz-bg);border:1px solid #bbf7d0;padding:24px;border-radius:8px;margin-top:40px}
+        .quiz-title{font-weight:600;color:var(--quiz-text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+        .quiz-item{margin-bottom:16px;cursor:pointer}
+        .q-text{font-weight:500;margin-bottom:4px;color:#14532d;display:block}
+        .a-text{display:none;font-size:14px;color:#166534;padding:8px;background:rgba(255,255,255,0.6);border-radius:4px;margin-top:4px}
+        .quiz-item:hover .a-text{display:block}
+    </style>
+</head>
+<body>
+
+    <div class="nav-header">
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+    </div>
+
+    <h1>Consolidation & NCI</h1>
+    <div class="meta">
+        <span><i class="fa-regular fa-clock"></i> 50 min</span>
+        <span><i class="fa-solid fa-file-contract"></i> Expert</span>
+    </div>
+
+    <p>Konsolidasyon işlerin karıştığı yerdir. Bir şirketin %60'ına sahipseniz, gelirinin %60'ını mı raporlarsınız? Hayır. %100'ünü raporlar, sonra "benim olmayan kısmı" gider olarak düşersiniz.</p>
+
+    <h2>1. Kontrol Mantığı (>50%)</h2>
+    <p>US GAAP der ki: Eğer kontrol ediyorsan (>50%), tabloları tamamen birleştirirsin (Consolidate). Binanın sadece çatı katını kiralamış olsanız bile tüm binanın sahibi gibi raporlarsınız.</p>
+
+    <div class="math-block">
+        <strong>Senaryo:</strong> Ana Şirket, Yavru Şirketin %80'ini 80M$'a aldı. Yavru Şirketin Defter Değeri 100M$.<br><br>
+        <strong>Bilanço:</strong><br>
+        Varlıklar: Ana Şirket (%100) + Yavru Şirket (%100).<br>
+        Yükümlülükler: Ana Şirket (%100) + Yavru Şirket (%100).<br>
+        <strong>Eşitlik Sorunu:</strong> Varlık > Yükümlülük + Özkaynak (Çünkü sadece %80'ini ödedik).<br>
+        <strong>Çözüm:</strong> Özkaynaklar altına "Non-Controlling Interest" (NCI) eklenir.<br>
+        NCI = %20 * Yavru Şirket Defter Değeri = 20M$.
+    </div>
+
+    <h2>2. Gelir Tablosu Etkisi</h2>
+    <p>Gelir ve Giderlerin %100'ünü birleştirdiğiniz için, Net Income olduğundan yüksek görünür (o kârın sadece %80'i sizin).</p>
+    <p>Bu yüzden Gelir Tablosunun en altına <strong>"Net Income Attributable to Non-Controlling Interest"</strong> kalemi eklenir. Bu bir gider gibi düşülerek "Ana Ortaklığa Düşen Net Kâr" bulunur.</p>
+
+    <div class="quiz-box">
+        <div class="quiz-title"><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</div>
+        
+        <div class="quiz-item">
+            <span class="q-text">1. EBITDA hesaplarken NCI düşülür mü?</span>
+            <div class="a-text"><strong>Hayır.</strong> EBITDA operasyonel kârdır ve sermaye yapısından (kimin ne kadar sahip olduğundan) bağımsızdır. NCI, Net Income hesaplanırken (en altta) düşülür.</div>
+        </div>
+
+        <div class="quiz-item">
+            <span class="q-text">2. Enterprise Value hesaplarken NCI eklenir mi?</span>
+            <div class="a-text"><strong>Evet.</strong> Çünkü Equity Value sadece Ana Şirketin hissesini kapsar, ama Net Debt ve EBITDA şirketin %100'ünü kapsar. Pay/Payda tutarlılığı için NCI (diğer %20'lik kısım) eklenmelidir.</div>
+        </div>
+    </div>
+
+</body>
+</html>
