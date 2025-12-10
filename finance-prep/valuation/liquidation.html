@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidation Valuation | IB Prep</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Valuation Module</a>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>3.3 Liquidation Valuation</h1>
+            <p class="lesson-desc">
+                Şirket öldüğünde ne kadar eder? "Kelepir" değerleme.
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-gavel"></i> The Garage Sale Analogy</h3>
+                <p>
+                    Şirket batıyor. Artık "Gelecek Nakit Akışı" (DCF) yok.
+                    Sadece eldeki malları (Masa, sandalye, stok) "hemen şimdi" satarsak ne kadar ederiz?
+                    Garaj satışında eşyalarınızı değerinin çok altına (örn. %50) satarsınız.
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-calculator"></i> Recovery Rates</h3>
+                <p>
+                    Varlıkların defter değeri (Book Value) ile satış değeri aynı değildir.
+                </p>
+                <div class="table-container">
+                    <table class="financial-table">
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Book Value</th>
+                                <th>Recovery Rate</th>
+                                <th>Liquid. Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cash</td>
+                                <td>$100</td>
+                                <td>100%</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Accounts Receivable</td>
+                                <td>$200</td>
+                                <td>80%</td>
+                                <td>$160</td>
+                            </tr>
+                            <tr>
+                                <td>Inventory</td>
+                                <td>$300</td>
+                                <td>50%</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>PP&E (Makine)</td>
+                                <td>$500</td>
+                                <td>30%</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>Total Assets</strong></td>
+                                <td><strong>$1,100</strong></td>
+                                <td></td>
+                                <td><strong>$560</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>
+                    Eğer şirketin borcu 600$ ise, ve tasfiye değeri 560$ ise, Hissedarlara (Equity) <strong>SIFIR</strong> kalır. 
+                    Borçlular bile paralarının tamamını alamaz.
+                </p>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="football-field.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: Football Field</a>
+                <a href="ddm.html" class="btn-nav next">Sonraki: DDM <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

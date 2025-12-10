@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Carlo Simulation | IB Prep</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Valuation Module</a>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>3.5 Monte Carlo Simulation</h1>
+            <p class="lesson-desc">
+                Tek bir gelecek yoktur, binlerce olasılık vardır. Mühendislik ve Finansın buluştuğu nokta.
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-dice"></i> Doctor Strange Analogy</h3>
+                <p>
+                    Avengers filminde Doctor Strange 14 milyon olası geleceği görür.
+                    DCF tek bir senaryoya bakar (Base Case).
+                    Monte Carlo ise 10,000 farklı senaryoyu (Enflasyonun %2 olduğu, %10 olduğu, büyümenin durduğu vb.) simüle eder.
+                    Sonuçta size "Hissenin değeri %90 ihtimalle 10$ ile 15$ arasındadır" der.
+                </p>
+            </div>
+
+            <div class="algo-box">
+                <h3><i class="fa-solid fa-code"></i> Python Logic</h3>
+                <p>
+                    Excel'de bunu yapmak zordur. Python burada devreye girer.
+                </p>
+<pre>
+import numpy as np
+
+# Varsayımlar (Ortalama ve Standart Sapma)
+revenue_growth_mean = 0.05
+revenue_growth_std = 0.02
+iterations = 10000
+
+# Simülasyon
+simulated_growth = np.random.normal(revenue_growth_mean, revenue_growth_std, iterations)
+
+# Sonuç Dağılımı
+print(f"En Kötü Senaryo: {np.percentile(simulated_growth, 5)}")
+print(f"En İyi Senaryo: {np.percentile(simulated_growth, 95)}")
+</pre>
+                <p>
+                    Bu yöntem, madencilik veya ilaç geliştirme gibi belirsizliğin çok yüksek olduğu sektörlerde değerleme yapmak için kullanılır.
+                </p>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="ddm.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: DDM</a>
+                <a href="index.html" class="btn-nav next">Modül Sonu <i class="fa-solid fa-flag-checkered"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
