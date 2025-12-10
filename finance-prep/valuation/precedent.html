@@ -6,37 +6,44 @@
     <title>Precedent Transactions | Valuation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#1e3a8a; --code-bg:#f1f5f9; --quiz-bg:#f0fdf4; --quiz-text:#166534; --border-color:#e2e8f0; }
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
-        .nav-header{margin-bottom:40px;}
-        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-        .back-link:hover{color:var(--accent-color)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
-        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
-        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
-        p{margin-bottom:20px;color:var(--text-secondary)}
-        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Valuation Module</a></div>
-    <h1>Precedent Transactions</h1>
-    <div class="meta"><span><i class="fa-regular fa-clock"></i> 30 min</span><span><i class="fa-solid fa-history"></i> M&A Data</span></div>
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Precedent Transactions</span>
+        </div>
 
-    <p>Geçmişte benzer şirketler kaça satıldı? Bu yöntem genelde en yüksek değeri verir.</p>
+        <h1>Precedent Transactions</h1>
+        <p>Geçmişte benzer şirketler kaça satıldı? Bu yöntem genelde en yüksek değeri verir.</p>
 
-    <h2>1. Control Premium (Kontrol Primi)</h2>
-    <p>Borsada bir hisseyi 10 TL'ye alabilirsiniz. Ama şirketin tamamını (%100) almak isterseniz, hissedarlar size 10 TL'ye satmaz. "Kontrolü" devretmek için ekstra para (Premium) isterler.</p>
-    <div class="math-block">
-        Ortalama Premium: %20 - %30<br>
-        Bu yüzden Precedent Transactions değerlemesi, Public Comps değerlemesinden daha yüksek çıkar.
+        <h2 style="color: var(--accent-blue);">1. Control Premium (Kontrol Primi)</h2>
+        <p>Borsada bir hisseyi 10 TL'ye alabilirsiniz. Ama şirketin tamamını (%100) almak isterseniz, hissedarlar size 10 TL'ye satmaz. "Kontrolü" devretmek için ekstra para (Premium) isterler.</p>
+        <div class="math-block">
+            Ortalama Premium: %20 - %30<br>
+            Bu yüzden Precedent Transactions değerlemesi, Public Comps değerlemesinden daha yüksek çıkar.
+        </div>
+
+        <h2 style="color: var(--accent-blue);">2. Synergies (Sinerjiler)</h2>
+        <p>Geçmiş işlemlerde ödenen fiyatın içinde "Sinerji" beklentisi de vardır. Alıcı, şirketi kendi bünyesine katınca maliyetleri düşüreceğini bildiği için daha yüksek fiyat ödemeye razı olmuştur.</p>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Precedent Transactions analizinde hangi tarih önemlidir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    İşlemin Duyurulma Tarihi (Announcement Date) önemlidir, Kapanış Tarihi (Closing Date) değil. Çünkü piyasa koşulları ve değerleme algısı duyuru anında sabittir.
+                </div>
+            </div>
+        </div>
+
     </div>
-
-    <h2>2. Synergies (Sinerjiler)</h2>
-    <p>Geçmiş işlemlerde ödenen fiyatın içinde "Sinerji" beklentisi de vardır. Alıcı, şirketi kendi bünyesine katınca maliyetleri düşüreceğini bildiği için daha yüksek fiyat ödemeye razı olmuştur.</p>
 </body>
 </html>
-
-
-

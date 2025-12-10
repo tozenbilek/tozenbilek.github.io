@@ -6,45 +6,7 @@
     <title>Comps & EV Bridge | Valuation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --accent-val: #2563eb;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
-        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
-        .nav-link:hover { color: var(--accent-val); }
-        .nav-sep { color: var(--border-color); }
-
-        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
-        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-val); padding-left: 16px; }
-        p { margin-bottom: 20px; color: var(--text-secondary); }
-        strong { color: var(--text-primary); font-weight: 600; }
-        
-        .mech-box {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            padding: 24px;
-            border-radius: 8px;
-            margin: 24px 0;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-        }
-
-        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
-        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
-        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
-        .drill-item:hover .drill-q { color: var(--accent-val); }
-        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -64,7 +26,7 @@
             Kural şudur: Pay ve Payda tutarlı olmalıdır.
         </p>
 
-        <h2>1. The Consistency Rule</h2>
+        <h2 style="color: var(--accent-blue);">1. The Consistency Rule</h2>
         <p>
             Elma ile Elma kıyaslanmalıdır.
             <br>• Eğer Payda (Denominator) <strong>EBITDA</strong> ise (Tüm sermaye sahiplerine ait kar), Pay (Numerator) <strong>Enterprise Value</strong> olmalıdır.
@@ -78,7 +40,7 @@
             YANLIŞ: EV / Net Income (Kırmızı Bayrak!)
         </div>
 
-        <h2>2. Enterprise Value: The Real Bridge</h2>
+        <h2 style="color: var(--accent-blue);">2. Enterprise Value: The Real Bridge</h2>
         <p>
             Equity Value (Market Cap) sadece buzdağının görünen kısmıdır. Şirketin "Gerçek Devralma Maliyeti" (Takeover Price) Enterprise Value'dur.
             Formülü ezberleme, mantığı kavra: <strong>Core Business</strong> değerini arıyoruz.
@@ -99,7 +61,7 @@
             Tutarsızlık olur (Mismatch).
         </p>
 
-        <h2>3. Picking The Right Peers</h2>
+        <h2 style="color: var(--accent-blue);">3. Picking The Right Peers</h2>
         <p>
             Her şirket Comp (Emsal) olamaz. En iyi Comp setini seçmek için <strong>"G.I.S.F."</strong> filtresini kullan:
         </p>
