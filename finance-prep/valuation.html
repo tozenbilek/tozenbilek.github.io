@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valuation Guide | IB Prep</title>
+    <!-- Stil (Accounting ile aynı) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #050505; --text-primary: #EDEDED; --text-secondary: #888888; --accent-blue: #0A84FF; --border-color: #1F1F1F;
+        }
+        body { background-color: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px; max-width: 800px; margin: 0 auto; }
+        h1 { font-size: 28px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; margin-bottom: 16px; }
+        h2 { font-size: 20px; margin-top: 40px; color: var(--accent-blue); font-family: 'JetBrains Mono', monospace; }
+        p { margin-bottom: 16px; color: var(--text-secondary); }
+        .qa-box { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent-blue); padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .question { font-weight: 600; color: #fff; margin-bottom: 8px; display: block; }
+        .answer { color: var(--text-secondary); font-size: 14px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: var(--text-secondary); text-decoration: none; font-size: 14px; }
+        .back-link:hover { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← Back to Dashboard</a>
+    
+    <h1>Valuation Methodologies</h1>
+    <p>Bir şirketin ne kadar ettiğini bulmanın 3 ana yolu vardır. Mülakatlarda bu yöntemleri sıralamanız ve artısını/eksisini bilmeniz istenir.</p>
+
+    <h2>1. Comparable Company Analysis (Comps)</h2>
+    <p><strong>Mantık:</strong> "Rakip şirketler ne kadara işlem görüyor?"</p>
+    <p>Benzer sektördeki halka açık şirketlerin çarpanlarına (Multiples) bakarız. Örn: Apple'ın F/K oranı 30 ise, benzer bir teknoloji şirketi de 30 civarında olmalı.</p>
+    <ul>
+        <li><strong>Artısı:</strong> Piyasa verisine dayanır, gerçekçidir.</li>
+        <li><strong>Eksisi:</strong> Piyasa rasyonel olmayabilir (Balon varsa değerleme şişer). Hiçbir şirket %100 benzer değildir.</li>
+    </ul>
+
+    <h2>2. Precedent Transactions (Emsal İşlemler)</h2>
+    <p><strong>Mantık:</strong> "Geçmişte benzer şirketler kaça SATILDI?"</p>
+    <p>Sadece borsadaki fiyata değil, geçmişteki satın almalara (M&A deals) bakarız.</p>
+    <div class="qa-box">
+        <span class="question">Soru: Precedent Transactions neden Comps'tan daha yüksek değer verir?</span>
+        <div class="answer">
+            Çünkü bir şirketi satın alırken, borsadaki fiyatının üzerine <strong>"Control Premium"</strong> (Kontrol Primi) ödenir. Yani şirketin yönetimini ele geçirmek için %20-%30 fazladan para verilir.
+        </div>
+    </div>
+
+    <h2>3. DCF (Discounted Cash Flow)</h2>
+    <p><strong>Mantık:</strong> "Şirketin gelecekte üreteceği nakdin bugünkü değeri nedir?"</p>
+    <p>En teknik ve akademik yöntemdir. Piyasa dalgalanmalarından etkilenmez, şirketin içsel değerini (Intrinsic Value) bulur.</p>
+
+    <div class="qa-box">
+        <span class="question">Soru: Bana DCF'i adım adım anlat ("Walk me through a DCF").</span>
+        <div class="answer">
+            1. Şirketin gelecekteki <strong>Free Cash Flow</strong>'larını (FCF) tahmin et (Genelde 5-10 yıl).<br>
+            2. Bu nakit akışlarının bugünkü değerini bulmak için <strong>WACC</strong> (Weighted Average Cost of Capital) ile iskonto et (Discount).<br>
+            3. Şirketin sonsuza kadar devam edeceği değeri (Terminal Value) hesapla ve onu da iskonto et.<br>
+            4. İskonto edilmiş FCF'ler + İskonto edilmiş Terminal Value = <strong>Enterprise Value</strong>.
+        </div>
+    </div>
+
+</body>
+</html>
+

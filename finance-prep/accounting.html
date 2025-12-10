@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounting Guide | IB Prep</title>
+    <!-- Fontlar ve Stil (Ana sayfayla uyumlu) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #050505; --text-primary: #EDEDED; --text-secondary: #888888; --accent-green: #30D158; --border-color: #1F1F1F;
+        }
+        body { background-color: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px; max-width: 800px; margin: 0 auto; }
+        h1, h2, h3 { color: #fff; margin-bottom: 16px; font-weight: 600; }
+        h1 { font-size: 28px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
+        h2 { font-size: 20px; margin-top: 40px; color: var(--accent-green); font-family: 'JetBrains Mono', monospace; }
+        p { margin-bottom: 16px; color: var(--text-secondary); }
+        .highlight { color: #fff; background: rgba(255,255,255,0.1); padding: 2px 4px; border-radius: 4px; }
+        .qa-box { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent-green); padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .question { font-weight: 600; color: #fff; margin-bottom: 8px; display: block; }
+        .answer { color: var(--text-secondary); font-size: 14px; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: var(--text-secondary); text-decoration: none; font-size: 14px; }
+        .back-link:hover { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-link">← Back to Dashboard</a>
+    
+    <h1>Accounting Fundamentals</h1>
+    <p>IB mülakatlarının %40'ı burasıdır. Muhasebe bilmeden finansal model kurulamaz.</p>
+
+    <h2>1. Üç Temel Tablo (The 3 Statements)</h2>
+    <p>Bir şirketin finansal sağlığını anlamak için bu üçüne bakarız:</p>
+    <ul>
+        <li><strong>Income Statement (Gelir Tablosu):</strong> Belirli bir dönemdeki (1 yıl/çeyrek) kârlılığı gösterir. Gelir - Gider = Net Kâr.</li>
+        <li><strong>Balance Sheet (Bilanço):</strong> Şirketin "o anki" fotoğrafıdır. Varlıklar = Borçlar + Özkaynaklar.</li>
+        <li><strong>Cash Flow Statement (Nakit Akış Tablosu):</strong> Kasaya giren ve çıkan "gerçek" nakti gösterir.</li>
+    </ul>
+
+    <div class="qa-box">
+        <span class="question">Soru: Bu üç tablo birbirine nasıl bağlanır?</span>
+        <div class="answer">
+            1. <strong>Net Income</strong> (Income Statement'ın en altı), Cash Flow Statement'ın en tepesine gelir.<br>
+            2. Ayrıca <strong>Net Income</strong>, Balance Sheet'teki "Retained Earnings" (Dağıtılmamış Kârlar) kısmına eklenir.<br>
+            3. Cash Flow Statement'ın sonundaki <strong>"Net Change in Cash"</strong>, Balance Sheet'teki "Cash" kalemine eklenir ve tabloyu dengeler.
+        </div>
+    </div>
+
+    <h2>2. Altın Soru: Depreciation (Amortisman)</h2>
+    <p>Mülakatların en klasik sorusudur. Mantığı şudur: Amortisman "nakit olmayan" bir giderdir. Yani kâğıt üzerinde gider yazarız ama cebimizden para çıkmaz (çünkü makineyi yıllar önce aldık).</p>
+
+    <div class="qa-box">
+        <span class="question">Soru: Depreciation 10$ artarsa 3 tablo nasıl etkilenir? (Vergi oranı %40)</span>
+        <div class="answer">
+            <strong>1. Income Statement:</strong> Gider 10$ artar. Vergi öncesi kâr 10$ düşer. Net Kâr (Net Income) <strong>6$ düşer</strong> (10$ * (1-%40)).<br><br>
+            <strong>2. Cash Flow Statement:</strong> Net Income tepede 6$ düşüktü. Ama Depreciation (10$) nakit çıkışı olmadığı için geri eklenir. (-6$ + 10$) = Nakit akışı <strong>4$ artar</strong> (Vergi avantajı sağladığı için!).<br><br>
+            <strong>3. Balance Sheet:</strong> Nakit (Cash) 4$ arttı. Ama PP&E (Makineler) değer kaybettiği için 10$ düştü. Varlıklar toplamda 6$ düştü. Eşitliğin diğer tarafında, Net Income düştüğü için Retained Earnings 6$ düştü. <strong>Denge sağlandı (-6$ = -6$).</strong>
+        </div>
+    </div>
+
+    <h2>3. Working Capital (İşletme Sermayesi)</h2>
+    <p>Formül: <strong>Current Assets - Current Liabilities</strong>.</p>
+    <p>Şirketin kısa vadeli borçlarını ödeyip ödeyemeyeceğini gösterir. Eğer "Change in Net Working Capital" pozitifse, şirket büyümek için nakit harcıyordur (Stok alıyor veya alacakları artıyor).</p>
+
+</body>
+</html>
