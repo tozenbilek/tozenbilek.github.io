@@ -41,6 +41,23 @@
             border: 1px solid #334155;
         }
 
+        .reddit-box {
+            background: #ff450015;
+            border-left: 4px solid #ff4500;
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 4px;
+        }
+        .reddit-title {
+            color: #ff4500;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
         .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
         .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
         .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
@@ -62,12 +79,22 @@
         <h1>The Cash Sweep Algorithm</h1>
         <p>
             LBO modelinin kalbi (Heartbeat) burasıdır. Şirket nakit ürettikçe, bu nakit borçları belirli bir hiyerarşiye (Seniority) göre otomatik olarak temizler.
-            Excel'de bunu kurarken <strong>Döngüsel Referans (Circular Reference)</strong> hatası almanız çok olasıdır.
         </p>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> Analogy: Kredi Kartı vs Mortgage</div>
+            <p style="color: #1f2933; margin: 0;">
+                Waterfall mantığı basittir: Elinize ay sonunda maaş geçti (CFADS).<br><br>
+                1. Önce kiranızı (Mortgage - Mandatory Amortization) ödersiniz. Mecbursunuz.<br>
+                2. Sonra kalan parayla (Cash Sweep), faizi en yüksek ve limiti en düşük olan Kredi Kartınızı (Revolver) sıfırlarsınız.<br>
+                3. Hala para kaldıysa, tüketici kredisine (Term Loan B) saldırırsınız.<br><br>
+                Böylece her ay borcunuz azalır,Equity değeriniz (Cebinizdeki net servet) artar. LBO budur.
+            </p>
+        </div>
 
         <h2>1. CFADS (Cash Flow Available for Debt Service)</h2>
         <p>
-            Önce borç ödemek için kasada ne kadar nakit olduğunu bulmalıyız. Bu Free Cash Flow'a benzer ama finansman kalemlerinden arındırılmıştır.
+            Önce borç ödemek için kasada ne kadar nakit olduğunu bulmalıyız. 
         </p>
         <div class="algo-box" style="background: #f8fafc; color: #1f2933; border: 1px solid #e2e8f0;">
             EBITDA
@@ -83,36 +110,26 @@
             Elimizdeki CFADS ile borçları hangi sırayla ödeyeceğiz? İşte "If/Else" yapısı:
         </p>
         <div class="algo-box">
-            // Step 1: Mandatory Payments (Zorunlu Ödemeler)
+            // Step 1: Mandatory Payments
             Cash_After_Mandatory = CFADS - (Term Loan A Amortization)
             
-            // Step 2: Cash Sweep (Fazla Nakidin Taranması)
-            // Genellikle fazla nakidin %50'si veya %75'i borca gider (Sweep Clause)
+            // Step 2: Cash Sweep Logic
             Sweep_Cash = Cash_After_Mandatory * Sweep_Percent
 
-            // Step 3: The Paydown Loop (Ödeme Döngüsü)
+            // Step 3: Loop
             IF (Revolver_Balance > 0) {
                 Pay_Revolver = MIN(Revolver_Balance, Sweep_Cash)
                 Sweep_Cash = Sweep_Cash - Pay_Revolver
             }
-
-            IF (Sweep_Cash > 0 AND Term_Loan_B > 0) {
-                Pay_TLB = MIN(Term_Loan_B, Sweep_Cash)
-                Sweep_Cash = Sweep_Cash - Pay_TLB
-            }
-            
-            // Step 4: Minimum Cash Balance
-            // Kalan para bilançoda nakit olarak birikir.
         </div>
 
-        <h2>3. Circularity (The Nightmare)</h2>
-        <p>
-            Faiz gideri, borç bakiyesine bağlıdır. 
-            Borç bakiyesi, ne kadar borç ödediğimize bağlıdır.
-            Ne kadar borç ödediğimiz (Sweep), Net Income'a ve dolayısıyla faiz giderine bağlıdır.
-            <br><br>
-            Bu bir kısır döngüdür. Excel'de bunu çözmek için "Iterative Calculation" açılır veya bir "Circuit Breaker" (Döngü kırıcı makro) yazılır.
-        </p>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> PIK Interest: The Snowball</div>
+            <p style="color: #1f2933; margin: 0;">
+                PIK (Payment In Kind) faizi "Fake Money" gibidir. Nakit ödemezsiniz, borcun üzerine eklersiniz.<br><br>
+                Tıpkı kartopu gibi, borç yuvarlandıkça büyür. Equity sahibi için risklidir çünkü çıkışta (Exit) önce bu devasa kar topunu eritmek zorunda kalır. Eğer şirket yeterince büyümezse, PIK faizi tüm Equity'i yiyip bitirebilir.
+            </p>
+        </div>
 
         <div class="drill-section">
             <h3>Rapid Fire Drills</h3>
@@ -133,17 +150,7 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
                 <div class="drill-a">
-                    Şirketin operasyonel esnekliğe ihtiyacı vardır. Tüm nakdi borca gömerseniz, beklenmedik bir krizde (örn. Covid) şirket likidite krizine girer. Bankalar genellikle %50 veya %75 sweep ister, kalanı şirkete bırakır.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>PIK (Payment In Kind) Interest Waterfall'da nerede durur?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Nakit ödenmediği için Waterfall'dan (CFADS) düşülmez. Borcun anaparasını artırır (Accrued). Bu yüzden Mezzanine Debt, nakit akışını rahatlatmak için kullanılır.
+                    Şirketin operasyonel esnekliğe ihtiyacı vardır. Tüm nakdi borca gömerseniz, beklenmedik bir krizde (örn. Covid) şirket likidite krizine girer.
                 </div>
             </div>
         </div>

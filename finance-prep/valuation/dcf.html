@@ -43,6 +43,23 @@
             font-size: 14px;
         }
 
+        .reddit-box {
+            background: #ff450015;
+            border-left: 4px solid #ff4500;
+            padding: 24px;
+            margin: 32px 0;
+            border-radius: 4px;
+        }
+        .reddit-title {
+            color: #ff4500;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
         .proof-box {
             background: #eff6ff;
             border: 1px solid #bfdbfe;
@@ -81,8 +98,17 @@
         <h1>DCF: The Intrinsic Value Engine</h1>
         <p>
             Discounted Cash Flow (DCF), bir varlığın değerinin, üreteceği nakit akışlarının bugünkü değeri olduğu ilkesine dayanır. 
-            Ancak formülü ezberlemek yetmez. <strong>Neden Gordon Growth formülü öyledir?</strong> Bunu matematiksel olarak kanıtlayacağız.
         </p>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> TL;DR: DCF Mantığı</div>
+            <p style="color: #1f2933; margin: 0;">
+                DCF şudur: "Sana bugün 100 TL mi vereyim, yoksa seneye 110 TL mi?" sorusunun cevabıdır.<br><br>
+                Eğer seneye 110 TL almayı kabul ediyorsan, senin iskonto oranın (WACC) %10'dur. 
+                Şirket değerleme de aynıdır: Gelecekteki o devasa kârları alıp, risk oranımıza göre törpüleyerek (iskonto ederek) bugünkü fiyatını buluruz.
+                WACC ne kadar yüksekse (Risk o kadar büyükse), şirketin bugünkü değeri o kadar düşük çıkar.
+            </p>
+        </div>
 
         <h2>1. UFCF Derivation (Unlevered Free Cash Flow)</h2>
         <p>
@@ -95,14 +121,10 @@
             \[ - \quad \text{Capex} \quad \text{(Yatırım harcaması)} \]
             \[ = \quad \text{UFCF} \]
         </div>
-        <p>
-            <strong>Dikkat:</strong> Faiz giderlerini (Interest Expense) DÜŞMEYİZ. Çünkü bu akış Debt Investor'a da aittir. "Unlevered" olmasının sebebi budur.
-        </p>
 
         <h2>2. Mathematical Proof: Terminal Value</h2>
         <p>
             DCF'in %70'i Terminal Value'dan gelir. Genellikle <strong>Gordon Growth Model</strong> kullanılır. 
-            Peki formül nereden geliyor? Sonsuz Geometrik Seri Toplamından.
         </p>
 
         <div class="proof-box">
@@ -111,39 +133,33 @@
                 Bir nakit akışı \( CF \) her yıl \( g \) oranında büyüsün ve \( r \) (WACC) ile iskonto edilsin.
             </p>
             <div class="math-block" style="background: transparent; border: none; padding: 0; box-shadow: none;">
-                \[ PV = \frac{CF_1}{(1+r)} + \frac{CF_1(1+g)}{(1+r)^2} + \frac{CF_1(1+g)^2}{(1+r)^3} + \dots \]
-                <br>
-                Bu bir sonsuz geometrik seridir (\( \sum a x^n \)).
+                \[ PV = \frac{CF_1}{(1+r)} + \frac{CF_1(1+g)}{(1+r)^2} + \dots \]
                 <br>
                 Ortak çarpan \( x = \frac{1+g}{1+r} \). Yakınsama koşulu \( r > g \) olmalıdır.
                 <br>
-                Seri toplam formülü \( S = \frac{a}{1-x} \)'i uygularsak:
-                <br><br>
                 \[ \text{Terminal Value} = \frac{CF_{final} \times (1+g)}{r - g} \]
             </div>
-            <p style="color: #1e3a8a; margin-top: 16px;">
-                İşte bu yüzden paydada \( (r-g) \) vardır. Eğer \( g \ge r \) olursa, değer sonsuza gider (Matematiksel patlama), bu da imkansızdır (Evrenden hızlı büyüyemezsiniz).
-            </p>
         </div>
 
         <h2>3. WACC & Beta Unlevering</h2>
         <p>
             Beta (\( \beta \)), risk ölçüsüdür. Ancak halka açık betalar "Levered"dır (Borç riski içerir). 
-            Kıyaslama yapmak için önce borç etkisini silmeli (Unlever), sonra kendi sermaye yapımıza göre tekrar yüklemeliyiz (Relever).
         </p>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> The "Unlevering" Analogy</div>
+            <p style="color: #1f2933; margin: 0;">
+                Beta'yı "Risk Sırt Çantası" olarak düşünün. <br><br>
+                Her şirketin sırtında iki yük vardır:<br>
+                1. <strong>Business Risk (Unlevered Beta):</strong> Yaptığı işin zorluğu (Yazılım vs İnşaat).<br>
+                2. <strong>Financial Risk (Leverage):</strong> Sırtındaki borç yükü.<br><br>
+                İki şirketi kıyaslarken, borç yükünü (sırt çantasını) çıkarıp, sadece kas gücünü (Business Risk) kıyaslamalıyız. İşte bu işleme "Unlevering" denir. Sonra kendi şirketimizin borç yükünü tekrar ekleriz (Relevering).
+            </p>
+        </div>
+
         <div class="math-block">
             \[ \beta_{unlevered} = \frac{\beta_{levered}}{1 + (1-t)(\frac{D}{E})} \]
         </div>
-        <p>
-            Bu formül Hamada Denklemi'dir. Borç (D/E) arttıkça, Levered Beta artar (Risk artar), dolayısıyla Cost of Equity ve WACC artar.
-        </p>
-
-        <h2>4. Mid-Year Convention</h2>
-        <p>
-            Standart DCF, nakit akışının yıl sonunda (31 Aralık 23:59) geldiğini varsayar. 
-            Gerçekte para yıl içine yayılır. Bu yüzden nakitleri 1, 2, 3 yerine 0.5, 1.5, 2.5 yıl iskonto ederiz. 
-            Bu, şirket değerini %5-10 artırır.
-        </p>
 
         <div class="drill-section">
             <h3>Rapid Fire Drills</h3>
@@ -155,7 +171,7 @@
                 </div>
                 <div class="drill-a">
                     İkisini de yap ve "Sanity Check" (Mantık Kontrolü) uygula. 
-                    Growth Method ile bulduğun değerin ima ettiği (Implied) çarpan, sektör ortalamasının çok üzerindeyse (örn. 30x vs 10x), \( g \) varsayımın çok yüksektir. Düşür.
+                    Growth Method ile bulduğun değerin ima ettiği (Implied) çarpan, sektör ortalamasının çok üzerindeyse, \( g \) varsayımın hatalıdır.
                 </div>
             </div>
 
@@ -165,18 +181,8 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </div>
                 <div class="drill-a">
-                    1) Borç garantidir (Yasal yükümlülük), Hisse senedi garanti değildir. Risk yüksekse getiri beklentisi yüksektir. 
-                    2) Faiz vergiden düşer (Tax Shield), temettü düşmez.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Şirketin WACC'ı %8, ROIC'i %6 ise ne olur?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Şirket değer yok ediyordur. Büyümesi bile kötüdür. Çünkü büyüme için harcadığı her para (%8 maliyet), daha az getiri (%6) sağlamaktadır. "Growth destroys value" paradoksu.
+                    1) Borç garantidir, Hisse garanti değildir (Risk Premium).
+                    2) Faiz vergiden düşer, temettü düşmez.
                 </div>
             </div>
         </div>
