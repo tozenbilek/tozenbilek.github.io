@@ -11,28 +11,251 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <!-- İkonlar -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f0f13;
+            --text-color: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent-blue: #4f46e5;
+            --accent-purple: #9333ea;
+            --accent-pink: #ec4899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* Taşmaları engelle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Arka Plan Animasyonları (Blobs) */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            /* Performans için blur efekti yerine backdrop-filter kullanılabilir ama blur daha yumuşak */
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: fly 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--accent-blue);
+            animation-duration: 25s;
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 40vw;
+            height: 40vw;
+            background: var(--accent-purple);
+            animation-duration: 30s;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 40%;
+            width: 30vw;
+            height: 30vw;
+            background: var(--accent-pink);
+            animation-duration: 22s;
+            animation-delay: -10s;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -50px) scale(1.1); }
+            100% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Glassmorphism Kartı */
+        .card-container {
+            padding: 20px;
+            width: 100%;
+            max-width: 440px;
+            z-index: 10;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 48px 32px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Profil Kısmı */
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            margin: 0 auto 16px auto;
+            box-shadow: 0 0 10px #22c55e;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        .profile-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff 0%, #b3b3b3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .bio p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* Linkler */
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+
+        .link-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .link-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        .link-item:hover {
+            transform: translateY(-2px) scale(1.02);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .link-item i {
+            font-size: 1.3rem;
+        }
+
+        /* Marka Renkleri (Hover) */
+        .link-item.linkedin:hover { border-color: #0077b5; box-shadow: 0 0 20px rgba(0, 119, 181, 0.2); }
+        .link-item.instagram:hover { border-color: #e1306c; box-shadow: 0 0 20px rgba(225, 48, 108, 0.2); }
+        .link-item.spotify:hover { border-color: #1db954; box-shadow: 0 0 20px rgba(29, 185, 84, 0.2); }
+        .link-item.github:hover { border-color: #ffffff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 480px) {
+            .glass-card { padding: 32px 24px; }
+            .profile-header h1 { font-size: 2rem; }
+            .blob { opacity: 0.4; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Arka Plan Animasyonu -->
     <div class="background">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- İçerik Kartı -->
     <main class="card-container">
         <div class="glass-card">
             <div class="profile-header">
-                <div class="status-indicator"></div>
+                <div class="status-indicator" title="Open to work"></div>
                 <h1>Nezih Arhan Tozenbilek</h1>
-                <p class="subtitle">Computer Engineering Student & Developer</p>
+                <p class="subtitle">Computer Engineering Student</p>
             </div>
 
             <div class="bio">
-                <p>Teknoloji, tasarım ve kodun kesişim noktasında projeler üretiyorum. Minimalist yaklaşımlar ve güçlü algoritmalar ilgi alanım.</p>
+                <p>Teknoloji ve tasarımın kesişim noktasında, minimalist yaklaşımlar ve güçlü algoritmalarla modern çözümler üretiyorum.</p>
             </div>
 
             <div class="links">
@@ -62,4 +285,3 @@
 
 </body>
 </html>
-
