@@ -6,6 +6,8 @@
     <title>Enterprise Value | Valuation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,19 +20,32 @@
             <span style="color: var(--text-primary);">Enterprise Value</span>
         </nav>
 
-        <h1>Enterprise Value (EV)</h1>
-        <p>Şirketin "Etiket Fiyatı" değil, "Devralma Maliyeti"dir.</p>
-
-        <div class="mech-box">
-            EV = Equity Value + Debt + Preferred Stock + NCI - Cash
-        </div>
+        <h1>2.1 Enterprise Value (EV)</h1>
         <p>
-            <strong>Mantık:</strong> Evi alırken (Equity), içindeki eski ev sahibinin borcunu da üstlenirsin (+Debt), 
-            ama evin kasasında bulduğun parayı cebe atarsın (-Cash).
+            Şirketin "Etiket Fiyatı" (Equity Value) ile "Gerçek Maliyeti" (Enterprise Value) farklıdır.
+            Bir evi 1 Milyona aldınız (Equity), ama evin üzerinde 500k İpotek (Debt) var. Gerçek maliyet 1.5 Milyondur.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">The Bridge Formula</h2>
+        <div class="math-block">
+            \[ EV = \text{Equity Value} + \text{Debt} + \text{Preferred Stock} + \text{NCI} - \text{Cash} \]
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Neden Cash Çıkarılır?</h2>
+        <p>
+            Çünkü şirketi satın aldığınızda, kasasındaki nakit size geçer. 
+            Bu nakdi kullanarak borcun bir kısmını hemen ödeyebilirsiniz. 
+            Bu yüzden net maliyetiniz düşer. (Nakit, borcun negatif halidir).
+        </p>
+
+        <h2 style="color: var(--accent-blue);">Diluted Shares (Treasury Stock Method)</h2>
+        <p>
+            Equity Value hesaplanırken sadece piyasadaki hisseler değil, "Opsiyonlar" da hesaba katılır.
+            Çalışanların elindeki opsiyonlar kârdaysa (In-the-money), hisseye dönüşür ve hisse sayısı artar (Dilution).
         </p>
 
         <div class="lesson-nav">
-            <a href="dcf-mechanics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: DCF Mechanics</a>
+            <a href="dcf-mechanics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: DCF Mech</a>
             <a href="multiples.html" class="btn-nav">Sonraki: Multiples <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>

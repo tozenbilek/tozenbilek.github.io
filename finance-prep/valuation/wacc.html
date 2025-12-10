@@ -20,24 +20,39 @@
             <span style="color: var(--text-primary);">WACC</span>
         </nav>
 
-        <h1>WACC (Weighted Average Cost of Capital)</h1>
-        <p>Paranın bir maliyeti vardır. WACC, şirketin hem borç hem de hisse senedi sahiplerine ödemesi gereken ortalama getiridir.</p>
+        <h1>1.2 WACC (Weighted Average Cost of Capital)</h1>
+        <p>
+            Gelecekteki nakitleri bugüne getirirken kullandığımız iskonto oranıdır (Discount Rate).
+            Şirketin sermaye maliyetidir (Hem Borç hem Özsermaye).
+        </p>
 
         <h2 style="color: var(--accent-blue);">The Formula</h2>
         <div class="math-block">
-            \[ WACC = (K_e \times W_e) + (K_d \times W_d \times (1-t)) \]
+            \[ WACC = (K_e \times E\%) + (K_d \times D\% \times (1-t)) \]
         </div>
-        
-        <h2 style="color: var(--accent-blue);">CAPM (Cost of Equity)</h2>
-        <p>Hissedarın beklediği getiri (Ke) nasıl bulunur?</p>
+        <p>
+            <strong>Dikkat:</strong> Borç maliyeti (Kd) vergiden düşülür (Tax Shield). Özsermaye maliyeti (Ke) düşülmez.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">Cost of Equity (Ke) - CAPM</h2>
         <div class="math-block">
             \[ K_e = R_f + \beta \times (R_m - R_f) \]
         </div>
+        <div class="mech-box">
+            <ul>
+                <li><strong>Risk Free Rate (Rf):</strong> 10 yıllık ABD hazine tahvili faizi.</li>
+                <li><strong>Beta:</strong> Şirketin piyasaya göre oynaklığı (Risk Sırt Çantası).</li>
+                <li><strong>Equity Risk Premium (Rm - Rf):</strong> Borsaya girmek için istenen ekstra getiri (~%5-6).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Unlevering / Levering Beta</h2>
         <p>
-            <strong>Risk Free Rate (Rf):</strong> 10 Yıllık ABD Hazinesi.<br>
-            <strong>Beta:</strong> Şirketin piyasaya göre riski (Volatilite).<br>
-            <strong>Market Risk Premium:</strong> Borsanın hazineden fazla getirmesi beklenen fark (%5-6).
+            Benzer şirketlerin Beta'sını alıp kendi şirketimize uyarlarken, onların borç yapısını (kaldıracını) temizlemeliyiz.
         </p>
+        <div class="math-block">
+            \[ \beta_{\text{Unlevered}} = \frac{\beta_{\text{Levered}}}{1 + ((1-t) \times D/E)} \]
+        </div>
 
         <div class="lesson-nav">
             <a href="fcf.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: FCF</a>

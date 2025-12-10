@@ -20,17 +20,37 @@
             <span style="color: var(--text-primary);">Mechanics</span>
         </nav>
 
-        <h1>DCF Mechanics</h1>
-        <p>İnce ayarlar ve zamanlama faktörleri.</p>
+        <h1>1.4 DCF Mechanics</h1>
+        <p>
+            FCF, WACC ve TV'yi bulduk. Şimdi hepsini birleştirip hisse fiyatına ulaşacağız.
+        </p>
 
         <h2 style="color: var(--accent-blue);">Mid-Year Convention</h2>
-        <p>Nakit yıl sonunda değil, yıl ortasında gelir. Bu yüzden üs olarak (0.5, 1.5, 2.5) kullanılır.</p>
+        <p>
+            Nakit akışları yılın sonunda (31 Aralık) tek seferde gelmez. Yıl içine yayılır.
+            Bu yüzden parayı 1 yıl yerine 0.5 yıl, 2 yıl yerine 1.5 yıl iskonto ederiz.
+        </p>
         <div class="math-block">
-            \[ PV = \frac{CF_1}{(1+r)^{0.5}} + \frac{CF_2}{(1+r)^{1.5}} + \dots \]
+            \[ PV = \frac{FCF}{(1+WACC)^{n - 0.5}} \]
         </div>
 
-        <h2 style="color: var(--accent-blue);">Stub Period</h2>
-        <p>Değerlemeyi yıl ortasında yapıyorsanız (Örn: 30 Haziran), yılın geri kalan kısmını (0.5 yıl) ayrıca hesaplamalısınız.</p>
+        <h2 style="color: var(--accent-blue);">Stub Period (Kırık Dönem)</h2>
+        <p>
+            Değerlemeyi her zaman 1 Ocak'ta yapmayız. Eğer 30 Haziran'da yapıyorsak, ilk yılın sadece yarısını (0.5) alırız.
+            Formüller buna göre (0.25, 1.25...) ayarlanır.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">Final Bridge</h2>
+        <div class="algo-box">
+            Sum of PV of FCFs (Projection Period)
+            <br>(+) PV of Terminal Value
+            <br><strong>= Enterprise Value (Firma Değeri)</strong>
+            <br>(-) Net Debt
+            <br>(-) Preferred Stock / NCI
+            <br><strong>= Equity Value (Özsermaye Değeri)</strong>
+            <br>(/) Diluted Shares Outstanding
+            <br><strong>= Implied Share Price (Hisse Fiyatı)</strong>
+        </div>
 
         <div class="lesson-nav">
             <a href="terminal-value.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Terminal Value</a>
