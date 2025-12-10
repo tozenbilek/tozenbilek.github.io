@@ -11,123 +11,70 @@
 <body>
 
     <div class="container">
-        <div class="nav-header">
+        <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
             <a href="index.html" class="nav-link">Accounting</a>
             <span class="nav-sep">/</span>
             <span style="color: var(--text-primary);">3-Statement Logic</span>
+        </nav>
+
+        <h1>The 3 Statements: Basit Anlatım</h1>
+        <p>
+            Karmaşık terimleri unutun. Bir şirketin finansal durumu, sizin kişisel finansınızdan farklı değildir.
+            Gelin "Cüzdan Analojisi" ile başlayalım.
+        </p>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> ELI5: Cüzdan Analojisi</div>
+            <p style="color: #1f2933; margin: 0;">
+                <strong>1. Gelir Tablosu (Income Statement):</strong> Maaş Bordronuz gibidir. <br>
+                "Bu ay ne kadar kazandım, kiraya ne verdim, elimde ne kaldı?" sorusuna cevap verir. (Süreli bir filmdir: 1 Ocak - 31 Aralık).
+                <br><br>
+                <strong>2. Bilanço (Balance Sheet):</strong> Mal Varlığı Beyanınız gibidir. <br>
+                "Şu an (bugün saat 17:00 itibariyle) bankada ne kadar param var, evim ne kadar eder, bankaya ne kadar kredi borcum var?" (Anlık bir fotoğraftır).
+                <br><br>
+                <strong>3. Nakit Akış Tablosu (Cash Flow Statement):</strong> Banka Hesap Hareketlerinizdir. <br>
+                "Maaş yattı (+), Kredi kartı ödendi (-), Arkadaştan borç alındı (+)". Sadece nakit giriş çıkışını gösterir.
+            </p>
         </div>
 
-        <h1>The 3 Statements: The Integrated Machine</h1>
+        <h2 style="color: var(--accent-green);">1. Neden 3 Tane Var? (Tek Tablo Yetmez mi?)</h2>
+        <p>Yetmez. Çünkü <strong>Kâr (Profit) ≠ Nakit (Cash)</strong>.</p>
         <p>
-            Muhasebe sadece kayıt tutmak değildir; şirketin finansal gerçekliğinin 3 boyutlu modellemesidir. 
-            Bu tablolar birbirinden bağımsız değildir. Biri değişirse, diğerleri de matematiksel zorunlulukla değişir. 
-            Buna <strong>"Articulation"</strong> denir.
+            Örnek: Birine 10.000 TL'ye bilgisayar sattınız ama parasını 3 ay sonra alacaksınız.
+            <br>• <strong>Gelir Tablosu:</strong> "10.000 TL Kazandın!" der (Mutlusun).
+            <br>• <strong>Nakit Akış Tablosu:</strong> "Cebinde 0 TL var" der (Açsın).
+            <br>İşte bu farkı anlamak için 3 tabloya da ihtiyacımız var.
         </p>
 
-        <h2 style="color: var(--accent-green);">1. The Fundamental Identity (Mühendislik Denklemi)</h2>
-        <p>
-            Bilanço (Balance Sheet) her zaman dengede olmak zorundadır. Neden? Çünkü fizik kanunu gibidir: 
-            "Bir varlık (Asset) ya borçla (Liability) ya da özsermaye ile (Equity) finanse edilmiştir."
-        </p>
-        <div class="mech-box">
-            Assets = Liabilities + Shareholders' Equity
+        <h2 style="color: var(--accent-green);">2. The Linkage (Bağlantı Nasıl Kurulur?)</h2>
+        <p>Bu tablolar birbirinden kopuk değildir. Birbirine göbekten bağlıdır.</p>
+
+        <div class="mech-box" style="background: #f0fdf4; border-color: #bbf7d0;">
+            <strong style="color: #166534;">Adım 1: Net Income (Kâr)</strong><br>
+            Gelir Tablosunun en altındaki "Net Income", Nakit Akış Tablosunun en üstüne gider. (Hikaye buradan başlar).
+        </div>
+        <div class="mech-box" style="background: #eff6ff; border-color: #bfdbfe;">
+            <strong style="color: #1e40af;">Adım 2: Cash Adjustments</strong><br>
+            Nakit Akış Tablosunda, kârın üzerine nakit olmayan giderleri (Amortisman gibi) geri ekleriz. Sonuçta "Cebime giren/çıkan Net Nakit"i buluruz.
+        </div>
+        <div class="mech-box" style="background: #fff7ed; border-color: #fed7aa;">
+            <strong style="color: #9a3412;">Adım 3: Balance Sheet'e Bağlanış</strong><br>
+            Bulduğumuz bu "Net Nakit", Bilançodaki "Cash" hesabına eklenir. <br>
+            Ayrıca, Gelir Tablosundaki "Net Income", Bilançodaki "Retained Earnings" (Geçmiş Karlar) kısmına eklenir. <br>
+            Böylece Bilanço dengelenir!
         </div>
 
-        <h2 style="color: var(--accent-green);">2. The Linkage Mechanism (Bağlantı Noktaları)</h2>
+        <h2 style="color: var(--accent-green);">3. The Golden Rule: Assets = Liabilities + Equity</h2>
         <p>
-            Mülakatların %100'ünde sorulan "Bu 3 tablo nasıl bağlanır?" sorusunun PhD seviyesindeki cevabı şudur:
+            Bunu bir terazi gibi düşünün.
+            <br><strong>Sol Kefe (Assets):</strong> Sahip olduğun her şey (Para, Araba, Ev).
+            <br><strong>Sağ Kefe (L + E):</strong> Bunları kimin parasıyla aldın?
+            <br>- Bankanın parasıyla mı? (Liabilities / Borç)
+            <br>- Kendi paranla mı? (Equity / Özsermaye)
         </p>
-        
-        <h3>A. Net Income (IS -> CFS & BS)</h3>
-        <p>
-            Gelir Tablosunun en alt satırı (Net Income), Nakit Akış Tablosunun en üst satırıdır. 
-            Aynı zamanda, Bilanço'daki <strong>Retained Earnings</strong> (Geçmiş Yıl Karları) kalemine eklenir. 
-            Bu, Bilançoyu dengeleyen ana mekanizmadır.
-        </p>
-        <div class="mech-box">
-            Ending R.E. = Beginning R.E. + Net Income - Dividends
-        </div>
-
-        <h3>B. D&A (IS -> CFS -> BS)</h3>
-        <p>
-            Depreciation (Amortisman) Gelir Tablosunda bir giderdir (Vergiyi düşürür). 
-            Ancak nakit çıkışı değildir. Bu yüzden CFS'de Net Income'a <strong>geri eklenir</strong> (Add-back).
-            Bilançoda ise PP&E (Maddi Duran Varlıklar) değerini düşürür.
-        </p>
-
-        <h3>C. Change in Working Capital (BS -> CFS)</h3>
-        <p>
-            Bilançodaki "Dönen Varlıklar" ve "Kısa Vadeli Yükümlülükler"deki değişimler, CFS'de "Operating Cash Flow" bölümünü oluşturur.
-            <br>• Varlık Artışı (Örn: Stok) = Nakit Çıkışı (Use of Cash)
-            <br>• Yükümlülük Artışı (Örn: Borç) = Nakit Girişi (Source of Cash)
-        </p>
-
-        <h2 style="color: var(--accent-green);">3. The "Depreciation Shock" Drill</h2>
-        <p>
-            <strong>Soru:</strong> Amortisman (Depreciation) 10 TL artarsa 3 tablo nasıl etkilenir? (Vergi Oranı: %40)
-        </p>
-        
-        <div class="mech-box">
-            <strong>1. Income Statement:</strong><br>
-            - Operating Expense (D&A) artar: +10<br>
-            - Pre-Tax Income düşer: -10<br>
-            - Net Income düşer: -6 (Çünkü 4 TL vergi kalkanı oluştu)<br><br>
-            
-            <strong>2. Cash Flow Statement:</strong><br>
-            - Net Income ile başla: -6<br>
-            - D&A (Non-cash) geri ekle: +10<br>
-            - Net Change in Cash: +4 (Vergi tasarrufu kadar nakit arttı!)<br><br>
-            
-            <strong>3. Balance Sheet:</strong><br>
-            - Cash (Varlık): +4<br>
-            - PP&E (Varlık): -10 (Amortisman düştü)<br>
-            - Total Assets: -6<br>
-            - Retained Earnings (Equity): -6 (Net Income'dan geldi)<br>
-            - <strong>Denge: Assets (-6) = Equity (-6)</strong>
-        </div>
-
-        <div class="drill-section">
-            <h3>Rapid Fire Drills</h3>
-            
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Negatif Working Capital her zaman kötü müdür?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Hayır. Amazon veya Walmart gibi perakendeciler için harikadır. 
-                    Müşteriden parayı peşin alırlar (Cash artar), tedarikçiye 60 gün sonra öderler (AP artar). 
-                    Operasyonları "başkalarının parasıyla" finanse ederler. Buna <strong>Float</strong> denir.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>EBITDA neden "Cash Flow" değildir?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    EBITDA şunları yoksayar: 
-                    1) İşletme Sermayesi değişimlerini (Stok almak için para harcanır), 
-                    2) Capex'i (Fabrika yatırımı nakit yer), 
-                    3) Vergileri ve Faizleri. 
-                    Bu yüzden "Proxy for Cash Flow"dur, gerçek nakit akışı değildir.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Şirket bir varlığı değerinin altında satarsa ne olur? (Write-down)</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Zarar yazar. Net Income düşer. Ancak bu "Non-cash" bir zarar olabilir (değer düşüklüğü karşılığı). 
-                    Nakit etkisi sadece vergi tasarrufu kadardır.
-                </div>
-            </div>
-        </div>
+        <p>Bu denklem her zaman, her saniye tutmak zorundadır. Tutmuyorsa muhasebeci hapse girer.</p>
 
     </div>
 </body>

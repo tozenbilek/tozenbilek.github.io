@@ -11,57 +11,43 @@
 <body>
 
     <div class="container">
-        <div class="nav-header">
+        <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
             <a href="index.html" class="nav-link">Accounting</a>
             <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Consolidation & NCI</span>
+            <span style="color: var(--text-primary);">Consolidation</span>
+        </nav>
+
+        <h1>Consolidation & Non-Controlling Interest</h1>
+        <p>
+            Bir şirket başka bir şirketi satın aldığında, bilançoları nasıl birleşir? 
+            Kural basit: <strong>"Kontrol kimdeyse (%50+), kalemi eline o alır."</strong>
+        </p>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> Analoji: Ev Arkadaşı</div>
+            <p style="color: #1f2933; margin: 0;">
+                Siz ve arkadaşınız bir eve çıktınız. Kirayı (Kontrolü) %60 siz ödüyorsunuz.
+                <br>
+                Muhasebe kuralı der ki: "Eğer evin patronu sensen (%50+), sanki evin <strong>TAMAMI (%100)</strong> seninmiş gibi davranacaksın."
+                <br><br>
+                Bilançona evin değerini (1 Milyon TL) tam yazarsın. 
+                Ama evin %40'ı arkadaşının. Bu haksızlık değil mi?
+                <br>
+                Haksızlığı düzeltmek için Bilançonun "Yükümlülükler" kısmına küçük bir not düşersin: 
+                <strong>"Non-Controlling Interest (NCI): Evin %40'ı arkadaşıma aittir."</strong>
+                <br><br>
+                Böylece hem evin tamamını gösterirsin (büyüklüğünü göstermek için), hem de hakkı olana hakkını teslim edersin.
+            </p>
         </div>
 
-        <h1>Consolidation & NCI</h1>
-        <p>Konsolidasyon işlerin karıştığı yerdir. Bir şirketin %60'ına sahipseniz, gelirinin %60'ını mı raporlarsınız? Hayır. %100'ünü raporlar, sonra "benim olmayan kısmı" gider olarak düşersiniz.</p>
-
-        <h2 style="color: var(--accent-green);">1. Kontrol Mantığı (>50%)</h2>
-        <p>US GAAP der ki: Eğer kontrol ediyorsan (>50%), tabloları tamamen birleştirirsin (Consolidate). Binanın sadece çatı katını kiralamış olsanız bile tüm binanın sahibi gibi raporlarsınız.</p>
-
-        <div class="mech-box">
-            <strong>Senaryo:</strong> Ana Şirket, Yavru Şirketin %80'ini 80M$'a aldı. Yavru Şirketin Defter Değeri 100M$.<br><br>
-            <strong>Bilanço:</strong><br>
-            Varlıklar: Ana Şirket (%100) + Yavru Şirket (%100).<br>
-            Yükümlülükler: Ana Şirket (%100) + Yavru Şirket (%100).<br>
-            <strong>Eşitlik Sorunu:</strong> Varlık > Yükümlülük + Özkaynak (Çünkü sadece %80'ini ödedik).<br>
-            <strong>Çözüm:</strong> Özkaynaklar altına "Non-Controlling Interest" (NCI) eklenir.<br>
-            NCI = %20 * Yavru Şirket Defter Değeri = 20M$.
-        </div>
-
-        <h2 style="color: var(--accent-green);">2. Gelir Tablosu Etkisi</h2>
-        <p>Gelir ve Giderlerin %100'ünü birleştirdiğiniz için, Net Income olduğundan yüksek görünür (o kârın sadece %80'i sizin).</p>
-        <p>Bu yüzden Gelir Tablosunun en altına <strong>"Net Income Attributable to Non-Controlling Interest"</strong> kalemi eklenir. Bu bir gider gibi düşülerek "Ana Ortaklığa Düşen Net Kâr" bulunur.</p>
-
-        <div class="drill-section">
-            <h3>Rapid Fire Drills</h3>
-            
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>1. EBITDA hesaplarken NCI düşülür mü?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    <strong>Hayır.</strong> EBITDA operasyonel kârdır ve sermaye yapısından (kimin ne kadar sahip olduğundan) bağımsızdır. NCI, Net Income hesaplanırken (en altta) düşülür.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>2. Enterprise Value hesaplarken NCI eklenir mi?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    <strong>Evet.</strong> Çünkü Equity Value sadece Ana Şirketin hissesini kapsar, ama Net Debt ve EBITDA şirketin %100'ünü kapsar. Pay/Payda tutarlılığı için NCI (diğer %20'lik kısım) eklenmelidir.
-                </div>
-            </div>
-        </div>
+        <h2 style="color: var(--accent-green);">1. Konsolidasyon Yöntemleri</h2>
+        <ul>
+            <li><strong>%0 - %20 (Küçük Yatırım):</strong> Sadece bir hisse senedi yatırımı gibi görünür.</li>
+            <li><strong>%20 - %50 (Equity Method):</strong> Ortaklık (Joint Venture). Şirketin tamamını göstermezsin, sadece kârından payını tek satırda gösterirsin.</li>
+            <li><strong>%50+ (Consolidation):</strong> Tam birleşme. Şirketin tüm gelirini, tüm borcunu kendi üzerine alırsın. Sonra NCI kalemiyle düzeltme yaparsın.</li>
+        </ul>
 
     </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deferred Taxes (DTL/DTA) | Accounting</title>
+    <title>Deferred Tax | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -11,98 +11,44 @@
 <body>
 
     <div class="container">
-        <div class="nav-header">
+        <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
             <a href="index.html" class="nav-link">Accounting</a>
             <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Deferred Taxes</span>
-        </div>
+            <span style="color: var(--text-primary);">Deferred Tax</span>
+        </nav>
 
-        <h1>Deferred Taxes: The Ghost in the Shell</h1>
+        <h1>Deferred Taxes: İki Farklı Hikaye</h1>
         <p>
-            Ertelenmiş Vergiler (Deferred Taxes), muhasebenin "Zaman Yolculuğu"dur. 
-            Şirketler iki farklı defter tutar: 
-            <strong>1. Financial Reporting (Hissedarlar için):</strong> GAAP/IFRS kuralları.
-            <strong>2. Tax Reporting (Devlet için):</strong> Vergi kanunu kuralları.
-            Bu iki defter arasındaki zamanlama farkları DTA veya DTL yaratır.
+            Ertelenmiş Vergi (Deferred Tax) kavramı şuradan çıkar: 
+            Şirketler iki farklı defter tutar. Biri Yatırımcılar için, biri Devlet (Maliye) için. Bu yasaldır.
         </p>
 
         <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> ELI5: The "Two Books" Reality</div>
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> Hikaye: Şizofrenik Şirket</div>
             <p style="color: #1f2933; margin: 0;">
-                Bak, olay şu: Şirketler <strong>şizofrenik</strong> gibidir. <br><br>
-                Hissedara (Piyasaya) karşı: <strong>"Çok zenginim, karım rekor kırdı!"</strong> demek isterler. (Normal Amortisman kullanırlar, kar yüksek çıkar).<br>
-                Devlete (IRS/Maliye'ye) karşı: <strong>"Fakirim, hiç param yok, vergimi az al abi."</strong> demek isterler. (Hızlandırılmış Amortisman kullanırlar, kar düşük çıkar).<br><br>
-                Bu iki yalan arasındaki fark, bilançoda "Deferred Tax" olarak sırıtır. Devlet eninde sonunda "Hani senin karın yüksekti?" diyeceği için, aradaki farkı bir kenara borç (DTL) olarak yazarız.
+                <strong>1. Yatırımcıya (Hissedara) Karşı:</strong><br>
+                "Bakın ben çok kâr ettim, çok başarılıyım!" demek ister. 
+                Giderlerini düşük gösterir (Örn: Amortismanı 10 yıla yayar). Kâr yüksek çıkar.
+                <br><br>
+                <strong>2. Devlete (Vergi Dairesine) Karşı:</strong><br>
+                "Aman efendim ben fakirim, hiç param yok" demek ister (Vergi az ödemek için).
+                Giderlerini yüksek gösterir (Örn: Amortismanı 2 yılda düşer - Hızlandırılmış Amortisman). Kâr düşük çıkar.
+                <br><br>
+                <strong>Sonuç:</strong> Yatırımcıya gösterilen kâr üzerinden hesaplanan vergi ile, devlete gerçekten ödenen vergi arasında fark oluşur. 
+                Bu farkı <strong>"Deferred Tax Liability" (DTL)</strong> olarak bir kenara yazarız. "Bunu devlete borçluyum, ileride ödeyeceğim" demektir.
             </p>
         </div>
 
-        <h2 style="color: var(--accent-green);">1. DTL (Deferred Tax Liability) - The Interest-Free Loan</h2>
+        <h2 style="color: var(--accent-green);">1. NOLs (Net Operating Losses)</h2>
         <p>
-            En yaygın senaryo: Şirket devlet defterinde "Hızlandırılmış Amortisman" (Accelerated Depreciation) kullanır. 
-            Böylece gideri yüksek gösterir, vergi matrahını düşürür ve <strong>bugün daha az vergi öder</strong>. 
-            Hissedar defterinde ise normal amortisman (Straight Line) kullanır ve yüksek kar gösterir.
+            Eğer bir şirket zarar ederse, devlet ona bir "İndirim Kuponu" verir. 
+            "Tamam bu yıl zarar ettin, vergi alma benden. Ama bu zararı sakla, ileride kâr edersen vergi öderken düşersin" der.
         </p>
-        <div class="mech-box">
-            DTL = (Tax Depreciation - Book Depreciation) * Tax Rate
-        </div>
         <p>
-            <strong>Neden iyi?</strong> Çünkü nakit şirkette kalır. Devletten alınan %0 faizli bir kredidir. Warren Buffett'ın servetinin gizli sırrı budur (Geico'nun Float'u gibi).
+            Buna <strong>Deferred Tax Asset (DTA)</strong> denir. Çünkü şirket için bir varlıktır, gelecekte nakit tasarrufu sağlar.
         </p>
-
-        <h2 style="color: var(--accent-green);">2. DTA (Deferred Tax Asset) - The Future Savings</h2>
-        <p>
-            Tam tersi durum. Şirket bugün devlete çok vergi ödemiş ama hissedarlara zarar açıklamış olabilir. 
-            En büyük DTA kaynağı <strong>NOLs (Net Operating Losses)</strong>'dur.
-            Şirket zarar ettiğinde vergi ödemez, üstüne bu zararı "kupon" olarak biriktirir. 
-        </p>
-
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> Reddit Gold: NOLs Analogy</div>
-            <p style="color: #1f2933; margin: 0;">
-                NOL'lar bir süpermarketin verdiği <strong>indirim kuponları</strong> gibidir.
-                Bugün alışveriş yaptın ve zarar ettin (Para kaybettin). Süpermarket (Devlet) sana acıdı ve "Al bu kuponu, seneye kar edersen %20 indirim yapacağım" dedi.<br><br>
-                Ama dikkat: Eğer süpermarket senin batacağını düşünürse (Valuation Allowance), "Bu kupon geçersizdir" der. Yani DTA'yı bilançodan siler.
-            </p>
-        </div>
-
-        <h2 style="color: var(--accent-green);">3. M&A Context: Asset Step-Up & DTL</h2>
-        <p>
-            Bir şirketi satın aldığınızda varlıklarını "Gerçeğe Uygun Değer"e (Fair Value) çekersiniz (Write-up). 
-            Varlık değeri artınca, gelecekteki amortisman gideri de artar (Book Depreciation).
-            Ancak Vergi Kanunu, satın almayı "Asset Deal" olarak yapmadıysanız bu değer artışını kabul etmez.
-        </p>
-        <div class="mech-box">
-            New DTL = (Write-Up Amount) * Tax Rate
-        </div>
-        <p>
-            Bu DTL aslında bir "hayalet" yükümlülüktür. Nakit çıkışı gerektirmez, sadece Goodwill hesabını dengelemek için yaratılır.
-        </p>
-
-        <div class="drill-section">
-            <h3>Rapid Fire Drills</h3>
-            
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>NOLs sonsuza kadar taşınabilir mi? (Carryforward)</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    ABD yasalarına göre (TCJA sonrası), NOL'lar süresiz taşınabilir ancak o yılki vergilendirilebilir gelirin sadece %80'ini silebilir. Eskiden 20 yıl sınırı vardı.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Valuation yaparken DTL'i Equity Value'dan düşer miyiz?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Tartışmalı. Genellikle Düşülmez (Treat as Equity). Çünkü DTL'in vadesi belirsizdir ve şirket büyüdükçe (yeni varlıklar aldıkça) DTL sürekli yenilenir, yani devletten alınan kredi asla geri ödenmez (Perpetual Deferral).
-                </div>
-            </div>
-        </div>
 
     </div>
 </body>

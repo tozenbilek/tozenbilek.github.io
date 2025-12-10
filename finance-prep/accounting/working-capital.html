@@ -11,60 +11,48 @@
 <body>
 
     <div class="container">
-        <div class="nav-header">
+        <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
             <a href="index.html" class="nav-link">Accounting</a>
             <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Net Working Capital</span>
+            <span style="color: var(--text-primary);">Working Capital</span>
+        </nav>
+
+        <h1>Net Working Capital: İşletme Sermayesi</h1>
+        <p>
+            Formülü (Dönen Varlıklar - Kısa Vadeli Borçlar) unutun. Mantığı şudur:
+            <strong>"Şirketin günlük operasyonlarını döndürmek için kasada ne kadar parayı rehin tutması gerekiyor?"</strong>
+        </p>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> Analoji: Restoran İşletmek</div>
+            <p style="color: #1f2933; margin: 0;">
+                Bir restoran açtığınızı düşünün.<br>
+                1. Önce gidip domates, et, un almalısınız (<strong>Inventory</strong> - Para çıktı).<br>
+                2. Müşteri geldi, yedi ama "Ay sonu öderim" dedi (<strong>Accounts Receivable</strong> - Para hala gelmedi).<br>
+                3. Siz de kasaba "Etin parasını 45 gün sonra veririm" dediniz (<strong>Accounts Payable</strong> - Para cebinizde kaldı).<br><br>
+                İşte bu aradaki süre (Parayı ödediğiniz an ile parayı tahsil ettiğiniz an arasındaki boşluk) sizin finanse etmeniz gereken <strong>Working Capital</strong>'dır.
+            </p>
         </div>
 
-        <h1>Net Working Capital (NWC)</h1>
-        <p>NWC (İşletme Sermayesi), bir şirketin büyürken nakde mi ihtiyacı olduğunu, yoksa büyürken nakit mi ürettiğini gösterir. Bu finansal motorun "Yağıdır".</p>
-
-        <h2 style="color: var(--accent-green);">1. Formül ve Mantık</h2>
+        <h2 style="color: var(--accent-green);">1. Cash Conversion Cycle (CCC)</h2>
+        <p>Paranın şirkete geri dönme hızıdır. Ne kadar kısa, o kadar iyi.</p>
         <div class="mech-box">
-            NWC = Current Operating Assets - Current Operating Liabilities<br>
-            = (Alacaklar + Stoklar + Peşin Giderler) - (Borçlar + Tahakkuk Eden Giderler)
-        </div>
-        <p><strong>Not:</strong> Nakit (Cash) ve Finansal Borç (Debt) hesaba katılmaz. Sadece operasyonel kalemler (Operating) dikkate alınır.</p>
-
-        <h2 style="color: var(--accent-green);">2. Cash Conversion Cycle (Nakit Dönüşüm Döngüsü)</h2>
-        <p>1 TL'lik stoğun tekrar 1 TL nakde dönmesi kaç gün sürer?</p>
-        <div class="mech-box">
-            CCC = DSO + DIO - DPO<br><br>
-            <strong>DSO (Days Sales Outstanding):</strong> Müşteriden tahsilat süresi.<br>
-            <strong>DIO (Days Inventory Outstanding):</strong> Stoğun rafta kalma süresi.<br>
-            <strong>DPO (Days Payable Outstanding):</strong> Tedarikçiye ödeme süresi.
+            CCC = (Stokta bekleme süresi) + (Müşteriden tahsilat süresi) - (Tedarikçiye ödeme süresi)
         </div>
 
-        <h2 style="color: var(--accent-green);">3. Negative Working Capital: Kutsal Kase</h2>
-        <p>Amazon ve Walmart gibi şirketlerin <strong>Negatif İşletme Sermayesi</strong> vardır. Bu kötü müdür? Hayır, harikadır.</p>
-        <p>Bu, şirketin malı satıp parasını aldığı, ama tedarikçiye henüz ödeme yapmadığı anlamına gelir. Büyümesini tedarikçileri finanse eder. Bu da Değerlemeyi (Valuation) yukarı çeker.</p>
-
-        <div class="drill-section">
-            <h3>Rapid Fire Drills</h3>
-            
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>1. "Change in NWC" artarsa bu iyi mi kötü mü?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Genelde <strong>Kötü</strong> (Nakit açısından). NWC artışı, paranın stoğa veya alacağa bağlandığını gösterir. Bu bir nakit çıkışıdır (Cash Outflow).
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>2. Deferred Revenue (Ertelenmiş Gelir) NWC hesabında nereye girer?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Current Liability olarak girer. Deferred Revenue artarsa, NWC düşer (Liability arttığı için). NWC düşüşü nakit girişidir. Yani parayı peşin almak nakit yaratır.
-                </div>
-            </div>
-        </div>
+        <h2 style="color: var(--accent-green);">2. Negatif Working Capital: Bir Süper Güç</h2>
+        <p>
+            Normalde şirketler büyümek için paraya ihtiyaç duyar (Daha çok stok, daha çok alacak). 
+            Ama bazı şirketler (Amazon, Walmart) <strong>Negatif Working Capital</strong> ile çalışır.
+        </p>
+        <p>
+            <strong>Nasıl?</strong>
+            Müşteriden parayı anında alırlar (Kredi kartı geçersiniz).
+            Tedarikçiye (Samsung, P&G) parayı 90 gün sonra öderler.
+            Yani parayı 3 ay boyunca faizde işletirler veya yeni mağaza açarlar. Bu, bedava finansmandır.
+        </p>
 
     </div>
 </body>
