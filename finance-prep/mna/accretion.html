@@ -11,89 +11,41 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
     <div class="container">
-        <div class="nav-header">
+        <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
-            <a href="index.html" class="nav-link">Mergers & Acquisitions</a>
+            <a href="index.html" class="nav-link">M&A</a>
             <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Accretion / Dilution</span>
-        </div>
+            <span style="color: var(--text-primary);">Accretion</span>
+        </nav>
 
-        <h1>Accretion / Dilution Math</h1>
-        <p>
-            M&A modellemesinin nihai çıktısıdır. "Bu birleşme, mevcut hissedarların Hisse Başına Karını (EPS) artıracak mı (Accretive), yoksa azaltacak mı (Dilutive)?"
-        </p>
+        <h1>Accretion / Dilution</h1>
+        <p>EPS (Hisse Başına Kar) artacak mı azalacak mı? Pizza dilimi analojisi.</p>
 
+        <h2 style="color: var(--accent-teal);">The Pizza Logic</h2>
         <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> No-BS Explanation: Pizza Dilimi</div>
+            <div class="reddit-title"><i class="fa-solid fa-pizza-slice"></i> ELI5</div>
             <p style="color: #1f2933; margin: 0;">
-                EPS sizin pizza diliminizdir. Birleşme olunca pizza büyür (Karlar birleşir), ama masadaki insan sayısı da artar (Yeni hisse basılır).<br><br>
-                Soru şudur: <strong>Pizzanın büyüme hızı mı daha fazla, yoksa masaya gelen aç insan sayısı mı?</strong><br>
-                Eğer pizza %50 büyürken, insan sayısı %20 artıyorsa, sizin diliminiz büyür (Accretive). Tersi olursa aç kalırsınız (Dilutive).
+                EPS sizin pizza diliminizdir. <br>
+                Birleşme olunca <strong>Pizza Büyür</strong> (Karlar birleşir). <br>
+                Ama masaya <strong>Yeni İnsanlar Gelir</strong> (Yeni hisse basılır). <br><br>
+                Soru şu: Pizza mı daha hızlı büyüdü, yoksa insan sayısı mı?
             </p>
         </div>
 
-        <h2 style="color: var(--accent-teal);">1. The Intuitive Rule (The Shortcut)</h2>
-        <p>
-            Eğer işlem <strong>%100 Hisse (Stock)</strong> ile yapılıyorsa, hesap makinesine gerek yoktur. F/K (P/E) oranlarına bakmak yeterlidir.
-        </p>
-        <div class="proof-box">
-            <div class="proof-title"><i class="fa-solid fa-scale-balanced"></i> The Arbitrage Logic</div>
-            <p style="color: #0f766e; margin: 0;">
-                Eğer Alıcının (Acquirer) F/K'sı, Hedefin (Target) F/K'sından <strong>yüksekse</strong>, işlem <strong>Accretive</strong>'dir.
-                <br><br>
-                <em>Analoji:</em> Sizin F/K'nız 20x, Hedefinki 10x. 
-                Siz pahalı bir kağıdı (Hissenizi) para birimi olarak kullanıp, ucuz bir varlığı (Hedefin kârını) satın alıyorsunuz. 
-                Bu bir arbitrajdır ve EPS'nizi artırır.
-            </p>
+        <h2 style="color: var(--accent-teal);">Mathematical Rule (P/E Arbitrage)</h2>
+        <p>Eğer işlem %100 hisse ile yapılıyorsa:</p>
+        <div class="mech-box">
+            Alıcının F/K'sı > Hedefin F/K'sı ise --> <strong>Accretive (Pozitif)</strong>
+            <br>
+            Alıcının F/K'sı < Hedefin F/K'sı ise --> <strong>Dilutive (Negatif)</strong>
         </div>
 
-        <h2 style="color: var(--accent-teal);">2. Breakeven Synergies Derivation</h2>
-        <p>
-            Eğer işlem Dilutive (Negatif) çıkıyorsa, bu açığı kapatmak için ne kadar "Cost Synergy" (Tasarruf) yaratmalıyız?
-        </p>
-        <div class="math-block">
-            \[ \text{Max Premium} = \frac{\text{Acquirer P/E}}{\text{Target P/E}} - 1 \]
+        <div class="lesson-nav">
+            <span class="btn-nav disabled"><i class="fa-solid fa-arrow-left"></i> Önceki</span>
+            <a href="synergies.html" class="btn-nav">Sonraki: Synergies <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        
-        <h2 style="color: var(--accent-teal);">3. Pro-Forma EPS Calculation Steps</h2>
-        <p>
-            1. <strong>Acquirer Net Income</strong> (Mevcut Kar).
-            <br>2. <strong>Target Net Income</strong> (Satın alınan Kar).
-            <br>3. <strong>(+) Synergies:</strong> Vergi sonrası etkisi.
-            <br>4. <strong>(-) Interest Expense:</strong> Satın alma kredisi faizi (Vergi sonrası).
-            <br>5. <strong>(-) Foregone Interest:</strong> Kasadaki nakdi kullandığımız için kaybettiğimiz faiz geliri.
-            <br>6. <strong>New Share Count:</strong> Acquirer Shares + New Shares Issued.
-        </p>
-
-        <div class="drill-section">
-            <h3>Rapid Fire Drills</h3>
-            
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Neden şirketler Dilutive bir işlemi yaparlar?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    EPS düşse bile stratejik olarak gerekli olabilir. Amazon, Whole Foods'u aldığında EPS umurunda değildi. Pazar hakimiyeti (Market Share) ve uzun vadeli sinerjiler (Growth) kısa vadeli EPS düşüşünden daha önemlidir.
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Cost of Cash nedir?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Foregone Interest on Cash * (1 - Tax Rate). 
-                    Bankada %4 faizle duran paranızı satın alma için kullanırsanız, bu %4 gelirden vazgeçmiş olursunuz. Maliyet budur.
-                </div>
-            </div>
-            
-        </div>
-
     </div>
 </body>
 </html>

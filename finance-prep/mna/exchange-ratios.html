@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Ratios | M&A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">M&A</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Exchange Ratios</span>
+        </nav>
+
+        <h1>Exchange Ratios</h1>
+        <p>Hisse takası ile yapılan işlemlerde "Kaç hisse vereceğim?" sorusu.</p>
+
+        <h2 style="color: var(--accent-teal);">1. Fixed Exchange Ratio</h2>
+        <p>Oran sabittir (Örn: 1.5x). Hisse fiyatı değiştikçe ödenen değer değişir.</p>
+        <div class="math-block">
+            \[ \text{Shares Issued} = \text{Target Shares} \times \text{Exchange Ratio} \]
+        </div>
+        <p>Risk kimde? <strong>Her ikisinde.</strong> Alıcının hissesi düşerse, satıcı daha az para alır.</p>
+
+        <h2 style="color: var(--accent-teal);">2. Floating Exchange Ratio (Fixed Value)</h2>
+        <p>Değer sabittir (Örn: 100 Milyon $). Hisse fiyatı değiştikçe hisse sayısı değişir.</p>
+        <p>Risk kimde? <strong>Sadece Alıcıda.</strong> Alıcının hissesi düşerse, daha çok hisse basmak zorunda kalır (Dilution riski).</p>
+
+        <div class="lesson-nav">
+            <a href="structuring.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Structuring</a>
+            <a href="ppa.html" class="btn-nav">Sonraki: PPA & Goodwill <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
