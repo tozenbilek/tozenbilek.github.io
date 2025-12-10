@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIG (Bank) Accounting | IB Prep</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>7.1 FIG Accounting (Banks & Insurance)</h1>
+            <p class="lesson-desc">
+                Paranın kendisinin "Mal" olduğu sektör. Bankalar normal şirketler gibi analiz edilemez. EBITDA anlamsızdır.
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-building-columns"></i> The Money Rental Store</h3>
+                <p>
+                    Bir banka, Starbucks gibi kahve satmaz. "Para" kiralar ve "Para" kiraya verir.
+                    <br>
+                    <strong>Hammadde:</strong> Mevduat (Sizden %5 faizle para toplar). <br>
+                    <strong>Ürün:</strong> Kredi (Başkasına %10 faizle satar). <br>
+                    <strong>Kâr:</strong> Aradaki fark (%5 Spread).
+                </p>
+                <p>
+                    Bu yüzden bankalarda "Ciro" (Revenue) diye bir şey yoktur. "Net Faiz Geliri" (Net Interest Income) vardır.
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-chart-area"></i> Temel Farklılıklar</h3>
+
+                <h4>1. Balance Sheet Tersti</h4>
+                <p>
+                    Normal bir şirkette "Nakit" varlıktır, "Borç" yükümlülüktür.
+                    <br><strong>Bankada:</strong>
+                    <br><strong>Loans (Verilen Krediler) = ASSET</strong> (Çünkü bankaya para getirecek).
+                    <br><strong>Deposits (Mevduatlar) = LIABILITY</strong> (Çünkü banka bunu müşteriye geri ödemek zorunda).
+                </p>
+
+                <h4>2. EBITDA Kullanılmaz!</h4>
+                <p>
+                    EBITDA = Earnings Before <strong>Interest</strong>...
+                    Bankalar için "Faiz" operasyonel bir giderdir, finansal bir gider değildir. İşin özü faizdir. 
+                    Faizi çıkarırsanız bankanın kârını hesaplayamazsınız.
+                    <br>
+                    <strong>Kullanılan Metrikler:</strong>
+                    <ul>
+                        <li><strong>P/E (Fiyat/Kazanç):</strong> En yaygın metrik.</li>
+                        <li><strong>P/BV (Price to Book Value):</strong> Varlık kalitesi önemlidir.</li>
+                        <li><strong>Net Interest Margin (NIM):</strong> Kredi faizi - Mevduat faizi marjı.</li>
+                    </ul>
+                </p>
+
+                <h4>3. Provision for Credit Losses (PCL)</h4>
+                <p>
+                    Bankalar verdikleri kredilerin bir kısmının geri dönmeyeceğini bilir.
+                    Bunun için erkenden bir gider yazarlar (Karşılık ayırırlar). Bu, banka muhasebesinin en önemli ve en manipülasyona açık kalemidir.
+                </p>
+
+                <h4>4. Regulatory Capital (Basel III)</h4>
+                <p>
+                    Bankalar kafalarına göre büyüyemezler. Devlet (BDDK / Fed) der ki: 
+                    "Eğer 100 TL kredi vereceksen, kasanda en az 10 TL Özkaynak (Tier 1 Capital) tutmalısın."
+                    Buna <strong>Capital Adequacy Ratio (CAR)</strong> denir.
+                </p>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: Bir bankayı değerlerken neden Enterprise Value (EV) / EBITDA kullanılmaz?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Çünkü bankalarda "Borç" ve "Faiz" operasyoneldir. Enterprise Value hesaplarken borcu ekleyip nakdi çıkarmak banka için anlamsızdır (Borç = Hammadde). Ayrıca Faiz gideri, bankanın ana maliyetidir, göz ardı edilemez.</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: Bir bankanın P/BV oranı 0.5x ise bu ne anlama gelir?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Piyasa, bankanın defterindeki varlıkların (Kredilerin) yarısının batık olduğuna inanıyor demektir. Banka tasfiye edilse bile yatırımcı parasını alamaz. Çok kötü bir işarettir (veya aşırı ucuzdur).</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="non-recurring.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: Adjustments</a>
+                <a href="reits.html" class="btn-nav next">Sonraki: REITs (Real Estate) <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

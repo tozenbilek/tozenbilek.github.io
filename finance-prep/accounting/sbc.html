@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock-Based Compensation (SBC) | IB Prep</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>6.2 Stock-Based Compensation (SBC)</h1>
+            <p class="lesson-desc">
+                Çalışanlara maaş yerine hisse vermek. Nakit çıkmaz ama hissedar fakirleşir. Teknoloji sektörünün en tartışmalı kalemi.
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-ticket"></i> The Pizza Party Analogy</h3>
+                <p>
+                    Bir pizzacı dükkanı işlettiğinizi düşünün. Çalışanlarınıza maaş ödemek yerine, "Dükkanın %1 hissesini" veriyorsunuz.
+                </p>
+                <p>
+                    <strong>Kasa Durumu:</strong> Kasadan hiç nakit çıkmadı (Cash Flow pozitif). Harika! <br>
+                    <strong>Sizin Durumunuz:</strong> Eskiden pizzacının %100 sahibiydiniz, şimdi %99. Pizza aynı pizza, ama sizin diliminiz küçüldü (Dilution).
+                </p>
+                <p>
+                    SBC tam olarak budur. Nakit gider değildir ama "Gerçek" bir giderdir çünkü mevcut hissedarların payını sulandırır.
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-calculator"></i> Accounting Mechanics</h3>
+                <p>
+                    Teknoloji şirketleri (Google, Facebook, Startuplar) yetenekli mühendisleri çekmek için yüksek maaş yerine Hisse Opsiyonu (Stock Options) veya RSU (Restricted Stock Units) verir.
+                </p>
+
+                <h4>1. Income Statement Etkisi</h4>
+                <p>
+                    SBC, bir "Operating Expense" olarak kaydedilir (Genelde R&D veya SG&A altında).
+                    Dolayısıyla <strong>EBIT ve Net Income'ı düşürür.</strong>
+                </p>
+
+                <h4>2. Cash Flow Statement Etkisi</h4>
+                <p>
+                    SBC nakit gerektirmeyen bir giderdir (Non-Cash Expense).
+                    Bu yüzden Cash Flow from Operations (CFO) hesaplanırken <strong>Net Income'a geri eklenir (Add-back).</strong>
+                </p>
+
+                <h4>3. Valuation Etkisi (The Controversy)</h4>
+                <div class="formula-box">
+                    \[ \text{Diluted Equity Value} = \text{Share Price} \times (\text{Basic Shares} + \text{In-the-Money Options}) \]
+                </div>
+                <p>
+                    Yatırımcılar genellikle <strong>Adjusted EBITDA</strong> hesaplarken SBC'yi geri eklerler (Yani gider saymazlar).
+                    <br><em>"Nakit çıkmadı ki, neden gider sayalım?"</em> derler.
+                </p>
+                <p style="color: var(--accent-red);"><strong>WARREN BUFFETT'IN İTİRAZI:</strong> "Eğer opsiyonlar bir tazminat şekli değilse nedir? Eğer gider değilse nedir? Ve eğer kâr tablosuna girmezse nereye girer?"</p>
+                <p>
+                    <strong>Doğrusu:</strong> SBC'yi EBITDA'ya geri ekliyorsanız (Kârı yüksek gösteriyorsanız), değerleme yaparken paydadaki hisse sayısını (Diluted Shares) artırmalısınız. Bedava öğle yemeği yoktur.
+                </p>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: SBC artarsa şirketin Free Cash Flow'u (FCF) nasıl etkilenir?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">FCF ARTAR. Çünkü SBC vergiden düşülebilir bir giderdir (Net Income'ı düşürür, daha az vergi ödenir). Nakit çıkışı olmadığı için CFO'ya geri eklenir. Vergi kalkanı etkisiyle FCF artar.</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: DCF analizinde SBC'yi nasıl ele almalıyız?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">İki yol vardır: 1) FCF hesaplarken SBC'yi gider olarak kabul et (Geri ekleme). 2) FCF'e geri ekle (Nakit gibi davran) ama Diluted Share Count'u artırarak hisse başına değeri düşür. Tutarlılık esastır.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="earnings-management.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: Earnings Mgmt</a>
+                <a href="non-recurring.html" class="btn-nav next">Sonraki: Non-Recurring Items <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
