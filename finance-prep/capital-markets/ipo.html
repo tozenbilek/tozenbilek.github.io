@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPO Process | IB Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #f8fafc; --surface-color: #ffffff; --border-color: #e2e8f0;
+            --text-primary: #1f2933; --text-secondary: #52606d; --accent-cm: #7c3aed;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+        
+        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
+        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
+        .nav-link:hover { color: var(--accent-cm); }
+        .nav-sep { color: var(--border-color); }
+
+        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
+        h2 { font-size: 20px; margin-top: 40px; margin-bottom: 16px; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        p { margin-bottom: 16px; color: var(--text-secondary); }
+        strong { color: var(--text-primary); font-weight: 600; }
+        
+        .intuition-box {
+            background: #f5f3ff; border: 1px solid #ede9fe;
+            padding: 24px; border-radius: 8px; margin: 32px 0;
+        }
+        .intuition-title {
+            color: #6d28d9; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+        }
+
+        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 12px 0; display: flex; justify-content: space-between; align-items: center; }
+        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 16px; font-size: 14px; }
+        .drill-item { border-bottom: 1px solid var(--border-color); }
+        .drill-item:hover .drill-q { color: var(--accent-cm); }
+        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Capital Markets</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">The IPO Process</span>
+        </div>
+
+        <h1>ECM Mechanics: Going Public</h1>
+        
+        <div class="intuition-box">
+            <div class="intuition-title"><i class="fa-solid fa-lightbulb"></i> Executive Intuition</div>
+            <p style="color: #6d28d9; margin: 0;">
+                IPO (Halka Arz), bir şirketin "Yetişkinlik Sertifikası"dır.
+                <br>Bankacının görevi iki tarafı memnun etmektir:
+                <br>1. <strong>Şirket:</strong> Mümkün olan en yüksek fiyattan satmak ister (Max Cash).
+                <br>2. <strong>Yatırımcılar:</strong> Aldıkları hissenin ilk gün yükselmesini ister (IPO Pop).
+                <br>Bu dengeyi (Pricing) tutturmak bir sanattır.
+            </p>
+        </div>
+
+        <h2>1. The Timeline</h2>
+        <p><strong>1. Bake-off (Pitch):</strong> Bankalar şirkete sunum yapar. "Bizi seçin, sizi en iyi fiyattan satarız."</p>
+        <p><strong>2. Mandate & S-1 Filing:</strong> Kazanan banka (Lead Left) seçilir. SEC'ye (SPK) başvuru yapılır (S-1 dosyası). Bu dosyada şirketin tüm riskleri ve finansalları yazar.</p>
+        <p><strong>3. Roadshow:</strong> Bankacılar ve Şirket CEO'su dünyayı gezer, dev fonlara (BlackRock, Fidelity) sunum yapar. "Order Book" (Sipariş defteri) toplanır.</p>
+        <p><strong>4. Pricing:</strong> Talep toplandıktan sonra nihai fiyat belirlenir. (Örn: $25).</p>
+        <p><strong>5. Trading:</strong> Ertesi sabah gong çalar, hisse borsada işlem görmeye başlar.</p>
+
+        <h2>2. Greenshoe Option (Over-Allotment)</h2>
+        <p>
+            IPO'dan sonra hisse fiyatı düşerse ne olur? Rezalet olur.
+            Bunu önlemek için banka, şirketten ekstradan %15 daha fazla hisse satma hakkı (Opsiyon) alır.
+            <br><br>
+            <strong>Nasıl Çalışır?</strong>
+            <br>- Eğer hisse düşerse: Banka piyasadan hisse geri satın alır (Fiyatı yukarı iter) ve aldığı hisseleri şirkete geri verir. (Short covering).
+            <br>- Eğer hisse yükselirse: Banka opsiyonu kullanır, şirketten ucuza alır, piyasaya verir.
+        </p>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>"Leaving money on the table" ne demektir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    IPO fiyatı $20 belirlendi, ancak ilk gün borsa açılınca hisse $30'a fırladı. Şirket hissesini ucuza satmış oldu. Yatırımcılar bayram ederken, şirket CFO'su "Keşke $28'den satsaydık, masada para bıraktık" diye üzülür.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Lock-up Period nedir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    IPO'dan sonra, şirketin eski ortaklarının (Founder, VC, PE) hisselerini satmasının yasak olduğu dönem (Genelde 180 gün). Piyasanın bir anda satışla (Supply shock) çökmesini engeller.
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -6,39 +6,168 @@
     <title>Accretion / Dilution | M&A</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#064e3b; --code-bg:#f1f5f9; --border-color:#e2e8f0; }
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
-        .nav-header{margin-bottom:40px;}
-        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-        .back-link:hover{color:var(--accent-color)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
-        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
-        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
-        p{margin-bottom:20px;color:var(--text-secondary)}
-        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --accent-mna: #0f766e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+        
+        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
+        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
+        .nav-link:hover { color: var(--accent-mna); }
+        .nav-sep { color: var(--border-color); }
+
+        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
+        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-mna); padding-left: 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        strong { color: var(--text-primary); font-weight: 600; }
+        
+        .math-block {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 24px 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .proof-box {
+            background: #f0fdfa;
+            border: 1px solid #ccfbf1;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 32px 0;
+        }
+        .proof-title {
+            color: #115e59;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
+        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
+        .drill-item:hover .drill-q { color: var(--accent-mna); }
+        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
     </style>
 </head>
 <body>
-    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> M&A Module</a></div>
-    <h1>Accretion / Dilution Analysis</h1>
-    <div class="meta"><span><i class="fa-regular fa-clock"></i> 45 min</span><span><i class="fa-solid fa-calculator"></i> Deal Math</span></div>
 
-    <p>Hissedarın tek sorusu şudur: "Bu satın alma benim Hisse Başına Kârımı (EPS) artıracak mı?"</p>
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Mergers & Acquisitions</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Accretion / Dilution</span>
+        </div>
 
-    <h2>1. Mantık ve Kestirme Yol</h2>
-    <p>Eğer işlem %100 Hisse (Stock) ile yapılıyorsa kural basittir:</p>
-    <div class="math-block">
-        Alıcının F/K'sı > Hedefin F/K'sı = <strong>Accretive (EPS Artar)</strong><br>
-        Alıcının F/K'sı < Hedefin F/K'sı = <strong>Dilutive (EPS Düşer)</strong>
-    </div>
-    <p>Mantık: Yüksek F/K'lı (Pahalı) kağıdını verip, Düşük F/K'lı (Ucuz) kâr satın alıyorsun. Kârlı çıkarsın.</p>
+        <h1>Accretion / Dilution Math</h1>
+        <p>
+            M&A modellemesinin nihai çıktısıdır. "Bu birleşme, mevcut hissedarların Hisse Başına Karını (EPS) artıracak mı (Accretive), yoksa azaltacak mı (Dilutive)?"
+        </p>
 
-    <h2>2. Breakeven Synergies (Başabaş Sinerji)</h2>
-    <p>Eğer işlem Dilutive (Negatif) çıkıyorsa, ne kadar masrafı kesmeliyiz ki EPS eski haline dönsün?</p>
-    <div class="math-block">
-        Gerekli Sinerji = [ (Alıcı F/K / Hedef F/K) * (1 + Premium) - 1 ] * Hedef Net Kâr
+        <h2>1. The Intuitive Rule (The Shortcut)</h2>
+        <p>
+            Eğer işlem <strong>%100 Hisse (Stock)</strong> ile yapılıyorsa, hesap makinesine gerek yoktur. F/K (P/E) oranlarına bakmak yeterlidir.
+        </p>
+        <div class="proof-box">
+            <div class="proof-title"><i class="fa-solid fa-scale-balanced"></i> The Arbitrage Logic</div>
+            <p style="color: #0f766e; margin: 0;">
+                Eğer Alıcının (Acquirer) F/K'sı, Hedefin (Target) F/K'sından <strong>yüksekse</strong>, işlem <strong>Accretive</strong>'dir.
+                <br><br>
+                <em>Analoji:</em> Sizin F/K'nız 20x, Hedefinki 10x. 
+                Siz pahalı bir kağıdı (Hissenizi) para birimi olarak kullanıp, ucuz bir varlığı (Hedefin kârını) satın alıyorsunuz. 
+                Bu bir arbitrajdır ve EPS'nizi artırır.
+            </p>
+        </div>
+
+        <h2>2. Breakeven Synergies Derivation</h2>
+        <p>
+            Eğer işlem Dilutive (Negatif) çıkıyorsa, bu açığı kapatmak için ne kadar "Cost Synergy" (Tasarruf) yaratmalıyız?
+            İşte mülakatlarda sorulan o meşhur formülün türetilişi:
+        </p>
+
+        <div class="math-block">
+            \[ \text{Max Premium} = \frac{\text{Acquirer P/E}}{\text{Target P/E}} - 1 \]
+        </div>
+        
+        <p>
+            Ancak Sinerji miktarını ($) bulmak için daha kapsamlı bir denkleme ihtiyacımız var.
+            Eğer Nakit (%100 Cash) kullanıyorsak:
+        </p>
+        <div class="math-block">
+            \[ \text{Breakeven Pre-Tax Synergies} = \frac{\text{Purchase Price} \times (\text{Cost of Debt} - \text{Foregone Interest})}{\text{1 - Tax Rate}} \]
+        </div>
+        <p>
+            Mantık: Satın almak için ödediğim faiz (Cost of Debt), hedeften gelen kardan fazla ise, aradaki farkı sinerji ile kapatmalıyım.
+        </p>
+
+        <h2>3. Pro-Forma EPS Calculation Steps</h2>
+        <p>
+            1. <strong>Acquirer Net Income</strong> (Mevcut Kar).
+            <br>2. <strong>Target Net Income</strong> (Satın alınan Kar).
+            <br>3. <strong>(+) Synergies:</strong> Vergi sonrası etkisi.
+            <br>4. <strong>(-) Interest Expense:</strong> Satın alma kredisi faizi (Vergi sonrası).
+            <br>5. <strong>(-) Foregone Interest:</strong> Kasadaki nakdi kullandığımız için kaybettiğimiz faiz geliri.
+            <br>6. <strong>New Share Count:</strong> Acquirer Shares + New Shares Issued.
+            <br><br>
+            <strong>Pro-Forma EPS = (Toplam Yeni Kar) / (Toplam Yeni Hisse)</strong>
+        </p>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Neden şirketler Dilutive bir işlemi yaparlar?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    EPS düşse bile stratejik olarak gerekli olabilir (Pazar payı, Teknoloji transferi). 
+                    Ayrıca şirket "Gelecekteki Sinerjilere" güveniyordur. "Yıl 1 Dilutive ama Yıl 3 Accretive olacak" hikayesi satılır.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Cost of Cash nedir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Foregone Interest on Cash * (1 - Tax Rate). 
+                    Bankada %4 faizle duran paranızı satın alma için kullanırsanız, bu %4 gelirden vazgeçmiş olursunuz. Maliyet budur.
+                </div>
+            </div>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Cost of Stock nedir? (P/E cinsinden)</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Cost of Stock = 1 / (P/E Ratio). 
+                    Eğer F/K'nız 10x ise, Cost of Stock %10'dur. 
+                    Eğer F/K'nız 20x ise, Cost of Stock %5'tir. (F/K yükseldikçe hisseniz değerlenir, satın alma gücünüz artar, maliyetiniz düşer).
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </body>
 </html>
-

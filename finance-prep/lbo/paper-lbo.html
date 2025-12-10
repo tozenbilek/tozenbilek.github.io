@@ -3,44 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper LBO | LBO</title>
+    <title>Paper LBO | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#7c2d12; --code-bg:#f1f5f9; --border-color:#e2e8f0; }
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
-        .nav-header{margin-bottom:40px;}
-        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-        .back-link:hover{color:var(--accent-color)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
-        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
-        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
-        p{margin-bottom:20px;color:var(--text-secondary)}
-        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --accent-lbo: #7c3aed;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+        
+        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
+        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
+        .nav-link:hover { color: var(--accent-lbo); }
+        .nav-sep { color: var(--border-color); }
+
+        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
+        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-lbo); padding-left: 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        strong { color: var(--text-primary); font-weight: 600; }
+        
+        .calc-box {
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+        
+        .mental-math-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .mm-card {
+            background: white;
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        .mm-title { color: var(--accent-lbo); font-weight: 600; margin-bottom: 8px; font-size: 13px; }
+
+        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
+        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
+        .drill-item:hover .drill-q { color: var(--accent-lbo); }
+        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
     </style>
 </head>
 <body>
-    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> LBO Module</a></div>
-    <h1>Paper LBO (Mülakat Sorusu)</h1>
-    <div class="meta"><span><i class="fa-regular fa-clock"></i> 20 min</span><span><i class="fa-solid fa-note-sticky"></i> Interview Prep</span></div>
 
-    <p>Mülakatta size kağıt kalem verirler ve şunu sorarlar: "Bu şirketi alıp 5 yıl sonra satarsam ne kadar kazanırım?"</p>
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO Modeling</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Paper LBO</span>
+        </div>
 
-    <h2>1. Örnek Senaryo</h2>
-    <div class="math-block">
-        Giriş Fiyatı: 100M<br>
-        Kullanılan Borç: 60M<br>
-        Equity (Giriş): 40M<br>
-        Borç Ödemesi: 5 yılda 30M ödendi.<br>
-        Çıkış Fiyatı: 100M (Büyüme yok).<br><br>
-        <strong>Çıkış Hesabı:</strong><br>
-        Kalan Borç: 60M - 30M = 30M<br>
-        Equity (Çıkış): 100M (Fiyat) - 30M (Borç) = 70M.<br><br>
-        <strong>Getiri:</strong><br>
-        MOIC = 70M / 40M = <strong>1.75x</strong>
+        <h1>Paper LBO: The Napkin Math Masterclass</h1>
+        <p>
+            Private Equity mülakatlarının final boss'u "Paper LBO"dur. Size kağıt kalem verirler ve hesap makinesi olmadan 5 yılda kaç X para kazanacağını (MOIC) hesaplamanızı isterler.
+            Basit matematiği (Mental Math) yönetemezseniz elenirsiniz.
+        </p>
+
+        <h2>1. The Setup (Assumptions)</h2>
+        <p>
+            <strong>Entry:</strong> EBITDA = 100 $, Entry Multiple = 10x (Purchase Price = 1,000 $).
+            <br><strong>Debt:</strong> 5.0x Leverage (500 $ Debt). Equity = 500 $.
+            <br><strong>Operations:</strong> Revenue Growth = %10, EBITDA Margin Flat (%40).
+            <br><strong>Debt Paydown:</strong> Interest %10, Cash Flow Conversion %50.
+            <br><strong>Exit:</strong> Year 5, Exit Multiple = 10x.
+        </p>
+
+        <h2>2. Step-by-Step Calculation</h2>
+        
+        <div class="calc-box">
+            <strong>Step 1: Calculate Year 5 EBITDA</strong><br>
+            Year 0: 100<br>
+            Year 5: 100 * (1.1)^5<br>
+            <em>Rule of 72/Hack:</em> 1.1^5 ≈ 1.6 (Actually 1.61).<br>
+            <strong>Year 5 EBITDA = 160 $</strong>
+        </div>
+
+        <div class="calc-box">
+            <strong>Step 2: Calculate Debt Paydown (Free Cash Flow)</strong><br>
+            Cumulative EBITDA (Approx) = Avg EBITDA * 5 Years<br>
+            Avg EBITDA ≈ (100 + 160) / 2 = 130<br>
+            Total EBITDA = 130 * 5 = 650 $<br>
+            <br>
+            FCF = EBITDA - Interest - Capex/Tax<br>
+            Basit yöntem: FCF = EBITDA * Conversion Rate<br>
+            FCF = 650 * 50% = 325 $<br>
+            <br>
+            <strong>Ending Debt = Start Debt (500) - FCF (325) = 175 $</strong>
+        </div>
+
+        <div class="calc-box">
+            <strong>Step 3: Returns (MOIC & IRR)</strong><br>
+            Exit Enterprise Value = 160 (EBITDA) * 10x = 1,600 $<br>
+            Exit Equity Value = 1,600 (EV) - 175 (Debt) = 1,425 $<br>
+            <br>
+            MOIC = Ending Equity / Beginning Equity<br>
+            MOIC = 1,425 / 500 ≈ <strong>2.85x</strong>
+        </div>
+
+        <h2>3. Mental Math Hacks (Memorize This)</h2>
+        <p>
+            MOIC'ten IRR'a hızlı geçiş tablosu. Mülakatta bunu ezbere bildiğinizi gösterirseniz +10 puan.
+        </p>
+        <div class="mental-math-grid">
+            <div class="mm-card">
+                <div class="mm-title">2.0x MOIC (Parayı İkiye Katlamak)</div>
+                3 Years -> ~25% IRR<br>
+                5 Years -> ~15% IRR
+            </div>
+            <div class="mm-card">
+                <div class="mm-title">2.5x MOIC</div>
+                3 Years -> ~35% IRR<br>
+                5 Years -> ~20% IRR
+            </div>
+            <div class="mm-card">
+                <div class="mm-title">3.0x MOIC (Üçe Katlamak)</div>
+                3 Years -> ~45% IRR<br>
+                5 Years -> ~25% IRR
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>LBO'da değer yaratan en büyük faktör nedir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Genellikle <strong>EBITDA Growth</strong> ve <strong>Debt Paydown</strong>. 
+                    Multiple Expansion (Ucuza alıp pahalıya satmak) harikadır ama buna güvenerek model kurulmaz (Banking Case Base).
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Dividend Recapitalization IRR'ı nasıl etkiler?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    IRR'ı radikal şekilde artırır. Çünkü paranın zaman değeri (Time Value of Money) prensibi işler. 
+                    Erken dönemde cebinize nakit girmesi, IRR formülünü yukarı fırlatır (MOIC değişmese bile).
+                </div>
+            </div>
+        </div>
+
     </div>
-
-    <p>Ders: Şirket değeri hiç artmasa bile (100M -> 100M), sadece borç ödeyerek paranızı 1.75 katına çıkardınız. LBO'nun gücü budur.</p>
 </body>
 </html>
-

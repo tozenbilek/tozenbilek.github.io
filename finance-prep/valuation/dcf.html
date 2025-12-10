@@ -6,55 +6,181 @@
     <title>DCF Modeling | Valuation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#1e3a8a; --code-bg:#f1f5f9; --quiz-bg:#f0fdf4; --quiz-text:#166534; --border-color:#e2e8f0; }
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
-        .nav-header{margin-bottom:40px;}
-        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-        .back-link:hover{color:var(--accent-color)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
-        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
-        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
-        p{margin-bottom:20px;color:var(--text-secondary)}
-        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
-        .eng-note{background:#eff6ff; border-left:4px solid #3b82f6; padding:20px; font-size:14px; color:#1e40af; margin-top:40px; border-radius:4px;}
-        .eng-title{font-weight:700; display:block; text-transform:uppercase; font-size:11px; letter-spacing:1px; margin-bottom:8px;}
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --accent-val: #2563eb;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+        
+        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
+        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
+        .nav-link:hover { color: var(--accent-val); }
+        .nav-sep { color: var(--border-color); }
+
+        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
+        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-val); padding-left: 16px; }
+        h3 { font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-weight: 600; color: var(--text-primary); }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        strong { color: var(--text-primary); font-weight: 600; }
+        
+        .math-block {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 24px 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+        }
+
+        .proof-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 32px 0;
+        }
+        .proof-title {
+            color: #1e40af;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
+        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
+        .drill-item:hover .drill-q { color: var(--accent-val); }
+        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
     </style>
 </head>
 <body>
-    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Valuation Module</a></div>
-    <h1>DCF (Discounted Cash Flow)</h1>
-    <div class="meta"><span><i class="fa-regular fa-clock"></i> 90 min</span><span><i class="fa-solid fa-chart-line"></i> Intrinsic Value</span></div>
 
-    <p>Finansın en temel teoremi: Bir varlığın değeri, gelecekte üreteceği nakit akışlarının bugünkü değeridir.</p>
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">DCF Analysis</span>
+        </div>
 
-    <h2>1. Unlevered Free Cash Flow (UFCF) Türetimi</h2>
-    <p>Neden "Unlevered"? Çünkü borç yapısından (Debt) bağımsız olarak şirketin operasyonel motorunun (Enterprise Value) değerini bulmak istiyoruz.</p>
-    <div class="math-block">
-        EBIT * (1 - Tax Rate)   [NOPAT - Net Operating Profit After Tax]<br>
-        + Depreciation & Amortization [Nakit çıkışı olmayan gideri ekle]<br>
-        - Change in Working Capital [İşletmeye bağlanan nakdi düş]<br>
-        - Capital Expenditures (CapEx) [Büyümek için yapılan yatırımı düş]<br>
-        = <strong>Unlevered Free Cash Flow</strong>
-    </div>
+        <h1>DCF: The Intrinsic Value Engine</h1>
+        <p>
+            Discounted Cash Flow (DCF), bir varlığın değerinin, üreteceği nakit akışlarının bugünkü değeri olduğu ilkesine dayanır. 
+            Ancak formülü ezberlemek yetmez. <strong>Neden Gordon Growth formülü öyledir?</strong> Bunu matematiksel olarak kanıtlayacağız.
+        </p>
 
-    <h2>2. WACC (Weighted Average Cost of Capital)</h2>
-    <p>Gelecekteki parayı bugüne indirgemek için kullandığımız iskonto oranıdır. Bu oran, şirketin riskliliğini temsil eder.</p>
-    <div class="math-block">
-        WACC = (Cost of Equity * %Equity) + (Cost of Debt * %Debt * (1 - Tax))<br><br>
-        Not: Borç daha ucuzdur çünkü faizi vergiden düşülür (Tax Shield).
-    </div>
+        <h2>1. UFCF Derivation (Unlevered Free Cash Flow)</h2>
+        <p>
+            Tüm sermaye sahiplerine (Borç + Hisse) ait olan nakit akışıdır.
+        </p>
+        <div class="math-block">
+            \[ \text{EBIT} \times (1 - \text{Tax Rate}) \quad \text{(NOPAT)} \]
+            \[ + \quad \text{D\&A} \quad \text{(Non-cash ekle)} \]
+            \[ - \quad \Delta \text{NWC} \quad \text{(İşletme sermayesi yatırımı)} \]
+            \[ - \quad \text{Capex} \quad \text{(Yatırım harcaması)} \]
+            \[ = \quad \text{UFCF} \]
+        </div>
+        <p>
+            <strong>Dikkat:</strong> Faiz giderlerini (Interest Expense) DÜŞMEYİZ. Çünkü bu akış Debt Investor'a da aittir. "Unlevered" olmasının sebebi budur.
+        </p>
 
-    <h2>3. Terminal Value (Sonsuzluk Değeri)</h2>
-    <p>Şirket 5. yıldan sonra yok olmaz. Sonsuza kadar yaşayacağı varsayılır. Bu değeri Gordon Growth Modeli ile buluruz.</p>
-    <div class="math-block">
-        TV = [ FCF(Final Yıl) * (1 + Büyüme Oranı) ] / (WACC - Büyüme Oranı)
-    </div>
+        <h2>2. Mathematical Proof: Terminal Value</h2>
+        <p>
+            DCF'in %70'i Terminal Value'dan gelir. Genellikle <strong>Gordon Growth Model</strong> kullanılır. 
+            Peki formül nereden geliyor? Sonsuz Geometrik Seri Toplamından.
+        </p>
 
-    <div class="eng-note">
-        <span class="eng-title">Mühendis Notu: Monte Carlo DCF</span>
-        <p>Klasik DCF tek bir WACC (%10) kullanır. Bu yanlıştır. Monte Carlo ile WACC'i bir dağılım (Mean: %10, StdDev: %1) olarak tanımlayıp 10.000 simülasyon yaparak "Değerleme Aralığı" (Confidence Interval) bulmak çok daha bilimseldir.</p>
+        <div class="proof-box">
+            <div class="proof-title"><i class="fa-solid fa-calculator"></i> The Engineering Proof</div>
+            <p style="color: #1e3a8a; margin-bottom: 16px;">
+                Bir nakit akışı \( CF \) her yıl \( g \) oranında büyüsün ve \( r \) (WACC) ile iskonto edilsin.
+            </p>
+            <div class="math-block" style="background: transparent; border: none; padding: 0; box-shadow: none;">
+                \[ PV = \frac{CF_1}{(1+r)} + \frac{CF_1(1+g)}{(1+r)^2} + \frac{CF_1(1+g)^2}{(1+r)^3} + \dots \]
+                <br>
+                Bu bir sonsuz geometrik seridir (\( \sum a x^n \)).
+                <br>
+                Ortak çarpan \( x = \frac{1+g}{1+r} \). Yakınsama koşulu \( r > g \) olmalıdır.
+                <br>
+                Seri toplam formülü \( S = \frac{a}{1-x} \)'i uygularsak:
+                <br><br>
+                \[ \text{Terminal Value} = \frac{CF_{final} \times (1+g)}{r - g} \]
+            </div>
+            <p style="color: #1e3a8a; margin-top: 16px;">
+                İşte bu yüzden paydada \( (r-g) \) vardır. Eğer \( g \ge r \) olursa, değer sonsuza gider (Matematiksel patlama), bu da imkansızdır (Evrenden hızlı büyüyemezsiniz).
+            </p>
+        </div>
+
+        <h2>3. WACC & Beta Unlevering</h2>
+        <p>
+            Beta (\( \beta \)), risk ölçüsüdür. Ancak halka açık betalar "Levered"dır (Borç riski içerir). 
+            Kıyaslama yapmak için önce borç etkisini silmeli (Unlever), sonra kendi sermaye yapımıza göre tekrar yüklemeliyiz (Relever).
+        </p>
+        <div class="math-block">
+            \[ \beta_{unlevered} = \frac{\beta_{levered}}{1 + (1-t)(\frac{D}{E})} \]
+        </div>
+        <p>
+            Bu formül Hamada Denklemi'dir. Borç (D/E) arttıkça, Levered Beta artar (Risk artar), dolayısıyla Cost of Equity ve WACC artar.
+        </p>
+
+        <h2>4. Mid-Year Convention</h2>
+        <p>
+            Standart DCF, nakit akışının yıl sonunda (31 Aralık 23:59) geldiğini varsayar. 
+            Gerçekte para yıl içine yayılır. Bu yüzden nakitleri 1, 2, 3 yerine 0.5, 1.5, 2.5 yıl iskonto ederiz. 
+            Bu, şirket değerini %5-10 artırır.
+        </p>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Terminal Value'da Exit Multiple mı Growth Method mu kullanmalıyım?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    İkisini de yap ve "Sanity Check" (Mantık Kontrolü) uygula. 
+                    Growth Method ile bulduğun değerin ima ettiği (Implied) çarpan, sektör ortalamasının çok üzerindeyse (örn. 30x vs 10x), \( g \) varsayımın çok yüksektir. Düşür.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Cost of Equity neden Cost of Debt'ten yüksektir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    1) Borç garantidir (Yasal yükümlülük), Hisse senedi garanti değildir. Risk yüksekse getiri beklentisi yüksektir. 
+                    2) Faiz vergiden düşer (Tax Shield), temettü düşmez.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Şirketin WACC'ı %8, ROIC'i %6 ise ne olur?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Şirket değer yok ediyordur. Büyümesi bile kötüdür. Çünkü büyüme için harcadığı her para (%8 maliyet), daha az getiri (%6) sağlamaktadır. "Growth destroys value" paradoksu.
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
-

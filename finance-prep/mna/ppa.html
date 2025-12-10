@@ -3,42 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PPA Mechanics | M&A</title>
+    <title>PPA & Goodwill | M&A</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#064e3b; --code-bg:#f1f5f9; --border-color:#e2e8f0; }
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
-        .nav-header{margin-bottom:40px;}
-        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-        .back-link:hover{color:var(--accent-color)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
-        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
-        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
-        p{margin-bottom:20px;color:var(--text-secondary)}
-        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --accent-mna: #0f766e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+        
+        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
+        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
+        .nav-link:hover { color: var(--accent-mna); }
+        .nav-sep { color: var(--border-color); }
+
+        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
+        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-mna); padding-left: 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        strong { color: var(--text-primary); font-weight: 600; }
+        
+        .math-block {
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 24px 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
+        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
+        .drill-item:hover .drill-q { color: var(--accent-mna); }
+        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
     </style>
 </head>
 <body>
-    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> M&A Module</a></div>
-    <h1>Purchase Price Allocation (PPA)</h1>
-    <div class="meta"><span><i class="fa-regular fa-clock"></i> 35 min</span><span><i class="fa-solid fa-file-invoice"></i> Accounting</span></div>
 
-    <p>Şirketi 100M$'a aldınız ama Defter Değeri 40M$. Kalan 60M$ ne olacak? Hepsine "Goodwill" deyip geçemezsiniz.</p>
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Mergers & Acquisitions</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Purchase Price Allocation</span>
+        </div>
 
-    <h2>1. The Write-Up (Yeniden Değerleme)</h2>
-    <p>Önce o 60M$'ı gerçek varlıklara dağıtmalıyız:</p>
-    <div class="math-block">
-        Ödenen Para: 100M<br>
-        - Defter Değeri: 40M<br>
-        = Fazlalık: 60M<br><br>
-        <strong>Dağılım:</strong><br>
-        1. Maddi Varlıklar (Gayrimenkul) Artışı: 10M<br>
-        2. Maddi Olmayan (Marka, Patent) Yaratılması: 20M<br>
-        3. DTL (Ertelenmiş Vergi) Yaratılması: -5M (Yükümlülük)<br>
-        4. Kalan (Goodwill): 35M
+        <h1>PPA: The Goodwill Bridge</h1>
+        <p>
+            Bir şirketi satın aldığınızda, aslında onun Bilanço'sunu satın alırsınız. 
+            Ancak ödediğiniz para (Equity Purchase Price) genellikle şirketin defter değerinden (Book Value of Equity) çok daha yüksektir. 
+            Aradaki bu fark (Premium) nereye gider? İşte PPA (Purchase Price Allocation) süreci budur.
+        </p>
+
+        <h2>1. The Allocable Excess</h2>
+        <p>
+            Adım adım hesaplama:
+            <br>1. <strong>Equity Purchase Price:</strong> 100M $
+            <br>2. <strong>(-) Book Value of Equity:</strong> 40M $
+            <br>3. <strong>= Excess Purchase Price:</strong> 60M $
+        </p>
+        <p>
+            Şimdi bu 60M $'ı gerçek varlıklara dağıtmalıyız (Write-up).
+        </p>
+
+        <h2>2. Creating Intangibles & DTLs</h2>
+        <p>
+            1. <strong>Tangible Assets Write-up:</strong> Binaların değeri artmış olabilir (+10M).
+            <br>2. <strong>Identifiable Intangibles:</strong> Patentler, Müşteri Listeleri (+20M). 
+            (Not: Bunlar amorti edilir ve vergi sonrası Net Income'ı düşürür!)
+            <br>3. <strong>Deferred Tax Liability (DTL):</strong> İşte burası kritik.
+        </p>
+
+        <div class="math-block">
+            New DTL = (Total Write-Ups) * Tax Rate
+            <br>
+            New DTL = (10M + 20M) * 25% = 7.5M $
+        </div>
+
+        <p>
+            <strong>Neden DTL oluştu?</strong> Çünkü muhasebe defterinde varlıkları şişirdik (Write-up) ama vergi dairesi bunu kabul etmedi (Tax Basis değişmedi). 
+            Gelecekte daha az amortisman gideri yazıp daha çok vergi ödeyeceğiz. Bu gelecekteki vergi yükü bugün DTL olarak kaydedilir.
+        </p>
+
+        <h2>3. Goodwill (The Plug)</h2>
+        <p>
+            Her şeyi dağıttıktan sonra hala kalan bir fark varsa, buna "Goodwill" (Şerefiye) denir.
+        </p>
+        <div class="math-block">
+            Goodwill = Excess Purchase Price - (Asset Write-ups) + (New DTL)
+            <br>
+            Goodwill = 60M - 30M + 7.5M = 37.5M $
+        </div>
+        <p>
+            DTL'in Goodwill'i <strong>artırdığına</strong> dikkat edin. (Borç yarattığımız için, denklemi sağlamak adına varlık tarafında Goodwill artar).
+        </p>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Goodwill Amorti edilir mi?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Hayır. (IFRS ve US GAAP altında). Sadece yılda bir kez "Impairment Test"e (Değer Düşüklüğü Testi) tabi tutulur. Eğer şirketin değeri düşerse, Goodwill silinir (Write-down).
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Bargain Purchase (Negative Goodwill) nedir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Eğer şirketi Defter Değerinin ALTINDA (Fire Sale) alırsanız, Goodwill negatif olur. 
+                    Bu durumda Bilançoda negatif varlık olmaz. Bu tutar Gelir Tablosuna "Gain on Sale" (Tek seferlik kâr) olarak yazılır ve Equity artırılır.
+                </div>
+            </div>
+
+        </div>
+
     </div>
-    <p><strong>Goodwill:</strong> "Artık" değerdir. Amorti edilmez (amortization), sadece değer kaybederse (impairment) silinir.</p>
 </body>
 </html>
-

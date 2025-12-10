@@ -3,106 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3-Statement Linkage | Accounting</title>
+    <title>3 Financial Statements | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#0f172a; --code-bg:#f1f5f9; --quiz-bg:#f0fdf4; --quiz-text:#166534; --border-color:#e2e8f0; }
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --accent-acc: #16a34a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
         
-        .nav-header{margin-bottom:40px;}
-        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-        .back-link:hover{color:var(--accent-color)}
-        
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
-        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
-        
-        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
-        p{margin-bottom:20px;color:var(--text-secondary)}
-        ul{margin-bottom:24px;padding-left:24px;color:var(--text-secondary)}
-        li{margin-bottom:8px}
-        strong{color:var(--text-primary);font-weight:600}
+        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
+        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
+        .nav-link:hover { color: var(--accent-acc); }
+        .nav-sep { color: var(--border-color); }
 
-        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
+        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-acc); padding-left: 16px; }
+        h3 { font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-weight: 600; color: var(--text-primary); }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        strong { color: var(--text-primary); font-weight: 600; }
         
-        .quiz-box{background:var(--quiz-bg);border:1px solid #bbf7d0;padding:24px;border-radius:8px;margin-top:40px}
-        .quiz-title{font-weight:600;color:var(--quiz-text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-        .quiz-item{margin-bottom:16px;cursor:pointer}
-        .q-text{font-weight:500;margin-bottom:4px;color:#14532d;display:block}
-        .a-text{display:none;font-size:14px;color:#166534;padding:8px;background:rgba(255,255,255,0.6);border-radius:4px;margin-top:4px}
-        .quiz-item:hover .a-text{display:block}
+        .logic-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
+        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
+        .drill-item:hover .drill-q { color: var(--accent-acc); }
+        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
     </style>
 </head>
 <body>
 
-    <div class="nav-header">
-        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
-    </div>
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">3-Statement Logic</span>
+        </div>
 
-    <h1>3-Statement Linkage</h1>
-    <div class="meta">
-        <span><i class="fa-regular fa-clock"></i> 60 min</span>
-        <span><i class="fa-solid fa-layer-group"></i> Fundamental</span>
-    </div>
+        <h1>The 3 Statements: The Integrated Machine</h1>
+        <p>
+            Muhasebe sadece kayıt tutmak değildir; şirketin finansal gerçekliğinin 3 boyutlu modellemesidir. 
+            Bu tablolar birbirinden bağımsız değildir. Biri değişirse, diğerleri de matematiksel zorunlulukla değişir. 
+            Buna <strong>"Articulation"</strong> denir.
+        </p>
 
-    <p>3 finansal tablonun birbirine nasıl bağlandığını uykunuzda bile söyleyebilmelisiniz. Tüm finansal modelleme evreni <strong>"Retained Earnings Identity"</strong> (Dağıtılmamış Karlar Özdeşliği) üzerine kuruludur.</p>
+        <h2>1. The Fundamental Identity (Mühendislik Denklemi)</h2>
+        <p>
+            Bilanço (Balance Sheet) her zaman dengede olmak zorundadır. Neden? Çünkü fizik kanunu gibidir: 
+            "Bir varlık (Asset) ya borçla (Liability) ya da özsermaye ile (Equity) finanse edilmiştir."
+        </p>
+        <div class="logic-box">
+            Assets = Liabilities + Shareholders' Equity
+        </div>
 
-    <h2>1. The Holy Trinity (Kutsal Üçlü)</h2>
-    <p>Bu tablolar birbirinden bağımsız değildir. Aynı gerçeğin farklı açılardan fotoğrafıdır.</p>
-    <ul>
-        <li><strong>Income Statement (Gelir Tablosu):</strong> Belirli bir dönemdeki karlılık (Video).</li>
-        <li><strong>Balance Sheet (Bilanço):</strong> Belirli bir andaki finansal durum (Fotoğraf).</li>
-        <li><strong>Cash Flow Statement (Nakit Akım):</strong> Nakdin nereden gelip nereye gittiği (Gerçek).</li>
-    </ul>
-
-    <h2>2. Temel Bağlantı Mantığı (Ezberle)</h2>
-    <p>Birbiriyle nasıl konuşurlar? Net Income ve Cash aracılığıyla.</p>
-
-    <div class="math-block">
-        Adım 1: Net Income (IS) --> Cash Flow Statement'ın (CFS) en tepesine gider.<br>
-        Adım 2: CFS'deki değişimler (Operasyon, Yatırım, Finansman) "Net Change in Cash"i verir.<br>
-        Adım 3: Bilanço Cash (t) = Bilanço Cash (t-1) + Net Change in Cash.<br>
-        Adım 4: Net Income ayrıca Bilançodaki "Retained Earnings" kısmına gider.<br><br>
-        <strong>Retained Earnings (t) = Retained Earnings (t-1) + Net Income - Dividends</strong>
-    </div>
-
-    <h2>3. "Depreciation" Mülakat Sorusu</h2>
-    <p>Klasik soru: "Amortisman (Depreciation) 10$ artarsa 3 tablo nasıl etkilenir?" (Vergi: %40)</p>
-
-    <div class="math-block">
-        <strong>1. Income Statement:</strong><br>
-        Operating Income 10$ düşer.<br>
-        Vergi Kalkanı (Tax Shield) = 10 * %40 = 4$.<br>
-        Net Income <strong>6$ düşer</strong>.<br><br>
-        <strong>2. Cash Flow Statement:</strong><br>
-        Net Income en üstte -6$ başlar.<br>
-        Depreciation (Nakit olmayan gider) +10$ geri eklenir.<br>
-        Net Cash Flow = -6 + 10 = <strong>+4$ artar</strong>.<br><br>
-        <strong>3. Balance Sheet:</strong><br>
-        Assets: Cash (+4$) - PP&E (-10$) = Net Varlıklar <strong>-6$ düşer</strong>.<br>
-        Equity: Retained Earnings (Net Income düştüğü için) <strong>-6$ düşer</strong>.<br>
-        Denge: -6 = -6. (Tuttu).
-    </div>
-
-    <div class="quiz-box">
-        <div class="quiz-title"><i class="fa-solid fa-bolt"></i> Rapid Fire Drills (Cevap için üzerine gel)</div>
+        <h2>2. The Linkage Mechanism (Bağlantı Noktaları)</h2>
+        <p>
+            Mülakatların %100'ünde sorulan "Bu 3 tablo nasıl bağlanır?" sorusunun PhD seviyesindeki cevabı şudur:
+        </p>
         
-        <div class="quiz-item">
-            <span class="q-text">1. Şirket 100$ borç alırsa (Debt Issuance) tablolar nasıl etkilenir?</span>
-            <div class="a-text">
-                IS: Etkilenmez (Faiz henüz işlemedi).<br>
-                CFS: Cash Flow from Financing (CFF) +100$ artar.<br>
-                BS: Cash +100$, Debt +100$. Varlık = Borç artışı ile dengelenir.
+        <h3>A. Net Income (IS -> CFS & BS)</h3>
+        <p>
+            Gelir Tablosunun en alt satırı (Net Income), Nakit Akış Tablosunun en üst satırıdır. 
+            Aynı zamanda, Bilanço'daki <strong>Retained Earnings</strong> (Geçmiş Yıl Karları) kalemine eklenir. 
+            Bu, Bilançoyu dengeleyen ana mekanizmadır.
+        </p>
+        <div class="logic-box">
+            Ending R.E. = Beginning R.E. + Net Income - Dividends
+        </div>
+
+        <h3>B. D&A (IS -> CFS -> BS)</h3>
+        <p>
+            Depreciation (Amortisman) Gelir Tablosunda bir giderdir (Vergiyi düşürür). 
+            Ancak nakit çıkışı değildir. Bu yüzden CFS'de Net Income'a <strong>geri eklenir</strong> (Add-back).
+            Bilançoda ise PP&E (Maddi Duran Varlıklar) değerini düşürür.
+        </p>
+
+        <h3>C. Change in Working Capital (BS -> CFS)</h3>
+        <p>
+            Bilançodaki "Dönen Varlıklar" ve "Kısa Vadeli Yükümlülükler"deki değişimler, CFS'de "Operating Cash Flow" bölümünü oluşturur.
+            <br>• Varlık Artışı (Örn: Stok) = Nakit Çıkışı (Use of Cash)
+            <br>• Yükümlülük Artışı (Örn: Borç) = Nakit Girişi (Source of Cash)
+        </p>
+
+        <h2>3. The "Depreciation Shock" Drill</h2>
+        <p>
+            <strong>Soru:</strong> Amortisman (Depreciation) 10 TL artarsa 3 tablo nasıl etkilenir? (Vergi Oranı: %40)
+        </p>
+        
+        <div class="logic-box">
+            <strong>1. Income Statement:</strong><br>
+            - Operating Expense (D&A) artar: +10<br>
+            - Pre-Tax Income düşer: -10<br>
+            - Net Income düşer: -6 (Çünkü 4 TL vergi kalkanı oluştu)<br><br>
+            
+            <strong>2. Cash Flow Statement:</strong><br>
+            - Net Income ile başla: -6<br>
+            - D&A (Non-cash) geri ekle: +10<br>
+            - Net Change in Cash: +4 (Vergi tasarrufu kadar nakit arttı!)<br><br>
+            
+            <strong>3. Balance Sheet:</strong><br>
+            - Cash (Varlık): +4<br>
+            - PP&E (Varlık): -10 (Amortisman düştü)<br>
+            - Total Assets: -6<br>
+            - Retained Earnings (Equity): -6 (Net Income'dan geldi)<br>
+            - <strong>Denge: Assets (-6) = Equity (-6)</strong>
+        </div>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Negatif Working Capital her zaman kötü müdür?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Hayır. Amazon veya Walmart gibi perakendeciler için harikadır. 
+                    Müşteriden parayı peşin alırlar (Cash artar), tedarikçiye 60 gün sonra öderler (AP artar). 
+                    Operasyonları "başkalarının parasıyla" finanse ederler. Buna <strong>Float</strong> denir.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>EBITDA neden "Cash Flow" değildir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    EBITDA şunları yoksayar: 
+                    1) İşletme Sermayesi değişimlerini (Stok almak için para harcanır), 
+                    2) Capex'i (Fabrika yatırımı nakit yer), 
+                    3) Vergileri ve Faizleri. 
+                    Bu yüzden "Proxy for Cash Flow"dur, gerçek nakit akışı değildir.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Şirket bir varlığı değerinin altında satarsa ne olur? (Write-down)</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Zarar yazar. Net Income düşer. Ancak bu "Non-cash" bir zarar olabilir (değer düşüklüğü karşılığı). 
+                    Nakit etkisi sadece vergi tasarrufu kadardır.
+                </div>
             </div>
         </div>
 
-        <div class="quiz-item">
-            <span class="q-text">2. "Change in Working Capital" eksi ise nakit durumu nedir?</span>
-            <div class="a-text">
-                Nakit <strong>Azalmıştır</strong>. Eksi olması, Varlıkların (Stok, Alacak) arttığını gösterir. Varlık satın almak nakit çıkışıdır (Cash Outflow).
-            </div>
-        </div>
     </div>
-
 </body>
 </html>

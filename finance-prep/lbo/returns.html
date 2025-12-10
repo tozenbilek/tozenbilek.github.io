@@ -7,40 +7,167 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#7c2d12; --code-bg:#f1f5f9; --border-color:#e2e8f0; }
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
-        .nav-header{margin-bottom:40px;}
-        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-        .back-link:hover{color:var(--accent-color)}
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
-        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
-        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
-        p{margin-bottom:20px;color:var(--text-secondary)}
-        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --accent-lbo: #7c3aed;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
+        
+        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
+        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
+        .nav-link:hover { color: var(--accent-lbo); }
+        .nav-sep { color: var(--border-color); }
+
+        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
+        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-lbo); padding-left: 16px; }
+        p { margin-bottom: 20px; color: var(--text-secondary); }
+        strong { color: var(--text-primary); font-weight: 600; }
+        
+        .math-box {
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            padding: 24px;
+            border-radius: 8px;
+            margin: 24px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+        }
+
+        .chart-placeholder {
+            background: white;
+            border: 1px dashed var(--border-color);
+            padding: 32px;
+            text-align: center;
+            color: var(--text-secondary);
+            margin: 24px 0;
+            border-radius: 8px;
+        }
+
+        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
+        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
+        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
+        .drill-item:hover .drill-q { color: var(--accent-lbo); }
+        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
     </style>
 </head>
 <body>
-    <div class="nav-header"><a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> LBO Module</a></div>
-    <h1>Returns Attribution (Getiri Ayrıştırma)</h1>
-    <div class="meta"><span><i class="fa-regular fa-clock"></i> 30 min</span><span><i class="fa-solid fa-percent"></i> Return Analysis</span></div>
 
-    <p>%25 IRR ile çıktınız. Peki bu getiri nereden geldi? Şans mı, operasyonel başarı mı?</p>
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO Modeling</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Returns Attribution</span>
+        </div>
 
-    <h2>1. Getirinin 3 Kaynağı</h2>
-    <div class="math-block">
-        Toplam Getiri ($) = Çıkış Equity - Giriş Equity<br><br>
-        <strong>1. EBITDA Growth ($):</strong> Şirketi büyüttünüz. (EBITDA arttı).<br>
-        <strong>2. Multiple Expansion ($):</strong> Şirketi 8x'e alıp 10x'e sattınız. (Piyasa iyi gitti).<br>
-        <strong>3. Deleveraging ($):</strong> Borcu ödediniz. (LBO'nun doğal sonucu).
+        <h1>Returns Attribution: The Source of Alpha</h1>
+        <p>
+            %25 IRR ile çıktınız. Harika. Peki bu getiri nereden geldi? Şans mı (Piyasa yükseldi), Beceri mi (Şirketi büyüttünüz)?
+            LBO modelinin sonunda müşteriye sunulan "Bridge Chart"ın matematiği buradadır.
+        </p>
+
+        <h2>1. The 3 Levers of Value Creation</h2>
+        <p>
+            Equity Value yaratımını 3 bileşene ayırırız.
+        </p>
+        <div class="math-box">
+            Total Value Creation = Exit Equity - Entry Equity
+        </div>
+
+        <h3>A. EBITDA Growth (Operational Improvement)</h3>
+        <p>
+            Şirketin karlılığını artırmaktan gelen değerdir.
+            <br>
+            <strong>Formül:</strong> (Exit EBITDA - Entry EBITDA) * Entry Multiple
+            <br>
+            <em>Mantık:</em> Eğer çarpanlar değişmeseydi, sadece büyüme ile ne kadar değer yaratırdık?
+        </p>
+
+        <h3>B. Multiple Expansion (Market Sentiment)</h3>
+        <p>
+            Piyasanın genel değerlemesinin artmasından veya şirketin "re-rating" almasından gelen değerdir.
+            <br>
+            <strong>Formül:</strong> (Exit Multiple - Entry Multiple) * Exit EBITDA
+            <br>
+            <em>Uyarı:</em> Bu kalemin büyük olması Investment Committee (IC) tarafından sevilmez. "Sadece piyasaya bahis oynamışsınız" derler.
+        </p>
+
+        <h3>C. Deleveraging (Financial Engineering)</h3>
+        <p>
+            Borç ödeyerek Equity değerini artırma etkisidir.
+            <br>
+            <strong>Formül:</strong> Total Value Creation - (EBITDA Growth + Multiple Expansion)
+            <br>
+            Veya: (Entry Debt - Exit Debt) + (Accumulated Cash)
+        </p>
+
+        <h2>2. Sensitivity Analysis (Tablolar)</h2>
+        <p>
+            Gerçek hayatta Exit Multiple ve Exit Year bilinmez. Bu yüzden bir "Matrix" sunulur.
+        </p>
+        
+        <div class="math-box">
+            <table style="width:100%; text-align:center;">
+                <tr>
+                    <td></td>
+                    <td colspan="3" style="border-bottom:1px solid #ddd;"><strong>Exit Multiple</strong></td>
+                </tr>
+                <tr>
+                    <td style="border-right:1px solid #ddd;"><strong>Year</strong></td>
+                    <td><strong>9.0x</strong></td>
+                    <td><strong>10.0x</strong></td>
+                    <td><strong>11.0x</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Year 3</strong></td>
+                    <td>22%</td>
+                    <td>27%</td>
+                    <td>31%</td>
+                </tr>
+                <tr>
+                    <td><strong>Year 5</strong></td>
+                    <td>18%</td>
+                    <td>21%</td>
+                    <td>24%</td>
+                </tr>
+            </table>
+        </div>
+        <p>
+            Yatırım Komitesi bu tabloya bakarak "Downside Case"de (Düşük çarpan, geç çıkış) bile para kaybetmediğimizi görmek ister.
+        </p>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Hangi getiri kaynağı PE firmaları için "en kaliteli" sayılır?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    <strong>EBITDA Growth.</strong> Çünkü bu kontrol edilebilir ve sürdürülebilir bir değerdir. Multiple Expansion spekülatiftir. Deleveraging ise sadece matematiğin sonucudur.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>"Dividend Recap" getiri analizinde nereye girer?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Dividend Recap, Equity Value'yu <strong>artırmaz</strong> (Cebinize giren toplam parayı değiştirmez, sadece zamanlamasını değiştirir). 
+                    IRR'ı artırır ama MOIC'i değiştirmez (Faiz maliyeti hariç). Attribution analizinde genellikle ayrı bir kalem olarak gösterilmez, nakit akışı içinde ele alınır.
+                </div>
+            </div>
+        </div>
+
     </div>
-
-    <h2>2. MOIC vs IRR Kuralları</h2>
-    <p>Bunları ezberleyin (Rule of Thumb):</p>
-    <ul>
-        <li>2.0x MOIC / 5 Yıl = ~%15 IRR</li>
-        <li>2.5x MOIC / 5 Yıl = ~%20 IRR</li>
-        <li>3.0x MOIC / 5 Yıl = ~%25 IRR</li>
-    </ul>
 </body>
 </html>
-
