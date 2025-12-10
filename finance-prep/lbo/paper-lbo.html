@@ -11,13 +11,13 @@
 <body>
 
     <div class="container">
-        <div class="nav-header">
+        <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
             <a href="index.html" class="nav-link">LBO</a>
             <span class="nav-sep">/</span>
             <span style="color: var(--text-primary);">Paper LBO</span>
-        </div>
+        </nav>
 
         <h1>Paper LBO: The Napkin Math Masterclass</h1>
         <p>
@@ -26,90 +26,63 @@
         </p>
 
         <h2 style="color: var(--accent-purple);">1. The Setup (Assumptions)</h2>
-        <p>
+        <div class="mech-box">
             <strong>Entry:</strong> EBITDA = 100 $, Entry Multiple = 10x (Purchase Price = 1,000 $).
             <br><strong>Debt:</strong> 5.0x Leverage (500 $ Debt). Equity = 500 $.
             <br><strong>Operations:</strong> Revenue Growth = %10, EBITDA Margin Flat (%40).
             <br><strong>Debt Paydown:</strong> Interest %10, Cash Flow Conversion %50.
             <br><strong>Exit:</strong> Year 5, Exit Multiple = 10x.
-        </p>
+        </div>
 
         <h2 style="color: var(--accent-purple);">2. Step-by-Step Calculation</h2>
         
-        <div class="mech-box">
-            <strong>Step 1: Calculate Year 5 EBITDA</strong><br>
-            Year 0: 100<br>
-            Year 5: 100 * (1.1)^5<br>
-            <em>Rule of 72/Hack:</em> 1.1^5 ≈ 1.6 (Actually 1.61).<br>
-            <strong>Year 5 EBITDA = 160 $</strong>
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">Step 1: Calculate Year 5 EBITDA</h3>
+            <p>
+                Year 0: 100<br>
+                Year 5: 100 * (1.1)^5<br>
+                <em>Rule of 72/Hack:</em> 1.1^5 ≈ 1.6 (Actually 1.61).<br>
+                <strong>Year 5 EBITDA = 160 $</strong>
+            </p>
         </div>
 
-        <div class="mech-box">
-            <strong>Step 2: Calculate Debt Paydown (Free Cash Flow)</strong><br>
-            Cumulative EBITDA (Approx) = Avg EBITDA * 5 Years<br>
-            Avg EBITDA ≈ (100 + 160) / 2 = 130<br>
-            Total EBITDA = 130 * 5 = 650 $<br>
-            <br>
-            FCF = EBITDA - Interest - Capex/Tax<br>
-            Basit yöntem: FCF = EBITDA * Conversion Rate<br>
-            FCF = 650 * 50% = 325 $<br>
-            <br>
-            <strong>Ending Debt = Start Debt (500) - FCF (325) = 175 $</strong>
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">Step 2: Calculate Debt Paydown (Free Cash Flow)</h3>
+            <p>
+                Cumulative EBITDA (Approx) = Avg EBITDA * 5 Years<br>
+                Avg EBITDA ≈ (100 + 160) / 2 = 130<br>
+                Total EBITDA = 130 * 5 = 650 $<br>
+                <br>
+                FCF = EBITDA - Interest - Capex/Tax<br>
+                Basit yöntem: FCF = EBITDA * Conversion Rate<br>
+                FCF = 650 * 50% = 325 $<br>
+                <br>
+                <strong>Ending Debt = Start Debt (500) - FCF (325) = 175 $</strong>
+            </p>
         </div>
 
-        <div class="mech-box">
-            <strong>Step 3: Returns (MOIC & IRR)</strong><br>
-            Exit Enterprise Value = 160 (EBITDA) * 10x = 1,600 $<br>
-            Exit Equity Value = 1,600 (EV) - 175 (Debt) = 1,425 $<br>
-            <br>
-            MOIC = Ending Equity / Beginning Equity<br>
-            MOIC = 1,425 / 500 ≈ <strong>2.85x</strong>
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">Step 3: Returns (MOIC & IRR)</h3>
+            <p>
+                Exit Enterprise Value = 160 (EBITDA) * 10x = 1,600 $<br>
+                Exit Equity Value = 1,600 (EV) - 175 (Debt) = 1,425 $<br>
+                <br>
+                MOIC = Ending Equity / Beginning Equity<br>
+                MOIC = 1,425 / 500 ≈ <strong>2.85x</strong>
+            </p>
         </div>
 
-        <h2 style="color: var(--accent-purple);">3. Mental Math Hacks (Memorize This)</h2>
-        <p>
-            MOIC'ten IRR'a hızlı geçiş tablosu. Mülakatta bunu ezbere bildiğinizi gösterirseniz +10 puan.
-        </p>
-        
-        <div class="grid-modules">
-            <div class="module-card" style="padding: 16px;">
-                <h3 style="margin-top: 0; color: var(--accent-purple); font-size: 14px;">2.0x MOIC (2 Kat)</h3>
-                <p style="font-size: 13px; margin-bottom: 0;">3 Years -> ~25% IRR<br>5 Years -> ~15% IRR</p>
-            </div>
-            <div class="module-card" style="padding: 16px;">
-                <h3 style="margin-top: 0; color: var(--accent-purple); font-size: 14px;">2.5x MOIC (2.5 Kat)</h3>
-                <p style="font-size: 13px; margin-bottom: 0;">3 Years -> ~35% IRR<br>5 Years -> ~20% IRR</p>
-            </div>
-            <div class="module-card" style="padding: 16px;">
-                <h3 style="margin-top: 0; color: var(--accent-purple); font-size: 14px;">3.0x MOIC (3 Kat)</h3>
-                <p style="font-size: 13px; margin-bottom: 0;">3 Years -> ~45% IRR<br>5 Years -> ~25% IRR</p>
-            </div>
-        </div>
+        <h2 style="color: var(--accent-purple);">3. Mental Math Hacks</h2>
+        <p>MOIC'ten IRR'a hızlı geçiş:</p>
+        <ul>
+            <li><strong>2.0x in 5 Years:</strong> ~15% IRR</li>
+            <li><strong>2.5x in 5 Years:</strong> ~20% IRR</li>
+            <li><strong>3.0x in 5 Years:</strong> ~25% IRR</li>
+        </ul>
 
-        <div class="drill-section">
-            <h3>Rapid Fire Drills</h3>
-            
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>LBO'da değer yaratan en büyük faktör nedir?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    Genellikle <strong>EBITDA Growth</strong> ve <strong>Debt Paydown</strong>. 
-                    Multiple Expansion (Ucuza alıp pahalıya satmak) harikadır ama buna güvenerek model kurulmaz (Banking Case Base).
-                </div>
-            </div>
-
-            <div class="drill-item" tabindex="0">
-                <div class="drill-q">
-                    <span>Dividend Recapitalization IRR'ı nasıl etkiler?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="drill-a">
-                    IRR'ı radikal şekilde artırır. Çünkü paranın zaman değeri (Time Value of Money) prensibi işler. 
-                    Erken dönemde cebinize nakit girmesi, IRR formülünü yukarı fırlatır (MOIC değişmese bile).
-                </div>
-            </div>
+        <div class="lesson-nav">
+            <a href="exit.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Exit Strategies</a>
+            <span class="btn-nav disabled">The End <i class="fa-solid fa-trophy"></i></span>
         </div>
 
     </div>
