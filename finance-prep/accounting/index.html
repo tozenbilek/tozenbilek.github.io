@@ -17,50 +17,74 @@
         <header>
             <h1>Accounting Fundamentals <span class="tag-ib" style="color: var(--accent-green); background: rgba(22, 163, 74, 0.1);">Module 1</span></h1>
             <p class="desc">
-                Hiçbir şey bilmediğinizi varsayıyoruz. Bu modül, bir "Limonata Tezgahı" hikayesi üzerinden muhasebenin temel mantığını sıfırdan anlatır.
-                Önce hikayeyi okuyun, sonra teknik detaylara girin.
+                Muhasebe dünyasının derinliklerine iniyoruz. 
+                Her bir kalem (Line Item) için ayrı bir "Deep Dive" sayfası hazırladık. 
+                Sırayla ilerleyerek uzmanlaşın.
             </p>
         </header>
 
-        <!-- New: The Lemonade Story Introduction -->
-        <div class="reddit-box" style="margin-bottom: 40px; border-color: #bbf7d0; background: #f0fdf4;">
-            <div class="reddit-title" style="color: #166534;"><i class="fa-solid fa-lemon"></i> Başlangıç Noktası: Limonata Tezgahı</div>
-            <p style="color: #1f2933; margin: 0;">
-                Cebinde 100 TL var. Tezgah kurdun. Limon aldın. Sattın.
-                <br>
-                <strong>Soru 1:</strong> Ne kadar kâr ettim? (Gelir Tablosu)
-                <br>
-                <strong>Soru 2:</strong> Şu an cebimde kaç para var? (Nakit Akışı)
-                <br>
-                <strong>Soru 3:</strong> Tezgahım ve malzemelerim ne kadar eder? (Bilanço)
-                <br><br>
-                Tüm finans dünyası bu 3 sorunun cevabını arar. Aşağıdaki dersler bu soruları sırasıyla cevaplar.
-            </p>
-        </div>
-
         <div class="grid-modules">
+            <!-- 1. Basics -->
             <a href="financial-statements.html" class="module-card">
-                <div class="icon-box"><i class="fa-solid fa-book-open"></i></div>
-                <h3 class="module-title" style="color: var(--accent-green);">Ders 1: Hikayenin 3 Bölümü</h3>
-                <p class="module-desc">Gelir Tablosu, Bilanço ve Nakit Akışı nedir? Neden tek bir tablo yetmiyor? (Basit anlatım).</p>
-                <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">Start Here</span>
+                <div class="icon-box"><i class="fa-solid fa-layer-group"></i></div>
+                <h3 class="module-title" style="color: var(--accent-green);">1. The 3 Statements</h3>
+                <p class="module-desc">Gelir Tablosu, Bilanço ve Nakit Akışı bağlantıları. Temel mantık.</p>
+                <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">Start</span>
             </a>
+            
+            <!-- 2. Revenue & Expenses -->
+            <a href="revenue-recognition.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-receipt"></i></div>
+                <h3 class="module-title" style="color: var(--accent-green);">2. Revenue & Expenses</h3>
+                <p class="module-desc">Accrual Accounting (Tahakkuk) ilkesi. Gelir ne zaman tanınır? Deferred Revenue.</p>
+                <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">New</span>
+            </a>
+
+            <!-- 3. Working Capital -->
             <a href="working-capital.html" class="module-card">
-                <div class="icon-box"><i class="fa-solid fa-wallet"></i></div>
-                <h3 class="module-title" style="color: var(--accent-green);">Ders 2: Cüzdan vs Raf</h3>
-                <p class="module-desc">Working Capital (İşletme Sermayesi). Malı aldın ama parasını ödemedin. Bu iyi mi kötü mü?</p>
-                <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">Next Step</span>
+                <div class="icon-box"><i class="fa-solid fa-boxes-stacked"></i></div>
+                <h3 class="module-title" style="color: var(--accent-green);">3. Working Capital</h3>
+                <p class="module-desc">AR, Inventory, AP döngüsü. Cash Conversion Cycle analizi.</p>
+                <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">Core</span>
             </a>
+
+            <!-- 4. PP&E and Depreciation -->
+            <a href="ppe-depreciation.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-industry"></i></div>
+                <h3 class="module-title" style="color: var(--accent-green);">4. PP&E & Depreciation</h3>
+                <p class="module-desc">CapEx vs OpEx. Amortisman yöntemleri. Varlık satışı ve Write-down.</p>
+                <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">New</span>
+            </a>
+
+            <!-- 5. Intangibles & Goodwill -->
+            <a href="intangibles.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-ghost"></i></div>
+                <h3 class="module-title" style="color: var(--accent-green);">5. Intangibles & Goodwill</h3>
+                <p class="module-desc">Görünmeyen varlıklar. Amortization vs Depreciation. Impairment testi.</p>
+                <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">New</span>
+            </a>
+
+            <!-- 6. Deferred Taxes -->
             <a href="deferred-tax.html" class="module-card">
-                <div class="icon-box"><i class="fa-solid fa-masks-theater"></i></div>
-                <h3 class="module-title" style="color: var(--accent-green);">Ders 3: Vergi Oyunları</h3>
-                <p class="module-desc">Devlete "Fakirim", Yatırımcıya "Zenginim" deme sanatı. (Deferred Taxes).</p>
+                <div class="icon-box"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3 class="module-title" style="color: var(--accent-green);">6. Deferred Taxes</h3>
+                <p class="module-desc">DTA ve DTL mekaniği. NOLs ve Tax Shield.</p>
                 <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">Advanced</span>
             </a>
+
+            <!-- 7. Debt & Leases -->
+            <a href="debt-leases.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-building-columns"></i></div>
+                <h3 class="module-title" style="color: var(--accent-green);">7. Debt & Leases (IFRS 16)</h3>
+                <p class="module-desc">Capital Lease vs Operating Lease. PIK Interest.</p>
+                <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">New</span>
+            </a>
+
+            <!-- 8. Equity & Consolidation -->
             <a href="consolidation.html" class="module-card">
-                <div class="icon-box"><i class="fa-solid fa-puzzle-piece"></i></div>
-                <h3 class="module-title" style="color: var(--accent-green);">Ders 4: Büyük Balık Küçük Balık</h3>
-                <p class="module-desc">Başka bir şirketi satın alınca defterler nasıl birleşir? (Consolidation).</p>
+                <div class="icon-box"><i class="fa-solid fa-users"></i></div>
+                <h3 class="module-title" style="color: var(--accent-green);">8. Equity & Consolidation</h3>
+                <p class="module-desc">Stock Based Comp, Treasury Stock, NCI ve Konsolidasyon.</p>
                 <span class="status-badge" style="color: var(--accent-green); border-color: var(--accent-green);">Advanced</span>
             </a>
         </div>

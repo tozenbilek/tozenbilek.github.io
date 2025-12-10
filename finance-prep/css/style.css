@@ -284,6 +284,39 @@ a { color: inherit; text-decoration: none; }
     box-shadow: var(--shadow);
 }
 
+/* Navigation Footer (Next/Prev Buttons) */
+.lesson-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+.btn-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: all 0.2s;
+    font-size: 14px;
+}
+.btn-nav:hover {
+    border-color: var(--border-hover);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+.btn-nav.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    background: #f1f5f9;
+}
+
 .drill-q { 
     padding: 16px 20px;
     font-weight: 500; 
