@@ -6,85 +6,72 @@
     <title>Unit Economics | Tech Valuation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --bg-color:#ffffff; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#6366f1; --code-bg:#f1f5f9; --quiz-bg:#f0fdf4; --quiz-text:#166534; --border-color:#e2e8f0; }
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.7;max-width:800px;margin:0 auto;padding:60px 24px;font-size:15px}
-        
-        .nav-header{margin-bottom:40px;}
-        .back-link{text-decoration:none;color:var(--text-secondary);font-size:13px;display:inline-flex;align-items:center;gap:8px;font-weight:500}
-        .back-link:hover{color:var(--accent-color)}
-        
-        h1{font-size:32px;font-weight:700;color:var(--text-primary);margin-bottom:12px;letter-spacing:-0.5px}
-        .meta{font-size:13px;color:var(--text-secondary);margin-bottom:40px;display:flex;gap:20px;font-family:'JetBrains Mono',monospace}
-        
-        h2{font-size:20px;font-weight:600;margin-top:40px;margin-bottom:16px;color:var(--text-primary);border-left:3px solid var(--accent-color);padding-left:12px}
-        p{margin-bottom:20px;color:var(--text-secondary)}
-        ul{margin-bottom:24px;padding-left:24px;color:var(--text-secondary)}
-        li{margin-bottom:8px}
-        
-        .math-block{font-family:'JetBrains Mono',monospace;background:var(--code-bg);padding:20px;border-radius:8px;font-size:13px;margin:24px 0;border:1px solid var(--border-color);overflow-x:auto}
-        
-        .quiz-box{background:var(--quiz-bg);border:1px solid #bbf7d0;padding:24px;border-radius:8px;margin-top:40px}
-        .quiz-title{font-weight:600;color:var(--quiz-text);margin-bottom:16px;display:flex;align-items:center;gap:8px}
-        .quiz-item{margin-bottom:16px;cursor:pointer}
-        .q-text{font-weight:500;margin-bottom:4px;color:#14532d;display:block}
-        .a-text{display:none;font-size:14px;color:#166534;padding:8px;background:rgba(255,255,255,0.6);border-radius:4px;margin-top:4px}
-        .quiz-item:hover .a-text{display:block}
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-    <div class="nav-header">
-        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Tech Module</a>
-    </div>
-
-    <h1>Unit Economics: LTV & CAC</h1>
-    <div class="meta">
-        <span><i class="fa-regular fa-clock"></i> 45 min</span>
-        <span><i class="fa-solid fa-microscope"></i> Micro-Analysis</span>
-    </div>
-
-    <p>Uber yılda 3 Milyar Dolar zarar ederken yatırımcılar neden para yağdırıyordu? Çünkü <strong>Unit Economics</strong> (Birim Ekonomisi) pozitifti. Her yolculuktan kâr ediyorlardı, ama Genel Merkez ve Büyüme giderleri yüzünden toplamda zarar ediyorlardı.</p>
-
-    <h2>1. CAC (Customer Acquisition Cost)</h2>
-    <p>1 yeni müşteriyi kazanmak için (Google Ads, Satış Maaşları) ne kadar harcıyorsunuz?</p>
-    <div class="math-block">
-        CAC = Toplam Satış & Pazarlama Gideri / Kazanılan Yeni Müşteri Sayısı<br><br>
-        Örnek: 1.000 müşteri için 1 Milyon TL harcadık. CAC = 1.000 TL.
-    </div>
-
-    <h2>2. LTV (Lifetime Value)</h2>
-    <p>Bu müşteri bizi terk etmeden önce bize ne kadar net kâr (Contribution Margin) bırakacak?</p>
-    <div class="math-block">
-        LTV = (ARPU * Brüt Kâr Marjı %) / Churn Rate<br><br>
-        Örnek:<br>
-        ARPU (Kişi Başı Yıllık Gelir) = 500 TL<br>
-        Brüt Marj = %80 (Yazılımın marjı yüksektir)<br>
-        Churn = %10 (Müşteri ortalama 10 yıl kalıyor)<br>
-        LTV = (500 * 0.80) / 0.10 = <strong>4.000 TL</strong>
-    </div>
-
-    <h2>3. Altın Oran (LTV / CAC)</h2>
-    <p>Bir startup'ın ateş ölçeridir.</p>
-    <ul>
-        <li><strong>> 3x:</strong> Sağlıklı. (1 TL harca, 3 TL kazan). Gazla.</li>
-        <li><strong>< 1x:</strong> Nakit yakıyorsun. (1 TL harca, 0.80 TL kazan). Batacaksın.</li>
-        <li><strong>> 5x:</strong> Çok cimrisin. Yeterince hızlı büyümüyorsun, pazarlamaya daha çok para harca!</li>
-    </ul>
-
-    <div class="quiz-box">
-        <div class="quiz-title"><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</div>
-        
-        <div class="quiz-item">
-            <span class="q-text">1. Churn Rate artarsa LTV nasıl etkilenir?</span>
-            <div class="a-text"><strong>Düşer.</strong> Formülde Churn paydada yer alır. Müşteri daha erken ayrılırsa, bıraktığı toplam para azalır. (1/Churn = Müşteri Ömrü).</div>
+    <div class="container">
+        <div class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Tech & TMT</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Unit Economics</span>
         </div>
 
-        <div class="quiz-item">
-            <span class="q-text">2. Neden Revenue değil de Gross Margin kullanıyoruz?</span>
-            <div class="a-text">Çünkü Revenue (Ciro) şirkete kalan para değildir. Sunucu maliyetleri (AWS) ve Müşteri Destek (COGS) düşülmelidir. Bize kalan "Contribution Margin" önemlidir.</div>
-        </div>
-    </div>
+        <h1>Unit Economics: LTV & CAC</h1>
+        <p>Uber yılda 3 Milyar Dolar zarar ederken yatırımcılar neden para yağdırıyordu? Çünkü <strong>Unit Economics</strong> (Birim Ekonomisi) pozitifti. Her yolculuktan kâr ediyorlardı, ama Genel Merkez ve Büyüme giderleri yüzünden toplamda zarar ediyorlardı.</p>
 
+        <h2 style="color: var(--accent-indigo);">1. CAC (Customer Acquisition Cost)</h2>
+        <p>1 yeni müşteriyi kazanmak için (Google Ads, Satış Maaşları) ne kadar harcıyorsunuz?</p>
+        <div class="math-block">
+            CAC = Toplam Satış & Pazarlama Gideri / Kazanılan Yeni Müşteri Sayısı<br><br>
+            Örnek: 1.000 müşteri için 1 Milyon TL harcadık. CAC = 1.000 TL.
+        </div>
+
+        <h2 style="color: var(--accent-indigo);">2. LTV (Lifetime Value)</h2>
+        <p>Bu müşteri bizi terk etmeden önce bize ne kadar net kâr (Contribution Margin) bırakacak?</p>
+        <div class="math-block">
+            LTV = (ARPU * Brüt Kâr Marjı %) / Churn Rate<br><br>
+            Örnek:<br>
+            ARPU (Kişi Başı Yıllık Gelir) = 500 TL<br>
+            Brüt Marj = %80 (Yazılımın marjı yüksektir)<br>
+            Churn = %10 (Müşteri ortalama 10 yıl kalıyor)<br>
+            LTV = (500 * 0.80) / 0.10 = <strong>4.000 TL</strong>
+        </div>
+
+        <h2 style="color: var(--accent-indigo);">3. Altın Oran (LTV / CAC)</h2>
+        <p>Bir startup'ın ateş ölçeridir.</p>
+        <ul>
+            <li><strong>> 3x:</strong> Sağlıklı. (1 TL harca, 3 TL kazan). Gazla.</li>
+            <li><strong>< 1x:</strong> Nakit yakıyorsun. (1 TL harca, 0.80 TL kazan). Batacaksın.</li>
+            <li><strong>> 5x:</strong> Çok cimrisin. Yeterince hızlı büyümüyorsun, pazarlamaya daha çok para harca!</li>
+        </ul>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>1. Churn Rate artarsa LTV nasıl etkilenir?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    <strong>Düşer.</strong> Formülde Churn paydada yer alır. Müşteri daha erken ayrılırsa, bıraktığı toplam para azalır. (1/Churn = Müşteri Ömrü).
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>2. Neden Revenue değil de Gross Margin kullanıyoruz?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Çünkü Revenue (Ciro) şirkete kalan para değildir. Sunucu maliyetleri (AWS) ve Müşteri Destek (COGS) düşülmelidir. Bize kalan "Contribution Margin" önemlidir.
+                </div>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>

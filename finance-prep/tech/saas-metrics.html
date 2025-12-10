@@ -8,64 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --accent-tech: #6366f1;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
-        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
-        .nav-link:hover { color: var(--accent-tech); }
-        .nav-sep { color: var(--border-color); }
-
-        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
-        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-tech); padding-left: 16px; }
-        p { margin-bottom: 20px; color: var(--text-secondary); }
-        strong { color: var(--text-primary); font-weight: 600; }
-        
-        .math-block {
-            background: #ffffff;
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin: 24px 0;
-            overflow-x: auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-        }
-
-        .eng-box {
-            background: #f5f3ff;
-            border: 1px solid #ddd6fe;
-            padding: 24px;
-            border-radius: 8px;
-            margin: 32px 0;
-        }
-        .eng-title {
-            color: #4f46e5;
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            display: flex; align-items: center; gap: 8px;
-        }
-
-        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
-        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
-        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
-        .drill-item:hover .drill-q { color: var(--accent-tech); }
-        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -84,21 +27,21 @@
             Değer, bugünkü kârda değil, "Müşteri Yaşam Boyu Değeri"nin (LTV) integralindedir.
         </p>
 
-        <h2>1. ARR Calculus (Revenue Velocity)</h2>
+        <h2 style="color: var(--accent-indigo);">1. ARR Calculus (Revenue Velocity)</h2>
         <p>
             Muhasebe Geliri (GAAP Revenue) bir dikiz aynasıdır (Lagging). ARR (Annual Recurring Revenue) ise ön camdır (Leading).
             ARR'ı bir <strong>Havuz Problemi</strong> gibi düşünün:
         </p>
-        <div class="eng-box">
-            <div class="eng-title"><i class="fa-solid fa-calculator"></i> The Flow Equation</div>
-            <div class="math-block" style="background:transparent; border:none; padding:0; margin:0;">
+        <div class="content-box-base" style="background: #f5f3ff; border-color: #ddd6fe;">
+            <div style="color: #4f46e5; font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;"><i class="fa-solid fa-calculator"></i> The Flow Equation</div>
+            <div class="math-block" style="background:transparent; border:none; padding:0; margin:0; box-shadow:none;">
                 \[ \Delta ARR = New + Expansion - Churn - Contraction \]
                 <br>
                 Bir şirketin değerini belirleyen şey "Toplam ARR" değil, "Net New ARR"ın türevidir (İvme).
             </div>
         </div>
 
-        <h2>2. Retention Dynamics (The Snowflake Effect)</h2>
+        <h2 style="color: var(--accent-indigo);">2. Retention Dynamics (The Snowflake Effect)</h2>
         <p>
             SaaS'ın en güçlü metriği <strong>Net Dollar Retention (NDR)</strong>'dır. 
             Formülü ezberlemeyin, mantığını anlayın: "Hiç yeni müşteri bulmasam bile ne kadar büyüyorum?"
@@ -111,7 +54,7 @@
             Bu, bileşik faiz (Compound Interest) gibi çalışır ve değerlemeyi (EV/Sales) 10x'ten 50x'e fırlatır.
         </p>
 
-        <h2>3. Rule of 40 (The Efficiency Frontier)</h2>
+        <h2 style="color: var(--accent-indigo);">3. Rule of 40 (The Efficiency Frontier)</h2>
         <p>
             Yatırımcılar iki şeyi sever: 1) Hızlı Büyüme, 2) Yüksek Kârlılık. 
             Genellikle bu ikisi arasında bir takas (Trade-off) vardır. Rule of 40, bu takasın "Verimli Sınırını" çizer.
