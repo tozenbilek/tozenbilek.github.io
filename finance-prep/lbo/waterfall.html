@@ -6,64 +6,7 @@
     <title>Debt Waterfall | LBO</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --accent-lbo: #7c3aed;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
-        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
-        .nav-link:hover { color: var(--accent-lbo); }
-        .nav-sep { color: var(--border-color); }
-
-        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
-        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-lbo); padding-left: 16px; }
-        p { margin-bottom: 20px; color: var(--text-secondary); }
-        strong { color: var(--text-primary); font-weight: 600; }
-        
-        .algo-box {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 24px;
-            border-radius: 8px;
-            margin: 24px 0;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            overflow-x: auto;
-            border: 1px solid #334155;
-        }
-
-        .reddit-box {
-            background: #ff450015;
-            border-left: 4px solid #ff4500;
-            padding: 24px;
-            margin: 32px 0;
-            border-radius: 4px;
-        }
-        .reddit-title {
-            color: #ff4500;
-            font-weight: 700;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            display: flex; align-items: center; gap: 8px;
-        }
-
-        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
-        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
-        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
-        .drill-item:hover .drill-q { color: var(--accent-lbo); }
-        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -92,7 +35,7 @@
             </p>
         </div>
 
-        <h2>1. CFADS (Cash Flow Available for Debt Service)</h2>
+        <h2 style="color: var(--accent-purple);">1. CFADS (Cash Flow Available for Debt Service)</h2>
         <p>
             Önce borç ödemek için kasada ne kadar nakit olduğunu bulmalıyız. 
         </p>
@@ -105,7 +48,7 @@
             <br> = <strong>CFADS</strong> (Dağıtılabilir Nakit)
         </div>
 
-        <h2>2. The Waterfall Logic (Mühendislik Algoritması)</h2>
+        <h2 style="color: var(--accent-purple);">2. The Waterfall Logic (Mühendislik Algoritması)</h2>
         <p>
             Elimizdeki CFADS ile borçları hangi sırayla ödeyeceğiz? İşte "If/Else" yapısı:
         </p>

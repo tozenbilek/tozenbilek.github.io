@@ -8,81 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --border-color: #e2e8f0;
-            --text-primary: #1f2933;
-            --text-secondary: #52606d;
-            --accent-val: #2563eb;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; }
-        .container { max-width: 800px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-header { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; font-size: 13px; }
-        .nav-link { text-decoration: none; color: var(--text-secondary); transition: color 0.2s; }
-        .nav-link:hover { color: var(--accent-val); }
-        .nav-sep { color: var(--border-color); }
-
-        h1 { font-size: 32px; letter-spacing: -0.5px; margin-bottom: 24px; color: var(--text-primary); }
-        h2 { font-size: 22px; margin-top: 48px; margin-bottom: 20px; color: var(--text-primary); border-left: 4px solid var(--accent-val); padding-left: 16px; }
-        h3 { font-size: 18px; margin-top: 32px; margin-bottom: 12px; font-weight: 600; color: var(--text-primary); }
-        p { margin-bottom: 20px; color: var(--text-secondary); }
-        strong { color: var(--text-primary); font-weight: 600; }
-        
-        .math-block {
-            background: #ffffff;
-            padding: 24px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            margin: 24px 0;
-            overflow-x: auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            font-size: 14px;
-        }
-
-        .reddit-box {
-            background: #ff450015;
-            border-left: 4px solid #ff4500;
-            padding: 24px;
-            margin: 32px 0;
-            border-radius: 4px;
-        }
-        .reddit-title {
-            color: #ff4500;
-            font-weight: 700;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            display: flex; align-items: center; gap: 8px;
-        }
-
-        .proof-box {
-            background: #eff6ff;
-            border: 1px solid #bfdbfe;
-            padding: 24px;
-            border-radius: 8px;
-            margin: 32px 0;
-        }
-        .proof-title {
-            color: #1e40af;
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            display: flex; align-items: center; gap: 8px;
-        }
-
-        .drill-section { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border-color); }
-        .drill-q { font-weight: 500; color: var(--text-primary); cursor: pointer; padding: 16px 0; display: flex; justify-content: space-between; align-items: center; }
-        .drill-a { display: none; color: var(--text-secondary); padding-bottom: 24px; font-size: 15px; border-bottom: 1px solid var(--border-color); }
-        .drill-item:hover .drill-q { color: var(--accent-val); }
-        .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -110,7 +36,7 @@
             </p>
         </div>
 
-        <h2>1. UFCF Derivation (Unlevered Free Cash Flow)</h2>
+        <h2 style="color: var(--accent-blue);">1. UFCF Derivation (Unlevered Free Cash Flow)</h2>
         <p>
             Tüm sermaye sahiplerine (Borç + Hisse) ait olan nakit akışıdır.
         </p>
@@ -122,7 +48,7 @@
             \[ = \quad \text{UFCF} \]
         </div>
 
-        <h2>2. Mathematical Proof: Terminal Value</h2>
+        <h2 style="color: var(--accent-blue);">2. Mathematical Proof: Terminal Value</h2>
         <p>
             DCF'in %70'i Terminal Value'dan gelir. Genellikle <strong>Gordon Growth Model</strong> kullanılır. 
         </p>
@@ -141,7 +67,7 @@
             </div>
         </div>
 
-        <h2>3. WACC & Beta Unlevering</h2>
+        <h2 style="color: var(--accent-blue);">3. WACC & Beta Unlevering</h2>
         <p>
             Beta (\( \beta \)), risk ölçüsüdür. Ancak halka açık betalar "Levered"dır (Borç riski içerir). 
         </p>
