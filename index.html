@@ -5,28 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nezih Arhan Tozenbilek</title>
     
-    <!-- Premium Fontlar -->
+    <!-- Font: Inter & Geist Mono (Fintech Standardı) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- İkonlar -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-dark: #080808;
-            --card-bg: rgba(28, 28, 30, 0.4);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --card-hover-border: rgba(255, 255, 255, 0.2);
-            --text-main: #ffffff;
-            --text-muted: #888888;
-            --accent-glow: rgba(255, 255, 255, 0.05);
-            
-            --spotify-color: #1db954;
-            --linkedin-color: #0077b5;
-            --insta-color: #e1306c;
-            --github-color: #ffffff;
+            --bg-color: #050505;
+            --surface-color: #0A0A0A;
+            --border-color: #1F1F1F;
+            --border-hover: #333333;
+            --text-primary: #EAEAEA;
+            --text-secondary: #888888;
+            --accent-green: #30D158; /* Bloomberg/Terminal Yeşili */
+            --accent-blue: #0A84FF;
         }
 
         * {
@@ -37,296 +32,251 @@
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
 
-        /* Noise Texture (Sinematik Doku) */
-        .noise-overlay {
+        /* Arkaplan Izgarası (Grid) - Bloomberg Terminal Hissi */
+        .bg-grid {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 999;
-        }
-
-        /* Arkaplan Işık Efektleri */
-        .ambient-light {
-            position: fixed;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center;
+            opacity: 0.15;
             z-index: -1;
-            filter: blur(80px);
-            animation: breathe 10s infinite alternate;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+            animation: grid-move 20s linear infinite;
         }
 
-        @keyframes breathe {
-            0% { opacity: 0.5; transform: translateX(-50%) scale(1); }
-            100% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+        @keyframes grid-move {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
         }
 
-        /* Ana Grid Yapısı (Bento Grid) */
-        .bento-grid {
+        /* Ana Konteyner */
+        .dashboard {
+            width: 100%;
+            max-width: 800px;
+            padding: 24px;
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: auto auto;
             gap: 16px;
-            width: 100%;
-            max-width: 900px;
-            padding: 20px;
-            z-index: 10;
         }
 
-        /* Kart Genel Özellikleri */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 24px;
-            padding: 32px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            position: relative;
-            overflow: hidden;
+        /* Kart Yapısı - Keskin ve Kurumsal */
+        .panel {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 24px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            transition: border-color 0.2s ease;
         }
 
-        .card:hover {
-            border-color: var(--card-hover-border);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        .panel:hover {
+            border-color: var(--border-hover);
         }
 
-        /* 1. Profil Kartı (Geniş) */
-        .card-profile {
+        /* Başlık Alanı */
+        .header-panel {
             grid-column: span 12;
-            min-height: 280px;
-            display: flex;
-            flex-direction: row; /* Yan yana */
-            align-items: center;
-            gap: 40px;
-            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            padding: 40px;
+            border-bottom: 1px solid var(--border-color); /* Ayrım çizgisi */
         }
 
-        .profile-content h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 12px;
-            background: linear-gradient(to right, #fff, #999);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1.5px;
-        }
-
-        .profile-content p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 500px;
-        }
-
-        .role-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 12px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 100px;
-            font-size: 0.8rem;
-            color: #fff;
-            margin-bottom: 20px;
-            gap: 8px;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: #22c55e;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #22c55e;
-        }
-
-        /* Sosyal Medya Kartları (Küçük) */
-        .social-card {
-            grid-column: span 3; /* 4 kolonlu yapı */
-            aspect-ratio: 1/1;
-            text-decoration: none;
-            color: #fff;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            position: relative;
-        }
-
-        .social-card span {
-            font-size: 1rem;
-            margin-top: 12px;
+        h1 {
+            font-size: 2rem;
             font-weight: 500;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            position: absolute;
-            bottom: 24px;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            color: #fff;
         }
 
-        .social-card i {
-            transition: all 0.4s ease;
+        .subtitle {
+            font-family: 'JetBrains Mono', monospace; /* Kod/Veri hissi */
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
 
-        .social-card:hover i {
-            transform: translateY(-10px);
+        .bio {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            max-width: 600px;
         }
 
-        .social-card:hover span {
-            opacity: 1;
-            transform: translateY(0);
+        /* Kariyer Yolu (Timeline Hissi) */
+        .career-path {
+            grid-column: span 8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* Özel Renkler ve Efektler */
-        .linkedin:hover { background: radial-gradient(circle at center, rgba(0, 119, 181, 0.2), transparent); border-color: rgba(0, 119, 181, 0.5); }
-        .instagram:hover { background: radial-gradient(circle at center, rgba(225, 48, 108, 0.2), transparent); border-color: rgba(225, 48, 108, 0.5); }
-        .spotify:hover { background: radial-gradient(circle at center, rgba(29, 185, 84, 0.2), transparent); border-color: rgba(29, 185, 84, 0.5); }
-        .github:hover { background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1), transparent); border-color: rgba(255, 255, 255, 0.5); }
-
-        /* Spotify Özel Kartı (Geniş) */
-        .card-spotify-wide {
-            grid-column: span 6;
-            background: linear-gradient(to right, rgba(29, 185, 84, 0.05), transparent);
-            flex-direction: row;
+        .path-step {
+            display: flex;
             align-items: center;
-            gap: 20px;
-            text-decoration: none;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
         }
-        
-        .spotify-icon-anim {
-            width: 48px;
-            height: 48px;
+
+        .path-step.active {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .arrow {
+            color: var(--border-hover);
+            font-size: 0.8rem;
+        }
+
+        /* İstatikler / Hedefler */
+        .stats-panel {
+            grid-column: span 4;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stat-label { color: var(--text-secondary); }
+        .stat-value { font-family: 'JetBrains Mono', monospace; color: var(--text-primary); }
+
+        /* Bağlantılar - Monokrom ve Liste Şeklinde */
+        .links-panel {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px; /* Border collapse efekti için */
+            background: var(--border-color); /* Ara çizgiler rengi */
+            border: 1px solid var(--border-color);
+            padding: 0; /* İç padding yok */
+            overflow: hidden;
+        }
+
+        .link-item {
+            background: var(--surface-color);
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(29, 185, 84, 0.1);
-            border-radius: 50%;
-            color: #1db954;
-            font-size: 1.5rem;
-        }
-
-        .spotify-text h3 {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .spotify-text p {
-            color: var(--text-muted);
+            gap: 10px;
             font-size: 0.9rem;
+            transition: all 0.2s ease;
         }
 
-        /* Responsive Tasarım */
+        .link-item:hover {
+            background: #111;
+            color: #fff;
+        }
+
+        .link-item i { font-size: 1.1rem; }
+
+        /* Mobilde Düzen */
         @media (max-width: 768px) {
-            .bento-grid {
-                grid-template-columns: repeat(2, 1fr); /* Mobilde 2 kolon */
-                gap: 12px;
-                padding: 16px;
-            }
-
-            .card-profile {
-                grid-column: span 2;
-                flex-direction: column;
-                align-items: flex-start;
-                min-height: auto;
-                padding: 24px;
-            }
-
-            .profile-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .social-card {
-                grid-column: span 1; /* Yarım genişlik */
-                aspect-ratio: auto;
-                height: 140px;
-            }
-
-            .card-spotify-wide {
-                grid-column: span 2;
-            }
+            .dashboard { grid-template-columns: 1fr; padding: 16px; }
+            .header-panel, .career-path, .stats-panel, .links-panel { grid-column: span 1; }
+            .links-panel { grid-template-columns: 1fr; grid-template-rows: repeat(4, auto); }
         }
     </style>
 </head>
 <body>
 
-    <!-- Dokular -->
-    <div class="noise-overlay"></div>
-    <div class="ambient-light"></div>
+    <div class="bg-grid"></div>
 
-    <!-- Ana Grid -->
-    <div class="bento-grid">
+    <div class="dashboard">
         
-        <!-- Profil Kartı -->
-        <div class="card card-profile">
-            <div class="profile-content">
-                <div class="role-badge">
-                    <span class="dot"></span>
-                    Computer Engineering Student
-                </div>
-                <h1>Nezih Arhan<br>Tozenbilek</h1>
-                <p>Minimalist tasarım ve güçlü kod yapıları üzerine çalışıyorum. Veri ve estetiği birleştiriyorum.</p>
+        <!-- Başlık Bölümü -->
+        <div class="panel header-panel">
+            <div class="subtitle">>> SYSTEM_READY</div>
+            <h1>Nezih Arhan Tozenbilek</h1>
+            <p class="bio">
+                Building high-performance financial models and algorithmic strategies.
+                Targeting opportunities in Investment Banking, Private Equity, and Hedge Funds.
+            </p>
+        </div>
+
+        <!-- Kariyer Hedefleri -->
+        <div class="panel career-path">
+            <div class="path-step active">
+                <i class="fa-solid fa-chart-line" style="color: var(--accent-green)"></i>
+                Investment Banking
+            </div>
+            <div class="path-step">
+                <i class="fa-solid fa-arrow-down arrow"></i>
+            </div>
+            <div class="path-step">
+                <i class="fa-solid fa-briefcase"></i>
+                Private Equity
+            </div>
+            <div class="path-step">
+                <i class="fa-solid fa-arrow-down arrow"></i>
+            </div>
+            <div class="path-step">
+                <i class="fa-solid fa-building-columns"></i>
+                Hedge Fund
             </div>
         </div>
 
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/neziharhantozenbilek/" target="_blank" class="card social-card linkedin">
-            <i class="fa-brands fa-linkedin-in"></i>
-            <span>LinkedIn</span>
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/neziharhantozenbilek/" target="_blank" class="card social-card instagram">
-            <i class="fa-brands fa-instagram"></i>
-            <span>Instagram</span>
-        </a>
-
-         <!-- GitHub -->
-         <a href="https://github.com/tozenbilek" target="_blank" class="card social-card github">
-            <i class="fa-brands fa-github"></i>
-            <span>GitHub</span>
-        </a>
-
-        <!-- Mail (Buton) -->
-        <a href="mailto:contact@nezih.dev" class="card social-card" style="border-color: rgba(255,255,255,0.05);">
-            <i class="fa-regular fa-envelope"></i>
-            <span>Contact</span>
-        </a>
-
-        <!-- Spotify Wide Card -->
-        <a href="https://open.spotify.com/user/31ysr5yumx5wfhltp375xdmzi2na" target="_blank" class="card card-spotify-wide spotify">
-            <div class="spotify-icon-anim">
-                <i class="fa-brands fa-spotify"></i>
+        <!-- Odak Alanları -->
+        <div class="panel stats-panel">
+            <div class="stat-item">
+                <span class="stat-label">Focus</span>
+                <span class="stat-value">Quant Finance</span>
             </div>
-            <div class="spotify-text">
-                <h3>On Repeat</h3>
-                <p>Check out what I'm listening to</p>
+            <div class="stat-item">
+                <span class="stat-label">Tools</span>
+                <span class="stat-value">Python, C++</span>
             </div>
-            <i class="fa-solid fa-arrow-right" style="margin-left: auto; opacity: 0.5;"></i>
-        </a>
+            <div class="stat-item">
+                <span class="stat-label">Status</span>
+                <span class="stat-value" style="color: var(--accent-green)">Open</span>
+            </div>
+        </div>
+
+        <!-- Profesyonel Linkler -->
+        <div class="links-panel">
+            <a href="https://www.linkedin.com/in/neziharhantozenbilek/" target="_blank" class="link-item">
+                <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/tozenbilek" target="_blank" class="link-item">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="mailto:contact@nezih.dev" class="link-item">
+                <i class="fa-solid fa-envelope"></i> Contact
+            </a>
+             <a href="https://open.spotify.com/user/31ysr5yumx5wfhltp375xdmzi2na" target="_blank" class="link-item">
+                <i class="fa-brands fa-spotify"></i> Spotify
+            </a>
+        </div>
 
     </div>
 
