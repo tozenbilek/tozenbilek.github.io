@@ -7,74 +7,127 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg: #f8fafc; --t1: #1f2933; --t2: #52606d; --t3: #7b8794; --acc: #d97706; --bd: #e2e8f0; }
-        body { background: var(--bg); color: var(--t1); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 24px; max-width: 880px; margin: 0 auto; }
-        h1 { font-size: 28px; font-weight: 600; border-bottom: 1px solid var(--bd); padding-bottom: 14px; margin-bottom: 20px; }
-        h2 { font-size: 20px; font-weight: 600; color: var(--acc); margin-top: 32px; font-family: 'JetBrains Mono', monospace; }
-        p { color: var(--t2); margin-bottom: 12px; }
-        ul { color: var(--t2); margin-bottom: 12px; }
-        .nav { display: flex; gap: 12px; margin-bottom: 20px; }
-        .link { color: var(--t2); text-decoration: none; font-size: 14px; padding: 8px 12px; border: 1px solid var(--bd); border-radius: 4px; background: #fff; }
-        .link:hover { color: var(--t1); border-color: #cbd5e1; }
-        .qa-box { background: #fff; border: 1px solid var(--bd); border-left: 3px solid var(--acc); padding: 16px; margin: 18px 0; border-radius: 8px; }
-        .question { font-weight: 600; color: var(--t1); margin-bottom: 8px; display: block; }
-        .answer { color: var(--t2); font-size: 14px; }
-        .mini { font-size: 13px; color: var(--t2); }
-        .divider { border-top: 1px solid var(--bd); margin: 20px 0; }
+        /* Finance Prep Ortak Stil - LBO için Accent Rengi Turuncu olabilir ama tutarlılık için Yeşil/Mavi devam */
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --text-tertiary: #7b8794;
+            --accent-green: #d97706; /* LBO biraz daha agresif olduğu için Turuncu/Amber tonu */
+            --shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 40px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        .nav-bar { display: flex; gap: 12px; margin-bottom: 40px; }
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--surface-color);
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+        }
+        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
+
+        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
+        h2 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        
+        p { color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; }
+        ul { list-style: none; padding: 0; margin-bottom: 24px; }
+        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); }
+        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
+
+        .qa-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: var(--shadow);
+        }
+        .question { font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 12px; font-size: 16px; }
+        .answer { color: var(--text-secondary); font-size: 15px; }
+        
+        .highlight-box {
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            color: #92400e;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="nav">
-        <a class="link" href="index.html">← Back to IB Prep</a>
-        <a class="link" href="../index.html">↩ Main Terminal</a>
-        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+    <div class="nav-bar">
+        <a href="index.html" class="back-btn">← Back to IB Prep</a>
+        <a href="../index.html" class="back-btn">↩ Main Terminal</a>
     </div>
 
-    <h1>LBO (Leveraged Buyout) Basics</h1>
-    <p>Özel sermaye (PE) mülakatlarının vazgeçilmezi. Ama IB tekniklerinde de karşınıza çıkar. Burada “paper LBO” yapabilecek kadar temel oluşturuyoruz.</p>
+    <h1>Leveraged Buyout (LBO)</h1>
+    <p>
+        Private Equity'nin kalbi. Borç (Leverage) kullanarak bir şirketi satın alıp, borcunu şirketin kendi nakit akışıyla ödetme ve 3-5 yıl sonra satma sanatıdır.
+    </p>
 
-    <h2>1) Mantık</h2>
-    <p>Borç (leverage) kullanarak şirket satın al, nakit akışlarıyla borcu indir, birkaç yıl sonra daha yüksek bir değere sat. Yüksek kaldıraç → daha yüksek özsermaye getirisi (IRR), ama daha yüksek risk.</p>
+    <div class="highlight-box">
+        <strong>Mantık:</strong> Ev alır gibi. %20 Peşinat (Equity) koyarsın, %80 Mortgage (Borç) alırsın. Evi kiraya verir (Cash Flow), borcu ödersin. Evin değeri artınca satarsın.
+    </div>
 
-    <h2>2) Kaynaklar / Kullanımlar (Sources & Uses)</h2>
+    <h2>1. İdeal LBO Adayı Kimdir?</h2>
+    <p>Her şirket LBO yapılamaz. PE firmaları şunları arar:</p>
     <ul>
-        <li><strong>Uses:</strong> Satın alma bedeli (Equity Value), borç geri ödemeleri, ücretler.</li>
-        <li><strong>Sources:</strong> Yeni borçlar (Term Loan, Notes), Private Equity koyduğu özsermaye.</li>
+        <li><strong>Stabil Nakit Akışı (Stable Cash Flows):</strong> Borç faizini ödeyebilmek için.</li>
+        <li><strong>Düşük CapEx:</strong> Parayı makineye değil, borca yatırmak için.</li>
+        <li><strong>Güçlü Yönetim Ekibi:</strong> Şirketi büyütebilecek liderler.</li>
+        <li><strong>Varlık Tabanı (Asset Base):</strong> Borç karşılığı teminat (Collateral) verebilmek için.</li>
     </ul>
 
-    <div class="qa-box">
-        <span class="question">Basit Örnek</span>
+    <h2>2. Getiri Hesaplama (IRR & MOIC)</h2>
+    <p>PE firmaları genelde 5 yılda 2.0x - 2.5x paranı geri almayı (MOIC) ve %20-%25 IRR (İç Verim Oranı) hedefler.</p>
+    
+    <div class="qa-card">
+        <span class="question">Soru: Bir LBO'da getiriyi (IRR) en çok ne etkiler?</span>
         <div class="answer">
-            Satın alma fiyatı 100. Transaction fees 5.<br>
-            Uses: 105. Borç 70, Equity 35 → Sources 105. Kapanışta bilanço dengesi sağlanır.
+            1. <strong>Exit Multiple (Çıkış Çarpanı):</strong> Şirketi kaça sattığın.<br>
+            2. <strong>Leverage (Kaldıraç):</strong> Başlangıçta ne kadar çok borç kullanırsan, kendi koyduğun para (Equity) o kadar azalır ve getirisi (IRR) katlanır.<br>
+            3. <strong>Revenue Growth / Margin Expansion:</strong> Şirketin operasyonel iyileşmesi.
         </div>
     </div>
 
-    <h2>3) Borç Takvimi (Debt Schedule)</h2>
-    <p>Faiz ve anapara ödemelerini gösterir. Serbest nakit (FCF) varsa “cash sweep” ile borç daha hızlı kapanır.</p>
-
-    <h2>4) IRR ve MOIC</h2>
-    <ul>
-        <li><strong>MOIC:</strong> Exit Equity Value / Girilen Equity.</li>
-        <li><strong>IRR:</strong> Yıllıklaştırılmış getiri. Basit kontrol: 2x ~ 7 yıl → ~10%, 2x ~ 5 yıl → ~15%.</li>
-    </ul>
-
-    <div class="qa-box">
-        <span class="question">Mini Paper LBO</span>
+    <h2>3. Paper LBO (Kağıt Üstünde LBO)</h2>
+    <p>Mülakatta kağıt kalem verip "Bu şirketi 100$'a aldık, %50 borç kullandık..." diye hesap yaptırırlar.</p>
+    <div class="qa-card">
+        <span class="question">Örnek: 100$ Fiyat, %50 Borç, 5 Yıl Sonra 100$'a Satış. Borcun yarısı ödendi. Getiri ne?</span>
         <div class="answer">
-            Giriş: EV 100, Net Debt 0 → Equity 100. Borç 60, Equity 40 (PE koydu).<br>
-            5 yıl sonra EV 140, Net Debt 20 → Exit Equity 120. IRR kabaca: 40 → 120 (3x) / 5 yıl ≈ ~25%+.<br>
-            (Kesin IRR için finansal hesap yapmalısın; ama mülakatta kabaca büyüklük göstermek yeter.)
+            - Giriş: 100$ (50$ Equity, 50$ Borç).<br>
+            - 5 Yıl Sonra: Borcun yarısı ödendi → Kalan Borç 25$.<br>
+            - Çıkış: 100$ - 25$ (Borç) = <strong>75$ Equity Değeri</strong>.<br>
+            - Sonuç: 50$ koydun, 75$ aldın (1.5x MOIC). Yaklaşık %8-10 IRR. (Kötü bir yatırım).
         </div>
     </div>
-
-    <h2>5) Duyarlılık (Sensitivities)</h2>
-    <p>IRR, giriş/çıkış çarpanları, kaldıraç seviyesi, EBITDA büyümesi ve exit multiple’a çok duyarlıdır. Mülakatta “en önemli kaldıraç IRR’i en çok ne etkiler?” sorusuna: <strong>Exit multiple ve kaldıraç</strong>.</p>
-
-    <div class="divider"></div>
-    <p class="mini">Kontrol listesi: Kaynak/Kullanım tablosu, basit debt schedule mantığı, cash sweep, MOIC/IRR ilişkisi, mini paper LBO anlatımı, duyarlılık faktörleri.</p>
 
 </body>
 </html>
-

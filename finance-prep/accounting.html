@@ -7,90 +7,183 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Açık Tema (Sadece Finance Prep sayfaları için) */
-        :root { --bg: #f8fafc; --t1: #1f2933; --t2: #52606d; --t3: #7b8794; --acc: #16a34a; --bd: #e2e8f0; }
-        body { background: var(--bg); color: var(--t1); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 24px; max-width: 880px; margin: 0 auto; }
-        h1 { font-size: 28px; font-weight: 600; border-bottom: 1px solid var(--bd); padding-bottom: 14px; margin-bottom: 20px; }
-        h2 { font-size: 20px; font-weight: 600; color: var(--acc); margin-top: 36px; font-family: 'JetBrains Mono', monospace; }
-        p { color: var(--t2); margin-bottom: 14px; }
-        ul { color: var(--t2); margin-bottom: 12px; }
-        .nav { display: flex; gap: 12px; margin-bottom: 20px; }
-        .link { color: var(--t2); text-decoration: none; font-size: 14px; padding: 8px 12px; border: 1px solid var(--bd); border-radius: 4px; background: #fff; }
-        .link:hover { color: var(--t1); border-color: #cbd5e1; }
-        .qa-box { background: #fff; border: 1px solid var(--bd); border-left: 3px solid var(--acc); padding: 16px; margin: 18px 0; border-radius: 8px; }
-        .question { font-weight: 600; color: var(--t1); margin-bottom: 8px; display: block; }
-        .answer { color: var(--t2); font-size: 14px; }
-        .badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--t3); padding: 2px 6px; border: 1px solid var(--bd); border-radius: 3px; margin-bottom: 10px; background: #fff; }
-        .mini { font-size: 13px; color: var(--t2); }
-        .divider { border-top: 1px solid var(--bd); margin: 24px 0; }
+        /* Finance Prep Index ile Birebir Uyumlu Stil */
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --text-tertiary: #7b8794;
+            --accent-green: #16a34a;
+            --shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 40px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        /* Navigasyon */
+        .nav-bar { display: flex; gap: 12px; margin-bottom: 40px; }
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--surface-color);
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+        }
+        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
+
+        /* Başlıklar */
+        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
+        h2 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        h3 { font-size: 18px; font-weight: 600; color: var(--text-secondary); margin-top: 24px; margin-bottom: 8px; }
+        
+        p { color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; }
+        
+        ul { list-style: none; padding: 0; margin-bottom: 24px; }
+        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); }
+        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
+
+        /* Soru-Cevap Kutuları (Mülakat Stili) */
+        .qa-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .question {
+            font-weight: 600;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        
+        .answer { color: var(--text-secondary); font-size: 15px; }
+        
+        /* Kod/Terim Vurgusu */
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: #f1f5f9;
+            color: var(--text-primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .highlight-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="nav">
-        <a class="link" href="index.html">← Back to IB Prep</a>
-        <a class="link" href="../index.html">↩ Main Terminal</a>
-        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+    <div class="nav-bar">
+        <a href="index.html" class="back-btn">← Back to IB Prep</a>
+        <a href="../index.html" class="back-btn">↩ Main Terminal</a>
     </div>
 
     <h1>Accounting Fundamentals</h1>
-    <p>IB teknik mülakatlarının temel taşı. Buradaki soruları ezberlemek yerine mantığını anla; uygulamalı sorular (depreciation, working capital, deferred tax) çok sık gelir.</p>
+    <p>
+        Investment Banking mülakatlarının %40'ı muhasebeden gelir. Ezberlemek yetmez; 
+        bir kalemin finansal tablolarda nasıl aktığını <strong>mantığıyla</strong> kavramalısın.
+        Hiçbir şey bilmiyorsan bile buradan başla.
+    </p>
 
-    <h2>1) Üç Finansal Tablo</h2>
-    <p>Gelir Tablosu (kârlılık), Bilanço (anı fotoğrafı), Nakit Akışı (gerçek nakit). Bağlantı:</p>
+    <div class="highlight-box">
+        <strong>Temel Kural:</strong> Assets = Liabilities + Equity. Bu eşitlik ASLA bozulmaz.
+    </div>
+
+    <h2>1. Üç Temel Tablo (The 3 Statements)</h2>
+    <p>Finansal analiz bu üç tablo üzerinden yapılır. Birbirine nasıl bağlandıklarını bilmek zorundasın.</p>
+    
+    <h3>A. Income Statement (Gelir Tablosu)</h3>
+    <p>Bir şirketin belirli bir dönemdeki (1 yıl veya 1 çeyrek) kârlılığını gösterir.</p>
     <ul>
-        <li>Net Income → Cash Flow Statement'ın başına ve Bilanço'da Retained Earnings'e gider.</li>
-        <li>Cash Flow sonunda çıkan Net Change in Cash → Bilanço'daki Cash'e eklenir.</li>
-        <li>Bilanço denklemi: Assets = Liabilities + Equity her adımda korunur.</li>
+        <li><strong>Revenue (Satışlar):</strong> En tepede.</li>
+        <li><strong>COGS & Operating Expenses:</strong> Faaliyet giderleri.</li>
+        <li><strong>Net Income (Net Kâr):</strong> En altta. Hissedarlara kalan kâr.</li>
     </ul>
 
-    <h2>2) Altın Soru: Depreciation +10$ (Vergi %40)</h2>
-    <div class="qa-box">
-        <span class="question">3 tablo etkisi nedir?</span>
+    <h3>B. Balance Sheet (Bilanço)</h3>
+    <p>Şirketin belirli bir andaki (Örn: 31 Aralık gecesi) fotoğrafıdır.</p>
+    <ul>
+        <li><strong>Assets (Varlıklar):</strong> Nakit, Stoklar, Makineler (PP&E).</li>
+        <li><strong>Liabilities (Borçlar):</strong> Banka kredileri, Satıcılara borçlar (AP).</li>
+        <li><strong>Equity (Özkaynak):</strong> Hissedar parası + Geçmiş kârlar (Retained Earnings).</li>
+    </ul>
+
+    <h3>C. Cash Flow Statement (Nakit Akış)</h3>
+    <p>Kasaya giren ve çıkan <strong>gerçek nakdi</strong> gösterir. Muhasebe kârı (Net Income) her zaman nakit demek değildir!</p>
+
+    <div class="qa-card">
+        <span class="question">Soru: Bu üç tablo birbirine nasıl bağlanır?</span>
         <div class="answer">
-            <strong>IS:</strong> EBIT 10 düşer → Net Income 6 düşer.<br>
-            <strong>CFS:</strong> Net Income -6, Depreciation +10 eklenir → Net Cash +4.<br>
-            <strong>BS:</strong> Cash +4, PP&E -10 → Assets -6. Retained Earnings -6 → Denge sağlanır.
+            1. <strong>Net Income</strong> (Income Statement'ın en altı), Cash Flow Statement'ın en tepesine gelir.<br>
+            2. Ayrıca <strong>Net Income</strong>, Balance Sheet'teki "Retained Earnings" (Dağıtılmamış Kârlar) kısmına eklenir.<br>
+            3. Cash Flow Statement'ın sonundaki <strong>"Net Change in Cash"</strong>, Balance Sheet'teki "Cash" kalemine eklenir ve tabloyu dengeler.
         </div>
     </div>
 
-    <h2>3) Working Capital (Net)</h2>
-    <p>Formül: Current Assets - Current Liabilities. Pozitif değişim genelde nakit tüketir (büyüme için stok/alacak artışı); negatif değişim nakit yaratır.</p>
-    <div class="qa-box">
-        <span class="question">AR +10 arttı, başka bir şey yok. Etki?</span>
-        <div class="answer">Cash Flow: Change in NWC -10 (nakit çıktı), Cash -10. Bilanço: AR +10, Cash -10 (denge). Gelir tablosu etkilenmez.</div>
+    <h2>2. Altın Soru: Depreciation (Amortisman)</h2>
+    <p>Amortisman, "nakit olmayan" (non-cash) bir giderdir. Makineyi yıllar önce aldın, parasını ödedin. Ama her yıl değer kaybettiği için gider yazarsın. Bu da vergiden düşmeni sağlar.</p>
+
+    <div class="qa-card">
+        <span class="question">Mülakat Sorusu: Depreciation 10$ artarsa 3 tablo nasıl etkilenir? (Vergi %40)</span>
+        <div class="answer">
+            <strong>1. Income Statement:</strong> Gider 10$ artar → Vergi öncesi kâr 10$ düşer → Net Kâr (Net Income) <strong>6$ düşer</strong> (Vergi kalkanı sayesinde).<br><br>
+            <strong>2. Cash Flow Statement:</strong> Net Income tepede 6$ düşüktü. Ama Depreciation (10$) nakit çıkışı olmadığı için geri eklenir. (-6$ + 10$) = Nakit akışı <strong>4$ artar</strong>.<br><br>
+            <strong>3. Balance Sheet:</strong> Nakit (Cash) 4$ arttı. Ama PP&E (Makineler) değer kaybettiği için 10$ düştü. Varlıklar toplamda 6$ düştü. Eşitliğin diğer tarafında, Net Income düştüğü için Retained Earnings 6$ düştü. <strong>Denge sağlandı (-6$ = -6$).</strong>
+        </div>
     </div>
 
-    <h2>4) Deferred Revenue (Ertelenmiş Gelir)</h2>
-    <p>Peşin tahsil edilir, hizmet/ürün sonra verilir. İlk anda Cash ↑, Deferred Revenue (Liability) ↑.</p>
-    <div class="qa-box">
-        <span class="question">Deferred Revenue 20 arttı; hizmeti sonra vereceğiz. Etki?</span>
-        <div class="answer">IS yok. CFS: Cash +20 (CFO). BS: Cash +20, Deferred Rev +20.</div>
-    </div>
-
-    <h2>5) Deferred Tax (Ertelenmiş Vergi)</h2>
-    <p>Muhasebe kârı ile vergi kârı farklıysa oluşur. Geçici farklar: Accelerated Depreciation, Warranty, Bad Debt vb.</p>
-    <div class="qa-box">
-        <span class="question">Accelerated Depreciation ile vergi düşük çıktı, ne olur?</span>
-        <div class="answer">Vergi ödemesi düşer → Cash korunur; ancak gelecekte ödenecek vergi için Deferred Tax Liability oluşur.</div>
-    </div>
-
-    <h2>6) Stock-Based Compensation (SBC)</h2>
-    <p>Non-cash gider. IS'de gider, CFS'de CFO'ya eklenir. Ancak yeni hisseler çıkacağı için hisse başı kâr (EPS) seyrelebilir.</p>
-
-    <h2>7) PP&E Rollforward (Kısa)</h2>
+    <h2>3. İleri Düzey Konular (Advanced Topics)</h2>
+    
+    <h3>Deferred Revenue (Ertelenmiş Gelir)</h3>
+    <p>Parayı peşin aldın ama hizmeti henüz vermedin (Örn: Yıllık Netflix üyeliği). Gelir yazamazsın, borç (Liability) yazarsın.</p>
     <ul>
-        <li>Başlangıç PP&E</li>
-        <li>+ CapEx (CFS'de CFI)</li>
-        <li>- Depreciation (IS gider, CFS'de eklenir)</li>
-        <li>- Disposal (satış) → Cash artar, PP&E düşer, gain/loss IS'de</li>
+        <li>Nakit artar (+Cash), Borç artar (+Deferred Revenue).</li>
+        <li>Hizmeti verdikçe Borç azalır, Gelir (Revenue) yazılır.</li>
     </ul>
 
-    <h2>8) Goodwill & Impairment</h2>
-    <p>Satın alma bedeli - Net identifiable assets = Goodwill. Değer düşerse IS'de impairment (non-cash) yazılır, CFS'de eklenir, BS'de Goodwill azalır.</p>
+    <h3>PIK Interest (Payment In Kind)</h3>
+    <p>Borç veren kuruma nakit faiz ödemek yerine, "sana daha fazla borçlanıyorum" dersin. Anaparaya eklenir. Riskli LBO'larda kullanılır.</p>
+    <ul>
+        <li>IS: Faiz gideri yazılır (Vergiyi düşürür).</li>
+        <li>CFS: Nakit çıkışı olmadığı için geri eklenir.</li>
+        <li>BS: Borç miktarı artar.</li>
+    </ul>
 
-    <div class="divider"></div>
-    <p class="mini">Kontrol listesi (mülakat için ezberle): 3 tablo bağlantısı, Depreciation +10 sorusu, Working Capital etkisi, Deferred Revenue/Tax mantığı, SBC'nin nakitsiz olması ve PP&E rollforward.</p>
+    <h3>Lease Accounting (IFRS 16 / ASC 842)</h3>
+    <p>Eskiden kiralar sadece giderdi. Artık bilançoda hem Varlık (Right of Use Asset) hem Borç (Lease Liability) olarak gösteriliyor. Bu, borçluluk oranlarını (Leverage) yapay olarak artırabilir.</p>
 
 </body>
 </html>

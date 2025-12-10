@@ -7,77 +7,137 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --bg:#f8fafc; --t1:#1f2933; --t2:#52606d; --t3:#7b8794; --bd:#e2e8f0; --acc:#0ea5e9; }
-        body { background:var(--bg); color:var(--t1); font-family:'Inter',sans-serif; line-height:1.6; padding:40px 24px; max-width:900px; margin:0 auto; }
-        h1{font-size:28px;font-weight:600;border-bottom:1px solid var(--bd);padding-bottom:12px;margin-bottom:16px;}
-        h2{font-size:20px;font-weight:600;color:var(--acc);margin-top:32px;font-family:'JetBrains Mono',monospace;}
-        p{color:var(--t2);margin-bottom:12px;}
-        ul{color:var(--t2);margin-bottom:12px;}
-        .nav{display:flex;gap:12px;margin-bottom:20px;}
-        .link{color:var(--t2);text-decoration:none;font-size:14px;padding:8px 12px;border:1px solid var(--bd);border-radius:4px;background:#fff;}
-        .link:hover{color:var(--t1);border-color:#cbd5e1;}
-        .qa{background:#fff;border:1px solid var(--bd);border-left:3px solid var(--acc);padding:14px;margin:14px 0;border-radius:8px;}
-        .q{font-weight:600;color:var(--t1);margin-bottom:6px;}
-        .a{color:var(--t2);font-size:14px;}
-        .chip{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t3);padding:2px 6px;border:1px solid var(--bd);border-radius:3px;background:#fff;margin-right:6px;margin-bottom:6px;}
-        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;}
-        .card{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:14px;}
-        .mini{font-size:13px;color:var(--t2);}
+        /* Finance Prep Ortak Stil - Market için Mavi */
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --text-tertiary: #7b8794;
+            --accent-green: #0ea5e9;
+            --shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 40px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        .nav-bar { display: flex; gap: 12px; margin-bottom: 40px; }
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--surface-color);
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+        }
+        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
+
+        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
+        h2 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        
+        p { color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; }
+        ul { list-style: none; padding: 0; margin-bottom: 24px; }
+        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); }
+        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
+
+        .market-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .market-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-tertiary);
+            font-weight: 600;
+        }
+        
+        .market-value {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .market-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
     </style>
 </head>
 <body>
-    <div class="nav">
-        <a class="link" href="index.html">← Back to IB Prep</a>
-        <a class="link" href="../index.html">↩ Main Terminal</a>
-        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+
+    <div class="nav-bar">
+        <a href="index.html" class="back-btn">← Back to IB Prep</a>
+        <a href="../index.html" class="back-btn">↩ Main Terminal</a>
     </div>
 
-    <h1>Market Awareness (30 sn cevap şablonları)</h1>
-    <p>Mülakatta “piyasa nasıl?”, “10Y nerede?”, “Fed ne yapar?” gibi kısa cevaplar beklenir. Ezber değil, yapı kur.</p>
+    <h1>Market Awareness</h1>
+    <p>
+        "Piyasa ne durumda?" sorusuna verilecek 30 saniyelik, veriye dayalı cevaplar. 
+        Ezbere konuşma, veriyle konuş.
+    </p>
 
-    <h2>1) Faizler & Tahviller</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="q">10Y Treasury</div>
-            <div class="mini">“ABD 10Y faiz X civarında; bu seviye iskonto oranlarını ve değerlemeleri etkiler. Yükseldikçe DCF değerleri düşer.”</div>
+    <h2>1. Ana Göstergeler (Key Indicators)</h2>
+    <div class="grid-3">
+        <div class="market-card">
+            <span class="market-label">10-Year Treasury</span>
+            <span class="market-value">~4.20%</span>
+            <span class="market-desc">Risksiz faiz oranı. Tüm değerlemelerin (DCF) tabanı. Yükselirse şirket değerleri düşer.</span>
         </div>
-        <div class="card">
-            <div class="q">Fed / ECB</div>
-            <div class="mini">“Fed son toplantıda X yaptı; çekirdek enflasyon eğilimi X. Piyasa ‘higher for longer’ / ‘pivot’ beklentisinde.”</div>
+        <div class="market-card">
+            <span class="market-label">Fed Funds Rate</span>
+            <span class="market-value">5.25% - 5.50%</span>
+            <span class="market-desc">Merkez bankası faizi. Borçlanma maliyetini (Cost of Debt) ve LBO iştahını belirler.</span>
         </div>
-        <div class="card">
-            <div class="q">Spreadler</div>
-            <div class="mini">“IG vs HY spreadleri risk iştahını gösterir. Spread genişlerse finansman maliyeti artar, M&A iştahı düşer.”</div>
-        </div>
-    </div>
-
-    <h2>2) Endeksler ve Rota</h2>
-    <div class="qa">
-        <div class="q">Kısa Cevap Şablonu</div>
-        <div class="a">“S&P/Nasdaq son 3-6 ayda X% hareket etti; lokomotif sektörler (ör: tech/energy/financials) ve itici güç (faiz/enflasyon) şu.”</div>
-    </div>
-
-    <h2>3) Son Dönem M&A / LBO Başlıkları</h2>
-    <p>Hafızada 2-3 büyük anlaşma tut: sektör, alıcı, değer, motivasyon.</p>
-    <ul>
-        <li>Ör: “Broadcom – VMware” → stratejik, yazılım marjı/synergy.</li>
-        <li>Ör: Büyük bir PE LBO → yüksek borç, faiz ortamı, IRR baskısı.</li>
-    </ul>
-
-    <h2>4) 30 Sn’lik Cevap Kalıbı</h2>
-    <div class="qa">
-        <div class="q">“Piyasayı nasıl görüyorsun?”</div>
-        <div class="a">
-            1) “10Y şu an X%; değerlemeler üzerinde baskı/rahatlama yaratıyor.”<br>
-            2) “S&P son X% hareket; itici sektörler A/B.”<br>
-            3) “M&A iştahı faiz maliyeti/spreadler nedeniyle (ılımlı / güçlü / zayıf).”<br>
-            4) “Önümüzdeki katalizör: Fed kararı / enflasyon verisi / büyük kazanç sezonu.”
+        <div class="market-card">
+            <span class="market-label">S&P 500 / Nasdaq</span>
+            <span class="market-value">All-Time Highs</span>
+            <span class="market-desc">Piyasa duyarlılığı (Sentiment). Teknoloji (AI) rallisi endeksleri yukarı taşıyor.</span>
         </div>
     </div>
 
-    <h2>5) IB İçin Neden Önemli?</h2>
-    <p>Değerleme çarpanları, iskonto oranları, finansman bulunurluğu ve müşteri iştahı piyasa koşullarına bağlıdır. Kısa, net ve güncel kal.</p>
+    <h2>2. Mülakat Cevabı: "Piyasayı Nasıl Görüyorsun?"</h2>
+    <div class="market-card" style="border-left: 4px solid var(--accent-green);">
+        <p style="margin: 0; font-style: italic;">
+            "Piyasa şu an <strong>'Higher for Longer'</strong> (Uzun süre yüksek faiz) beklentisi ile <strong>AI/Tech büyümesi</strong> arasında bir denge arıyor. <br><br>
+            1. Enflasyon düşüş eğiliminde ama Fed faiz indiriminde aceleci değil.<br>
+            2. Bu durum LBO ve M&A aktivitelerini baskılıyor çünkü borçlanma maliyetleri (Cost of Capital) hala çok yüksek.<br>
+            3. Ancak nakit zengini stratejik alıcılar (Strategic Buyers) için fırsatlar var."
+        </p>
+    </div>
 
 </body>
 </html>
-

@@ -7,100 +7,139 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Açık Tema (Sadece Finance Prep sayfaları için) */
-        :root { --bg: #f8fafc; --t1: #1f2933; --t2: #52606d; --t3: #7b8794; --acc: #0A84FF; --bd: #e2e8f0; }
-        body { background: var(--bg); color: var(--t1); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 24px; max-width: 880px; margin: 0 auto; }
-        h1 { font-size: 28px; font-weight: 600; border-bottom: 1px solid var(--bd); padding-bottom: 14px; margin-bottom: 20px; }
-        h2 { font-size: 20px; font-weight: 600; color: var(--acc); margin-top: 36px; font-family: 'JetBrains Mono', monospace; }
-        p { color: var(--t2); margin-bottom: 14px; }
-        ul { color: var(--t2); margin-bottom: 12px; }
-        .nav { display: flex; gap: 12px; margin-bottom: 20px; }
-        .link { color: var(--t2); text-decoration: none; font-size: 14px; padding: 8px 12px; border: 1px solid var(--bd); border-radius: 4px; background: #fff; }
-        .link:hover { color: var(--t1); border-color: #cbd5e1; }
-        .qa-box { background: #fff; border: 1px solid var(--bd); border-left: 3px solid var(--acc); padding: 16px; margin: 18px 0; border-radius: 8px; }
-        .question { font-weight: 600; color: var(--t1); margin-bottom: 8px; display: block; }
-        .answer { color: var(--t2); font-size: 14px; }
-        .badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--t3); padding: 2px 6px; border: 1px solid var(--bd); border-radius: 3px; margin-bottom: 10px; background: #fff; }
-        .mini { font-size: 13px; color: var(--t2); }
-        .divider { border-top: 1px solid var(--bd); margin: 24px 0; }
-        .list-inline li { margin-bottom: 6px; }
+        /* Finance Prep Index ile Birebir Uyumlu Stil */
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --text-tertiary: #7b8794;
+            --accent-green: #16a34a; /* Valuation için mavi yerine standart yeşil kullanımı daha tutarlı */
+            --shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 40px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        .nav-bar { display: flex; gap: 12px; margin-bottom: 40px; }
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--surface-color);
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+        }
+        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
+
+        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
+        h2 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        h3 { font-size: 18px; font-weight: 600; color: var(--text-secondary); margin-top: 24px; margin-bottom: 8px; }
+        
+        p { color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; }
+        ul { list-style: none; padding: 0; margin-bottom: 24px; }
+        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); }
+        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
+
+        .qa-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: var(--shadow);
+        }
+        .question { font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 12px; font-size: 16px; }
+        .answer { color: var(--text-secondary); font-size: 15px; }
+        
+        .highlight-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="nav">
-        <a class="link" href="index.html">← Back to IB Prep</a>
-        <a class="link" href="../index.html">↩ Main Terminal</a>
-        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+    <div class="nav-bar">
+        <a href="index.html" class="back-btn">← Back to IB Prep</a>
+        <a href="../index.html" class="back-btn">↩ Main Terminal</a>
     </div>
 
     <h1>Valuation Methodologies</h1>
-    <p>Üç ana değerleme yaklaşımı: <strong>Comps</strong>, <strong>Precedent Transactions</strong>, <strong>DCF</strong>. Mülakatta artı/eksi, temel adımlar ve sık sorulanları bilmek yeterli.</p>
+    <p>
+        "Bu şirket kaç para eder?" sorusunun cevabı. 
+        Mülakatlarda 3 ana yöntemi (Comps, Precedent, DCF) ve bunların sıralamasını savunmanız istenir.
+    </p>
 
-    <h2>1) Comparable Company Analysis (Comps)</h2>
-    <p><strong>Mantık:</strong> Benzer şirketlerin piyasa çarpanlarına bakarak değer çıkar.</p>
-    <ul class="list-inline">
-        <li><strong>Adımlar:</strong> Doğru peer seç (sektör, büyüme, marj), LTM/NTM finansalları temizle, çarpanları (EV/EBITDA, EV/Sales, P/E) hesapla, outlier temizle, medyan/ortalama al.</li>
-        <li><strong>Artı:</strong> Piyasa bazlı, hızlı.</li>
-        <li><strong>Eksi:</strong> Piyasa irrasyonel olabilir; %100 benzer şirket yok.</li>
-    </ul>
-
-    <h2>2) Precedent Transactions</h2>
-    <p><strong>Mantık:</strong> Geçmiş M&A işlemlerinde benzer şirketler kaça satıldı?</p>
-    <div class="qa-box">
-        <span class="question">Neden genelde Comps’tan yüksek çıkar?</span>
-        <div class="answer">Kontrol primi ve sinerji beklentisi nedeniyle alıcı, borsa fiyatının üstüne (genelde %20-30) ödeme yapar.</div>
+    <div class="highlight-box">
+        <strong>Kural:</strong> Tek bir doğru değer yoktur, bir "değer aralığı" (Valuation Range / Football Field) vardır.
     </div>
-    <p><strong>İpuçları:</strong> İşlem tarihini, piyasa koşullarını, hedef/alıcı stratejisini ve satın alma yapısını (nakit/hisse) kontrol et; veriler eskiyse güncellemek gerekebilir.</p>
 
-    <h2>3) DCF (Discounted Cash Flow)</h2>
-    <p><strong>Mantık:</strong> Gelecekteki FCF’leri WACC ile bugüne indir, Terminal Value ekle → Enterprise Value.</p>
-    <div class="qa-box">
-        <span class="question">Walk me through a DCF</span>
+    <h2>1. Comparable Company Analysis (Comps)</h2>
+    <p><strong>Mantık:</strong> "Rakip şirketler borsada hangi çarpanlarla (Multiples) işlem görüyor?"</p>
+    <ul>
+        <li><strong>EV / EBITDA:</strong> En yaygın kullanılan çarpan. Sermaye yapısından bağımsızdır.</li>
+        <li><strong>P / E (Fiyat/Kazanç):</strong> Bankalar ve finans şirketleri için kullanılır.</li>
+    </ul>
+    <div class="qa-card">
+        <span class="question">Soru: Nasıl Peer Group (Rakip Seti) seçersin?</span>
         <div class="answer">
-            1) 5-10 yıl FCF projeksiyonu (EBIT → NOPAT → +D&A, -CapEx, -ΔNWC).<br>
-            2) WACC ile indirgeme (discount).<br>
-            3) Terminal Value: <em>Gordon</em> (FCF<sub>t+1</sub> / (WACC - g)) veya <em>Exit Multiple</em> yöntemi.<br>
-            4) PV(FCFs) + PV(TV) = EV.<br>
-            5) EV → Equity Value: EV - Net Debt - Preferred + Cash & non-op assets - Minority + Associates.<br>
-            6) Equity / Diluted Shares = Implied Price.
+            1. Sektör (Industry)<br>
+            2. Coğrafya (Geography)<br>
+            3. Büyüklük (Financial Size: Revenue, EBITDA)<br>
+            Örn: "Türk Hava Yolları için Lufthansa, Pegasus ve British Airways'e bakarım."
         </div>
     </div>
 
-    <h2>WACC (Weighted Average Cost of Capital)</h2>
-    <p><strong>Formül:</strong> Wd * Cd * (1 - Tax) + We * Ce</p>
-    <ul class="list-inline">
-        <li><strong>Cd (Cost of Debt):</strong> Borç maliyeti; vergi sonrası alınır (1-Tax).</li>
-        <li><strong>Ce (Cost of Equity):</strong> CAPM ≈ Rf + β * (Rm - Rf) (+/− small size/industry premia).</li>
-        <li><strong>Sermaye yapısı:</strong> Genelde hedef/market weight (D/V, E/V) kullan.</li>
-    </ul>
-
-    <h2>Beta Unlever / Relever</h2>
-    <div class="qa-box">
-        <span class="question">Unlevered beta formülü</span>
-        <div class="answer">β<sub>unlevered</sub> = β<sub>equity</sub> / [1 + (1 - Tax) * (Debt/Equity)]</div>
+    <h2>2. Precedent Transactions (Emsal İşlemler)</h2>
+    <p><strong>Mantık:</strong> "Geçmişte benzer şirketler kaça SATILDI?"</p>
+    <p>Sadece borsadaki fiyata değil, satın alma anında ödenen fiyata bakarız.</p>
+    <div class="highlight-box">
+        <strong>Önemli:</strong> Bu yöntem genelde en yüksek değeri verir. Çünkü alıcı, şirketi ele geçirmek için <strong>"Control Premium" (%20-%30)</strong> öder.
     </div>
-    <div class="qa-box">
-        <span class="question">Re-lever formülü</span>
-        <div class="answer">β<sub>relevered</sub> = β<sub>unlevered</sub> * [1 + (1 - Tax) * (Debt/Equity)<sub>target</sub>]</div>
+
+    <h2>3. DCF (Discounted Cash Flow)</h2>
+    <p><strong>Mantık:</strong> "Şirketin gelecekte üreteceği nakdin bugünkü değeri nedir?" Piyasa dalgalanmalarından etkilenmez (Intrinsic Value).</p>
+
+    <div class="qa-card">
+        <span class="question">Soru: Bana DCF'i adım adım anlat ("Walk me through a DCF").</span>
+        <div class="answer">
+            1. Şirketin gelecekteki <strong>Free Cash Flow</strong>'larını (FCF) tahmin et (Genelde 5-10 yıl).<br>
+            2. <strong>Terminal Value</strong> (Sonsuza kadar sürecek değer) hesapla (Gordon Growth veya Exit Multiple ile).<br>
+            3. Bu nakitleri <strong>WACC</strong> (Weighted Average Cost of Capital) ile bugüne indir (Discount).<br>
+            4. Hepsini topla = <strong>Enterprise Value</strong>.
+        </div>
     </div>
-    <p><strong>Neden?</strong> Peer betalarını kaldıraçtan arındırıp (unlever), hedef sermaye yapısına göre yeniden kaldıraçlarsın (relever). Böylece şirketin kendi risk profilini yakalarsın.</p>
 
-    <h2>Terminal Value: Gordon vs Exit Multiple</h2>
-    <ul class="list-inline">
-        <li><strong>Gordon:</strong> TV = FCF<sub>t+1</sub> / (WACC - g). g makul olmalı (uzun vadeli GDP enflasyon + reel büyüme). Çok yüksek g → şişik değer.</li>
-        <li><strong>Exit Multiple:</strong> Son yıl EBITDA * çıkış çarpanı (sector median). Piyasa çarpanına dayanır, gürültülü olabilir.</li>
+    <h3>İleri Düzey: WACC ve Beta</h3>
+    <p>WACC, şirketin hem borç hem de hisse senedi yatırımcılarına ödemesi gereken ortalama getiridir.</p>
+    <ul>
+        <li><strong>Cost of Equity (CAPM):</strong> Risksiz Faiz + (Beta * Piyasa Risk Primi).</li>
+        <li><strong>Beta:</strong> Hisse senedinin piyasaya göre ne kadar oynak olduğu. (Beta > 1 ise piyasadan daha riskli/oynak).</li>
     </ul>
-
-    <h2>EV → Equity Bridge</h2>
-    <ul class="list-inline">
-        <li>EV - Net Debt - Preferred + Cash & Non-Op Assets - Minority Interest + Associates = Equity Value.</li>
-        <li>Equity Value / Diluted Shares = Implied Price.</li>
-    </ul>
-
-    <div class="divider"></div>
-    <p class="mini">Kontrol listesi: Comps adımları, Control Premium mantığı, DCF walkthrough, WACC formülü, Unlever/Relever beta, TV yöntemleri, EV→Equity köprüsü.</p>
 
 </body>
 </html>
-

@@ -7,85 +7,122 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Açık Tema */
-        :root { --bg: #f8fafc; --t1: #1f2933; --t2: #52606d; --t3: #7b8794; --acc: #0A84FF; --bd: #e2e8f0; }
-        body { background: var(--bg); color: var(--t1); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 24px; max-width: 880px; margin: 0 auto; }
-        h1 { font-size: 28px; font-weight: 600; border-bottom: 1px solid var(--bd); padding-bottom: 14px; margin-bottom: 20px; }
-        h2 { font-size: 20px; font-weight: 600; color: var(--acc); margin-top: 32px; font-family: 'JetBrains Mono', monospace; }
-        p { color: var(--t2); margin-bottom: 12px; }
-        ul { color: var(--t2); margin-bottom: 12px; }
-        .nav { display: flex; gap: 12px; margin-bottom: 20px; }
-        .link { color: var(--t2); text-decoration: none; font-size: 14px; padding: 8px 12px; border: 1px solid var(--bd); border-radius: 4px; background: #fff; }
-        .link:hover { color: var(--t1); border-color: #cbd5e1; }
-        .qa-box { background: #fff; border: 1px solid var(--bd); border-left: 3px solid var(--acc); padding: 16px; margin: 18px 0; border-radius: 8px; }
-        .question { font-weight: 600; color: var(--t1); margin-bottom: 8px; display: block; }
-        .answer { color: var(--t2); font-size: 14px; }
-        .step { margin-left: 16px; color: var(--t2); }
-        .divider { border-top: 1px solid var(--bd); margin: 20px 0; }
+        /* Finance Prep Ortak Stil */
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-primary: #1f2933;
+            --text-secondary: #52606d;
+            --text-tertiary: #7b8794;
+            --accent-green: #16a34a;
+            --shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            padding: 40px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+
+        .nav-bar { display: flex; gap: 12px; margin-bottom: 40px; }
+        .back-btn {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--surface-color);
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+        }
+        .back-btn:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-1px); }
+
+        h1 { font-size: 32px; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
+        h2 { font-size: 22px; font-weight: 600; color: var(--text-primary); margin-top: 48px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+        
+        p { color: var(--text-secondary); margin-bottom: 16px; max-width: 700px; }
+        ul { list-style: none; padding: 0; margin-bottom: 24px; }
+        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--text-secondary); }
+        li::before { content: "•"; color: var(--accent-green); font-weight: bold; position: absolute; left: 0; }
+
+        .qa-card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 24px 0;
+            box-shadow: var(--shadow);
+        }
+        .question { font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 12px; font-size: 16px; }
+        .answer { color: var(--text-secondary); font-size: 15px; }
+        
+        .highlight-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 24px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="nav">
-        <a class="link" href="index.html">← Back to IB Prep</a>
-        <a class="link" href="../index.html">↩ Main Terminal</a>
-        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+    <div class="nav-bar">
+        <a href="index.html" class="back-btn">← Back to IB Prep</a>
+        <a href="../index.html" class="back-btn">↩ Main Terminal</a>
     </div>
 
-    <h1>M&A Basics (Accretion/Dilution)</h1>
-    <p>Adım adım ilerleyelim: önce satın alma mantığı, sonra accretion/dilution hesabı, ardından sinerji ve satın alma muhasebesi.</p>
+    <h1>Mergers & Acquisitions (M&A)</h1>
+    <p>
+        Şirket birleşmelerinin matematiği. Mülakatlarda en sık sorulan konu "Accretion/Dilution" analizidir.
+    </p>
 
-    <h2>1) Neden M&A?</h2>
-    <ul>
-        <li>Büyüme (yeni pazar/ürün), sinerji (maliyet/gelir), ölçek, vergi kalkanı, stratejik savunma.</li>
-    </ul>
+    <h2>1. Accretion / Dilution Analizi</h2>
+    <p>Bir şirket (Alıcı), başka bir şirketi (Hedef) satın aldığında, Alıcı'nın hisse başına kârı (EPS) artıyor mu (Accretive), azalıyor mu (Dilutive)?</p>
+    
+    <div class="highlight-box">
+        <strong>Altın Kural:</strong> Eğer Alıcı'nın Fiyat/Kazanç (P/E) oranı, Hedef şirketin P/E oranından YÜKSEKSE ve işlem %100 hisse ile yapılıyorsa, işlem <strong>Accretive</strong> (Kâr Artırıcı) olur.
+    </div>
 
-    <h2>2) Accretion / Dilution Mantığı</h2>
-    <p>Satın alma sonrası alıcı şirketin EPS’i artıyor mu (accretive) yoksa düşüyor mu (dilutive)?</p>
-    <div class="qa-box">
-        <span class="question">Hızlı yaklaşım (yüksek sesle anlat):</span>
+    <div class="qa-card">
+        <span class="question">Soru: Bir M&A işleminin Accretive mi Dilutive mi olduğunu nasıl hesaplarsın?</span>
         <div class="answer">
-            1) Satın alma fiyatı ve ödeme yapısı (nakit / borç / hisse) belirlenir.<br>
-            2) Kaynak maliyetleri (nakit → kayıp faiz; borç → faiz gideri; hisse → seyrelme) toplanır.<br>
-            3) Hedefin net kârı + sinerjiler eklenir, amortizasyon/ek giderler çıkarılır.<br>
-            4) Yeni hisselerle bölünür → Yeni EPS. Eski EPS ile kıyasla: artarsa accretive, düşerse dilutive.
+            1. Alıcı ve Hedef'in Net Kârlarını topla.<br>
+            2. Varsa Sinerjileri ekle, işlem masraflarını çıkar.<br>
+            3. Satın alma için çıkarılan YENİ hisse sayısını hesapla.<br>
+            4. (Toplam Net Kâr) / (Eski Hisseler + Yeni Hisseler) = <strong>Yeni EPS</strong>.<br>
+            Eğer Yeni EPS > Eski EPS ise → <strong>Accretive</strong>.
         </div>
     </div>
 
-    <h2>3) Sinerji Türleri</h2>
+    <h2>2. Goodwill (Şerefiye)</h2>
+    <p>Bir şirketi defter değerinin (Book Value) üzerinde bir fiyata satın alırsan, aradaki fark Bilançoda "Goodwill" olarak yazılır.</p>
     <ul>
-        <li><strong>Maliyet Sinerjisi:</strong> Satın alma sonrası giderleri kısma (SG&A, tedarik).</li>
-        <li><strong>Gelir Sinerjisi:</strong> Cross-sell, yeni pazarlar. (Genelde daha muhafazakâr alınır.)</li>
+        <li>Goodwill amorti edilmez (değer kaybetmez), ancak her yıl "Impairment Test" yapılır.</li>
+        <li>Marka değeri, müşteri sadakati gibi soyut varlıkları temsil eder.</li>
     </ul>
 
-    <h2>4) Satın Alma Muhasebesi (Purchase Price Allocation - PPA)</h2>
-    <p>Ödeme > net varlık değeri ise fark Goodwill olur. Önemli kalemler:</p>
+    <h2>3. Sinerjiler (Synergies)</h2>
+    <p>İki şirketin birleşince, ayrı ayrı olduklarından daha değerli olmasıdır (1+1=3).</p>
     <ul>
-        <li>İtfa edilebilir maddi olmayan varlıklar (customer list, patent) → Amortization gideri yaratır.</li>
-        <li>Goodwill → Amortize edilmez; impairment testine tabi.</li>
+        <li><strong>Cost Synergies (Maliyet):</strong> Gereksiz departmanları kapatmak, daha ucuza hammadde almak. (Daha güvenilirdir).</li>
+        <li><strong>Revenue Synergies (Gelir):</strong> Çapraz satış yapmak (Cross-sell). (Tahmin etmesi zordur).</li>
     </ul>
-
-    <h2>5) Basit Accretion/Dilution Örneği (Nakit ile Alım)</h2>
-    <div class="qa-box">
-        <span class="question">Senaryo</span>
-        <div class="answer">
-            Alıcı: Net Income 100, Pay 50, F/K 15x, Nakit faizi: %4<br>
-            Hedef: Net Income 20, Satın alma fiyatı: 20 * 15 = 300 (aynı çarpan)
-        </div>
-    </div>
-    <div class="qa-box">
-        <span class="question">Hesap</span>
-        <div class="answer">
-            Kaynak maliyeti: 300 nakit → kaybedilen faiz = 300 * 4% = 12<br>
-            Eklenen net kâr: +20<br>
-            Yeni net kâr: 100 - 12 + 20 = 108<br>
-            Hisse sayısı aynı (nakitle alındı): EPS yeni = 108 / 50 = 2.16 (eski EPS: 2.00) → %8 accretive.
-        </div>
-    </div>
-
-    <div class="divider"></div>
-    <p class="step"><strong>Ezber Kontrol Listesi:</strong> Accretion/Dilution 4 adımı, sinerji türleri, PPA/Goodwill, amortizasyon etkisi, basit nakit alım örneği.</p>
 
 </body>
 </html>
-
