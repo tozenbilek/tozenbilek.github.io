@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nezih Arhan Tozenbilek</title>
+    <title>Nezih Arhan Tozenbilek | Executive Portfolio</title>
     
-    <!-- Font: Inter & Geist Mono (Fintech Standardı) -->
+    <!-- Premium Fonts: Playfair Display (Otorite) & Manrope (Modernlik) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-color: #050505;
-            --surface-color: #0A0A0A;
-            --border-color: #1F1F1F;
-            --border-hover: #333333;
-            --text-primary: #EAEAEA;
-            --text-secondary: #888888;
-            --accent-green: #30D158; /* Bloomberg/Terminal Yeşili */
-            --accent-blue: #0A84FF;
+            /* Renk Paleti: Midnight Royal Blue & Platinum */
+            --bg-deep: #0f172a; /* Derin Lacivert */
+            --bg-gradient: radial-gradient(circle at top right, #1e293b, #0f172a);
+            
+            --glass-panel: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            
+            --text-primary: #f8fafc; /* Neredeyse beyaz */
+            --text-secondary: #94a3b8; /* Metalik gri */
+            --accent-gold: #fbbf24; /* Hafif altın dokunuşu (Premium hissi) */
         }
 
         * {
@@ -32,251 +35,358 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background: var(--bg-deep);
             color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            position: relative;
+            font-family: 'Manrope', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Arkaplan Izgarası (Grid) - Bloomberg Terminal Hissi */
-        .bg-grid {
+        /* Arkaplan "Aurora" Efekti (Sofistike Işıklar) */
+        .ambient-glow {
             position: fixed;
-            width: 200%;
-            height: 200%;
-            background-image: 
-                linear-gradient(var(--border-color) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: center;
-            opacity: 0.15;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
-            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
-            animation: grid-move 20s linear infinite;
-        }
-
-        @keyframes grid-move {
-            0% { transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px); }
-            100% { transform: perspective(500px) rotateX(60deg) translateY(40px) translateZ(-200px); }
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(99, 102, 241, 0.08), transparent 25%);
+            filter: blur(60px);
         }
 
         /* Ana Konteyner */
-        .dashboard {
-            width: 100%;
-            max-width: 800px;
-            padding: 24px;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 16px;
+            grid-template-columns: 1fr 350px; /* Sol: İçerik, Sağ: Widgetlar */
+            gap: 60px;
+            align-items: start;
         }
 
-        /* Kart Yapısı - Keskin ve Kurumsal */
-        .panel {
-            background: rgba(10, 10, 10, 0.6);
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 24px;
-            display: flex;
-            flex-direction: column;
-            transition: border-color 0.2s ease;
-        }
-
-        .panel:hover {
-            border-color: var(--border-hover);
-        }
-
-        /* Başlık Alanı */
-        .header-panel {
-            grid-column: span 12;
-            padding: 40px;
-            border-bottom: 1px solid var(--border-color); /* Ayrım çizgisi */
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 500;
+        /* TIPOGRAFİ & BAŞLIKLAR */
+        h1.name-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 600;
             letter-spacing: -0.02em;
-            margin-bottom: 8px;
-            color: #fff;
+            line-height: 1.1;
+            background: linear-gradient(to right, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
         }
 
-        .subtitle {
-            font-family: 'JetBrains Mono', monospace; /* Kod/Veri hissi */
+        .subtitle-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
             font-size: 0.85rem;
-            color: var(--accent-green);
-            text-transform: uppercase;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            margin-bottom: 24px;
             letter-spacing: 0.05em;
-            margin-bottom: 16px;
+            text-transform: uppercase;
         }
 
-        .bio {
-            font-size: 1rem;
-            line-height: 1.5;
+        /* SOL KOLON: HİKAYE & KARİYER */
+        .executive-summary {
+            margin-bottom: 60px;
+            font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            font-weight: 300;
+            max-width: 650px;
         }
-
-        /* Kariyer Yolu (Timeline Hissi) */
-        .career-path {
-            grid-column: span 8;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .path-step {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-        }
-
-        .path-step.active {
+        
+        .executive-summary strong {
             color: var(--text-primary);
             font-weight: 500;
         }
 
-        .arrow {
-            color: var(--border-hover);
-            font-size: 0.8rem;
+        /* Timeline (Modern Liste) */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 32px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
         }
 
-        /* İstatikler / Hedefler */
-        .stats-panel {
-            grid-column: span 4;
+        .section-title span {
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .career-item {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .career-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            min-width: 100px;
+            font-style: italic;
+        }
+
+        .career-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .career-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .tag-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .skill-tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            color: var(--text-secondary);
+        }
+
+        /* SAĞ KOLON: KARTLAR & BAĞLANTILAR */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: sticky;
+            top: 40px;
+        }
+
+        .glass-card {
+            background: var(--glass-panel);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 32px;
+            border-radius: 16px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--glass-highlight);
+            transform: translateY(-5px);
+        }
+
+        /* İletişim Butonları */
+        .contact-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .stat-item {
+        .btn-contact {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            font-size: 0.85rem;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .stat-label { color: var(--text-secondary); }
-        .stat-value { font-family: 'JetBrains Mono', monospace; color: var(--text-primary); }
-
-        /* Bağlantılar - Monokrom ve Liste Şeklinde */
-        .links-panel {
-            grid-column: span 12;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px; /* Border collapse efekti için */
-            background: var(--border-color); /* Ara çizgiler rengi */
-            border: 1px solid var(--border-color);
-            padding: 0; /* İç padding yok */
-            overflow: hidden;
-        }
-
-        .link-item {
-            background: var(--surface-color);
-            color: var(--text-secondary);
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-primary);
             text-decoration: none;
-            padding: 20px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .btn-contact:hover {
+            background: #fff;
+            color: #000;
+        }
+        
+        /* Spotify Widget (Özel) */
+        .spotify-widget {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: auto;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 24px;
+        }
+
+        .spotify-art {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #1db954, #191414);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            font-size: 1.5rem;
+        }
+
+        .spotify-info h4 {
             font-size: 0.9rem;
-            transition: all 0.2s ease;
+            font-weight: 600;
+            line-height: 1.2;
         }
 
-        .link-item:hover {
-            background: #111;
-            color: #fff;
+        .spotify-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
         }
 
-        .link-item i { font-size: 1.1rem; }
+        .equalizer {
+            display: flex;
+            gap: 2px;
+            margin-left: auto;
+            height: 16px;
+            align-items: flex-end;
+        }
 
-        /* Mobilde Düzen */
-        @media (max-width: 768px) {
-            .dashboard { grid-template-columns: 1fr; padding: 16px; }
-            .header-panel, .career-path, .stats-panel, .links-panel { grid-column: span 1; }
-            .links-panel { grid-template-columns: 1fr; grid-template-rows: repeat(4, auto); }
+        .bar {
+            width: 3px;
+            background: #1db954;
+            animation: equalize 1s infinite alternate;
+        }
+        
+        .bar:nth-child(2) { animation-delay: 0.2s; }
+        .bar:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes equalize {
+            0% { height: 4px; }
+            100% { height: 16px; }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container { grid-template-columns: 1fr; gap: 40px; }
+            h1.name-title { font-size: 3rem; }
+            .sidebar { position: static; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-grid"></div>
+    <div class="ambient-glow"></div>
 
-    <div class="dashboard">
+    <div class="container">
         
-        <!-- Başlık Bölümü -->
-        <div class="panel header-panel">
-            <div class="subtitle">>> SYSTEM_READY</div>
-            <h1>Nezih Arhan Tozenbilek</h1>
-            <p class="bio">
-                Building high-performance financial models and algorithmic strategies.
-                Targeting opportunities in Investment Banking, Private Equity, and Hedge Funds.
+        <!-- SOL KOLON: KİMLİK & KARİYER -->
+        <main>
+            <div class="subtitle-badge">Computer Engineering & Quantitative Finance</div>
+            <h1 class="name-title">Nezih Arhan Tozenbilek</h1>
+            
+            <p class="executive-summary">
+                Mühendislik temelli analitik düşünce yapısını finansal piyasaların dinamikleriyle birleştiriyorum. 
+                <strong>Computer Engineering</strong> öğrencisi olarak, algoritmik ticaret stratejileri ve yüksek performanslı finansal modellemeler üzerine çalışıyorum.
+                Hedefim; <strong>Investment Banking</strong>, <strong>Private Equity</strong> ve nihayetinde <strong>Hedge Fund</strong> yönetiminde değer yaratmak.
             </p>
-        </div>
 
-        <!-- Kariyer Hedefleri -->
-        <div class="panel career-path">
-            <div class="path-step active">
-                <i class="fa-solid fa-chart-line" style="color: var(--accent-green)"></i>
-                Investment Banking
+            <!-- KARİYER YOLU / EĞİTİM -->
+            <div class="section-title">
+                Trajectory <span>Education & Experience</span>
             </div>
-            <div class="path-step">
-                <i class="fa-solid fa-arrow-down arrow"></i>
-            </div>
-            <div class="path-step">
-                <i class="fa-solid fa-briefcase"></i>
-                Private Equity
-            </div>
-            <div class="path-step">
-                <i class="fa-solid fa-arrow-down arrow"></i>
-            </div>
-            <div class="path-step">
-                <i class="fa-solid fa-building-columns"></i>
-                Hedge Fund
-            </div>
-        </div>
 
-        <!-- Odak Alanları -->
-        <div class="panel stats-panel">
-            <div class="stat-item">
-                <span class="stat-label">Focus</span>
-                <span class="stat-value">Quant Finance</span>
+            <div class="career-item">
+                <div class="career-year">Present</div>
+                <div class="career-content">
+                    <h3>Computer Engineering Student</h3>
+                    <p>Algorithm Analysis, Data Structures, System Programming ve Machine Learning üzerine yoğunlaşmış mühendislik eğitimi.</p>
+                    <div class="tag-row">
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Algorithms</span>
+                        <span class="skill-tag">Scheme</span>
+                    </div>
+                </div>
             </div>
-            <div class="stat-item">
-                <span class="stat-label">Tools</span>
-                <span class="stat-value">Python, C++</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-label">Status</span>
-                <span class="stat-value" style="color: var(--accent-green)">Open</span>
-            </div>
-        </div>
 
-        <!-- Profesyonel Linkler -->
-        <div class="links-panel">
-            <a href="https://www.linkedin.com/in/neziharhantozenbilek/" target="_blank" class="link-item">
-                <i class="fa-brands fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://github.com/tozenbilek" target="_blank" class="link-item">
-                <i class="fa-brands fa-github"></i> GitHub
-            </a>
-            <a href="mailto:contact@nezih.dev" class="link-item">
-                <i class="fa-solid fa-envelope"></i> Contact
-            </a>
-             <a href="https://open.spotify.com/user/31ysr5yumx5wfhltp375xdmzi2na" target="_blank" class="link-item">
-                <i class="fa-brands fa-spotify"></i> Spotify
-            </a>
-        </div>
+            <div class="career-item">
+                <div class="career-year">Focus</div>
+                <div class="career-content">
+                    <h3>Quantitative Finance & Analysis</h3>
+                    <p>Finansal piyasaların matematiksel modelleri, türev ürün fiyatlama ve risk yönetimi üzerine kişisel araştırmalar ve projeler.</p>
+                    <div class="tag-row">
+                        <span class="skill-tag">Financial Modeling</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Stochastic Calculus</span>
+                    </div>
+                </div>
+            </div>
+
+             <div class="career-item">
+                <div class="career-year">Target</div>
+                <div class="career-content">
+                    <h3>High Finance Track</h3>
+                    <p>Investment Banking -> Private Equity -> Hedge Fund. Küresel piyasalarda aktif rol alacak stratejik vizyon.</p>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- SAĞ KOLON: BAĞLANTILAR & WIDGETLAR -->
+        <aside class="sidebar">
+            
+            <div class="glass-card">
+                <h3 style="margin-bottom: 20px; font-family: 'Playfair Display', serif;">Connect</h3>
+                <div class="contact-list">
+                    <a href="https://www.linkedin.com/in/neziharhantozenbilek/" target="_blank" class="btn-contact">
+                        <span><i class="fa-brands fa-linkedin-in" style="margin-right: 10px;"></i> LinkedIn</span>
+                        <i class="fa-solid fa-arrow-right-long" style="font-size: 0.8rem; opacity: 0.5;"></i>
+                    </a>
+                    <a href="https://github.com/tozenbilek" target="_blank" class="btn-contact">
+                        <span><i class="fa-brands fa-github" style="margin-right: 10px;"></i> GitHub</span>
+                        <i class="fa-solid fa-arrow-right-long" style="font-size: 0.8rem; opacity: 0.5;"></i>
+                    </a>
+                    <a href="mailto:natozenbilek@gmail.com" class="btn-contact">
+                        <span><i class="fa-regular fa-envelope" style="margin-right: 10px;"></i> Email</span>
+                        <i class="fa-solid fa-arrow-right-long" style="font-size: 0.8rem; opacity: 0.5;"></i>
+                    </a>
+                </div>
+
+                <!-- SPOTIFY WIDGET -->
+                <div style="margin-top: 32px;">
+                    <a href="https://open.spotify.com/user/31ysr5yumx5wfhltp375xdmzi2na" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="spotify-widget">
+                            <div class="spotify-art">
+                                <i class="fa-brands fa-spotify" style="color: white;"></i>
+                            </div>
+                            <div class="spotify-info">
+                                <h4>On Focus</h4>
+                                <p>Nezih's Rotation</p>
+                            </div>
+                            <div class="equalizer">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="glass-card" style="padding: 24px; text-align: center;">
+                <i class="fa-solid fa-quote-left" style="color: var(--accent-gold); margin-bottom: 16px; opacity: 0.6;"></i>
+                <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--text-primary);">
+                    "Alpha is where you find it."
+                </p>
+            </div>
+
+        </aside>
 
     </div>
 
