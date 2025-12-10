@@ -4,65 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accounting Guide | IB Prep</title>
-    <!-- Fontlar ve Stil (Ana sayfayla uyumlu) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --bg-color: #050505; --text-primary: #EDEDED; --text-secondary: #888888; --accent-green: #30D158; --border-color: #1F1F1F;
-        }
-        body { background-color: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px; max-width: 800px; margin: 0 auto; }
-        h1, h2, h3 { color: #fff; margin-bottom: 16px; font-weight: 600; }
-        h1 { font-size: 28px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px; }
-        h2 { font-size: 20px; margin-top: 40px; color: var(--accent-green); font-family: 'JetBrains Mono', monospace; }
-        p { margin-bottom: 16px; color: var(--text-secondary); }
-        .highlight { color: #fff; background: rgba(255,255,255,0.1); padding: 2px 4px; border-radius: 4px; }
-        .qa-box { background: rgba(255,255,255,0.03); border-left: 3px solid var(--accent-green); padding: 20px; margin: 20px 0; border-radius: 0 8px 8px 0; }
-        .question { font-weight: 600; color: #fff; margin-bottom: 8px; display: block; }
-        .answer { color: var(--text-secondary); font-size: 14px; }
-        .back-link { display: inline-block; margin-bottom: 20px; color: var(--text-secondary); text-decoration: none; font-size: 14px; }
-        .back-link:hover { color: #fff; }
+        /* Açık Tema (Sadece Finance Prep sayfaları için) */
+        :root { --bg: #f8fafc; --t1: #1f2933; --t2: #52606d; --t3: #7b8794; --acc: #16a34a; --bd: #e2e8f0; }
+        body { background: var(--bg); color: var(--t1); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 24px; max-width: 880px; margin: 0 auto; }
+        h1 { font-size: 28px; font-weight: 600; border-bottom: 1px solid var(--bd); padding-bottom: 14px; margin-bottom: 20px; }
+        h2 { font-size: 20px; font-weight: 600; color: var(--acc); margin-top: 36px; font-family: 'JetBrains Mono', monospace; }
+        p { color: var(--t2); margin-bottom: 14px; }
+        ul { color: var(--t2); margin-bottom: 12px; }
+        .nav { display: flex; gap: 12px; margin-bottom: 20px; }
+        .link { color: var(--t2); text-decoration: none; font-size: 14px; padding: 8px 12px; border: 1px solid var(--bd); border-radius: 4px; background: #fff; }
+        .link:hover { color: var(--t1); border-color: #cbd5e1; }
+        .qa-box { background: #fff; border: 1px solid var(--bd); border-left: 3px solid var(--acc); padding: 16px; margin: 18px 0; border-radius: 8px; }
+        .question { font-weight: 600; color: var(--t1); margin-bottom: 8px; display: block; }
+        .answer { color: var(--t2); font-size: 14px; }
+        .badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--t3); padding: 2px 6px; border: 1px solid var(--bd); border-radius: 3px; margin-bottom: 10px; background: #fff; }
+        .mini { font-size: 13px; color: var(--t2); }
+        .divider { border-top: 1px solid var(--bd); margin: 24px 0; }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="back-link">← Back to Dashboard</a>
-    
-    <h1>Accounting Fundamentals</h1>
-    <p>IB mülakatlarının %40'ı burasıdır. Muhasebe bilmeden finansal model kurulamaz.</p>
+    <div class="nav">
+        <a class="link" href="index.html">← Back to IB Prep</a>
+        <a class="link" href="../index.html">↩ Main Terminal</a>
+        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+    </div>
 
-    <h2>1. Üç Temel Tablo (The 3 Statements)</h2>
-    <p>Bir şirketin finansal sağlığını anlamak için bu üçüne bakarız:</p>
+    <h1>Accounting Fundamentals</h1>
+    <p>IB teknik mülakatlarının temel taşı. Buradaki soruları ezberlemek yerine mantığını anla; uygulamalı sorular (depreciation, working capital, deferred tax) çok sık gelir.</p>
+
+    <h2>1) Üç Finansal Tablo</h2>
+    <p>Gelir Tablosu (kârlılık), Bilanço (anı fotoğrafı), Nakit Akışı (gerçek nakit). Bağlantı:</p>
     <ul>
-        <li><strong>Income Statement (Gelir Tablosu):</strong> Belirli bir dönemdeki (1 yıl/çeyrek) kârlılığı gösterir. Gelir - Gider = Net Kâr.</li>
-        <li><strong>Balance Sheet (Bilanço):</strong> Şirketin "o anki" fotoğrafıdır. Varlıklar = Borçlar + Özkaynaklar.</li>
-        <li><strong>Cash Flow Statement (Nakit Akış Tablosu):</strong> Kasaya giren ve çıkan "gerçek" nakti gösterir.</li>
+        <li>Net Income → Cash Flow Statement'ın başına ve Bilanço'da Retained Earnings'e gider.</li>
+        <li>Cash Flow sonunda çıkan Net Change in Cash → Bilanço'daki Cash'e eklenir.</li>
+        <li>Bilanço denklemi: Assets = Liabilities + Equity her adımda korunur.</li>
     </ul>
 
+    <h2>2) Altın Soru: Depreciation +10$ (Vergi %40)</h2>
     <div class="qa-box">
-        <span class="question">Soru: Bu üç tablo birbirine nasıl bağlanır?</span>
+        <span class="question">3 tablo etkisi nedir?</span>
         <div class="answer">
-            1. <strong>Net Income</strong> (Income Statement'ın en altı), Cash Flow Statement'ın en tepesine gelir.<br>
-            2. Ayrıca <strong>Net Income</strong>, Balance Sheet'teki "Retained Earnings" (Dağıtılmamış Kârlar) kısmına eklenir.<br>
-            3. Cash Flow Statement'ın sonundaki <strong>"Net Change in Cash"</strong>, Balance Sheet'teki "Cash" kalemine eklenir ve tabloyu dengeler.
+            <strong>IS:</strong> EBIT 10 düşer → Net Income 6 düşer.<br>
+            <strong>CFS:</strong> Net Income -6, Depreciation +10 eklenir → Net Cash +4.<br>
+            <strong>BS:</strong> Cash +4, PP&E -10 → Assets -6. Retained Earnings -6 → Denge sağlanır.
         </div>
     </div>
 
-    <h2>2. Altın Soru: Depreciation (Amortisman)</h2>
-    <p>Mülakatların en klasik sorusudur. Mantığı şudur: Amortisman "nakit olmayan" bir giderdir. Yani kâğıt üzerinde gider yazarız ama cebimizden para çıkmaz (çünkü makineyi yıllar önce aldık).</p>
-
+    <h2>3) Working Capital (Net)</h2>
+    <p>Formül: Current Assets - Current Liabilities. Pozitif değişim genelde nakit tüketir (büyüme için stok/alacak artışı); negatif değişim nakit yaratır.</p>
     <div class="qa-box">
-        <span class="question">Soru: Depreciation 10$ artarsa 3 tablo nasıl etkilenir? (Vergi oranı %40)</span>
-        <div class="answer">
-            <strong>1. Income Statement:</strong> Gider 10$ artar. Vergi öncesi kâr 10$ düşer. Net Kâr (Net Income) <strong>6$ düşer</strong> (10$ * (1-%40)).<br><br>
-            <strong>2. Cash Flow Statement:</strong> Net Income tepede 6$ düşüktü. Ama Depreciation (10$) nakit çıkışı olmadığı için geri eklenir. (-6$ + 10$) = Nakit akışı <strong>4$ artar</strong> (Vergi avantajı sağladığı için!).<br><br>
-            <strong>3. Balance Sheet:</strong> Nakit (Cash) 4$ arttı. Ama PP&E (Makineler) değer kaybettiği için 10$ düştü. Varlıklar toplamda 6$ düştü. Eşitliğin diğer tarafında, Net Income düştüğü için Retained Earnings 6$ düştü. <strong>Denge sağlandı (-6$ = -6$).</strong>
-        </div>
+        <span class="question">AR +10 arttı, başka bir şey yok. Etki?</span>
+        <div class="answer">Cash Flow: Change in NWC -10 (nakit çıktı), Cash -10. Bilanço: AR +10, Cash -10 (denge). Gelir tablosu etkilenmez.</div>
     </div>
 
-    <h2>3. Working Capital (İşletme Sermayesi)</h2>
-    <p>Formül: <strong>Current Assets - Current Liabilities</strong>.</p>
-    <p>Şirketin kısa vadeli borçlarını ödeyip ödeyemeyeceğini gösterir. Eğer "Change in Net Working Capital" pozitifse, şirket büyümek için nakit harcıyordur (Stok alıyor veya alacakları artıyor).</p>
+    <h2>4) Deferred Revenue (Ertelenmiş Gelir)</h2>
+    <p>Peşin tahsil edilir, hizmet/ürün sonra verilir. İlk anda Cash ↑, Deferred Revenue (Liability) ↑.</p>
+    <div class="qa-box">
+        <span class="question">Deferred Revenue 20 arttı; hizmeti sonra vereceğiz. Etki?</span>
+        <div class="answer">IS yok. CFS: Cash +20 (CFO). BS: Cash +20, Deferred Rev +20.</div>
+    </div>
+
+    <h2>5) Deferred Tax (Ertelenmiş Vergi)</h2>
+    <p>Muhasebe kârı ile vergi kârı farklıysa oluşur. Geçici farklar: Accelerated Depreciation, Warranty, Bad Debt vb.</p>
+    <div class="qa-box">
+        <span class="question">Accelerated Depreciation ile vergi düşük çıktı, ne olur?</span>
+        <div class="answer">Vergi ödemesi düşer → Cash korunur; ancak gelecekte ödenecek vergi için Deferred Tax Liability oluşur.</div>
+    </div>
+
+    <h2>6) Stock-Based Compensation (SBC)</h2>
+    <p>Non-cash gider. IS'de gider, CFS'de CFO'ya eklenir. Ancak yeni hisseler çıkacağı için hisse başı kâr (EPS) seyrelebilir.</p>
+
+    <h2>7) PP&E Rollforward (Kısa)</h2>
+    <ul>
+        <li>Başlangıç PP&E</li>
+        <li>+ CapEx (CFS'de CFI)</li>
+        <li>- Depreciation (IS gider, CFS'de eklenir)</li>
+        <li>- Disposal (satış) → Cash artar, PP&E düşer, gain/loss IS'de</li>
+    </ul>
+
+    <h2>8) Goodwill & Impairment</h2>
+    <p>Satın alma bedeli - Net identifiable assets = Goodwill. Değer düşerse IS'de impairment (non-cash) yazılır, CFS'de eklenir, BS'de Goodwill azalır.</p>
+
+    <div class="divider"></div>
+    <p class="mini">Kontrol listesi (mülakat için ezberle): 3 tablo bağlantısı, Depreciation +10 sorusu, Working Capital etkisi, Deferred Revenue/Tax mantığı, SBC'nin nakitsiz olması ve PP&E rollforward.</p>
 
 </body>
 </html>

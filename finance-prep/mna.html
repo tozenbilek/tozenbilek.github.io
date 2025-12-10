@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&A Guide | IB Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Açık Tema */
+        :root { --bg: #f8fafc; --t1: #1f2933; --t2: #52606d; --t3: #7b8794; --acc: #0A84FF; --bd: #e2e8f0; }
+        body { background: var(--bg); color: var(--t1); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 24px; max-width: 880px; margin: 0 auto; }
+        h1 { font-size: 28px; font-weight: 600; border-bottom: 1px solid var(--bd); padding-bottom: 14px; margin-bottom: 20px; }
+        h2 { font-size: 20px; font-weight: 600; color: var(--acc); margin-top: 32px; font-family: 'JetBrains Mono', monospace; }
+        p { color: var(--t2); margin-bottom: 12px; }
+        ul { color: var(--t2); margin-bottom: 12px; }
+        .nav { display: flex; gap: 12px; margin-bottom: 20px; }
+        .link { color: var(--t2); text-decoration: none; font-size: 14px; padding: 8px 12px; border: 1px solid var(--bd); border-radius: 4px; background: #fff; }
+        .link:hover { color: var(--t1); border-color: #cbd5e1; }
+        .qa-box { background: #fff; border: 1px solid var(--bd); border-left: 3px solid var(--acc); padding: 16px; margin: 18px 0; border-radius: 8px; }
+        .question { font-weight: 600; color: var(--t1); margin-bottom: 8px; display: block; }
+        .answer { color: var(--t2); font-size: 14px; }
+        .step { margin-left: 16px; color: var(--t2); }
+        .divider { border-top: 1px solid var(--bd); margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a class="link" href="index.html">← Back to IB Prep</a>
+        <a class="link" href="../index.html">↩ Main Terminal</a>
+        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+    </div>
+
+    <h1>M&A Basics (Accretion/Dilution)</h1>
+    <p>Adım adım ilerleyelim: önce satın alma mantığı, sonra accretion/dilution hesabı, ardından sinerji ve satın alma muhasebesi.</p>
+
+    <h2>1) Neden M&A?</h2>
+    <ul>
+        <li>Büyüme (yeni pazar/ürün), sinerji (maliyet/gelir), ölçek, vergi kalkanı, stratejik savunma.</li>
+    </ul>
+
+    <h2>2) Accretion / Dilution Mantığı</h2>
+    <p>Satın alma sonrası alıcı şirketin EPS’i artıyor mu (accretive) yoksa düşüyor mu (dilutive)?</p>
+    <div class="qa-box">
+        <span class="question">Hızlı yaklaşım (yüksek sesle anlat):</span>
+        <div class="answer">
+            1) Satın alma fiyatı ve ödeme yapısı (nakit / borç / hisse) belirlenir.<br>
+            2) Kaynak maliyetleri (nakit → kayıp faiz; borç → faiz gideri; hisse → seyrelme) toplanır.<br>
+            3) Hedefin net kârı + sinerjiler eklenir, amortizasyon/ek giderler çıkarılır.<br>
+            4) Yeni hisselerle bölünür → Yeni EPS. Eski EPS ile kıyasla: artarsa accretive, düşerse dilutive.
+        </div>
+    </div>
+
+    <h2>3) Sinerji Türleri</h2>
+    <ul>
+        <li><strong>Maliyet Sinerjisi:</strong> Satın alma sonrası giderleri kısma (SG&A, tedarik).</li>
+        <li><strong>Gelir Sinerjisi:</strong> Cross-sell, yeni pazarlar. (Genelde daha muhafazakâr alınır.)</li>
+    </ul>
+
+    <h2>4) Satın Alma Muhasebesi (Purchase Price Allocation - PPA)</h2>
+    <p>Ödeme > net varlık değeri ise fark Goodwill olur. Önemli kalemler:</p>
+    <ul>
+        <li>İtfa edilebilir maddi olmayan varlıklar (customer list, patent) → Amortization gideri yaratır.</li>
+        <li>Goodwill → Amortize edilmez; impairment testine tabi.</li>
+    </ul>
+
+    <h2>5) Basit Accretion/Dilution Örneği (Nakit ile Alım)</h2>
+    <div class="qa-box">
+        <span class="question">Senaryo</span>
+        <div class="answer">
+            Alıcı: Net Income 100, Pay 50, F/K 15x, Nakit faizi: %4<br>
+            Hedef: Net Income 20, Satın alma fiyatı: 20 * 15 = 300 (aynı çarpan)
+        </div>
+    </div>
+    <div class="qa-box">
+        <span class="question">Hesap</span>
+        <div class="answer">
+            Kaynak maliyeti: 300 nakit → kaybedilen faiz = 300 * 4% = 12<br>
+            Eklenen net kâr: +20<br>
+            Yeni net kâr: 100 - 12 + 20 = 108<br>
+            Hisse sayısı aynı (nakitle alındı): EPS yeni = 108 / 50 = 2.16 (eski EPS: 2.00) → %8 accretive.
+        </div>
+    </div>
+
+    <div class="divider"></div>
+    <p class="step"><strong>Ezber Kontrol Listesi:</strong> Accretion/Dilution 4 adımı, sinerji türleri, PPA/Goodwill, amortizasyon etkisi, basit nakit alım örneği.</p>
+
+</body>
+</html>
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LBO Guide | IB Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --bg: #f8fafc; --t1: #1f2933; --t2: #52606d; --t3: #7b8794; --acc: #d97706; --bd: #e2e8f0; }
+        body { background: var(--bg); color: var(--t1); font-family: 'Inter', sans-serif; line-height: 1.6; padding: 40px 24px; max-width: 880px; margin: 0 auto; }
+        h1 { font-size: 28px; font-weight: 600; border-bottom: 1px solid var(--bd); padding-bottom: 14px; margin-bottom: 20px; }
+        h2 { font-size: 20px; font-weight: 600; color: var(--acc); margin-top: 32px; font-family: 'JetBrains Mono', monospace; }
+        p { color: var(--t2); margin-bottom: 12px; }
+        ul { color: var(--t2); margin-bottom: 12px; }
+        .nav { display: flex; gap: 12px; margin-bottom: 20px; }
+        .link { color: var(--t2); text-decoration: none; font-size: 14px; padding: 8px 12px; border: 1px solid var(--bd); border-radius: 4px; background: #fff; }
+        .link:hover { color: var(--t1); border-color: #cbd5e1; }
+        .qa-box { background: #fff; border: 1px solid var(--bd); border-left: 3px solid var(--acc); padding: 16px; margin: 18px 0; border-radius: 8px; }
+        .question { font-weight: 600; color: var(--t1); margin-bottom: 8px; display: block; }
+        .answer { color: var(--t2); font-size: 14px; }
+        .mini { font-size: 13px; color: var(--t2); }
+        .divider { border-top: 1px solid var(--bd); margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <a class="link" href="index.html">← Back to IB Prep</a>
+        <a class="link" href="../index.html">↩ Main Terminal</a>
+        <a class="link" href="https://github.com/tozenbilek/tozenbilek.github.io" target="_blank">GitHub Repo</a>
+    </div>
+
+    <h1>LBO (Leveraged Buyout) Basics</h1>
+    <p>Özel sermaye (PE) mülakatlarının vazgeçilmezi. Ama IB tekniklerinde de karşınıza çıkar. Burada “paper LBO” yapabilecek kadar temel oluşturuyoruz.</p>
+
+    <h2>1) Mantık</h2>
+    <p>Borç (leverage) kullanarak şirket satın al, nakit akışlarıyla borcu indir, birkaç yıl sonra daha yüksek bir değere sat. Yüksek kaldıraç → daha yüksek özsermaye getirisi (IRR), ama daha yüksek risk.</p>
+
+    <h2>2) Kaynaklar / Kullanımlar (Sources & Uses)</h2>
+    <ul>
+        <li><strong>Uses:</strong> Satın alma bedeli (Equity Value), borç geri ödemeleri, ücretler.</li>
+        <li><strong>Sources:</strong> Yeni borçlar (Term Loan, Notes), Private Equity koyduğu özsermaye.</li>
+    </ul>
+
+    <div class="qa-box">
+        <span class="question">Basit Örnek</span>
+        <div class="answer">
+            Satın alma fiyatı 100. Transaction fees 5.<br>
+            Uses: 105. Borç 70, Equity 35 → Sources 105. Kapanışta bilanço dengesi sağlanır.
+        </div>
+    </div>
+
+    <h2>3) Borç Takvimi (Debt Schedule)</h2>
+    <p>Faiz ve anapara ödemelerini gösterir. Serbest nakit (FCF) varsa “cash sweep” ile borç daha hızlı kapanır.</p>
+
+    <h2>4) IRR ve MOIC</h2>
+    <ul>
+        <li><strong>MOIC:</strong> Exit Equity Value / Girilen Equity.</li>
+        <li><strong>IRR:</strong> Yıllıklaştırılmış getiri. Basit kontrol: 2x ~ 7 yıl → ~10%, 2x ~ 5 yıl → ~15%.</li>
+    </ul>
+
+    <div class="qa-box">
+        <span class="question">Mini Paper LBO</span>
+        <div class="answer">
+            Giriş: EV 100, Net Debt 0 → Equity 100. Borç 60, Equity 40 (PE koydu).<br>
+            5 yıl sonra EV 140, Net Debt 20 → Exit Equity 120. IRR kabaca: 40 → 120 (3x) / 5 yıl ≈ ~25%+.<br>
+            (Kesin IRR için finansal hesap yapmalısın; ama mülakatta kabaca büyüklük göstermek yeter.)
+        </div>
+    </div>
+
+    <h2>5) Duyarlılık (Sensitivities)</h2>
+    <p>IRR, giriş/çıkış çarpanları, kaldıraç seviyesi, EBITDA büyümesi ve exit multiple’a çok duyarlıdır. Mülakatta “en önemli kaldıraç IRR’i en çok ne etkiler?” sorusuna: <strong>Exit multiple ve kaldıraç</strong>.</p>
+
+    <div class="divider"></div>
+    <p class="mini">Kontrol listesi: Kaynak/Kullanım tablosu, basit debt schedule mantığı, cash sweep, MOIC/IRR ilişkisi, mini paper LBO anlatımı, duyarlılık faktörleri.</p>
+
+</body>
+</html>
+
