@@ -207,18 +207,27 @@
             margin-bottom: 8px;
         }
 
-        .role-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
+        /* Eğitim ve Deneyim Başlıkları İçin Ortak Stil */
         .company-name {
-            font-size: 0.9rem;
-            color: #fff; /* Yeşil yerine Beyaz - Hiyerarşi düzeltildi */
-            opacity: 0.8;
+            font-size: 0.85rem;
+            color: var(--accent-green); /* Yeşil yerine Gri/Beyaz yapılmalıydı, aşağıda düzelttim */
             margin-bottom: 4px;
             display: block;
+            font-family: 'JetBrains Mono', monospace; /* Kurum isimleri kod gibi dursun */
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        /* Düzeltme: Şirket isimleri gri olsun, yeşil değil */
+        .timeline-header .company-name {
+             color: var(--text-secondary);
+        }
+
+        .role-title {
+            font-size: 1.1rem; /* Biraz büyüttüm */
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
         }
 
         .date {
@@ -425,7 +434,7 @@
             <div class="timeline-item">
                 <div class="timeline-header">
                     <div>
-                        <span class="company-name">Hacettepe University</span>
+                        <span class="company-name" style="color: var(--text-secondary);">Hacettepe University</span>
                         <span class="role-title">B.S. Computer Engineering</span>
                     </div>
                     <span class="date">Exp. 2027</span>
@@ -438,7 +447,7 @@
             <div class="timeline-item" style="margin-top: 24px;">
                 <div class="timeline-header">
                     <div>
-                        <span class="company-name">Eskişehir Anatolian High School</span>
+                        <span class="company-name" style="color: var(--text-secondary);">Eskişehir Anatolian High School</span>
                         <span class="role-title">High School Diploma</span>
                     </div>
                     <span class="date">Grad. 2019</span>
