@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GMV & Revenue | Tech</title>
+    <title>GMV & Revenue | Tech Valuation</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -20,27 +20,55 @@
 
         <h1>3.1 GMV vs Revenue</h1>
         <p>
-            Pazaryeri (Marketplace) modellerinde (Uber, Airbnb, Trendyol) ciro kavramı farklıdır.
+            Pazaryeri (Marketplace) şirketlerini (Uber, Airbnb, Trendyol) analiz ederken en çok yapılan hata:
+            Hacim (GMV) ile Ciro'yu (Revenue) karıştırmaktır.
         </p>
 
-        <h2 style="color: var(--accent-indigo);">GMV (Gross Merchandise Value)</h2>
-        <p>
-            Platform üzerinden geçen toplam işlem hacmi.
-            <br>Örn: Uber ile 100 TL'lik yolculuk yaptınız. GMV = 100 TL.
-        </p>
+        <h2 style="color: var(--accent-indigo);">1. The Uber Example (Görsel Anlatım)</h2>
+        <p>Excel bilmenize gerek yok. Cebinizdeki Uber fişine bakın.</p>
+        
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-receipt"></i> Uber_Receipt.pdf</div>
+            <div class="excel-grid" style="grid-template-columns: 200px 150px 150px;">
+                <div class="excel-cell header">Kalem</div>
+                <div class="excel-cell header">Tutar</div>
+                <div class="excel-cell header">Kimin Parası?</div>
 
-        <h2 style="color: var(--accent-indigo);">Net Revenue</h2>
-        <p>
-            Şirketin kasasına giren komisyon (Take Rate).
-            <br>Örn: Uber şoföre 80 TL verir, kendine 20 TL alır. Revenue = 20 TL.
-        </p>
+                <div class="excel-cell row-num">Yolculuk Ücreti</div>
+                <div class="excel-cell bold">100 TL</div>
+                <div class="excel-cell">Bu <strong>GMV</strong>'dir.</div>
 
-        <h2 style="color: var(--accent-indigo);">Valuation Trap</h2>
-        <p>
-            E-ticaret şirketlerini GMV üzerinden değerlemek tehlikelidir. 
-            Çünkü bazı şirketler (Örn: Groupon) GMV'nin tamamını gelir (Revenue) gibi gösterip (Gross Revenue Accounting), cirolarını şişirmeye çalışmışlardır. 
-            Her zaman Net Revenue (Net Ciro) esastır.
-        </p>
+                <div class="excel-cell row-num">(-) Şoför Payı</div>
+                <div class="excel-cell" style="color: red;">(80 TL)</div>
+                <div class="excel-cell">Ahmet Bey'in cebine gider.</div>
+
+                <div class="excel-cell row-num">(=) Uber Payı</div>
+                <div class="excel-cell bold" style="color: green;">20 TL</div>
+                <div class="excel-cell">Bu <strong>Revenue</strong>'dur.</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-indigo);">2. Definitions</h2>
+        <div class="content-box-base">
+            <ul>
+                <li><strong>GMV (Gross Merchandise Value):</strong> Platform üzerinden geçen toplam para trafiği. Şirketin "ekonomik büyüklüğünü" gösterir. (100 TL).</li>
+                <li><strong>Revenue (Net Revenue):</strong> Şirketin kasasında kalan komisyon. Şirketin "gerçek cirosunu" gösterir. (20 TL).</li>
+                <li><strong>Take Rate (Komisyon Oranı):</strong> Şirketin ne kadar güçlü olduğunu gösterir.
+                    <br><em>Formül: Revenue / GMV = 20 / 100 = %20.</em>
+                </li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-indigo);">3. The Trap (Değerleme Tuzağı)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Gross vs Net Accounting</div>
+            <p>
+                Bazı kurnaz şirketler (Örn: Geçmişte Groupon), cirolarını büyük göstermek için GMV'yi "Revenue" olarak raporlamaya çalıştılar.
+                <br><br>
+                Yatırımcıya "Biz 100 TL ciro yapıyoruz" dediler. Halbuki 80 TL'si şoföre gidiyordu.
+                Bu muhasebe hilesidir. Her zaman <strong>Net Revenue</strong> esastır.
+            </p>
+        </div>
 
         <div class="lesson-nav">
             <a href="rule-of-40.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Rule of 40</a>
