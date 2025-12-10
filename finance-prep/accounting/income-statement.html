@@ -6,6 +6,8 @@
     <title>Income Statement | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -20,47 +22,59 @@
 
         <h1>1.1 Income Statement (Gelir Tablosu)</h1>
         <p>
-            Gelir tablosu, şirketin bir dönemdeki (1 Çeyrek veya 1 Yıl) <strong>kârlılığını</strong> ölçer.
-            "Ne kadar sattım, ne kadar harcadım, bana ne kaldı?" sorusunun cevabıdır.
+            Gelir tablosu bir "Film"dir. Şirketin 1 yıl boyunca ne kadar sattığını, ne kadar harcadığını ve sonunda elinde ne kaldığını (Kâr) anlatır.
         </p>
 
+        <h2 style="color: var(--accent-green);">1. The Structure (Film Senaryosu)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-file-invoice-dollar"></i> P&L_Statement.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 150px;">
+                <div class="excel-cell header">Line Item</div>
+                <div class="excel-cell header">Anlamı</div>
+
+                <div class="excel-cell bold">Revenue (Sales)</div>
+                <div class="excel-cell">Ciro (Satışlar)</div>
+
+                <div class="excel-cell indent" style="color:red;">(-) COGS</div>
+                <div class="excel-cell">Malın Maliyeti</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">= Gross Profit</div>
+                <div class="excel-cell" style="background:#f0fdf4;">Brüt Kâr</div>
+
+                <div class="excel-cell indent" style="color:red;">(-) Operating Expenses</div>
+                <div class="excel-cell">Kira, Maaş, Reklam</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">= Operating Income (EBIT)</div>
+                <div class="excel-cell" style="background:#dcfce7;">Faaliyet Kârı</div>
+
+                <div class="excel-cell indent" style="color:red;">(-) Interest & Taxes</div>
+                <div class="excel-cell">Bankanın ve Devletin Payı</div>
+
+                <div class="excel-cell bold" style="background:#22c55e; color:white;">= Net Income</div>
+                <div class="excel-cell" style="background:#22c55e; color:white;">Net Kâr (Bizim Payımız)</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Revenue Recognition (Gelir Ne Zaman Yazılır?)</h2>
         <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-solid fa-film"></i> Analoji: Film Şeridi</div>
-            <p style="color: #1f2933; margin: 0;">
-                Gelir tablosu bir videodur. 1 Ocak'ta "Kayıt" tuşuna basarsınız, 31 Aralık'ta "Dur" dersiniz.
-                Aradaki tüm satışları ve giderleri toplarsınız.
-                Bilanço (Balance Sheet) ise videonun son karesindeki ekran görüntüsüdür (Snapshot).
+            <div class="reddit-title"><i class="fa-solid fa-hand-holding-dollar"></i> Nakit vs Gelir</div>
+            <p>
+                Parayı cebinize koymanız, onu "Gelir" yazabileceğiniz anlamına gelmez.
+                <br>
+                <strong>Kural:</strong> Hizmeti verdiğin an geliri yazarsın.
+                <br><br>
+                <em>Örnek:</em> Spor salonu üyeliği (Yıllık 1200 TL peşin).
+                <br>Ocak ayında parayı aldınız (+1200 Nakit).
+                <br>Ama Ocak ayında sadece 100 TL Gelir yazabilirsiniz (1/12). 
+                <br>Kalan 1100 TL "Deferred Revenue" (Borç) olarak bekler.
             </p>
         </div>
 
-        <h2 style="color: var(--accent-green);">The Structure (Yukarıdan Aşağıya)</h2>
-        <div class="mech-box">
-            <strong>1. Revenue (Sales / Top Line):</strong> Satış Gelirleri.<br>
-            <span style="color:red;">(-) COGS (Cost of Goods Sold):</span> Üretim maliyeti (Hammadde, işçilik).<br>
-            <hr>
-            <strong>= Gross Profit (Brüt Kâr):</strong> Ürünün kendisinden ne kadar kazanıyorsun?<br>
-            <span style="color:red;">(-) Operating Expenses (OpEx):</span> Kira, Pazarlama, Ar-Ge (SG&A).<br>
-            <hr>
-            <strong>= EBIT (Operating Income):</strong> Ana faaliyet kârı. (En önemli satır).<br>
-            <span style="color:red;">(-) Interest Expense:</span> Borç faizleri.<br>
-            <span style="color:red;">(-) Taxes:</span> Devlete verilen pay.<br>
-            <hr>
-            <strong>= Net Income (Bottom Line):</strong> Hissedara kalan net para.
-        </div>
-
-        <h2 style="color: var(--accent-green);">Revenue Recognition (Gelir Ne Zaman Yazılır?)</h2>
-        <p>
-            Parayı tahsil ettiğinizde DEĞİL, hizmeti verdiğinizde yazarsınız (Accrual Basis).
-            <br>
-            <em>Örnek:</em> Müşteriden 120 TL'lik yıllık abonelik ücretini Ocak ayında peşin aldınız.
-            <br>
-            <strong>Ocak Ayı Gelir Tablosu:</strong> Sadece 10 TL gelir yazarsınız (1/12). Geri kalan 110 TL Bilançoda "Deferred Revenue" (Borç) olarak bekler.
-        </p>
-
-        <h2 style="color: var(--accent-green);">COGS vs OpEx (Matching Principle)</h2>
+        <h2 style="color: var(--accent-green);">3. COGS vs OpEx (Gider Ayrımı)</h2>
+        <p>Her gider aynı değildir.</p>
         <ul>
-            <li><strong>COGS:</strong> Gelirle doğrudan ilişkili giderlerdir. Bir tane daha iPhone satmak için bir tane daha ekran paneli almanız gerekir. (Değişken Maliyet).</li>
-            <li><strong>OpEx:</strong> Gelirle doğrudan ilişkili değildir. Hiç satış yapmasanız da kiranızı ve muhasebecinin maaşını ödersiniz. (Sabit Maliyet).</li>
+            <li><strong>COGS (Değişken):</strong> Bir tane daha ürün satmak için yapman gereken harcama (Hammadde). Satış artarsa bu da artar.</li>
+            <li><strong>OpEx (Sabit):</strong> Dükkanı açık tutmak için yapman gereken harcama (Kira, Muhasebeci). Satış yapmasan da ödersin.</li>
         </ul>
 
         <div class="lesson-nav">

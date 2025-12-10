@@ -6,6 +6,8 @@
     <title>Goodwill Impairment | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,27 +20,36 @@
             <span style="color: var(--text-primary);">Goodwill</span>
         </nav>
 
-        <h1>3.4 Goodwill Impairment</h1>
+        <h1>3.4 Goodwill Impairment (Değer Düşüklüğü)</h1>
         <p>
-            Goodwill (Şerefiye), bir şirketi defter değerinin üzerinde satın aldığınızda oluşan farktır (Premium).
-            Sonsuza kadar bilançoda kalır, ancak "Değeri düştü mü?" diye test edilir.
+            Goodwill (Şerefiye), "Hava Parası"dır. Sonsuza kadar bilançoda kalır, AMA her yıl "Acaba kazık mı yedik?" testi (Impairment Test) yapılmalıdır.
         </p>
 
-        <h2 style="color: var(--accent-green);">The Impairment Test</h2>
-        <p>Yılda en az bir kez yapılır.</p>
-        <div class="algo-box">
-            <strong>Adım 1:</strong> Satın alınan şirketin (Reporting Unit) şu anki piyasa değeri nedir?
-            <br><strong>Adım 2:</strong> Eğer Piyasa Değeri < Defter Değeri ise, Goodwill "Impaired" olmuştur.
-            <br><strong>Adım 3:</strong> Aradaki fark kadar Goodwill silinir (Write-down).
+        <h2 style="color: var(--accent-green);">1. The "Kazık" Testi (Logic)</h2>
+        <div class="mech-box">
+            Bir şirketi 1 Milyar $'a aldınız. Defter değeri 600 Milyon $ idi. 
+            <strong>Goodwill = 400 Milyon $.</strong>
+            <br><br>
+            Aradan 3 yıl geçti. Şirket kötü yönetildi, müşteri kaybetti. 
+            Bugün satsanız değeri 700 Milyon $ ediyor.
+            <br>
+            Ama sizin defterinizde hala (600 Asset + 400 Goodwill) = 1000 Milyon $ olarak duruyor.
+            <br><br>
+            <strong>Karar:</strong> Defteriniz yalan söylüyor (1000 > 700). 
+            Aradaki 300 Milyon $'lık farkı silmek zorundasınız.
         </div>
 
-        <h2 style="color: var(--accent-green);">Consequences (Sonuçlar)</h2>
-        <p>
-            Goodwill silindiğinde (Impairment Charge):
-            <br>1. Net Income düşer (Büyük bir zarar yazılır).
-            <br>2. Hisse fiyatı genellikle düşer (Yönetimin geçmişte pahalı bir hata yaptığının itirafıdır).
-            <br>3. Nakit çıkışı OLMAZ (Non-Cash). Para yıllar önce şirketi alırken zaten çıkmıştı.
-        </p>
+        <h2 style="color: var(--accent-green);">2. Accounting Treatment</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-eraser"></i> Write-Down (Silme İşlemi)</div>
+            <p>
+                300 Milyon $ Goodwill silindiğinde ne olur?
+                <br><br>
+                1. <strong>Income Statement:</strong> "Impairment Charge" adıyla devasa bir gider yazılır. Net Income çakılır (Zarar).
+                <br>2. <strong>Balance Sheet:</strong> Goodwill azalır, Retained Earnings azalır. Bilanço küçülür.
+                <br>3. <strong>Cash Flow:</strong> Sürpriz! Nakit çıkışı OLMAZ. Parayı zaten yıllar önce şirketi alırken ödemiştiniz. Bu sadece bir "itiraf"tır.
+            </p>
+        </div>
 
         <div class="lesson-nav">
             <a href="intangibles.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Intangibles</a>
