@@ -1,47 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capital Markets | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f8fafc; --surface-color: #ffffff; --border-color: #e2e8f0;
-            --text-primary: #1f2933; --text-secondary: #52606d; --accent-cm: #7c3aed; /* Purple */
-            --shadow: 0 6px 20px rgba(0,0,0,0.06);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg-color); color: var(--text-primary); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; }
-        .container { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
-        
-        .nav-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
-        .back-btn { text-decoration: none; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 4px; background: var(--surface-color); display: flex; align-items: center; gap: 8px; box-shadow: var(--shadow); transition: all 0.2s; }
-        .back-btn:hover { border-color: #cbd5e1; color: var(--text-primary); }
-
-        h1 { font-size: 24px; font-weight: 600; margin-bottom: 8px; color: var(--text-primary); display: flex; align-items: center; gap: 12px; }
-        .tag-cm { background: rgba(124, 58, 237, 0.12); color: var(--accent-cm); font-size: 11px; padding: 4px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; }
-        .desc { color: var(--text-secondary); margin-bottom: 32px; max-width: 640px; }
-
-        .grid-modules { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
-        .module-card { background: var(--surface-color); border: 1px solid var(--border-color); padding: 24px; border-radius: 10px; transition: all 0.2s; text-decoration: none; display: flex; flex-direction: column; box-shadow: var(--shadow); height: 100%; }
-        .module-card:hover { transform: translateY(-2px); border-color: #cbd5e1; }
-        .icon-box { width: 32px; height: 32px; background: #f5f3ff; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--accent-cm); }
-        .module-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
-        .module-desc { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; flex-grow: 1; }
-        .status-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-secondary); padding: 2px 6px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 3px; align-self: flex-start; }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
-        <nav class="nav-bar">
-            <a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
-            <span style="color: var(--text-secondary); font-size: 12px; font-family: 'JetBrains Mono';">/ Capital Markets</span>
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
         </nav>
         
         <header>
-            <h1>Capital Markets <span class="tag-cm">Module 7</span></h1>
+            <h1>Capital Markets <span class="tag-ib" style="color: #7c3aed; background: rgba(124, 58, 237, 0.1);">Module 8</span></h1>
             <p class="desc">
                 ECM (Hisse) ve DCM (Borç) departmanları, şirketlerin ve hükümetlerin ihtiyacı olan parayı bulur.
                 IPO'lar, Tahvil İhraçları ve Sendikasyon kredileri burada döner.
@@ -51,16 +25,16 @@
         <div class="grid-modules">
             <a href="ipo.html" class="module-card">
                 <div class="icon-box"><i class="fa-solid fa-rocket"></i></div>
-                <h3 class="module-title">ECM: The IPO Process</h3>
+                <h3 class="module-title" style="color: #7c3aed;">ECM: The IPO Process</h3>
                 <p class="module-desc">Halka arz süreci nasıl işler? Greenshoe Option, Roadshow ve Pricing mekanikleri.</p>
-                <span class="status-badge">Lesson 7.1</span>
+                <span class="status-badge" style="color: #7c3aed; border-color: #7c3aed;">Lesson 8.1</span>
             </a>
             
             <a href="debt.html" class="module-card">
                 <div class="icon-box"><i class="fa-solid fa-file-contract"></i></div>
-                <h3 class="module-title">DCM: Debt Issuance</h3>
+                <h3 class="module-title" style="color: #7c3aed;">DCM: Debt Issuance</h3>
                 <p class="module-desc">Investment Grade vs High Yield. Tahvil ihracı ve Sendikasyon (Syndicate) yapısı.</p>
-                <span class="status-badge">Lesson 7.2</span>
+                <span class="status-badge" style="color: #7c3aed; border-color: #7c3aed;">Lesson 8.2</span>
             </a>
         </div>
     </div>

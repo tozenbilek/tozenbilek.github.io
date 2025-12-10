@@ -305,6 +305,71 @@ a { color: inherit; text-decoration: none; }
 }
 .drill-item:active .drill-a, .drill-item:focus-within .drill-a { display: block; }
 
+/* Excel Grid Simulator */
+.excel-window {
+    background: #fff;
+    border: 1px solid #107c41; /* Excel Green */
+    border-radius: 6px;
+    margin: 24px 0;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.excel-header {
+    background: #107c41;
+    color: white;
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.excel-toolbar {
+    background: #f3f2f1;
+    border-bottom: 1px solid #e1dfdd;
+    padding: 6px 12px;
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: #323130;
+}
+
+.excel-grid {
+    display: grid;
+    grid-template-columns: 40px 1fr 80px 80px 80px; /* RowNum, Label, Year1, Year2, Year3 */
+    border-collapse: collapse;
+}
+
+.excel-cell {
+    border: 1px solid #e1dfdd;
+    padding: 4px 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.excel-cell.header {
+    background: #f3f2f1;
+    font-weight: 600;
+    text-align: center;
+    color: #323130;
+}
+
+.excel-cell.row-num {
+    background: #f3f2f1;
+    text-align: center;
+    color: #323130;
+    font-size: 11px;
+}
+
+.excel-cell.hardcode { color: #0000ff; } /* Blue for inputs */
+.excel-cell.formula { color: #000000; }  /* Black for formulas */
+.excel-cell.link { color: #008000; }     /* Green for links */
+
 /* Responsive */
 @media (max-width: 600px) {
     .container { padding: 32px 16px; }

@@ -3,17 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modeling Lab | IB Prep</title>
+    <title>Excel Modeling Lab | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .step-card{background:var(--surface-color); border:1px solid var(--border-color); padding:20px; margin-bottom:16px; border-radius:8px; display:flex; gap:16px; box-shadow: var(--shadow);}
-        .step-num{background:var(--accent-green); color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;}
-        .step-content{font-size:14px; color:var(--text-secondary);}
-        .step-title{font-weight:600; color:var(--text-primary); margin-bottom:4px; display:block;}
-        .formula{font-family:'JetBrains Mono',monospace; background:#f0fdf4; color:#166534; padding:2px 6px; border-radius:4px; font-size:12px;}
-    </style>
 </head>
 <body>
     <div class="container">
@@ -22,40 +15,45 @@
         </nav>
 
         <header>
-            <h1>Excel Modeling Lab <span class="tag-ib" style="color: var(--accent-green); background: rgba(22, 163, 74, 0.1);">Practice</span></h1>
-            <p class="desc">Okumak yetmez. Excel'de boş bir sayfadan başlayıp 3-Statement Model kurmalısınız. İşte adım adım reçete.</p>
+            <h1>Excel Modeling Lab <span class="tag-ib" style="color: #047857; background: rgba(4, 120, 87, 0.1);">Hands-On</span></h1>
+            <p class="desc">
+                Okumak yetmez, parmak hafızası gerekir. Bu modül, boş bir Excel sayfasından başlayıp, çalışan bir 3-Statement Model kurana kadar size rehberlik eder. 
+                Her ders, gerçek bir analist gibi düşünmenizi sağlayacak "Usta-Çırak" metoduna göre tasarlanmıştır.
+            </p>
         </header>
 
-        <div class="step-card">
-            <div class="step-num">1</div>
-            <div class="step-content">
-                <span class="step-title">Setup & Hardcodes</span>
-                Sütunları oluşturun: Geçmiş Yıllar (2021A, 2022A) ve Tahmin Yılları (2023E - 2027E). Hardcode (elle girilen) verileri <strong>Mavi</strong>, formülleri <strong>Siyah</strong> yapın.
-            </div>
-        </div>
+        <div class="grid-modules">
+            <!-- Setup -->
+            <a href="setup.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-toolbox"></i></div>
+                <h3 class="module-title" style="color: #047857;">1. Setup & Best Practices</h3>
+                <p class="module-desc">Profesyonel modelleme standartları. Renk kodları (Blue/Black), kısayollar ve sayfa yapısı.</p>
+                <span class="status-badge" style="color: #047857; border-color: #047857;">Start Here</span>
+            </a>
 
-        <div class="step-card">
-            <div class="step-num">2</div>
-            <div class="step-content">
-                <span class="step-title">Income Statement Projection</span>
-                Revenue'yu % büyüme oranıyla artırın. <span class="formula">= Önceki_Ciro * (1 + Büyüme%)</span>. COGS ve Opex'i cironun yüzdesi olarak tahmin edin.
-            </div>
-        </div>
+            <!-- IS -->
+            <a href="income-statement.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-money-bill-trend-up"></i></div>
+                <h3 class="module-title" style="color: #047857;">2. Income Statement</h3>
+                <p class="module-desc">Gelir tahminleri (Drivers), COGS ve OpEx projeksiyonları. EBITDA'ya ulaşım.</p>
+                <span class="status-badge" style="color: #047857; border-color: #047857;">The Engine</span>
+            </a>
 
-        <div class="step-card">
-            <div class="step-num">3</div>
-            <div class="step-content">
-                <span class="step-title">Balance Sheet Schedules</span>
-                Working Capital'i gün (Days) bazında tahmin edin (DSO, DIO, DPO). PP&E takvimini kurun: Başlangıç + CapEx - Amortisman = Bitiş.
-            </div>
-        </div>
+            <!-- BS -->
+            <a href="balance-sheet.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3 class="module-title" style="color: #047857;">3. Balance Sheet & Schedules</h3>
+                <p class="module-desc">Working Capital döngüsü, PP&E roll-forward ve Debt takvimi. Modelin iskeleti.</p>
+                <span class="status-badge" style="color: #047857; border-color: #047857;">The Skeleton</span>
+            </a>
 
-        <div class="step-card">
-            <div class="step-num">4</div>
-            <div class="step-content">
-                <span class="step-title">Cash Flow Plug</span>
-                Nakit Akım Tablosunu oluşturun. En alttaki "Ending Cash"i Bilançodaki Cash satırına bağlayın. Eğer Varlık = Kaynak ise modeliniz çalışıyor demektir.
-            </div>
+            <!-- CFS -->
+            <a href="cash-flow.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-faucet"></i></div>
+                <h3 class="module-title" style="color: #047857;">4. Cash Flow & The Plug</h3>
+                <p class="module-desc">Indirect Method ile nakit akışı. Modelin dengelenmesi (Assets = L + E). Hata ayıklama.</p>
+                <span class="status-badge" style="color: #047857; border-color: #047857;">The Proof</span>
+            </a>
         </div>
     </div>
 </body>

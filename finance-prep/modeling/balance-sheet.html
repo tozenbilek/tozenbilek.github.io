@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Sheet | Modeling Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Modeling Lab</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Balance Sheet</span>
+        </nav>
+
+        <h1>3. Balance Sheet & Supporting Schedules</h1>
+        <p>
+            Bilanço kendi kendine oluşmaz. Onu besleyen "Destekleyici Takvimler" (Schedules) vardır. 
+            Özellikle <strong>Working Capital</strong> ve <strong>PP&E</strong> (Amortisman) takvimleri kritiktir.
+        </p>
+
+        <h2 style="color: #047857;">Schedule 1: Working Capital (İşletme Sermayesi)</h2>
+        <p>Alacaklar (AR), Stoklar (Inv) ve Borçlar (AP) ciroya paralel büyümez; gün sayısına (Days) göre büyür.</p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> WC Schedule</div>
+            <div class="excel-grid">
+                <div class="excel-cell header"></div>
+                <div class="excel-cell header">A</div>
+                <div class="excel-cell header">C (2023E)</div>
+                <div class="excel-cell header">Logic</div>
+                <div class="excel-cell header">Formula</div>
+
+                <div class="excel-cell row-num">40</div>
+                <div class="excel-cell">DSO (Days Sales Outstanding)</div>
+                <div class="excel-cell hardcode">45</div>
+                <div class="excel-cell" style="font-size: 11px;">Tahsilat Süresi</div>
+                <div class="excel-cell">Input</div>
+
+                <div class="excel-cell row-num">41</div>
+                <div class="excel-cell" style="font-weight: bold;">Accounts Receivable</div>
+                <div class="excel-cell formula">133</div>
+                <div class="excel-cell" style="font-size: 11px;">(Ciro / 365) * DSO</div>
+                <div class="excel-cell" style="font-size: 10px;">= (Rev / 365) * C40</div>
+            </div>
+        </div>
+
+        <h2 style="color: #047857;">Schedule 2: PP&E Roll-Forward (Duran Varlık)</h2>
+        <p>Varlıklar durduğu yerde erir (Amortisman) ve yeni yatırım (Capex) ile artar. Buna "Corkscrew" (Tirbuşon) hesabı denir.</p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> PP&E Schedule</div>
+            <div class="excel-grid" style="grid-template-columns: 40px 180px 100px 150px;">
+                <div class="excel-cell header"></div>
+                <div class="excel-cell header">A</div>
+                <div class="excel-cell header">C (2023E)</div>
+                <div class="excel-cell header">Logic</div>
+
+                <div class="excel-cell row-num">50</div>
+                <div class="excel-cell">Beginning PP&E</div>
+                <div class="excel-cell formula">500</div>
+                <div class="excel-cell" style="font-size: 11px;">= Önceki Yıl Sonu</div>
+
+                <div class="excel-cell row-num">51</div>
+                <div class="excel-cell">(+) CapEx</div>
+                <div class="excel-cell hardcode">50</div>
+                <div class="excel-cell" style="font-size: 11px;">Input (% of Sales)</div>
+
+                <div class="excel-cell row-num">52</div>
+                <div class="excel-cell">(-) Depreciation</div>
+                <div class="excel-cell formula">(40)</div>
+                <div class="excel-cell" style="font-size: 11px;">Input (% of PP&E)</div>
+
+                <div class="excel-cell row-num">53</div>
+                <div class="excel-cell" style="font-weight: bold; border-top: 1px solid black;">Ending PP&E</div>
+                <div class="excel-cell formula">510</div>
+                <div class="excel-cell" style="font-size: 11px;">= Beg + Capex - Depr</div>
+            </div>
+        </div>
+        <p><strong>Önemli:</strong> Buradaki "Ending PP&E" (Satır 53), Bilançodaki "Net PP&E" satırına linklenir.</p>
+
+    </div>
+</body>
+</html>
