@@ -19,62 +19,76 @@
             <span style="color: var(--text-primary);">3-Statement Logic</span>
         </nav>
 
-        <h1>The 3 Statements: Basit Anlatım</h1>
+        <h1>Muhasebe 101: Limonata Tezgahı</h1>
         <p>
-            Karmaşık terimleri unutun. Bir şirketin finansal durumu, sizin kişisel finansınızdan farklı değildir.
-            Gelin "Cüzdan Analojisi" ile başlayalım.
+            Finansal tabloları anlamak için Wall Street'e gitmeye gerek yok. Mahalledeki limonata tezgahına bakalım.
+            Her şey <strong>100 TL sermaye</strong> ile başlıyor.
         </p>
 
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> ELI5: Cüzdan Analojisi</div>
-            <p style="color: #1f2933; margin: 0;">
-                <strong>1. Gelir Tablosu (Income Statement):</strong> Maaş Bordronuz gibidir. <br>
-                "Bu ay ne kadar kazandım, kiraya ne verdim, elimde ne kaldı?" sorusuna cevap verir. (Süreli bir filmdir: 1 Ocak - 31 Aralık).
-                <br><br>
-                <strong>2. Bilanço (Balance Sheet):</strong> Mal Varlığı Beyanınız gibidir. <br>
-                "Şu an (bugün saat 17:00 itibariyle) bankada ne kadar param var, evim ne kadar eder, bankaya ne kadar kredi borcum var?" (Anlık bir fotoğraftır).
-                <br><br>
-                <strong>3. Nakit Akış Tablosu (Cash Flow Statement):</strong> Banka Hesap Hareketlerinizdir. <br>
-                "Maaş yattı (+), Kredi kartı ödendi (-), Arkadaştan borç alındı (+)". Sadece nakit giriş çıkışını gösterir.
-            </p>
-        </div>
-
-        <h2 style="color: var(--accent-green);">1. Neden 3 Tane Var? (Tek Tablo Yetmez mi?)</h2>
-        <p>Yetmez. Çünkü <strong>Kâr (Profit) ≠ Nakit (Cash)</strong>.</p>
+        <h2 style="color: var(--accent-green);">Bölüm 1: Bilanço (Fotoğraf Çekmek)</h2>
         <p>
-            Örnek: Birine 10.000 TL'ye bilgisayar sattınız ama parasını 3 ay sonra alacaksınız.
-            <br>• <strong>Gelir Tablosu:</strong> "10.000 TL Kazandın!" der (Mutlusun).
-            <br>• <strong>Nakit Akış Tablosu:</strong> "Cebinde 0 TL var" der (Açsın).
-            <br>İşte bu farkı anlamak için 3 tabloya da ihtiyacımız var.
+            Bilanço (Balance Sheet), o anlık durumdur. "Şu an neyim var?" sorusudur.
         </p>
-
-        <h2 style="color: var(--accent-green);">2. The Linkage (Bağlantı Nasıl Kurulur?)</h2>
-        <p>Bu tablolar birbirinden kopuk değildir. Birbirine göbekten bağlıdır.</p>
-
-        <div class="mech-box" style="background: #f0fdf4; border-color: #bbf7d0;">
-            <strong style="color: #166534;">Adım 1: Net Income (Kâr)</strong><br>
-            Gelir Tablosunun en altındaki "Net Income", Nakit Akış Tablosunun en üstüne gider. (Hikaye buradan başlar).
+        <div class="mech-box">
+            <strong>BAŞLANGIÇ (Sabah 08:00)</strong><br><br>
+            <strong>Sol Taraf (Varlıklar - Assets):</strong><br>
+            - Kasa (Nakit): 100 TL<br>
+            <br>
+            <strong>Sağ Taraf (Kaynaklar - Liabilities & Equity):</strong><br>
+            - Benim Param (Equity): 100 TL<br>
+            <br>
+            <em>* Gördüğünüz gibi Sol = Sağ (100 = 100). Denge asla bozulmaz.</em>
         </div>
-        <div class="mech-box" style="background: #eff6ff; border-color: #bfdbfe;">
-            <strong style="color: #1e40af;">Adım 2: Cash Adjustments</strong><br>
-            Nakit Akış Tablosunda, kârın üzerine nakit olmayan giderleri (Amortisman gibi) geri ekleriz. Sonuçta "Cebime giren/çıkan Net Nakit"i buluruz.
-        </div>
+
+        <h2 style="color: var(--accent-green);">Bölüm 2: Gelir Tablosu (Film İzlemek)</h2>
+        <p>
+            Gün boyunca satış yaptınız. Akşam oldu. "Bugün ne kazandım?" sorusu Gelir Tablosudur (Income Statement).
+        </p>
         <div class="mech-box" style="background: #fff7ed; border-color: #fed7aa;">
-            <strong style="color: #9a3412;">Adım 3: Balance Sheet'e Bağlanış</strong><br>
-            Bulduğumuz bu "Net Nakit", Bilançodaki "Cash" hesabına eklenir. <br>
-            Ayrıca, Gelir Tablosundaki "Net Income", Bilançodaki "Retained Earnings" (Geçmiş Karlar) kısmına eklenir. <br>
-            Böylece Bilanço dengelenir!
+            <strong>GÜN SONU RAPORU</strong><br><br>
+            + Satışlar (Revenue): 200 TL (Limonata sattık)<br>
+            - Maliyetler (COGS): 50 TL (Limon ve şeker parası)<br>
+            ---------------------------<br>
+            <strong>= Brüt Kâr: 150 TL</strong><br>
+            - Kira (OpEx): 10 TL (Tezgah kirası)<br>
+            ---------------------------<br>
+            <strong>= Net Kâr (Net Income): 140 TL</strong>
         </div>
 
-        <h2 style="color: var(--accent-green);">3. The Golden Rule: Assets = Liabilities + Equity</h2>
+        <h2 style="color: var(--accent-green);">Bölüm 3: Nakit Akışı (Cüzdan Kontrolü)</h2>
         <p>
-            Bunu bir terazi gibi düşünün.
-            <br><strong>Sol Kefe (Assets):</strong> Sahip olduğun her şey (Para, Araba, Ev).
-            <br><strong>Sağ Kefe (L + E):</strong> Bunları kimin parasıyla aldın?
-            <br>- Bankanın parasıyla mı? (Liabilities / Borç)
-            <br>- Kendi paranla mı? (Equity / Özsermaye)
+            "140 TL kâr ettim, süper!" dediniz. Cüzdanı açtınız... Ama içinde o kadar para yok. Neden?
         </p>
-        <p>Bu denklem her zaman, her saniye tutmak zorundadır. Tutmuyorsa muhasebeci hapse girer.</p>
+        <p>
+            Çünkü komşu Ahmet Abi 50 TL'lik limonata içti ama "Yarın öderim" dedi (Veresiye - Accounts Receivable).
+            Kağıt üzerinde kâr ettiniz ama para kasaya girmedi.
+        </p>
+        <div class="mech-box" style="background: #eff6ff; border-color: #bfdbfe;">
+            <strong>NAKİT AKIŞ TABLOSU</strong><br><br>
+            + Net Kâr: 140 TL (Kağıt üzerindeki kâr)<br>
+            - Ahmet Abi'nin Borcu: 50 TL (Para gelmedi, çıkarıyoruz)<br>
+            ---------------------------<br>
+            <strong>= Gerçek Nakit Artışı: 90 TL</strong>
+        </div>
+
+        <h2 style="color: var(--accent-green);">Sonuç: Gün Sonu Bilançosu</h2>
+        <p>Akşam eve dönerken durumumuz ne?</p>
+        <div class="mech-box">
+            <strong>AKŞAM (Saat 20:00)</strong><br><br>
+            <strong>Varlıklar (Assets):</strong><br>
+            - Kasa (Nakit): 190 TL (Sabahki 100 + Bugün kazandığım 90)<br>
+            - Alacaklar (AR): 50 TL (Ahmet Abi'den alacağım)<br>
+            <strong>Toplam Varlık: 240 TL</strong><br>
+            <br>
+            <strong>Kaynaklar (Equity):</strong><br>
+            - Başlangıç Sermayem: 100 TL<br>
+            - Bugünkü Kârım (Retained Earnings): 140 TL<br>
+            <strong>Toplam Kaynak: 240 TL</strong>
+        </div>
+        <p>
+            İşte "3 Tablo Nasıl Bağlanır?" sorusunun cevabı budur. 
+            Kâr (140 TL) bilançonun sağ tarafına eklenir. Nakit farkı (Ahmet Abi) ise sol tarafta (Alacaklar ve Nakit) dengelenir.
+        </p>
 
     </div>
 </body>
