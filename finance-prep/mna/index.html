@@ -6,56 +6,39 @@
     <title>M&A Structuring | IB Prep</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root { --bg-color:#f8fafc; --surface-color:#ffffff; --border-color:#e2e8f0; --text-primary:#1f2933; --text-secondary:#52606d; --accent-color:#064e3b; --shadow:0 6px 20px rgba(0,0,0,0.06); }
-        *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased}
-        body{background:var(--bg-color);color:var(--text-primary);font-family:'Inter',sans-serif;min-height:100vh;font-size:14px;padding-bottom:64px}
-        .container{max-width:900px;margin:0 auto;padding:48px 24px 0}
-        .nav-bar{display:flex;align-items:center;gap:12px;margin-bottom:32px}
-        .back-btn{text-decoration:none;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;font-size:12px;display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--border-color);border-radius:4px;background:var(--surface-color);transition:all 0.2s;box-shadow:var(--shadow)}
-        .back-btn:hover{border-color:var(--accent-color);color:var(--text-primary)}
-        h1{font-size:24px;font-weight:600;margin-bottom:8px;color:var(--text-primary)}
-        .tag-mod{background:#dcfce7;color:var(--accent-color);font-size:11px;padding:4px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;vertical-align:middle;margin-left:8px}
-        .desc{color:var(--text-secondary);margin-bottom:40px;max-width:640px;line-height:1.6}
-        .grid-modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-        .module-card{background:var(--surface-color);border:1px solid var(--border-color);padding:24px;border-radius:10px;transition:all 0.2s;text-decoration:none;display:flex;flex-direction:column;box-shadow:var(--shadow)}
-        .module-card:hover{border-color:var(--accent-color);transform:translateY(-2px)}
-        .icon-box{width:36px;height:36px;background:#dcfce7;color:var(--accent-color);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:16px}
-        .module-title{font-size:16px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
-        .module-desc{font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:16px;flex-grow:1}
-        .status-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-color);align-self:flex-start;padding:2px 8px;background:#dcfce7;border-radius:3px;font-weight:500}
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <div class="container">
-        <nav class="nav-bar"><a href="../index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Ana Terminal</a></nav>
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+        </nav>
+
         <header>
-            <h1>Mergers & Acquisitions <span class="tag-mod">Module 4</span></h1>
+            <h1>Mergers & Acquisitions <span class="tag-ib" style="color: var(--accent-teal); background: rgba(15, 118, 110, 0.1);">Module 4</span></h1>
             <p class="desc">M&A sadece 1+1=3 demek değildir. Birleşmenin matematiği (Accretion), vergi yapısı ve muhasebe (PPA) detayları.</p>
         </header>
+
         <div class="grid-modules">
             <a href="accretion.html" class="module-card">
                 <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
-                <h3 class="module-title">Accretion / Dilution</h3>
+                <h3 class="module-title" style="color: var(--accent-teal);">Accretion / Dilution</h3>
                 <p class="module-desc">EPS (Hisse Başı Kâr) artacak mı azalacak mı? Breakeven Synergies hesabı.</p>
-                <span class="status-badge">Lesson 4.1</span>
+                <span class="status-badge" style="color: var(--accent-teal); border-color: var(--accent-teal);">Lesson 4.1</span>
             </a>
             <a href="structuring.html" class="module-card">
                 <div class="icon-box"><i class="fa-solid fa-handshake"></i></div>
-                <h3 class="module-title">Deal Structuring</h3>
+                <h3 class="module-title" style="color: var(--accent-teal);">Deal Structuring</h3>
                 <p class="module-desc">Stock Deal vs Asset Deal. Vergi avantajları ve satıcı tercihleri.</p>
-                <span class="status-badge">Lesson 4.2</span>
+                <span class="status-badge" style="color: var(--accent-teal); border-color: var(--accent-teal);">Lesson 4.2</span>
             </a>
             <a href="ppa.html" class="module-card">
                 <div class="icon-box"><i class="fa-solid fa-file-invoice"></i></div>
-                <h3 class="module-title">PPA (Purchase Price Allocation)</h3>
+                <h3 class="module-title" style="color: var(--accent-teal);">PPA (Purchase Price Allocation)</h3>
                 <p class="module-desc">Goodwill nasıl oluşur? Varlıkların yeniden değerlenmesi (Write-up) ve DTL etkisi.</p>
-                <span class="status-badge">Lesson 4.3</span>
+                <span class="status-badge" style="color: var(--accent-teal); border-color: var(--accent-teal);">Lesson 4.3</span>
             </a>
         </div>
     </div>
 </body>
 </html>
-
-
-
