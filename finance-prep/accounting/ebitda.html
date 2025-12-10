@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBITDA | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">EBITDA</span>
+        </nav>
+
+        <h1>EBITDA (FAVÖK)</h1>
+        <p>
+            <strong>E</strong>arnings <strong>B</strong>efore <strong>I</strong>nterest, <strong>T</strong>axes, <strong>D</strong>epreciation, and <strong>A</strong>mortization.
+            <br>
+            Finans dünyasının en popüler, ama en tartışmalı metriğidir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. Why Everyone Uses It? (Proxy for Cash Flow)</h2>
+        <div class="content-box-base">
+            <p>
+                Net Income (Net Kâr) çok fazla "gürültü" içerir:
+                <br>- <strong>Interest:</strong> Şirketin sermaye yapısına (Borçlu mu?) bağlıdır.
+                <br>- <strong>Taxes:</strong> Ülkenin vergi kanunlarına bağlıdır.
+                <br>- <strong>D&A:</strong> Geçmiş yatırımların muhasebe kaydıdır (Nakit çıkışı değildir).
+                <br><br>
+                Bu gürültüleri temizlerseniz, geriye şirketin <strong>"Saf Operasyonel Kârlılığı"</strong> kalır. 
+                İki farklı şirketi (biri borçlu, biri borçsuz) karşılaştırmanın en iyi yoludur.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. The Calculation (Bridge)</h2>
+        <div class="mech-box">
+            <strong>Operating Income (EBIT)</strong>
+            <br>
+            (+) Depreciation & Amortization
+            <br>
+            (+) Stock Based Compensation (Bazen eklenir)
+            <br>
+            (+) One-time Charges (Dava cezaları, Yeniden yapılanma)
+            <br>
+            <strong>= Adjusted EBITDA</strong>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. The Criticism (Warren Buffett)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-skull"></i> "Bullsh*t Earnings"</div>
+            <p>
+                Charlie Munger der ki: <em>"EBITDA'dan bahsettiğimiz her seferde, 'Saçmalık Kazançları'nı kastediyoruz."</em>
+                <br><br>
+                Neden? Çünkü <strong>Amortisman gerçek bir giderdir.</strong> 
+                O makine eskiyecek ve yenisini almak için nakit harcayacaksınız (CapEx). 
+                EBITDA, CapEx'i yok sayar. Şirketi olduğundan daha kârlı gösterir.
+            </p>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="deferred-revenue.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Def. Revenue</a>
+            <a href="inventory-accounting.html" class="btn-nav">Sonraki: Inventory <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
