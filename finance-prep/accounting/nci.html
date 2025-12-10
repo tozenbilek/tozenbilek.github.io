@@ -6,6 +6,8 @@
     <title>Non-Controlling Interest | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,12 +20,31 @@
             <span style="color: var(--text-primary);">NCI</span>
         </nav>
 
-        <h1>Non-Controlling Interest (NCI)</h1>
-        <p>Azınlık paylarının muhasebeleştirilmesi.</p>
+        <h1>5.2 Non-Controlling Interest (NCI)</h1>
+        <p>
+            Şirketin %100'ünü konsolide ettik (topladık) ama sadece %60'ına sahibiz. Kalan %40 kimin?
+            İşte bu "Azınlık Payı"na NCI denir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">Balance Sheet Treatment</h2>
+        <p>NCI, Bilançoda <strong>Equity</strong> (Özsermaye) altında ayrı bir satır olarak gösterilir.</p>
+        <div class="math-block">
+            \[ \text{NCI Value} = \text{Book Value of Target} \times \text{Minority \%} \]
+        </div>
+
+        <h2 style="color: var(--accent-green);">Income Statement Treatment</h2>
+        <p>
+            Gelir tablosunda da %100 kârı gösteririz. Sonra en altta bize ait olmayanı düşeriz.
+        </p>
+        <div class="mech-box">
+            Consolidated Net Income (Herkesin toplam kârı)<br>
+            (-) Net Income Attributable to NCI (Azınlığın payı)<br>
+            <strong>= Net Income Attributable to Parent (Bize kalan)</strong>
+        </div>
 
         <div class="lesson-nav">
             <a href="consolidation-mechanics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Consolidation</a>
-            <span class="btn-nav disabled">Bitiş <i class="fa-solid fa-check"></i></span>
+            <span class="btn-nav disabled">Modül Bitti <i class="fa-solid fa-flag-checkered"></i></span>
         </div>
     </div>
 </body>

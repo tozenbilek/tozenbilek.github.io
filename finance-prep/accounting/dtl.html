@@ -6,6 +6,8 @@
     <title>Deferred Tax Liability | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,8 +20,27 @@
             <span style="color: var(--text-primary);">DTL</span>
         </nav>
 
-        <h1>Deferred Tax Liability (DTL)</h1>
-        <p>Vergi erteleme ve zamanlama farkları.</p>
+        <h1>4.1 Deferred Tax Liability (DTL)</h1>
+        <p>
+            Şirketlerin "Yatırımcıya" ve "Devlete" anlattığı iki ayrı hikaye vardır.
+            DTL, devlete "Şimdi az ödüyorum ama ileride borcumu ödeyeceğim" demektir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">Nasıl Oluşur? (Amortisman Örneği)</h2>
+        <div class="mech-box">
+            <strong>Ticari Defter (Book):</strong> Straight Line Amortisman (Düşük Gider -> Yüksek Kâr -> Yüksek Vergi Gideri).
+            <br>
+            <strong>Vergi Defteri (Tax):</strong> Accelerated Amortisman (Yüksek Gider -> Düşük Kâr -> Düşük Ödenen Vergi).
+            <br><br>
+            Gelir tablosunda yüksek vergi gideri gösterirsiniz, ama nakit olarak devlete az ödersiniz.
+            Aradaki farkı cebe atmazsınız, <strong>DTL (Borç)</strong> olarak kaydedersiniz.
+        </div>
+
+        <h2 style="color: var(--accent-green);">The Unwind (Geri Ödeme)</h2>
+        <p>
+            Yıllar sonra, hızlandırılmış amortisman bittiğinde, vergi defterinde gider kalmaz. 
+            O zaman devlete "normalden fazla" vergi ödersiniz ve DTL azalır (Unwinds).
+        </p>
 
         <div class="lesson-nav">
             <a href="goodwill-impairment.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Goodwill</a>

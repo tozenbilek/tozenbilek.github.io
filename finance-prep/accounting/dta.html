@@ -6,6 +6,8 @@
     <title>Deferred Tax Asset | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,8 +20,24 @@
             <span style="color: var(--text-primary);">DTA</span>
         </nav>
 
-        <h1>Deferred Tax Asset (DTA)</h1>
-        <p>NOLs ve Valuation Allowance.</p>
+        <h1>4.2 Deferred Tax Asset (DTA)</h1>
+        <p>
+            Devletten alacaklı olduğunuz durumdur. "Gelecekte daha az vergi ödeme hakkı"dır.
+        </p>
+
+        <h2 style="color: var(--accent-green);">NOLs (Net Operating Losses)</h2>
+        <p>
+            Şirket zarar ederse vergi ödemez. Devlet der ki: "Bu zararı sakla (Carry-forward). İleride kâr edersen, bu zararı düşüp az vergi ödersin."
+        </p>
+        <div class="math-block">
+            \[ \text{DTA} = \text{Accumulated Losses} \times \text{Tax Rate} \]
+        </div>
+
+        <h2 style="color: var(--accent-green);">Valuation Allowance (Değer Düşüklüğü)</h2>
+        <p>
+            DTA bir varlıktır ama risklidir. Eğer şirket hiç kâr edemezse (hep zarar ederse), bu "vergi indirim kuponunu" kullanamaz.
+            Muhasebeciler şirketin kâr edeceğine inanmazsa, DTA'yı silerler (Valuation Allowance).
+        </p>
 
         <div class="lesson-nav">
             <a href="dtl.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: DTL</a>

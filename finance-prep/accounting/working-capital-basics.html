@@ -6,6 +6,8 @@
     <title>Working Capital Basics | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,11 +20,48 @@
             <span style="color: var(--text-primary);">NWC Basics</span>
         </nav>
 
-        <h1>Working Capital Basics</h1>
-        <p>İşletme sermayesinin temel mantığı.</p>
+        <h1>2.1 Net Working Capital (NWC)</h1>
+        <p>
+            Şirketin günlük operasyonlarını döndürmek için gereken likiditedir. 
+            <strong>"Paranın ne kadarı operasyonlarda hapsolmuş?"</strong> sorusunun cevabıdır.
+        </p>
+
+        <h2 style="color: var(--accent-green);">The Formula</h2>
+        <div class="math-block">
+            \[ \text{NWC} = \text{Current Operating Assets} - \text{Current Operating Liabilities} \]
+        </div>
         
         <div class="mech-box">
-            NWC = Current Operating Assets - Current Operating Liabilities
+            <strong>Dahil Olanlar (Operasyonel):</strong>
+            <br>+ Accounts Receivable (Ticari Alacak)
+            <br>+ Inventory (Stok)
+            <br>+ Prepaid Expenses
+            <br>- Accounts Payable (Ticari Borç)
+            <br>- Accrued Expenses (Tahakkuklar)
+            <br>- Deferred Revenue
+            <br><br>
+            <strong>HARİÇ Olanlar (Finansal):</strong>
+            <br>x Cash (Nakit) -> Yatırım kararıdır.
+            <br>x Debt (Kısa vadeli borç) -> Finansman kararıdır.
+        </div>
+
+        <h2 style="color: var(--accent-green);">Increase vs Decrease</h2>
+        <p>
+            <strong>Change in NWC</strong> formülü Nakit Akış Tablosu için kritiktir:
+        </p>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-arrow-trend-up"></i> NWC Artarsa</div>
+            <p style="color: #1f2933; margin: 0;">
+                NWC'nin artması (Pozitif Change), <strong>Nakit Çıkışıdır (Use of Cash).</strong>
+                <br>Örnek: Daha çok stok aldınız (Inventory arttı) veya müşteriden tahsilat yapamadınız (AR arttı). Para şirketten çıktı veya gelmedi.
+            </p>
+        </div>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-arrow-trend-down"></i> NWC Azalırsa</div>
+            <p style="color: #1f2933; margin: 0;">
+                NWC'nin azalması (Negatif Change), <strong>Nakit Girişidir (Source of Cash).</strong>
+                <br>Örnek: Stokları sattınız (Inventory azaldı) veya tedarikçiye ödemeyi ertelediniz (AP arttı). Para cebinizde kaldı.
+            </p>
         </div>
 
         <div class="lesson-nav">

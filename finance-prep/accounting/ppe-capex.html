@@ -6,6 +6,8 @@
     <title>PP&E and CapEx | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,8 +20,34 @@
             <span style="color: var(--text-primary);">PP&E</span>
         </nav>
 
-        <h1>PP&E & CapEx</h1>
-        <p>Yatırım harcamaları ve Varlık Yönetimi.</p>
+        <h1>3.1 PP&E & CapEx</h1>
+        <p>
+            Property, Plant & Equipment (Maddi Duran Varlıklar).
+            Şirketin uzun vadeli (1 yıldan uzun) üretim araçlarıdır.
+        </p>
+
+        <h2 style="color: var(--accent-green);">CapEx (Capital Expenditures)</h2>
+        <p>
+            Bir harcamanın Gider (Expense) mi yoksa Yatırım (CapEx) mı olduğuna nasıl karar verilir?
+            Kural: <strong>"Fayda süresi 1 yılı aşıyor mu?"</strong>
+        </p>
+        <ul>
+            <li><strong>CapEx:</strong> Yeni fabrika, yeni makine, binanın ömrünü uzatan büyük tadilat. (Bilançoya gider, Asset olur).</li>
+            <li><strong>OpEx:</strong> Boya badana, temizlik, küçük tamiratlar. (Gelir tablosuna gider, anında kârı düşürür).</li>
+        </ul>
+
+        <h2 style="color: var(--accent-green);">Maintenance vs Growth CapEx</h2>
+        <p>Yatırımcılar için kritik bir ayrımdır:</p>
+        <div class="mech-box">
+            <strong>Maintenance CapEx:</strong> Mevcut işi sürdürmek için yapılan zorunlu yatırım (Eskiyen makineyi yenilemek).
+            <br>
+            <strong>Growth CapEx:</strong> İşi büyütmek için yapılan yatırım (Yeni fabrika açmak). İsteğe bağlıdır.
+        </div>
+
+        <h2 style="color: var(--accent-green);">The Roll-Forward</h2>
+        <div class="math-block">
+            \[ \text{Ending PP\&E} = \text{Beginning PP\&E} + \text{CapEx} - \text{Depreciation} - \text{Asset Sales} \]
+        </div>
 
         <div class="lesson-nav">
             <a href="ccc.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: CCC</a>

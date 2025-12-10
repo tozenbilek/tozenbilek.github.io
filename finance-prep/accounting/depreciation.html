@@ -6,6 +6,8 @@
     <title>Depreciation | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,8 +20,33 @@
             <span style="color: var(--text-primary);">Depreciation</span>
         </nav>
 
-        <h1>Depreciation</h1>
-        <p>Amortisman yöntemleri: Straight Line vs Accelerated.</p>
+        <h1>3.2 Depreciation</h1>
+        <p>
+            Varlığın maliyetini, faydalı ömrüne yayma işlemidir.
+            Nakit çıkışı DEĞİLDİR (Non-Cash Expense). Parayı zaten CapEx yaparken ödediniz.
+        </p>
+
+        <h2 style="color: var(--accent-green);">Metodlar</h2>
+        
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">1. Straight Line (Doğrusal)</h3>
+            <p>En yaygın yöntem. Her yıl eşit tutar.</p>
+            <div class="math-block">
+                \[ \text{Depreciation} = \frac{\text{Cost} - \text{Salvage Value}}{\text{Useful Life}} \]
+            </div>
+        </div>
+
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">2. Double Declining Balance (Hızlandırılmış)</h3>
+            <p>İlk yıllarda daha çok amortisman ayrılır. Varlığın değerini hızla düşürür.</p>
+            <p><em>Neden kullanılır?</em> Vergi ertelemek için (Gideri öne çek, vergiyi düşür). Veya teknolojik ürünler çabuk eskir.</p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">Tax Impact</h2>
+        <p>
+            Amortisman nakit çıkışı olmasa da, kârı düşürdüğü için <strong>daha az vergi ödemenizi sağlar.</strong>
+            Buna "Tax Shield" (Vergi Kalkanı) denir.
+        </p>
 
         <div class="lesson-nav">
             <a href="ppe-capex.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: PP&E</a>

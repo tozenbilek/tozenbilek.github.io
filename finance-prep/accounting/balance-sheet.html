@@ -20,23 +20,56 @@
             <span style="color: var(--text-primary);">Balance Sheet</span>
         </nav>
 
-        <h1>Balance Sheet (Bilanço)</h1>
+        <h1>1.2 Balance Sheet (Bilanço)</h1>
         <p>
-            Şirketin anlık fotoğrafıdır (Snapshot).
+            Şirketin belirli bir andaki (Örn: 31 Aralık Saat 23:59) finansal fotoğrafıdır.
+            Temel kural: <strong>Assets = Liabilities + Equity</strong>
         </p>
 
-        <h2 style="color: var(--accent-green);">1. Assets (Varlıklar)</h2>
-        <p>Likidite sırasına göre dizilir (Paraya en hızlı çevrilen en üstte).</p>
-        <div class="mech-box">
-            <strong>Current Assets (Dönen Varlıklar):</strong> Cash, Accounts Receivable, Inventory.<br>
-            <strong>Non-Current Assets (Duran Varlıklar):</strong> PP&E, Intangibles, Goodwill.
+        <h2 style="color: var(--accent-green);">1. Assets (Varlıklar) - Sol Taraf</h2>
+        <p>Şirketin sahip olduğu ve gelecekte nakit yaratacak değerler. Likiditeye (Paraya dönüşme hızına) göre sıralanır.</p>
+        
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">Current Assets (Dönen Varlıklar - < 1 Yıl)</h3>
+            <ul>
+                <li><strong>Cash:</strong> Bankadaki para.</li>
+                <li><strong>Accounts Receivable (Alacaklar):</strong> Müşteriye malı sattım, faturayı kestim, parayı bekliyorum.</li>
+                <li><strong>Inventory (Stok):</strong> Depodaki hammadde veya satılacak ürün.</li>
+                <li><strong>Prepaid Expenses:</strong> Parasını ödedim ama henüz hizmeti almadım (Örn: Peşin ödenen kira).</li>
+            </ul>
+
+            <h3>Non-Current Assets (Duran Varlıklar - > 1 Yıl)</h3>
+            <ul>
+                <li><strong>PP&E:</strong> Fabrika, Makine, Arsa.</li>
+                <li><strong>Intangible Assets:</strong> Patent, Marka.</li>
+                <li><strong>Goodwill:</strong> Şirket satın almalarından doğan şerefiye.</li>
+            </ul>
         </div>
 
-        <h2 style="color: var(--accent-green);">2. Liabilities & Equity (Kaynaklar)</h2>
+        <h2 style="color: var(--accent-green);">2. Liabilities (Yükümlülükler) - Sağ Üst</h2>
+        <p>Şirketin dışarıya olan borçları. Vadesine göre sıralanır.</p>
+        
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">Current Liabilities (< 1 Yıl)</h3>
+            <ul>
+                <li><strong>Accounts Payable (Borçlar):</strong> Tedarikçiden malı aldım, parayı sonra ödeyeceğim.</li>
+                <li><strong>Accrued Expenses:</strong> Elektriği kullandım, fatura henüz gelmedi ama borcum var.</li>
+                <li><strong>Deferred Revenue:</strong> Müşteriden parayı aldım, hizmeti henüz vermedim (Hizmet borcum var).</li>
+            </ul>
+
+            <h3>Long-Term Liabilities (> 1 Yıl)</h3>
+            <ul>
+                <li><strong>Long-Term Debt:</strong> Banka kredileri, Tahviller.</li>
+                <li><strong>Deferred Tax Liability:</strong> Devlete ileride ödenecek vergi farkı.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Shareholders' Equity (Özsermaye) - Sağ Alt</h2>
+        <p>Varlıklardan Borçları çıkardıktan sonra hissedarlara kalan kısımdır (Net Varlık).</p>
         <div class="mech-box">
-            <strong>Current Liabilities (Kısa Vadeli Borçlar):</strong> Accounts Payable, Accrued Expenses.<br>
-            <strong>Long-Term Liabilities (Uzun Vadeli Borçlar):</strong> Bank Loans, Bonds.<br>
-            <strong>Shareholders' Equity (Özsermaye):</strong> Common Stock + Retained Earnings.
+            <strong>Common Stock:</strong> Şirket kurulurken veya halka arzda konulan sermaye.<br>
+            <strong>Retained Earnings:</strong> Şirketin geçmişten bugüne kazandığı ve dağıtmayıp içinde tuttuğu kârlar. (Kumbara).<br>
+            <strong>Treasury Stock:</strong> Şirketin geri satın aldığı kendi hisseleri (Negatif Equity).
         </div>
 
         <div class="lesson-nav">

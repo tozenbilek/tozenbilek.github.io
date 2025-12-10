@@ -6,6 +6,8 @@
     <title>Cash Conversion Cycle | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,16 +20,45 @@
             <span style="color: var(--text-primary);">CCC</span>
         </nav>
 
-        <h1>Cash Conversion Cycle</h1>
-        <p>Paranın şirkete dönüş hızı.</p>
-        
-        <div class="mech-box">
-            CCC = DSO + DIO - DPO
+        <h1>2.2 Cash Conversion Cycle (CCC)</h1>
+        <p>
+            Paranın kasadan çıkıp (stok alımı), dolaşıp tekrar kasaya (tahsilat) dönmesi ne kadar sürer?
+            Şirketin verimlilik karnesidir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">The Equation</h2>
+        <div class="math-block" style="font-size: 18px;">
+            \[ CCC = DIO + DSO - DPO \]
         </div>
 
+        <div class="grid-modules" style="grid-template-columns: 1fr; gap:16px;">
+            <div class="content-box-base">
+                <strong style="color:var(--text-primary);">1. DIO (Days Inventory Outstanding):</strong>
+                <br>Stokların rafta kalma süresi.
+                <br><em>(Inventory / COGS) * 365</em>
+            </div>
+            <div class="content-box-base">
+                <strong style="color:var(--text-primary);">2. DSO (Days Sales Outstanding):</strong>
+                <br>Müşteriden tahsilat süresi.
+                <br><em>(Accounts Receivable / Revenue) * 365</em>
+            </div>
+            <div class="content-box-base">
+                <strong style="color:var(--text-primary);">3. DPO (Days Payable Outstanding):</strong>
+                <br>Tedarikçiye ödeme süresi.
+                <br><em>(Accounts Payable / COGS) * 365</em>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">Case Study: Dell & Amazon</h2>
+        <p>
+            Bu şirketler <strong>Negatif CCC</strong> ile çalışır. 
+            Yani parayı müşteriden tahsil ederler (DSO çok düşük), tedarikçiye aylar sonra öderler (DPO çok yüksek).
+            Aradaki sürede parayı yatırımda kullanırlar. Bu "Faizsiz Kredi" gibidir.
+        </p>
+
         <div class="lesson-nav">
-            <a href="working-capital-basics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Basics</a>
-            <a href="ppe-capex.html" class="btn-nav">Sonraki: PP&E <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="working-capital-basics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: NWC Basics</a>
+            <a href="ppe-capex.html" class="btn-nav">Sonraki: PP&E & CapEx <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 </body>
