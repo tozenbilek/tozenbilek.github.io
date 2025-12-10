@@ -6,6 +6,8 @@
     <title>Consolidation Mechanics | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -20,16 +22,70 @@
 
         <h1>5.1 Consolidation Mechanics</h1>
         <p>
-            Büyük balık küçük balığı yediğinde muhasebe nasıl yapılır?
+            Büyük balık (Parent) küçük balığı (Subsidiary) yuttuğunda ne olur?
+            İki bilançoyu toplarken yapılan en büyük hata: "Sadece aldığım kısmı eklerim" demektir.
+            <strong>Yanlış!</strong> Kontrol gücü kimdeyse, her şeyi o yönetir.
         </p>
 
-        <h2 style="color: var(--accent-green);">The 3 Golden Rules</h2>
+        <h2 style="color: var(--accent-green);">1. The "Apartment Building" Analogy</h2>
+        <div class="mech-box">
+            Bir apartmanın %60 dairesini satın aldınız.
+            <br>
+            <ul>
+                <li><strong>Yönetim:</strong> Apartman yöneticisi siz olursunuz. Binanın rengine, kapısına siz karar verirsiniz.</li>
+                <li><strong>Görünüm (Consolidation):</strong> Dışarıdan bakan biri "Bu bina sizin" der. Binanın %60'ı değil, <strong>TAMAMI</strong> sizin yönetiminizdedir.</li>
+                <li><strong>Azınlık (NCI):</strong> Ama diğer %40 daire sahiplerinin de hakkı vardır. Onları yok sayamazsınız (Non-Controlling Interest).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. The 3 Golden Rules</h2>
         <div class="content-box-base">
             <ol>
-                <li><strong>%100 Kuralı:</strong> Şirketin sadece %60'ını bile alsanız, bilançosundaki varlık ve borçların <strong>TAMAMINI (%100)</strong> kendi bilançonuzla toplarsınız.</li>
-                <li><strong>Equity Silinir:</strong> Satın alınan şirketin Özsermayesi (Common Stock + Retained Earnings) tamamen silinir.</li>
-                <li><strong>Goodwill Yaratılır:</strong> Ödediğiniz para ile şirketin net varlıkları arasındaki fark Goodwill olur.</li>
+                <li><strong>Rule 1 (%100 Consolidation):</strong> Satın alınan şirketin (Sub) varlıklarını (Cash, Inventory, PP&E) ve borçlarını (Debt) <strong>%100 oranında</strong> kendi bilançonuza eklersiniz. (%60'ını almış olsanız bile).</li>
+                
+                <li><strong>Rule 2 (Wipe Out Equity):</strong> Sub'ın eski Özsermayesi (Common Stock + Retained Earnings) tamamen silinir. Çünkü artık o eski şirket yoktur, sizin bir parçanızdır.</li>
+                
+                <li><strong>Rule 3 (Create Goodwill):</strong> Ödediğiniz Para ile Şirketin Defter Değeri arasındaki fark <strong>Goodwill</strong> (Şerefiye) olarak Assets tarafına yazılır.</li>
             </ol>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Visual Walkthrough</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Consolidation.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 100px 100px 100px 100px 100px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Parent</div>
+                <div class="excel-cell header">Sub</div>
+                <div class="excel-cell header">Adj.</div>
+                <div class="excel-cell header">Consolidated</div>
+
+                <div class="excel-cell">Cash</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">20</div>
+                <div class="excel-cell" style="color:red;">(50)*</div>
+                <div class="excel-cell bold">70</div>
+
+                <div class="excel-cell">Assets</div>
+                <div class="excel-cell">500</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell bold">600</div>
+
+                <div class="excel-cell" style="background:#e6fffa;">Goodwill</div>
+                <div class="excel-cell" style="background:#e6fffa;">0</div>
+                <div class="excel-cell" style="background:#e6fffa;">0</div>
+                <div class="excel-cell bold" style="color:green; background:#e6fffa;">30</div>
+                <div class="excel-cell bold" style="background:#e6fffa;">30</div>
+
+                <div class="excel-cell" style="border-top: 2px solid #ccc;"><strong>Total</strong></div>
+                <div class="excel-cell" style="border-top: 2px solid #ccc;"><strong>600</strong></div>
+                <div class="excel-cell" style="border-top: 2px solid #ccc;"><strong>120</strong></div>
+                <div class="excel-cell" style="border-top: 2px solid #ccc;"></div>
+                <div class="excel-cell bold" style="border-top: 2px solid #ccc;"><strong>700</strong></div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                *Parent, Sub'ı almak için 50 nakit ödedi. Sub'ın defter değeri (Equity) 20 idi. Aradaki 30 fark Goodwill oldu.
+            </div>
         </div>
 
         <div class="lesson-nav">

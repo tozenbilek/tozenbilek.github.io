@@ -6,6 +6,8 @@
     <title>Debt Financing | Accounting</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -18,21 +20,42 @@
             <span style="color: var(--text-primary);">Debt</span>
         </nav>
 
-        <h1>4.3 Debt Financing</h1>
-        <p>Borçlanma mekanikleri ve faiz çeşitleri.</p>
-
-        <h2 style="color: var(--accent-green);">PIK Interest (Payment In Kind)</h2>
+        <h1>4.3 Debt Financing (Borçlanma)</h1>
         <p>
-            Nakitsiz faizdir. Faiz ödemek yerine, borç veren "Ana Parayı" artırır.
-            <br>Örn: 100 TL borç, %10 PIK Faiz.
-            <br>Yıl sonu: Nakit çıkmaz. Borç 110 TL olur.
-            <br>LBO modellerinde nakit sıkışıklığını önlemek için kullanılır.
+            Şirketler neden hisse satmak yerine borç alır? Çünkü borç daha ucuzdur (Vergi kalkanı).
+            Ancak muhasebesi, sadece "Faiz Öde"den ibaret değildir.
         </p>
 
-        <h2 style="color: var(--accent-green);">OID (Original Issue Discount)</h2>
+        <h2 style="color: var(--accent-green);">1. PIK Interest (Payment In Kind)</h2>
+        <div class="mech-box">
+            <strong>"Kartopu" Faizi</strong>
+            <br>
+            Normalde faizi nakit ödersiniz. PIK'te ise "Param yok, faizi ana paraya ekle" dersiniz.
+            <br><br>
+            <strong>Örnek:</strong> 100 TL Borç, %10 PIK Faiz.
+            <br>Yıl 1: Nakit çıkmaz. Borç 110 TL olur.
+            <br>Yıl 2: Nakit çıkmaz. Borç 121 TL olur (110 * 1.10).
+            <br><br>
+            <em>Riskli (High Yield) şirketler ve LBO'lar için hayati önem taşır. Nakdi korur.</em>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. OID (Original Issue Discount)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-tag"></i> İndirimli Satış</div>
+            <p>
+                Şirket 100 TL'lik tahvil çıkarır ama yatırımcı "Riskli bu" deyip sadece 95 TL öder.
+                <br>
+                Şirketin kasasına 95 TL girer ama <strong>Borç 100 TL</strong> görünmek zorundadır.
+                <br><br>
+                Aradaki 5 TL fark, vade sonuna kadar yavaş yavaş gider yazılır (Amortization of OID).
+                Bu "Nakit Olmayan" bir faiz gideridir.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Financing Fees (İhraç Masrafları)</h2>
         <p>
-            Tahvili 100 TL nominal değerle çıkarırsınız ama yatırımcıya 98 TL'ye satarsınız (İskonto).
-            Bilanço'da borç 98 olarak başlar, vade sonunda 100'e ulaşana kadar her yıl artar (Amortization). Bu artış faiz gideri olarak yazılır.
+            Bankacılara ödenen komisyonlar. Bunlar anında gider yazılmaz. 
+            Bilançoda bir varlık (Capitalized Fees) olarak durur ve borcun ömrü boyunca amorti edilir.
         </p>
 
         <div class="lesson-nav">
