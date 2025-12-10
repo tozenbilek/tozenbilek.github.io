@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balancing the Model | Modeling Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Modeling</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Balance</span>
+        </nav>
+
+        <h1>3.2 Balancing the Model (The Plug)</h1>
+        <p>
+            Model bittiğinde o korkutucu an gelir: Assets = Liabilities + Equity mi?
+            Eğer fark varsa (Balance Check != 0), bir yerde hata var demektir.
+        </p>
+
+        <h2 style="color: #047857;">The Plug (Tıpa)</h2>
+        <p>
+            Bilanço kendi kendine eşitlenmez. Onu eşitleyen bir kalem vardır: <strong>Cash (Nakit)</strong> veya <strong>Revolver</strong>.
+            <br>
+            CFS'den gelen "Ending Cash" rakamı, Bilançodaki Cash kalemine bağlanır. 
+            Bu bağlantı (Linkage) doğruysa ve nakit akışı doğru hesaplandıysa, bilanço otomatik olarak tutar.
+        </p>
+
+        <h2 style="color: #047857;">Hata Ayıklama (Debug)</h2>
+        <div class="content-box-base">
+            Eğer fark varsa şunları kontrol et:
+            <ul>
+                <li><strong>İşaret Hatası:</strong> Nakit çıkışlarını pozitif mi yazdın? (Genellikle en sık yapılan hata).</li>
+                <li><strong>Eksik Link:</strong> Retained Earnings'e Net Income'ı eklemeyi unuttun mu?</li>
+                <li><strong>Check Satırı:</strong> Her zaman bilançonun altına bir "Check" satırı ekle.
+                    <br><span style="font-family: 'JetBrains Mono';">= Total Assets - (Total Liab + Equity)</span>
+                    <br>Bu sayı <strong>0</strong> olmalı.
+                </li>
+            </ul>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="debt-schedule.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Debt</a>
+            <span class="btn-nav disabled">Kurs Tamamlandı <i class="fa-solid fa-trophy"></i></span>
+        </div>
+    </div>
+</body>
+</html>

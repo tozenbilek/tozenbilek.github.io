@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income Statement | Modeling Lab</title>
+    <title>Income Statement Construction | Modeling Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -13,90 +13,66 @@
         <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
-            <a href="index.html" class="nav-link">Modeling Lab</a>
+            <a href="index.html" class="nav-link">Modeling</a>
             <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Income Statement</span>
+            <span style="color: var(--text-primary);">IS</span>
         </nav>
 
-        <h1>2. Income Statement: The Engine</h1>
+        <h1>2.1 Income Statement Construction</h1>
         <p>
-            Her modelin başlangıç noktasıdır. Gelecekte şirketin ne kadar satış yapacağını ve ne kadar kâr edeceğini tahmin ederiz.
-            Burada <strong>"Driver-Based"</strong> (Sürücü Bazlı) tahmin yapacağız.
+            Drivers sayfasını hazırladık. Şimdi bu varsayımları kullanarak Gelir Tablosunu (P&L) inşa edeceğiz.
+            Amaç: Revenue'den başlayıp Net Income'a kadar inmek.
         </p>
 
-        <h2 style="color: #047857;">Adım 1: Tarihsel Verileri Gir (Historical Data)</h2>
-        <p>Şirketin son 3 yıllık (2020A, 2021A, 2022A) verilerini 10-K raporundan Excel'e aktarın. Bunlar "Hardcode" (Mavi) olacak.</p>
-
-        <h2 style="color: #047857;">Adım 2: Varsayımları Belirle (Drivers)</h2>
-        <p>Geleceği (2023E - 2027E) tahmin etmek için basit varsayımlar kullanacağız.</p>
-        
+        <h2 style="color: #047857;">Step 1: Top Line (Revenue & Gross Profit)</h2>
         <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> Drivers & Assumptions</div>
-            <div class="excel-grid">
-                <div class="excel-cell header"></div>
-                <div class="excel-cell header">A (Item)</div>
-                <div class="excel-cell header">B (2022A)</div>
-                <div class="excel-cell header">C (2023E)</div>
-                <div class="excel-cell header">D (2024E)</div>
-
-                <div class="excel-cell row-num">10</div>
-                <div class="excel-cell" style="font-weight: bold;">Assumptions</div>
-                <div class="excel-cell"></div>
-                <div class="excel-cell"></div>
-                <div class="excel-cell"></div>
-
-                <div class="excel-cell row-num">11</div>
-                <div class="excel-cell">Revenue Growth %</div>
-                <div class="excel-cell formula">10.0%</div>
-                <div class="excel-cell hardcode">8.0%</div>
-                <div class="excel-cell hardcode">6.0%</div>
-
-                <div class="excel-cell row-num">12</div>
-                <div class="excel-cell">COGS % of Sales</div>
-                <div class="excel-cell formula">40.0%</div>
-                <div class="excel-cell hardcode">40.0%</div>
-                <div class="excel-cell hardcode">40.0%</div>
-
-                <div class="excel-cell row-num">13</div>
-                <div class="excel-cell">OpEx % of Sales</div>
-                <div class="excel-cell formula">25.0%</div>
-                <div class="excel-cell hardcode">24.0%</div>
-                <div class="excel-cell hardcode">23.0%</div>
-            </div>
-        </div>
-
-        <h2 style="color: #047857;">Adım 3: Projeksiyonu Hesapla</h2>
-        <p>Varsayımları kullanarak Gelir Tablosunu oluşturun. Siyah renk (Formül) kullanın.</p>
-
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> Income Statement</div>
-            <div class="excel-grid">
+            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> IS_Tab.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 40px 150px 100px 1fr;">
                 <div class="excel-cell header"></div>
                 <div class="excel-cell header">A</div>
-                <div class="excel-cell header">B (2022A)</div>
-                <div class="excel-cell header">C (2023E)</div>
-                <div class="excel-cell header">Formula (Col C)</div>
+                <div class="excel-cell header">2024E</div>
+                <div class="excel-cell header">Formula / Logic</div>
 
-                <div class="excel-cell row-num">20</div>
-                <div class="excel-cell" style="font-weight: bold;">Revenue</div>
-                <div class="excel-cell hardcode">1,000</div>
-                <div class="excel-cell formula">1,080</div>
-                <div class="excel-cell" style="font-size: 10px;">= B20 * (1 + C11)</div>
+                <div class="excel-cell row-num">1</div>
+                <div class="excel-cell">Revenue</div>
+                <div class="excel-cell formula">1,050</div>
+                <div class="excel-cell" style="font-size: 11px;">= 2023_Rev * (1 + Drivers!B5)</div>
 
-                <div class="excel-cell row-num">21</div>
-                <div class="excel-cell">(-) COGS</div>
-                <div class="excel-cell formula">(400)</div>
-                <div class="excel-cell formula">(432)</div>
-                <div class="excel-cell" style="font-size: 10px;">= -C20 * C12</div>
+                <div class="excel-cell row-num">2</div>
+                <div class="excel-cell">COGS</div>
+                <div class="excel-cell formula">(630)</div>
+                <div class="excel-cell" style="font-size: 11px;">= -1 * Revenue * Drivers!B6</div>
 
-                <div class="excel-cell row-num">22</div>
-                <div class="excel-cell" style="font-weight: bold; border-top: 1px solid #000;">Gross Profit</div>
-                <div class="excel-cell formula">600</div>
-                <div class="excel-cell formula">648</div>
-                <div class="excel-cell" style="font-size: 10px;">= Sum(C20:C21)</div>
+                <div class="excel-cell row-num">3</div>
+                <div class="excel-cell bold">Gross Profit</div>
+                <div class="excel-cell formula bold">420</div>
+                <div class="excel-cell" style="font-size: 11px;">= SUM(B1:B2)</div>
             </div>
         </div>
 
+        <h2 style="color: #047857;">Step 2: Operating Expenses (EBITDA & EBIT)</h2>
+        <p>
+            <strong>SG&A (Satış & Pazarlama):</strong> Genellikle cironun bir yüzdesi olarak hesaplanır.
+            <br>
+            <strong>D&A (Amortisman):</strong> Burası biraz karışık. D&A genellikle "Cash Flow" veya "Schedule" sayfasından buraya linklenir. (Henüz hesaplamadık, şimdilik boş bırakın veya placeholder koyun).
+        </p>
+        <div class="mech-box">
+            Gross Profit - SG&A = <strong>EBITDA</strong>
+            <br>
+            EBITDA - D&A = <strong>EBIT (Operating Profit)</strong>
+        </div>
+
+        <h2 style="color: #047857;">Step 3: The Bottom Line (Net Income)</h2>
+        <ul>
+            <li><strong>Interest Expense:</strong> Debt Schedule'dan gelecek (Şimdilik boş).</li>
+            <li><strong>Taxes:</strong> (EBIT - Interest) * Tax Rate.</li>
+            <li><strong>Net Income:</strong> EBIT - Interest - Taxes.</li>
+        </ul>
+
+        <div class="lesson-nav">
+            <a href="drivers.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Drivers</a>
+            <a href="balance-sheet.html" class="btn-nav">Sonraki: Balance Sheet <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
     </div>
 </body>
 </html>

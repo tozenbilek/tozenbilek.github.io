@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cash Flow | Modeling Lab</title>
+    <title>Cash Flow Statement | Modeling Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -13,91 +13,58 @@
         <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
-            <a href="index.html" class="nav-link">Modeling Lab</a>
+            <a href="index.html" class="nav-link">Modeling</a>
             <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Cash Flow</span>
+            <span style="color: var(--text-primary);">CFS</span>
         </nav>
 
-        <h1>4. Cash Flow & The Plug</h1>
+        <h1>2.3 Cash Flow Statement</h1>
         <p>
-            Burası sihirin gerçekleştiği yerdir. Gelir Tablosu ve Bilançodan gelen verileri kullanarak nakit değişimini bulacağız ve Bilançoyu dengeleyeceğiz (Balance Check).
+            Nakit kraldır. IS ve BS'deki verileri kullanarak şirketin kasasına giren/çıkan <strong>gerçek parayı</strong> hesaplarız.
+            Dolaylı Yöntem (Indirect Method) kullanılır.
         </p>
 
-        <h2 style="color: #047857;">Adım 1: Indirect Method</h2>
-        <p>Net Income ile başla, Non-Cash kalemleri ekle, WC değişimlerini ayarla.</p>
-
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> Cash Flow Statement</div>
-            <div class="excel-grid" style="grid-template-columns: 40px 180px 100px 150px;">
-                <div class="excel-cell header"></div>
-                <div class="excel-cell header">A</div>
-                <div class="excel-cell header">C (2023E)</div>
-                <div class="excel-cell header">Source</div>
-
-                <div class="excel-cell row-num">60</div>
-                <div class="excel-cell" style="font-weight: bold;">Net Income</div>
-                <div class="excel-cell link">150</div>
-                <div class="excel-cell" style="font-size: 11px;">Link from IS</div>
-
-                <div class="excel-cell row-num">61</div>
-                <div class="excel-cell">(+) D&A</div>
-                <div class="excel-cell link">40</div>
-                <div class="excel-cell" style="font-size: 11px;">Link from PP&E Sch</div>
-
-                <div class="excel-cell row-num">62</div>
-                <div class="excel-cell">(-) Increase in AR</div>
-                <div class="excel-cell formula">(10)</div>
-                <div class="excel-cell" style="font-size: 11px;">-(Current AR - Prior AR)</div>
-
-                <div class="excel-cell row-num">63</div>
-                <div class="excel-cell" style="font-weight: bold;">Cash from Ops</div>
-                <div class="excel-cell formula">180</div>
-                <div class="excel-cell" style="font-size: 11px;">= Sum(60:62)</div>
-
-                <div class="excel-cell row-num">64</div>
-                <div class="excel-cell">(-) CapEx</div>
-                <div class="excel-cell link">(50)</div>
-                <div class="excel-cell" style="font-size: 11px;">Link from PP&E Sch</div>
-
-                <div class="excel-cell row-num">65</div>
-                <div class="excel-cell" style="font-weight: bold; border-top: 1px solid black;">Net Change in Cash</div>
-                <div class="excel-cell formula">130</div>
-                <div class="excel-cell" style="font-size: 11px;">= CFO + CFI + CFF</div>
-            </div>
+        <h2 style="color: #047857;">Step 1: CFO (Operating Activities)</h2>
+        <div class="algo-box">
+            <strong>Başlangıç:</strong> Net Income (IS'den gelir).
+            <br><br>
+            <strong>Adjustments (Düzeltmeler):</strong>
+            <br>+ Depreciation & Amortization (Nakit çıkışı değil, geri ekle).
+            <br>+ Stock Based Comp (Nakit değil, geri ekle).
+            <br><br>
+            <strong>Changes in Working Capital:</strong>
+            <br>- Increase in Receivables (Alacak artarsa nakit azalır).
+            <br>+ Increase in Payables (Borç artarsa nakit artar - cebinde kaldı).
+            <br>- Increase in Inventory (Stok almak nakit yer).
         </div>
 
-        <h2 style="color: #047857;">Adım 2: The Plug (Bağlantı)</h2>
+        <h2 style="color: #047857;">Step 2: CFI (Investing Activities)</h2>
         <p>
-            CFS'de bulduğumuz "Net Change in Cash"i (130), Bilançodaki Nakit hesabına bağlamalıyız.
+            Yatırım harcamaları.
+            <br><strong>- CapEx:</strong> (Fabrika/Makine alımı). Negatiftir.
+            <br><strong>- Asset Sales:</strong> (Varlık satışı). Pozitiftir.
+        </p>
+
+        <h2 style="color: #047857;">Step 3: CFF (Financing Activities)</h2>
+        <p>
+            Borç ve Hisse hareketleri.
+            <br><strong>+ Debt Issuance:</strong> Borç alınca para girer.
+            <br><strong>- Debt Repayment:</strong> Borç ödeyince para çıkar.
+            <br><strong>- Dividends:</strong> Temettü ödemesi.
+        </p>
+
+        <div class="mech-box">
+            <strong>Net Change in Cash = CFO + CFI + CFF</strong>
             <br>
-            <strong>Ending Cash = Beginning Cash + Net Change in Cash</strong>
-        </p>
-
-        <h2 style="color: #047857;">Adım 3: Balance Check (Gerçeklik Kontrolü)</h2>
-        <p>En alta bir kontrol satırı ekleyin.</p>
-        <div class="excel-window">
-            <div class="excel-grid">
-                <div class="excel-cell row-num">99</div>
-                <div class="excel-cell">Total Assets</div>
-                <div class="excel-cell formula">2,500</div>
-                <div class="excel-cell"></div>
-                <div class="excel-cell"></div>
-
-                <div class="excel-cell row-num">100</div>
-                <div class="excel-cell">Total L & E</div>
-                <div class="excel-cell formula">2,500</div>
-                <div class="excel-cell"></div>
-                <div class="excel-cell"></div>
-
-                <div class="excel-cell row-num">101</div>
-                <div class="excel-cell" style="font-weight: bold; color: red;">CHECK</div>
-                <div class="excel-cell formula" style="color: green; font-weight: bold;">OK</div>
-                <div class="excel-cell" style="font-size: 11px;">= IF(A99=A100, "OK", "ERROR")</div>
-                <div class="excel-cell"></div>
-            </div>
+            Ending Cash Balance = Beginning Cash + Net Change.
+            <br>
+            (Bu Ending Cash, Bilançodaki "Cash" kalemine bağlanır ve döngü tamamlanır).
         </div>
-        <p>Eğer "ERROR" görüyorsanız, muhtemelen CFS'de bir işareti (artı/eksi) ters yaptınız.</p>
 
+        <div class="lesson-nav">
+            <a href="balance-sheet.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: BS</a>
+            <a href="debt-schedule.html" class="btn-nav">Sonraki: Debt & Interest <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
     </div>
 </body>
 </html>

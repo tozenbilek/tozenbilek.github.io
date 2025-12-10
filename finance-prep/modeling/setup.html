@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Model Setup | Modeling Lab</title>
+    <title>Setup & Standards | Modeling Lab</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -13,70 +13,63 @@
         <nav class="nav-header">
             <a href="../index.html" class="nav-link">Dashboard</a>
             <span class="nav-sep">/</span>
-            <a href="index.html" class="nav-link">Modeling Lab</a>
+            <a href="index.html" class="nav-link">Modeling</a>
             <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Setup & Standards</span>
+            <span style="color: var(--text-primary);">Setup</span>
         </nav>
 
-        <h1>1. Setup: Profesyonel Gibi Başlamak</h1>
+        <h1>1.1 Setup & Formatting</h1>
         <p>
             Morgan Stanley'de kimse sizin modelinizin ne kadar zeki olduğuna bakmaz; önce ne kadar <strong>temiz</strong> olduğuna bakar. 
-            Karmaşık bir model kurup okunamaz hale getirirseniz, o model "çöp"tür.
+            İlk kural: Standartlara uymak.
         </p>
 
-        <h2 style="color: #047857;">Kural 1: Renk Kodları (The Law)</h2>
-        <p>Bunu uygulamazsanız modeliniz profesyonel sayılmaz. Ezberleyin.</p>
-        
+        <h2 style="color: #047857;">1. Renk Kodları (The Law)</h2>
         <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> Assumption_Tab.xlsx</div>
+            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> Best_Practices.xlsx</div>
             <div class="excel-grid" style="grid-template-columns: 40px 150px 100px 1fr;">
                 <div class="excel-cell header"></div>
                 <div class="excel-cell header">A</div>
                 <div class="excel-cell header">B</div>
-                <div class="excel-cell header">Notes</div>
+                <div class="excel-cell header">Meaning</div>
 
                 <div class="excel-cell row-num">1</div>
                 <div class="excel-cell">Revenue Growth</div>
                 <div class="excel-cell hardcode">5.0%</div>
-                <div class="excel-cell" style="font-size: 11px; color: gray;">← Mavi: Elle girdim (Hardcode). Değiştirebilirsin.</div>
+                <div class="excel-cell" style="font-size: 11px; color: gray;">Mavi: Hardcode (Elle girilen, değişebilir)</div>
 
                 <div class="excel-cell row-num">2</div>
                 <div class="excel-cell">EBITDA Margin</div>
                 <div class="excel-cell hardcode">20.0%</div>
-                <div class="excel-cell" style="font-size: 11px; color: gray;">← Mavi: Input.</div>
+                <div class="excel-cell" style="font-size: 11px; color: gray;">Mavi: Hardcode</div>
 
                 <div class="excel-cell row-num">3</div>
                 <div class="excel-cell">Implied EBITDA</div>
                 <div class="excel-cell formula">105.0</div>
-                <div class="excel-cell" style="font-size: 11px; color: gray;">← Siyah: Formül. Dokunma! (B1 * B2)</div>
+                <div class="excel-cell" style="font-size: 11px; color: gray;">Siyah: Formül (Asla elle değiştirme)</div>
 
                 <div class="excel-cell row-num">4</div>
                 <div class="excel-cell">Link to IS</div>
                 <div class="excel-cell link">Go -></div>
-                <div class="excel-cell" style="font-size: 11px; color: gray;">← Yeşil: Başka sayfadan referans.</div>
+                <div class="excel-cell" style="font-size: 11px; color: gray;">Yeşil: Başka sayfadan link</div>
             </div>
         </div>
 
-        <h2 style="color: #047857;">Kural 2: Fare Kullanmak Yasak (Mouse-Free)</h2>
-        <p>Hızlı olmak zorundasınız. Fare kullanmak sizi yavaşlatır. İşte hayat kurtaran kısayollar:</p>
-        
+        <h2 style="color: #047857;">2. Kısayollar (No Mouse Policy)</h2>
         <div class="content-box-base">
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin-bottom: 12px;"><strong style="font-family: 'JetBrains Mono'; color: #047857;">Alt + E + S + V</strong> : Paste Special Values (Değerleri yapıştır).</li>
-                <li style="margin-bottom: 12px;"><strong style="font-family: 'JetBrains Mono'; color: #047857;">Alt + E + S + T</strong> : Paste Formats (Formatı yapıştır).</li>
-                <li style="margin-bottom: 12px;"><strong style="font-family: 'JetBrains Mono'; color: #047857;">Ctrl + [</strong> : Formülün kaynağına git (Trace Precedents).</li>
-                <li style="margin-bottom: 12px;"><strong style="font-family: 'JetBrains Mono'; color: #047857;">F5 + Enter</strong> : Geri dön (Go To).</li>
-                <li><strong style="font-family: 'JetBrains Mono'; color: #047857;">Alt + =</strong> : AutoSum (Otomatik Topla).</li>
+            <ul>
+                <li><strong>Alt + H + F + C:</strong> Yazı rengini değiştirir (Mavi/Siyah yapmak için).</li>
+                <li><strong>Alt + E + S + V:</strong> Değerleri yapıştır (Paste Values).</li>
+                <li><strong>Alt + E + S + T:</strong> Formatı yapıştır (Paste Formats).</li>
+                <li><strong>Ctrl + [:</strong> Formülün geldiği hücreye git.</li>
+                <li><strong>F5 + Enter:</strong> Geri dön (Go To).</li>
             </ul>
         </div>
 
-        <h2 style="color: #047857;">Kural 3: "Hardcode"ları Ayrıştır</h2>
-        <p>
-            Asla formülün içine elle sayı girmeyin.
-            <br><span style="color: red; font-family: 'JetBrains Mono';">YANLIŞ: = A1 * 1.05</span> (O %5 nereden geldi? Kimse bilemez).
-            <br><span style="color: green; font-family: 'JetBrains Mono';">DOĞRU: = A1 * (1 + B1)</span> (B1 hücresinde %5 growth rate açıkça yazmalı).
-        </p>
-
+        <div class="lesson-nav">
+            <span class="btn-nav disabled"><i class="fa-solid fa-arrow-left"></i> Başlangıç</span>
+            <a href="drivers.html" class="btn-nav">Sonraki: Drivers <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
     </div>
 </body>
 </html>
