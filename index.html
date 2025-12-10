@@ -39,8 +39,9 @@
             color: var(--text-primary);
             font-family: 'Manrope', sans-serif;
             min-height: 100vh;
-            overflow-x: hidden;
             line-height: 1.6;
+            overflow-x: hidden; /* Sadece yatay taşmayı engelle */
+            display: block; /* Flex yerine Block yapısı mobilde daha güvenli scroll sağlar */
         }
 
         /* Arkaplan "Aurora" Efekti (Sofistike Işıklar) */
@@ -296,43 +297,113 @@
                 Hedefim; <strong>Investment Banking</strong>, <strong>Private Equity</strong> ve nihayetinde <strong>Hedge Fund</strong> yönetiminde değer yaratmak.
             </p>
 
-            <!-- KARİYER YOLU / EĞİTİM -->
+            <!-- EXPERIENCE -->
             <div class="section-title">
-                Trajectory <span>Education & Experience</span>
+                Experience <span>Professional & Leadership</span>
             </div>
 
             <div class="career-item">
-                <div class="career-year">Present</div>
+                <div class="career-year">2022-2023</div>
                 <div class="career-content">
-                    <h3>Computer Engineering Student</h3>
-                    <p>Algorithm Analysis, Data Structures, System Programming ve Machine Learning üzerine yoğunlaşmış mühendislik eğitimi.</p>
+                    <h3>Coordinator of Industry Applications Society</h3>
+                    <p><strong>IEEE Hacettepe University Student Branch</strong></p>
+                    <ul style="list-style-type: disc; margin-left: 20px; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px;">
+                        <li>Directed and led the Industry Applications Society, overseeing a membership of more than 200 individuals.</li>
+                        <li>Served as a Organisation Committee Member for the organization of DevFest’22 Ankara, collaboratively hosted with Google Developers Group and sponsored by Google.</li>
+                        <li>Organized and coordinated training programs, including Excel and e-commerce courses.</li>
+                        <li>Contributed to the coordination of university promotional video shoots, contributing to the institution's outreach and visibility.</li>
+                        <li>Participated as a coordinator in the Eurosomt Medical Printing and Simulation Congress in Functional Urology, held in Hatay.</li>
+                        <li>Prior to my role on the administrative board, participated in events such as the Hacettepe Career Fair, Crystal Deer Awards, GameJam, and DevFest’19 Ankara.</li>
+                    </ul>
                     <div class="tag-row">
-                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Event Management</span>
+                        <span class="skill-tag">Team Coordination</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="career-item">
+                <div class="career-year">2022</div>
+                <div class="career-content">
+                    <h3>Intern</h3>
+                    <p><strong>DenizBank</strong></p>
+                    <p>Gained experience in financial analysis, customer relations, and banking operations. Enhanced teamwork and communication skills in a corporate financial environment.</p>
+                    <div class="tag-row">
+                        <span class="skill-tag">Financial Analysis</span>
+                        <span class="skill-tag">Banking Operations</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EDUCATION -->
+            <div class="section-title">
+                Education <span>Academic Background</span>
+            </div>
+
+            <div class="career-item">
+                <div class="career-year">2027 (Exp)</div>
+                <div class="career-content">
+                    <h3>BS, Computer Engineering</h3>
+                    <p><strong>Hacettepe University</strong></p>
+                </div>
+            </div>
+
+            <div class="career-item">
+                <div class="career-year">2019</div>
+                <div class="career-content">
+                    <h3>High School Diploma</h3>
+                    <p><strong>Eskişehir Anatolian High School</strong></p>
+                </div>
+            </div>
+
+            <!-- SKILLS -->
+            <div class="section-title">
+                Technical Expertise <span>Skills & Technologies</span>
+            </div>
+
+            <div class="career-item">
+                <div class="career-year">Languages</div>
+                <div class="career-content">
+                    <h3>Programming Languages</h3>
+                    <div class="tag-row">
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Algorithms</span>
-                        <span class="skill-tag">Scheme</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">VHDL</span>
+                        <span class="skill-tag">Verilog</span>
                     </div>
                 </div>
             </div>
 
             <div class="career-item">
-                <div class="career-year">Focus</div>
+                <div class="career-year">Domains</div>
                 <div class="career-content">
-                    <h3>Quantitative Finance & Analysis</h3>
-                    <p>Finansal piyasaların matematiksel modelleri, türev ürün fiyatlama ve risk yönetimi üzerine kişisel araştırmalar ve projeler.</p>
+                    <h3>Specialized Knowledge</h3>
+                    <p>Advanced understanding of modern computing and engineering concepts.</p>
                     <div class="tag-row">
-                        <span class="skill-tag">Financial Modeling</span>
-                        <span class="skill-tag">Data Analysis</span>
-                        <span class="skill-tag">Stochastic Calculus</span>
+                        <span class="skill-tag">Blockchain Technologies</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">Software Engineering</span>
+                        <span class="skill-tag">System Programming</span>
+                        <span class="skill-tag">Data Structures & Algorithms</span>
+                        <span class="skill-tag">Digital Design</span>
+                        <span class="skill-tag">Computer Architecture</span>
                     </div>
                 </div>
             </div>
 
-             <div class="career-item">
-                <div class="career-year">Target</div>
+            <div class="career-item">
+                <div class="career-year">Math</div>
                 <div class="career-content">
-                    <h3>High Finance Track</h3>
-                    <p>Investment Banking -> Private Equity -> Hedge Fund. Küresel piyasalarda aktif rol alacak stratejik vizyon.</p>
+                    <h3>Mathematical & Theoretical</h3>
+                    <div class="tag-row">
+                        <span class="skill-tag">Linear Algebra</span>
+                        <span class="skill-tag">Probability & Statistics</span>
+                        <span class="skill-tag">Discrete Mathematics</span>
+                        <span class="skill-tag">Automata Theory</span>
+                        <span class="skill-tag">Data Management</span>
+                    </div>
                 </div>
             </div>
 
