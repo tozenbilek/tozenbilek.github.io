@@ -45,6 +45,89 @@
             Bunlar "One-time" giderlerdir.
         </p>
 
+        <h2 style="color: var(--accent-teal);">Mini Model: Synergy Ramp + NPV</h2>
+        <p>
+            Sinerjiler genelde ilk gün %100 gelmez. “Ramp” olur. Ayrıca sinerjiyi değerlendirirken <strong>after-tax</strong> ve <strong>NPV</strong> düşünülür.
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Synergy_NPV.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 70px 140px 140px 140px;">
+                <div class="excel-cell header">Year</div>
+                <div class="excel-cell header">Pre-tax Synergy</div>
+                <div class="excel-cell header">After-tax (t=25%)</div>
+                <div class="excel-cell header">PV @10%</div>
+
+                <div class="excel-cell">1</div>
+                <div class="excel-cell">20</div>
+                <div class="excel-cell">15</div>
+                <div class="excel-cell">13.6</div>
+
+                <div class="excel-cell">2</div>
+                <div class="excel-cell">35</div>
+                <div class="excel-cell">26.3</div>
+                <div class="excel-cell">21.7</div>
+
+                <div class="excel-cell">3</div>
+                <div class="excel-cell">50</div>
+                <div class="excel-cell">37.5</div>
+                <div class="excel-cell">28.2</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">NPV (Y1-Y3)</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;"></div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;"></div>
+                <div class="excel-cell bold" style="border-top:2px solid #111; background:#dcfce7;">63.5</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Bankacılar genelde “kaç yılda” ve “ne kadar kesin” sorar. Ramp yavaşsa accretion gecikir.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-teal);">Integration Costs (Sayısal)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-screwdriver-wrench"></i> Integration_Costs.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Year 1</div>
+                <div class="excel-cell header">Year 2</div>
+
+                <div class="excel-cell">Severance</div>
+                <div class="excel-cell" style="color:red;">(30)</div>
+                <div class="excel-cell">0</div>
+
+                <div class="excel-cell">IT Migration</div>
+                <div class="excel-cell" style="color:red;">(10)</div>
+                <div class="excel-cell" style="color:red;">(5)</div>
+
+                <div class="excel-cell bold">Total One-time</div>
+                <div class="excel-cell bold" style="color:red;">(40)</div>
+                <div class="excel-cell bold" style="color:red;">(5)</div>
+            </div>
+        </div>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Pitfall: “Soft Synergy”yi modele basma</div>
+            <p style="color:#1f2933; margin:0;">
+                Revenue synergy genelde en zor gerçekleşen şeydir. Modelde “hard cost synergy”yi kullanıp,
+                revenue synergy’yi “upside case” olarak ayrı senaryoya koymak daha temizdir.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Sinerji neden after-tax alınır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü hissedara kalan değer vergiden sonra oluşur. Pre-tax sinerji EBIT/EBITDA’yı artırır ama net etki vergi sonrası nakittir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Integration cost neden “deal’i kötü” gösterebilir ama yine de mantıklı olabilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü one-time giderler kısa vadede EPS’i düşürür; ama sinerji kalıcıysa uzun vadede NPV pozitif olabilir. Bu yüzden timing/ramp kritik.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <a href="accretion.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Accretion</a>
             <a href="structuring.html" class="btn-nav">Sonraki: Structuring <i class="fa-solid fa-arrow-right"></i></a>

@@ -31,20 +31,89 @@
             <br><strong>4. Transaction Value:</strong> 200M (Hisse) + 50M (Borç ödemesi) = 250M $. (İşlemin toplam maliyeti).
         </div>
 
+        <h2 style="color: var(--accent-teal);">Mini EV Bridge (Sayısal)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Offer_to_EV.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 160px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Offer Price</div>
+                <div class="excel-cell">20.00</div>
+
+                <div class="excel-cell">Diluted Shares</div>
+                <div class="excel-cell">10.0</div>
+
+                <div class="excel-cell bold">Equity Value</div>
+                <div class="excel-cell bold">200</div>
+
+                <div class="excel-cell">(+)&nbsp;Net Debt</div>
+                <div class="excel-cell">+50</div>
+
+                <div class="excel-cell">(-)&nbsp;Cash</div>
+                <div class="excel-cell">(0)</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111; background:#dcfce7;">Enterprise Value / Transaction Value</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111; background:#dcfce7;">250</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Tek cümle: “Hissedara ödediğin + borcu da üstlendiğin = şirketin tamamına ödediğin.”
+            </div>
+        </div>
+
         <h2 style="color: var(--accent-teal);">Sources & Uses</h2>
         <p>Parayı nereden bulduk (Sources), nereye harcadık (Uses)? Her zaman eşit olmalıdır.</p>
-        <div class="mech-box">
-            <strong>Sources:</strong>
-            <br>+ New Debt (Bankadan Kredi): 100M
-            <br>+ New Equity (Yatırımcıdan Para): 150M
-            <br>+ Cash on Hand (Kasadaki Para): 10M
-            <br><strong>= Total Sources: 260M</strong>
-            <br><br>
-            <strong>Uses:</strong>
-            <br>- Purchase of Equity (Hissedarlara Ödeme): 200M
-            <br>- Refinance Debt (Eski Borcu Kapama): 50M
-            <br>- Transaction Fees (Masraflar): 10M
-            <br><strong>= Total Uses: 260M</strong>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Sources_Uses.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 1fr 140px;">
+                <div class="excel-cell header">Sources</div>
+                <div class="excel-cell header">Amount</div>
+                <div class="excel-cell header">Uses</div>
+                <div class="excel-cell header">Amount</div>
+
+                <div class="excel-cell">New Debt</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">Purchase Equity</div>
+                <div class="excel-cell">200</div>
+
+                <div class="excel-cell">New Equity</div>
+                <div class="excel-cell">150</div>
+                <div class="excel-cell">Refinance Debt</div>
+                <div class="excel-cell">50</div>
+
+                <div class="excel-cell">Cash on Hand</div>
+                <div class="excel-cell">10</div>
+                <div class="excel-cell">Fees</div>
+                <div class="excel-cell">10</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Total Sources</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">260</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Total Uses</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">260</div>
+            </div>
+        </div>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Pitfall: Diluted Shares’ı Unutma</div>
+            <p style="color:#1f2933; margin:0;">
+                Offer price * basic shares yapmak hata. Opsiyon/RSU’lar (TSM) diluted share sayısını artırır; equity value ve transaction value değişir.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Neden “cash” EV bridge’de çıkarılır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü şirketi satın aldığında kasadaki nakit de sana geçer; net maliyeti düşürür (excess cash mantığı).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Transaction value ile equity value aynı şey mi?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Hayır. Equity value sadece hissedara ödenen kısım. Transaction/enterprise value ise borç gibi diğer paydaşların da dahil olduğu “şirketin tamamına” ödenen bedeldir.</span>
+                </div>
+            </div>
         </div>
 
         <div class="lesson-nav">

@@ -45,6 +45,59 @@
             \[ \text{Goodwill} = \text{Purchase Price} - \text{Net Book Value} - \text{Write-ups} + \text{DTL} \]
         </div>
 
+        <h2 style="color: var(--accent-teal);">Mini PPA Tablosu (Sayısal)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> PPA_Walkthrough.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 160px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Purchase Price (Equity)</div>
+                <div class="excel-cell">1,000</div>
+
+                <div class="excel-cell">Net Book Value</div>
+                <div class="excel-cell">(400)</div>
+
+                <div class="excel-cell">PP&E Write-up</div>
+                <div class="excel-cell">(50)</div>
+
+                <div class="excel-cell">Intangibles Created (Brand/Customer)</div>
+                <div class="excel-cell">(150)</div>
+
+                <div class="excel-cell">DTL (Write-ups * 25%)</div>
+                <div class="excel-cell">+50</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111; background:#dcfce7;">Goodwill (Plug)</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111; background:#dcfce7;">450</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                İş mantığı: Önce varlıkları “gerçek değere” çekersin, vergi farkı için DTL yaratırsın, kalan Goodwill’e gider.
+            </div>
+        </div>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Pitfall: Amortization EPS’i Düşürür</div>
+            <p style="color:#1f2933; margin:0;">
+                Intangibles yaratınca amortization doğar (GAAP/IFRS farkları olabilir). Bu amortization pro-forma net income’ı ve EPS’i etkiler.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: DTL neden PPA’da ortaya çıkar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Muhasebe varlıkları write-up ile artırır, vergi otoritesi aynı bazdan amortize etmeyebilir. Gelecekte daha yüksek vergi doğacağı için DTL yazılır.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Goodwill neden “plug”tır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Satın alma priminin tamamını tek tek ölçülebilir varlıklara dağıtamazsın. Kalan, “işin bütününe” ödenen primdir ve Goodwill’e gider.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <a href="exchange-ratios.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Exchange Ratios</a>
             <a href="pro-forma.html" class="btn-nav">Sonraki: Pro-Forma <i class="fa-solid fa-arrow-right"></i></a>

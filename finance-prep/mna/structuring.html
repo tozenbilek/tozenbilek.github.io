@@ -49,6 +49,89 @@
             İki tarafın da anlaşıp imzalaması gerekir.
         </p>
 
+        <h2 style="color: var(--accent-teal);">Stock vs Asset (Hızlı Karşılaştırma)</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Stock Deal</th>
+                        <th>Asset Deal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Liability Risk</strong></td>
+                        <td>Satın alan üstlenir (daha riskli)</td>
+                        <td>Seçici alım (daha az risk)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tax (Seller)</strong></td>
+                        <td>Daha iyi (tek katman)</td>
+                        <td>Daha kötü (çift vergi olabilir)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tax (Buyer)</strong></td>
+                        <td>No step-up</td>
+                        <td>Step-up + amortization/depr. tax shield</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-teal);">Step-up → DTL → Tax Shield (Sayısal)</h2>
+        <p>
+            Asset deal’de varlıkları “yukarı” yazarsın. Muhasebe amortize eder; vergi çoğu zaman farklı davranır → DTL doğar.\n
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> StepUp_DTL.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Write-up (Intangibles)</div>
+                <div class="excel-cell">200</div>
+
+                <div class="excel-cell">Tax Rate</div>
+                <div class="excel-cell">25%</div>
+
+                <div class="excel-cell bold" style="background:#dbeafe;">DTL Created</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">50</div>
+
+                <div class="excel-cell">Amortization (10y straight-line)</div>
+                <div class="excel-cell">20 / year</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">Tax Shield (per year)</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">20 * 25% = 5</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Step-up alıcıya vergi avantajı sağlar; ama DTL, o avantajın “vergisel karşılığı” olarak bilançoda görünür.
+            </div>
+        </div>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Pitfall: “No Step-up” Accretion’ı Bozabilir</div>
+            <p style="color:#1f2933; margin:0;">
+                Stock deal’de step-up yoksa amortization tax shield da yoktur. Bu, pro-forma net income’ı ve dolayısıyla EPS’i etkileyebilir.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Alıcı neden asset deal’i sever?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Seçici varlık alımı + step-up sayesinde vergi kalkanı yaratabilir ve geçmiş riskleri daha iyi izole edebilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Satıcı neden stock deal’i sever?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Genelde tek katmanlı vergi ve daha basit kapanış (tüzel kişilik devri). Asset deal’de “double tax” riski olabilir.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <a href="synergies.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Synergies</a>
             <a href="exchange-ratios.html" class="btn-nav">Sonraki: Exchange Ratios <i class="fa-solid fa-arrow-right"></i></a>

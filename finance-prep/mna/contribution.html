@@ -32,6 +32,75 @@
             Yönetim kurulları (Board of Directors) bu analizi kullanarak pazarlık yapar.
         </div>
 
+        <h2 style="color: var(--accent-teal);">Contribution Matrix (Mini)</h2>
+        <p>
+            Contribution genelde tek metrikle yapılmaz. Revenue/EBITDA/Net Income birlikte bakılır.\n
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Contribution_Matrix.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px 120px;">
+                <div class="excel-cell header">Metric</div>
+                <div class="excel-cell header">Company A</div>
+                <div class="excel-cell header">Company B</div>
+                <div class="excel-cell header">A %</div>
+
+                <div class="excel-cell">Revenue</div>
+                <div class="excel-cell">700</div>
+                <div class="excel-cell">300</div>
+                <div class="excel-cell">70%</div>
+
+                <div class="excel-cell">EBITDA</div>
+                <div class="excel-cell">140</div>
+                <div class="excel-cell">60</div>
+                <div class="excel-cell">70%</div>
+
+                <div class="excel-cell">Net Income</div>
+                <div class="excel-cell">90</div>
+                <div class="excel-cell">60</div>
+                <div class="excel-cell">60%</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Eğer sinerji/finansman Company A tarafında daha fazlaysa “A %” metrikten metriğe kayabilir. Pazarlık burada çıkar.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-teal);">Implied Ownership Check</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-scale-balanced"></i> Ownership_Check.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">A</div>
+                <div class="excel-cell header">B</div>
+
+                <div class="excel-cell">EBITDA Contribution</div>
+                <div class="excel-cell">70%</div>
+                <div class="excel-cell">30%</div>
+
+                <div class="excel-cell">Negotiated Ownership</div>
+                <div class="excel-cell" style="color:#ef4444;">55%</div>
+                <div class="excel-cell">45%</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                A, %70 katkı verip %55 alıyorsa “dilutive” bir anlaşma olabilir. Bunun telafisi premium/özel ödeme ile yapılabilir.
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Contribution analysis’i hangi deal türünde daha çok görürüz?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Merger of Equals (MoE) veya “stock-for-stock” birleşmelerde. Çünkü iki taraf da “kim ne kadar pay alacak?” pazarlığı yapar.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Contribution metrikleri neden farklı sonuç verebilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Marj, amortization, leverage ve muhasebe farkları yüzünden revenue/EBITDA/NI farklı oranlar verir. Bu yüzden tek metrikle karar vermek risklidir.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <a href="pro-forma.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Pro-Forma</a>
             <a href="transaction-math.html" class="btn-nav">Sonraki: Transaction Math <i class="fa-solid fa-arrow-right"></i></a>

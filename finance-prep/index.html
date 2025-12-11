@@ -3,160 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IB Prep | Nezih Arhan Tözenbilek</title>
+    <title>Finance Prep | Nezih Arhan Tözenbilek</title>
     
-    <!-- Fonts -->
+    <!-- Font: Inter (UI) & JetBrains Mono (Code/Data) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
-    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        :root {
+            /* Light theme (same layout as root index.html, but readable like the prep modules) */
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-tertiary: #94a3b8;
+            --accent-green: #16a34a;
+            --accent-blue: #2563eb;
+            --accent-teal: #0f766e;
+            --accent-purple: #7c3aed;
+            --accent-red: #be185d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: block;
+            font-size: 14px;
+        }
+
+        .bg-grid {
+            position: fixed;
+            width: 200%;
+            height: 200%;
+            background-image:
+                linear-gradient(var(--border-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: center;
+            opacity: 0.35;
+            z-index: -1;
+            top: 0; left: 0;
+        }
+
+        .dashboard {
+            width: 100%;
+            max-width: 900px;
+            padding: 60px 24px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+
+        .panel {
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s ease;
+        }
+        .panel:hover { border-color: var(--border-hover); }
+
+        .header-panel {
+            grid-column: span 12;
+            padding: 40px 24px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 24px;
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
+        }
+
+        .system-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .status-dot {
+            width: 6px; height: 6px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+        }
+
+        .bio {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-width: 680px;
+        }
+        .bio strong { color: var(--text-primary); font-weight: 600; }
+
+        .section-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .full-width { grid-column: span 12; }
+        .half-width { grid-column: span 6; }
+
+        .module-list { display: flex; flex-direction: column; gap: 12px; }
+
+        .module-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            text-decoration: none;
+            padding: 14px 14px;
+            border: 1px solid var(--border-color);
+            background: rgba(2, 6, 23, 0.02);
+            border-radius: 10px;
+            transition: all 0.2s ease;
+        }
+        .module-link:hover { border-color: var(--border-hover); background: rgba(2, 6, 23, 0.04); }
+
+        .module-left { display: flex; gap: 12px; align-items: flex-start; }
+        .module-icon {
+            width: 34px; height: 34px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-primary);
+            background: rgba(2, 6, 23, 0.02);
+            flex: 0 0 auto;
+        }
+
+        .module-title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+        .module-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin-top: 4px; }
+
+        .pill {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--text-tertiary);
+            background: rgba(2, 6, 23, 0.03);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+        .pill.done { color: var(--accent-green); border-color: rgba(48, 209, 88, 0.35); background: rgba(48, 209, 88, 0.06); }
+        .pill.core { color: var(--accent-blue); border-color: rgba(59, 130, 246, 0.35); background: rgba(59, 130, 246, 0.06); }
+
+        .panel-title-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; }
+        .panel-title { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+
+        .links-bar {
+            grid-column: span 12;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-color);
+        }
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: rgba(2, 6, 23, 0.02);
+            transition: all 0.2s;
+        }
+        .social-link:hover { background: rgba(2, 6, 23, 0.05); color: var(--text-primary); }
+
+        @media (max-width: 768px) {
+            .dashboard { padding: 32px 20px; grid-template-columns: 1fr; }
+            .header-panel, .full-width, .half-width, .links-bar { grid-column: span 1; }
+        }
+    </style>
 </head>
 <body>
-    <div class="container" style="max-width: 1200px;">
+    <div class="bg-grid"></div>
 
-        <div class="hero-section">
-            <div class="hero-content">
-                <h1 class="hero-title">Investment Banking Knowledge Base</h1>
-                <p class="hero-subtitle">
-                    Kapsamlı bir "Technical Interview" hazırlık deposu.
-                    <br>Finansal modelleme, değerleme teknikleri ve vaka analizleri tek çatı altında.
-                </p>
-                <div class="hero-stats">
-                    <div class="stat-box">
-                        <span class="stat-val">10+</span>
-                        <span class="stat-label">Modules</span>
+    <div class="dashboard">
+        <div class="header-panel">
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Online
+            </div>
+            <h1>Investment Banking Knowledge Base</h1>
+            <p class="bio">
+                Kapsamlı bir <strong>Technical Interview</strong> hazırlık deposu.
+                Finansal modelleme, değerleme teknikleri ve vaka analizleri tek çatı altında.
+            </p>
+        </div>
+
+        <div class="panel full-width">
+            <div class="panel-title-row">
+                <span class="section-label">Core Technicals</span>
+                <span class="pill core">Start Here</span>
+            </div>
+            <div class="module-list">
+                <a class="module-link" href="accounting/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-calculator"></i></div>
+                        <div>
+                            <div class="module-title">Accounting Fundamentals</div>
+                            <div class="module-desc">3 Financial Statements, Working Capital, DTA/DTL ve muhasebe mekanikleri.</div>
+                        </div>
                     </div>
-                    <div class="stat-box">
-                        <span class="stat-val">85</span>
-                        <span class="stat-label">Concepts</span>
+                    <span class="pill done">Completed (39)</span>
+                </a>
+
+                <a class="module-link" href="valuation/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                        <div>
+                            <div class="module-title">Valuation</div>
+                            <div class="module-desc">DCF, Comps, Precedents, Terminal Value, WACC ve Football Field.</div>
+                        </div>
                     </div>
-                    <div class="stat-box">
-                        <span class="stat-val">PhD</span>
-                        <span class="stat-label">Depth</span>
+                    <span class="pill done">Review Ready</span>
+                </a>
+
+                <a class="module-link" href="mna/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-handshake"></i></div>
+                        <div>
+                            <div class="module-title">M&amp;A Modeling</div>
+                            <div class="module-desc">Accretion/Dilution, Synergies, Structuring, PPA ve Pro-Forma.</div>
+                        </div>
                     </div>
-                </div>
+                    <span class="pill done">Starred</span>
+                </a>
+
+                <a class="module-link" href="lbo/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-building-columns"></i></div>
+                        <div>
+                            <div class="module-title">LBO Modeling</div>
+                            <div class="module-desc">Debt schedule, cash sweep, IRR/MOIC ve Paper LBO.</div>
+                        </div>
+                    </div>
+                    <span class="pill done">Starred</span>
+                </a>
             </div>
         </div>
 
-        <div class="section-label">Core Technicals</div>
-        <div class="module-grid-modern">
-            <a href="accounting/index.html" class="module-card-modern theme-accounting">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
-                <h3 class="card-title">Accounting Fundamentals</h3>
-                <p class="card-desc">3 Financial Statements, Working Capital, DTA/DTL ve muhasebe mekanikleri.</p>
-                <div class="card-meta">
-                    <span class="pill">Completed</span>
-                    <span>39 Topics</span>
-                </div>
-            </a>
+        <div class="panel full-width">
+            <div class="panel-title-row">
+                <span class="section-label">Specialized Knowledge</span>
+                <span class="pill">Add-ons</span>
+            </div>
+            <div class="module-list">
+                <a class="module-link" href="tech/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-server"></i></div>
+                        <div>
+                            <div class="module-title">Tech / TMT Valuation</div>
+                            <div class="module-desc">SaaS metrikleri (ARR, churn), LTV/CAC, Rule of 40.</div>
+                        </div>
+                    </div>
+                    <span class="pill">Sector</span>
+                </a>
 
-            <a href="valuation/index.html" class="module-card-modern theme-valuation">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
-                <h3 class="card-title">Valuation Methodologies</h3>
-                <p class="card-desc">DCF, Comps, Precedents, Terminal Value, WACC ve “Football Field”.</p>
-                <div class="card-meta">
-                    <span class="pill">Review Ready</span>
-                    <span>17 Topics</span>
-                </div>
-            </a>
+                <a class="module-link" href="rx/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-gavel"></i></div>
+                        <div>
+                            <div class="module-title">Restructuring (Rx)</div>
+                            <div class="module-desc">Distressed M&amp;A, Chapter 11, fulcrum security.</div>
+                        </div>
+                    </div>
+                    <span class="pill">Advanced</span>
+                </a>
 
-            <a href="mna/index.html" class="module-card-modern theme-mna">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-handshake"></i></div>
-                <h3 class="card-title">Mergers &amp; Acquisitions</h3>
-                <p class="card-desc">Accretion/Dilution, synergies, deal structuring, PPA ve pro-forma.</p>
-                <div class="card-meta">
-                    <span class="pill">Core</span>
-                    <span>9 Topics</span>
-                </div>
-            </a>
+                <a class="module-link" href="market/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-globe"></i></div>
+                        <div>
+                            <div class="module-title">Market Awareness</div>
+                            <div class="module-desc">Fed/ECB, 10Y, spreadler, makro trendler.</div>
+                        </div>
+                    </div>
+                    <span class="pill">Daily</span>
+                </a>
 
-            <a href="lbo/index.html" class="module-card-modern theme-lbo">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-building-columns"></i></div>
-                <h3 class="card-title">LBO Modeling</h3>
-                <p class="card-desc">Debt schedule, cash sweep, IRR/MOIC ve Paper LBO.</p>
-                <div class="card-meta">
-                    <span class="pill">Must Know</span>
-                    <span>16 Topics</span>
-                </div>
-            </a>
+                <a class="module-link" href="behavioral/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-user-tie"></i></div>
+                        <div>
+                            <div class="module-title">Behavioral Prep</div>
+                            <div class="module-desc">Tell me about yourself, Why IB, güçlü/zayıf yönler.</div>
+                        </div>
+                    </div>
+                    <span class="pill">Critical</span>
+                </a>
+
+                <a class="module-link" href="capital-markets/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-file-contract"></i></div>
+                        <div>
+                            <div class="module-title">Capital Markets</div>
+                            <div class="module-desc">IPO, greenshoe, DCM basics, bond pricing.</div>
+                        </div>
+                    </div>
+                    <span class="pill">New</span>
+                </a>
+
+                <a class="module-link" href="modeling/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-table-cells"></i></div>
+                        <div>
+                            <div class="module-title">Excel Modeling Lab</div>
+                            <div class="module-desc">Blank sheet’ten 3-statement model kurma pratikleri.</div>
+                        </div>
+                    </div>
+                    <span class="pill">Practice</span>
+                </a>
+
+                <a class="module-link" href="cases/index.html">
+                    <div class="module-left">
+                        <div class="module-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <div>
+                            <div class="module-title">Real Deal Cases</div>
+                            <div class="module-desc">Twitter LBO ve vaka çalışmaları.</div>
+                        </div>
+                    </div>
+                    <span class="pill">Cases</span>
+                </a>
+            </div>
         </div>
 
-        <div class="section-label">Specialized Knowledge</div>
-        <div class="module-grid-modern">
-            <a href="tech/index.html" class="module-card-modern theme-tech">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-server"></i></div>
-                <h3 class="card-title">Tech / TMT Valuation</h3>
-                <p class="card-desc">SaaS metrikleri (ARR, churn), LTV/CAC, Rule of 40 ve internet değerleme.</p>
-                <div class="card-meta">
-                    <span class="pill">Hot Topic</span>
-                    <span>Sector</span>
-                </div>
-            </a>
-
-            <a href="rx/index.html" class="module-card-modern theme-rx">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-gavel"></i></div>
-                <h3 class="card-title">Restructuring (Rx)</h3>
-                <p class="card-desc">Distressed M&amp;A, Chapter 11, capital structure ve fulcrum security.</p>
-                <div class="card-meta">
-                    <span class="pill">Niche</span>
-                    <span>Elite</span>
-                </div>
-            </a>
-
-            <a href="market/index.html" class="module-card-modern theme-market">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-globe"></i></div>
-                <h3 class="card-title">Market Awareness</h3>
-                <p class="card-desc">Fed/ECB, 10Y, spreadler, endeksler ve makro trendler.</p>
-                <div class="card-meta">
-                    <span class="pill">Daily</span>
-                    <span>Macro</span>
-                </div>
-            </a>
-
-            <a href="behavioral/index.html" class="module-card-modern theme-behavioral">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
-                <h3 class="card-title">Behavioral Prep</h3>
-                <p class="card-desc">Tell me about yourself, Why IB, güçlü/zayıf yönler.</p>
-                <div class="card-meta">
-                    <span class="pill">Critical</span>
-                    <span>Soft Skills</span>
-                </div>
-            </a>
-
-            <a href="capital-markets/index.html" class="module-card-modern theme-lbo">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-building-columns"></i></div>
-                <h3 class="card-title">Capital Markets</h3>
-                <p class="card-desc">IPO, greenshoe, DCM basics ve bond math.</p>
-                <div class="card-meta">
-                    <span class="pill">New</span>
-                    <span>Module</span>
-                </div>
-            </a>
-
-            <a href="modeling/index.html" class="module-card-modern theme-accounting">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-table-cells"></i></div>
-                <h3 class="card-title">Excel Modeling Lab</h3>
-                <p class="card-desc">3-statement model kurma pratikleri (setup → drivers → balance).</p>
-                <div class="card-meta">
-                    <span class="pill">Practice</span>
-                    <span>Lab</span>
-                </div>
-            </a>
-
-            <a href="cases/index.html" class="module-card-modern theme-valuation">
-                <div class="card-icon-wrapper"><i class="fa-solid fa-briefcase"></i></div>
-                <h3 class="card-title">Real Deal Cases</h3>
-                <p class="card-desc">Twitter LBO ve vaka çalışmaları.</p>
-                <div class="card-meta">
-                    <span class="pill">Analysis</span>
-                    <span>Cases</span>
-                </div>
-            </a>
+        <div class="links-bar">
+            <a href="../index.html" class="social-link"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
         </div>
     </div>
 </body>
