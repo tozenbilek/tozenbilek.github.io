@@ -22,72 +22,81 @@
         <h1>Comps Analysis: The Art of Multiples</h1>
         <p>
             Herkes "Apple 30x P/E ile işlem görüyor" der. Ama profesyonel değerlemede işler bu kadar basit değildir. 
-            Burada <strong>Calendarization</strong>, <strong>LTM (Last Twelve Months)</strong> ve <strong>Non-Recurring Items</strong> düzeltmelerini öğreneceksiniz.
+            Burada <strong>Calendarization</strong> ve <strong>LTM (Last Twelve Months)</strong> gibi profesyonel düzeltmeleri öğreneceksiniz.
         </p>
 
         <h2 style="color: var(--accent-blue);">1. Calendarization (Takvim Uyarlaması)</h2>
         <p>
             Şirket A'nın mali yılı Aralık'ta biter. Şirket B'nin Mart'ta biter. Bu ikisini doğrudan kıyaslayamazsınız.
-            Hepsini aynı zaman dilimine (genellikle LTM veya takvim yılı sonuna) çekmeniz gerekir.
+            Hepsini aynı zaman dilimine (LTM) çekmeniz gerekir.
         </p>
         
         <div class="mech-box">
-            <strong>LTM Formula (The Holy Grail):</strong>
+            <strong>LTM Formula:</strong>
             <br>
-            LTM = Current Year Q3 YTD + Prior Year Full Year - Prior Year Q3 YTD
-            <br><br>
-            <em>Mantık: Son 9 ayı al, geçen senenin tamamını ekle, geçen senenin ilk 9 ayını çıkar. Geriye son 12 ay kalır.</em>
+            <span style="font-family:'JetBrains Mono'; color:#2563eb;">LTM = Current Year Q3 YTD + Prior Year Full Year - Prior Year Q3 YTD</span>
         </div>
 
-        <h2 style="color: var(--accent-blue);">2. EV/EBITDA vs P/E: The Showdown</h2>
-        <table style="width:100%; border-collapse: collapse; margin-bottom: 24px; font-size: 14px;">
-            <tr style="background-color: #f1f5f9;">
-                <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">Özellik</th>
-                <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">EV / EBITDA</th>
-                <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;">P / E (Price to Earnings)</th>
-            </tr>
-            <tr>
-                <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Kimin Değeri?</strong></td>
-                <td style="padding: 12px; border: 1px solid #e2e8f0;">Enterprise (Şirketin Tamamı)</td>
-                <td style="padding: 12px; border: 1px solid #e2e8f0;">Equity (Sadece Hissedar)</td>
-            </tr>
-            <tr>
-                <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Sermaye Yapısı</strong></td>
-                <td style="padding: 12px; border: 1px solid #e2e8f0; color: green;">Nötr (Borçtan etkilenmez)</td>
-                <td style="padding: 12px; border: 1px solid #e2e8f0; color: red;">Bağımlı (Borç artarsa P/E değişir)</td>
-            </tr>
-            <tr>
-                <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Kullanım Yeri</strong></td>
-                <td style="padding: 12px; border: 1px solid #e2e8f0;">M&A, LBO, Genel Değerleme</td>
-                <td style="padding: 12px; border: 1px solid #e2e8f0;">Perakende Yatırımcı, Bankalar</td>
-            </tr>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> LTM_Calculation.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 150px 100px 100px;">
+                <div class="excel-cell header">Period</div>
+                <div class="excel-cell header">Revenue ($)</div>
+                <div class="excel-cell header">Formula</div>
+
+                <div class="excel-cell">2022 Full Year</div>
+                <div class="excel-cell">1,000</div>
+                <div class="excel-cell">(+)</div>
+
+                <div class="excel-cell">2022 Q1-Q3 (9M)</div>
+                <div class="excel-cell">700</div>
+                <div class="excel-cell">(-)</div>
+
+                <div class="excel-cell">2023 Q1-Q3 (9M)</div>
+                <div class="excel-cell">800</div>
+                <div class="excel-cell">(+)</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid black;">LTM Revenue</div>
+                <div class="excel-cell bold">1,100</div>
+                <div class="excel-cell bold">= 1000 - 700 + 800</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray;">
+                Mantık: 2022'nin son çeyreğini (300) alır, üstüne 2023'ün ilk üç çeyreğini (800) ekler. Toplam 1100.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">2. EV/EBITDA vs P/E</h2>
+        <table class="financial-table">
+            <thead>
+                <tr>
+                    <th>Özellik</th>
+                    <th>EV / EBITDA</th>
+                    <th>P / E (Price to Earnings)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Kapsam</strong></td>
+                    <td>Tüm Şirket (Enterprise)</td>
+                    <td>Sadece Hissedar (Equity)</td>
+                </tr>
+                <tr>
+                    <td><strong>Borç Etkisi</strong></td>
+                    <td><span style="color:green;">Nötr</span> (Borç yapısından etkilenmez)</td>
+                    <td><span style="color:red;">Etkilenir</span> (Borç artarsa P/E düşebilir)</td>
+                </tr>
+                <tr>
+                    <td><strong>Kullanım</strong></td>
+                    <td>M&A, LBO, Çoğu Sektör</td>
+                    <td>Bankalar, Bireysel Yatırımcı</td>
+                </tr>
+            </tbody>
         </table>
 
-        <h2 style="color: var(--accent-blue);">3. Sum-of-the-Parts (SOTP)</h2>
-        <p>
-            Amazon hem bir perakendeci (Retail) hem de bir bulut şirketidir (AWS). İkisini tek bir çarpanla (örn. 20x EBITDA) değerlemek yanlıştır.
-        </p>
-        <div class="proof-box">
-            <div class="proof-title"><i class="fa-solid fa-puzzle-piece"></i> Parçala ve Yönet</div>
-            <p style="color: #1e3a8a; margin: 0;">
-                1. Retail Segment: 10 Milyar EBITDA * 10x (Walmart Çarpanı) = 100 Milyar
-                <br>
-                2. AWS Segment: 5 Milyar EBITDA * 25x (Salesforce Çarpanı) = 125 Milyar
-                <br>
-                <strong>Toplam Değer = 225 Milyar</strong>
-                <br>
-                (Tek çarpan kullansaydık 15 * 15x = 225? Belki. Ama SOTP daha hassastır.)
-            </p>
+        <div class="lesson-nav">
+            <a href="enterprise-value.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: EV</a>
+            <a href="precedent-transactions.html" class="btn-nav">Sonraki: Precedent Transactions <i class="fa-solid fa-arrow-right"></i></a>
         </div>
-
-        <h2 style="color: var(--accent-blue);">4. Industry Specific Multiples</h2>
-        <ul>
-            <li><strong>Tech / SaaS:</strong> EV / Revenue (Çünkü çoğu kâr etmez).</li>
-            <li><strong>Energy (Oil & Gas):</strong> EV / EBITDAX (Exploration maliyetlerini nötrlemek için).</li>
-            <li><strong>REITs (Gayrimenkul):</strong> Price / FFO (Funds From Operations). Net Income anlamsızdır çünkü amortisman çok yüksektir.</li>
-            <li><strong>Banks:</strong> P / BV (Price to Book Value). Bankanın varlığı nakittir, defter değeri piyasa değerine yakındır.</li>
-        </ul>
-
     </div>
 </body>
 </html>

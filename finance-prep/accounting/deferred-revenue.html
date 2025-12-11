@@ -18,33 +18,53 @@
             <span style="color: var(--text-primary);">Unearned Income</span>
         </nav>
 
-        <h1>Deferred Revenue (Ertelenmiş Gelir)</h1>
+        <h1>2.2 Deferred Revenue (Ertelenmiş Gelir)</h1>
         <p>
-            Adı "Gelir" olsa da, kendisi bir <strong>Borçtur (Liability).</strong>
-            Müşteriden parayı peşin aldınız ama hizmeti henüz vermediniz.
+            Parayı peşin aldınız ama hizmeti vermediniz.
+            Adı "Gelir" ama kendisi bir <strong>Borçtur (Liability).</strong>
+            SaaS ve Abonelik şirketlerinin can damarıdır.
         </p>
 
-        <h2 style="color: var(--accent-green);">The Concept (Unearned Income)</h2>
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-solid fa-user-clock"></i> Hizmet Borcu</div>
-            <p>
-                SaaS şirketleri (Netflix, Spotify, Salesforce) bu kalemle yaşar.
-                <br>
-                Yıllık 120 TL'yi peşin aldınız.
-                <br>
-                Ocak ayında hizmet vermediniz, sadece parayı aldınız. O para sizin değil, müşteriye olan borcunuzdur.
-                <br>
-                Hizmeti vermeden kaçarsanız, o parayı iade etmek zorundasınız. Bu yüzden <strong>Liability</strong>'dir.
-            </p>
+        <h2 style="color: var(--accent-green);">1. Cash Flow Magic (Nakit Sihiri)</h2>
+        <div class="mech-box">
+            Netflix'e 1 yıllık peşin (1200 TL) ödediğinizi düşünün.
+            <br>
+            Netflix'in o ayki Gelir Tablosunda sadece 100 TL görünür.
+            <br>
+            Peki kalan 1100 TL nerede? <strong>KASADA!</strong>
+            <br><br>
+            Deferred Revenue artışı, nakit akışını (Operating Cash Flow) <strong>ARTIRIR.</strong>
+            Bu yüzden SaaS şirketleri zarar etseler bile kasaları para doludur.
         </div>
 
-        <h2 style="color: var(--accent-green);">Cash vs Revenue Impact</h2>
-        <p>Deferred Revenue artarsa ne olur?</p>
-        <ul>
-            <li><strong>Cash Flow:</strong> Artar! (Nakit girişi oldu, ama gelir tablosunda görünmüyor. CFO'da "Change in Working Capital" olarak eklenir).</li>
-            <li><strong>Revenue:</strong> Değişmez (Henüz hizmet verilmedi).</li>
-            <li><strong>Tax:</strong> Genellikle tahakkuk esaslı olduğu için vergi de ertelenir (Ülkeye göre değişir).</li>
-        </ul>
+        <h2 style="color: var(--accent-green);">2. The Waterfall Chart</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Rev_Waterfall.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 100px 100px 100px 100px;">
+                <div class="excel-cell header">Ay</div>
+                <div class="excel-cell header">Nakit Girişi</div>
+                <div class="excel-cell header">Revenue (IS)</div>
+                <div class="excel-cell header">Def. Rev (BS)</div>
+
+                <div class="excel-cell">Ocak</div>
+                <div class="excel-cell bold">+1200</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">1100</div>
+
+                <div class="excel-cell">Şubat</div>
+                <div class="excel-cell">0</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">1000</div>
+
+                <div class="excel-cell">Mart</div>
+                <div class="excel-cell">0</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">900</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                Zaman geçtikçe Bilançodaki borç (Def. Rev) azalır, Gelir Tablosuna (Revenue) akar.
+            </div>
+        </div>
 
         <div class="lesson-nav">
             <a href="revenue-recognition.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Rev Rec</a>

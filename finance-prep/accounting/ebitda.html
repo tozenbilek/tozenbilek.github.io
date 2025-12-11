@@ -20,61 +20,71 @@
             <span style="color: var(--text-primary);">EBITDA</span>
         </nav>
 
-        <h1>EBITDA (FAVÖK)</h1>
+        <h1>2.3 EBITDA (FAVÖK)</h1>
         <p>
             <strong>E</strong>arnings <strong>B</strong>efore <strong>I</strong>nterest, <strong>T</strong>axes, <strong>D</strong>epreciation, and <strong>A</strong>mortization.
             <br>
-            Finans dünyasının en popüler, ama en tartışmalı metriğidir.
+            Finansın en popüler metriğidir. Şirketin "Operasyonel Nakit Üretme Gücünü" gösterir.
         </p>
 
-        <h2 style="color: var(--accent-green);">1. Why Everyone Uses It? (Proxy for Cash Flow)</h2>
-        <div class="content-box-base">
-            <p>
-                Net Income (Net Kâr) çok fazla "gürültü" içerir:
-                <br>- <strong>Interest:</strong> Şirketin sermaye yapısına (Borçlu mu?) bağlıdır.
-                <br>- <strong>Taxes:</strong> Ülkenin vergi kanunlarına bağlıdır.
-                <br>- <strong>D&A:</strong> Geçmiş yatırımların muhasebe kaydıdır (Nakit çıkışı değildir).
-                <br><br>
-                Bu gürültüleri temizlerseniz, geriye şirketin <strong>"Saf Operasyonel Kârlılığı"</strong> kalır. 
-                İki farklı şirketi (biri borçlu, biri borçsuz) karşılaştırmanın en iyi yoludur.
-            </p>
+        <h2 style="color: var(--accent-green);">1. The Bridge (Nasıl Hesaplanır?)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-bridge"></i> From Net Income to EBITDA</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 100px;">
+                <div class="excel-cell header">Kalem</div>
+                <div class="excel-cell header">Tutar</div>
+
+                <div class="excel-cell bold">Net Income (Bottom Line)</div>
+                <div class="excel-cell bold">100</div>
+
+                <div class="excel-cell">(+) Taxes</div>
+                <div class="excel-cell">25</div>
+
+                <div class="excel-cell">(+) Interest Expense</div>
+                <div class="excel-cell">15</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">= EBIT (Operating Income)</div>
+                <div class="excel-cell bold" style="background:#f0fdf4;">140</div>
+
+                <div class="excel-cell">(+) Depreciation & Amortization</div>
+                <div class="excel-cell">60</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid black;">= EBITDA</div>
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid black;">200</div>
+
+                <div class="excel-cell" style="color:blue;">(+) SBC (Non-Cash)</div>
+                <div class="excel-cell" style="color:blue;">20</div>
+
+                <div class="excel-cell" style="color:blue;">(+) Restructuring (One-time)</div>
+                <div class="excel-cell" style="color:blue;">30</div>
+
+                <div class="excel-cell bold" style="background:#22c55e; color:white;">= Adjusted EBITDA</div>
+                <div class="excel-cell bold" style="background:#22c55e; color:white;">250</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                Yatırımcılar genelde en alttaki "Adjusted EBITDA"ya bakar. Çünkü tek seferlik giderlerden arındırılmıştır.
+            </div>
         </div>
 
-        <h2 style="color: var(--accent-green);">2. The Calculation (Bridge)</h2>
-        <div class="formula-box">
-            \[ \text{EBITDA} = \text{Net Income} + \text{Interest} + \text{Taxes} + \text{D\&A} \]
-        </div>
-        <p>Veya yukarıdan aşağıya (Top-Down):</p>
-        <div class="formula-box">
-            \[ \text{EBITDA} = \text{Operating Income (EBIT)} + \text{D\&A} \]
-        </div>
-        
-        <div class="mech-box">
-            <strong>Adjusted EBITDA Bridge:</strong>
-            <br>
-            Operating Income (EBIT)
-            <br>
-            (+) Depreciation & Amortization
-            <br>
-            (+) Stock Based Compensation (Nakit çıkışı yok)
-            <br>
-            (+) Restructuring Charges (Tek seferlik)
-            <br>
-            (-) Gain on Sale of Asset (Tek seferlik gelir)
-            <br>
-            <strong style="color: var(--accent-green); border-top: 1px solid #ccc; padding-top:4px; margin-top:4px; display:inline-block;">= Adjusted EBITDA</strong>
-        </div>
-
-        <h2 style="color: var(--accent-green);">3. The Criticism (Warren Buffett)</h2>
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-solid fa-skull"></i> "Bullsh*t Earnings"</div>
-            <p>
-                Charlie Munger der ki: <em>"EBITDA'dan bahsettiğimiz her seferde, 'Saçmalık Kazançları'nı kastediyoruz."</em>
-                <br><br>
-                Neden? Çünkü <strong>Amortisman gerçek bir giderdir.</strong> 
-                O makine eskiyecek ve yenisini almak için nakit harcayacaksınız (CapEx). 
-                EBITDA, CapEx'i yok sayar. Şirketi olduğundan daha kârlı gösterir.
-            </p>
+        <h2 style="color: var(--accent-green);">2. Neden Severiz? Neden Nefret Ederiz?</h2>
+        <div class="grid-modules" style="grid-template-columns: 1fr 1fr;">
+            <div class="content-box-base" style="border-top: 4px solid #22c55e;">
+                <h3 style="margin-top:0; color:#22c55e;">👍 Neden İyi?</h3>
+                <p>
+                    1. Sermaye yapısından bağımsızdır (Borçlu/Borçsuz farketmez).
+                    <br>2. Vergi oranlarından bağımsızdır.
+                    <br>3. Nakit akışına (Cash Flow) iyi bir yaklaşımdır.
+                    <br>4. Karşılaştırılabilir (Comparability).
+                </p>
+            </div>
+            <div class="content-box-base" style="border-top: 4px solid #ef4444;">
+                <h3 style="margin-top:0; color:#ef4444;">👎 Neden Kötü?</h3>
+                <p>
+                    1. <strong>CapEx'i görmezden gelir.</strong> (Sanki makineler hiç eskimeyecekmiş gibi).
+                    <br>2. İşletme Sermayesi (Working Capital) değişimlerini görmezden gelir.
+                    <br>3. Hileye açıktır ("Adjusted" yaparken her şeyi geri ekleyebilirler).
+                </p>
+            </div>
         </div>
 
         <div class="lesson-nav">

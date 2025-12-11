@@ -18,34 +18,50 @@
             <span style="color: var(--text-primary);">Rev Rec</span>
         </nav>
 
-        <h1>Revenue Recognition (ASC 606)</h1>
+        <h1>2.1 Revenue Recognition (ASC 606)</h1>
         <p>
-            Muhasebenin en temel kuralı: <strong>Gelir, nakit tahsil edildiğinde değil, hak edildiğinde (earned) kaydedilir.</strong>
+            Gelir ne zaman "Gelir" olur? 
+            Nakit almak yetmez. Hizmeti vermiş olmanız (Performance Obligation) gerekir.
         </p>
 
-        <h2 style="color: var(--accent-green);">The 5-Step Model</h2>
+        <h2 style="color: var(--accent-green);">The 5-Step Model (Kurallar)</h2>
         <div class="content-box-base">
             <ol>
-                <li><strong>Sözleşmeyi Tanımla:</strong> Müşteri ile bir anlaşma var mı?</li>
-                <li><strong>Edimleri (Obligations) Belirle:</strong> Ne satıyoruz? (Örn: Telefon + 1 Yıl Servis). Bunlar ayrı ayrı mı?</li>
-                <li><strong>Fiyatı Belirle:</strong> Toplam kaç para alacağız?</li>
-                <li><strong>Fiyatı Dağıt (Allocate):</strong> Telefona kaç para, servise kaç para düşüyor?</li>
-                <li><strong>Geliri Kaydet (Recognize):</strong> Telefonu verince telefon parasını, servisi verdikçe servis parasını gelir yaz.</li>
+                <li><strong>Sözleşme:</strong> Müşteriyle anlaşma var mı?</li>
+                <li><strong>Edimler:</strong> Ne satıyoruz? (Ürün + Bakım + Kurulum). Bunları ayır.</li>
+                <li><strong>Fiyat:</strong> Toplam kaç para?</li>
+                <li><strong>Dağıtım:</strong> Fiyatı parçalara böl (Ürün 100 TL, Bakım 20 TL).</li>
+                <li><strong>Kaydetme:</strong> Her parçayı teslim ettiğinde gelir yaz.</li>
             </ol>
         </div>
 
-        <h2 style="color: var(--accent-green);">Case Study: iPhone Satışı</h2>
+        <h2 style="color: var(--accent-green);">Case Study: The iPhone Bundle</h2>
         <div class="mech-box">
-            Apple size 1.200 TL'ye bir iPhone sattı. Bunun içinde 200 TL değerinde 2 yıllık "Apple TV+" üyeliği hediye.
+            Apple size <strong>1,200 TL'ye</strong> bir iPhone 15 sattı.
+            Paketin içinde "2 Yıllık Ücretsiz Apple TV Üyeliği" var (Piyasa değeri 240 TL).
             <br><br>
-            <strong>Nakit:</strong> +1.200 TL (Kasa doldu).
+            <strong>Muhasebe Kaydı (Ocak Ayı):</strong>
             <br>
-            <strong>Gelir (Ocak Ayı):</strong>
-            <br>- Telefon (1.000 TL): Hemen gelir yazılır (Telefonu aldınız).
-            <br>- Apple TV (200 TL): Gelir YAZILMAZ. 24 aya bölünür.
-            <br> -> Ocak Ayı Apple TV Geliri = 200 / 24 = 8.3 TL.
-            <br><br>
-            <strong>Toplam Ocak Geliri:</strong> 1.008,3 TL. (Nakit 1.200 olmasına rağmen!).
+            <ul>
+                <li>Nakit Girişi: <strong>+1,200 TL</strong>. (Kasa doldu).</li>
+                <li>iPhone Geliri: Telefonu hemen verdi. <strong>+1,000 TL</strong> Gelir yazar.</li>
+                <li>Apple TV Geliri: Henüz hizmeti vermedi. <strong>0 TL</strong> Gelir yazar. (Kalan 200 TL "Deferred Revenue" olur).</li>
+                <li>Her ay (24 ay boyunca): 200/24 = <strong>8.3 TL</strong> Gelir yazmaya başlar.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">Complex Case: Construction (Percentage of Completion)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-person-digging"></i> İnşaat Muhasebesi</div>
+            <p>
+                Bir köprü yapıyorsunuz. Proje 3 yıl sürecek. Toplam Hakediş 100 Milyon TL.
+                <br>Para proje bitince ödenecek. 3 yıl boyunca Gelir Tablosu 0 mı olacak? <strong>Hayır.</strong>
+                <br><br>
+                <strong>Tamamlanma Yüzdesi Yöntemi:</strong>
+                <br>1. Yıl: Köprünün %30'u bitti. (Maliyetlere bakarak anlarsın).
+                <br>-> Gelir Tablosuna <strong>30 Milyon TL</strong> Ciro yazarsın.
+                <br>-> Ama nakit almadın? Bilançoda "Unbilled Receivables" (Faturalanmamış Alacak) yazarsın.
+            </p>
         </div>
 
         <div class="lesson-nav">

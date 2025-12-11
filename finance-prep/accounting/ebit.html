@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBIT | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <a href="income-statement.html" class="nav-link">Income Statement</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">EBIT</span>
+        </nav>
+
+        <h1>EBIT / Operating Income (Faaliyet Kârı)</h1>
+        <p>
+            Earnings Before Interest and Taxes. Şirketin "esas faaliyetinden" ne kadar kazandığını gösterir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. Neden Önemli?</h2>
+        <div class="content-box-base">
+            <p>
+                Finansal yapıyı (Borç/Hisse) ve Vergi etkisini göz ardı eder.
+                Bu sayede, farklı vergi dilimlerindeki veya farklı borçluluk oranlarındaki şirketleri <strong>operasyonel</strong> olarak karşılaştırmamızı sağlar.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Formül</h2>
+        <div class="formula-box">
+            EBIT = Gross Profit - OpEx
+        </div>
+        <div class="formula-box">
+            EBIT = Net Income + Interest + Taxes
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. EBIT vs EBITDA</h2>
+        <div class="mech-box">
+            <strong>EBIT:</strong> Amortisman (Depreciation & Amortization) giderini DÜŞER.
+            <br>
+            <strong>EBITDA:</strong> Amortisman giderini DÜŞMEZ (Geri ekler).
+            <br><br>
+            <em>Warren Buffett EBIT'i sever, EBITDA'yı sevmez. Çünkü makineler eskir ve yenilenmesi gerekir (CapEx). EBIT bu gerçeği (Amortisman yoluyla) hesaba katar. EBITDA ise sanki makineler sonsuza kadar çalışacakmış gibi davranır.</em>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="opex.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: OpEx</a>
+            <a href="interest-expense.html" class="btn-nav">Sonraki: Interest Expense <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+

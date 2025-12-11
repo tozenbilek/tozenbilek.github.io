@@ -22,58 +22,72 @@
 
         <h1>4.4 Leases (IFRS 16 / ASC 842)</h1>
         <p>
-            Eskiden şirketler uçak kiralayıp "Borcum yok" derdi (Off-Balance Sheet). 
-            Artık bu yasak. Her kira sözleşmesi bir borçtur.
+            Eskiden havayolları ve perakendeciler mağaza/uçak kiralayıp "Borcum yok" derdi (Off-Balance Sheet). 
+            2019'da gelen yeni kuralla bu oyun bitti. Artık her kira sözleşmesi bir borçtur.
         </p>
 
-        <h2 style="color: var(--accent-green);">1. The "Right of Use" Concept</h2>
+        <h2 style="color: var(--accent-green);">1. Balance Sheet Impact (Bilanço Şişiyor)</h2>
         <div class="mech-box">
-            Bir ofisi 10 yıllığına kiraladınız.
+            Bir mağazayı 10 yıllığına kiraladınız. Toplam kira 10 Milyon TL.
+            <br><br>
+            <strong>Eski Kural:</strong> Bilançoda hiçbir şey görünmezdi.
             <br>
+            <strong>Yeni Kural:</strong>
             <ul>
-                <li><strong>Varlık (Asset):</strong> O ofisi 10 yıl kullanma hakkınız var. Buna <strong>ROU Asset</strong> denir.</li>
-                <li><strong>Borç (Liability):</strong> 10 yıl boyunca kira ödeme sözünüz var. Buna <strong>Lease Liability</strong> denir. (Kiraların bugünkü değeri).</li>
+                <li><strong>Asset (Varlık):</strong> "Kullanım Hakkı Varlığı" (ROU Asset) eklenir. (~8 Milyon TL)</li>
+                <li><strong>Liability (Borç):</strong> "Kira Yükümlülüğü" (Lease Liability) eklenir. (~8 Milyon TL)</li>
             </ul>
+            <em>Sonuç: Şirketin borçluluk oranı (Leverage) bir gecede arttı!</em>
         </div>
 
-        <h2 style="color: var(--accent-green);">2. Visual Walkthrough (Calculation)</h2>
-        <p>100 TL Kira Ödemesi, %5 Faiz Oranı.</p>
-        
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-table"></i> Lease_Schedule.xlsx</div>
-            <div class="excel-grid" style="grid-template-columns: 100px 100px 100px 100px 100px;">
-                <div class="excel-cell header">Yıl</div>
-                <div class="excel-cell header">Beg. Liability</div>
-                <div class="excel-cell header">Interest Exp</div>
-                <div class="excel-cell header">Rent Payment</div>
-                <div class="excel-cell header">End. Liability</div>
-
-                <div class="excel-cell">1</div>
-                <div class="excel-cell">1,000</div>
-                <div class="excel-cell" style="color:red;">50</div>
-                <div class="excel-cell">(100)</div>
-                <div class="excel-cell">950</div>
-
-                <div class="excel-cell">2</div>
-                <div class="excel-cell">950</div>
-                <div class="excel-cell" style="color:red;">47.5</div>
-                <div class="excel-cell">(100)</div>
-                <div class="excel-cell">897.5</div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">3. EBITDA Impact (Hile Gibi)</h2>
+        <h2 style="color: var(--accent-green);">2. Income Statement Impact (EBITDA Hilesi)</h2>
         <div class="reddit-box">
             <div class="reddit-title"><i class="fa-solid fa-magic"></i> EBITDA Neden Artar?</div>
             <p>
-                <strong>Eski (Operating Lease):</strong> 100 TL "Kira Gideri" vardı (EBITDA'nın üstündeydi).
-                <br>
-                <strong>Yeni (Finance Lease):</strong> Kira gideri yok oldu! Yerine "Faiz" (50 TL) ve "Amortisman" (ROU Asset'in eskimesi) geldi.
+                Şirket operasyonel olarak AYNI işi yapıyor, aynı kirayı ödüyor. Ama EBITDA'sı artıyor. Nasıl?
                 <br><br>
-                Faiz ve Amortisman, EBITDA'nın <strong>altındadır</strong>.
+                <strong>Eski:</strong> 100 TL "Kira Gideri" (Rent Expense) vardı. EBITDA'dan düşülürdü.
                 <br>
-                <strong>Sonuç:</strong> Şirket aynı parayı öder ama EBITDA'sı yapay olarak yükselir. (Değerleme çarpanlarına dikkat!).
+                <strong>Yeni:</strong> Kira gideri yok oldu! Yerine iki şey geldi:
+                <br>1. <strong>Amortisman</strong> (ROU Asset eskiyor) -> EBITDA'nın altında.
+                <br>2. <strong>Faiz</strong> (Kira borcunun faizi) -> EBITDA'nın altında.
+                <br><br>
+                <strong>Sonuç:</strong> Giderler EBITDA'nın altına (Aşağıya) kaydırıldığı için, EBITDA yapay olarak yükselir.
+                Değerleme yaparken (EV/EBITDA) buna çok dikkat edilmelidir.
             </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Visual Walkthrough</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Lease_Amortization.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 50px 100px 100px 100px 100px;">
+                <div class="excel-cell header">Yıl</div>
+                <div class="excel-cell header">Kira Ödemesi</div>
+                <div class="excel-cell header">Faiz (%5)</div>
+                <div class="excel-cell header">Anapara</div>
+                <div class="excel-cell header">Liability</div>
+
+                <div class="excel-cell">0</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">1,000</div>
+
+                <div class="excel-cell">1</div>
+                <div class="excel-cell">(120)</div>
+                <div class="excel-cell" style="color:red;">(50)</div>
+                <div class="excel-cell">(70)</div>
+                <div class="excel-cell">930</div>
+
+                <div class="excel-cell">2</div>
+                <div class="excel-cell">(120)</div>
+                <div class="excel-cell" style="color:red;">(46.5)</div>
+                <div class="excel-cell">(73.5)</div>
+                <div class="excel-cell">856.5</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                Nakit çıkışı her yıl 120 (Sabit). Ama Gelir Tablosunda Faiz Gideri her yıl azalır (Front-loaded).
+            </div>
         </div>
 
         <div class="lesson-nav">

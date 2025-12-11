@@ -18,26 +18,63 @@
             <span style="color: var(--text-primary);">Precedent Transactions</span>
         </nav>
 
-        <h1>2.4 Precedent Transactions</h1>
+        <h1>2.4 Precedent Transactions (M&A Comps)</h1>
         <p>
-            Geçmişte benzer şirketler kaça satıldı? 
-            Comps'tan farkı: İçinde <strong>"Control Premium"</strong> barındırır.
+            Teori (DCF) ve Piyasa (Comps) bir yere kadar. Gerçek dünyada bir şirketin değeri, 
+            <strong>birinin onun için ödemeye razı olduğu çektir.</strong>
         </p>
 
-        <h2 style="color: var(--accent-blue);">Control Premium</h2>
-        <p>
-            Bir şirketin %100'ünü satın almak için, borsa fiyatının üzerinde %20-30 fazladan ödeme yapmanız gerekir.
-            Bu yüzden "Precedent Transactions" değerlemesi her zaman "Comps"tan yüksek çıkar.
-        </p>
+        <h2 style="color: var(--accent-blue);">1. Control Premium (Neden Daha Pahalı?)</h2>
+        <div class="mech-box">
+            Borsada bir hisseyi 10 TL'ye alabilirsiniz (Azınlık Payı). 
+            Ama şirketin %100'ünü, yani <strong>Kontrolünü</strong> almak isterseniz 10 TL yetmez. 
+            <br><br>
+            Yönetim kurulunu kovmak, temettüye karar vermek, stratejiyi değiştirmek... Bunlar parayla satılır.
+            Buna <strong>Control Premium</strong> denir (Genelde %20-%30).
+        </div>
 
-        <h2 style="color: var(--accent-blue);">Zamanlama Etkisi</h2>
-        <p>
-            Piyasa koşulları önemlidir. 2021'deki (Teknoloji Balonu) çarpanlarla, 2023'teki (Resesyon) çarpanlar aynı değildir.
-            Eski işlemleri bugüne uyarlamak zordur.
-        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-handshake"></i> Transaction_Analysis.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 150px 100px 100px 100px;">
+                <div class="excel-cell header">Metric</div>
+                <div class="excel-cell header">Trading (Borsa)</div>
+                <div class="excel-cell header">Transaction (M&A)</div>
+                <div class="excel-cell header">Fark</div>
+
+                <div class="excel-cell">Share Price</div>
+                <div class="excel-cell">$10.00</div>
+                <div class="excel-cell">$13.00</div>
+                <div class="excel-cell bold">+30%</div>
+
+                <div class="excel-cell">Equity Value</div>
+                <div class="excel-cell">$1,000 M</div>
+                <div class="excel-cell">$1,300 M</div>
+                <div class="excel-cell">+300 M</div>
+
+                <div class="excel-cell">LTM EBITDA</div>
+                <div class="excel-cell">$100 M</div>
+                <div class="excel-cell">$100 M</div>
+                <div class="excel-cell">-</div>
+
+                <div class="excel-cell bold">EV / EBITDA</div>
+                <div class="excel-cell bold">10.0x</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">13.0x</div>
+                <div class="excel-cell">Higher</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray;">
+                M&A çarpanları (13.0x), her zaman Borsa çarpanlarından (10.0x) yüksektir.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">2. Sinerji Etkisi</h2>
+        <p>Alıcı neden %30 fazla öder? Çünkü sinerji bekler.</p>
+        <ul>
+            <li><strong>Hard Synergies (Cost):</strong> "İki şirketin İK departmanını birleştirip yarısını işten çıkaracağız." (Kesin ve ölçülebilir). Değerlemeye dahil edilir.</li>
+            <li><strong>Soft Synergies (Revenue):</strong> "Ürünlerimizi birbirimizin müşterisine satacağız." (Belirsiz). Bankacılar buna şüpheyle yaklaşır.</li>
+        </ul>
 
         <div class="lesson-nav">
-            <a href="peer-group.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Peer Group</a>
+            <a href="comps.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Comps</a>
             <a href="sotp.html" class="btn-nav">Sonraki: SOTP <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>

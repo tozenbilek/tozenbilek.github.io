@@ -6,6 +6,7 @@
     <title>REITs (Real Estate) Accounting | IB Prep</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="container">
@@ -20,68 +21,52 @@
             </p>
 
             <div class="analogy-box">
-                <h3><i class="fa-solid fa-hotel"></i> The Apartment Complex Analogy</h3>
+                <h3><i class="fa-solid fa-hotel"></i> The Depreciation Lie</h3>
                 <p>
-                    Bir apartman satın aldınız ve kiraya veriyorsunuz. 
-                    Muhasebe kuralları der ki: "Bina her yıl eskir, değer kaybeder." Buna <strong>Depreciation</strong> denir ve gider yazılır.
-                </p>
-                <p>
-                    <strong>Gerçek Hayat:</strong> İstanbul'da veya New York'ta bir bina 20 yıl sonra değer mi kaybeder, yoksa değer mi kazanır? Genelde kazanır.
-                    Muhasebe "Gider" yazar (Kârı düşürür), ama aslında cebinizden para çıkmaz ve binanız değerlenir.
-                    Bu yüzden Net Income, Gayrimenkul şirketlerinin gerçek performansını göstermez.
+                    Muhasebe der ki: "Binalar eskir, her yıl değer kaybeder." (Gider yazılır).
+                    <br>
+                    Gerçek hayat der ki: "İyi konumdaki gayrimenkul değer kazanır."
+                    <br><br>
+                    Bu yüzden Net Income (Amortisman düşüldüğü için) çok düşük, hatta negatif görünebilir. Ama şirketin kasası para doludur.
                 </p>
             </div>
 
             <div class="deep-dive-box">
-                <h3><i class="fa-solid fa-ruler-combined"></i> Key Metrics: FFO & AFFO</h3>
+                <h3><i class="fa-solid fa-calculator"></i> Calculating FFO & AFFO</h3>
+                
+                <div class="excel-window">
+                    <div class="excel-header"><i class="fa-solid fa-building"></i> REIT_Valuation.xlsx</div>
+                    <div class="excel-grid" style="grid-template-columns: 1fr 100px;">
+                        <div class="excel-cell header">Metric</div>
+                        <div class="excel-cell header">Value</div>
 
-                <h4>1. Funds From Operations (FFO)</h4>
-                <p>
-                    Net Income'ın yalanını düzeltmek için kullanılır.
-                </p>
-                <div class="formula-box">
-                    \[ \text{FFO} = \text{Net Income} + \text{Depreciation & Amortization} - \text{Gains on Asset Sales} \]
-                </div>
-                <p>
-                    <strong>Mantık:</strong> Amortisman gerçek bir nakit gideri değildir ve gayrimenkulde varlıklar değer kaybetmez. Bunu geri ekle. 
-                    Varlık satış kârı (Gain) ise sürdürülebilir değildir, bunu çıkar.
-                </p>
+                        <div class="excel-cell">Net Income</div>
+                        <div class="excel-cell">100</div>
 
-                <h4>2. Adjusted Funds From Operations (AFFO)</h4>
-                <p>
-                    FFO iyidir ama mükemmel değildir. Binaların bakıma ihtiyacı vardır (Çatı onarımı, boya vs.). 
-                    Buna <strong>Maintenance CapEx</strong> denir.
-                </p>
-                <div class="formula-box">
-                    \[ \text{AFFO} = \text{FFO} - \text{Maintenance CapEx} - \text{Straight Line Rent Adjustment} \]
-                </div>
-                <p>
-                    <strong>AFFO</strong>, hissedara temettü (Dividend) olarak dağıtılabilecek gerçek nakdi gösterir. 
-                    REIT değerlemesinde <strong>Price / AFFO</strong> oranı kullanılır (P/E yerine).
-                </p>
+                        <div class="excel-cell">(+) Depreciation (Real Estate only)</div>
+                        <div class="excel-cell">+500</div>
 
-                <h4>3. Net Asset Value (NAV)</h4>
-                <p>
-                    REIT'ler ayrıca "Varlık Değeri" üzerinden de değerlenir.
-                    Şirketin sahip olduğu tüm binaların piyasa değerini topla, borçları çıkar. 
-                    Hisse fiyatı NAV'in altındaysa "Ucuz", üstündeyse "Pahalı"dır.
-                </p>
-            </div>
+                        <div class="excel-cell">(-) Gains on Asset Sales</div>
+                        <div class="excel-cell">(50)</div>
 
-            <div class="drill-section">
-                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
-                <div class="drill-card">
-                    <p class="question">Soru: Bir GYO (REIT) şirketi "Zarar" açıkladı (Net Income negatif) ama hisseleri yükseldi. Neden?</p>
-                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                        <span class="blur-text">Muhtemelen yüksek Amortisman (Depreciation) gideri yüzünden kağıt üzerinde zarar etti, ama FFO'su (Nakit akışı) çok güçlü geldi. Yatırımcılar Net Income'a değil, FFO'ya bakar.</span>
+                        <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid black;">= FFO (Funds From Operations)</div>
+                        <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid black;">550</div>
+
+                        <div class="excel-cell">(-) Recurring Maintenance CapEx</div>
+                        <div class="excel-cell">(100)</div>
+                        
+                        <div class="excel-cell">(-) Straight Line Rent Adj.</div>
+                        <div class="excel-cell">(20)</div>
+
+                        <div class="excel-cell bold" style="background:#22c55e; color:white;">= AFFO (Adjusted FFO)</div>
+                        <div class="excel-cell bold" style="background:#22c55e; color:white;">430</div>
                     </div>
                 </div>
-                <div class="drill-card">
-                    <p class="question">Soru: Maintenance CapEx ile Growth CapEx farkı nedir?</p>
-                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                        <span class="blur-text">Maintenance CapEx: Mevcut binayı ayakta tutmak için yapılan harcama (Çatı tamiri). AFFO'dan düşülür. Growth CapEx: Yeni bina almak veya yeni kat çıkmak. AFFO'dan düşülmez (Çünkü yeni gelir yaratacaktır).</span>
-                    </div>
-                </div>
+                
+                <p>
+                    <strong>AFFO</strong>, hissedarlara dağıtılabilecek gerçek nakittir (Dividend Capacity).
+                    REIT'ler genellikle AFFO'nun %90'ını dağıtmak zorundadır (Vergi avantajı için).
+                </p>
             </div>
 
             <div class="lesson-nav">

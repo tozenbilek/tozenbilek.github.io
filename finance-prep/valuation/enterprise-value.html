@@ -31,18 +31,51 @@
             \[ EV = \text{Equity Value} + \text{Debt} + \text{Preferred Stock} + \text{NCI} - \text{Cash} \]
         </div>
 
-        <h2 style="color: var(--accent-blue);">Neden Cash Çıkarılır?</h2>
+        <h2 style="color: var(--accent-blue);">1. Equity Value Calculation (Dilution)</h2>
         <p>
-            Çünkü şirketi satın aldığınızda, kasasındaki nakit size geçer. 
-            Bu nakdi kullanarak borcun bir kısmını hemen ödeyebilirsiniz. 
-            Bu yüzden net maliyetiniz düşer. (Nakit, borcun negatif halidir).
+            Equity Value = Hisse Fiyatı x Hisse Sayısı.
+            <br>Ama hangi hisse sayısı? <strong>Diluted Shares Outstanding.</strong>
+            <br>Çalışanların elindeki opsiyonlar kârda (In-the-money) ise, bunlar hisseye dönüşür ve pastayı böler.
         </p>
 
-        <h2 style="color: var(--accent-blue);">Diluted Shares (Treasury Stock Method)</h2>
-        <p>
-            Equity Value hesaplanırken sadece piyasadaki hisseler değil, "Opsiyonlar" da hesaba katılır.
-            Çalışanların elindeki opsiyonlar kârdaysa (In-the-money), hisseye dönüşür ve hisse sayısı artar (Dilution).
-        </p>
+        <div class="mech-box">
+            <h3><i class="fa-solid fa-calculator"></i> Treasury Stock Method (TSM)</h3>
+            <p><strong>Senaryo:</strong> Hisse fiyatı 10$. Çalışanın elinde 5$ kullanım fiyatlı (Strike Price) 100 tane opsiyon var.</p>
+            
+            <div class="excel-window">
+                <div class="excel-grid" style="grid-template-columns: 200px 100px;">
+                    <div class="excel-cell header">Adım</div>
+                    <div class="excel-cell header">Değer</div>
+
+                    <div class="excel-cell">1. Yeni Hisse Basımı</div>
+                    <div class="excel-cell">+100 Adet</div>
+
+                    <div class="excel-cell">2. Şirkete Giren Nakit</div>
+                    <div class="excel-cell">500$ <span style="font-size:10px;">(100 x 5$)</span></div>
+
+                    <div class="excel-cell">3. Geri Alınan Hisse (Buyback)</div>
+                    <div class="excel-cell">-50 Adet <span style="font-size:10px;">(500$ / 10$)</span></div>
+
+                    <div class="excel-cell bold" style="border-top:2px solid black;">Net Hisse Artışı</div>
+                    <div class="excel-cell bold">+50 Adet</div>
+                </div>
+                <div style="padding:10px; font-size:12px; color:gray;">
+                    Çalışan 100 hisse aldı ama şirket 50 hisseyi piyasadan geri topladı. Net sulanma (dilution) 50 adettir.
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">2. Neden Cash Çıkarılır?</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-wallet"></i> İndirim Kuponu</div>
+            <p>
+                Şirketi 100 Milyona aldınız. Kasasında 20 Milyon nakit buldunuz.
+                Bu 20 Milyonu cebinize atabilir veya borcun bir kısmını ödeyebilirsiniz.
+                Bu yüzden şirketin size <strong>Net Maliyeti</strong> 80 Milyondur.
+                <br><br>
+                <em>İstisna:</em> Sadece "Excess Cash" (Fazla Nakit) çıkarılmalıdır. Operasyon için gereken "Minimum Cash" çıkarılmamalıdır (Ama pratikte genelde hepsi çıkarılır).
+            </p>
+        </div>
 
         <div class="lesson-nav">
             <a href="dcf-mechanics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: DCF Mech</a>

@@ -23,26 +23,39 @@
         <h1>4.2 Deferred Tax Asset (DTA)</h1>
         <p>
             Devletten alacaklı olduğunuz durumdur. "Vergi İndirim Kuponu" gibidir.
-            Gelecekte daha az vergi ödemenizi sağlar.
+            Genellikle şirket zarar ettiğinde veya erken ödeme yaptığında oluşur.
         </p>
 
         <h2 style="color: var(--accent-green);">1. NOLs (Net Operating Losses)</h2>
         <div class="mech-box">
-            Bir yıl zarar ederseniz (Örn: -100 Milyon TL), devlet size para vermez.
-            Ama der ki: "Tamam, bu zararı not ettim. Seneye 100 Milyon TL kâr edersen, vergi ödemeyeceksin."
+            <strong>Senaryo:</strong> Bu yıl 100 Milyon $ zarar ettiniz. Vergi ödemezsiniz (0 TL).
+            <br>
+            Devlet der ki: "Üzülme. Bu zararı bir kenara yaz. Seneye 100 Milyon $ kâr edersen, bu zararı düşersin ve yine vergi ödemezsin."
             <br><br>
-            İşte bu hakka <strong>NOL Carry-forward</strong> denir ve bilançoya DTA olarak yazılır.
+            İşte bu "Gelecekte vergi ödememe hakkı", bilançoda <strong>Deferred Tax Asset</strong> olarak görünür.
+            <br>
+            <em>Değeri = Zarar Miktarı x Vergi Oranı</em>
         </div>
 
-        <h2 style="color: var(--accent-green);">2. Valuation Allowance (Kötü Haber)</h2>
+        <h2 style="color: var(--accent-green);">2. Real World Example (Amazon)</h2>
+        <div class="content-box-base">
+            Amazon yıllarca zarar etti (Bilinçli olarak).
+            <br>Bu sayede devasa bir DTA (NOL) biriktirdi.
+            <br>Daha sonra milyarlarca dolar kâr etmeye başladığında, yıllarca <strong>neredeyse hiç vergi ödemedi</strong>.
+            <br>Çünkü geçmişteki "Zarar Kuponlarını" kullandı.
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. The Catch: Valuation Allowance</h2>
         <div class="reddit-box">
             <div class="reddit-title"><i class="fa-solid fa-trash-can"></i> Kuponu Çöpe Atmak</div>
             <p>
                 DTA bir "İndirim Kuponu"dur. Ama kuponu kullanmak için markete gidip alışveriş yapmanız (Kâr etmeniz) gerekir.
                 <br><br>
-                Eğer denetçiler şirketin <strong>hiçbir zaman kâr edemeyeceğine</strong> inanırsa (Sürekli zarar eden batık şirket), 
-                "Bu kupon işe yaramaz" derler ve DTA'yı silerler. 
+                Eğer denetçiler (Auditors), şirketin <strong>gelecekte asla kâr edemeyeceğine</strong> kanaat getirirse (Sürekli batık şirket); 
+                "Bu kupon değersizdir" derler ve DTA'yı silerler. 
+                <br><br>
                 Buna <strong>Valuation Allowance</strong> denir.
+                <br><em>Etkisi: Net Income düşer, Equity düşer. Çok kötü bir sinyaldir.</em>
             </p>
         </div>
 
