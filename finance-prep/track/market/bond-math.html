@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bond Math | IB Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Market</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Bond Math</span>
+        </nav>
+
+        <h1>Bond Math: The Taylor Series Expansion</h1>
+        
+        <p>
+            Finansal piyasalarda "Bond Math" bilmek, formülleri ezberlemek değil, 
+            <strong>Fiyat-Faiz</strong> fonksiyonunun türevlerini kullanarak risk yönetebilmektir. 
+            Burada olaya bir mühendis gözüyle, Calculus kullanarak yaklaşacağız.
+        </p>
+        
+        <div class="proof-box">
+            <div class="proof-title"><i class="fa-solid fa-microchip"></i> Engineering Perspective</div>
+            <p style="color: #0c4a6e; margin: 0;">
+                Tahvil Fiyatı \( P(y) \), faiz oranı \( y \)'nin (yield) bir fonksiyonudur. 
+                Faizler değiştiğinde fiyatın nasıl değişeceğini bulmak için <strong>Taylor Serisi</strong> açılımını kullanırız.
+                <br><br>
+                Fizikteki Hareket Denklemleri gibidir:
+                <br>• <strong>Duration</strong> = Hız (Velocity) | Birinci Türev
+                <br>• <strong>Convexity</strong> = İvme (Acceleration) | İkinci Türev
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-market);">1. The Fundamental Equation</h2>
+        <p>
+            Sürekli zamanlı (continuous compounding) bir dünyada, tahvil fiyatı nakit akışlarının bugünkü değeridir:
+        </p>
+
+        <div class="math-block">
+            \[ P(y) = \sum_{t=1}^{T} C_t e^{-y t} \]
+        </div>
+
+        <p>
+            Burada \( C_t \) nakit akışı, \( y \) yield, \( t \) ise zamandır. 
+            Amacımız \( y \) değiştiğinde \( P \)'nin değişimini (\( dP \)) bulmaktır.
+        </p>
+
+        <h2 style="color: var(--accent-market);">2. First Derivative: Duration (Hız)</h2>
+        <p>
+            Fonksiyonun \( y \)'ye göre birinci türevini alırsak:
+        </p>
+        <div class="math-block">
+            \[ \frac{dP}{dy} = \sum_{t=1}^{T} (-t) C_t e^{-y t} \]
+            <br>
+            Bunu fiyata (\( P \)) bölersek "Macaulay Duration" ($D_{mac}$) kavramına ulaşırız:
+            \[ \frac{1}{P} \frac{dP}{dy} = - D_{mod} \]
+        </div>
+        <p>
+            İşte "Modified Duration" ($D_{mod}$) budur. Fiyattaki yüzdesel değişimi verir:
+            <br><br>
+            <strong>Engineering Rule:</strong> \( \frac{\Delta P}{P} \approx - D_{mod} \times \Delta y \)
+        </p>
+
+        <h2 style="color: var(--accent-market);">3. Second Derivative: Convexity (İvme)</h2>
+        <p>
+            Duration doğrusal (linear) bir yaklaşımdır. Ancak \( P(y) \) eğriseldir (convex). 
+            Büyük faiz hareketlerinde doğrusal tahmin hata yapar. Bu hatayı düzeltmek için ikinci türevi alırız:
+        </p>
+        <div class="math-block">
+            \[ \frac{d^2P}{dy^2} = \sum_{t=1}^{T} (t^2) C_t e^{-y t} \]
+            <br>
+            Bunu fiyata bölersek "Convexity" ($C$) elde ederiz.
+            Taylor Serisi'nin ikinci terimi:
+            \[ \frac{\Delta P}{P} \approx \underbrace{- D_{mod} \Delta y}_{\text{Duration Effect}} + \underbrace{\frac{1}{2} C (\Delta y)^2}_{\text{Convexity Adjustment}} \]
+        </div>
+        
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-lightbulb"></i> Market Intuition</div>
+            <p style="color: #9a3412; margin: 0;">
+                <strong>Neden 1/2 var?</strong> Taylor serisinden gelir ($ \frac{f''(x)}{2!} $). 
+                <br>
+                <strong>Yatırımcı için anlamı:</strong> Convexity her zaman pozitiftir (standart tahvillerde). 
+                Bu demektir ki, faizler ne yöne giderse gitsin, Convexity fiyata <strong>pozitif</strong> katkı yapar. 
+                Sizi düşüşlerde korur, yükselişlerde iter. Bu yüzden traderlar yüksek convexity için prim öderler.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-market);">4. DV01 & Hedging (Risk Yönetimi)</h2>
+        <p>
+            Trading masasında "Duration 8.4 yıl" denmez. <strong>"DV01" (Dollar Value of an 01)</strong> konuşulur.
+            Faizler 1 baz puan (0.01%) değişirse cebimden kaç dolar çıkar?
+        </p>
+        <div class="math-block">
+            \[ DV01 = D_{mod} \times P \times 0.0001 \]
+        </div>
+
+        <h3>Hedging Example (Morgan Stanley Interview Q)</h3>
+        <p>
+            <strong>Soru:</strong> Elinde 100 Milyon $ değerinde, DV01'i 50k $ olan kurumsal tahviller var. 
+            Bunu 10 yıllık Hazine Vadeli İşlemleri (Treasury Futures) ile hedge etmek istiyorsun. 
+            Futures DV01'i 50 $. Kaç kontrat satmalısın?
+        </p>
+        <p>
+            <strong>Çözüm (Hedge Ratio):</strong>
+            Riskini sıfırlamak istiyorsun (Delta Neutral).
+            \[ \text{Hedge Ratio} = \frac{\text{Portfolio DV01}}{\text{Future DV01}} = \frac{50,000}{50} = 1,000 \text{ Kontrat} \]
+            Short (Satış) pozisyonu açmalısın çünkü tahvilin var (Long). Faizler artarsa tahvilinden zarar edersin, Short Futures pozisyonundan kâr edersin.
+        </p>
+
+        <div class="drill-section">
+            <h3>Rapid Fire Drills</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Faizler %5'ten %3'e düşerse, Duration tahmininden daha mı çok yoksa daha mı az kazanırsın?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Daha çok kazanırsın. Duration doğrusal bir çizgidir. Gerçek fiyat eğrisi (convex) bu çizginin <strong>üzerinde</strong> kalır. Convexity adjustment pozitiftir.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Negative Convexity nedir? Hangi ürünlerde bulunur?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Fiyat artışının limitli olduğu durumdur. <strong>MBS (Mortgage Backed Securities)</strong> ve <strong>Callable Bonds</strong> en iyi örnektir. 
+                    Faizler düştüğünde ev sahipleri kredisini kapatır (prepayment) veya şirket tahvili geri çağırır (call). 
+                    Fiyat tavan yapar, eğri aşağı bükülür. Türevi negatiftir.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Portfolio Duration nasıl hesaplanır?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    Ağırlıklı ortalamadır. \(\sum w_i D_i\). 
+                    Ancak bu sadece "Parallel Shift" (Verim eğrisinin her yerinin aynı anda değişmesi) varsayımıyla doğrudur. 
+                    Eğri dikleşirse (Steepening) bu hesap tutmaz. (Key Rate Duration gerekir).
+                </div>
+                </div>
+            </div>
+
+        </div>
+</body>
+</html>
+

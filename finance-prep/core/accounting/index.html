@@ -1,0 +1,448 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounting Fundamentals | IB Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* Dashboard Specific Styles */
+        .dashboard-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard-header::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.05)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .dashboard-title { font-size: 28px; font-weight: 700; margin-bottom: 12px; position: relative; z-index: 2; }
+        .dashboard-subtitle { font-size: 16px; opacity: 0.8; max-width: 600px; line-height: 1.5; position: relative; z-index: 2; }
+        
+        .progress-overview {
+            display: flex;
+            gap: 24px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-item { display: flex; flex-direction: column; }
+        .stat-val { font-size: 24px; font-weight: 700; color: #4ade80; font-family: 'JetBrains Mono', monospace; }
+        .stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-top: 4px; }
+
+        /* Module Card Updates */
+        .module-card {
+            position: relative;
+            border-left: 4px solid transparent;
+        }
+        .module-card:hover { border-left-color: var(--accent-green); }
+        
+        .module-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+            font-size: 11px;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-basic { background: #e0f2fe; color: #0369a1; }
+        .badge-inter { background: #fef3c7; color: #b45309; }
+        .badge-adv { background: #fee2e2; color: #b91c1c; }
+
+        .read-time { color: var(--text-tertiary); display: flex; align-items: center; gap: 4px; }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 48px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+        .section-title { margin: 0; font-size: 18px; color: var(--text-primary); }
+        .section-progress { font-size: 12px; color: var(--text-tertiary); font-family: 'JetBrains Mono', monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Main Dashboard</a>
+        </nav>
+        
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">Accounting Fundamentals</h1>
+            <p class="dashboard-subtitle">
+                Yatırım Bankacılığı için gerekli olan temel muhasebe mantığı. 
+                Sadece "nasıl" kaydedildiğini değil, "neden" kaydedildiğini anlayın.
+            </p>
+            <div class="progress-overview">
+                <div class="stat-item">
+                    <span class="stat-val">38</span>
+                    <span class="stat-label">Lessons</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">12h</span>
+                    <span class="stat-label">Est. Time</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-val">0→1</span>
+                    <span class="stat-label">Track</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box-base">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-route"></i> Start Here (Beginner Track)</h3>
+            <p style="margin-bottom: 0;">
+                Eğer “hiçbir şey anlamıyorum” diyorsan, önce bu sayfayla başla:
+                <a href="start-here.html" class="nav-link" style="display:inline-block; margin-left:8px;">Start Here</a>
+            </p>
+        </div>
+
+        <div class="deep-dive-box">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-life-ring"></i> Hızlı Yardım (Tıkanınca Buradan)</h3>
+            <p style="margin-bottom: 0;">
+                1) Terimler karışıyorsa:
+                <a href="glossary.html" class="nav-link" style="display:inline-block; margin-left:8px;">Glossary</a>
+                &nbsp;&nbsp; 2) 3 tablo “refleks” istiyorsa:
+                <a href="three-statement-drills.html" class="nav-link" style="display:inline-block; margin-left:8px;">3-Statement Drills</a>
+            </p>
+        </div>
+
+        <!-- Part 1 -->
+        <div class="section-header">
+            <h2 class="section-title">1. The Core Statements (Temel Tablolar)</h2>
+            <span class="section-progress">4 Modules</span>
+        </div>
+        <div class="grid-modules">
+            <a href="income-statement.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3 class="module-title">1.1 Income Statement</h3>
+                <p class="module-desc">Gelir, Gider ve Kârın hikayesi. Limonata tezgahından Holding'e.</p>
+                <div class="module-meta">
+                    <span class="badge badge-basic">Core</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 15 min</span>
+                </div>
+            </a>
+            <a href="balance-sheet.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3 class="module-title">1.2 Balance Sheet</h3>
+                <p class="module-desc">Varlıklar = Kaynaklar. Şirketin anlık fotoğrafı.</p>
+                <div class="module-meta">
+                    <span class="badge badge-basic">Core</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 20 min</span>
+                </div>
+            </a>
+            <a href="cash-flow-statement.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                <h3 class="module-title">1.3 Cash Flow Statement</h3>
+                <p class="module-desc">Nakit Kraldır. Kâr eden şirket neden batar?</p>
+                <div class="module-meta">
+                    <span class="badge badge-basic">Important</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 25 min</span>
+                </div>
+            </a>
+            <a href="linkage.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-link"></i></div>
+                <h3 class="module-title">1.4 The Linkage</h3>
+                <p class="module-desc">3 Tablo nasıl birbirine bağlanır? Mülakatların favori sorusu.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Interview</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 10 min</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Part 2 -->
+        <div class="section-header">
+            <h2 class="section-title">2. Key Metrics & Recognition (Kilit Metrikler)</h2>
+            <span class="section-progress">4 Modules</span>
+        </div>
+        <div class="grid-modules">
+            <a href="revenue-recognition.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3 class="module-title">2.1 Revenue Recognition</h3>
+                <p class="module-desc">Gelir ne zaman yazılır? ASC 606 ve 5 Adım Modeli.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Technical</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 10 min</span>
+                </div>
+            </a>
+            <a href="deferred-revenue.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <h3 class="module-title">2.2 Deferred Revenue</h3>
+                <p class="module-desc">Unearned Income. Hizmeti vermeden parayı almak.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">SaaS</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 8 min</span>
+                </div>
+            </a>
+            <a href="ebitda.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-layer-group"></i></div>
+                <h3 class="module-title">2.3 EBITDA</h3>
+                <p class="module-desc">Finansın en popüler ve en tartışmalı metriği.</p>
+                <div class="module-meta">
+                    <span class="badge badge-basic">Must Know</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 12 min</span>
+                </div>
+            </a>
+            <a href="inventory-accounting.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-boxes-packing"></i></div>
+                <h3 class="module-title">2.4 Inventory (LIFO/FIFO)</h3>
+                <p class="module-desc">Enflasyon ortamında stok değerlemesi nasıl yapılır?</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Technical</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 10 min</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Part 3 -->
+        <div class="section-header">
+            <h2 class="section-title">3. Assets & Working Capital (Varlıklar)</h2>
+            <span class="section-progress">6 Modules</span>
+        </div>
+        <div class="grid-modules">
+            <a href="working-capital-basics.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-boxes-stacked"></i></div>
+                <h3 class="module-title">3.1 Working Capital</h3>
+                <p class="module-desc">Net Working Capital (NWC). İşletme Sermayesi.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Core</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 15 min</span>
+                </div>
+            </a>
+            <a href="ccc.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-stopwatch"></i></div>
+                <h3 class="module-title">3.2 Cash Conversion Cycle</h3>
+                <p class="module-desc">DSO, DIO, DPO. Para ne hızla dönüyor?</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Metric</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 12 min</span>
+                </div>
+            </a>
+            <a href="ppe-capex.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-industry"></i></div>
+                <h3 class="module-title">3.3 PP&E & CapEx</h3>
+                <p class="module-desc">Yatırım harcamaları (CapEx) vs İşletme giderleri (OpEx).</p>
+                <div class="module-meta">
+                    <span class="badge badge-basic">Basic</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 8 min</span>
+                </div>
+            </a>
+            <a href="depreciation.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                <h3 class="module-title">3.4 Depreciation</h3>
+                <p class="module-desc">Amortisman yöntemleri. Straight Line vs Accelerated.</p>
+                <div class="module-meta">
+                    <span class="badge badge-basic">Basic</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 10 min</span>
+                </div>
+            </a>
+            <a href="intangibles.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-ghost"></i></div>
+                <h3 class="module-title">3.5 Intangibles</h3>
+                <p class="module-desc">Marka değeri, patentler ve lisanslar.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Concept</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 8 min</span>
+                </div>
+            </a>
+            <a href="goodwill-impairment.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-eraser"></i></div>
+                <h3 class="module-title">3.6 Goodwill</h3>
+                <p class="module-desc">Şerefiye nedir? Ne zaman silinir (Impairment)?</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">M&A</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 12 min</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Part 4 -->
+        <div class="section-header">
+            <h2 class="section-title">4. Debt & Equity (Borç ve Özkaynak)</h2>
+            <span class="section-progress">6 Modules</span>
+        </div>
+        <div class="grid-modules">
+            <a href="debt.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-money-bill-wave"></i></div>
+                <h3 class="module-title">4.1 Debt Financing</h3>
+                <p class="module-desc">Borçlanma çeşitleri ve maliyeti.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">LBO</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 10 min</span>
+                </div>
+            </a>
+            <a href="leases.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-building"></i></div>
+                <h3 class="module-title">4.2 Leases (IFRS 16)</h3>
+                <p class="module-desc">Operasyonel vs Finansal kiralama.</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">New Std</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 15 min</span>
+                </div>
+            </a>
+            <a href="equity-mechanics.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3 class="module-title">4.3 Equity Mechanics</h3>
+                <p class="module-desc">Hisse Geri Alımı (Buybacks) vs Temettü.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Core</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 10 min</span>
+                </div>
+            </a>
+            <a href="pik-interest.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-snowplow"></i></div>
+                <h3 class="module-title">4.4 PIK Interest</h3>
+                <p class="module-desc">Payment In Kind. Nakit ödenmeyen faiz.</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">LBO</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 8 min</span>
+                </div>
+            </a>
+            <a href="dtl.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-file-invoice"></i></div>
+                <h3 class="module-title">4.5 DTL (Deferred Tax Liab)</h3>
+                <p class="module-desc">Neden vergi dairesine ve hissedara farklı raporlarız?</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">Tax</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 10 min</span>
+                </div>
+            </a>
+            <a href="dta.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-piggy-bank"></i></div>
+                <h3 class="module-title">4.6 DTA (Deferred Tax Asset)</h3>
+                <p class="module-desc">Zarar etmenin tek iyi yanı: Vergi İndirimi.</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">Tax</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 10 min</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Part 5 -->
+        <div class="section-header">
+            <h2 class="section-title">5. Advanced & Consolidation (İleri Düzey)</h2>
+            <span class="section-progress">2 Modules</span>
+        </div>
+        <div class="grid-modules">
+            <a href="consolidation-mechanics.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-object-group"></i></div>
+                <h3 class="module-title">5.1 Consolidation</h3>
+                <p class="module-desc">Şirket birleşmelerinde bilanço nasıl toplanır?</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">Hard</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 20 min</span>
+                </div>
+            </a>
+            <a href="nci.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-users-viewfinder"></i></div>
+                <h3 class="module-title">5.2 NCI (Minority Interest)</h3>
+                <p class="module-desc">Tamamına sahip olmadığınız bir şirketi konsolide etmek.</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">Hard</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 15 min</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Part 6 -->
+        <div class="section-header">
+            <h2 class="section-title">6. Forensic Accounting (Hileler ve Düzeltmeler)</h2>
+            <span class="section-progress">3 Modules</span>
+        </div>
+        <div class="grid-modules">
+            <a href="earnings-management.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-user-secret"></i></div>
+                <h3 class="module-title">6.1 Earnings Management</h3>
+                <p class="module-desc">Rakamlarla oynama sanatı. Hileleri yakalayın.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Forensic</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 15 min</span>
+                </div>
+            </a>
+            <a href="sbc.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-ticket"></i></div>
+                <h3 class="module-title">6.2 SBC (Stock Comp)</h3>
+                <p class="module-desc">Çalışana hisse vermek: Gider mi, değil mi?</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Tech</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 12 min</span>
+                </div>
+            </a>
+            <a href="non-recurring.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-filter"></i></div>
+                <h3 class="module-title">6.3 Adjustments</h3>
+                <p class="module-desc">Non-Recurring Items ve Adjusted EBITDA hesabı.</p>
+                <div class="module-meta">
+                    <span class="badge badge-inter">Metric</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 15 min</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Part 7 -->
+        <div class="section-header">
+            <h2 class="section-title">7. Special Sectors (Sektörel)</h2>
+            <span class="section-progress">3 Modules</span>
+        </div>
+        <div class="grid-modules">
+            <a href="fig-banking.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-building-columns"></i></div>
+                <h3 class="module-title">7.1 FIG (Banks)</h3>
+                <p class="module-desc">Bankacılık muhasebesi. Farklı bir dünya.</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">Sector</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 15 min</span>
+                </div>
+            </a>
+            <a href="reits.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-hotel"></i></div>
+                <h3 class="module-title">7.2 REITs</h3>
+                <p class="module-desc">Gayrimenkul Yatırım Ortaklıkları. FFO nedir?</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">Sector</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 12 min</span>
+                </div>
+            </a>
+            <a href="oil-gas.html" class="module-card">
+                <div class="icon-box"><i class="fa-solid fa-oil-well"></i></div>
+                <h3 class="module-title">7.3 Oil & Gas</h3>
+                <p class="module-desc">Enerji muhasebesi. Successful Efforts metodu.</p>
+                <div class="module-meta">
+                    <span class="badge badge-adv">Sector</span>
+                    <span class="read-time"><i class="fa-regular fa-clock"></i> 12 min</span>
+        </div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

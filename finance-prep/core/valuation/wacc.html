@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WACC | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">WACC</span>
+        </nav>
+
+        <h1>1.2 WACC (Weighted Average Cost of Capital)</h1>
+        <p>
+            Gelecekteki nakitleri bugüne getirirken kullandığımız iskonto oranıdır (Discount Rate).
+            Şirketin sermaye maliyetidir (Hem Borç hem Özsermaye).
+        </p>
+
+        <h2 style="color: var(--accent-blue);">The Formula</h2>
+        <div class="math-block">
+            \[ WACC = (K_e \times E\%) + (K_d \times D\% \times (1-t)) \]
+        </div>
+        <p>
+            <strong>Dikkat:</strong> Borç maliyeti (Kd) vergiden düşülür (Tax Shield). Özsermaye maliyeti (Ke) düşülmez.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">Cost of Equity (Ke) - CAPM</h2>
+        <div class="math-block">
+            \[ K_e = R_f + \beta \times (R_m - R_f) \]
+        </div>
+        <div class="mech-box">
+            <ul>
+                <li><strong>Risk Free Rate (Rf):</strong> 10 yıllık ABD hazine tahvili faizi.</li>
+                <li><strong>Beta:</strong> Şirketin piyasaya göre oynaklığı (Risk Sırt Çantası).</li>
+                <li><strong>Equity Risk Premium (Rm - Rf):</strong> Borsaya girmek için istenen ekstra getiri (~%5-6).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Unlevering / Levering Beta</h2>
+        <p>
+            Benzer şirketlerin Beta'sını alıp kendi şirketimize uyarlarken, onların borç yapısını (kaldıracını) temizlemeliyiz.
+        </p>
+        <div class="math-block">
+            \[ \beta_{\text{Unlevered}} = \frac{\beta_{\text{Levered}}}{1 + ((1-t) \times D/E)} \]
+        </div>
+
+        <div class="lesson-nav">
+            <a href="fcf.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: FCF</a>
+            <a href="terminal-value.html" class="btn-nav">Sonraki: Terminal Value <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

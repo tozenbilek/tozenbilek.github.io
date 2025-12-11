@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COGS | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <a href="income-statement.html" class="nav-link">Income Statement</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">COGS</span>
+        </nav>
+
+        <h1>COGS (Cost of Goods Sold)</h1>
+        <p>Satılan Malın Maliyeti. Üretimle <strong>doğrudan</strong> ilişkili tüm harcamalar.</p>
+
+        <h2 style="color: var(--accent-green);">1. Kapsam</h2>
+        <div class="content-box-base">
+            <p>
+                Bir ürünü rafta satılabilir hale getirmek için harcanan her kuruş COGS'tur.
+            </p>
+            <ul class="check-list">
+                <li><strong>Hammadde:</strong> Limon, şeker, çelik, plastik.</li>
+                <li><strong>Direkt İşçilik:</strong> Fabrikada bantta çalışan işçinin maaşı.</li>
+                <li><strong>Nakliye (Inbound):</strong> Hammaddenin fabrikaya geliş ücreti.</li>
+                <li><strong>Amortisman (Üretim):</strong> Sadece üretim makinelerinin amortismanı (Genellikle).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Değişken Maliyet (Variable Cost)</h2>
+        <div class="mech-box">
+            COGS genellikle "Değişken"dir. 
+            <br>
+            <strong>Satış = 0 ise, COGS = 0 olur.</strong>
+            <br><br>
+            Bu, kira veya müdür maaşı gibi değildir. Limonata satmazsanız, limon almazsınız ve maliyetiniz olmaz.
+            Bu özellik, risk analizi için çok önemlidir.
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Sektörel Farklar</h2>
+        <div class="grid-modules">
+            <div class="module-card">
+                <h4 style="margin-top:0;">Üretim / Perakende</h4>
+                <p style="font-size:13px;">COGS çok yüksektir. Brüt kâr marjları düşüktür (%20-%40).</p>
+            </div>
+            <div class="module-card">
+                <h4 style="margin-top:0;">Yazılım (SaaS)</h4>
+                <p style="font-size:13px;">COGS çok düşüktür (Sunucu masrafları, Hosting). Brüt kâr marjları çok yüksektir (%80-%90).</p>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">4. LIFO vs FIFO: Inventory Valuation</h2>
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-boxes-packing"></i> Enflasyon Ortamında Kritik Fark</h3>
+            <p>
+                Şirketler stoklarını değerlerken LIFO (Last In, First Out) veya FIFO (First In, First Out) kullanabilir.
+                Enflasyonist ortamda bu yöntemler COGS'ı ve kârı ciddi şekilde etkiler.
+            </p>
+
+            <h4>FIFO (First In, First Out)</h4>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-arrow-right"></i> FIFO Örneği: Telefon Satışı</div>
+                <div class="excel-grid" style="grid-template-columns: 100px 100px 100px 100px;">
+                    <div class="excel-cell header">Ay</div>
+                    <div class="excel-cell header">Alış Fiyatı</div>
+                    <div class="excel-cell header">Stok</div>
+                    <div class="excel-cell header">COGS</div>
+
+                    <div class="excel-cell">Ocak</div>
+                    <div class="excel-cell">100</div>
+                    <div class="excel-cell">100 TL</div>
+                    <div class="excel-cell">-</div>
+
+                    <div class="excel-cell">Şubat</div>
+                    <div class="excel-cell">110</div>
+                    <div class="excel-cell">110 TL</div>
+                    <div class="excel-cell">-</div>
+
+                    <div class="excel-cell">Mart (Satış)</div>
+                    <div class="excel-cell">120</div>
+                    <div class="excel-cell">Satış</div>
+                    <div class="excel-cell">100 TL</div>
+                </div>
+            </div>
+            <p><strong>FIFO:</strong> Eski (düşük maliyetli) stoklar önce satılır. COGS düşük, kâr yüksek çıkar.</p>
+
+            <h4>LIFO (Last In, First Out)</h4>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-arrow-left"></i> LIFO Örneği: Telefon Satışı</div>
+                <div class="excel-grid" style="grid-template-columns: 100px 100px 100px 100px;">
+                    <div class="excel-cell header">Ay</div>
+                    <div class="excel-cell header">Alış Fiyatı</div>
+                    <div class="excel-cell header">Stok</div>
+                    <div class="excel-cell header">COGS</div>
+
+                    <div class="excel-cell">Ocak</div>
+                    <div class="excel-cell">100</div>
+                    <div class="excel-cell">100 TL</div>
+                    <div class="excel-cell">-</div>
+
+                    <div class="excel-cell">Şubat</div>
+                    <div class="excel-cell">110</div>
+                    <div class="excel-cell">110 TL</div>
+                    <div class="excel-cell">-</div>
+
+                    <div class="excel-cell">Mart (Satış)</div>
+                    <div class="excel-cell">120</div>
+                    <div class="excel-cell">Satış</div>
+                    <div class="excel-cell">110 TL</div>
+                </div>
+            </div>
+            <p><strong>LIFO:</strong> Yeni (yüksek maliyetli) stoklar önce satılır. COGS yüksek, kâr düşük çıkar.</p>
+
+            <div class="reddit-box">
+                <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Vergi Avantajı</div>
+                <p style="color: #1f2933; margin: 0;">
+                    <strong>ABD'de LIFO tercih edilir:</strong> Enflasyonist dönemde kâr düşük göstererek vergi tasarrufu sağlar.
+                    Ama IFRS'ta LIFO yasak! Sadece FIFO veya weighted average average kullanılır.
+                </p>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">5. Gross Margin Analysis</h2>
+        <div class="content-box-base">
+            <h4>Gross Margin Formülleri</h4>
+            <div class="math-block">
+                \[ \text{Gross Margin \%} = \frac{\text{Gross Profit}}{\text{Revenue}} \times 100 \]
+                \[ \text{Gross Profit} = \text{Revenue} - \text{COGS} \]
+            </div>
+
+            <h4>Sektörel Gross Margin Karşılaştırması</h4>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-chart-bar"></i> Gross Margin by Sector</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 100px 150px;">
+                    <div class="excel-cell header">Sektör</div>
+                    <div class="excel-cell header">Margin %</div>
+                    <div class="excel-cell header">Neden?</div>
+
+                    <div class="excel-cell">SaaS/Software</div>
+                    <div class="excel-cell">85-95%</div>
+                    <div class="excel-cell">COGS çok düşük</div>
+
+                    <div class="excel-cell">Perakende</div>
+                    <div class="excel-cell">20-40%</div>
+                    <div class="excel-cell">Stok maliyeti yüksek</div>
+
+                    <div class="excel-cell">Otomotiv</div>
+                    <div class="excel-cell">15-25%</div>
+                    <div class="excel-cell">Çelik, işçilik pahalı</div>
+
+                    <div class="excel-cell">Fast Food</div>
+                    <div class="excel-cell">60-70%</div>
+                    <div class="excel-cell">Marka değeri yüksek</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">6. Gerçek Şirket Örnekleri</h2>
+
+        <h3>🍔 McDonald's: COGS Breakdown</h3>
+        <div class="content-box-base">
+            <p>
+                Fast food şirketlerinde COGS genellikle "Food & Paper" olarak ayrılır.
+            </p>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-hamburger"></i> McDonald's COGS Analysis (2023)</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px;">
+                    <div class="excel-cell header">Kalem</div>
+                    <div class="excel-cell header">Miktar</div>
+                    <div class="excel-cell header">Revenue %</div>
+
+                    <div class="excel-cell">Revenue</div>
+                    <div class="excel-cell">25,800M</div>
+                    <div class="excel-cell">100%</div>
+
+                    <div class="excel-cell">COGS</div>
+                    <div class="excel-cell">15,400M</div>
+                    <div class="excel-cell">60%</div>
+
+                    <div class="excel-cell bold">Gross Profit</div>
+                    <div class="excel-cell bold">10,400M</div>
+                    <div class="excel-cell bold">40%</div>
+                </div>
+            </div>
+            <p><strong>Gross Margin = 40%</strong> - Fast food için iyi. McDonald's güçlü markası sayesinde yüksek fiyat belirleyebiliyor.</p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> COGS Quiz</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Enflasyonist dönemde LIFO mu FIFO mu daha yüksek kâr gösterir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">FIFO. Eski (düşük maliyetli) stokları satarak COGS'ı düşük tutar, kârı yüksek gösterir. LIFO tam tersi yapar.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: SaaS şirketinin gross margin'ı neden %90'ın üzerinde olabilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">COGS çok düşük çünkü yazılımın "marginal cost"u neredeyse sıfır. İlk yazılımı yazdıktan sonra her ek kullanıcı için maliyet minimum.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="revenue.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Revenue</a>
+            <a href="gross-profit.html" class="btn-nav">Sonraki: Gross Profit <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRR & MOIC | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">IRR & MOIC</span>
+        </nav>
+
+        <h1>3.1 Returns (IRR & MOIC)</h1>
+        <p>
+            Private Equity firmalarÄ± sadece iki sayÄ±ya bakar.
+        </p>
+
+        <div class="analogy-box">
+            <h3><i class="fa-solid fa-stopwatch"></i> KÄ±sa TanÄ±m</h3>
+            <p>
+                <strong>MOIC</strong> = â€œToplam kaÃ§ kat para kazandÄ±m?â€
+                <br><strong>IRR</strong> = â€œBu para ne kadar hÄ±zlÄ± geldi?â€
+                <br>PE dÃ¼nyasÄ±nda genelde ikisi birlikte hedeflenir.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">MOIC (Multiple on Invested Capital)</h2>
+        <p>
+            "ParamÄ± kaÃ§a katladÄ±m?" (Zaman faktÃ¶rÃ¼ yoktur).
+        </p>
+        <div class="math-block">
+            \[ \text{MOIC} = \frac{\text{Total Cash Returned}}{\text{Initial Investment}} \]
+        </div>
+        <p>Ã–rn: 100M yatÄ±rdÄ±m, 250M aldÄ±m. MOIC = 2.5x.</p>
+
+        <h2 style="color: var(--accent-purple);">IRR (Internal Rate of Return)</h2>
+        <p>
+            "YÄ±llÄ±k bileÅŸik getirim ne?" (Zaman Ã§ok Ã¶nemlidir).
+            PE firmalarÄ± genellikle 5 yÄ±lda <strong>%20-25 IRR</strong> ve <strong>2.0-2.5x MOIC</strong> hedefler.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">Same MOIC, Different IRR (SayÄ±sal)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Timing_Impact.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Scenario A</div>
+                <div class="excel-cell header">Scenario B</div>
+
+                <div class="excel-cell">Year 0</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+
+                <div class="excel-cell">Year 3</div>
+                <div class="excel-cell">0</div>
+                <div class="excel-cell" style="color:green;">+30</div>
+
+                <div class="excel-cell">Year 5</div>
+                <div class="excel-cell" style="color:green;">+200</div>
+                <div class="excel-cell" style="color:green;">+170</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Total Returned</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">200</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">200</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">MOIC</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">2.0x</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">2.0x</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                MOIC aynÄ±, ama Scenario Bâ€™de nakit daha erken geldiÄŸi iÃ§in IRR daha yÃ¼ksek olur.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Memorize These (Mental Math)</h2>
+        <div class="mech-box">
+            <ul>
+                <li>2.0x in 5 Years = ~15% IRR</li>
+                <li>2.5x in 5 Years = ~20% IRR</li>
+                <li>3.0x in 5 Years = ~25% IRR</li>
+                <li>2.0x in 3 Years = ~26% IRR</li>
+            </ul>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: IRRâ€™Ä± en hÄ±zlÄ± artÄ±ran iki hareket nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">(1) Daha erken exit, (2) ara nakit dÃ¶nÃ¼ÅŸÃ¼ (dividend recap / partial sell-down). Ã‡Ã¼nkÃ¼ zaman deÄŸerini optimize eder.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: IRR Ã§ok yÃ¼ksek ama MOIC dÃ¼ÅŸÃ¼kse risk nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">KÃ¼Ã§Ã¼k bir para kazanÄ±p â€œhÄ±zâ€Ä± ÅŸiÅŸirmiÅŸ olabilirsin. Fonun toplam dolar getirisi (carry base) zayÄ±f kalabilir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="cash-sweep.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Cash Sweep</a>
+            <a href="value-creation.html" class="btn-nav">Sonraki: Value Creation <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+

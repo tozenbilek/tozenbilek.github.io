@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBITDA | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">EBITDA</span>
+        </nav>
+
+        <h1>2.3 EBITDA (FAVÖK)</h1>
+        <p>
+            <strong>E</strong>arnings <strong>B</strong>efore <strong>I</strong>nterest, <strong>T</strong>axes, <strong>D</strong>epreciation, and <strong>A</strong>mortization.
+            <br>
+            Finansın en popüler metriğidir. Şirketin "Operasyonel Nakit Üretme Gücünü" gösterir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. The Bridge (Nasıl Hesaplanır?)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-bridge"></i> From Net Income to EBITDA</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 100px;">
+                <div class="excel-cell header">Kalem</div>
+                <div class="excel-cell header">Tutar</div>
+
+                <div class="excel-cell bold">Net Income (Bottom Line)</div>
+                <div class="excel-cell bold">100</div>
+
+                <div class="excel-cell">(+) Taxes</div>
+                <div class="excel-cell">25</div>
+
+                <div class="excel-cell">(+) Interest Expense</div>
+                <div class="excel-cell">15</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">= EBIT (Operating Income)</div>
+                <div class="excel-cell bold" style="background:#f0fdf4;">140</div>
+
+                <div class="excel-cell">(+) Depreciation & Amortization</div>
+                <div class="excel-cell">60</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid black;">= EBITDA</div>
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid black;">200</div>
+
+                <div class="excel-cell" style="color:blue;">(+) SBC (Non-Cash)</div>
+                <div class="excel-cell" style="color:blue;">20</div>
+
+                <div class="excel-cell" style="color:blue;">(+) Restructuring (One-time)</div>
+                <div class="excel-cell" style="color:blue;">30</div>
+
+                <div class="excel-cell bold" style="background:#22c55e; color:white;">= Adjusted EBITDA</div>
+                <div class="excel-cell bold" style="background:#22c55e; color:white;">250</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                Yatırımcılar genelde en alttaki "Adjusted EBITDA"ya bakar. Çünkü tek seferlik giderlerden arındırılmıştır.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Neden Severiz? Neden Nefret Ederiz?</h2>
+        <div class="grid-modules" style="grid-template-columns: 1fr 1fr;">
+            <div class="content-box-base" style="border-top: 4px solid #22c55e;">
+                <h3 style="margin-top:0; color:#22c55e;">👍 Neden İyi?</h3>
+                <p>
+                    1. Sermaye yapısından bağımsızdır (Borçlu/Borçsuz farketmez).
+                    <br>2. Vergi oranlarından bağımsızdır.
+                    <br>3. Nakit akışına (Cash Flow) iyi bir yaklaşımdır.
+                    <br>4. Karşılaştırılabilir (Comparability).
+                </p>
+            </div>
+            <div class="content-box-base" style="border-top: 4px solid #ef4444;">
+                <h3 style="margin-top:0; color:#ef4444;">👎 Neden Kötü?</h3>
+                <p>
+                    1. <strong>CapEx'i görmezden gelir.</strong> (Sanki makineler hiç eskimeyecekmiş gibi).
+                    <br>2. İşletme Sermayesi (Working Capital) değişimlerini görmezden gelir.
+                    <br>3. Hileye açıktır ("Adjusted" yaparken her şeyi geri ekleyebilirler).
+                </p>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Gerçek Şirket Örnekleri</h2>
+
+        <h3>🏭 İmalat Şirketi: Caterpillar</h3>
+        <div class="content-box-base">
+            <p>
+                Caterpillar'ın EBITDA'sı depreciation ve amortization'dan çok etkilenir çünkü ağır makineler üretir.
+            </p>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-cogs"></i> Caterpillar EBITDA Bridge (2023)</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 120px;">
+                    <div class="excel-cell header">Kalem</div>
+                    <div class="excel-cell header">$ Million</div>
+
+                    <div class="excel-cell">Net Income</div>
+                    <div class="excel-cell">2,539</div>
+
+                    <div class="excel-cell">(+) Taxes</div>
+                    <div class="excel-cell">1,053</div>
+
+                    <div class="excel-cell">(+) Interest</div>
+                    <div class="excel-cell">1,012</div>
+
+                    <div class="excel-cell bold" style="background:#f0fdf4;">= EBIT</div>
+                    <div class="excel-cell bold" style="background:#f0fdf4;">4,604</div>
+
+                    <div class="excel-cell">(+) D&A</div>
+                    <div class="excel-cell">2,887</div>
+
+                    <div class="excel-cell bold" style="background:#22c55e; color:white;">= EBITDA</div>
+                    <div class="excel-cell bold" style="background:#22c55e; color:white;">7,491</div>
+                </div>
+            </div>
+            <p><strong>D&A/EBITDA = 39%</strong> - Ağır sanayi için normal. EBITDA'sız bu şirket kârsız görünebilir.</p>
+        </div>
+
+        <h3>💻 Tech Şirketi: Meta (Facebook)</h3>
+        <div class="content-box-base">
+            <p>
+                Tech şirketlerinde EBITDA daha "gerçek" bir kâr metriği çünkü CapEx ve amortisman çok yüksek olabilir.
+            </p>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-meta"></i> Meta EBITDA Bridge (2023)</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 120px;">
+                    <div class="excel-cell header">Kalem</div>
+                    <div class="excel-cell header">$ Million</div>
+
+                    <div class="excel-cell">Net Income</div>
+                    <div class="excel-cell">39,098</div>
+
+                    <div class="excel-cell">(+) Taxes</div>
+                    <div class="excel-cell">8,919</div>
+
+                    <div class="excel-cell">(+) Interest</div>
+                    <div class="excel-cell">378</div>
+
+                    <div class="excel-cell bold" style="background:#f0fdf4;">= EBIT</div>
+                    <div class="excel-cell bold" style="background:#f0fdf4;">48,395</div>
+
+                    <div class="excel-cell">(+) D&A</div>
+                    <div class="excel-cell">6,859</div>
+
+                    <div class="excel-cell bold" style="background:#22c55e; color:white;">= EBITDA</div>
+                    <div class="excel-cell bold" style="background:#22c55e; color:white;">55,254</div>
+                </div>
+            </div>
+            <p><strong>D&A/EBITDA = 12%</strong> - Tech için düşük. Ama R&D giderleri EBITDA'ya dahil değil (OpEx).</p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">4. EBITDA Multiples Karşılaştırması</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Şirket</th>
+                        <th>Sektör</th>
+                        <th>EV/EBITDA</th>
+                        <th>Neden Bu Çarpan?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Apple</strong></td>
+                        <td>Tech</td>
+                        <td>18-22x</td>
+                        <td>Growth + High margins</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coca-Cola</strong></td>
+                        <td>Consumer</td>
+                        <td>14-18x</td>
+                        <td>Stable cash flows</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ExxonMobil</strong></td>
+                        <td>Enerji</td>
+                        <td>8-12x</td>
+                        <td>Commodity risk + CapEx</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Netflix</strong></td>
+                        <td>Media</td>
+                        <td>12-16x</td>
+                        <td>High growth + Churn risk</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-green);">5. Adjusted EBITDA Tartışması</h2>
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-scale-balanced"></i> "Adjusted" Ne Kadar Adjusted?</h3>
+            <p>
+                Şirketler "Adjusted EBITDA" hesaplayarak bazı giderleri geri ekler. Ama bu manipülasyona açık.
+            </p>
+            <div class="content-box-base">
+                <h4>✅ Mantıklı Adjustments:</h4>
+                <ul class="check-list">
+                    <li>One-time restructuring costs</li>
+                    <li>Stock-based compensation (SBC) - bazen</li>
+                    <li>Legal settlements</li>
+                </ul>
+
+                <h4>❌ Şüpheli Adjustments:</h4>
+                <ul class="check-list">
+                    <li>Normal operating expenses</li>
+                    <li>Strategic investments</li>
+                    <li>"Non-recurring" diye etiketlenen her şey</li>
+                </ul>
+            </div>
+            <p><strong>İpucu:</strong> Adjusted EBITDA'nın gerçek EBITDA'ya oranına bakın. Çok yüksekse şüphelenin!</p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> EBITDA Quiz</h3>
+            <div class="drill-card">
+                <p class="question">Soru: EBITDA neden "cash flow proxy" olarak kullanılır ama aslında değildir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü CapEx ve Working Capital değişimlerini görmezden gelir. Yüksek EBITDA'lı şirketler bile nakit sorunu yaşayabilir (ör: Netflix'in erken yılları).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: İmalat vs Tech şirketi EBITDA'sı neden farklı yorumlanır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">İmalat: D&A oranı yüksek (makine/teçhizat), EBITDA daha "gerçek". Tech: R&D giderleri OpEx'te kalır, EBITDA "aşırı iyimser" olabilir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="deferred-revenue.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Def. Revenue</a>
+            <a href="inventory-accounting.html" class="btn-nav">Sonraki: Inventory <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oil & Gas Accounting | IB Prep</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>7.3 Oil & Gas Accounting</h1>
+            <p class="lesson-desc">
+                Enerji sektörü. Başarılı Çabalar vs Tam Maliyet. Yerin altındaki servetin muhasebesi.
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-oil-well"></i> The Dry Hole Problem (Boş Kuyu Sorunu)</h3>
+                <p>
+                    Petrol arıyorsunuz. 10 tane kuyu kazdınız. Tanesi 1 Milyon $.
+                    9 tanesi boş çıktı (Dry Hole). 1 tanesinde petrol buldunuz. Toplam 10 Milyon $ harcadınız.
+                </p>
+                <p>
+                    <strong>Soru:</strong> Bilançoya (Asset) ne kadar varlık yazacaksınız?
+                    <br><strong>A) 1 Milyon $</strong> (Sadece işe yarayan kuyu) -> <strong>Successful Efforts Method</strong>
+                    <br><strong>B) 10 Milyon $</strong> (Tüm harcama, çünkü o 1 kuyuyu bulmak için 9 boş kuyu açmak zorundaydın) -> <strong>Full Cost Method</strong>
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-flask"></i> Two Accounting Methods</h3>
+
+                <h4>1. Successful Efforts (SE)</h4>
+                <p>
+                    Büyük petrol şirketleri (Exxon, Shell) genelde bunu kullanır.
+                    Sadece petrol bulunan kuyuların maliyeti <strong>Capitalize</strong> edilir (Varlık yazılır).
+                    Boş kuyuların maliyeti o yıl <strong>Expense</strong> edilir (Gider yazılır).
+                    <br><em>Sonuç:</em> Düşük Net Income, Düşük Asset Değeri, ama daha "temiz" bilanço.
+                </p>
+
+                <h4>2. Full Cost (FC)</h4>
+                <p>
+                    Küçük arama şirketleri (E&P) bunu kullanır.
+                    Tüm arama maliyetleri (boş kuyular dahil) Varlık olarak yazılır.
+                    <br><em>Sonuç:</em> Yüksek Net Income (gider az), Şişkin Asset Değeri.
+                    <br><strong style="color: var(--accent-red);">Risk:</strong> Eğer petrol fiyatları düşerse, bu şişkin varlıklar için devasa bir "Değer Düşüklüğü" (Impairment / Write-down) yazmak zorunda kalırlar.
+                </p>
+
+                <h4>3. Key Metrics: EBITDAX</h4>
+                <p>
+                    Enerji şirketlerinde EBITDA yerine <strong>EBITDAX</strong> kullanılır.
+                    <br><strong>X = Exploration Expenses (Arama Giderleri).</strong>
+                    Farklı muhasebe yöntemlerini (SE vs FC) kullanan şirketleri karşılaştırabilmek için Arama Giderlerini geri ekleriz.
+                </p>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: Full Cost kullanan bir şirketin Net Income'ı, Successful Efforts kullanana göre nasıldır?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Başlangıçta daha YÜKSEKTİR. Çünkü boş kuyuları gider yazmaz, varlık yapar. Ancak ilerleyen yıllarda Amortisman (Depreciation) gideri daha yüksek olacağı için kârı düşecektir.</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: Petrol fiyatları çökerse Full Cost şirketlerine ne olur?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">"Ceiling Test" (Tavan Testi) denilen kurala takılırlar. Bilançodaki varlık değeri, rezervlerin piyasa değerini geçerse, aradaki fark kadar devasa bir ZARAR (Write-down) yazmak zorunda kalırlar.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="reits.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: REITs</a>
+                <a href="nols.html" class="btn-nav next">Sonraki: NOLs & Tax Assets <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

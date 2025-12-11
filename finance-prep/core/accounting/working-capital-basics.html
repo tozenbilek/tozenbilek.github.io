@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Capital Basics | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">NWC Basics</span>
+        </nav>
+
+        <h1>2.1 Net Working Capital (NWC)</h1>
+        <p>
+            Şirketin günlük operasyonlarını döndürmek için gereken likiditedir. 
+            <strong>"Paranın ne kadarı operasyonlarda hapsolmuş?"</strong> sorusunun cevabıdır.
+        </p>
+
+        <h2 style="color: var(--accent-green);">The Formula</h2>
+        <div class="math-block">
+            \[ \text{NWC} = \text{Current Operating Assets} - \text{Current Operating Liabilities} \]
+        </div>
+        
+        <div class="mech-box">
+            <strong>Dahil Olanlar (Operasyonel):</strong>
+            <br>+ Accounts Receivable (Ticari Alacak)
+            <br>+ Inventory (Stok)
+            <br>+ Prepaid Expenses
+            <br>- Accounts Payable (Ticari Borç)
+            <br>- Accrued Expenses (Tahakkuklar)
+            <br>- Deferred Revenue
+            <br><br>
+            <strong>HARİÇ Olanlar (Finansal):</strong>
+            <br>x Cash (Nakit) -> Yatırım kararıdır.
+            <br>x Debt (Kısa vadeli borç) -> Finansman kararıdır.
+        </div>
+
+        <h2 style="color: var(--accent-green);">Increase vs Decrease</h2>
+        <p>
+            <strong>Change in NWC</strong> formülü Nakit Akış Tablosu için kritiktir:
+        </p>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-arrow-trend-up"></i> NWC Artarsa</div>
+            <p style="color: #1f2933; margin: 0;">
+                NWC'nin artması (Pozitif Change), <strong>Nakit Çıkışıdır (Use of Cash).</strong>
+                <br>Örnek: Daha çok stok aldınız (Inventory arttı) veya müşteriden tahsilat yapamadınız (AR arttı). Para şirketten çıktı veya gelmedi.
+            </p>
+        </div>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-arrow-trend-down"></i> NWC Azalırsa</div>
+            <p style="color: #1f2933; margin: 0;">
+                NWC'nin azalması (Negatif Change), <strong>Nakit Girişidir (Source of Cash).</strong>
+                <br>Örnek: Stokları sattınız (Inventory azaldı) veya tedarikçiye ödemeyi ertelediniz (AP arttı). Para cebinizde kaldı.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">4. Cash Conversion Cycle (CCC) - Detaylı</h2>
+        <div class="content-box-base">
+            <p>
+                <strong>CCC</strong>, şirketin "stok alıp satıp parayı tahsil etme" hızını ölçer. Daha düşük CCC daha iyidir (para daha hızlı döner).
+            </p>
+            <div class="math-block">
+                \[ \text{CCC} = \text{DIO} + \text{DSO} - \text{DPO} \]
+                \[ \text{DIO} = \frac{\text{Inventory}}{\text{COGS}/365} \quad \text{DSO} = \frac{\text{AR}}{\text{Revenue}/365} \quad \text{DPO} = \frac{\text{AP}}{\text{COGS}/365} \]
+            </div>
+
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-clock"></i> CCC Hesaplama Örneği</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 100px 100px 100px;">
+                    <div class="excel-cell header">Metrik</div>
+                    <div class="excel-cell header">Formül</div>
+                    <div class="excel-cell header">Gün</div>
+                    <div class="excel-cell header">Açıklama</div>
+
+                    <div class="excel-cell">DIO (Days Inventory Outstanding)</div>
+                    <div class="excel-cell">Inv / (COGS/365)</div>
+                    <div class="excel-cell">45</div>
+                    <div class="excel-cell">Stok 45 gün kalır</div>
+
+                    <div class="excel-cell">DSO (Days Sales Outstanding)</div>
+                    <div class="excel-cell">AR / (Rev/365)</div>
+                    <div class="excel-cell">30</div>
+                    <div class="excel-cell">Tahsilat 30 günde</div>
+
+                    <div class="excel-cell">DPO (Days Payable Outstanding)</div>
+                    <div class="excel-cell">AP / (COGS/365)</div>
+                    <div class="excel-cell">60</div>
+                    <div class="excel-cell">Tedarikçi 60 gün bekler</div>
+
+                    <div class="excel-cell bold">CCC</div>
+                    <div class="excel-cell bold">45 + 30 - 60</div>
+                    <div class="excel-cell bold">15</div>
+                    <div class="excel-cell bold">Net 15 gün para bağlı</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">5. Gerçek Şirket Örnekleri</h2>
+
+        <h3>🏪 Walmart vs Whole Foods: CCC Farkı</h3>
+        <div class="grid-modules" style="grid-template-columns: 1fr 1fr;">
+            <div class="content-box-base">
+                <h4 style="margin-top:0;">Walmart (Verimli)</h4>
+                <ul class="check-list">
+                    <li><strong>DIO:</strong> 42 gün (hızlı stok devri)</li>
+                    <li><strong>DSO:</strong> 5 gün (nakit satış)</li>
+                    <li><strong>DPO:</strong> 35 gün</li>
+                    <li><strong>CCC:</strong> 42 + 5 - 35 = <strong>12 gün</strong></li>
+                </ul>
+            </div>
+            <div class="content-box-base">
+                <h4 style="margin-top:0;">Whole Foods (Premium)</h4>
+                <ul class="check-list">
+                    <li><strong>DIO:</strong> 28 gün (taze ürün)</li>
+                    <li><strong>DSO:</strong> 8 gün</li>
+                    <li><strong>DPO:</strong> 22 gün</li>
+                    <li><strong>CCC:</strong> 28 + 8 - 22 = <strong>14 gün</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>💻 Dell vs HP: Teknoloji Farkı</h3>
+        <div class="content-box-base">
+            <p>
+                Dell'in "build-to-order" modeli CCC'yi çok düşürür. HP ise stok bazlı çalıştığı için daha yüksek NWC'ye sahip.
+            </p>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-computer"></i> Dell vs HP NWC Karşılaştırması</div>
+                <div class="excel-grid" style="grid-template-columns: 120px 100px 100px 100px;">
+                    <div class="excel-cell header">Şirket</div>
+                    <div class="excel-cell header">DIO</div>
+                    <div class="excel-cell header">DSO</div>
+                    <div class="excel-cell header">CCC</div>
+
+                    <div class="excel-cell">Dell</div>
+                    <div class="excel-cell">7</div>
+                    <div class="excel-cell">30</div>
+                    <div class="excel-cell">-10</div>
+
+                    <div class="excel-cell">HP</div>
+                    <div class="excel-cell">35</div>
+                    <div class="excel-cell">45</div>
+                    <div class="excel-cell">25</div>
+                </div>
+            </div>
+            <p><strong>Dell'in negatif CCC'si:</strong> Tedarikçilerden para almadan önce müşterilerden para tahsil ediyor!</p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">6. NWC Management Stratejileri</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Strateji</th>
+                        <th>Nasıl Yapılır?</th>
+                        <th>Faydası</th>
+                        <th>Riski</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Supply Chain Opt.</strong></td>
+                        <td>Just-in-time inventory</td>
+                        <td>DIO azalır</td>
+                        <td>Stok kesintisi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cash Collection</strong></td>
+                        <td>Early payment discounts</td>
+                        <td>DSO azalır</td>
+                        <td>Müşteri kaybı</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Supplier Terms</strong></td>
+                        <td>Extended payment terms</td>
+                        <td>DPO artar</td>
+                        <td>Tedarikçi ilişkisi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dynamic Discounting</strong></td>
+                        <td>Erken ödeme primi</td>
+                        <td>Hem DSO hem DPO iyileşir</td>
+                        <td>Teknik karmaşıklık</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> NWC Quiz</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Şirketin AR'si arttı, AP'si arttı, Inventory'si azaldı. NWC ne oldu?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">NWC = (AR↑ + Inv↓) - AP↑ = Net artar (AR artışı Inv azalmasını geçerse). Cash flow'da negative change (nakit çıkışı).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Dell'in CCC'si neden negatif? Bu mümkün mü?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Evet mümkün. DPO > DIO + DSO ise CCC negatif olur. Dell müşterilerden para almadan tedarikçilere ödeme yapıyor. Çok verimli işletme!</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="inventory-accounting.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Inventory</a>
+            <a href="ccc.html" class="btn-nav">Sonraki: CCC <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxes | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <a href="income-statement.html" class="nav-link">Income Statement</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Taxes</span>
+        </nav>
+
+        <h1>Taxes (Kurumlar Vergisi)</h1>
+        <p>
+            Devletin şirketteki gizli ortaklığı. Genellikle en büyük gider kalemlerinden biridir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. Effective vs Marginal Rate</h2>
+        <div class="mech-box">
+            <strong>Marginal Tax Rate:</strong> Kanuni oran (Örn: Türkiye %25, ABD %21).
+            <br>
+            <strong>Effective Tax Rate:</strong> Şirketin gerçekte ödediği oran.
+            <br>
+            Formül: <span style="font-family:'JetBrains Mono'">Income Tax Expense / Pre-Tax Income</span>
+            <br><br>
+            <em>Neden Farklı?</em>
+            <br>- Vergi cennetlerinde operasyonlar (İrlanda, Cayman).
+            <br>- Ar-Ge teşvikleri.
+            <br>- Vergi cezaları (Kanuni orandan fazla ödetebilir).
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Current vs Deferred Taxes</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Tax_Breakdown.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 200px 100px;">
+                <div class="excel-cell header">Kalem</div>
+                <div class="excel-cell header">Tutar</div>
+
+                <div class="excel-cell">Total Tax Expense (IS)</div>
+                <div class="excel-cell bold">100</div>
+
+                <div class="excel-cell indent">(-) Current Tax (Cash)</div>
+                <div class="excel-cell" style="color:green;">80</div>
+
+                <div class="excel-cell indent">(-) Deferred Tax (Non-Cash)</div>
+                <div class="excel-cell" style="color:blue;">20</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                Nakit Akış Tablosunda, sadece nakit ödenen (80) önemlidir. Veya Total Tax (100) düşüldüyse, Deferred (20) geri eklenir.
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="interest-expense.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Interest</a>
+            <a href="net-income.html" class="btn-nav">Sonraki: Net Income <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

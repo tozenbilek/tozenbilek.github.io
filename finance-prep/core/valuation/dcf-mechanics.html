@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCF Mechanics | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Mechanics</span>
+        </nav>
+
+        <h1>1.4 DCF Mechanics</h1>
+        <p>
+            FCF, WACC ve TV'yi bulduk. Åimdi hepsini birleÅŸtirip hisse fiyatÄ±na ulaÅŸacaÄŸÄ±z.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">Mid-Year Convention</h2>
+        <p>
+            Nakit akÄ±ÅŸlarÄ± yÄ±lÄ±n sonunda (31 AralÄ±k) tek seferde gelmez. YÄ±l iÃ§ine yayÄ±lÄ±r.
+            Bu yÃ¼zden parayÄ± 1 yÄ±l yerine 0.5 yÄ±l, 2 yÄ±l yerine 1.5 yÄ±l iskonto ederiz.
+        </p>
+        <div class="math-block">
+            \[ PV = \frac{FCF}{(1+WACC)^{n - 0.5}} \]
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Stub Period (KÄ±rÄ±k DÃ¶nem)</h2>
+        <p>
+            DeÄŸerlemeyi her zaman 1 Ocak'ta yapmayÄ±z. EÄŸer 30 Haziran'da yapÄ±yorsak, ilk yÄ±lÄ±n sadece yarÄ±sÄ±nÄ± (0.5) alÄ±rÄ±z.
+            FormÃ¼ller buna gÃ¶re (0.25, 1.25...) ayarlanÄ±r.
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-calendar-days"></i> Stub_Period.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px;">
+                <div class="excel-cell header">Year</div>
+                <div class="excel-cell header">FCF</div>
+                <div class="excel-cell header">Discount Exponent</div>
+
+                <div class="excel-cell">Y1</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">0.5</div>
+
+                <div class="excel-cell">Y2</div>
+                <div class="excel-cell">110</div>
+                <div class="excel-cell">1.5</div>
+
+                <div class="excel-cell">Y3</div>
+                <div class="excel-cell">121</div>
+                <div class="excel-cell">2.5</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray; border-top:1px solid #ddd;">
+                EÄŸer deÄŸerleme tarihi yÄ±l ortasÄ±ysa, ilk nakit akÄ±ÅŸÄ± "yarÄ±m yÄ±l" iskonto edilir.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Final Bridge</h2>
+        <div class="algo-box">
+            Sum of PV of FCFs (Projection Period)
+            <br>(+) PV of Terminal Value
+            <br><strong>= Enterprise Value (Firma DeÄŸeri)</strong>
+            <br>(-) Net Debt
+            <br>(-) Preferred Stock / NCI
+            <br><strong>= Equity Value (Ã–zsermaye DeÄŸeri)</strong>
+            <br>(/) Diluted Shares Outstanding
+            <br><strong>= Implied Share Price (Hisse FiyatÄ±)</strong>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Numeric Walkthrough (Mini Model)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> DCF_Bridge.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Sum PV of FCFs (Years 1-5)</div>
+                <div class="excel-cell">400</div>
+
+                <div class="excel-cell">PV of Terminal Value</div>
+                <div class="excel-cell">900</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid #111;">= Enterprise Value</div>
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid #111;">1,300</div>
+
+                <div class="excel-cell">(-) Net Debt</div>
+                <div class="excel-cell">(200)</div>
+
+                <div class="excel-cell">(-) Preferred / NCI</div>
+                <div class="excel-cell">(50)</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">= Equity Value</div>
+                <div class="excel-cell bold" style="background:#f0fdf4;">1,050</div>
+
+                <div class="excel-cell">(/) Diluted Shares</div>
+                <div class="excel-cell">100</div>
+
+                <div class="excel-cell bold" style="background:#dbeafe;">= Implied Share Price</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">10.50</div>
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: PV of Terminal Value neden Ã§oÄŸu DCF'te toplam deÄŸerin bÃ¼yÃ¼k kÄ±smÄ±dÄ±r?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ 5 yÄ±llÄ±k tahmin dÃ¶nemi kÄ±sa; ÅŸirketin "sonsuz" Ã¶mrÃ¼nÃ¼n deÄŸeri TV'de toplanÄ±r. Bu yÃ¼zden WACC, g ve exit multiple varsayÄ±mlarÄ± DCF sonucunu dramatik etkiler.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Mid-year convention kullanÄ±rsan deÄŸer niye artar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Nakit akÄ±ÅŸlarÄ± yÄ±l sonunda deÄŸil, yÄ±l iÃ§ine yayÄ±lmÄ±ÅŸ kabul edilir; daha az sÃ¼re iskonto edildiÄŸi iÃ§in PV artar.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="terminal-value.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Terminal Value</a>
+            <a href="enterprise-value.html" class="btn-nav">Sonraki: Enterprise Value <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

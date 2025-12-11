@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter LBO Case | IB Prep</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .stat-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin-bottom:32px;}
+        .stat-card{background:var(--surface-color); border:1px solid var(--border-color); padding:16px; border-radius:8px;}
+        .stat-label{font-size:12px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:1px; display:block; margin-bottom:4px;}
+        .stat-val{font-size:18px; font-weight:700; color:var(--text-primary); font-family:'JetBrains Mono',monospace;}
+        .lesson-box{background:#f0f9ff; border-left:4px solid #1d9bf0; padding:20px; font-size:14px; color:#0369a1; border-radius:4px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Case Studies</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Twitter LBO</span>
+        </nav>
+
+        <header>
+            <h1>Case Study: Twitter LBO <span class="tag-ib" style="color: var(--accent-twitter); background: rgba(29, 155, 240, 0.1);">Real Deal</span></h1>
+            <p class="desc">Elon Musk'ın 44 Milyar Dolarlık Twitter hamlesi, tüm LBO kurallarını yıkan bir işlemdir. Rakamlarla analizi.</p>
+        </header>
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <span class="stat-label">Satın Alma Fiyatı</span>
+                <span class="stat-val">$44.0 Milyar</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Kullanılan Borç</span>
+                <span class="stat-val">$13.0 Milyar</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Equity (Musk'ın Parası)</span>
+                <span class="stat-val">$31.0 Milyar</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Kaldıraç Oranı</span>
+                <span class="stat-val">~13.0x EBITDA</span>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-twitter);">Risk: Nakit Akışı Problemi</h2>
+        <p>Twitter'ın yıllık EBITDA'sı ~1.0 Milyar Dolar idi. Ancak 13 Milyar Dolarlık borcun yıllık faizi ~1.2 Milyar Dolar tutuyordu.</p>
+        
+        <div class="lesson-box">
+            <strong>Ders: Interest Coverage Ratio < 1.0x</strong><br>
+            Şirket, kazandığı paradan daha fazla faiz ödüyor. Bu yüzden Musk, personel sayısının %80'ini işten çıkardı. Bu sadece "kültür" değil, matematiksel bir zorunluluktu (OpEx azaltıp EBITDA artırmak).
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Bu deal’de “kırmızı bayrak” metrik neydi?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Faiz yükünün EBITDA’yı aşması: Interest Coverage < 1.0x. Operasyonel iyileşme olmadan yapı sürdürülemez.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="start-here.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Start Here</a>
+            <a href="index.html" class="btn-nav">Modül: Cases Index <i class="fa-solid fa-flag-checkered"></i></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peer Group Selection | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Peer Group</span>
+        </nav>
+
+        <h1>2.3 Peer Group Selection</h1>
+        <p>
+            DoÄŸru rakipleri seÃ§mek, analizin %90'Ä±dÄ±r. YanlÄ±ÅŸ rakip, yanlÄ±ÅŸ deÄŸerleme.
+        </p>
+
+        <div class="analogy-box">
+            <h3><i class="fa-solid fa-users"></i> "Elma" SeÃ§mek (Peer MantÄ±ÄŸÄ±)</h3>
+            <p>
+                "Ben Apple'Ä± deÄŸerlendiriyorum" deyip karÅŸÄ±laÅŸtÄ±rma grubuna Coca-Cola koyarsanÄ±z sonuÃ§ saÃ§ma olur.
+                DoÄŸru peer set, hem <strong>iÅŸ modeli</strong> hem <strong>coÄŸrafya</strong> hem de <strong>Ã¶lÃ§ek</strong> aÃ§Ä±sÄ±ndan benzer olmalÄ±dÄ±r.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Screening Criteria</h2>
+        <div class="mech-box">
+            <ol>
+                <li><strong>Industry:</strong> AynÄ± iÅŸi mi yapÄ±yorlar? (Coca Cola vs Pepsi).</li>
+                <li><strong>Geography:</strong> AynÄ± bÃ¶lgedeler mi? (ABD vs GeliÅŸmekte Olan Piyasalar).</li>
+                <li><strong>Size (Financials):</strong> CirolarÄ± yakÄ±n mÄ±? (Market Cap, Revenue, EBITDA).</li>
+            </ol>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Benchmarking</h2>
+        <p>
+            Sadece Ã§arpanlara bakmak yetmez. Operasyonel metrikleri de kÄ±yaslamalÄ±sÄ±nÄ±z.
+        </p>
+        <ul>
+            <li>Åirketinizin EBITDA MarjÄ± rakiplerden yÃ¼ksekse, <strong>daha yÃ¼ksek bir Ã§arpanÄ±</strong> hak eder (Premium).</li>
+            <li>BÃ¼yÃ¼me hÄ±zÄ± (Growth Rate) dÃ¼ÅŸÃ¼kse, <strong>daha dÃ¼ÅŸÃ¼k Ã§arpanÄ±</strong> hak eder (Discount).</li>
+        </ul>
+
+        <h2 style="color: var(--accent-blue);">Peer Selection Matrix (Pratik)</h2>
+        <p>
+            AÅŸaÄŸÄ±daki gibi puanlama yaparak (scorecard) peer set'i objektif seÃ§ebilirsiniz.
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Peer_Screening.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 140px 110px 110px 110px 110px;">
+                <div class="excel-cell header">Company</div>
+                <div class="excel-cell header">Industry</div>
+                <div class="excel-cell header">Geography</div>
+                <div class="excel-cell header">Size</div>
+                <div class="excel-cell header">Total</div>
+
+                <div class="excel-cell">TargetCo</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell bold">-</div>
+
+                <div class="excel-cell">Peer A</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">4</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">14</div>
+
+                <div class="excel-cell">Peer B</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">3</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell bold">13</div>
+
+                <div class="excel-cell">Peer C</div>
+                <div class="excel-cell">4</div>
+                <div class="excel-cell">2</div>
+                <div class="excel-cell">2</div>
+                <div class="excel-cell bold" style="color:#ef4444;">8</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray; border-top:1px solid #ddd;">
+                1-5 puanlayÄ±n. Total dÃ¼ÅŸÃ¼kse (Ã¶rn. 8) o ÅŸirket "peer" deÄŸildir; sadece "comp" listesinde adÄ± geÃ§ebilir.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Sanity Checks (HÄ±zlÄ± Kontrol)</h2>
+        <div class="content-box-base">
+            <ul class="check-list">
+                <li><strong>Growth:</strong> Target growth %5 iken peer %30 ise Ã§arpanlar ÅŸiÅŸer.</li>
+                <li><strong>Margin:</strong> Target EBITDA margin %10 iken peer %40 ise adil karÅŸÄ±laÅŸtÄ±rma deÄŸildir.</li>
+                <li><strong>Accounting:</strong> IFRS vs US GAAP farklarÄ± (Lease, SBC) EBITDA'yÄ± bozabilir.</li>
+                <li><strong>Capital structure:</strong> EV-multiple kullanÄ±yorsanÄ±z borÃ§ farkÄ± daha az problem; P/E kullanÄ±yorsanÄ±z daha kritik.</li>
+            </ul>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Peer set'in iÃ§inde bir ÅŸirketin EV/EBITDA'sÄ± aÅŸÄ±rÄ± yÃ¼ksekse ne yaparsÄ±n?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã–nce nedenini araÅŸtÄ±rÄ±rÄ±m: bÃ¼yÃ¼me beklentisi mi, tek seferlik dÃ¼ÅŸÃ¼k EBITDA mÄ±, muhasebe farkÄ± mÄ±? Gerekirse outlier olarak Ã§Ä±karÄ±r veya median kullanÄ±rÄ±m (mean yerine).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Neden genelde mean yerine median multiple kullanÄ±lÄ±r?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ mean outlier'lara (uÃ§ deÄŸerler) Ã§ok duyarlÄ±dÄ±r. Median, peer set'in "tipik" deÄŸerini daha iyi temsil eder.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="multiples.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Multiples</a>
+            <a href="precedent-transactions.html" class="btn-nav">Sonraki: Precedent Transactions <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

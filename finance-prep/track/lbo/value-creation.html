@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Value Creation | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Value Creation</span>
+        </nav>
+
+        <h1>3.2 Value Creation (Attribution)</h1>
+        <p>
+            Para nereden kazanÄ±ldÄ±? ÃœÃ§ ana motor vardÄ±r.
+        </p>
+
+        <div class="grid-modules" style="grid-template-columns: 1fr; gap: 16px;">
+            <div class="content-box-base">
+                <h3 style="margin-top:0; color:var(--accent-purple);">1. Deleveraging (Debt Paydown)</h3>
+                <p>
+                    Borcu Ã¶demek. Åirket hiÃ§ bÃ¼yÃ¼mese bile, borÃ§ 100'den 50'ye dÃ¼ÅŸerse, Equity 50 artar.
+                    LBO'nun en garanti getirisidir.
+                </p>
+            </div>
+            <div class="content-box-base">
+                <h3 style="margin-top:0; color:var(--accent-purple);">2. Operational Improvement (EBITDA Growth)</h3>
+                <p>
+                    Åirketi bÃ¼yÃ¼tmek. Maliyetleri kÄ±smak, ciroyu artÄ±rmak.
+                    Hem deÄŸeri artÄ±rÄ±r hem de daha Ã§ok borÃ§ Ã¶denmesini saÄŸlar.
+                </p>
+            </div>
+            <div class="content-box-base">
+                <h3 style="margin-top:0; color:var(--accent-purple);">3. Multiple Expansion</h3>
+                <p>
+                    Åirketi 8x EBITDA'ya alÄ±p, 10x EBITDA'ya satmak.
+                    En spekÃ¼latif kÄ±sÄ±mdÄ±r. Genellikle modellemelerde "Exit Multiple = Entry Multiple" varsayÄ±lÄ±r (Conservative).
+                </p>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Mini Attribution Bridge (SayÄ±sal)</h2>
+        <p>Basit bir Ã¶rnekle 3 katkÄ±yÄ± ayrÄ±ÅŸtÄ±ralÄ±m:</p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Value_Creation_Bridge.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px;">
+                <div class="excel-cell header">Component</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Entry EBITDA</div>
+                <div class="excel-cell">100</div>
+
+                <div class="excel-cell">Exit EBITDA</div>
+                <div class="excel-cell">140</div>
+
+                <div class="excel-cell">Entry Multiple</div>
+                <div class="excel-cell">8.0x</div>
+
+                <div class="excel-cell">Exit Multiple</div>
+                <div class="excel-cell">9.0x</div>
+
+                <div class="excel-cell">Entry Net Debt</div>
+                <div class="excel-cell">500</div>
+
+                <div class="excel-cell">Exit Net Debt</div>
+                <div class="excel-cell">300</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">EBITDA Growth Contribution</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">(140-100)*8 = 320</div>
+
+                <div class="excel-cell bold">Multiple Expansion Contribution</div>
+                <div class="excel-cell bold">(9-8)*140 = 140</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">Deleveraging Contribution</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">500-300 = 200</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Bu Ã¼Ã§ kalem â€œEquity Value artÄ±ÅŸÄ±â€nÄ± aÃ§Ä±klar. IC genelde EBITDA growthâ€™u en kaliteli kaynak sayar.
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Neden â€œMultiple Expansionâ€ ICâ€™de daha az sevilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ piyasa rejimine baÄŸlÄ±dÄ±r ve kontrol edilebilir deÄŸildir. â€œBiz ÅŸirketi iyileÅŸtirdikâ€ yerine â€œpiyasa ÅŸiÅŸtiâ€ anlamÄ±na gelebilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Deleveraging neden LBOâ€™nun â€œgarantiâ€ motoru sayÄ±lÄ±r?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Åirket nakit Ã¼rettikÃ§e borÃ§ dÃ¼ÅŸer; EV aynÄ± kalsa bile (EV=Equity+NetDebt) net debt azalÄ±nca equity artar.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="irr-moic.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: IRR & MOIC</a>
+            <a href="exit.html" class="btn-nav">Sonraki: Exit Strategies <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+

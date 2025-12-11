@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Conversion Cycle | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">CCC</span>
+        </nav>
+
+        <h1>2.2 Cash Conversion Cycle (CCC)</h1>
+        <p>
+            Paranın "Hızı"dır. Cebinizden çıkan 1 liranın, kâr ederek cebinize geri dönmesi kaç gün sürüyor?
+            Şirketin operasyonel verimliliğinin nihai karnesidir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. The Pizza Shop Analogy</h2>
+        <div class="mech-box">
+            Bir pizzacı olduğunuzu hayal edin:
+            <ol>
+                <li><strong>Adım 1 (Inventory):</strong> Un ve peynir aldınız. Bunlar mutfakta <strong>10 gün</strong> bekledi. (Para rafta yatıyor - KÖTÜ).</li>
+                <li><strong>Adım 2 (Receivables):</strong> Pizzayı sattınız ama müşteri "Sonra öderim" dedi. Tahsilat <strong>5 gün</strong> sürdü. (Para müşteride yatıyor - KÖTÜ).</li>
+                <li><strong>Adım 3 (Payables):</strong> Uncunun parasını hemen vermediniz. "30 gün sonra öderim" dediniz. (Para cebinizde kaldı - İYİ).</li>
+            </ol>
+            <strong>Soru:</strong> Sizin paranız operasyona ne kadar süre "hapsoldu"?
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. The Formula</h2>
+        <div class="math-block" style="font-size: 18px;">
+            \[ CCC = DIO + DSO - DPO \]
+        </div>
+        
+        <div class="grid-modules" style="grid-template-columns: 1fr; gap:16px;">
+            <div class="content-box-base" style="border-left: 4px solid #ef4444;">
+                <strong style="color:var(--text-primary);">1. DIO (Days Inventory Outstanding)</strong>
+                <br>Stokların rafta tozlanma süresi.
+                <br><em>Amaç: Düşürmek (Hemen sat).</em>
+                <br><span style="font-family:'JetBrains Mono'; font-size:0.85em;">= (Inventory / COGS) * 365</span>
+            </div>
+            <div class="content-box-base" style="border-left: 4px solid #ef4444;">
+                <strong style="color:var(--text-primary);">2. DSO (Days Sales Outstanding)</strong>
+                <br>Müşteriden parayı koparma süresi.
+                <br><em>Amaç: Düşürmek (Hemen tahsil et).</em>
+                <br><span style="font-family:'JetBrains Mono'; font-size:0.85em;">= (AR / Revenue) * 365</span>
+            </div>
+            <div class="content-box-base" style="border-left: 4px solid #22c55e;">
+                <strong style="color:var(--text-primary);">3. DPO (Days Payable Outstanding)</strong>
+                <br>Tedarikçiyi bekletme süresi.
+                <br><em>Amaç: Yükseltmek (Geç öde).</em>
+                <br><span style="font-family:'JetBrains Mono'; font-size:0.85em;">= (AP / COGS) * 365</span>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Case Study: Amazon (Negative CCC)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-crown"></i> The Holy Grail</div>
+            <p>
+                Amazon'un CCC'si <strong>-20 gündür</strong> (Negatif). Nasıl mı?
+                <br><br>
+                1. Sizden kredi kartıyla parayı <strong>anında</strong> çeker (DSO = 0).
+                <br>2. Ürünü depoda çok az tutar (DIO düşük).
+                <br>3. Tedarikçiye parayı <strong>3 ay sonra</strong> öder (DPO = 90).
+                <br><br>
+                <strong>Sonuç:</strong> Amazon, sizin paranızı alıp 3 ay boyunca işletir, faiz kazanır, yeni depo açar ve tedarikçiye sonra öder. 
+                Bu, <strong>faizsiz kredi</strong> kullanmak demektir.
+            </p>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="working-capital-basics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: NWC Basics</a>
+            <a href="ppe-capex.html" class="btn-nav">Sonraki: PP&E & CapEx <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

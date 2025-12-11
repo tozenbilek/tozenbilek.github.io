@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exit Strategies | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Exit</span>
+        </nav>
+
+        <h1>3.3 Exit Strategies</h1>
+        <p>
+            LBO'ya girmeden Ã¶nce, Ã§Ä±kÄ±ÅŸ kapÄ±sÄ±nÄ±n nerede olduÄŸunu bilmeniz gerekir.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">1. Strategic Sale (M&A)</h2>
+        <p>
+            Åirketi baÅŸka bir ÅŸirkete satmak. Genellikle en yÃ¼ksek fiyatÄ± verirler (Sinerjiler sayesinde).
+            %100 Nakit Ã§Ä±kÄ±ÅŸ saÄŸlar (Clean Break).
+        </p>
+
+        <h2 style="color: var(--accent-purple);">2. IPO (Halka Arz)</h2>
+        <p>
+            Åirketi borsaya aÃ§mak. En prestijli yoldur ama PE firmasÄ± hisselerini hemen satamaz (Lock-up period).
+            Ã‡Ä±kÄ±ÅŸ yavaÅŸtÄ±r.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">3. Secondary Buyout (Sponsor-to-Sponsor)</h2>
+        <p>
+            Åirketi baÅŸka bir Private Equity firmasÄ±na satmak. "ÅiÅŸeyi paslamak" gibidir.
+            Ã‡ok bÃ¼yÃ¼k ÅŸirketlerde (Mega Deals) yaygÄ±ndÄ±r Ã§Ã¼nkÃ¼ onlarÄ± alacak tek gÃ¼Ã§ diÄŸer bÃ¼yÃ¼k PE'lerdir.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">Dividend Recap (The Bonus)</h2>
+        <p>
+            Bu bir "Tam Ã‡Ä±kÄ±ÅŸ" deÄŸildir. 
+            Åirket iyi gidiyorsa, 3. yÄ±lda bankadan ekstra borÃ§ alÄ±p, bu parayÄ± PE firmasÄ±na <strong>TemettÃ¼</strong> olarak daÄŸÄ±tmaktÄ±r.
+            Hisseleri satmadan paranÄ±n bir kÄ±smÄ±nÄ± masadan almayÄ± saÄŸlar (De-risking). IRR'Ä± inanÄ±lmaz artÄ±rÄ±r (Para erken geldiÄŸi iÃ§in).
+        </p>
+
+        <h2 style="color: var(--accent-purple);">Exit Scenarios (Mini Tablo)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Exit_Scenarios.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px 120px;">
+                <div class="excel-cell header">Scenario</div>
+                <div class="excel-cell header">Exit Multiple</div>
+                <div class="excel-cell header">Exit Year</div>
+                <div class="excel-cell header">Intuition</div>
+
+                <div class="excel-cell">Downside</div>
+                <div class="excel-cell">8.0x</div>
+                <div class="excel-cell">6</div>
+                <div class="excel-cell">Ã‡arpan dÃ¼ÅŸer, zaman uzar</div>
+
+                <div class="excel-cell bold" style="background:#dbeafe;">Base</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">9.0x</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">5</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">Konservatif</div>
+
+                <div class="excel-cell">Upside</div>
+                <div class="excel-cell">10.0x</div>
+                <div class="excel-cell">4</div>
+                <div class="excel-cell">Ã‡arpan yÃ¼kselir, erken Ã§Ä±kÄ±ÅŸ</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Dividend Recap: SayÄ±sal Etki</h2>
+        <p>
+            AynÄ± toplam nakit dÃ¶nÃ¼ÅŸÃ¼yle bile, paranÄ±n erkene gelmesi IRRâ€™Ä± zÄ±platÄ±r.
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-coins"></i> Dividend_Recap.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">No Recap</div>
+                <div class="excel-cell header">With Recap</div>
+
+                <div class="excel-cell">Year 0 Equity</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+
+                <div class="excel-cell">Year 3 Dividend</div>
+                <div class="excel-cell">0</div>
+                <div class="excel-cell" style="color:green;">+30</div>
+
+                <div class="excel-cell">Year 5 Exit</div>
+                <div class="excel-cell" style="color:green;">+200</div>
+                <div class="excel-cell" style="color:green;">+170</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Total Cash Returned</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">200</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">200</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Toplam aynÄ± (MOIC aynÄ±) ama â€œWith Recapâ€ senaryosunda erken nakit IRRâ€™Ä± artÄ±rÄ±r.
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Dividend recap neden riskli olabilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ borÃ§ artar, faiz yÃ¼kÃ¼ yÃ¼kselir ve covenant/likidite riski bÃ¼yÃ¼r. Downside senaryoda equity â€œwipedâ€ olma ihtimalini artÄ±rabilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Strategic sale neden genelde en yÃ¼ksek fiyatÄ± verebilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Sinerji (cost/revenue) yaratabildiÄŸi iÃ§in â€œkontrol primi + sinerjiâ€ Ã¶deyebilir. PE ise Ã§oÄŸunlukla finansal getiriye bakar.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="value-creation.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Value Creation</a>
+            <span class="btn-nav disabled">ModÃ¼l Bitti <i class="fa-solid fa-flag-checkered"></i></span>
+        </div>
+    </div>
+</body>
+</html>
+

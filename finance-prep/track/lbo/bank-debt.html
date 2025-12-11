@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Debt | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Bank Debt</span>
+        </nav>
+
+        <h1>1.3 Bank Debt (Senior Secured)</h1>
+        <p>
+            LBO'nun en ucuz ve en güvenli katmanıdır. Doğrudan bankalardan (JP Morgan, Citi) alınır.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">1. Revolver (Kredi Kartı)</h2>
+        <p>
+            İhtiyaç olduğunda çekilen, para olduğunda kapatılan esnek hesaptır.
+            Genellikle operasyonel nakit ihtiyaçları (Working Capital) için kullanılır.
+            <br><em>Faiz:</em> En düşük.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">2. Term Loan A (TLA)</h2>
+        <p>
+            "Mortgage" gibidir. Her yıl ana paranın ciddi bir kısmı (%10-20) geri ödenmek zorundadır (Amortization).
+            Riskten kaçınan ticari bankalar tarafından verilir. vadesi kısadır (5 yıl).
+        </p>
+
+        <h2 style="color: var(--accent-purple);">3. Term Loan B (TLB)</h2>
+        <p>
+            Kurumsal yatırımcılara (Hedge Fonlar, CLO'lar) satılır. 
+            Ana para ödemesi minimaldir (Yılda %1). Paranın çoğu vade sonunda ödenir.
+            Vadesi daha uzundur (7 yıl).
+        </p>
+
+        <h2 style="color: var(--accent-purple);">Maintenance Covenants</h2>
+        <p>
+            Bankalar her çeyrekte karnenizi kontrol eder.
+            "Borç / EBITDA oranın 4.0x'i geçemez" gibi katı kurallar koyarlar. İhlal ederseniz, krediyi geri çağırabilirler (Default).
+        </p>
+
+        <h2 style="color: var(--accent-purple);">Revolver / TLA / TLB Cheat Sheet</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Tranche</th>
+                        <th>Use</th>
+                        <th>Pricing</th>
+                        <th>Amortization</th>
+                        <th>Investor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Revolver</strong></td>
+                        <td>Working capital / likidite tamponu</td>
+                        <td>SOFR + düşük spread</td>
+                        <td>Esnek (çek-kapat)</td>
+                        <td>Bankalar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TLA</strong></td>
+                        <td>Konservatif finansman</td>
+                        <td>SOFR + spread</td>
+                        <td>Yüksek</td>
+                        <td>Ticari bankalar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TLB</strong></td>
+                        <td>Yüksek kaldıraç, daha esnek yapı</td>
+                        <td>SOFR + daha yüksek spread</td>
+                        <td>Düşük (genelde %1)</td>
+                        <td>CLO / kurumsal yatırımcı</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Pricing Example (SOFR + Spread)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-percent"></i> Floating_Rate.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">SOFR</div>
+                <div class="excel-cell">5.0%</div>
+
+                <div class="excel-cell">Spread</div>
+                <div class="excel-cell">3.0%</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">All-in Rate</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">8.0%</div>
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Bankalar neden maintenance covenant ister?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü downside riskini erken görmek isterler. Oranlar bozulunca müdahale edip şirketi “de-risk” edebilirler (sweep artırma, capex kısma, equity injection vs.).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: TLB neden TLA’ya göre daha az amortize olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">TLB yatırımcısı daha yüksek kupon/spread alır ve genelde “term” risk taşır; şirketin likiditesini boğmamak için anapara ödemesi düşük bırakılır, exit’te/rafi’de kapatılması beklenir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="sources-uses.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Sources & Uses</a>
+            <a href="high-yield-bonds.html" class="btn-nav">Sonraki: High Yield Bonds <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+

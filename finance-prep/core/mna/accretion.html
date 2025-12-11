@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accretion / Dilution | M&A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">M&A</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Accretion</span>
+        </nav>
+
+        <h1>1.1 Accretion / Dilution</h1>
+        <p>
+            M&A modelinin en temel çıktısıdır: "Hissedarlarım bu işlemden sonra daha zengin mi (Accretive) yoksa daha fakir mi (Dilutive) olacak?"
+        </p>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-pizza-slice"></i> Pizza Analojisi</div>
+            <p style="color: #1f2933; margin: 0;">
+                EPS (Hisse Başına Kar) sizin pizza diliminizdir. 
+                Birleşme ile <strong>Pizza Büyür</strong> (İki şirketin kârı toplanır).
+                Ancak masaya <strong>Yeni İnsanlar Gelir</strong> (Satın almak için yeni hisse basılır).
+                Soru: Diliminiz büyüdü mü küçüldü mü?
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-teal);">Kestirme Yol (P/E Rule)</h2>
+        <p>Eğer işlem %100 Hisse (Stock) ile yapılıyorsa:</p>
+        <div class="mech-box">
+            Alıcının F/K'sı > Hedefin F/K'sı ise --> <strong>Accretive (Pozitif)</strong>
+            <br>
+            Alıcının F/K'sı < Hedefin F/K'sı ise --> <strong>Dilutive (Negatif)</strong>
+            <br><br>
+            <em>Mantık:</em> Pahalı hisseni (Para birimi) kullanarak ucuz bir varlığı alıyorsun. (Arbitraj).
+        </div>
+
+        <h2 style="color: var(--accent-teal);">Breakeven Synergies</h2>
+        <p>
+            Eğer işlem Dilutive (Negatif) çıkıyorsa, durumu kurtarmak için ne kadar tasarruf (Sinerji) yapmalıyız?
+            Bu rakam, işlemin yapılabilir olup olmadığını gösterir.
+        </p>
+
+        <h2 style="color: var(--accent-teal);">Mini Example: EPS Accretion Test (Sayısal)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Accretion_Test.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Standalone</div>
+                <div class="excel-cell header">Pro-Forma</div>
+
+                <div class="excel-cell">Acquirer Net Income</div>
+                <div class="excel-cell">500</div>
+                <div class="excel-cell">500</div>
+
+                <div class="excel-cell">Target Net Income</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">+100</div>
+
+                <div class="excel-cell">After-tax Synergies</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">+20</div>
+
+                <div class="excel-cell">Incremental After-tax Costs (Interest/Amort)</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell" style="color:red;">(40)</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Pro-Forma Net Income</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">500</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">580</div>
+
+                <div class="excel-cell">Acquirer Shares</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">100</div>
+
+                <div class="excel-cell">New Shares Issued</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">+10</div>
+
+                <div class="excel-cell bold">EPS</div>
+                <div class="excel-cell bold">5.00</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">5.27</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Pro-forma EPS > standalone EPS ise accretive. EPS, “pizza dilimi”nin sayısal versiyonudur.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-teal);">Breakeven Synergy (Hızlı Formül)</h2>
+        <div class="mech-box">
+            Breakeven After-tax Synergy ≈ (Standalone EPS * New Shares) - (Target Net Income - After-tax Costs)
+            <br><br>
+            Mantık: Yeni hisselerle pastayı büyütmek zorundasın. “Dilution”u sıfırlayacak kadar synergy gerekiyor.
+        </div>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Pitfall: P/E Rule Ne Zaman Yanıltır?</div>
+            <p style="color: #1f2933; margin: 0;">
+                P/E kuralı sadece “%100 stock” ve “temiz” kazançlar varsayımıyla çalışır.
+                Büyük amortization (PPA), yüksek faiz (cash deal) veya one-time integration cost varsa kural sapar.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Neden “pahalı hisse (yüksek P/E) ile ucuz şirket (düşük P/E) almak” accretive olabilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü 1$ kazancı piyasada daha yüksek fiyata (yüksek P/E) “para birimi” gibi kullanırsın. Aynı kazancı daha düşük P/E’den alıp birleşik EPS’i artırma şansın olur.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Cash deal’de accretion/dilution’u en çok hangi kalemler belirler?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Yeni borç faizi (after-tax), PPA amortization’ı ve synergy’lerin gerçekleşme hızı. Cash deal’de “new shares” yok ama interest yükü var.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <span class="btn-nav disabled"><i class="fa-solid fa-arrow-left"></i> Başlangıç</span>
+            <a href="synergies.html" class="btn-nav">Sonraki: Synergies <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

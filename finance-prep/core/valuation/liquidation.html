@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidation Valuation | IB Prep</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Liquidation</span>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>3.3 Liquidation Valuation</h1>
+            <p class="lesson-desc">
+                Åirket Ã¶ldÃ¼ÄŸÃ¼nde ne kadar eder? "Kelepir" deÄŸerleme ve Ä°flas Åelalesi (Waterfall).
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-gavel"></i> The Garage Sale Analogy</h3>
+                <p>
+                    Åirket batÄ±yor (Going Concern deÄŸil). ArtÄ±k "Gelecek Nakit AkÄ±ÅŸÄ±" yok.
+                    Sadece eldeki mallarÄ± (Masa, sandalye, stok) "hemen ÅŸimdi" satarsak ne kadar ederiz?
+                    Garaj satÄ±ÅŸÄ±nda eÅŸyalarÄ±nÄ±zÄ± deÄŸerinin Ã§ok altÄ±na (Ã¶rn. %50) satarsÄ±nÄ±z.
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-calculator"></i> Step 1: Asset Recovery</h3>
+                <p>
+                    VarlÄ±klarÄ±n defter deÄŸeri (Book Value) ile satÄ±ÅŸ deÄŸeri (Liquidation Value) aynÄ± deÄŸildir.
+                </p>
+                <div class="table-container">
+                    <table class="financial-table">
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Book Value</th>
+                                <th>Recovery Rate</th>
+                                <th>Liquid. Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cash</td>
+                                <td>$100</td>
+                                <td>100%</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Accounts Receivable</td>
+                                <td>$200</td>
+                                <td>80%</td>
+                                <td>$160</td>
+                            </tr>
+                            <tr>
+                                <td>Inventory</td>
+                                <td>$300</td>
+                                <td>50%</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>PP&E (Makine)</td>
+                                <td>$500</td>
+                                <td>30%</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>Total Proceeds</strong></td>
+                                <td><strong>$1,100</strong></td>
+                                <td></td>
+                                <td><strong>$560</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="deep-dive-box" style="border-top: 4px solid #ef4444;">
+                <h3><i class="fa-solid fa-water"></i> Step 2: The Waterfall (Who gets paid?)</h3>
+                <p>
+                    Kasada sadece 560$ toplandÄ±. Ama toplam borÃ§ 800$. Para kime gidecek?
+                    Ä°flas kanununa (Chapter 7) gÃ¶re kesin bir sÄ±ra vardÄ±r.
+                </p>
+                
+                <div class="excel-window">
+                    <div class="excel-header"><i class="fa-solid fa-layer-group"></i> Bankruptcy_Waterfall.xlsx</div>
+                    <div class="excel-grid" style="grid-template-columns: 200px 100px 100px 100px;">
+                        <div class="excel-cell header">Claimant (AlacaklÄ±)</div>
+                        <div class="excel-cell header">Claim Amount</div>
+                        <div class="excel-cell header">Paid</div>
+                        <div class="excel-cell header">Recovery %</div>
+
+                        <div class="excel-cell bold">1. Secured Debt (Bank)</div>
+                        <div class="excel-cell">300</div>
+                        <div class="excel-cell" style="color:green;">300</div>
+                        <div class="excel-cell">100%</div>
+
+                        <div class="excel-cell bold">2. Administrative (Lawyers)</div>
+                        <div class="excel-cell">60</div>
+                        <div class="excel-cell" style="color:green;">60</div>
+                        <div class="excel-cell">100%</div>
+
+                        <div class="excel-cell bold">3. Unsecured Debt (Bond)</div>
+                        <div class="excel-cell">440</div>
+                        <div class="excel-cell" style="color:orange;">200</div>
+                        <div class="excel-cell">45%</div>
+
+                        <div class="excel-cell bold" style="color:gray;">4. Equity (Hissedar)</div>
+                        <div class="excel-cell">Infinite</div>
+                        <div class="excel-cell" style="color:red;">0</div>
+                        <div class="excel-cell">0%</div>
+                        
+                        <div class="excel-cell bold" style="border-top:2px solid black;">Total Distributed</div>
+                        <div class="excel-cell"></div>
+                        <div class="excel-cell bold">560</div>
+                        <div class="excel-cell"></div>
+                    </div>
+                    <div style="padding: 10px; font-size: 12px; color: gray;">
+                        <strong>SonuÃ§:</strong> Para Unsecured Debt sÄ±rasÄ±nda bitti. Hissedarlar (Equity) SIFIR aldÄ±.
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: Liquidation deÄŸerleme neden genelde "taban" (floor) deÄŸer kabul edilir?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Ã‡Ã¼nkÃ¼ ÅŸirketin "going concern" deÄŸeri yok sayÄ±lÄ±r; sadece varlÄ±klarÄ± hÄ±zlÄ± ve iskontolu satma varsayÄ±mÄ± vardÄ±r. Normal bir satÄ±ÅŸta (going concern) mÃ¼ÅŸteri iliÅŸkileri, marka, know-how gibi soyut deÄŸerler de fiyata girer.</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: Neden Equity neredeyse her zaman sÄ±fÄ±r alÄ±r?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Equity en sonda (residual claimant) yer alÄ±r. Ã–nce secured borÃ§lar, idari masraflar ve diÄŸer borÃ§lar Ã¶denir. Tasfiye proceeds Ã§oÄŸu zaman borÃ§larÄ± bile tam karÅŸÄ±lamaz.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="football-field.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Ã–nceki: Football Field</a>
+                <a href="ddm.html" class="btn-nav next">Sonraki: DDM <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

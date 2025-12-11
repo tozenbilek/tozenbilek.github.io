@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRR | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">IRR</span>
+        </nav>
+
+        <h1>3.2 IRR (Internal Rate of Return)</h1>
+        <p>
+            "Param ne kadar hÄ±zlÄ± bÃ¼yÃ¼dÃ¼?" (YÄ±llÄ±k BileÅŸik Getiri).
+            Zaman faktÃ¶rÃ¼nÃ¼ hesaba katar.
+        </p>
+
+        <h2 style="color: var(--accent-purple);">MOIC vs IRR</h2>
+        <div class="mech-box">
+            <strong>Senaryo A:</strong> 100 yatÄ±rdÄ±n, 200 aldÄ±n (2.0x MOIC). SÃ¼re: 1 YÄ±l.
+            <br>-> IRR: %100 (Harika)
+            <br><br>
+            <strong>Senaryo B:</strong> 100 yatÄ±rdÄ±n, 200 aldÄ±n (2.0x MOIC). SÃ¼re: 10 YÄ±l.
+            <br>-> IRR: %7 (Berbat - Borsadan daha kÃ¶tÃ¼)
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Cash Flow Timeline (IRRâ€™Ä± Hisset)</h2>
+        <p>
+            IRR, aslÄ±nda â€œbu nakit akÄ±ÅŸlarÄ±nÄ±n bugÃ¼nkÃ¼ deÄŸeri sÄ±fÄ±r olsunâ€ diyen iskonto oranÄ±dÄ±r.
+            Mental model: <strong>aynÄ± MOIC</strong> + <strong>daha erken para</strong> = <strong>daha yÃ¼ksek IRR</strong>.
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> IRR_Timeline.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 90px 120px 120px;">
+                <div class="excel-cell header">Year</div>
+                <div class="excel-cell header">Cash Flow</div>
+                <div class="excel-cell header">Note</div>
+
+                <div class="excel-cell">0</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+                <div class="excel-cell">Entry Equity</div>
+
+                <div class="excel-cell">3</div>
+                <div class="excel-cell" style="color:green;">+30</div>
+                <div class="excel-cell">Dividend Recap</div>
+
+                <div class="excel-cell">5</div>
+                <div class="excel-cell" style="color:green;">+170</div>
+                <div class="excel-cell">Exit</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                AynÄ± MOIC (2.0x) bile olsa, Year 3â€™te gelen 30 nakit IRRâ€™Ä± anlamlÄ± artÄ±rabilir.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Mental Math (MÃ¼lakat Hilesi)</h2>
+        <p>
+            IRR'Ä± hesap makinesi olmadan tahmin etmek iÃ§in bu tabloyu ezberleyin:
+        </p>
+        <div class="content-box-base">
+            <ul>
+                <li><strong>2.0x in 5 Years:</strong> ~15% IRR</li>
+                <li><strong>2.5x in 5 Years:</strong> ~20% IRR</li>
+                <li><strong>3.0x in 5 Years:</strong> ~25% IRR</li>
+                <li><strong>2.0x in 3 Years:</strong> ~26% IRR</li>
+            </ul>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: MOIC aynÄ± kalÄ±rken IRR nasÄ±l artar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Nakit akÄ±ÅŸÄ±nÄ±n zamanlamasÄ± Ã¶ne Ã§ekilirse (Ã¶r. ara temettÃ¼, dividend recap, daha erken exit), IRR artar. Ã‡Ã¼nkÃ¼ IRR zaman deÄŸerini fiyatlar.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: PE fonlarÄ± hedef olarak neden genelde IRR + MOIC birlikte sÃ¶yler?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">IRR â€œhÄ±zâ€Ä±, MOIC â€œmutlak paraâ€yÄ± Ã¶lÃ§er. Sadece biriyle Ã¶lÃ§ersen oyun oynanabilir (Ã§ok erken kÃ¼Ã§Ã¼k Ã§Ä±kÄ±ÅŸ vs. Ã§ok geÃ§ bÃ¼yÃ¼k para).</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="moic.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: MOIC</a>
+            <a href="value-creation.html" class="btn-nav">Sonraki: Value Creation <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Value | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Enterprise Value</span>
+        </nav>
+
+        <h1>2.1 Enterprise Value (EV)</h1>
+        <p>
+            Åirketin "Etiket FiyatÄ±" (Equity Value) ile "GerÃ§ek Maliyeti" (Enterprise Value) farklÄ±dÄ±r.
+            Bir evi 1 Milyona aldÄ±nÄ±z (Equity), ama evin Ã¼zerinde 500k Ä°potek (Debt) var. GerÃ§ek maliyet 1.5 Milyondur.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">The Bridge Formula</h2>
+        <div class="math-block">
+            \[ EV = \text{Equity Value} + \text{Debt} + \text{Preferred Stock} + \text{NCI} - \text{Cash} \]
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Numeric Bridge (SayÄ±sal Ã–rnek)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> EV_Bridge.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Equity Value (Market Cap)</div>
+                <div class="excel-cell">1,000</div>
+
+                <div class="excel-cell">(+)&nbsp;Total Debt</div>
+                <div class="excel-cell">+400</div>
+
+                <div class="excel-cell">(+)&nbsp;Preferred Stock</div>
+                <div class="excel-cell">+0</div>
+
+                <div class="excel-cell">(+)&nbsp;NCI</div>
+                <div class="excel-cell">+50</div>
+
+                <div class="excel-cell">(-)&nbsp;Cash</div>
+                <div class="excel-cell">(150)</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid #111;">= Enterprise Value</div>
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid #111;">1,300</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray; border-top:1px solid #ddd;">
+                EV, ÅŸirketin tamamÄ±nÄ±n "satÄ±n alma maliyeti" gibi dÃ¼ÅŸÃ¼nÃ¼lebilir. Cash Ã§Ä±karÄ±lÄ±r Ã§Ã¼nkÃ¼ satÄ±n aldÄ±ÄŸÄ±nda kasadaki nakit senin olur.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">1. Equity Value Calculation (Dilution)</h2>
+        <p>
+            Equity Value = Hisse FiyatÄ± x Hisse SayÄ±sÄ±.
+            <br>Ama hangi hisse sayÄ±sÄ±? <strong>Diluted Shares Outstanding.</strong>
+            <br>Ã‡alÄ±ÅŸanlarÄ±n elindeki opsiyonlar kÃ¢rda (In-the-money) ise, bunlar hisseye dÃ¶nÃ¼ÅŸÃ¼r ve pastayÄ± bÃ¶ler.
+        </p>
+
+        <div class="mech-box">
+            <h3><i class="fa-solid fa-calculator"></i> Treasury Stock Method (TSM)</h3>
+            <p><strong>Senaryo:</strong> Hisse fiyatÄ± 10$. Ã‡alÄ±ÅŸanÄ±n elinde 5$ kullanÄ±m fiyatlÄ± (Strike Price) 100 tane opsiyon var.</p>
+            
+            <div class="excel-window">
+                <div class="excel-grid" style="grid-template-columns: 200px 100px;">
+                    <div class="excel-cell header">AdÄ±m</div>
+                    <div class="excel-cell header">DeÄŸer</div>
+
+                    <div class="excel-cell">1. Yeni Hisse BasÄ±mÄ±</div>
+                    <div class="excel-cell">+100 Adet</div>
+
+                    <div class="excel-cell">2. Åirkete Giren Nakit</div>
+                    <div class="excel-cell">500$ <span style="font-size:10px;">(100 x 5$)</span></div>
+
+                    <div class="excel-cell">3. Geri AlÄ±nan Hisse (Buyback)</div>
+                    <div class="excel-cell">-50 Adet <span style="font-size:10px;">(500$ / 10$)</span></div>
+
+                    <div class="excel-cell bold" style="border-top:2px solid black;">Net Hisse ArtÄ±ÅŸÄ±</div>
+                    <div class="excel-cell bold">+50 Adet</div>
+                </div>
+                <div style="padding:10px; font-size:12px; color:gray;">
+                    Ã‡alÄ±ÅŸan 100 hisse aldÄ± ama ÅŸirket 50 hisseyi piyasadan geri topladÄ±. Net sulanma (dilution) 50 adettir.
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">2. Neden Cash Ã‡Ä±karÄ±lÄ±r?</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-wallet"></i> Ä°ndirim Kuponu</div>
+            <p>
+                Åirketi 100 Milyona aldÄ±nÄ±z. KasasÄ±nda 20 Milyon nakit buldunuz.
+                Bu 20 Milyonu cebinize atabilir veya borcun bir kÄ±smÄ±nÄ± Ã¶deyebilirsiniz.
+                Bu yÃ¼zden ÅŸirketin size <strong>Net Maliyeti</strong> 80 Milyondur.
+                <br><br>
+                <em>Ä°stisna:</em> Sadece "Excess Cash" (Fazla Nakit) Ã§Ä±karÄ±lmalÄ±dÄ±r. Operasyon iÃ§in gereken "Minimum Cash" Ã§Ä±karÄ±lmamalÄ±dÄ±r (Ama pratikte genelde hepsi Ã§Ä±karÄ±lÄ±r).
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: EV/EBITDA Ã§arpanÄ± kullanÄ±rken neden EV'yi, P/E Ã§arpanÄ± kullanÄ±rken neden Equity Value'yu kullanÄ±rÄ±z?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">EBITDA faiz Ã¶ncesidir; yani borÃ§/hisse ayrÄ±mÄ± yapÄ±lmadan Ã¶nceki operasyonel performanstÄ±r, bu yÃ¼zden pay EV olmalÄ±. Net Income faiz/vergi sonrasÄ± ve hissedara ait olduÄŸu iÃ§in pay Equity Value olmalÄ±dÄ±r.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Net Debt negatifse (Ã§ok nakit varsa) EV nasÄ±l etkilenir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Cash Ã§Ä±karÄ±ldÄ±ÄŸÄ± iÃ§in EV dÃ¼ÅŸer. Bu durumda EV/EBITDA olduÄŸundan dÃ¼ÅŸÃ¼k gÃ¶rÃ¼nebilir; excess cash ve operasyonel nakdi ayÄ±rmak gerekebilir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="dcf-mechanics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: DCF Mech</a>
+            <a href="multiples.html" class="btn-nav">Sonraki: Multiples <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sources & Uses | LBO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">LBO</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Sources & Uses</span>
+        </nav>
+
+        <h1>1.2 Sources & Uses</h1>
+        <p>
+            LBO modelinin ilk adÄ±mÄ±dÄ±r. "Ã‡eki kim yazÄ±yor, para nereye gidiyor?"
+        </p>
+
+        <h2 style="color: var(--accent-purple);">Uses (Para Nereye Gidiyor?)</h2>
+        <div class="mech-box">
+            <ul>
+                <li><strong>Purchase Price of Equity:</strong> Mevcut hissedarlara Ã¶denen para.</li>
+                <li><strong>Refinance Existing Debt:</strong> Åirketin eski borÃ§larÄ± kapatÄ±lÄ±r (Bankalar kontrol deÄŸiÅŸikliÄŸinde borcun Ã¶denmesini ister - Change of Control Clause).</li>
+                <li><strong>Transaction Fees:</strong> M&A Ã¼cretleri, Avukatlar, Banka komisyonlarÄ± (Financing Fees).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Sources (Para Nereden Geliyor?)</h2>
+        <div class="mech-box">
+            <ul>
+                <li><strong>New Debt:</strong> LBO kredileri (Term Loan, High Yield Bonds). Genellikle toplam ihtiyacÄ±n %60-70'i.</li>
+                <li><strong>Rollover Equity:</strong> Mevcut yÃ¶netim elindeki hisselerin bir kÄ±smÄ±nÄ± satmaz, yeni ÅŸirkete devreder. (Oyunda kalmak isterler).</li>
+                <li><strong>Sponsor Equity:</strong> Private Equity firmasÄ±nÄ±n (Bizim) koyduÄŸumuz nakit. Bu rakam "Plug"dÄ±r (Dengeleyici). Kalan aÃ§Ä±k neyse biz tamamlarÄ±z.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Mini Model: Sources &amp; Uses Tablosu</h2>
+        <p>
+            LBOâ€™da â€œkimin parasÄ± + nereye gidiyorâ€u tek yerde toplarsÄ±n. EÄŸer toplam sources = toplam uses deÄŸilse modelin kÄ±rÄ±lÄ±r.
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Sources_Uses.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 1fr 140px;">
+                <div class="excel-cell header">Uses</div>
+                <div class="excel-cell header">Amount</div>
+                <div class="excel-cell header">Sources</div>
+                <div class="excel-cell header">Amount</div>
+
+                <div class="excel-cell">Purchase Equity</div>
+                <div class="excel-cell">1,000</div>
+                <div class="excel-cell">Term Loan B</div>
+                <div class="excel-cell">600</div>
+
+                <div class="excel-cell">Refi Existing Debt</div>
+                <div class="excel-cell">200</div>
+                <div class="excel-cell">High Yield</div>
+                <div class="excel-cell">200</div>
+
+                <div class="excel-cell">Fees</div>
+                <div class="excel-cell">50</div>
+                <div class="excel-cell">Rollover Equity</div>
+                <div class="excel-cell">50</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Total Uses</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">1,250</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Sponsor Equity (Plug)</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">400</div>
+
+                <div class="excel-cell"></div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell bold">Total Sources</div>
+                <div class="excel-cell bold">1,250</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Sponsor Equity Ã§oÄŸu zaman â€œkalan neyseâ€ diye hesaplanÄ±r (plug). Debt kapasitesi arttÄ±kÃ§a sponsor equity dÃ¼ÅŸer.
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Sponsor Equity neden â€œplugâ€ olarak bÄ±rakÄ±lÄ±r?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ borÃ§ kapasitesi (leverage) genelde piyasa koÅŸullarÄ±, kredi covenantâ€™larÄ± ve IC risk iÅŸtahÄ±yla belirlenir. BorÃ§/rollover sabitlenince kalan finansman ihtiyacÄ± sponsor equity ile kapanÄ±r.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Rollover Equity neden IRR/MOICâ€™i deÄŸiÅŸtirir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Sponsorâ€™un nakit koyduÄŸu equity azalÄ±r (payda dÃ¼ÅŸer). AynÄ± exit equity senaryosunda sponsor getiri metriÄŸi (IRR/MOIC) artabilir; ama yÃ¶netimin â€œskin in the gameâ€i de artar.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="logic.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Logic</a>
+            <a href="debt-types.html" class="btn-nav">Sonraki: Debt Types <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precedent Transactions | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Precedent Transactions</span>
+        </nav>
+
+        <h1>2.4 Precedent Transactions (M&A Comps)</h1>
+        <p>
+            Teori (DCF) ve Piyasa (Comps) bir yere kadar. GerÃ§ek dÃ¼nyada bir ÅŸirketin deÄŸeri, 
+            <strong>birinin onun iÃ§in Ã¶demeye razÄ± olduÄŸu Ã§ektir.</strong>
+        </p>
+
+        <h2 style="color: var(--accent-blue);">1. Control Premium (Neden Daha PahalÄ±?)</h2>
+        <div class="mech-box">
+            Borsada bir hisseyi 10 TL'ye alabilirsiniz (AzÄ±nlÄ±k PayÄ±). 
+            Ama ÅŸirketin %100'Ã¼nÃ¼, yani <strong>KontrolÃ¼nÃ¼</strong> almak isterseniz 10 TL yetmez. 
+            <br><br>
+            YÃ¶netim kurulunu kovmak, temettÃ¼ye karar vermek, stratejiyi deÄŸiÅŸtirmek... Bunlar parayla satÄ±lÄ±r.
+            Buna <strong>Control Premium</strong> denir (Genelde %20-%30).
+        </div>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-handshake"></i> Transaction_Analysis.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 150px 100px 100px 100px;">
+                <div class="excel-cell header">Metric</div>
+                <div class="excel-cell header">Trading (Borsa)</div>
+                <div class="excel-cell header">Transaction (M&A)</div>
+                <div class="excel-cell header">Fark</div>
+
+                <div class="excel-cell">Share Price</div>
+                <div class="excel-cell">$10.00</div>
+                <div class="excel-cell">$13.00</div>
+                <div class="excel-cell bold">+30%</div>
+
+                <div class="excel-cell">Equity Value</div>
+                <div class="excel-cell">$1,000 M</div>
+                <div class="excel-cell">$1,300 M</div>
+                <div class="excel-cell">+300 M</div>
+
+                <div class="excel-cell">LTM EBITDA</div>
+                <div class="excel-cell">$100 M</div>
+                <div class="excel-cell">$100 M</div>
+                <div class="excel-cell">-</div>
+
+                <div class="excel-cell bold">EV / EBITDA</div>
+                <div class="excel-cell bold">10.0x</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">13.0x</div>
+                <div class="excel-cell">Higher</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray;">
+                M&A Ã§arpanlarÄ± (13.0x), her zaman Borsa Ã§arpanlarÄ±ndan (10.0x) yÃ¼ksektir.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">2. Sinerji Etkisi</h2>
+        <p>AlÄ±cÄ± neden %30 fazla Ã¶der? Ã‡Ã¼nkÃ¼ sinerji bekler.</p>
+        <ul>
+            <li><strong>Hard Synergies (Cost):</strong> "Ä°ki ÅŸirketin Ä°K departmanÄ±nÄ± birleÅŸtirip yarÄ±sÄ±nÄ± iÅŸten Ã§Ä±karacaÄŸÄ±z." (Kesin ve Ã¶lÃ§Ã¼lebilir). DeÄŸerlemeye dahil edilir.</li>
+            <li><strong>Soft Synergies (Revenue):</strong> "ÃœrÃ¼nlerimizi birbirimizin mÃ¼ÅŸterisine satacaÄŸÄ±z." (Belirsiz). BankacÄ±lar buna ÅŸÃ¼pheyle yaklaÅŸÄ±r.</li>
+        </ul>
+
+        <h2 style="color: var(--accent-blue);">3. Transaction Comps vs Trading Comps</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Trading Comps (Public)</th>
+                        <th>Transaction Comps (M&A)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>What it represents</strong></td>
+                        <td>AzÄ±nlÄ±k payÄ± (Minority)</td>
+                        <td>Kontrol payÄ± (Control) + Sinerji beklentisi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Typical multiple</strong></td>
+                        <td>Daha dÃ¼ÅŸÃ¼k</td>
+                        <td>Daha yÃ¼ksek</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data quality</strong></td>
+                        <td>CanlÄ± piyasa, gÃ¼ncel</td>
+                        <td>Eski iÅŸlemler; piyasa rejimi deÄŸiÅŸmiÅŸ olabilir</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Use case</strong></td>
+                        <td>Trading valuation</td>
+                        <td>M&A pricing, fairness opinion</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">4. Deal Structure: Cash vs Stock</h2>
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-sack-dollar"></i> Nakit mi, Hisse mi?</h3>
+            <p>
+                Teoride "deÄŸer" aynÄ± olabilir; pratikte satÄ±cÄ± davranÄ±ÅŸÄ± farklÄ±dÄ±r.
+            </p>
+            <ul class="check-list">
+                <li><strong>Cash Deal:</strong> SatÄ±cÄ± nakdi alÄ±r; genelde daha yÃ¼ksek premium ister (vergi + kesinlik).</li>
+                <li><strong>Stock Deal:</strong> SatÄ±cÄ± alÄ±cÄ±nÄ±n hissesiyle risk taÅŸÄ±r; premium daha dÃ¼ÅŸÃ¼k olabilir.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">5. Timing / Cycle Effect</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-clock"></i> 2021 vs 2023</div>
+            <p>
+                2021'de faizler dÃ¼ÅŸÃ¼kken EV/Revenue Ã§arpanlarÄ± uÃ§tu. 2023'te faizler yÃ¼kselince Ã§arpanlar Ã§Ã¶ktÃ¼.
+                Precedent iÅŸlemleri bugÃ¼ne getirirken "piyasa rejimini" dÃ¼ÅŸÃ¼nmek ÅŸart.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Precedent Transactions Ã§arpanlarÄ± genelde neden Trading Comps'tan yÃ¼ksek Ã§Ä±kar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Kontrol primi (control premium) ve sinerji beklentisi iÃ§erir. AyrÄ±ca alÄ±cÄ±, yÃ¶netimi deÄŸiÅŸtirme ve stratejiyi kontrol etme hakkÄ± iÃ§in ekstra Ã¶der.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Bir precedent iÅŸlem Ã§ok eskiyse (5-10 yÄ±l) ne risk var?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Faiz, bÃ¼yÃ¼me ve piyasa Ã§arpan rejimi deÄŸiÅŸmiÅŸ olabilir. O iÅŸlemdeki multiple bugÃ¼nÃ¼n koÅŸullarÄ±nÄ± temsil etmeyebilir; bu yÃ¼zden daha yakÄ±n tarihli iÅŸlemler tercih edilir veya cycle-adjustment yapÄ±lÄ±r.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="comps.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Comps</a>
+            <a href="sotp.html" class="btn-nav">Sonraki: SOTP <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
