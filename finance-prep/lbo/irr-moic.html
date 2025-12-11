@@ -25,6 +25,15 @@
             Private Equity firmaları sadece iki sayıya bakar.
         </p>
 
+        <div class="analogy-box">
+            <h3><i class="fa-solid fa-stopwatch"></i> Kısa Tanım</h3>
+            <p>
+                <strong>MOIC</strong> = “Toplam kaç kat para kazandım?”\n
+                <br><strong>IRR</strong> = “Bu para ne kadar hızlı geldi?”\n
+                <br>PE dünyasında genelde ikisi birlikte hedeflenir.
+            </p>
+        </div>
+
         <h2 style="color: var(--accent-purple);">MOIC (Multiple on Invested Capital)</h2>
         <p>
             "Paramı kaça katladım?" (Zaman faktörü yoktur).
@@ -40,6 +49,39 @@
             PE firmaları genellikle 5 yılda <strong>%20-25 IRR</strong> ve <strong>2.0-2.5x MOIC</strong> hedefler.
         </p>
 
+        <h2 style="color: var(--accent-purple);">Same MOIC, Different IRR (Sayısal)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Timing_Impact.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Scenario A</div>
+                <div class="excel-cell header">Scenario B</div>
+
+                <div class="excel-cell">Year 0</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+
+                <div class="excel-cell">Year 3</div>
+                <div class="excel-cell">0</div>
+                <div class="excel-cell" style="color:green;">+30</div>
+
+                <div class="excel-cell">Year 5</div>
+                <div class="excel-cell" style="color:green;">+200</div>
+                <div class="excel-cell" style="color:green;">+170</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Total Returned</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">200</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">200</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">MOIC</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">2.0x</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">2.0x</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                MOIC aynı, ama Scenario B’de nakit daha erken geldiği için IRR daha yüksek olur.\n
+            </div>
+        </div>
+
         <h2 style="color: var(--accent-purple);">Memorize These (Mental Math)</h2>
         <div class="mech-box">
             <ul>
@@ -48,6 +90,22 @@
                 <li>3.0x in 5 Years = ~25% IRR</li>
                 <li>2.0x in 3 Years = ~26% IRR</li>
             </ul>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: IRR’ı en hızlı artıran iki hareket nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">(1) Daha erken exit, (2) ara nakit dönüşü (dividend recap / partial sell-down). Çünkü zaman değerini optimize eder.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: IRR çok yüksek ama MOIC düşükse risk nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Küçük bir para kazanıp “hız”ı şişirmiş olabilirsin. Fonun toplam dolar getirisi (carry base) zayıf kalabilir.</span>
+                </div>
+            </div>
         </div>
 
         <div class="lesson-nav">

@@ -42,6 +42,48 @@
             <br>En Son -> Senior Notes (Genellikle erken ödeme cezası vardır, o yüzden dokunulmaz).
         </div>
 
+        <h2 style="color: var(--accent-purple);">Mini Example (Sayısal Sweep)</h2>
+        <p>Yıl sonu CFADS = 80. Minimum Cash = 10. Sweep = 70.</p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-broom"></i> Cash_Sweep.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px;">
+                <div class="excel-cell header">Debt</div>
+                <div class="excel-cell header">Beg</div>
+                <div class="excel-cell header">End</div>
+
+                <div class="excel-cell">Revolver</div>
+                <div class="excel-cell">20</div>
+                <div class="excel-cell">0</div>
+
+                <div class="excel-cell">Term Loan A</div>
+                <div class="excel-cell">200</div>
+                <div class="excel-cell">150</div>
+
+                <div class="excel-cell">Term Loan B</div>
+                <div class="excel-cell">300</div>
+                <div class="excel-cell">300</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Sweep 70’in ilk 20’si Revolver’ı sıfırlar, kalan 50 TLA’ya gider. TLB’ye para kalmadı.\n
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Minimum cash niye var?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Şirketin operasyonel tamponu olmalı. Tüm nakdi borca gömersen, küçük bir şokta revolver çekmek zorunda kalır ve likidite krizi yaşayabilirsin.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Senior Notes neden genelde sweep edilmez?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Call protection ve prepayment penalty yüzünden erken kapatmak pahalıdır. Bu yüzden cash sweep önce bank debt’e gider.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <a href="debt-schedule.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Debt Schedule</a>
             <a href="irr-moic.html" class="btn-nav">Sonraki: IRR & MOIC <i class="fa-solid fa-arrow-right"></i></a>

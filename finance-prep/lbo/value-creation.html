@@ -47,6 +47,62 @@
             </div>
         </div>
 
+        <h2 style="color: var(--accent-purple);">Mini Attribution Bridge (Sayısal)</h2>
+        <p>Basit bir örnekle 3 katkıyı ayrıştıralım:</p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Value_Creation_Bridge.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px;">
+                <div class="excel-cell header">Component</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Entry EBITDA</div>
+                <div class="excel-cell">100</div>
+
+                <div class="excel-cell">Exit EBITDA</div>
+                <div class="excel-cell">140</div>
+
+                <div class="excel-cell">Entry Multiple</div>
+                <div class="excel-cell">8.0x</div>
+
+                <div class="excel-cell">Exit Multiple</div>
+                <div class="excel-cell">9.0x</div>
+
+                <div class="excel-cell">Entry Net Debt</div>
+                <div class="excel-cell">500</div>
+
+                <div class="excel-cell">Exit Net Debt</div>
+                <div class="excel-cell">300</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">EBITDA Growth Contribution</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">(140-100)*8 = 320</div>
+
+                <div class="excel-cell bold">Multiple Expansion Contribution</div>
+                <div class="excel-cell bold">(9-8)*140 = 140</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">Deleveraging Contribution</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">500-300 = 200</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Bu üç kalem “Equity Value artışı”nı açıklar. IC genelde EBITDA growth’u en kaliteli kaynak sayar.\n
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Neden “Multiple Expansion” IC’de daha az sevilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü piyasa rejimine bağlıdır ve kontrol edilebilir değildir. “Biz şirketi iyileştirdik” yerine “piyasa şişti” anlamına gelebilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Deleveraging neden LBO’nun “garanti” motoru sayılır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Şirket nakit ürettikçe borç düşer; EV aynı kalsa bile (EV=Equity+NetDebt) net debt azalınca equity artar.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <a href="irr-moic.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: IRR & MOIC</a>
             <a href="exit.html" class="btn-nav">Sonraki: Exit Strategies <i class="fa-solid fa-arrow-right"></i></a>

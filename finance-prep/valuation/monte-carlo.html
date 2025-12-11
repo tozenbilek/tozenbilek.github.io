@@ -54,6 +54,67 @@ print(f"En İyi Senaryo: {np.percentile(simulated_growth, 95)}")
                 </p>
             </div>
 
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-sliders"></i> Inputs: Dağılımlar (Distribution Design)</h3>
+                <p>
+                    Monte Carlo'nun kalitesi, input dağılımlarının gerçekçi olmasına bağlıdır.\n
+                </p>
+                <ul class="check-list">
+                    <li><strong>Revenue Growth:</strong> Normal dağılım (mean, std) veya lognormal (negatif büyümeyi sınırlamak için).</li>
+                    <li><strong>EBIT Margin:</strong> Truncated normal (0-60% arası) gibi sınırlandırılmış dağılımlar.</li>
+                    <li><strong>WACC:</strong> Beta ve risk-free belirsizliğini yansıtmak için triangular (min/base/max).</li>
+                </ul>
+            </div>
+
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-table"></i> Simulation_Output.xlsx</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 140px;">
+                    <div class="excel-cell header">Percentile</div>
+                    <div class="excel-cell header">Implied Value</div>
+
+                    <div class="excel-cell">P5 (Downside)</div>
+                    <div class="excel-cell">10.0</div>
+
+                    <div class="excel-cell">P50 (Median)</div>
+                    <div class="excel-cell bold" style="background:#dbeafe;">12.5</div>
+
+                    <div class="excel-cell">P95 (Upside)</div>
+                    <div class="excel-cell">15.0</div>
+                </div>
+                <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                    Sunumlarda genelde P5-P95 aralığı ve P50 (median) raporlanır.\n
+                </div>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-file-excel"></i> Excel Alternatifi (Data Table)</h3>
+                <p>
+                    Excel'de tam Monte Carlo yapmak mümkün. Tipik yol:\n
+                </p>
+                <ol>
+                    <li>Rastgele input üret: <span style="font-family:'JetBrains Mono'\">=NORM.INV(RAND(), mean, stdev)</span></li>
+                    <li>Bu input'u DCF'e bağla (Value hücresi).</li>
+                    <li>Data Table ile 10,000 iterasyon yapıp sonuçları dağıt.</li>
+                    <li>Percentile: <span style="font-family:'JetBrains Mono'\">=PERCENTILE.INC(range,0.05)</span></li>
+                </ol>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: Monte Carlo, DCF'in yerini mi alır?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Hayır. Monte Carlo, DCF'in üstüne \"belirsizlik\" katmanıdır. Base Case DCF kurarsın; sonra bazı input'ları dağılım olarak tanımlayıp sonucu aralık (distribution) olarak görürsün.</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: En yaygın hata nedir?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Aşırı geniş dağılımlar seçmek (uçuk std) veya negatif/absürt değerleri sınırlamamak. Bu, modelin %5-%95 bandını anlamsız hale getirir.</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="lesson-nav">
                 <a href="ddm.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: DDM</a>
                 <a href="index.html" class="btn-nav next">Modül Sonu <i class="fa-solid fa-flag-checkered"></i></a>

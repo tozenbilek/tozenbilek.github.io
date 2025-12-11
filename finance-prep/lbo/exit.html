@@ -48,6 +48,80 @@
             Hisseleri satmadan paranın bir kısmını masadan almayı sağlar (De-risking). IRR'ı inanılmaz artırır (Para erken geldiği için).
         </p>
 
+        <h2 style="color: var(--accent-purple);">Exit Scenarios (Mini Tablo)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Exit_Scenarios.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px 120px;">
+                <div class="excel-cell header">Scenario</div>
+                <div class="excel-cell header">Exit Multiple</div>
+                <div class="excel-cell header">Exit Year</div>
+                <div class="excel-cell header">Intuition</div>
+
+                <div class="excel-cell">Downside</div>
+                <div class="excel-cell">8.0x</div>
+                <div class="excel-cell">6</div>
+                <div class="excel-cell">Çarpan düşer, zaman uzar</div>
+
+                <div class="excel-cell bold" style="background:#dbeafe;">Base</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">9.0x</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">5</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">Konservatif</div>
+
+                <div class="excel-cell">Upside</div>
+                <div class="excel-cell">10.0x</div>
+                <div class="excel-cell">4</div>
+                <div class="excel-cell">Çarpan yükselir, erken çıkış</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Dividend Recap: Sayısal Etki</h2>
+        <p>
+            Aynı toplam nakit dönüşüyle bile, paranın erkene gelmesi IRR’ı zıplatır.\n
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-coins"></i> Dividend_Recap.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">No Recap</div>
+                <div class="excel-cell header">With Recap</div>
+
+                <div class="excel-cell">Year 0 Equity</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+
+                <div class="excel-cell">Year 3 Dividend</div>
+                <div class="excel-cell">0</div>
+                <div class="excel-cell" style="color:green;">+30</div>
+
+                <div class="excel-cell">Year 5 Exit</div>
+                <div class="excel-cell" style="color:green;">+200</div>
+                <div class="excel-cell" style="color:green;">+170</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Total Cash Returned</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">200</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">200</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Toplam aynı (MOIC aynı) ama “With Recap” senaryosunda erken nakit IRR’ı artırır.\n
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Dividend recap neden riskli olabilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü borç artar, faiz yükü yükselir ve covenant/likidite riski büyür. Downside senaryoda equity “wiped” olma ihtimalini artırabilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Strategic sale neden genelde en yüksek fiyatı verebilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Sinerji (cost/revenue) yaratabildiği için “kontrol primi + sinerji” ödeyebilir. PE ise çoğunlukla finansal getiriye bakar.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <a href="value-creation.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Value Creation</a>
             <span class="btn-nav disabled">Modül Bitti <i class="fa-solid fa-flag-checkered"></i></span>

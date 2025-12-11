@@ -39,6 +39,29 @@
             Değerlemeyi her zaman 1 Ocak'ta yapmayız. Eğer 30 Haziran'da yapıyorsak, ilk yılın sadece yarısını (0.5) alırız.
             Formüller buna göre (0.25, 1.25...) ayarlanır.
         </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-calendar-days"></i> Stub_Period.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px;">
+                <div class="excel-cell header">Year</div>
+                <div class="excel-cell header">FCF</div>
+                <div class="excel-cell header">Discount Exponent</div>
+
+                <div class="excel-cell">Y1</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">0.5</div>
+
+                <div class="excel-cell">Y2</div>
+                <div class="excel-cell">110</div>
+                <div class="excel-cell">1.5</div>
+
+                <div class="excel-cell">Y3</div>
+                <div class="excel-cell">121</div>
+                <div class="excel-cell">2.5</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray; border-top:1px solid #ddd;">
+                Eğer değerleme tarihi yıl ortasıysa, ilk nakit akışı \"yarım yıl\" iskonto edilir.\n
+            </div>
+        </div>
 
         <h2 style="color: var(--accent-blue);">Final Bridge</h2>
         <div class="algo-box">
@@ -50,6 +73,55 @@
             <br><strong>= Equity Value (Özsermaye Değeri)</strong>
             <br>(/) Diluted Shares Outstanding
             <br><strong>= Implied Share Price (Hisse Fiyatı)</strong>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Numeric Walkthrough (Mini Model)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> DCF_Bridge.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Sum PV of FCFs (Years 1-5)</div>
+                <div class="excel-cell">400</div>
+
+                <div class="excel-cell">PV of Terminal Value</div>
+                <div class="excel-cell">900</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid #111;">= Enterprise Value</div>
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid #111;">1,300</div>
+
+                <div class="excel-cell">(-) Net Debt</div>
+                <div class="excel-cell">(200)</div>
+
+                <div class="excel-cell">(-) Preferred / NCI</div>
+                <div class="excel-cell">(50)</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">= Equity Value</div>
+                <div class="excel-cell bold" style="background:#f0fdf4;">1,050</div>
+
+                <div class="excel-cell">(/) Diluted Shares</div>
+                <div class="excel-cell">100</div>
+
+                <div class="excel-cell bold" style="background:#dbeafe;">= Implied Share Price</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">10.50</div>
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: PV of Terminal Value neden çoğu DCF'te toplam değerin büyük kısmıdır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü 5 yıllık tahmin dönemi kısa; şirketin \"sonsuz\" ömrünün değeri TV'de toplanır. Bu yüzden WACC, g ve exit multiple varsayımları DCF sonucunu dramatik etkiler.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Mid-year convention kullanırsan değer niye artar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Nakit akışları yıl sonunda değil, yıl içine yayılmış kabul edilir; daha az süre iskonto edildiği için PV artar.</span>
+                </div>
+            </div>
         </div>
 
         <div class="lesson-nav">

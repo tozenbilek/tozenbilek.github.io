@@ -20,24 +20,125 @@
 
         <h1>2.2 Trading Multiples</h1>
         <p>
-            "Elma ile Elmayı" kıyaslamak.
-            Pay ve Payda uyumlu olmalıdır (Ya ikisi de Equity, ya ikisi de Enterprise).
+            Göreceli değerleme: Bir şirketi, benzer şirketlerin borsada işlem gördüğü çarpanlarla kıyaslamak.
+            <strong>Altın Kural:</strong> Pay ve Payda uyumlu olmalı (Ya ikisi de Enterprise, ya ikisi de Equity).
         </p>
+
+        <div class="analogy-box">
+            <h3><i class="fa-solid fa-house"></i> Emlakçı Analojisi</h3>
+            <p>
+                Evi \"kira çarpanı\" ile fiyatlamak gibi düşün: Aynı semtteki evler yıllık kiranın 20 katına satılıyorsa,
+                senin evin de benzer özelliklerdeyse 20 katına yakın bir yerde olmalı.
+            </p>
+        </div>
 
         <h2 style="color: var(--accent-blue);">Enterprise Value Multiples</h2>
         <p>Tüm şirketi temsil eden metrikler.</p>
-        <ul>
-            <li><strong>EV / Revenue:</strong> Kâr etmeyen teknoloji şirketleri için.</li>
-            <li><strong>EV / EBITDA:</strong> En yaygın çarpan. Amortisman ve Vergi öncesi nakit akışı. Sektörler arası kıyaslama için iyidir.</li>
-            <li><strong>EV / EBIT:</strong> CapEx yoğunluğu yüksek (Üretim) şirketler için.</li>
-        </ul>
+        <div class="content-box-base">
+            <ul class="check-list">
+                <li><strong>EV / Revenue:</strong> Kâr etmeyen (veya marjları dalgalı) şirketler. Özellikle SaaS.</li>
+                <li><strong>EV / EBITDA:</strong> En yaygın. Sermaye yapısından daha az etkilenir, sektörler arası kıyaslamada kullanışlıdır.</li>
+                <li><strong>EV / EBIT:</strong> CapEx yoğun sektörlerde (Sanayi) EBITDA yanıltıcı olabilir; EBIT daha \"gerçek\" kârı gösterir.</li>
+            </ul>
+        </div>
 
         <h2 style="color: var(--accent-blue);">Equity Value Multiples</h2>
         <p>Sadece hissedarı ilgilendiren metrikler.</p>
-        <ul>
-            <li><strong>P / E (Fiyat / Kazanç):</strong> En popüler ama manipülasyona açık (Net Income çok değişebilir).</li>
-            <li><strong>P / B (Fiyat / Defter Değeri):</strong> Bankalar ve Sigorta şirketleri için (Varlık bazlı).</li>
-        </ul>
+        <div class="content-box-base">
+            <ul class="check-list">
+                <li><strong>P / E (Fiyat / Kazanç):</strong> En popüler ama manipülasyona açık (Net Income gürültülüdür).</li>
+                <li><strong>P / B (Fiyat / Defter Değeri):</strong> Banka/sigorta. Defter değeri varlık kalitesiyle çok ilgilidir.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Multiples Cheat Sheet (Ne Zaman Hangisi?)</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Sektör</th>
+                        <th>En Uygun Çarpan</th>
+                        <th>Neden?</th>
+                        <th>Red Flag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SaaS / Tech</strong></td>
+                        <td>EV/Revenue, EV/ARR</td>
+                        <td>EBITDA negatif olabilir; gelir daha stabil metrik.</td>
+                        <td>Gross margin çok düşükse EV/Rev şişkin çıkar.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sanayi / Üretim</strong></td>
+                        <td>EV/EBIT, EV/EBITDA</td>
+                        <td>CapEx ve amortisman gerçek maliyet; EBIT önemli.</td>
+                        <td>EBITDA yüksek ama CapEx çok yüksekse \"fake\" nakit.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bankalar</strong></td>
+                        <td>P/B, P/E</td>
+                        <td>Faiz operasyoneldir; EV/EBITDA anlamsız.</td>
+                        <td>P/B &lt; 1 ise varlık kalitesi şüpheli olabilir.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>REITs</strong></td>
+                        <td>Price/FFO, Price/AFFO</td>
+                        <td>Depreciation net income'ı bozar.</td>
+                        <td>Maintenance CapEx dikkate alınmazsa AFFO şişer.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Oil &amp; Gas</strong></td>
+                        <td>EV/EBITDAX</td>
+                        <td>Exploration/one-time giderleri nötrler.</td>
+                        <td>Reserve base zayıfsa çarpan yanıltır.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Mini Example: EV/EBITDA ile İma Edilen Değer</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Implied_Valuation.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Target EBITDA</div>
+                <div class="excel-cell">100</div>
+
+                <div class="excel-cell">Peer EV/EBITDA Multiple</div>
+                <div class="excel-cell">10.0x</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">Implied Enterprise Value</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">1,000</div>
+
+                <div class="excel-cell">(-) Net Debt</div>
+                <div class="excel-cell">(200)</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">= Implied Equity Value</div>
+                <div class="excel-cell bold" style="background:#f0fdf4;">800</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                Multiples size önce EV'yi verir. Hisse değerine (Equity Value) geçmek için Net Debt düşersiniz.
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: EV/EBITDA ile P/E'yi karıştırıp aynı şirkete uygulamak neden tehlikeli?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü EV (Debt+Equity) şirketin tamamını, P/E ise sadece hissedarı temsil eder. Birinde payda EBITDA (faiz/vergi öncesi), diğerinde Net Income (faiz/vergi sonrası). Sermaye yapısı farklarını iki kez sayabilir veya hiç saymayabilirsiniz.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Neden bankalarda EV/EBITDA kullanılmaz?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Bankalarda faiz operasyoneldir; borç \"hammadde\"dir. EV köprüsünde Debt/Cash çıkarmak anlamsızdır. Bu yüzden P/B ve P/E kullanılır.</span>
+                </div>
+            </div>
+        </div>
 
         <div class="lesson-nav">
             <a href="enterprise-value.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: EV</a>

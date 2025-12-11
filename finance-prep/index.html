@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,203 +8,22 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* Modern Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
-            color: white;
-            padding: 64px 40px;
-            border-radius: 24px;
-            margin-bottom: 48px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 40%);
-            z-index: 1;
-        }
-
-        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
-        
-        .hero-title {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #cbd5e1;
-            margin-bottom: 32px;
-            font-weight: 400;
-        }
-
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
-            margin-top: 32px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .stat-box { text-align: center; }
-        .stat-val { font-size: 32px; font-weight: 700; font-family: 'JetBrains Mono', monospace; color: #38bdf8; display: block; }
-        .stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-top: 8px; }
-
-        /* Module Grid Enhanced */
-        .module-grid-modern {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 24px;
-        }
-
-        .module-card-modern {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            text-decoration: none;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-        }
-
-        .module-card-modern:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            border-color: #cbd5e1;
-        }
-
-        .card-icon-wrapper {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.3s;
-        }
-
-        .module-card-modern:hover .card-icon-wrapper { transform: scale(1.1) rotate(5deg); }
-
-        .card-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: #64748b;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
-
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            font-weight: 600;
-            padding-top: 20px;
-            border-top: 1px solid #f1f5f9;
-        }
-
-        /* Status Pills */
-        .pill {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Color Themes */
-        .theme-accounting .card-icon-wrapper { background: #dcfce7; color: #16a34a; }
-        .theme-accounting .pill { background: #f0fdf4; color: #15803d; }
-        
-        .theme-valuation .card-icon-wrapper { background: #dbeafe; color: #2563eb; }
-        .theme-valuation .pill { background: #eff6ff; color: #1d4ed8; }
-        
-        .theme-mna .card-icon-wrapper { background: #ccfbf1; color: #0f766e; }
-        .theme-mna .pill { background: #f0fdfa; color: #0f766e; }
-
-        .theme-lbo .card-icon-wrapper { background: #ede9fe; color: #7c3aed; }
-        .theme-lbo .pill { background: #f5f3ff; color: #6d28d9; }
-
-        .theme-market .card-icon-wrapper { background: #cffafe; color: #0891b2; }
-        .theme-market .pill { background: #ecfeff; color: #0e7490; }
-
-        .theme-tech .card-icon-wrapper { background: #e0e7ff; color: #4f46e5; }
-        .theme-tech .pill { background: #eef2ff; color: #4338ca; }
-
-        .theme-rx .card-icon-wrapper { background: #fee2e2; color: #b91c1c; }
-        .theme-rx .pill { background: #fef2f2; color: #991b1b; }
-
-        .theme-behavioral .card-icon-wrapper { background: #ffedd5; color: #c2410c; }
-        .theme-behavioral .pill { background: #fff7ed; color: #9a3412; }
-
-        /* Section Dividers */
-        .section-label {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #94a3b8;
-            margin: 48px 0 24px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .section-label::after {
-            content: '';
-            height: 1px;
-            background: #e2e8f0;
-            flex-grow: 1;
-        }
-
-    </style>
 </head>
 <body>
-
     <div class="container" style="max-width: 1200px;">
 
-        <!-- Hero Section -->
         <div class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-title">Investment Banking Knowledge Base</h1>
                 <p class="hero-subtitle">
-                    Kapsamlı bir "Technical Interview" hazırlık deposu. 
+                    Kapsamlı bir "Technical Interview" hazırlık deposu.
                     <br>Finansal modelleme, değerleme teknikleri ve vaka analizleri tek çatı altında.
                 </p>
                 <div class="hero-stats">
@@ -224,123 +43,121 @@
             </div>
         </div>
 
-        <!-- Core Technicals -->
         <div class="section-label">Core Technicals</div>
         <div class="module-grid-modern">
-            
-            <!-- Accounting -->
             <a href="accounting/index.html" class="module-card-modern theme-accounting">
                 <div class="card-icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
                 <h3 class="card-title">Accounting Fundamentals</h3>
-                <p class="card-desc">
-                    3 Financial Statements, Gelir Tablosu kalemleri, İşletme Sermayesi ve Vergi mekanizmaları (DTA/DTL).
-                </p>
+                <p class="card-desc">3 Financial Statements, Working Capital, DTA/DTL ve muhasebe mekanikleri.</p>
                 <div class="card-meta">
                     <span class="pill">Completed</span>
                     <span>39 Topics</span>
                 </div>
             </a>
 
-            <!-- Valuation -->
             <a href="valuation/index.html" class="module-card-modern theme-valuation">
                 <div class="card-icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
                 <h3 class="card-title">Valuation Methodologies</h3>
-                <p class="card-desc">
-                    Intrinsic (DCF) vs Relative (Comps/Precedents) Valuation. Terminal Value, WACC hesaplamaları.
-                </p>
+                <p class="card-desc">DCF, Comps, Precedents, Terminal Value, WACC ve “Football Field”.</p>
                 <div class="card-meta">
-                    <span class="pill">Next Up</span>
-                    <span>15 Topics</span>
+                    <span class="pill">Review Ready</span>
+                    <span>17 Topics</span>
                 </div>
             </a>
 
-            <!-- M&A -->
             <a href="mna/index.html" class="module-card-modern theme-mna">
                 <div class="card-icon-wrapper"><i class="fa-solid fa-handshake"></i></div>
-                <h3 class="card-title">Mergers & Acquisitions</h3>
-                <p class="card-desc">
-                    Accretion/Dilution analizi, Deal Structures (Stock vs Asset), Synergies ve Pro-Forma modelleme.
-                </p>
+                <h3 class="card-title">Mergers &amp; Acquisitions</h3>
+                <p class="card-desc">Accretion/Dilution, synergies, deal structuring, PPA ve pro-forma.</p>
                 <div class="card-meta">
-                    <span class="pill">Advanced</span>
-                    <span>12 Topics</span>
+                    <span class="pill">Core</span>
+                    <span>9 Topics</span>
                 </div>
             </a>
 
-            <!-- LBO -->
             <a href="lbo/index.html" class="module-card-modern theme-lbo">
                 <div class="card-icon-wrapper"><i class="fa-solid fa-building-columns"></i></div>
                 <h3 class="card-title">LBO Modeling</h3>
-                <p class="card-desc">
-                    Leveraged Buyout mantığı, Borç Ödeme Tablosu (Debt Schedule), IRR ve MoM hesaplamaları. Paper LBO.
-                </p>
+                <p class="card-desc">Debt schedule, cash sweep, IRR/MOIC ve Paper LBO.</p>
                 <div class="card-meta">
                     <span class="pill">Must Know</span>
-                    <span>8 Topics</span>
+                    <span>16 Topics</span>
                 </div>
             </a>
-
         </div>
 
-        <!-- Specialized & Sector -->
         <div class="section-label">Specialized Knowledge</div>
         <div class="module-grid-modern">
-
-            <!-- Tech / TMT -->
             <a href="tech/index.html" class="module-card-modern theme-tech">
                 <div class="card-icon-wrapper"><i class="fa-solid fa-server"></i></div>
                 <h3 class="card-title">Tech / TMT Valuation</h3>
-                <p class="card-desc">
-                    SaaS Metrikleri (ARR, Churn, LTV/CAC), Rule of 40 ve İnternet değerlemesi.
-                </p>
+                <p class="card-desc">SaaS metrikleri (ARR, churn), LTV/CAC, Rule of 40 ve internet değerleme.</p>
                 <div class="card-meta">
                     <span class="pill">Hot Topic</span>
                     <span>Sector</span>
                 </div>
             </a>
 
-            <!-- Restructuring -->
             <a href="rx/index.html" class="module-card-modern theme-rx">
                 <div class="card-icon-wrapper"><i class="fa-solid fa-gavel"></i></div>
                 <h3 class="card-title">Restructuring (Rx)</h3>
-                <p class="card-desc">
-                    Distressed M&A, İflas Süreçleri (Chapter 11), Capital Structure analizi ve Fulcrum Security.
-                </p>
+                <p class="card-desc">Distressed M&amp;A, Chapter 11, capital structure ve fulcrum security.</p>
                 <div class="card-meta">
                     <span class="pill">Niche</span>
                     <span>Elite</span>
                 </div>
             </a>
 
-            <!-- Market Awareness -->
             <a href="market/index.html" class="module-card-modern theme-market">
                 <div class="card-icon-wrapper"><i class="fa-solid fa-globe"></i></div>
                 <h3 class="card-title">Market Awareness</h3>
-                <p class="card-desc">
-                    Fed/ECB Politikaları, Faizler (10Y), Spreadler, Endeksler ve Makroekonomik trendler.
-                </p>
+                <p class="card-desc">Fed/ECB, 10Y, spreadler, endeksler ve makro trendler.</p>
                 <div class="card-meta">
                     <span class="pill">Daily</span>
                     <span>Macro</span>
                 </div>
             </a>
 
-            <!-- Behavioral -->
             <a href="behavioral/index.html" class="module-card-modern theme-behavioral">
                 <div class="card-icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
                 <h3 class="card-title">Behavioral Prep</h3>
-                <p class="card-desc">
-                    "Tell me about yourself", "Why IB?", Güçlü/Zayıf yönler. Mülakatın ilk 10 dakikası.
-                </p>
+                <p class="card-desc">Tell me about yourself, Why IB, güçlü/zayıf yönler.</p>
                 <div class="card-meta">
                     <span class="pill">Critical</span>
                     <span>Soft Skills</span>
                 </div>
             </a>
 
+            <a href="capital-markets/index.html" class="module-card-modern theme-lbo">
+                <div class="card-icon-wrapper"><i class="fa-solid fa-building-columns"></i></div>
+                <h3 class="card-title">Capital Markets</h3>
+                <p class="card-desc">IPO, greenshoe, DCM basics ve bond math.</p>
+                <div class="card-meta">
+                    <span class="pill">New</span>
+                    <span>Module</span>
+                </div>
+            </a>
+
+            <a href="modeling/index.html" class="module-card-modern theme-accounting">
+                <div class="card-icon-wrapper"><i class="fa-solid fa-table-cells"></i></div>
+                <h3 class="card-title">Excel Modeling Lab</h3>
+                <p class="card-desc">3-statement model kurma pratikleri (setup → drivers → balance).</p>
+                <div class="card-meta">
+                    <span class="pill">Practice</span>
+                    <span>Lab</span>
+                </div>
+            </a>
+
+            <a href="cases/index.html" class="module-card-modern theme-valuation">
+                <div class="card-icon-wrapper"><i class="fa-solid fa-briefcase"></i></div>
+                <h3 class="card-title">Real Deal Cases</h3>
+                <p class="card-desc">Twitter LBO ve vaka çalışmaları.</p>
+                <div class="card-meta">
+                    <span class="pill">Analysis</span>
+                    <span>Cases</span>
+                </div>
+            </a>
         </div>
-
     </div>
-
 </body>
 </html>

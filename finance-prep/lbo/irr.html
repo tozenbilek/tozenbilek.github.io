@@ -35,6 +35,35 @@
             <br>-> IRR: %7 (Berbat - Borsadan daha kötü)
         </div>
 
+        <h2 style="color: var(--accent-purple);">Cash Flow Timeline (IRR’ı Hisset)</h2>
+        <p>
+            IRR, aslında “bu nakit akışlarının bugünkü değeri sıfır olsun” diyen iskonto oranıdır.\n
+            Mental model: <strong>aynı MOIC</strong> + <strong>daha erken para</strong> = <strong>daha yüksek IRR</strong>.
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> IRR_Timeline.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 90px 120px 120px;">
+                <div class="excel-cell header">Year</div>
+                <div class="excel-cell header">Cash Flow</div>
+                <div class="excel-cell header">Note</div>
+
+                <div class="excel-cell">0</div>
+                <div class="excel-cell" style="color:red;">(100)</div>
+                <div class="excel-cell">Entry Equity</div>
+
+                <div class="excel-cell">3</div>
+                <div class="excel-cell" style="color:green;">+30</div>
+                <div class="excel-cell">Dividend Recap</div>
+
+                <div class="excel-cell">5</div>
+                <div class="excel-cell" style="color:green;">+170</div>
+                <div class="excel-cell">Exit</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Aynı MOIC (2.0x) bile olsa, Year 3’te gelen 30 nakit IRR’ı anlamlı artırabilir.\n
+            </div>
+        </div>
+
         <h2 style="color: var(--accent-purple);">Mental Math (Mülakat Hilesi)</h2>
         <p>
             IRR'ı hesap makinesi olmadan tahmin etmek için bu tabloyu ezberleyin:
@@ -46,6 +75,22 @@
                 <li><strong>3.0x in 5 Years:</strong> ~25% IRR</li>
                 <li><strong>2.0x in 3 Years:</strong> ~26% IRR</li>
             </ul>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: MOIC aynı kalırken IRR nasıl artar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Nakit akışının zamanlaması öne çekilirse (ör. ara temettü, dividend recap, daha erken exit), IRR artar. Çünkü IRR zaman değerini fiyatlar.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: PE fonları hedef olarak neden genelde IRR + MOIC birlikte söyler?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">IRR “hız”ı, MOIC “mutlak para”yı ölçer. Sadece biriyle ölçersen oyun oynanabilir (çok erken küçük çıkış vs. çok geç büyük para).</span>
+                </div>
+            </div>
         </div>
 
         <div class="lesson-nav">

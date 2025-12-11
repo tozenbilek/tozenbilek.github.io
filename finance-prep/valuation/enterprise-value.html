@@ -31,6 +31,36 @@
             \[ EV = \text{Equity Value} + \text{Debt} + \text{Preferred Stock} + \text{NCI} - \text{Cash} \]
         </div>
 
+        <h2 style="color: var(--accent-blue);">Numeric Bridge (Sayısal Örnek)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> EV_Bridge.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">Equity Value (Market Cap)</div>
+                <div class="excel-cell">1,000</div>
+
+                <div class="excel-cell">(+)&nbsp;Total Debt</div>
+                <div class="excel-cell">+400</div>
+
+                <div class="excel-cell">(+)&nbsp;Preferred Stock</div>
+                <div class="excel-cell">+0</div>
+
+                <div class="excel-cell">(+)&nbsp;NCI</div>
+                <div class="excel-cell">+50</div>
+
+                <div class="excel-cell">(-)&nbsp;Cash</div>
+                <div class="excel-cell">(150)</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid #111;">= Enterprise Value</div>
+                <div class="excel-cell bold" style="background:#dcfce7; border-top:2px solid #111;">1,300</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray; border-top:1px solid #ddd;">
+                EV, şirketin tamamının \"satın alma maliyeti\" gibi düşünülebilir. Cash çıkarılır çünkü satın aldığında kasadaki nakit senin olur.
+            </div>
+        </div>
+
         <h2 style="color: var(--accent-blue);">1. Equity Value Calculation (Dilution)</h2>
         <p>
             Equity Value = Hisse Fiyatı x Hisse Sayısı.
@@ -75,6 +105,22 @@
                 <br><br>
                 <em>İstisna:</em> Sadece "Excess Cash" (Fazla Nakit) çıkarılmalıdır. Operasyon için gereken "Minimum Cash" çıkarılmamalıdır (Ama pratikte genelde hepsi çıkarılır).
             </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: EV/EBITDA çarpanı kullanırken neden EV'yi, P/E çarpanı kullanırken neden Equity Value'yu kullanırız?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">EBITDA faiz öncesidir; yani borç/hisse ayrımı yapılmadan önceki operasyonel performanstır, bu yüzden pay EV olmalı. Net Income faiz/vergi sonrası ve hissedara ait olduğu için pay Equity Value olmalıdır.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Net Debt negatifse (çok nakit varsa) EV nasıl etkilenir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Cash çıkarıldığı için EV düşer. Bu durumda EV/EBITDA olduğundan düşük görünebilir; excess cash ve operasyonel nakdi ayırmak gerekebilir.</span>
+                </div>
+            </div>
         </div>
 
         <div class="lesson-nav">

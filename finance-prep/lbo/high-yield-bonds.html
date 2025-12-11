@@ -34,6 +34,60 @@
             </ul>
         </div>
 
+        <h2 style="color: var(--accent-purple);">Call Protection (Sayısal Örnek)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-lock"></i> Call_Protection.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Year</div>
+                <div class="excel-cell header">Call Price</div>
+                <div class="excel-cell header">Meaning</div>
+
+                <div class="excel-cell">1-3</div>
+                <div class="excel-cell">Non-callable</div>
+                <div class="excel-cell">Erken kapatma yasak</div>
+
+                <div class="excel-cell">4</div>
+                <div class="excel-cell">103%</div>
+                <div class="excel-cell">%3 ceza</div>
+
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">101%</div>
+                <div class="excel-cell">%1 ceza</div>
+
+                <div class="excel-cell">6+</div>
+                <div class="excel-cell">100%</div>
+                <div class="excel-cell">Par kapatma</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Bu yüzden cash sweep genelde HY’a gitmez; bank debt’e gider.\n
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">OID & Fees (Nakit vs Muhasebe)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-tag"></i> Discount ile Satış</div>
+            <p style="color: #1f2933; margin: 0;">
+                HY bazen 100 nominal çıkar ama yatırımcı 98 öder (OID). Şirket kasaya 98 alır, 100 borç yazar.\n
+                Aradaki 2, vade boyunca faiz gibi giderleşir (non-cash interest).\n
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: HY neden bank debt’e göre daha pahalıdır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Unsecured ve junior olduğu için daha risklidir; ayrıca maintenance covenant’lar daha gevşek olduğundan yatırımcı daha yüksek kupon ister.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Bullet yapının LBO equity’sine etkisi nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Vade boyunca anapara ödenmediği için exit’te net debt daha yüksek kalabilir; bu da exit equity proceeds’ı düşürür. (Ama likiditeyi boğmadığı için operasyonel riski azaltabilir.)</span>
+                </div>
+            </div>
+        </div>
+
         <h2 style="color: var(--accent-purple);">Incurrence Covenants</h2>
         <p>
             Bankalar gibi her çeyrekte karne kontrolü yapmazlar.

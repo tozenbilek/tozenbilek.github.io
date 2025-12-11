@@ -24,6 +24,72 @@
             En güvenliden (Senior), en riskiyiye (Junior) doğru sıralanır.
         </p>
 
+        <h2 style="color: var(--accent-purple);">Tranche Karşılaştırma Tablosu</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Tranche</th>
+                        <th>Seniority</th>
+                        <th>Rate</th>
+                        <th>Amortization</th>
+                        <th>Covenants</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Revolver</strong></td>
+                        <td>Senior Secured</td>
+                        <td>Floating (SOFR + spread)</td>
+                        <td>Re-drawable</td>
+                        <td>Maintenance (sıkı)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Term Loan A</strong></td>
+                        <td>Senior Secured</td>
+                        <td>Floating</td>
+                        <td>Yüksek (örn. %10-20/yıl)</td>
+                        <td>Maintenance</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Term Loan B</strong></td>
+                        <td>Senior Secured</td>
+                        <td>Floating</td>
+                        <td>Düşük (örn. %1/yıl)</td>
+                        <td>Maintenance / daha gevşek</td>
+                    </tr>
+                    <tr>
+                        <td><strong>High Yield</strong></td>
+                        <td>Junior Unsecured</td>
+                        <td>Fixed</td>
+                        <td>Bullet</td>
+                        <td>Incurrence (daha gevşek)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-purple);">Covenant Örneği (Mini)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-shield-halved"></i> Covenant_Test.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px;">
+                <div class="excel-cell header">Metric</div>
+                <div class="excel-cell header">Value</div>
+                <div class="excel-cell header">Limit</div>
+
+                <div class="excel-cell">Net Debt / EBITDA</div>
+                <div class="excel-cell">4.2x</div>
+                <div class="excel-cell">4.0x</div>
+
+                <div class="excel-cell bold">Status</div>
+                <div class="excel-cell bold" style="color:#ef4444;">Fail</div>
+                <div class="excel-cell"></div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Bank debt tarafında covenant ihlali “default” riskini doğurabilir. High Yield’de çoğu zaman bu test yoktur.\n
+            </div>
+        </div>
+
         <div class="content-box-base">
             <h3 style="margin-top:0;">1. Bank Debt (Senior Secured)</h3>
             <ul>
@@ -44,6 +110,22 @@
                 <li><strong>Amortization:</strong> Yok (Bullet Payment). Tüm ana para vade sonunda (7-10 yıl) tek seferde ödenir.</li>
                 <li><strong>Covenants:</strong> Daha gevşektir (Incurrence Covenants - Sadece yeni borç alırken bakılır).</li>
             </ul>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Neden LBO’da “seniority” bu kadar önemli?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü ödeme sırası (waterfall) ve risk bunun üzerinden belirlenir. Senior daha düşük faizle borç verir; junior daha yüksek faiz ister ve downside’da daha çok kaybeder.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: HY “bullet” olmasının model etkisi nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Vade boyunca anapara ödenmez; bu yüzden cash sweep genelde bank debt’e gider. Exit’te HY anaparası toplu kapandığı için equity proceeds’ı düşürür.</span>
+                </div>
+            </div>
         </div>
 
         <div class="lesson-nav">

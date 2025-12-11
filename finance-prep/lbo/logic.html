@@ -48,6 +48,46 @@
             Borç ödendikçe, şirketin değeri artmasa bile sizin "Equity Değeriniz" artar.
         </p>
 
+        <h2 style="color: var(--accent-purple);">Mini Timeline (Sayısal)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> LBO_Timeline.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 70px 120px 120px 120px;">
+                <div class="excel-cell header">Year</div>
+                <div class="excel-cell header">EV</div>
+                <div class="excel-cell header">Net Debt</div>
+                <div class="excel-cell header">Equity</div>
+
+                <div class="excel-cell">0</div>
+                <div class="excel-cell">1,000</div>
+                <div class="excel-cell">800</div>
+                <div class="excel-cell bold">200</div>
+
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">1,000</div>
+                <div class="excel-cell">500</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">500</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                EV hiç değişmese bile net debt 800 → 500 düşerse, equity 200 → 500 çıkar. LBO kaldıraç mekanizması budur.\n
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: LBO’yu en çok ne bozar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Yetersiz nakit üretimi (FCF), yüksek faiz oranı ve çıkış çarpanının düşmesi. Özellikle FCF düşükse borç ödeyemezsin ve equity “wiped” olabilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Neden PE genelde “Exit Multiple = Entry Multiple” varsayar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü multiple expansion kontrol edilebilir değil. IC genelde “şirketi iyileştirerek para kazan” yaklaşımını ister; piyasaya bahis oynamak istemez.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <span class="btn-nav disabled"><i class="fa-solid fa-arrow-left"></i> Başlangıç</span>
             <a href="sources-uses.html" class="btn-nav">Sonraki: Sources & Uses <i class="fa-solid fa-arrow-right"></i></a>

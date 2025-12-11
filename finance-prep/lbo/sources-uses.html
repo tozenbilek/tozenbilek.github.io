@@ -43,6 +43,64 @@
             </ul>
         </div>
 
+        <h2 style="color: var(--accent-purple);">Mini Model: Sources &amp; Uses Tablosu</h2>
+        <p>
+            LBO’da “kimin parası + nereye gidiyor”u tek yerde toplarsın. Eğer toplam sources = toplam uses değilse modelin kırılır.\n
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Sources_Uses.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 1fr 140px;">
+                <div class="excel-cell header">Uses</div>
+                <div class="excel-cell header">Amount</div>
+                <div class="excel-cell header">Sources</div>
+                <div class="excel-cell header">Amount</div>
+
+                <div class="excel-cell">Purchase Equity</div>
+                <div class="excel-cell">1,000</div>
+                <div class="excel-cell">Term Loan B</div>
+                <div class="excel-cell">600</div>
+
+                <div class="excel-cell">Refi Existing Debt</div>
+                <div class="excel-cell">200</div>
+                <div class="excel-cell">High Yield</div>
+                <div class="excel-cell">200</div>
+
+                <div class="excel-cell">Fees</div>
+                <div class="excel-cell">50</div>
+                <div class="excel-cell">Rollover Equity</div>
+                <div class="excel-cell">50</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Total Uses</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">1,250</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Sponsor Equity (Plug)</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">400</div>
+
+                <div class="excel-cell"></div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell bold">Total Sources</div>
+                <div class="excel-cell bold">1,250</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Sponsor Equity çoğu zaman “kalan neyse” diye hesaplanır (plug). Debt kapasitesi arttıkça sponsor equity düşer.\n
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Sponsor Equity neden “plug” olarak bırakılır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü borç kapasitesi (leverage) genelde piyasa koşulları, kredi covenant’ları ve IC risk iştahıyla belirlenir. Borç/rollover sabitlenince kalan finansman ihtiyacı sponsor equity ile kapanır.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Rollover Equity neden IRR/MOIC’i değiştirir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Sponsor’un nakit koyduğu equity azalır (payda düşer). Aynı exit equity senaryosunda sponsor getiri metriği (IRR/MOIC) artabilir; ama yönetimin “skin in the game”i de artar.</span>
+                </div>
+            </div>
+        </div>
+
         <div class="lesson-nav">
             <a href="logic.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Logic</a>
             <a href="debt-types.html" class="btn-nav">Sonraki: Debt Types <i class="fa-solid fa-arrow-right"></i></a>

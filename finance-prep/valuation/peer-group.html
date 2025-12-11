@@ -23,6 +23,14 @@
             Doğru rakipleri seçmek, analizin %90'ıdır. Yanlış rakip, yanlış değerleme.
         </p>
 
+        <div class="analogy-box">
+            <h3><i class="fa-solid fa-users"></i> \"Elma\" Seçmek (Peer Mantığı)</h3>
+            <p>
+                \"Ben Apple'ı değerlendiriyorum\" deyip karşılaştırma grubuna Coca-Cola koyarsanız sonuç saçma olur.
+                Doğru peer set, hem <strong>iş modeli</strong> hem <strong>coğrafya</strong> hem de <strong>ölçek</strong> açısından benzer olmalıdır.
+            </p>
+        </div>
+
         <h2 style="color: var(--accent-blue);">Screening Criteria</h2>
         <div class="mech-box">
             <ol>
@@ -40,6 +48,74 @@
             <li>Şirketinizin EBITDA Marjı rakiplerden yüksekse, <strong>daha yüksek bir çarpanı</strong> hak eder (Premium).</li>
             <li>Büyüme hızı (Growth Rate) düşükse, <strong>daha düşük çarpanı</strong> hak eder (Discount).</li>
         </ul>
+
+        <h2 style="color: var(--accent-blue);">Peer Selection Matrix (Pratik)</h2>
+        <p>
+            Aşağıdaki gibi puanlama yaparak (scorecard) peer set'i objektif seçebilirsiniz.\n
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Peer_Screening.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 140px 110px 110px 110px 110px;">
+                <div class="excel-cell header">Company</div>
+                <div class="excel-cell header">Industry</div>
+                <div class="excel-cell header">Geography</div>
+                <div class="excel-cell header">Size</div>
+                <div class="excel-cell header">Total</div>
+
+                <div class="excel-cell">TargetCo</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell bold">-</div>
+
+                <div class="excel-cell">Peer A</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">4</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">14</div>
+
+                <div class="excel-cell">Peer B</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">3</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell bold">13</div>
+
+                <div class="excel-cell">Peer C</div>
+                <div class="excel-cell">4</div>
+                <div class="excel-cell">2</div>
+                <div class="excel-cell">2</div>
+                <div class="excel-cell bold" style="color:#ef4444;">8</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray; border-top:1px solid #ddd;">
+                1-5 puanlayın. Total düşükse (örn. 8) o şirket \"peer\" değildir; sadece \"comp\" listesinde adı geçebilir.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Sanity Checks (Hızlı Kontrol)</h2>
+        <div class="content-box-base">
+            <ul class="check-list">
+                <li><strong>Growth:</strong> Target growth %5 iken peer %30 ise çarpanlar şişer.</li>
+                <li><strong>Margin:</strong> Target EBITDA margin %10 iken peer %40 ise adil karşılaştırma değildir.</li>
+                <li><strong>Accounting:</strong> IFRS vs US GAAP farkları (Lease, SBC) EBITDA'yı bozabilir.</li>
+                <li><strong>Capital structure:</strong> EV-multiple kullanıyorsanız borç farkı daha az problem; P/E kullanıyorsanız daha kritik.</li>
+            </ul>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Peer set'in içinde bir şirketin EV/EBITDA'sı aşırı yüksekse ne yaparsın?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Önce nedenini araştırırım: büyüme beklentisi mi, tek seferlik düşük EBITDA mı, muhasebe farkı mı? Gerekirse outlier olarak çıkarır veya median kullanırım (mean yerine).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Neden genelde mean yerine median multiple kullanılır?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü mean outlier'lara (uç değerler) çok duyarlıdır. Median, peer set'in \"tipik\" değerini daha iyi temsil eder.</span>
+                </div>
+            </div>
+        </div>
 
         <div class="lesson-nav">
             <a href="multiples.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Multiples</a>
