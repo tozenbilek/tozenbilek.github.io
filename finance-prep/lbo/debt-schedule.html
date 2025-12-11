@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -22,29 +22,29 @@
 
         <h1>2.1 Debt Schedule</h1>
         <p>
-            Borçların faizini ve geri ödemesini takip ettiğimiz tablodur.
+            BorÃ§larÄ±n faizini ve geri Ã¶demesini takip ettiÄŸimiz tablodur.
         </p>
 
         <h2 style="color: var(--accent-purple);">Interest Expense Calculation</h2>
         <p>
-            Faiz, borcun "Ortalama" bakiyesi üzerinden hesaplanır.
+            Faiz, borcun "Ortalama" bakiyesi Ã¼zerinden hesaplanÄ±r.
         </p>
         <div class="math-block">
             \[ \text{Interest} = \frac{\text{Beginning Balance} + \text{Ending Balance}}{2} \times \text{Rate} \]
         </div>
         <p>
-            <strong>Circularity Sorunu:</strong> Faiz, Bitiş Bakiyesine bağlıdır. Bitiş Bakiyesi, ne kadar borç ödediğimize bağlıdır. Ne kadar borç ödediğimiz, Net Kâr'a (yani Faize) bağlıdır.
-            Bu Excel'de dairesel bir referans (Circularity) yaratır. Çözmek için "Iterative Calculation" açılmalıdır.
+            <strong>Circularity Sorunu:</strong> Faiz, BitiÅŸ Bakiyesine baÄŸlÄ±dÄ±r. BitiÅŸ Bakiyesi, ne kadar borÃ§ Ã¶dediÄŸimize baÄŸlÄ±dÄ±r. Ne kadar borÃ§ Ã¶dediÄŸimiz, Net KÃ¢r'a (yani Faize) baÄŸlÄ±dÄ±r.
+            Bu Excel'de dairesel bir referans (Circularity) yaratÄ±r. Ã‡Ã¶zmek iÃ§in "Iterative Calculation" aÃ§Ä±lmalÄ±dÄ±r.
         </p>
 
         <h2 style="color: var(--accent-purple);">Mandatory Amortization</h2>
         <p>
-            Term Loan'lar genellikle her yıl ana paranın %1-5'ini zorunlu olarak geri ister.
-            Bu ödeme, şirketin nakit akışı olsa da olmasa da yapılmak zorundadır (Fixed Charge).
+            Term Loan'lar genellikle her yÄ±l ana paranÄ±n %1-5'ini zorunlu olarak geri ister.
+            Bu Ã¶deme, ÅŸirketin nakit akÄ±ÅŸÄ± olsa da olmasa da yapÄ±lmak zorundadÄ±r (Fixed Charge).
         </p>
 
-        <h2 style="color: var(--accent-purple);">Mini Debt Schedule (Sayısal)</h2>
-        <p>Basit bir Term Loan örneği (Mandatory + Optional Paydown):</p>
+        <h2 style="color: var(--accent-purple);">Mini Debt Schedule (SayÄ±sal)</h2>
+        <p>Basit bir Term Loan Ã¶rneÄŸi (Mandatory + Optional Paydown):</p>
         <div class="excel-window">
             <div class="excel-header"><i class="fa-solid fa-table"></i> Debt_Schedule.xlsx</div>
             <div class="excel-grid" style="grid-template-columns: 70px 120px 120px 120px 120px;">
@@ -67,37 +67,37 @@
                 <div class="excel-cell bold">380</div>
             </div>
             <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
-                Optional paydown genelde Cash Sweep’ten gelir (CFADS - Min Cash). Mandatory ise her koşulda ödenir.\n
+                Optional paydown genelde Cash Sweepâ€™ten gelir (CFADS - Min Cash). Mandatory ise her koÅŸulda Ã¶denir.
             </div>
         </div>
 
-        <h2 style="color: var(--accent-purple);">Circularity: 3 Çözüm</h2>
+        <h2 style="color: var(--accent-purple);">Circularity: 3 Ã‡Ã¶zÃ¼m</h2>
         <div class="content-box-base">
             <ol>
-                <li><strong>Iterative Calculation:</strong> Excel’de iterative açık (en pratik).</li>
-                <li><strong>Interest on Beginning Balance:</strong> Faizi başlangıç borcundan hesapla (yaklaşım, daha az doğru).</li>
-                <li><strong>Hardcode / Copy-Paste:</strong> Modeli dondururken (final), circularity’yi kırmak için.</li>
+                <li><strong>Iterative Calculation:</strong> Excelâ€™de iterative aÃ§Ä±k (en pratik).</li>
+                <li><strong>Interest on Beginning Balance:</strong> Faizi baÅŸlangÄ±Ã§ borcundan hesapla (yaklaÅŸÄ±m, daha az doÄŸru).</li>
+                <li><strong>Hardcode / Copy-Paste:</strong> Modeli dondururken (final), circularityâ€™yi kÄ±rmak iÃ§in.</li>
             </ol>
         </div>
 
         <div class="drill-section">
             <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
             <div class="drill-card">
-                <p class="question">Soru: Faizi ortalama borçtan hesaplamak neden daha doğrudur?</p>
+                <p class="question">Soru: Faizi ortalama borÃ§tan hesaplamak neden daha doÄŸrudur?</p>
                 <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Çünkü yıl içinde borç azalır (paydown). Başlangıç bakiyesi tüm yıl sabit kalmıyor. Ortalama bakiye yıl içindeki gerçeğe daha yakın bir “approximation” verir.</span>
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ yÄ±l iÃ§inde borÃ§ azalÄ±r (paydown). BaÅŸlangÄ±Ã§ bakiyesi tÃ¼m yÄ±l sabit kalmÄ±yor. Ortalama bakiye yÄ±l iÃ§indeki gerÃ§eÄŸe daha yakÄ±n bir â€œapproximationâ€ verir.</span>
                 </div>
             </div>
             <div class="drill-card">
-                <p class="question">Soru: Mandatory amortization neden modelde “floor” gibi davranır?</p>
+                <p class="question">Soru: Mandatory amortization neden modelde â€œfloorâ€ gibi davranÄ±r?</p>
                 <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Çünkü nakit olmasa bile ödenmesi gerekir. Bu, likidite riskini artırır ve covenant/LCF analizinde kritik bir sabit yükümlülüktür.</span>
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ nakit olmasa bile Ã¶denmesi gerekir. Bu, likidite riskini artÄ±rÄ±r ve covenant/LCF analizinde kritik bir sabit yÃ¼kÃ¼mlÃ¼lÃ¼ktÃ¼r.</span>
                 </div>
             </div>
         </div>
 
         <div class="lesson-nav">
-            <a href="high-yield-bonds.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: High Yield</a>
+            <a href="high-yield-bonds.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: High Yield</a>
             <a href="cash-sweep.html" class="btn-nav">Sonraki: Cash Sweep <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>

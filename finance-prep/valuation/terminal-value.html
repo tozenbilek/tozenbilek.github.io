@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -22,26 +22,26 @@
 
         <h1>1.3 Terminal Value (TV)</h1>
         <p>
-            DCF değerinin %70-80'i buradan gelir. Şirketin 5 yıl sonrasından sonsuza kadar olan değeridir.
-            İki yöntemle hesaplanır.
+            DCF deÄŸerinin %70-80'i buradan gelir. Åirketin 5 yÄ±l sonrasÄ±ndan sonsuza kadar olan deÄŸeridir.
+            Ä°ki yÃ¶ntemle hesaplanÄ±r.
         </p>
 
         <h2 style="color: var(--accent-blue);">1. Gordon Growth Method (Perpetuity Growth)</h2>
-        <p>Şirketin sonsuza kadar sabit bir hızla (g) büyüyeceği varsayılır.</p>
+        <p>Åirketin sonsuza kadar sabit bir hÄ±zla (g) bÃ¼yÃ¼yeceÄŸi varsayÄ±lÄ±r.</p>
         <div class="math-block">
             \[ TV = \frac{\text{Final Year FCF} \times (1+g)}{WACC - g} \]
         </div>
         <p>
-            <strong>Kural:</strong> "g" büyüme oranı, ülke ekonomisinin büyüme hızından (GDP Growth) yüksek olamaz. Yoksa şirket dünyadan büyük olur.
+            <strong>Kural:</strong> "g" bÃ¼yÃ¼me oranÄ±, Ã¼lke ekonomisinin bÃ¼yÃ¼me hÄ±zÄ±ndan (GDP Growth) yÃ¼ksek olamaz. Yoksa ÅŸirket dÃ¼nyadan bÃ¼yÃ¼k olur.
         </p>
 
         <h2 style="color: var(--accent-blue);">2. Exit Multiple Method</h2>
-        <p>Şirketin 5. yılın sonunda bir başkasına satılacağı varsayılır.</p>
+        <p>Åirketin 5. yÄ±lÄ±n sonunda bir baÅŸkasÄ±na satÄ±lacaÄŸÄ± varsayÄ±lÄ±r.</p>
         <div class="math-block">
             \[ TV = \text{Final Year EBITDA} \times \text{Exit Multiple} \]
         </div>
         <p>
-            Genellikle benzer şirketlerin (Comps) ortalama çarpanı (Örn: 10x EV/EBITDA) kullanılır.
+            Genellikle benzer ÅŸirketlerin (Comps) ortalama Ã§arpanÄ± (Ã–rn: 10x EV/EBITDA) kullanÄ±lÄ±r.
         </p>
 
         <h2 style="color: var(--accent-blue);">Gordon Growth vs Exit Multiple (Ne Zaman Hangisi?)</h2>
@@ -56,30 +56,30 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Doğası</strong></td>
+                        <td><strong>DoÄŸasÄ±</strong></td>
                         <td>Akademik / temel finans</td>
-                        <td>Piyasa odaklı / göreceli</td>
+                        <td>Piyasa odaklÄ± / gÃ¶receli</td>
                     </tr>
                     <tr>
                         <td><strong>Input</strong></td>
                         <td>WACC ve g</td>
-                        <td>Çarpan (EV/EBITDA) ve EBITDA</td>
+                        <td>Ã‡arpan (EV/EBITDA) ve EBITDA</td>
                     </tr>
                     <tr>
-                        <td><strong>En iyi kullanım</strong></td>
-                        <td>Olgun, stabil şirketler</td>
-                        <td>Peer set güçlü ve piyasaya yakınsan</td>
+                        <td><strong>En iyi kullanÄ±m</strong></td>
+                        <td>Olgun, stabil ÅŸirketler</td>
+                        <td>Peer set gÃ¼Ã§lÃ¼ ve piyasaya yakÄ±nsan</td>
                     </tr>
                     <tr>
                         <td><strong>Risk</strong></td>
-                        <td>g yanlış seçilirse TV patlar</td>
-                        <td>Çarpan rejimi değişirse TV sapar</td>
+                        <td>g yanlÄ±ÅŸ seÃ§ilirse TV patlar</td>
+                        <td>Ã‡arpan rejimi deÄŸiÅŸirse TV sapar</td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <h2 style="color: var(--accent-blue);">Mini Example (İki Yöntem Karşılaştırma)</h2>
+        <h2 style="color: var(--accent-blue);">Mini Example (Ä°ki YÃ¶ntem KarÅŸÄ±laÅŸtÄ±rma)</h2>
         <div class="excel-window">
             <div class="excel-header"><i class="fa-solid fa-table"></i> TV_Compare.xlsx</div>
             <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
@@ -116,28 +116,28 @@
                 <div class="excel-cell bold" style="background:#dbeafe;">1,500</div>
             </div>
             <div style="padding:10px; font-size:12px; color:gray;">
-                Bu örnekte iki yöntem yakın sonuç verdi. Pratikte büyük fark görürsen input'ları yeniden kontrol et (g, WACC, multiple).\n
+                Bu Ã¶rnekte iki yÃ¶ntem yakÄ±n sonuÃ§ verdi. Pratikte bÃ¼yÃ¼k fark gÃ¶rÃ¼rsen input'larÄ± yeniden kontrol et (g, WACC, multiple).
             </div>
         </div>
 
         <div class="drill-section">
             <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
             <div class="drill-card">
-                <p class="question">Soru: g neden WACC'ye yakın seçilemez?</p>
+                <p class="question">Soru: g neden WACC'ye yakÄ±n seÃ§ilemez?</p>
                 <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Çünkü \(WACC - g\) paydası çok küçülür ve TV astronomik büyür (matematiksel patlama). g genelde uzun vadeli enflasyon/GDP büyümesine yakın (örn. %2-%3) seçilir.</span>
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ \(WACC - g\) paydasÄ± Ã§ok kÃ¼Ã§Ã¼lÃ¼r ve TV astronomik bÃ¼yÃ¼r (matematiksel patlama). g genelde uzun vadeli enflasyon/GDP bÃ¼yÃ¼mesine yakÄ±n (Ã¶rn. %2-%3) seÃ§ilir.</span>
                 </div>
             </div>
             <div class="drill-card">
-                <p class="question">Soru: Exit multiple'ı nereden alırsın?</p>
+                <p class="question">Soru: Exit multiple'Ä± nereden alÄ±rsÄ±n?</p>
                 <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Trading comps median EV/EBITDA gibi güncel piyasa çarpanlarından. Ayrıca sektör döngüsünü ve target'ın büyüme/marj profilini dikkate alıp +/- ayarlama yapabilirsin.</span>
+                    <span class="blur-text">Trading comps median EV/EBITDA gibi gÃ¼ncel piyasa Ã§arpanlarÄ±ndan. AyrÄ±ca sektÃ¶r dÃ¶ngÃ¼sÃ¼nÃ¼ ve target'Ä±n bÃ¼yÃ¼me/marj profilini dikkate alÄ±p +/- ayarlama yapabilirsin.</span>
                 </div>
             </div>
         </div>
 
         <div class="lesson-nav">
-            <a href="wacc.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: WACC</a>
+            <a href="wacc.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: WACC</a>
             <a href="dcf-mechanics.html" class="btn-nav">Sonraki: DCF Mechanics <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -22,29 +22,29 @@
 
         <h1>1.4 Exchange Ratios</h1>
         <p>
-            Hisse takası ile yapılan işlemlerde (Stock Swap), satıcıya kaç hisse verileceği pazarlığıdır.
+            Hisse takasÄ± ile yapÄ±lan iÅŸlemlerde (Stock Swap), satÄ±cÄ±ya kaÃ§ hisse verileceÄŸi pazarlÄ±ÄŸÄ±dÄ±r.
         </p>
 
         <h2 style="color: var(--accent-teal);">Fixed Exchange Ratio</h2>
         <p>
-            <strong>"Senin 1 hissene karşılık, benim 1.5 hissemi veririm."</strong>
+            <strong>"Senin 1 hissene karÅŸÄ±lÄ±k, benim 1.5 hissemi veririm."</strong>
         </p>
         <ul>
-            <li><strong>Mekanizma:</strong> Oran sabittir. Hisse sayısı değişmez.</li>
-            <li><strong>Risk:</strong> Alıcının hisse fiyatı düşerse, Satıcı daha az değer (Dolar) alır. Risk paylaşılır.</li>
-            <li><strong>En yaygın yöntemdir.</strong></li>
+            <li><strong>Mekanizma:</strong> Oran sabittir. Hisse sayÄ±sÄ± deÄŸiÅŸmez.</li>
+            <li><strong>Risk:</strong> AlÄ±cÄ±nÄ±n hisse fiyatÄ± dÃ¼ÅŸerse, SatÄ±cÄ± daha az deÄŸer (Dolar) alÄ±r. Risk paylaÅŸÄ±lÄ±r.</li>
+            <li><strong>En yaygÄ±n yÃ¶ntemdir.</strong></li>
         </ul>
 
         <h2 style="color: var(--accent-teal);">Fixed Value (Floating Ratio)</h2>
         <p>
-            <strong>"Sana hisse başına tam 50$ değerinde hisse veririm."</strong>
+            <strong>"Sana hisse baÅŸÄ±na tam 50$ deÄŸerinde hisse veririm."</strong>
         </p>
         <ul>
-            <li><strong>Mekanizma:</strong> Değer sabittir. Alıcının hissesi düşerse, tamamlamak için <strong>daha fazla hisse</strong> basmak zorunda kalır.</li>
-            <li><strong>Risk:</strong> Tüm risk Alıcıdadır (Dilution riski). Alıcının hissesi çakılırsa, korkunç derecede fazla hisse basması gerekebilir.</li>
+            <li><strong>Mekanizma:</strong> DeÄŸer sabittir. AlÄ±cÄ±nÄ±n hissesi dÃ¼ÅŸerse, tamamlamak iÃ§in <strong>daha fazla hisse</strong> basmak zorunda kalÄ±r.</li>
+            <li><strong>Risk:</strong> TÃ¼m risk AlÄ±cÄ±dadÄ±r (Dilution riski). AlÄ±cÄ±nÄ±n hissesi Ã§akÄ±lÄ±rsa, korkunÃ§ derecede fazla hisse basmasÄ± gerekebilir.</li>
         </ul>
 
-        <h2 style="color: var(--accent-teal);">Mini Example (Sayısal): Ratio vs Value</h2>
+        <h2 style="color: var(--accent-teal);">Mini Example (SayÄ±sal): Ratio vs Value</h2>
         <div class="excel-window">
             <div class="excel-header"><i class="fa-solid fa-table"></i> Exchange_Ratio.xlsx</div>
             <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
@@ -69,36 +69,36 @@
                 <div class="excel-cell">50/30 = 1.67</div>
             </div>
             <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
-                Fixed value’de alıcı fiyatı düşerse oran “float” eder ve dilution artar. Fixed ratio’da satıcının aldığı $ değeri düşer.
+                Fixed valueâ€™de alÄ±cÄ± fiyatÄ± dÃ¼ÅŸerse oran â€œfloatâ€ eder ve dilution artar. Fixed ratioâ€™da satÄ±cÄ±nÄ±n aldÄ±ÄŸÄ± $ deÄŸeri dÃ¼ÅŸer.
             </div>
         </div>
 
         <h2 style="color: var(--accent-teal);">Collar (Koridor) Nedir?</h2>
         <div class="content-box-base">
             <p>
-                Collar: Acquirer fiyatı belli bantta kalırsa fixed ratio çalışır; bant dışına çıkarsa oran veya değer ayarlanır.\n
-                Amaç: hem satıcıyı hem alıcıyı “uç fiyat hareketine” karşı korumak.
+                Collar: Acquirer fiyatÄ± belli bantta kalÄ±rsa fixed ratio Ã§alÄ±ÅŸÄ±r; bant dÄ±ÅŸÄ±na Ã§Ä±karsa oran veya deÄŸer ayarlanÄ±r.
+                AmaÃ§: hem satÄ±cÄ±yÄ± hem alÄ±cÄ±yÄ± â€œuÃ§ fiyat hareketineâ€ karÅŸÄ± korumak.
             </p>
         </div>
 
         <div class="drill-section">
             <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
             <div class="drill-card">
-                <p class="question">Soru: Fixed ratio’da risk kimde?</p>
+                <p class="question">Soru: Fixed ratioâ€™da risk kimde?</p>
                 <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Satıcıda. Çünkü alıcı hissesi düşerse satıcının aldığı toplam $ değer düşer; hisse sayısı sabit kalır.</span>
+                    <span class="blur-text">SatÄ±cÄ±da. Ã‡Ã¼nkÃ¼ alÄ±cÄ± hissesi dÃ¼ÅŸerse satÄ±cÄ±nÄ±n aldÄ±ÄŸÄ± toplam $ deÄŸer dÃ¼ÅŸer; hisse sayÄ±sÄ± sabit kalÄ±r.</span>
                 </div>
             </div>
             <div class="drill-card">
-                <p class="question">Soru: Fixed value’de risk kimde?</p>
+                <p class="question">Soru: Fixed valueâ€™de risk kimde?</p>
                 <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Alıcıda. Çünkü $ değeri garanti etmek için fiyat düşerse daha fazla hisse basar ve dilution riski büyür.</span>
+                    <span class="blur-text">AlÄ±cÄ±da. Ã‡Ã¼nkÃ¼ $ deÄŸeri garanti etmek iÃ§in fiyat dÃ¼ÅŸerse daha fazla hisse basar ve dilution riski bÃ¼yÃ¼r.</span>
                 </div>
             </div>
         </div>
 
         <div class="lesson-nav">
-            <a href="structuring.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Structuring</a>
+            <a href="structuring.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Structuring</a>
             <a href="ppa.html" class="btn-nav">Sonraki: PPA & Goodwill <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
