@@ -26,15 +26,6 @@
             <strong>“Kâr yazdım, peki para gerçekten cüzdanıma girdi mi?”</strong> sorusunu net cevaplamak.
         </p>
 
-        <div class="content-box-base">
-            <h3 style="margin-top:0;">Bu sayfayı nasıl çalışalım?</h3>
-            <ul class="check-list">
-                <li>Önce <strong>1 kavram</strong> öğren → hemen altında <strong>mini örnek</strong> gör.</li>
-                <li>“+ / −” işaretini ezberleme: <strong>“Cash artıyor mu azalıyor mu?”</strong> diye sor.</li>
-                <li>Her bölümün sonunda <strong>tıkla-aç</strong> mini sorular var: önce kendin düşün.</li>
-            </ul>
-        </div>
-
         <h2 style="color: var(--accent-green);">1) “Cüzdan” Analojisi (En Basit Mantık)</h2>
         <div class="mech-box">
             Gelir Tablosu (Income Statement) diyor ki:
@@ -107,14 +98,14 @@
 
         <div class="drill-card">
             <p class="question"><strong>Tahakkuk (Accrual)</strong> tek cümlede ne demek?</p>
-            <div class="answer-box">
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
                 <span class="blur-text"><strong>İşi yaptığın an</strong> gelir/gider yazarsın; para o an gelmese bile. (Yani “hak ediş” zamanı ile “para” zamanı farklı olabilir.)</span>
             </div>
         </div>
 
         <div class="drill-card" style="margin-top:12px;">
             <p class="question">Mini örnek: Müşteriye 100 TL’lik hizmet verdin, para ay sonu gelecek. Bugün ne olur?</p>
-            <div class="answer-box">
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
                 <span class="blur-text"><strong>Gelir yazarsın</strong> (IS artar) ama <strong>nakit henüz gelmez</strong>. Bilançoda <strong>Accounts Receivable (Alacak)</strong> artar.</span>
             </div>
         </div>
@@ -140,7 +131,7 @@
         <div class="drill-section">
             <div class="drill-card">
                 <p class="question"><strong>D&A (Depreciation & Amortization)</strong> neden CFO’da “+”?</p>
-                <div class="answer-box">
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
                     <span class="blur-text">Çünkü D&A <strong>kârı düşürür</strong> ama o dönemde <strong>nakit çıkışı yaratmaz</strong>. Bu yüzden Net Income’dan nakite giderken geri ekleriz.</span>
                 </div>
             </div>
@@ -165,25 +156,25 @@
         <div class="drill-section">
             <div class="drill-card">
                 <p class="question"><strong>Accounts Receivable (AR / Alacak)</strong> artarsa CFO’da işaret ne?</p>
-                <div class="answer-box">
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
                     <span class="blur-text"><strong>Negatif (−).</strong> Çünkü satış yaptın/kâr yazdın ama para henüz gelmedi → nakit “eksik”.</span>
                 </div>
             </div>
             <div class="drill-card">
                 <p class="question"><strong>Inventory (Stok)</strong> artarsa CFO’da işaret ne?</p>
-                <div class="answer-box">
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
                     <span class="blur-text"><strong>Negatif (−).</strong> Stok almak genelde nakit çıkışı demektir.</span>
                 </div>
             </div>
             <div class="drill-card">
                 <p class="question"><strong>Prepaid Expenses (Peşin Ödenen)</strong> artarsa CFO’da işaret ne?</p>
-                <div class="answer-box">
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
                     <span class="blur-text"><strong>Negatif (−).</strong> Henüz gider yazmasan bile peşin ödeme yaptın → nakit çıktı.</span>
                 </div>
             </div>
             <div class="drill-card">
                 <p class="question"><strong>Accounts Payable (AP / Ticari Borç)</strong> artarsa CFO’da işaret ne?</p>
-                <div class="answer-box">
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
                     <span class="blur-text"><strong>Pozitif (+).</strong> Tedarikçiye ödeme yapmadın → nakit cebinde kaldı.</span>
                 </div>
             </div>
@@ -265,7 +256,7 @@
 
         <div class="drill-card" style="margin-top: 16px;">
             <p class="question">Kontrol sorusu: AR neden “−” iken AP neden “+”?</p>
-            <div class="answer-box">
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
                 <span class="blur-text"><strong>AR:</strong> para henüz gelmedi → nakit eksik (−). <strong>AP:</strong> para henüz çıkmadı → nakit fazla (+).</span>
             </div>
         </div>

@@ -26,6 +26,42 @@
             Her kavramı sırayla inceleyeceğiz ve her adımın sonunda mini kontrol sorusu yapacağız.
         </p>
 
+        <div class="mech-box">
+            <strong>En basit tanım (1 cümle):</strong>
+            <br>
+            Bilanço = “Şu an elimde ne var?” (Assets) ve “Bunu hangi parayla aldım?” (Liabilities + Equity) fotoğrafı.
+        </div>
+
+        <div class="excel-window" style="margin-top: 14px;">
+            <div class="excel-header"><i class="fa-solid fa-camera"></i> Mini Bilanço (tek bakışta)</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 1fr 120px;">
+                <div class="excel-cell header">Assets</div>
+                <div class="excel-cell header">TL</div>
+                <div class="excel-cell header">Liabilities + Equity</div>
+                <div class="excel-cell header">TL</div>
+
+                <div class="excel-cell">Cash</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">Accounts Payable (AP)</div>
+                <div class="excel-cell">30</div>
+
+                <div class="excel-cell">Inventory</div>
+                <div class="excel-cell">50</div>
+                <div class="excel-cell">Debt</div>
+                <div class="excel-cell">60</div>
+
+                <div class="excel-cell">Accounts Receivable (AR)</div>
+                <div class="excel-cell">20</div>
+                <div class="excel-cell">Equity</div>
+                <div class="excel-cell">80</div>
+
+                <div class="excel-cell bold" style="background:#f8fafc;">Toplam Assets</div>
+                <div class="excel-cell bold" style="background:#f8fafc;">170</div>
+                <div class="excel-cell bold" style="background:#f8fafc;">Toplam L+E</div>
+                <div class="excel-cell bold" style="background:#f8fafc;">170</div>
+            </div>
+        </div>
+
         <div class="deep-dive-box">
             <h3><i class="fa-solid fa-map"></i> Harita (Önce Büyük Resim)</h3>
             <p style="margin-bottom: 10px;">
@@ -79,6 +115,39 @@
             <p class="question">Mini kontrol: “Assets artarsa” denklem nasıl doğru kalır?</p>
             <div class="answer-box" onclick="this.classList.toggle('revealed')">
                 <span class="blur-text">Ya <strong>Liabilities</strong> artar (borçlanıp varlık alırsın) ya da <strong>Equity</strong> artar (sermaye koyarsın / kâr edersin) — bazen ikisi birlikte de olur.</span>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">1.5 En Önemli Refleks: 1 İşlem Yapınca “Ne Değişti?”</h2>
+        <p>
+            Bilanço “ezber” değil; <strong>işlem takibi</strong>. Her işlemde sadece şunu yap:
+            <strong>Hangi hesap arttı?</strong> ve <strong>hangi hesap azaldı?</strong>
+        </p>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question">İşlem A: 40 TL nakitle stok aldın. Ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Cash −40</strong>, <strong>Inventory +40</strong>. Toplam Assets değişmez. Liabilities/Equity değişmez.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">İşlem B: 50 TL’lik malı müşteriye sattın, parasını sonra alacaksın. Ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>AR +50</strong>. (Cash artmadı çünkü para gelmedi.)</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">İşlem C: Tedarikçiden 30 TL’lik malı vadeli aldın. Ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Inventory +30</strong> ve <strong>AP +30</strong>. (Varlık + borç birlikte artar.)</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">İşlem D: Müşteriden 60 TL peşin aldın, hizmeti gelecek ay vereceksin. Ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Cash +60</strong> ve <strong>Deferred Revenue +60</strong>. (Nakit geldi ama “iş yapma borcun” var.)</span>
+                </div>
             </div>
         </div>
 

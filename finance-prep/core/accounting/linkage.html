@@ -105,6 +105,113 @@
             </div>
         </div>
 
+        <h2 style="color: var(--accent-green);">0.5) Linkage’ı Kolaylaştıran 4 “Ara Hesap” (En Çok Takılan Yer)</h2>
+        <p>
+            Çoğu kişinin Linkage’ta koptuğu yer şu: <strong>kâr başka, nakit başka</strong>.
+            Bu farkı genelde 4 ara hesap taşır. Bunları oturtursan Linkage “otomatik” çalışır.
+        </p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-layer-group"></i> 4 Ara Hesap: Nerede durur?</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="excel-cell header">Hesap</div>
+                <div class="excel-cell header">Balance Sheet’te</div>
+                <div class="excel-cell header">Basit Türkçe</div>
+
+                <div class="excel-cell bold">Accounts Receivable (AR)</div>
+                <div class="excel-cell">Asset</div>
+                <div class="excel-cell">Satışı yaptım, parası gelecek</div>
+
+                <div class="excel-cell bold">Deferred Revenue</div>
+                <div class="excel-cell">Liability</div>
+                <div class="excel-cell">Para geldi, hizmet/teslim sonra</div>
+
+                <div class="excel-cell bold">Accounts Payable / Accrued</div>
+                <div class="excel-cell">Liability</div>
+                <div class="excel-cell">Gider oluştu, ödeme sonra</div>
+
+                <div class="excel-cell bold">Prepaid Expenses</div>
+                <div class="excel-cell">Asset</div>
+                <div class="excel-cell">Para gitti, fayda sonra</div>
+            </div>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-code-branch"></i> 2 Soru ile “Hangi Hesap Doğdu?” Bul</h3>
+            <ol style="margin-left: 18px;">
+                <li><strong>Para hareket etti mi?</strong> (Cash girdi/çıktı mı?)</li>
+                <li><strong>Hizmet/teslim gerçekleşti mi?</strong> (Hak ediş oldu mu?)</li>
+            </ol>
+            <div class="excel-window" style="margin-top: 12px;">
+                <div class="excel-header"><i class="fa-solid fa-table"></i> 2×2 Sonuç</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="excel-cell header">Durum</div>
+                    <div class="excel-cell header">Tipik sonuç</div>
+
+                    <div class="excel-cell bold">Para yok + Teslim var</div>
+                    <div class="excel-cell"><strong>AR</strong> (Gelir yazılır, nakit yok)</div>
+
+                    <div class="excel-cell bold">Para var + Teslim yok</div>
+                    <div class="excel-cell"><strong>Deferred Revenue</strong> (Nakit var, gelir henüz yok)</div>
+
+                    <div class="excel-cell bold">Para yok + Gider oluştu</div>
+                    <div class="excel-cell"><strong>AP/Accrued</strong> (Gider yazılır, nakit yok)</div>
+
+                    <div class="excel-cell bold">Para var + Fayda sonra</div>
+                    <div class="excel-cell"><strong>Prepaid</strong> (Nakit çıktı, gider sonra)</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">0.6) En Basit Linkage Refleksi (1 İşlem → 3 Tablo)</h2>
+        <p>
+            Linkage’ı ezberleme. Şu refleksi kur:
+            <strong>Her işlemde</strong> (a) IS’te gelir/gider var mı? (b) Nakit var mı? (c) Bilançoda hangi hesaplar oynadı?
+        </p>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question">Örnek 1: Bugün 1.000 TL’lik hizmet verdin, müşteri ay sonu ödeyecek.</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">
+                        <strong>IS:</strong> Revenue +1.000 (kâr artar).
+                        <br><strong>CFS:</strong> CFO’da AR artışı yüzünden bu satışın nakdi gelmez (AR ↑ → cash ↓ etkisi).
+                        <br><strong>BS:</strong> AR +1.000 (Asset ↑), Cash yok.
+                    </span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Örnek 2: Müşteri bugün 1.200 TL peşin ödedi, hizmeti 12 ayda vereceksin.</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">
+                        <strong>IS:</strong> Bugün gelir yazmazsın (veya sadece 1 aylık kısmı).
+                        <br><strong>CFS:</strong> Cash +1.200 (CFO’da/operasyonda nakit girişi).
+                        <br><strong>BS:</strong> Cash +1.200 (Asset ↑), Deferred Revenue +1.200 (Liability ↑).
+                    </span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Örnek 3: Bu ay 500 TL elektrik gideri oluştu, ödemeyi gelecek ay yapacaksın.</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">
+                        <strong>IS:</strong> Expense +500 (kâr düşer).
+                        <br><strong>CFS:</strong> Nakit çıkışı yok; CFO’da AP/Accrued artışı nakdi “korur” (Liability ↑ → cash ↑ etkisi).
+                        <br><strong>BS:</strong> AP/Accrued +500 (Liability ↑).
+                    </span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Örnek 4: 12 aylık sigortayı bugün 1.200 TL peşin ödedin.</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">
+                        <strong>IS:</strong> Bugün 1.200 gider yazmazsın; aylık parça parça yazarsın.
+                        <br><strong>CFS:</strong> Cash −1.200 (nakit çıktı).
+                        <br><strong>BS:</strong> Prepaid +1.200 (Asset ↑), Cash −1.200.
+                    </span>
+                </div>
+            </div>
+        </div>
+
         <h2 style="color: var(--accent-green);">1) Adım 1: Net Income, Cash Flow’a “Başlangıç” Olur (IS → CFS)</h2>
         <p>
             Cash Flow Statement (CFO bölümü) çoğu zaman <strong>Net Income ile başlar</strong>. Çünkü “kâr”dan yola çıkıp “nakit”e köprü kurarız.

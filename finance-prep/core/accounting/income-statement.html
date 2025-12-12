@@ -218,6 +218,111 @@
             </p>
         </div>
 
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-sitemap"></i> COGS mi OpEx mi? (3 Soruluk Karar Kuralı)</h3>
+            <ol style="margin-left: 18px;">
+                <li>
+                    <strong>Bu maliyet “satışın/teslimatın” olmazsa olmazı mı?</strong>
+                    <br><span style="color: var(--text-secondary);">Evetse çoğu zaman COGS’a yakındır.</span>
+                </li>
+                <li>
+                    <strong>Müşteriye 1 birim daha satış yapınca bu maliyet de genelde artıyor mu?</strong>
+                    <br><span style="color: var(--text-secondary);">Evetse COGS’a; hayırsa OpEx’e yakındır.</span>
+                </li>
+                <li>
+                    <strong>Ürüne/hizmete doğrudan “iz sürmek” kolay mı?</strong>
+                    <br><span style="color: var(--text-secondary);">Kolaysa COGS; zorsa OpEx eğilimi.</span>
+                </li>
+            </ol>
+            <p style="margin-top: 10px; font-weight: 500;">
+                Not: Bazı kalemler şirketten şirkete değişebilir (özellikle yazılım, kargo, destek). Önemli olan <strong>tutarlı</strong> olmak.
+            </p>
+        </div>
+
+        <div class="excel-window" style="margin-top: 14px;">
+            <div class="excel-header"><i class="fa-solid fa-layer-group"></i> Hızlı Örnekler (Sektöre Göre)</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="excel-cell header">İş modeli</div>
+                <div class="excel-cell header">COGS’a tipik örnek</div>
+                <div class="excel-cell header">OpEx’e tipik örnek</div>
+
+                <div class="excel-cell bold">Limonata</div>
+                <div class="excel-cell">Limon, şeker, bardak</div>
+                <div class="excel-cell">Kira, çalışan, reklam</div>
+
+                <div class="excel-cell bold">E‑ticaret</div>
+                <div class="excel-cell">Ürün maliyeti, paketleme/kargo (çoğu firmada)</div>
+                <div class="excel-cell">Pazarlama, müşteri hizmeti, ofis</div>
+
+                <div class="excel-cell bold">Restoran</div>
+                <div class="excel-cell">Gıda malzemesi</div>
+                <div class="excel-cell">Kira, garson maaşı (çoğu firmada), pazarlama</div>
+
+                <div class="excel-cell bold">Üretim</div>
+                <div class="excel-cell">Hammadde, direkt işçilik</div>
+                <div class="excel-cell">Yönetim, satış ekibi, Ar‑Ge</div>
+
+                <div class="excel-cell bold">SaaS (Yazılım)</div>
+                <div class="excel-cell">Sunucu/hosting, müşteri destek ekibi (bazı firmalarda)</div>
+                <div class="excel-cell">Ar‑Ge (mühendis), satış-pazarlama</div>
+            </div>
+        </div>
+
+        <div class="drill-section" style="margin-top: 14px;">
+            <h3><i class="fa-solid fa-bullseye"></i> Pratik: COGS mı OpEx mi? (Önce tahmin et)</h3>
+            <div class="drill-card">
+                <p class="question">1) Ürün paketleme malzemesi (kutu, bant)</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Genelde <strong>COGS</strong> (satış/teslimatla direkt ilişkili).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">2) Instagram reklamı</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Genelde <strong>OpEx</strong> (Sales &amp; Marketing).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">3) Kargo ücreti (müşteriye teslim)</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Şirkete göre değişebilir; çoğu e‑ticarette <strong>COGS</strong> veya “Fulfillment” altında (brüt kârı etkiler).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">4) Ofis kirası</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Genelde <strong>OpEx</strong>.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">5) SaaS sunucu/hosting maliyeti</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">SaaS’ta çoğu zaman <strong>COGS</strong> (Cost of Revenue) olarak görülür; brüt marjı belirler.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-key"></i> Cevap Anahtarı (Bu 4 kalem en çok karıştırılanlar)</h3>
+            <ul style="margin-left: 18px;">
+                <li>
+                    <strong>1) E‑ticaret kargo ücreti:</strong> Çoğu modelde <strong>COGS</strong> / “Fulfillment” (satışı teslim etmenin maliyeti olduğu için brüt kârı etkiler).
+                </li>
+                <li>
+                    <strong>2) Google/Instagram reklamı:</strong> Genelde <strong>OpEx</strong> (Sales &amp; Marketing; satışla ilişkilidir ama “ürünün maliyeti” değildir).
+                </li>
+                <li>
+                    <strong>3) SaaS sunucu/hosting:</strong> Çoğu SaaS şirketinde <strong>COGS</strong> (Cost of Revenue; müşteriye hizmeti “sunmanın” maliyeti).
+                </li>
+                <li>
+                    <strong>4) Ofis kirası:</strong> Neredeyse her zaman <strong>OpEx</strong> (Genel yönetim / G&amp;A).
+                </li>
+            </ul>
+            <p style="margin-top: 10px; color: var(--text-secondary);">
+                Kısa mantık: <strong>COGS</strong> = “müşteriye ürün/hizmeti üretip teslim etme”; <strong>OpEx</strong> = “şirketi çalışır tutma / satışı büyütme”.
+            </p>
+        </div>
+
         <h2 style="color: var(--accent-green);">4. Revenue Recognition (Nakit ≠ Gelir)</h2>
         <div class="reddit-box">
             <div class="reddit-title"><i class="fa-solid fa-hand-holding-dollar"></i> Nakit ≠ Gelir</div>
@@ -233,6 +338,126 @@
                 <br>- Ama Ocak ayında sadece 100 TL Gelir yazabilirsin (Income Statement).
                 <br>- Kalan 1100 TL senin paran değildir, müşteriye borcundur (Deferred Revenue).
             </p>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-key"></i> Cevap Anahtarı: “Nakit mi?” “Gelir/Gider mi?” (4 Durum)</h3>
+            <p style="margin-bottom: 10px;">
+                Bu 4 durum %90 vakayı çözer. Her seferinde şu soruyu sor:
+                <strong>“Hizmet/teslim oldu mu?”</strong> (Evetse IS’e, hayırsa BS’e yazarsın.)
+            </p>
+            <ul style="margin-left: 18px;">
+                <li>
+                    <strong>A) Satışı yaptın, para sonra gelecek → AR:</strong>
+                    <br><span style="color: var(--text-secondary);"><strong>IS:</strong> Revenue yaz. <strong>BS:</strong> AR artır. <strong>Nakit:</strong> henüz yok.</span>
+                </li>
+                <li>
+                    <strong>B) Parayı aldın, hizmet/teslim sonra → Deferred Revenue:</strong>
+                    <br><span style="color: var(--text-secondary);"><strong>Nakit:</strong> Cash artır. <strong>IS:</strong> gelir yazma (şimdilik). <strong>BS:</strong> Deferred Revenue artır.</span>
+                </li>
+                <li>
+                    <strong>C) Gider oluştu, ödeme sonra → AP / Accrued:</strong>
+                    <br><span style="color: var(--text-secondary);"><strong>IS:</strong> Expense yaz. <strong>BS:</strong> AP/Accrued artır. <strong>Nakit:</strong> henüz çıkmadı.</span>
+                </li>
+                <li>
+                    <strong>D) Ödemeyi yaptın, fayda sonra → Prepaid:</strong>
+                    <br><span style="color: var(--text-secondary);"><strong>Nakit:</strong> Cash azalt. <strong>IS:</strong> gideri zamana yay. <strong>BS:</strong> Prepaid artır.</span>
+                </li>
+            </ul>
+            <p style="margin-top: 10px; font-weight: 500;">
+                Ezber cümlesi: <strong>AR ve Prepaid = Asset</strong> (artarsa nakit sıkışır), <strong>AP ve Deferred = Liability</strong> (artarsa nakit rahatlar).
+            </p>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-code-branch"></i> 2 Soru ile Otomatik Bul (Ezbersiz Mini Karar Ağacı)</h3>
+            <ol style="margin-left: 18px;">
+                <li>
+                    <strong>Para hareket etti mi?</strong> (Cash girdi/çıktı mı?)
+                    <br><span style="color: var(--text-secondary);">Evet/Hayır diye işaretle.</span>
+                </li>
+                <li>
+                    <strong>Hizmet/teslim gerçekleşti mi?</strong> (Yani “hak ediş” oldu mu?)
+                    <br><span style="color: var(--text-secondary);">Evet/Hayır diye işaretle.</span>
+                </li>
+            </ol>
+
+            <div class="excel-window" style="margin-top: 12px;">
+                <div class="excel-header"><i class="fa-solid fa-table"></i> 2×2 Sonuç Tablosu</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="excel-cell header">Durum</div>
+                    <div class="excel-cell header">Tipik sonuç</div>
+
+                    <div class="excel-cell bold">Para yok + Teslim var</div>
+                    <div class="excel-cell"><strong>AR</strong> (Gelir yazılır, alacak doğar)</div>
+
+                    <div class="excel-cell bold">Para var + Teslim yok</div>
+                    <div class="excel-cell"><strong>Deferred Revenue</strong> (Nakit var, gelir henüz yok)</div>
+
+                    <div class="excel-cell bold">Para yok + Gider oluştu</div>
+                    <div class="excel-cell"><strong>AP/Accrued</strong> (Gider yazılır, borç doğar)</div>
+
+                    <div class="excel-cell bold">Para var + Fayda sonra</div>
+                    <div class="excel-cell"><strong>Prepaid</strong> (Nakit çıktı, gider sonra)</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 10px; color: var(--text-secondary);">
+                Not: “Teslim var mı?” sorusu gelir/gideri belirler; “para hareketi var mı?” sorusu bilançoda hangi ara hesabın doğduğunu söyler.
+            </p>
+        </div>
+
+        <div class="excel-window" style="margin-top: 14px;">
+            <div class="excel-header"><i class="fa-solid fa-arrows-left-right"></i> En Net Tablo: “Nakit” ile “Gelir/Gider” Zamanı Ayrı Olabilir</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="excel-cell header">Durum</div>
+                <div class="excel-cell header">Gelir tablosu (IS)</div>
+                <div class="excel-cell header">Bilançoda tipik hesap</div>
+
+                <div class="excel-cell bold">A) Satışı yaptın, para sonra gelecek</div>
+                <div class="excel-cell">Gelir <strong>yazılır</strong> (Revenue ↑)</div>
+                <div class="excel-cell"><strong>AR (Alacak)</strong> ↑</div>
+
+                <div class="excel-cell bold">B) Parayı aldın, hizmet/teslim sonra</div>
+                <div class="excel-cell">Gelir <strong>henüz yazılmaz</strong></div>
+                <div class="excel-cell"><strong>Deferred Revenue</strong> ↑ (borç)</div>
+
+                <div class="excel-cell bold">C) Gider oluştu, para sonra ödenecek</div>
+                <div class="excel-cell">Gider <strong>yazılır</strong> (Expense ↑)</div>
+                <div class="excel-cell"><strong>AP / Accrued</strong> ↑ (borç)</div>
+
+                <div class="excel-cell bold">D) Parayı ödedin, fayda sonra</div>
+                <div class="excel-cell">Gider <strong>henüz yazılmaz</strong></div>
+                <div class="excel-cell"><strong>Prepaid</strong> ↑ (varlık)</div>
+            </div>
+        </div>
+
+        <div class="drill-section" style="margin-top: 14px;">
+            <h3><i class="fa-solid fa-square-check"></i> Pratik: 4 Durumu Mini Örnekle Oturtalım</h3>
+            <div class="drill-card">
+                <p class="question">A) Bugün 1.000 TL’lik hizmet verdin, müşteri 30 gün sonra ödeyecek. Bugün ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>IS:</strong> Revenue ↑ (gelir yazılır). <strong>BS:</strong> AR ↑. <strong>Nakit:</strong> henüz yok.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">B) Müşteri bugün 1.200 TL peşin ödedi, 12 ay hizmet alacak. Bugün ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Nakit:</strong> Cash ↑. <strong>IS:</strong> bugün gelir yazmazsın (veya çok küçük kısmı). <strong>BS:</strong> Deferred Revenue ↑.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">C) Bu ay elektrik faturası 500 TL “oluştu”, ödeme gelecek ay. Bu ay ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>IS:</strong> Expense ↑ (gider yazılır). <strong>BS:</strong> AP/Accrued ↑. <strong>Nakit:</strong> bu ay çıkmadı.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">D) 12 aylık sigortayı bugün 1.200 TL peşin ödedin. Bu ay ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Nakit:</strong> Cash ↓. <strong>BS:</strong> Prepaid ↑. <strong>IS:</strong> bu ay sadece 1 aylık kısmı gider yazarsın (ör. 100 TL).</span>
+                </div>
+            </div>
         </div>
 
         <div class="drill-section">
