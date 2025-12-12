@@ -1,102 +1,102 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earnings Management | IB Prep</title>
-    <link rel="stylesheet" href="../../../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="nav-header">
-            <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
-        </nav>
-
-        <div class="lesson-content">
-            <h1>6.1 Earnings Management (Forensic Accounting)</h1>
-            <p class="lesson-desc">
-                Rakamlarla yalan söyleme sanatı. CFO'ların yatırımcıları kandırmak için kullandığı "Karanlık Sanatlar".
-            </p>
-
-            <div class="analogy-box">
-                <h3><i class="fa-solid fa-cookie-bite"></i> The Cookie Jar Analogy (Kumbara Rezervleri)</h3>
-                <p>
-                    Diyelim ki bir öğrenci olarak ailenizden her ay 1000 TL harçlık alıyorsunuz ve her ay tam 1000 TL harcadığınızı söylüyorsunuz.
-                    Ama aslında bazı aylar 800 TL harcayıp, 200 TL'yi yastık altına atıyorsunuz (Reserve). 
-                    Zor bir ayda 1200 TL harcadığınızda, o 200 TL'yi çıkarıp "Bakın yine 1000 TL harcadım, bütçem şaşmadı" diyorsunuz.
-                </p>
-                <p>
-                    <strong>Şirketler de bunu yapar:</strong> İyi giden yıllarda giderleri olduğundan fazla gösterip "Rezerv" ayırırlar (Kârı düşürürler).
-                    Kötü giden yıllarda bu rezervleri iptal edip gelir yazarlar (Kârı yükseltirler). 
-                    Amaç: Yatırımcıya "Biz her zaman istikrarlı büyüyoruz" yalanını satmaktır.
-                </p>
-            </div>
-
-            <div class="deep-dive-box">
-                <h3><i class="fa-solid fa-microscope"></i> Teknik Detay: "Shenanigans" Nasıl Tespit Edilir?</h3>
-                <p>
-                    Yatırımcılar ve Analistler "Pürüzsüz" (Smooth) kazançları sever. Volatilite risktir. 
-                    Ancak bu pürüzsüzlük yapaysa, büyük bir risk altındasınız demektir.
-                </p>
-
-                <h4>1. Cookie Jar Reserves (Kumbara Rezervleri)</h4>
-                <p>
-                    <strong>Mekanizma:</strong> Şirket gelecekteki olası zararlar için (örn. Dava Karşılıkları, Garanti Karşılıkları) gereğinden fazla karşılık ayırır.
-                    Bu yılın kârını düşürür (Income Statement'ta Gider yazar, Balance Sheet'te Liability artar).
-                    Gelecek yıl kâr hedefini tutturamazsa, "Pardon, bu karşılık fazlaymış" diyerek Liability'yi azaltır ve Income Statement'a Gelir yazar.
-                </p>
-                <p class="math-box">
-                    <strong>Dedektiflik İpucu:</strong> "Allowance for Doubtful Accounts" (Şüpheli Alacak Karşılığı) veya "Warranty Reserves" kalemlerini satışlara oranla (as % of Sales) izleyin.
-                    Satışlar artarken bu oranlar aniden düşüyorsa, şirket kârı şişirmek için rezerv yiyor olabilir.
-                </p>
-
-                <h4>2. Channel Stuffing (Kanal Doldurma)</h4>
-                <p>
-                    <strong>Mekanizma:</strong> Çeyrek sonuna 3 gün kala, satış hedefini tutturmak için distribütörlere aşırı mal yüklenir. 
-                    "Alın bunları şimdi, parasını 6 ay sonra ödersiniz, satamazsanız iade alırım" denir.
-                </p>
-                <p class="math-box">
-                    <strong>Dedektiflik İpucu:</strong> 
-                    \[ \text{DSO (Days Sales Outstanding)} = \frac{\text{Accounts Receivable}}{\text{Revenue}} \times 365 \]
-                    Eğer DSO hızla artıyorsa (yani şirketin tahsilat süresi uzuyorsa), şirket muhtemelen sahte satış (Channel Stuffing) yapıyordur. 
-                    Satış yapmış gibi gösteriyor ama parayı alamıyordur (Receivables şişiyor).
-                </p>
-
-                <h4>3. Capitalizing Expenses (Gideri Aktifleştirmek)</h4>
-                <p>
-                    <strong>WorldCom Skandalı:</strong> Normalde "Operating Expense" (Gider) olarak yazılması gereken "Hat Bakım Masraflarını", 
-                    "CapEx" (Yatırım) gibi gösterip Bilançoya (Asset) attılar.
-                </p>
-                <ul class="check-list">
-                    <li><strong>Etki 1:</strong> Income Statement'ta gider azalır -> EBITDA ve Net Income uçar.</li>
-                    <li><strong>Etki 2:</strong> Cash Flow from Operations (CFO) artar (çünkü CapEx, CFI'dadır).</li>
-                    <li><strong>Dedektiflik İpucu:</strong> Eğer şirketin "CapEx / Sales" oranı rakiplerinden çok yüksekse ve "Asset Turnover" oranı düşüyorsa, çöpleri bilançoya süpürüyor olabilirler.</li>
-                </ul>
-            </div>
-
-            <div class="drill-section">
-                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
-                <div class="drill-card">
-                    <p class="question">Soru: Bir şirketin Net Income'ı artıyor ama Cash Flow from Operations (CFO) düşüyorsa neyden şüphelenirsin?</p>
-                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                        <span class="blur-text">Aggressive Revenue Recognition veya Channel Stuffing. Şirket kâr yazıyor ama kasaya para girmiyor (Receivables şişiyor). Kalitesiz Kâr (Low Quality of Earnings).</span>
-                    </div>
-                </div>
-                <div class="drill-card">
-                    <p class="question">Soru: WorldCom gibi bir şirket giderlerini CapEx olarak gösterirse EBITDA nasıl etkilenir?</p>
-                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                        <span class="blur-text">Yapay olarak ARTAR. Çünkü Operating Expense EBITDA'dan düşülür, ama CapEx düşülmez. Bu yüzden EBITDA bazlı değerleme (EV/EBITDA) şirketi olduğundan daha değerli gösterir.</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lesson-nav">
-                <a href="nci.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: NCI</a>
-                <a href="sbc.html" class="btn-nav next">Sonraki: Stock-Based Comp <i class="fa-solid fa-chevron-right"></i></a>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
-
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earnings Management | IB Prep</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>6.1 Earnings Management (Forensic Accounting)</h1>
+            <p class="lesson-desc">
+                Rakamlarla yalan sÃ¶yleme sanatÄ±. CFO'larÄ±n yatÄ±rÄ±mcÄ±larÄ± kandÄ±rmak iÃ§in kullandÄ±ÄŸÄ± "KaranlÄ±k Sanatlar".
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-cookie-bite"></i> The Cookie Jar Analogy (Kumbara Rezervleri)</h3>
+                <p>
+                    Diyelim ki bir Ã¶ÄŸrenci olarak ailenizden her ay 1000 TL harÃ§lÄ±k alÄ±yorsunuz ve her ay tam 1000 TL harcadÄ±ÄŸÄ±nÄ±zÄ± sÃ¶ylÃ¼yorsunuz.
+                    Ama aslÄ±nda bazÄ± aylar 800 TL harcayÄ±p, 200 TL'yi yastÄ±k altÄ±na atÄ±yorsunuz (Reserve). 
+                    Zor bir ayda 1200 TL harcadÄ±ÄŸÄ±nÄ±zda, o 200 TL'yi Ã§Ä±karÄ±p "BakÄ±n yine 1000 TL harcadÄ±m, bÃ¼tÃ§em ÅŸaÅŸmadÄ±" diyorsunuz.
+                </p>
+                <p>
+                    <strong>Åirketler de bunu yapar:</strong> Ä°yi giden yÄ±llarda giderleri olduÄŸundan fazla gÃ¶sterip "Rezerv" ayÄ±rÄ±rlar (KÃ¢rÄ± dÃ¼ÅŸÃ¼rÃ¼rler).
+                    KÃ¶tÃ¼ giden yÄ±llarda bu rezervleri iptal edip gelir yazarlar (KÃ¢rÄ± yÃ¼kseltirler). 
+                    AmaÃ§: YatÄ±rÄ±mcÄ±ya "Biz her zaman istikrarlÄ± bÃ¼yÃ¼yoruz" yalanÄ±nÄ± satmaktÄ±r.
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-microscope"></i> Teknik Detay: "Shenanigans" NasÄ±l Tespit Edilir?</h3>
+                <p>
+                    YatÄ±rÄ±mcÄ±lar ve Analistler "PÃ¼rÃ¼zsÃ¼z" (Smooth) kazanÃ§larÄ± sever. Volatilite risktir. 
+                    Ancak bu pÃ¼rÃ¼zsÃ¼zlÃ¼k yapaysa, bÃ¼yÃ¼k bir risk altÄ±ndasÄ±nÄ±z demektir.
+                </p>
+
+                <h4>1. Cookie Jar Reserves (Kumbara Rezervleri)</h4>
+                <p>
+                    <strong>Mekanizma:</strong> Åirket gelecekteki olasÄ± zararlar iÃ§in (Ã¶rn. Dava KarÅŸÄ±lÄ±klarÄ±, Garanti KarÅŸÄ±lÄ±klarÄ±) gereÄŸinden fazla karÅŸÄ±lÄ±k ayÄ±rÄ±r.
+                    Bu yÄ±lÄ±n kÃ¢rÄ±nÄ± dÃ¼ÅŸÃ¼rÃ¼r (Income Statement'ta Gider yazar, Balance Sheet'te Liability artar).
+                    Gelecek yÄ±l kÃ¢r hedefini tutturamazsa, "Pardon, bu karÅŸÄ±lÄ±k fazlaymÄ±ÅŸ" diyerek Liability'yi azaltÄ±r ve Income Statement'a Gelir yazar.
+                </p>
+                <p class="math-box">
+                    <strong>Dedektiflik Ä°pucu:</strong> "Allowance for Doubtful Accounts" (ÅÃ¼pheli Alacak KarÅŸÄ±lÄ±ÄŸÄ±) veya "Warranty Reserves" kalemlerini satÄ±ÅŸlara oranla (as % of Sales) izleyin.
+                    SatÄ±ÅŸlar artarken bu oranlar aniden dÃ¼ÅŸÃ¼yorsa, ÅŸirket kÃ¢rÄ± ÅŸiÅŸirmek iÃ§in rezerv yiyor olabilir.
+                </p>
+
+                <h4>2. Channel Stuffing (Kanal Doldurma)</h4>
+                <p>
+                    <strong>Mekanizma:</strong> Ã‡eyrek sonuna 3 gÃ¼n kala, satÄ±ÅŸ hedefini tutturmak iÃ§in distribÃ¼tÃ¶rlere aÅŸÄ±rÄ± mal yÃ¼klenir. 
+                    "AlÄ±n bunlarÄ± ÅŸimdi, parasÄ±nÄ± 6 ay sonra Ã¶dersiniz, satamazsanÄ±z iade alÄ±rÄ±m" denir.
+                </p>
+                <p class="math-box">
+                    <strong>Dedektiflik Ä°pucu:</strong> 
+                    \[ \text{DSO (Days Sales Outstanding)} = \frac{\text{Accounts Receivable}}{\text{Revenue}} \times 365 \]
+                    EÄŸer DSO hÄ±zla artÄ±yorsa (yani ÅŸirketin tahsilat sÃ¼resi uzuyorsa), ÅŸirket muhtemelen sahte satÄ±ÅŸ (Channel Stuffing) yapÄ±yordur. 
+                    SatÄ±ÅŸ yapmÄ±ÅŸ gibi gÃ¶steriyor ama parayÄ± alamÄ±yordur (Receivables ÅŸiÅŸiyor).
+                </p>
+
+                <h4>3. Capitalizing Expenses (Gideri AktifleÅŸtirmek)</h4>
+                <p>
+                    <strong>WorldCom SkandalÄ±:</strong> Normalde "Operating Expense" (Gider) olarak yazÄ±lmasÄ± gereken "Hat BakÄ±m MasraflarÄ±nÄ±", 
+                    "CapEx" (YatÄ±rÄ±m) gibi gÃ¶sterip BilanÃ§oya (Asset) attÄ±lar.
+                </p>
+                <ul class="check-list">
+                    <li><strong>Etki 1:</strong> Income Statement'ta gider azalÄ±r -> EBITDA ve Net Income uÃ§ar.</li>
+                    <li><strong>Etki 2:</strong> Cash Flow from Operations (CFO) artar (Ã§Ã¼nkÃ¼ CapEx, CFI'dadÄ±r).</li>
+                    <li><strong>Dedektiflik Ä°pucu:</strong> EÄŸer ÅŸirketin "CapEx / Sales" oranÄ± rakiplerinden Ã§ok yÃ¼ksekse ve "Asset Turnover" oranÄ± dÃ¼ÅŸÃ¼yorsa, Ã§Ã¶pleri bilanÃ§oya sÃ¼pÃ¼rÃ¼yor olabilirler.</li>
+                </ul>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: Bir ÅŸirketin Net Income'Ä± artÄ±yor ama Cash Flow from Operations (CFO) dÃ¼ÅŸÃ¼yorsa neyden ÅŸÃ¼phelenirsin?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Aggressive Revenue Recognition veya Channel Stuffing. Åirket kÃ¢r yazÄ±yor ama kasaya para girmiyor (Receivables ÅŸiÅŸiyor). Kalitesiz KÃ¢r (Low Quality of Earnings).</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: WorldCom gibi bir ÅŸirket giderlerini CapEx olarak gÃ¶sterirse EBITDA nasÄ±l etkilenir?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Yapay olarak ARTAR. Ã‡Ã¼nkÃ¼ Operating Expense EBITDA'dan dÃ¼ÅŸÃ¼lÃ¼r, ama CapEx dÃ¼ÅŸÃ¼lmez. Bu yÃ¼zden EBITDA bazlÄ± deÄŸerleme (EV/EBITDA) ÅŸirketi olduÄŸundan daha deÄŸerli gÃ¶sterir.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="nci.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Ã–nceki: NCI</a>
+                <a href="sbc.html" class="btn-nav next">Sonraki: Stock-Based Comp <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

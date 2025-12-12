@@ -1,94 +1,94 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deferred Tax Liability | Accounting</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="nav-header">
-            <a href="../../../index.html" class="nav-link">Dashboard</a>
-            <span class="nav-sep">/</span>
-            <a href="../index.html" class="nav-link">Accounting</a>
-            <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">DTL</span>
-        </nav>
-
-        <h1>4.1 Deferred Tax Liability (DTL)</h1>
-        <p>
-            Devlete olan "Ertelenmiþ" vergi borcudur.
-            "Þimdi az ödüyorum, ama ileride acýsý çýkacak."
-        </p>
-
-        <h2 style="color: var(--accent-green);">1. The Core Conflict: GAAP vs Tax Code</h2>
-        <div class="analogy-box">
-            <h3><i class="fa-solid fa-book-open"></i> Ýki Farklý Kitap</h3>
-            <p>
-                Þirketler yasal olarak iki farklý muhasebe defteri tutarlar:
-            </p>
-            <ul>
-                <li><strong>Hissedar Defteri (GAAP/IFRS):</strong> "Ben çok kârlýyým!" demek ister. Amortismaný yavaþ düþer (Straight Line). Kâr yüksek görünür.</li>
-                <li><strong>Vergi Defteri (Tax Code):</strong> "Ben fakirim!" demek ister. Amortismaný hýzlý düþer (Accelerated). Kâr düþük görünür, az vergi ödenir.</li>
-            </ul>
-            <p>
-                Ýþte bu "Az ödenen vergi" silinmez, <strong>DTL</strong> olarak bilançoya yazýlýr.
-            </p>
-        </div>
-
-        <h2 style="color: var(--accent-green);">2. Numerical Example (Sayýsal Ýspat)</h2>
-        <p>100 TL'lik bir makine aldýk. Vergi oraný %20.</p>
-        
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-table"></i> DTL_Calculation.xlsx</div>
-            <div class="excel-grid" style="grid-template-columns: 150px 100px 100px 100px;">
-                <div class="excel-cell header">Kalem</div>
-                <div class="excel-cell header">GAAP (Hissedar)</div>
-                <div class="excel-cell header">Tax (Devlet)</div>
-                <div class="excel-cell header">Fark</div>
-
-                <div class="excel-cell">Pre-Tax Income</div>
-                <div class="excel-cell">200</div>
-                <div class="excel-cell">200</div>
-                <div class="excel-cell">-</div>
-
-                <div class="excel-cell">(-) Depreciation</div>
-                <div class="excel-cell">(10) <span style="font-size:10px; color:gray;">Straight</span></div>
-                <div class="excel-cell">(50) <span style="font-size:10px; color:gray;">Accelerated</span></div>
-                <div class="excel-cell">+40</div>
-
-                <div class="excel-cell bold">Taxable Income</div>
-                <div class="excel-cell bold">190</div>
-                <div class="excel-cell bold">150</div>
-                <div class="excel-cell">+40</div>
-
-                <div class="excel-cell">Tax Expense (%20)</div>
-                <div class="excel-cell" style="color:red;">38</div>
-                <div class="excel-cell" style="color:red;">30</div>
-                <div class="excel-cell bold" style="color:blue;">8 (DTL)</div>
-            </div>
-            <div style="padding: 10px; font-size: 12px; color: gray; border-top:1px solid #ddd;">
-                <strong>Sonuç:</strong> Gelir Tablosuna 38 TL vergi gideri yazarýz. Ama devlete nakit olarak 30 TL öderiz. 
-                Aradaki 8 TL cebimizde kalýr ve bilançoda DTL artýþý olarak kaydedilir.
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">3. Why is it a Liability?</h2>
-        <div class="mech-box">
-            Bu 8 TL, devletin size verdiði <strong>Faizsiz Kredi</strong> gibidir.
-            <br>
-            Yýllar sonra makinenin amortismaný bittiðinde (Tax defterinde), artýk gider yazamayacaksýnýz ve o zaman devlete daha fazla vergi ödeyerek bu borcu kapatacaksýnýz (DTL Unwind).
-        </div>
-
-        <div class="lesson-nav">
-            <a href="goodwill-impairment.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Goodwill</a>
-            <a href="dta.html" class="btn-nav">Sonraki: DTA <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </div>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deferred Tax Liability | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">DTL</span>
+        </nav>
+
+        <h1>4.1 Deferred Tax Liability (DTL)</h1>
+        <p>
+            Devlete olan "ErtelenmiÅŸ" vergi borcudur.
+            "Åžimdi az Ã¶dÃ¼yorum, ama ileride acÄ±sÄ± Ã§Ä±kacak."
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. The Core Conflict: GAAP vs Tax Code</h2>
+        <div class="analogy-box">
+            <h3><i class="fa-solid fa-book-open"></i> Ä°ki FarklÄ± Kitap</h3>
+            <p>
+                Åžirketler yasal olarak iki farklÄ± muhasebe defteri tutarlar:
+            </p>
+            <ul>
+                <li><strong>Hissedar Defteri (GAAP/IFRS):</strong> "Ben Ã§ok kÃ¢rlÄ±yÄ±m!" demek ister. AmortismanÄ± yavaÅŸ dÃ¼ÅŸer (Straight Line). KÃ¢r yÃ¼ksek gÃ¶rÃ¼nÃ¼r.</li>
+                <li><strong>Vergi Defteri (Tax Code):</strong> "Ben fakirim!" demek ister. AmortismanÄ± hÄ±zlÄ± dÃ¼ÅŸer (Accelerated). KÃ¢r dÃ¼ÅŸÃ¼k gÃ¶rÃ¼nÃ¼r, az vergi Ã¶denir.</li>
+            </ul>
+            <p>
+                Ä°ÅŸte bu "Az Ã¶denen vergi" silinmez, <strong>DTL</strong> olarak bilanÃ§oya yazÄ±lÄ±r.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Numerical Example (SayÄ±sal Ä°spat)</h2>
+        <p>100 TL'lik bir makine aldÄ±k. Vergi oranÄ± %20.</p>
+        
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> DTL_Calculation.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 150px 100px 100px 100px;">
+                <div class="excel-cell header">Kalem</div>
+                <div class="excel-cell header">GAAP (Hissedar)</div>
+                <div class="excel-cell header">Tax (Devlet)</div>
+                <div class="excel-cell header">Fark</div>
+
+                <div class="excel-cell">Pre-Tax Income</div>
+                <div class="excel-cell">200</div>
+                <div class="excel-cell">200</div>
+                <div class="excel-cell">-</div>
+
+                <div class="excel-cell">(-) Depreciation</div>
+                <div class="excel-cell">(10) <span style="font-size:10px; color:gray;">Straight</span></div>
+                <div class="excel-cell">(50) <span style="font-size:10px; color:gray;">Accelerated</span></div>
+                <div class="excel-cell">+40</div>
+
+                <div class="excel-cell bold">Taxable Income</div>
+                <div class="excel-cell bold">190</div>
+                <div class="excel-cell bold">150</div>
+                <div class="excel-cell">+40</div>
+
+                <div class="excel-cell">Tax Expense (%20)</div>
+                <div class="excel-cell" style="color:red;">38</div>
+                <div class="excel-cell" style="color:red;">30</div>
+                <div class="excel-cell bold" style="color:blue;">8 (DTL)</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray; border-top:1px solid #ddd;">
+                <strong>SonuÃ§:</strong> Gelir Tablosuna 38 TL vergi gideri yazarÄ±z. Ama devlete nakit olarak 30 TL Ã¶deriz. 
+                Aradaki 8 TL cebimizde kalÄ±r ve bilanÃ§oda DTL artÄ±ÅŸÄ± olarak kaydedilir.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Why is it a Liability?</h2>
+        <div class="mech-box">
+            Bu 8 TL, devletin size verdiÄŸi <strong>Faizsiz Kredi</strong> gibidir.
+            <br>
+            YÄ±llar sonra makinenin amortismanÄ± bittiÄŸinde (Tax defterinde), artÄ±k gider yazamayacaksÄ±nÄ±z ve o zaman devlete daha fazla vergi Ã¶deyerek bu borcu kapatacaksÄ±nÄ±z (DTL Unwind).
+        </div>
+
+        <div class="lesson-nav">
+            <a href="goodwill-impairment.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Goodwill</a>
+            <a href="dta.html" class="btn-nav">Sonraki: DTA <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

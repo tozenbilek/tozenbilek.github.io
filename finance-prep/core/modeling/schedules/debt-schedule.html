@@ -1,73 +1,73 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Debt Schedule & Circularity | Modeling Lab</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../../css/style.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="nav-header">
-            <a href="../../../index.html" class="nav-link">Dashboard</a>
-            <span class="nav-sep">/</span>
-            <a href="../index.html" class="nav-link">Modeling</a>
-            <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Debt</span>
-        </nav>
-
-        <h1>3.1 Debt Schedule & Circularity</h1>
-        <p>
-            3-Statement Model'in en karmaþýk kýsmý. "Borç faiz yaratýr, faiz net kârý düþürür, düþük net kâr nakiti azaltýr, azalan nakit daha çok borçlanmayý gerektirir..."
-            Ýþte buna <strong>Circularity (Döngüsellik)</strong> denir.
-        </p>
-
-        <h2 style="color: #047857;">The Interest Calculation</h2>
-        <p>
-            Faiz neyin üzerinden hesaplanýr? Sene baþý bakiye mi, sene sonu mu?
-            <br>
-            <strong>Doðrusu: Average Balance (Ortalama Bakiye).</strong>
-            <br>
-            Interest = ((Beg. Debt + End. Debt) / 2) * Interest Rate.
-        </p>
-
-        <h2 style="color: #047857;">The Revolver (Kredi Kartý)</h2>
-        <p>
-            Þirketin nakdi biterse ne olur? Otomatik olarak "Revolver" (Rotatif Kredi) çeker.
-            Eðer nakit fazlasý varsa, Revolver'ý öder.
-            Bu mekanizma modelin "Otomatik Pilot"udur.
-        </p>
-
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> Debt_Schedule.xlsx</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 100px;">
-                <div class="excel-cell">Cash Available for Repayment</div>
-                <div class="excel-cell formula">(50.0)</div>
-                
-                <div class="excel-cell">Revolver Draw / (Paydown)</div>
-                <div class="excel-cell formula">50.0</div>
-            </div>
-            <div style="padding: 10px; font-size: 12px; color: gray;">
-                Formül: = -MIN(Cash_Available, Beg_Revolver_Balance)
-                <br>(Eðer nakit varsa borcu öde, yoksa borç çek).
-            </div>
-        </div>
-
-        <h2 style="color: #047857;">The Circularity Switch</h2>
-        <p>
-            Excel döngüsel hesaplamalarý sevmez ve hata verir.
-            Bu yüzden modele bir "Circuit Breaker" (Þalter) koyarýz.
-            <br>
-            <strong>IF(Circuit_Breaker="ON", Calculate_Interest, 0)</strong>
-        </p>
-
-        <div class="lesson-nav">
-            <a href="cash-flow.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: CFS</a>
-            <a href="balancing.html" class="btn-nav">Sonraki: Balancing <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </div>
-</body>
-</html>
-
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt Schedule & Circularity | Modeling Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Modeling</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Debt</span>
+        </nav>
+
+        <h1>3.1 Debt Schedule & Circularity</h1>
+        <p>
+            3-Statement Model'in en karmaÅŸÄ±k kÄ±smÄ±. "BorÃ§ faiz yaratÄ±r, faiz net kÃ¢rÄ± dÃ¼ÅŸÃ¼rÃ¼r, dÃ¼ÅŸÃ¼k net kÃ¢r nakiti azaltÄ±r, azalan nakit daha Ã§ok borÃ§lanmayÄ± gerektirir..."
+            Ä°ÅŸte buna <strong>Circularity (DÃ¶ngÃ¼sellik)</strong> denir.
+        </p>
+
+        <h2 style="color: #047857;">The Interest Calculation</h2>
+        <p>
+            Faiz neyin Ã¼zerinden hesaplanÄ±r? Sene baÅŸÄ± bakiye mi, sene sonu mu?
+            <br>
+            <strong>DoÄŸrusu: Average Balance (Ortalama Bakiye).</strong>
+            <br>
+            Interest = ((Beg. Debt + End. Debt) / 2) * Interest Rate.
+        </p>
+
+        <h2 style="color: #047857;">The Revolver (Kredi KartÄ±)</h2>
+        <p>
+            Åžirketin nakdi biterse ne olur? Otomatik olarak "Revolver" (Rotatif Kredi) Ã§eker.
+            EÄŸer nakit fazlasÄ± varsa, Revolver'Ä± Ã¶der.
+            Bu mekanizma modelin "Otomatik Pilot"udur.
+        </p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-file-excel"></i> Debt_Schedule.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 100px;">
+                <div class="excel-cell">Cash Available for Repayment</div>
+                <div class="excel-cell formula">(50.0)</div>
+                
+                <div class="excel-cell">Revolver Draw / (Paydown)</div>
+                <div class="excel-cell formula">50.0</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                FormÃ¼l: = -MIN(Cash_Available, Beg_Revolver_Balance)
+                <br>(EÄŸer nakit varsa borcu Ã¶de, yoksa borÃ§ Ã§ek).
+            </div>
+        </div>
+
+        <h2 style="color: #047857;">The Circularity Switch</h2>
+        <p>
+            Excel dÃ¶ngÃ¼sel hesaplamalarÄ± sevmez ve hata verir.
+            Bu yÃ¼zden modele bir "Circuit Breaker" (Åžalter) koyarÄ±z.
+            <br>
+            <strong>IF(Circuit_Breaker="ON", Calculate_Interest, 0)</strong>
+        </p>
+
+        <div class="lesson-nav">
+            <a href="cash-flow.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: CFS</a>
+            <a href="balancing.html" class="btn-nav">Sonraki: Balancing <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+

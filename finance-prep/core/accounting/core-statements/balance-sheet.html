@@ -1,514 +1,514 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balance Sheet | Accounting</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="nav-header">
-            <a href="../../../index.html" class="nav-link">Dashboard</a>
-            <span class="nav-sep">/</span>
-            <a href="../index.html" class="nav-link">Accounting</a>
-            <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Balance Sheet</span>
-        </nav>
-
-        <h1>1.2 Balance Sheet (Bilanço)</h1>
-        <p class="lesson-desc">
-            Bu sayfa “hızlı geçmek” için değil: Bilançoyu <strong>tek tek</strong>, <strong>tane tane</strong> öğreneceğiz.
-            Her kavramı sırayla inceleyeceğiz ve her adımın sonunda mini kontrol sorusu yapacağız.
-        </p>
-
-        <div class="mech-box">
-            <strong>En basit tanım (1 cümle):</strong>
-            <br>
-            Bilanço = “Şu an elimde ne var?” (Assets) ve “Bunu hangi parayla aldım?” (Liabilities + Equity) fotoğrafı.
-        </div>
-
-        <div class="excel-window" style="margin-top: 14px;">
-            <div class="excel-header"><i class="fa-solid fa-camera"></i> Mini Bilanço (tek bakışta)</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 120px 1fr 120px;">
-                <div class="excel-cell header">Assets</div>
-                <div class="excel-cell header">TL</div>
-                <div class="excel-cell header">Liabilities + Equity</div>
-                <div class="excel-cell header">TL</div>
-
-                <div class="excel-cell">Cash</div>
-                <div class="excel-cell">100</div>
-                <div class="excel-cell">Accounts Payable (AP)</div>
-                <div class="excel-cell">30</div>
-
-                <div class="excel-cell">Inventory</div>
-                <div class="excel-cell">50</div>
-                <div class="excel-cell">Debt</div>
-                <div class="excel-cell">60</div>
-
-                <div class="excel-cell">Accounts Receivable (AR)</div>
-                <div class="excel-cell">20</div>
-                <div class="excel-cell">Equity</div>
-                <div class="excel-cell">80</div>
-
-                <div class="excel-cell bold" style="background:#f8fafc;">Toplam Assets</div>
-                <div class="excel-cell bold" style="background:#f8fafc;">170</div>
-                <div class="excel-cell bold" style="background:#f8fafc;">Toplam L+E</div>
-                <div class="excel-cell bold" style="background:#f8fafc;">170</div>
-            </div>
-        </div>
-
-        <div class="deep-dive-box">
-            <h3><i class="fa-solid fa-map"></i> Harita (Önce Büyük Resim)</h3>
-            <p style="margin-bottom: 10px;">
-                Bilanço tek bir soruya cevap verir:
-                <strong>“Şirketin bu an itibarıyla neyi var ve bunları hangi kaynakla finanse etti?”</strong>
-            </p>
-            <div class="excel-window" style="margin-top: 10px;">
-                <div class="excel-header"><i class="fa-solid fa-route"></i> 3 Parça (soldan sağa)</div>
-                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div class="excel-cell header">Kutu</div>
-                    <div class="excel-cell header">1 cümle</div>
-
-                    <div class="excel-cell"><strong>Assets (Varlıklar)</strong></div>
-                    <div class="excel-cell">Şirketin sahip olduğu değerler.</div>
-
-                    <div class="excel-cell"><strong>Liabilities (Borçlar)</strong></div>
-                    <div class="excel-cell">Başkalarına olan yükümlülükler (ödenecekler).</div>
-
-                    <div class="excel-cell"><strong>Equity (Özsermaye)</strong></div>
-                    <div class="excel-cell">Borçlar ödenince hissedara kalan hak.</div>
-                </div>
-            </div>
-            <p style="margin-top: 12px; font-weight: 500;">
-                Bilanço bir “fotoğraf”tır: <strong>belirli bir anda</strong> (örn. 31 Aralık 23:59) durum ne?
-            </p>
-        </div>
-
-        <h2 style="color: var(--accent-green);">1. Altın Denklem (Bilanço Neden Hep Dengede?)</h2>
-        <p>
-            Bilançonun kalbi şudur. Ezber gibi değil, <strong>mantık</strong> gibi düşün.
-        </p>
-        <div class="math-block">
-            \[ \text{Assets} = \text{Liabilities} + \text{Equity} \]
-        </div>
-
-        <div class="mech-box">
-            <strong>Analoji: Ev Almak (çok basit)</strong>
-            <br>
-            5 Milyon TL’lik bir ev aldınız: <strong>Asset = 5M</strong>
-            <br>
-            Bankadan 4M kredi çektiniz: <strong>Liability = 4M</strong>
-            <br>
-            1M peşinat verdiniz: <strong>Equity = 1M</strong>
-            <br><br>
-            <strong>Denklem:</strong> 5M = 4M + 1M
-            <br>
-            Ev 6M olursa: Borç (4M) aynı kalabilir, <strong>Equity artar</strong> (2M olur).
-        </div>
-
-        <div class="drill-card">
-            <p class="question">Mini kontrol: “Assets artarsa” denklem nasıl doğru kalır?</p>
-            <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                <span class="blur-text">Ya <strong>Liabilities</strong> artar (borçlanıp varlık alırsın) ya da <strong>Equity</strong> artar (sermaye koyarsın / kâr edersin) — bazen ikisi birlikte de olur.</span>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">1.5 En Önemli Refleks: 1 İşlem Yapınca “Ne Değişti?”</h2>
-        <p>
-            Bilanço “ezber” değil; <strong>işlem takibi</strong>. Her işlemde sadece şunu yap:
-            <strong>Hangi hesap arttı?</strong> ve <strong>hangi hesap azaldı?</strong>
-        </p>
-
-        <div class="drill-section">
-            <div class="drill-card">
-                <p class="question">İşlem A: 40 TL nakitle stok aldın. Ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Cash -40</strong>, <strong>Inventory +40</strong>. Toplam Assets değişmez. Liabilities/Equity değişmez.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">İşlem B: 50 TL’lik malı müşteriye sattın, parasını sonra alacaksın. Ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>AR +50</strong>. (Cash artmadı çünkü para gelmedi.)</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">İşlem C: Tedarikçiden 30 TL’lik malı vadeli aldın. Ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Inventory +30</strong> ve <strong>AP +30</strong>. (Varlık + borç birlikte artar.)</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">İşlem D: Müşteriden 60 TL peşin aldın, hizmeti gelecek ay vereceksin. Ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Cash +60</strong> ve <strong>Deferred Revenue +60</strong>. (Nakit geldi ama “iş yapma borcun” var.)</span>
-                </div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">2. Kavram 1: Assets (Varlık) Nedir?</h2>
-        <p>
-            En basit tanım: <strong>Şirketin sahip olduğu</strong> ve “değer” taşıyan şeyler.
-            Bilançoda varlıklar genelde <strong>likiditeye</strong> (paraya dönüşme hızına) göre sıralanır: en hızlı nakde dönen en üstte.
-        </p>
-
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-table"></i> Assets (Tane tane)</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 260px;">
-                <div class="excel-cell header">Kalem</div>
-                <div class="excel-cell header">Basit anlamı</div>
-
-                <div class="excel-cell bold" style="background:#f8fafc;">A) Current Assets (&lt; 1 yıl)</div>
-                <div class="excel-cell" style="background:#f8fafc;">Kısa vadede “nakde yakın”</div>
-
-                <div class="excel-cell">Cash &amp; Equivalents</div>
-                <div class="excel-cell">Kasadaki nakit / banka. (En likit)</div>
-
-                <div class="excel-cell">Accounts Receivable (AR)</div>
-                <div class="excel-cell">Müşteriye sattım, parasını henüz almadım.</div>
-
-                <div class="excel-cell">Inventory</div>
-                <div class="excel-cell">Depodaki stok. Satılırsa paraya döner.</div>
-
-                <div class="excel-cell">Prepaid Expenses</div>
-                <div class="excel-cell">Peşin ödenmiş gider: “ileride hak”.</div>
-
-                <div class="excel-cell bold" style="background:#f8fafc;">B) Non-Current Assets (&gt; 1 yıl)</div>
-                <div class="excel-cell" style="background:#f8fafc;">Uzun vadeli varlıklar</div>
-
-                <div class="excel-cell">PP&amp;E</div>
-                <div class="excel-cell">Fabrika/makine/arsa. (Zamanla değer kaybı olabilir)</div>
-
-                <div class="excel-cell">Goodwill</div>
-                <div class="excel-cell">Bir şirketi “pahalıya” alınca oluşan fark (hava parası).</div>
-            </div>
-        </div>
-
-        <div class="drill-section">
-            <div class="drill-card">
-                <p class="question">Mini kontrol: AR artarsa bu “iyi mi kötü mü”?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Tek başına “iyi/kötü” değil. Satış yaptığını gösterebilir (iyi) ama parayı henüz almadığını da gösterir (nakit gecikir). Bu yüzden Cash Flow/Working Capital ile beraber düşünülür.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">Mini kontrol: Inventory neden “riskli” olabilir?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Çünkü satılamazsa eskir/bozulur/modası geçer. Kâğıt üstünde varlık yazsa da <strong>nakde dönüşmeyebilir</strong>.</span>
-                </div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">3. Kavram 2: Liabilities (Yükümlülük) Nedir?</h2>
-        <p>
-            En basit tanım: <strong>Şirketin başkalarına olan borçları / ödeyecekleri</strong>.
-            Genelde <strong>vadesine</strong> göre sıralanır: yakında ödenecekler üstte.
-        </p>
-
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-file-invoice"></i> Liabilities (Tane tane)</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 280px;">
-                <div class="excel-cell header">Kalem</div>
-                <div class="excel-cell header">Basit anlamı</div>
-
-                <div class="excel-cell bold" style="background:#f8fafc;">A) Current Liabilities (&lt; 1 yıl)</div>
-                <div class="excel-cell" style="background:#f8fafc;">Yakında ödenecekler</div>
-
-                <div class="excel-cell">Accounts Payable (AP)</div>
-                <div class="excel-cell">Tedarikçiye borç: mal aldım, sonra ödeyeceğim.</div>
-
-                <div class="excel-cell">Accrued Expenses</div>
-                <div class="excel-cell">Maaş/elektrik gibi “tahakkuk etmiş” ama ödenmemiş gider.</div>
-
-                <div class="excel-cell">Deferred Revenue</div>
-                <div class="excel-cell">Parayı aldım ama hizmeti/ürünü henüz vermedim.</div>
-
-                <div class="excel-cell bold" style="background:#f8fafc;">B) Long-Term Liabilities (&gt; 1 yıl)</div>
-                <div class="excel-cell" style="background:#f8fafc;">Daha uzun vadeli borçlar</div>
-
-                <div class="excel-cell">Long-Term Debt</div>
-                <div class="excel-cell">Kredi/tahvil gibi faizli borçlar.</div>
-            </div>
-        </div>
-
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-solid fa-hand-holding-dollar"></i> Deferred Revenue (Neden “Borç”?)</div>
-            <p>
-                Müşteriden parayı peşin aldın ama işi henüz yapmadın.
-                Bu para teknik olarak “tam senin” sayılmaz: <strong>işi yapma yükümlülüğün</strong> var.
-            </p>
-            <p>
-                Basit örnek: 12 aylık üyelik için 12.000 TL aldın.
-                <br>
-                Paranın hepsi kasaya girdi ama ilk ayda gelir yazabileceğin kısım sadece 1.000 TL.
-                Kalan 11.000 TL, bilançoda <strong>Deferred Revenue</strong> (borç) olarak durur.
-            </p>
-        </div>
-
-        <div class="drill-card">
-            <p class="question">Mini kontrol: AP artarsa şirketin nakdi genelde ne olur?</p>
-            <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                <span class="blur-text">Genelde <strong>nakit daha fazla kalır</strong> (tedarikçiye henüz ödememişsindir). Bu mantık Cash Flow’daki Working Capital kurallarıyla birebir bağlanır.</span>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">4. Kavram 3: Equity (Özsermaye) Nedir?</h2>
-        <p>
-            En basit tanım: <strong>Assets - Liabilities</strong>.
-            Yani “şirket bugün satılsa ve tüm borçlar ödense hissedara kalan hak”.
-            <br>
-            Önemli: Equity “kasadaki nakit” değildir; <strong>muhasebe açısından kalan hak</strong> gibi düşün.
-        </p>
-
-        <div class="mech-box">
-            <strong>Equity’nin 3 temel parçası (en sık görülen)</strong>
-            <ul>
-                <li><strong>Common Stock:</strong> Nominal sermaye (kâğıt üzerindeki “sermaye”).</li>
-                <li><strong>APIC:</strong> Yatırımcının nominalin üstünde koyduğu prim.</li>
-                <li><strong>Retained Earnings:</strong> Geçmişten bugüne biriken kârlar - dağıtılan temettüler.</li>
-            </ul>
-        </div>
-
-        <div class="math-block">
-            \[
-            \text{Ending Retained Earnings}
-            =
-            \text{Beginning Retained Earnings}
-            +
-            \text{Net Income}
-            -
-            \text{Dividends}
-            \]
-        </div>
-
-        <div class="drill-card">
-            <p class="question">Mini kontrol: Şirket kâr ederse bilançoda “en net” neresi değişir?</p>
-            <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                <span class="blur-text"><strong>Retained Earnings artar</strong> (temettü yoksa). Bu da Equity’yi büyütür. (Linkage sayfasıyla bağlantı)</span>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">5. Bilanço Mantığı: “Bir İşlem Yapınca” Ne Değişir?</h2>
-        <p>
-            Bilançoyu anlamanın en kolay yolu: 1 işlem seç, hangi kutular oynuyor gör.
-            Aşağıdaki mini senaryoları sakin sakin oku.
-        </p>
-
-        <div class="deep-dive-box">
-            <h3><i class="fa-solid fa-shuffle"></i> 5 Mini Senaryo (en temel)</h3>
-            <div class="content-box-base" style="margin: 0;">
-                <ol style="margin-left: 18px;">
-                    <li>
-                        <strong>Bankadan 100 TL kredi çekip kasaya koydun:</strong>
-                        Assets (Cash) +100, Liabilities (Debt) +100.
-                    </li>
-                    <li>
-                        <strong>100 TL nakitle stok aldın:</strong>
-                        Assets içinde Cash -100, Inventory +100. (Toplam Assets aynı.)
-                    </li>
-                    <li>
-                        <strong>Tedarikçiden vadeli (AP) stok aldın (100 TL):</strong>
-                        Assets (Inventory) +100, Liabilities (AP) +100.
-                    </li>
-                    <li>
-                        <strong>Yatırımcıdan 100 TL sermaye aldın:</strong>
-                        Assets (Cash) +100, Equity +100.
-                    </li>
-                    <li>
-                        <strong>Bu dönem 50 TL net kâr ettin (temettü yok):</strong>
-                        Equity (Retained Earnings) +50. (Cash hemen artmak zorunda değil; zamanlama farkları olabilir.)
-                    </li>
-                </ol>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">6. Tuzak: Book Value ? Market Value</h2>
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Defter Değeri “borsa değeri” değildir</div>
-            <p>
-                Bilanço, şirketin <strong>muhasebe değerini</strong> (Book Value) gösterir.
-                Borsa değeri (Market Cap) ise yatırımcıların “geleceğe” biçtiği değerdir.
-            </p>
-            <p>
-                <strong>Basit örnek: Apple</strong>
-                <br>
-                Bilançodaki Equity (Book Value) ~60B$ olabilir ama Market Cap ~3T$ olabilir.
-                Çünkü bilanço; marka gücü, ağ etkisi, büyüme beklentisi gibi şeyleri tam yansıtmaz.
-            </p>
-        </div>
-
-        <div class="drill-section">
-            <h3><i class="fa-solid fa-bolt"></i> Mini Drills (kapanış)</h3>
-            <div class="drill-card">
-                <p class="question">Soru: “Cash” varlık mı?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Evet. Cash en likit varlıktır ve bilançoda Assets tarafında durur.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">Soru: Deferred Revenue neden “gelir” değil de “borç” gibi durur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Çünkü parayı alsan bile hizmeti vermediysen “iş yapma yükümlülüğün” var. Hizmeti verdikçe borç azalır, gelir yazılır.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">Soru: Equity artarsa bu her zaman kasaya nakit girdi demek mi?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Hayır. Equity kârla da artabilir (Net Income › Retained Earnings) ama nakit aynı anda artmayabilir (AR/Inventory gibi zamanlama farkları).</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="drill-section mcq-quiz" style="margin-top: 18px;">
-            <h3><i class="fa-solid fa-circle-question"></i> Quiz (Çoktan Seçmeli) — Bilanço</h3>
-            <div class="mcq-controls" style="display:flex; gap:10px; align-items:center; margin: 8px 0 14px;">
-                <a href="#" class="btn-nav" data-mcq-shuffle style="padding:10px 12px; font-size:12px;">Karıştır</a>
-                <a href="#" class="btn-nav" data-mcq-reset style="padding:10px 12px; font-size:12px;">Sıfırla</a>
-                <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; color: var(--text-tertiary);">
-                    Skor: <strong data-mcq-score>0 / 0</strong>
-                </span>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 1: Bilanço (Balance Sheet) en doğru şekilde neyi gösterir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Bir dönemdeki kârı</li>
-                    <li><strong>B)</strong> Bir dönemdeki nakit giriş-çıkışını</li>
-                    <li><strong>C)</strong> Belirli bir tarihte varlıklar ve finansman kaynaklarını</li>
-                    <li><strong>D)</strong> Sadece satışları</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Bilanço “fotoğraf”tır: bir anlık durum.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 2: Bilanço denklemi hangisidir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Assets = Revenue - Expenses</li>
-                    <li><strong>B)</strong> Assets = Liabilities + Equity</li>
-                    <li><strong>C)</strong> Equity = Revenue + COGS</li>
-                    <li><strong>D)</strong> Cash = Net Income</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Her işlem bu dengeyi korur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 3 (Kara): “Equity artarsa kasaya mutlaka nakit girmiştir” ifadesi için en doğru seçenek?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Doğru; equity = cash</li>
-                    <li><strong>B)</strong> Yanlış; equity kârla artabilir ama nakit aynı anda artmayabilir</li>
-                    <li><strong>C)</strong> Doğru; equity sadece borçla artar</li>
-                    <li><strong>D)</strong> Yanlış; çünkü bilanço video gibidir</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Net Income › Retained Earnings equity’yi artırır; AR/Inventory gibi kalemler yüzünden nakit gelmeyebilir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 4: Accounts Receivable (AR) bilançoda nerededir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Current Asset</li>
-                    <li><strong>B)</strong> Current Liability</li>
-                    <li><strong>C)</strong> Equity</li>
-                    <li><strong>D)</strong> Revenue</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — AR müşteriden alacağındır (varlık).</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 5: Deferred Revenue bilançoda nerededir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Asset</li>
-                    <li><strong>B)</strong> Liability</li>
-                    <li><strong>C)</strong> Equity</li>
-                    <li><strong>D)</strong> COGS</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Para geldi ama hizmet/teslim borcun var.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 6: Accounts Payable (AP) bilançoda nerededir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Asset</li>
-                    <li><strong>B)</strong> Liability</li>
-                    <li><strong>C)</strong> Equity</li>
-                    <li><strong>D)</strong> Interest</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Tedarikçiye borçtur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 7 (İşlem): 40 TL nakitle stok aldıysan bilanço etkisi hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Cash +40, Inventory -40</li>
-                    <li><strong>B)</strong> Cash -40, Inventory +40</li>
-                    <li><strong>C)</strong> Inventory +40, AP +40</li>
-                    <li><strong>D)</strong> Cash +40, Equity +40</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Varlık içinde yer değiştirir, toplam assets değişmez.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 8 (İşlem): 30 TL’lik malı vadeli aldıysan (AP) en doğru etki?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Inventory +30, AP +30</li>
-                    <li><strong>B)</strong> Cash -30, AP +30</li>
-                    <li><strong>C)</strong> Inventory -30, Cash +30</li>
-                    <li><strong>D)</strong> Equity +30, Cash -30</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Varlık ve borç birlikte artar.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 9 (Kara): Inventory neden “riskli” olabilir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Çünkü her zaman nakittir</li>
-                    <li><strong>B)</strong> Çünkü satılamazsa değer kaybedebilir ve nakde dönmeyebilir</li>
-                    <li><strong>C)</strong> Çünkü vergiyi artırır</li>
-                    <li><strong>D)</strong> Çünkü equity’dir</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Stok “varlık” olsa da nakde dönüşmeyebilir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 10 (Kara): Aşağıdakilerden hangisi “Current Asset” değildir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Cash</li>
-                    <li><strong>B)</strong> AR</li>
-                    <li><strong>C)</strong> Inventory</li>
-                    <li><strong>D)</strong> Long-Term Debt</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> D — Long-Term Debt bir yükümlülüktür (borç).</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="lesson-nav">
-            <a href="income-statement.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Income Statement</a>
-            <a href="cash-flow-statement.html" class="btn-nav">Sonraki: Cash Flow <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </div>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Sheet | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Balance Sheet</span>
+        </nav>
+
+        <h1>1.2 Balance Sheet (BilanÃ§o)</h1>
+        <p class="lesson-desc">
+            Bu sayfa â€œhÄ±zlÄ± geÃ§mekâ€ iÃ§in deÄŸil: BilanÃ§oyu <strong>tek tek</strong>, <strong>tane tane</strong> Ã¶ÄŸreneceÄŸiz.
+            Her kavramÄ± sÄ±rayla inceleyeceÄŸiz ve her adÄ±mÄ±n sonunda mini kontrol sorusu yapacaÄŸÄ±z.
+        </p>
+
+        <div class="mech-box">
+            <strong>En basit tanÄ±m (1 cÃ¼mle):</strong>
+            <br>
+            BilanÃ§o = â€œÅu an elimde ne var?â€ (Assets) ve â€œBunu hangi parayla aldÄ±m?â€ (Liabilities + Equity) fotoÄŸrafÄ±.
+        </div>
+
+        <div class="excel-window" style="margin-top: 14px;">
+            <div class="excel-header"><i class="fa-solid fa-camera"></i> Mini BilanÃ§o (tek bakÄ±ÅŸta)</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 1fr 120px;">
+                <div class="excel-cell header">Assets</div>
+                <div class="excel-cell header">TL</div>
+                <div class="excel-cell header">Liabilities + Equity</div>
+                <div class="excel-cell header">TL</div>
+
+                <div class="excel-cell">Cash</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">Accounts Payable (AP)</div>
+                <div class="excel-cell">30</div>
+
+                <div class="excel-cell">Inventory</div>
+                <div class="excel-cell">50</div>
+                <div class="excel-cell">Debt</div>
+                <div class="excel-cell">60</div>
+
+                <div class="excel-cell">Accounts Receivable (AR)</div>
+                <div class="excel-cell">20</div>
+                <div class="excel-cell">Equity</div>
+                <div class="excel-cell">80</div>
+
+                <div class="excel-cell bold" style="background:#f8fafc;">Toplam Assets</div>
+                <div class="excel-cell bold" style="background:#f8fafc;">170</div>
+                <div class="excel-cell bold" style="background:#f8fafc;">Toplam L+E</div>
+                <div class="excel-cell bold" style="background:#f8fafc;">170</div>
+            </div>
+        </div>
+
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-map"></i> Harita (Ã–nce BÃ¼yÃ¼k Resim)</h3>
+            <p style="margin-bottom: 10px;">
+                BilanÃ§o tek bir soruya cevap verir:
+                <strong>â€œÅirketin bu an itibarÄ±yla neyi var ve bunlarÄ± hangi kaynakla finanse etti?â€</strong>
+            </p>
+            <div class="excel-window" style="margin-top: 10px;">
+                <div class="excel-header"><i class="fa-solid fa-route"></i> 3 ParÃ§a (soldan saÄŸa)</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="excel-cell header">Kutu</div>
+                    <div class="excel-cell header">1 cÃ¼mle</div>
+
+                    <div class="excel-cell"><strong>Assets (VarlÄ±klar)</strong></div>
+                    <div class="excel-cell">Åirketin sahip olduÄŸu deÄŸerler.</div>
+
+                    <div class="excel-cell"><strong>Liabilities (BorÃ§lar)</strong></div>
+                    <div class="excel-cell">BaÅŸkalarÄ±na olan yÃ¼kÃ¼mlÃ¼lÃ¼kler (Ã¶denecekler).</div>
+
+                    <div class="excel-cell"><strong>Equity (Ã–zsermaye)</strong></div>
+                    <div class="excel-cell">BorÃ§lar Ã¶denince hissedara kalan hak.</div>
+                </div>
+            </div>
+            <p style="margin-top: 12px; font-weight: 500;">
+                BilanÃ§o bir â€œfotoÄŸrafâ€tÄ±r: <strong>belirli bir anda</strong> (Ã¶rn. 31 AralÄ±k 23:59) durum ne?
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">1. AltÄ±n Denklem (BilanÃ§o Neden Hep Dengede?)</h2>
+        <p>
+            BilanÃ§onun kalbi ÅŸudur. Ezber gibi deÄŸil, <strong>mantÄ±k</strong> gibi dÃ¼ÅŸÃ¼n.
+        </p>
+        <div class="math-block">
+            \[ \text{Assets} = \text{Liabilities} + \text{Equity} \]
+        </div>
+
+        <div class="mech-box">
+            <strong>Analoji: Ev Almak (Ã§ok basit)</strong>
+            <br>
+            5 Milyon TLâ€™lik bir ev aldÄ±nÄ±z: <strong>Asset = 5M</strong>
+            <br>
+            Bankadan 4M kredi Ã§ektiniz: <strong>Liability = 4M</strong>
+            <br>
+            1M peÅŸinat verdiniz: <strong>Equity = 1M</strong>
+            <br><br>
+            <strong>Denklem:</strong> 5M = 4M + 1M
+            <br>
+            Ev 6M olursa: BorÃ§ (4M) aynÄ± kalabilir, <strong>Equity artar</strong> (2M olur).
+        </div>
+
+        <div class="drill-card">
+            <p class="question">Mini kontrol: â€œAssets artarsaâ€ denklem nasÄ±l doÄŸru kalÄ±r?</p>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                <span class="blur-text">Ya <strong>Liabilities</strong> artar (borÃ§lanÄ±p varlÄ±k alÄ±rsÄ±n) ya da <strong>Equity</strong> artar (sermaye koyarsÄ±n / kÃ¢r edersin) â€” bazen ikisi birlikte de olur.</span>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">1.5 En Ã–nemli Refleks: 1 Ä°ÅŸlem YapÄ±nca â€œNe DeÄŸiÅŸti?â€</h2>
+        <p>
+            BilanÃ§o â€œezberâ€ deÄŸil; <strong>iÅŸlem takibi</strong>. Her iÅŸlemde sadece ÅŸunu yap:
+            <strong>Hangi hesap arttÄ±?</strong> ve <strong>hangi hesap azaldÄ±?</strong>
+        </p>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question">Ä°ÅŸlem A: 40 TL nakitle stok aldÄ±n. Ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Cash -40</strong>, <strong>Inventory +40</strong>. Toplam Assets deÄŸiÅŸmez. Liabilities/Equity deÄŸiÅŸmez.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Ä°ÅŸlem B: 50 TLâ€™lik malÄ± mÃ¼ÅŸteriye sattÄ±n, parasÄ±nÄ± sonra alacaksÄ±n. Ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>AR +50</strong>. (Cash artmadÄ± Ã§Ã¼nkÃ¼ para gelmedi.)</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Ä°ÅŸlem C: TedarikÃ§iden 30 TLâ€™lik malÄ± vadeli aldÄ±n. Ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Inventory +30</strong> ve <strong>AP +30</strong>. (VarlÄ±k + borÃ§ birlikte artar.)</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Ä°ÅŸlem D: MÃ¼ÅŸteriden 60 TL peÅŸin aldÄ±n, hizmeti gelecek ay vereceksin. Ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Cash +60</strong> ve <strong>Deferred Revenue +60</strong>. (Nakit geldi ama â€œiÅŸ yapma borcunâ€ var.)</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Kavram 1: Assets (VarlÄ±k) Nedir?</h2>
+        <p>
+            En basit tanÄ±m: <strong>Åirketin sahip olduÄŸu</strong> ve â€œdeÄŸerâ€ taÅŸÄ±yan ÅŸeyler.
+            BilanÃ§oda varlÄ±klar genelde <strong>likiditeye</strong> (paraya dÃ¶nÃ¼ÅŸme hÄ±zÄ±na) gÃ¶re sÄ±ralanÄ±r: en hÄ±zlÄ± nakde dÃ¶nen en Ã¼stte.
+        </p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Assets (Tane tane)</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 260px;">
+                <div class="excel-cell header">Kalem</div>
+                <div class="excel-cell header">Basit anlamÄ±</div>
+
+                <div class="excel-cell bold" style="background:#f8fafc;">A) Current Assets (&lt; 1 yÄ±l)</div>
+                <div class="excel-cell" style="background:#f8fafc;">KÄ±sa vadede â€œnakde yakÄ±nâ€</div>
+
+                <div class="excel-cell">Cash &amp; Equivalents</div>
+                <div class="excel-cell">Kasadaki nakit / banka. (En likit)</div>
+
+                <div class="excel-cell">Accounts Receivable (AR)</div>
+                <div class="excel-cell">MÃ¼ÅŸteriye sattÄ±m, parasÄ±nÄ± henÃ¼z almadÄ±m.</div>
+
+                <div class="excel-cell">Inventory</div>
+                <div class="excel-cell">Depodaki stok. SatÄ±lÄ±rsa paraya dÃ¶ner.</div>
+
+                <div class="excel-cell">Prepaid Expenses</div>
+                <div class="excel-cell">PeÅŸin Ã¶denmiÅŸ gider: â€œileride hakâ€.</div>
+
+                <div class="excel-cell bold" style="background:#f8fafc;">B) Non-Current Assets (&gt; 1 yÄ±l)</div>
+                <div class="excel-cell" style="background:#f8fafc;">Uzun vadeli varlÄ±klar</div>
+
+                <div class="excel-cell">PP&amp;E</div>
+                <div class="excel-cell">Fabrika/makine/arsa. (Zamanla deÄŸer kaybÄ± olabilir)</div>
+
+                <div class="excel-cell">Goodwill</div>
+                <div class="excel-cell">Bir ÅŸirketi â€œpahalÄ±yaâ€ alÄ±nca oluÅŸan fark (hava parasÄ±).</div>
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question">Mini kontrol: AR artarsa bu â€œiyi mi kÃ¶tÃ¼ mÃ¼â€?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Tek baÅŸÄ±na â€œiyi/kÃ¶tÃ¼â€ deÄŸil. SatÄ±ÅŸ yaptÄ±ÄŸÄ±nÄ± gÃ¶sterebilir (iyi) ama parayÄ± henÃ¼z almadÄ±ÄŸÄ±nÄ± da gÃ¶sterir (nakit gecikir). Bu yÃ¼zden Cash Flow/Working Capital ile beraber dÃ¼ÅŸÃ¼nÃ¼lÃ¼r.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Mini kontrol: Inventory neden â€œriskliâ€ olabilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ satÄ±lamazsa eskir/bozulur/modasÄ± geÃ§er. KÃ¢ÄŸÄ±t Ã¼stÃ¼nde varlÄ±k yazsa da <strong>nakde dÃ¶nÃ¼ÅŸmeyebilir</strong>.</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Kavram 2: Liabilities (YÃ¼kÃ¼mlÃ¼lÃ¼k) Nedir?</h2>
+        <p>
+            En basit tanÄ±m: <strong>Åirketin baÅŸkalarÄ±na olan borÃ§larÄ± / Ã¶deyecekleri</strong>.
+            Genelde <strong>vadesine</strong> gÃ¶re sÄ±ralanÄ±r: yakÄ±nda Ã¶denecekler Ã¼stte.
+        </p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-file-invoice"></i> Liabilities (Tane tane)</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 280px;">
+                <div class="excel-cell header">Kalem</div>
+                <div class="excel-cell header">Basit anlamÄ±</div>
+
+                <div class="excel-cell bold" style="background:#f8fafc;">A) Current Liabilities (&lt; 1 yÄ±l)</div>
+                <div class="excel-cell" style="background:#f8fafc;">YakÄ±nda Ã¶denecekler</div>
+
+                <div class="excel-cell">Accounts Payable (AP)</div>
+                <div class="excel-cell">TedarikÃ§iye borÃ§: mal aldÄ±m, sonra Ã¶deyeceÄŸim.</div>
+
+                <div class="excel-cell">Accrued Expenses</div>
+                <div class="excel-cell">MaaÅŸ/elektrik gibi â€œtahakkuk etmiÅŸâ€ ama Ã¶denmemiÅŸ gider.</div>
+
+                <div class="excel-cell">Deferred Revenue</div>
+                <div class="excel-cell">ParayÄ± aldÄ±m ama hizmeti/Ã¼rÃ¼nÃ¼ henÃ¼z vermedim.</div>
+
+                <div class="excel-cell bold" style="background:#f8fafc;">B) Long-Term Liabilities (&gt; 1 yÄ±l)</div>
+                <div class="excel-cell" style="background:#f8fafc;">Daha uzun vadeli borÃ§lar</div>
+
+                <div class="excel-cell">Long-Term Debt</div>
+                <div class="excel-cell">Kredi/tahvil gibi faizli borÃ§lar.</div>
+            </div>
+        </div>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-hand-holding-dollar"></i> Deferred Revenue (Neden â€œBorÃ§â€?)</div>
+            <p>
+                MÃ¼ÅŸteriden parayÄ± peÅŸin aldÄ±n ama iÅŸi henÃ¼z yapmadÄ±n.
+                Bu para teknik olarak â€œtam seninâ€ sayÄ±lmaz: <strong>iÅŸi yapma yÃ¼kÃ¼mlÃ¼lÃ¼ÄŸÃ¼n</strong> var.
+            </p>
+            <p>
+                Basit Ã¶rnek: 12 aylÄ±k Ã¼yelik iÃ§in 12.000 TL aldÄ±n.
+                <br>
+                ParanÄ±n hepsi kasaya girdi ama ilk ayda gelir yazabileceÄŸin kÄ±sÄ±m sadece 1.000 TL.
+                Kalan 11.000 TL, bilanÃ§oda <strong>Deferred Revenue</strong> (borÃ§) olarak durur.
+            </p>
+        </div>
+
+        <div class="drill-card">
+            <p class="question">Mini kontrol: AP artarsa ÅŸirketin nakdi genelde ne olur?</p>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                <span class="blur-text">Genelde <strong>nakit daha fazla kalÄ±r</strong> (tedarikÃ§iye henÃ¼z Ã¶dememiÅŸsindir). Bu mantÄ±k Cash Flowâ€™daki Working Capital kurallarÄ±yla birebir baÄŸlanÄ±r.</span>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">4. Kavram 3: Equity (Ã–zsermaye) Nedir?</h2>
+        <p>
+            En basit tanÄ±m: <strong>Assets - Liabilities</strong>.
+            Yani â€œÅŸirket bugÃ¼n satÄ±lsa ve tÃ¼m borÃ§lar Ã¶dense hissedara kalan hakâ€.
+            <br>
+            Ã–nemli: Equity â€œkasadaki nakitâ€ deÄŸildir; <strong>muhasebe aÃ§Ä±sÄ±ndan kalan hak</strong> gibi dÃ¼ÅŸÃ¼n.
+        </p>
+
+        <div class="mech-box">
+            <strong>Equityâ€™nin 3 temel parÃ§asÄ± (en sÄ±k gÃ¶rÃ¼len)</strong>
+            <ul>
+                <li><strong>Common Stock:</strong> Nominal sermaye (kÃ¢ÄŸÄ±t Ã¼zerindeki â€œsermayeâ€).</li>
+                <li><strong>APIC:</strong> YatÄ±rÄ±mcÄ±nÄ±n nominalin Ã¼stÃ¼nde koyduÄŸu prim.</li>
+                <li><strong>Retained Earnings:</strong> GeÃ§miÅŸten bugÃ¼ne biriken kÃ¢rlar - daÄŸÄ±tÄ±lan temettÃ¼ler.</li>
+            </ul>
+        </div>
+
+        <div class="math-block">
+            \[
+            \text{Ending Retained Earnings}
+            =
+            \text{Beginning Retained Earnings}
+            +
+            \text{Net Income}
+            -
+            \text{Dividends}
+            \]
+        </div>
+
+        <div class="drill-card">
+            <p class="question">Mini kontrol: Åirket kÃ¢r ederse bilanÃ§oda â€œen netâ€ neresi deÄŸiÅŸir?</p>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                <span class="blur-text"><strong>Retained Earnings artar</strong> (temettÃ¼ yoksa). Bu da Equityâ€™yi bÃ¼yÃ¼tÃ¼r. (Linkage sayfasÄ±yla baÄŸlantÄ±)</span>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">5. BilanÃ§o MantÄ±ÄŸÄ±: â€œBir Ä°ÅŸlem YapÄ±ncaâ€ Ne DeÄŸiÅŸir?</h2>
+        <p>
+            BilanÃ§oyu anlamanÄ±n en kolay yolu: 1 iÅŸlem seÃ§, hangi kutular oynuyor gÃ¶r.
+            AÅŸaÄŸÄ±daki mini senaryolarÄ± sakin sakin oku.
+        </p>
+
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-shuffle"></i> 5 Mini Senaryo (en temel)</h3>
+            <div class="content-box-base" style="margin: 0;">
+                <ol style="margin-left: 18px;">
+                    <li>
+                        <strong>Bankadan 100 TL kredi Ã§ekip kasaya koydun:</strong>
+                        Assets (Cash) +100, Liabilities (Debt) +100.
+                    </li>
+                    <li>
+                        <strong>100 TL nakitle stok aldÄ±n:</strong>
+                        Assets iÃ§inde Cash -100, Inventory +100. (Toplam Assets aynÄ±.)
+                    </li>
+                    <li>
+                        <strong>TedarikÃ§iden vadeli (AP) stok aldÄ±n (100 TL):</strong>
+                        Assets (Inventory) +100, Liabilities (AP) +100.
+                    </li>
+                    <li>
+                        <strong>YatÄ±rÄ±mcÄ±dan 100 TL sermaye aldÄ±n:</strong>
+                        Assets (Cash) +100, Equity +100.
+                    </li>
+                    <li>
+                        <strong>Bu dÃ¶nem 50 TL net kÃ¢r ettin (temettÃ¼ yok):</strong>
+                        Equity (Retained Earnings) +50. (Cash hemen artmak zorunda deÄŸil; zamanlama farklarÄ± olabilir.)
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">6. Tuzak: Book Value ? Market Value</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-triangle-exclamation"></i> Defter DeÄŸeri â€œborsa deÄŸeriâ€ deÄŸildir</div>
+            <p>
+                BilanÃ§o, ÅŸirketin <strong>muhasebe deÄŸerini</strong> (Book Value) gÃ¶sterir.
+                Borsa deÄŸeri (Market Cap) ise yatÄ±rÄ±mcÄ±larÄ±n â€œgeleceÄŸeâ€ biÃ§tiÄŸi deÄŸerdir.
+            </p>
+            <p>
+                <strong>Basit Ã¶rnek: Apple</strong>
+                <br>
+                BilanÃ§odaki Equity (Book Value) ~60B$ olabilir ama Market Cap ~3T$ olabilir.
+                Ã‡Ã¼nkÃ¼ bilanÃ§o; marka gÃ¼cÃ¼, aÄŸ etkisi, bÃ¼yÃ¼me beklentisi gibi ÅŸeyleri tam yansÄ±tmaz.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Mini Drills (kapanÄ±ÅŸ)</h3>
+            <div class="drill-card">
+                <p class="question">Soru: â€œCashâ€ varlÄ±k mÄ±?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Evet. Cash en likit varlÄ±ktÄ±r ve bilanÃ§oda Assets tarafÄ±nda durur.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Deferred Revenue neden â€œgelirâ€ deÄŸil de â€œborÃ§â€ gibi durur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ parayÄ± alsan bile hizmeti vermediysen â€œiÅŸ yapma yÃ¼kÃ¼mlÃ¼lÃ¼ÄŸÃ¼nâ€ var. Hizmeti verdikÃ§e borÃ§ azalÄ±r, gelir yazÄ±lÄ±r.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Equity artarsa bu her zaman kasaya nakit girdi demek mi?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">HayÄ±r. Equity kÃ¢rla da artabilir (Net Income â€º Retained Earnings) ama nakit aynÄ± anda artmayabilir (AR/Inventory gibi zamanlama farklarÄ±).</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="drill-section mcq-quiz" style="margin-top: 18px;">
+            <h3><i class="fa-solid fa-circle-question"></i> Quiz (Ã‡oktan SeÃ§meli) â€” BilanÃ§o</h3>
+            <div class="mcq-controls" style="display:flex; gap:10px; align-items:center; margin: 8px 0 14px;">
+                <a href="#" class="btn-nav" data-mcq-shuffle style="padding:10px 12px; font-size:12px;">KarÄ±ÅŸtÄ±r</a>
+                <a href="#" class="btn-nav" data-mcq-reset style="padding:10px 12px; font-size:12px;">SÄ±fÄ±rla</a>
+                <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; color: var(--text-tertiary);">
+                    Skor: <strong data-mcq-score>0 / 0</strong>
+                </span>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 1: BilanÃ§o (Balance Sheet) en doÄŸru ÅŸekilde neyi gÃ¶sterir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Bir dÃ¶nemdeki kÃ¢rÄ±</li>
+                    <li><strong>B)</strong> Bir dÃ¶nemdeki nakit giriÅŸ-Ã§Ä±kÄ±ÅŸÄ±nÄ±</li>
+                    <li><strong>C)</strong> Belirli bir tarihte varlÄ±klar ve finansman kaynaklarÄ±nÄ±</li>
+                    <li><strong>D)</strong> Sadece satÄ±ÅŸlarÄ±</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” BilanÃ§o â€œfotoÄŸrafâ€tÄ±r: bir anlÄ±k durum.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 2: BilanÃ§o denklemi hangisidir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Assets = Revenue - Expenses</li>
+                    <li><strong>B)</strong> Assets = Liabilities + Equity</li>
+                    <li><strong>C)</strong> Equity = Revenue + COGS</li>
+                    <li><strong>D)</strong> Cash = Net Income</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Her iÅŸlem bu dengeyi korur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 3 (Kara): â€œEquity artarsa kasaya mutlaka nakit girmiÅŸtirâ€ ifadesi iÃ§in en doÄŸru seÃ§enek?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> DoÄŸru; equity = cash</li>
+                    <li><strong>B)</strong> YanlÄ±ÅŸ; equity kÃ¢rla artabilir ama nakit aynÄ± anda artmayabilir</li>
+                    <li><strong>C)</strong> DoÄŸru; equity sadece borÃ§la artar</li>
+                    <li><strong>D)</strong> YanlÄ±ÅŸ; Ã§Ã¼nkÃ¼ bilanÃ§o video gibidir</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Net Income â€º Retained Earnings equityâ€™yi artÄ±rÄ±r; AR/Inventory gibi kalemler yÃ¼zÃ¼nden nakit gelmeyebilir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 4: Accounts Receivable (AR) bilanÃ§oda nerededir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Current Asset</li>
+                    <li><strong>B)</strong> Current Liability</li>
+                    <li><strong>C)</strong> Equity</li>
+                    <li><strong>D)</strong> Revenue</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” AR mÃ¼ÅŸteriden alacaÄŸÄ±ndÄ±r (varlÄ±k).</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 5: Deferred Revenue bilanÃ§oda nerededir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Asset</li>
+                    <li><strong>B)</strong> Liability</li>
+                    <li><strong>C)</strong> Equity</li>
+                    <li><strong>D)</strong> COGS</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Para geldi ama hizmet/teslim borcun var.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 6: Accounts Payable (AP) bilanÃ§oda nerededir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Asset</li>
+                    <li><strong>B)</strong> Liability</li>
+                    <li><strong>C)</strong> Equity</li>
+                    <li><strong>D)</strong> Interest</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” TedarikÃ§iye borÃ§tur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 7 (Ä°ÅŸlem): 40 TL nakitle stok aldÄ±ysan bilanÃ§o etkisi hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Cash +40, Inventory -40</li>
+                    <li><strong>B)</strong> Cash -40, Inventory +40</li>
+                    <li><strong>C)</strong> Inventory +40, AP +40</li>
+                    <li><strong>D)</strong> Cash +40, Equity +40</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” VarlÄ±k iÃ§inde yer deÄŸiÅŸtirir, toplam assets deÄŸiÅŸmez.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 8 (Ä°ÅŸlem): 30 TLâ€™lik malÄ± vadeli aldÄ±ysan (AP) en doÄŸru etki?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Inventory +30, AP +30</li>
+                    <li><strong>B)</strong> Cash -30, AP +30</li>
+                    <li><strong>C)</strong> Inventory -30, Cash +30</li>
+                    <li><strong>D)</strong> Equity +30, Cash -30</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” VarlÄ±k ve borÃ§ birlikte artar.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 9 (Kara): Inventory neden â€œriskliâ€ olabilir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Ã‡Ã¼nkÃ¼ her zaman nakittir</li>
+                    <li><strong>B)</strong> Ã‡Ã¼nkÃ¼ satÄ±lamazsa deÄŸer kaybedebilir ve nakde dÃ¶nmeyebilir</li>
+                    <li><strong>C)</strong> Ã‡Ã¼nkÃ¼ vergiyi artÄ±rÄ±r</li>
+                    <li><strong>D)</strong> Ã‡Ã¼nkÃ¼ equityâ€™dir</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Stok â€œvarlÄ±kâ€ olsa da nakde dÃ¶nÃ¼ÅŸmeyebilir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 10 (Kara): AÅŸaÄŸÄ±dakilerden hangisi â€œCurrent Assetâ€ deÄŸildir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Cash</li>
+                    <li><strong>B)</strong> AR</li>
+                    <li><strong>C)</strong> Inventory</li>
+                    <li><strong>D)</strong> Long-Term Debt</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> D â€” Long-Term Debt bir yÃ¼kÃ¼mlÃ¼lÃ¼ktÃ¼r (borÃ§).</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="income-statement.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Income Statement</a>
+            <a href="cash-flow-statement.html" class="btn-nav">Sonraki: Cash Flow <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

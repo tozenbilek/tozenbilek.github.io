@@ -1,411 +1,411 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cash Flow Statement | Accounting</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="nav-header">
-            <a href="../../../index.html" class="nav-link">Dashboard</a>
-            <span class="nav-sep">/</span>
-            <a href="../index.html" class="nav-link">Accounting</a>
-            <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Cash Flow Statement</span>
-        </nav>
-
-        <h1>1.3 Cash Flow Statement (Nakit Akış Tablosu)</h1>
-        <p>
-            Bu sayfayı <strong>çok yavaş ve tane tane</strong> okuyacağız. Amaç şu:
-            <strong>“Kâr yazdım, peki para gerçekten cüzdanıma girdi mi?”</strong> sorusunu net cevaplamak.
-        </p>
-
-        <h2 style="color: var(--accent-green);">1) “Cüzdan” Analojisi (En Basit Mantık)</h2>
-        <div class="mech-box">
-            Gelir Tablosu (Income Statement) diyor ki:
-            <br><strong>“Bu ay 10.000 TL kazandın.”</strong> (Kâr gibi düşün).
-            <br>
-            Ama banka hesabına bakıyorsun:
-            <br><strong>“Nakit sadece 2.000 TL arttı.”</strong>
-            <br><br>
-            <strong>Soru:</strong> “Aradaki fark nerede?”
-            <br><br>
-            Nakit Akış Tablosu (Cash Flow Statement) bu farkın hikayesini anlatır:
-            <ul>
-                <li><strong>Alacak verdin</strong> › para çıktı ama “kâr” etkilenmeyebilir. (Accounts Receivable)</li>
-                <li><strong>Peşin ödedin</strong> › para çıktı ama gideri “zamana yayarsın”. (Prepaid)</li>
-                <li><strong>Stok aldın</strong> › para çıktı ama hemen gider yazmayabilirsin. (Inventory)</li>
-                <li><strong>Tedarikçiye ödeme yapmadın</strong> › para çıkmadı, cebinde kaldı. (Accounts Payable)</li>
-            </ul>
-        </div>
-
-        <h2 style="color: var(--accent-green);">2) Tablo Yapısı: Para Nereden Girer / Çıkar?</h2>
-        <p>Para hareketlerini 3 kutuya ayırıyoruz. Bu 3 kutu, mülakatta da ezber sorudur: <strong>CFO / CFI / CFF</strong>.</p>
-
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-table"></i> CFS_Breakdown.xlsx</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 150px;">
-                <div class="excel-cell header">Category</div>
-                <div class="excel-cell header">Anlamı</div>
-
-                <!-- CFO -->
-                <div class="excel-cell bold" style="background:#f0fdf4;">1. Cash from Operations (CFO)</div>
-                <div class="excel-cell" style="background:#f0fdf4;">Günlük iş (satış yap, maaş öde, stok yönet)</div>
-                
-                <div class="excel-cell indent">Net Income</div>
-                <div class="excel-cell">Başlangıç noktası: “muhasebe kârı”</div>
-
-                <div class="excel-cell indent">(+) D&A</div>
-                <div class="excel-cell">Nakit çıkmadı › geri ekle</div>
-
-                <div class="excel-cell indent">(-) Change in Working Capital</div>
-                <div class="excel-cell">Zamanlama farkı: alacak/stok/borç</div>
-
-                <!-- CFI -->
-                <div class="excel-cell bold" style="background:#eff6ff;">2. Cash from Investing (CFI)</div>
-                <div class="excel-cell" style="background:#eff6ff;">Uzun vadeli varlık al/sat (makine, bina)</div>
-
-                <div class="excel-cell indent">(-) CapEx</div>
-                <div class="excel-cell">Yeni makine aldım › nakit çıktı</div>
-
-                <div class="excel-cell indent">(+) Asset Sales</div>
-                <div class="excel-cell">Eski varlık sattım › nakit girdi</div>
-
-                <!-- CFF -->
-                <div class="excel-cell bold" style="background:#f5f3ff;">3. Cash from Financing (CFF)</div>
-                <div class="excel-cell" style="background:#f5f3ff;">Para bul / para geri ver (borç, sermaye, temettü)</div>
-
-                <div class="excel-cell indent">(+) Debt Issuance</div>
-                <div class="excel-cell">Kredi aldım › nakit girdi</div>
-
-                <div class="excel-cell indent">(-) Dividends</div>
-                <div class="excel-cell">Ortaklara nakit verdim › nakit çıktı</div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">3) En Kritik Kavram: “Accrual (Tahakkuk)” Nedir?</h2>
-        <p>
-            Kafa karışıklığının %80’i buradan gelir. Basitçe:
-            <strong>Gelir Tablosu “ne zaman kazandın/harcadın?” der</strong>,
-            <strong>Nakit Akış “para ne zaman girdi/çıktı?” der</strong>.
-        </p>
-
-        <div class="drill-card">
-            <p class="question"><strong>Tahakkuk (Accrual)</strong> tek cümlede ne demek?</p>
-            <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                <span class="blur-text"><strong>İşi yaptığın an</strong> gelir/gider yazarsın; para o an gelmese bile. (Yani “hak ediş” zamanı ile “para” zamanı farklı olabilir.)</span>
-            </div>
-        </div>
-
-        <div class="drill-card" style="margin-top:12px;">
-            <p class="question">Mini örnek: Müşteriye 100 TL’lik hizmet verdin, para ay sonu gelecek. Bugün ne olur?</p>
-            <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                <span class="blur-text"><strong>Gelir yazarsın</strong> (IS artar) ama <strong>nakit henüz gelmez</strong>. Bilançoda <strong>Accounts Receivable (Alacak)</strong> artar.</span>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">4) Indirect Method: CFO’yu Adım Adım Kur</h2>
-        <p>
-            CFO (operasyonlardan nakit) genelde <strong>Indirect Method</strong> ile yazılır. Mantık:
-            <strong>Net Income</strong> ile başla, sonra “nakit olmayanları düzelt”, sonra “zamanlama farklarını düzelt”.
-        </p>
-
-        <div class="content-box-base">
-            <h3 style="margin-top:0;">CFO için 3 adım</h3>
-            <ol style="margin-left:18px; color: var(--text-secondary);">
-                <li><strong>Başla:</strong> Net Income (muhasebe kârı)</li>
-                <li><strong>+ Nakit olmayanları geri ekle:</strong> Depreciation & Amortization (D&A) gibi</li>
-                <li><strong>± Working Capital değişimi:</strong> AR / Inventory / Prepaid / AP vb.</li>
-            </ol>
-            <div class="formula-box" style="margin-top: 12px;">
-                CFO ? Net Income + Non-Cash Items - ?Working Capital
-            </div>
-        </div>
-
-        <div class="drill-section">
-            <div class="drill-card">
-                <p class="question"><strong>D&A (Depreciation & Amortization)</strong> neden CFO’da “+”?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Çünkü D&A <strong>kârı düşürür</strong> ama o dönemde <strong>nakit çıkışı yaratmaz</strong>. Bu yüzden Net Income’dan nakite giderken geri ekleriz.</span>
-                </div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">5) Working Capital (İşletme Sermayesi): İşaret Kuralları</h2>
-        <p>
-            Working Capital’ı “formül” gibi değil, <strong>cüzdan hareketi</strong> gibi düşün.
-            Basit kural: <strong>Asset artarsa nakit azalır</strong>, <strong>Liability artarsa nakit artar</strong>.
-        </p>
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-solid fa-brain"></i> The Golden Rules</div>
-            <ul>
-                <li><strong>Asset ^ › Nakit v</strong> (Ör: AR arttı = para henüz gelmedi)</li>
-                <li><strong>Asset v › Nakit ^</strong> (Ör: stok azaldı = sattın/para geldi varsay)</li>
-                <li><strong>Liability ^ › Nakit ^</strong> (Ör: AP arttı = tedarikçiye ödemedin)</li>
-                <li><strong>Liability v › Nakit v</strong> (Ör: AP düştü = ödeme yaptın)</li>
-            </ul>
-        </div>
-
-        <h3>Working Capital kalemlerini tek tek (en çok çıkanlar)</h3>
-        <div class="drill-section">
-            <div class="drill-card">
-                <p class="question"><strong>Accounts Receivable (AR / Alacak)</strong> artarsa CFO’da işaret ne?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Negatif (-).</strong> Çünkü satış yaptın/kâr yazdın ama para henüz gelmedi › nakit “eksik”.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>Inventory (Stok)</strong> artarsa CFO’da işaret ne?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Negatif (-).</strong> Stok almak genelde nakit çıkışı demektir.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>Prepaid Expenses (Peşin Ödenen)</strong> artarsa CFO’da işaret ne?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Negatif (-).</strong> Henüz gider yazmasan bile peşin ödeme yaptın › nakit çıktı.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>Accounts Payable (AP / Ticari Borç)</strong> artarsa CFO’da işaret ne?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Pozitif (+).</strong> Tedarikçiye ödeme yapmadın › nakit cebinde kaldı.</span>
-                </div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">6) Baştan Sona Mini Walkthrough (Rakamla)</h2>
-        <p>
-            Şimdi tek bir mini senaryoda hepsini birleştirelim. Aşağıdaki sayıları “sadece işaret mantığıyla” okuyacağız.
-        </p>
-
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-table"></i> Mini_CFS_Walkthrough.xlsx</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 140px 220px;">
-                <div class="excel-cell header">Adım</div>
-                <div class="excel-cell header">Tutar</div>
-                <div class="excel-cell header">Neden?</div>
-
-                <div class="excel-cell bold" style="background:#f0fdf4;">CFO (Operations)</div>
-                <div class="excel-cell" style="background:#f0fdf4;"></div>
-                <div class="excel-cell" style="background:#f0fdf4;"></div>
-
-                <div class="excel-cell indent">Net Income</div>
-                <div class="excel-cell">100</div>
-                <div class="excel-cell">Muhasebe kârı (başlangıç)</div>
-
-                <div class="excel-cell indent">+ D&amp;A</div>
-                <div class="excel-cell">20</div>
-                <div class="excel-cell">Nakit çıkmadı › geri ekle</div>
-
-                <div class="excel-cell indent">- AR ^</div>
-                <div class="excel-cell">10</div>
-                <div class="excel-cell">Para henüz gelmedi</div>
-
-                <div class="excel-cell indent">+ Inventory v</div>
-                <div class="excel-cell">5</div>
-                <div class="excel-cell">Stok azalması nakit rahatlatır</div>
-
-                <div class="excel-cell indent">+ AP ^</div>
-                <div class="excel-cell">7</div>
-                <div class="excel-cell">Ödemeyi erteledin › nakit kaldı</div>
-
-                <div class="excel-cell bold" style="background:#f0fdf4;">= CFO</div>
-                <div class="excel-cell bold" style="background:#f0fdf4;">112</div>
-                <div class="excel-cell" style="background:#f0fdf4;">100 + 20 - 10 + 5 + 7</div>
-
-                <div class="excel-cell bold" style="background:#eff6ff;">CFI (Investing)</div>
-                <div class="excel-cell" style="background:#eff6ff;"></div>
-                <div class="excel-cell" style="background:#eff6ff;"></div>
-
-                <div class="excel-cell indent">- CapEx</div>
-                <div class="excel-cell">30</div>
-                <div class="excel-cell">Makine aldın › nakit çıktı</div>
-
-                <div class="excel-cell bold" style="background:#eff6ff;">= CFI</div>
-                <div class="excel-cell bold" style="background:#eff6ff;">-30</div>
-                <div class="excel-cell" style="background:#eff6ff;"></div>
-
-                <div class="excel-cell bold" style="background:#f5f3ff;">CFF (Financing)</div>
-                <div class="excel-cell" style="background:#f5f3ff;"></div>
-                <div class="excel-cell" style="background:#f5f3ff;"></div>
-
-                <div class="excel-cell indent">+ Debt Issuance</div>
-                <div class="excel-cell">50</div>
-                <div class="excel-cell">Borç aldın › nakit girdi</div>
-
-                <div class="excel-cell indent">- Dividends</div>
-                <div class="excel-cell">10</div>
-                <div class="excel-cell">Temettü › nakit çıktı</div>
-
-                <div class="excel-cell bold" style="background:#f5f3ff;">= CFF</div>
-                <div class="excel-cell bold" style="background:#f5f3ff;">40</div>
-                <div class="excel-cell" style="background:#f5f3ff;">50 - 10</div>
-
-                <div class="excel-cell bold" style="background:#f8fafc;">Net Change in Cash</div>
-                <div class="excel-cell bold" style="background:#f8fafc;">122</div>
-                <div class="excel-cell" style="background:#f8fafc;">112 - 30 + 40</div>
-            </div>
-        </div>
-
-        <div class="drill-card" style="margin-top: 16px;">
-            <p class="question">Kontrol sorusu: AR neden “-” iken AP neden “+”?</p>
-            <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                <span class="blur-text"><strong>AR:</strong> para henüz gelmedi › nakit eksik (-). <strong>AP:</strong> para henüz çıkmadı › nakit fazla (+).</span>
-            </div>
-        </div>
-
-        <div class="lesson-nav">
-            <a href="balance-sheet.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Balance Sheet</a>
-            <a href="linkage.html" class="btn-nav">Sonraki: Linkage <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
-        <div class="drill-section mcq-quiz" style="margin-top: 18px;">
-            <h3><i class="fa-solid fa-circle-question"></i> Quiz (Çoktan Seçmeli) — Cash Flow</h3>
-            <div class="mcq-controls" style="display:flex; gap:10px; align-items:center; margin: 8px 0 14px;">
-                <a href="#" class="btn-nav" data-mcq-shuffle style="padding:10px 12px; font-size:12px;">Karıştır</a>
-                <a href="#" class="btn-nav" data-mcq-reset style="padding:10px 12px; font-size:12px;">Sıfırla</a>
-                <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; color: var(--text-tertiary);">
-                    Skor: <strong data-mcq-score>0 / 0</strong>
-                </span>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 1: Nakit akış tablosunun (Cash Flow Statement) ana sorusu hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> “Bu dönemde kâr ettim mi?”</li>
-                    <li><strong>B)</strong> “Bu an itibarıyla neye sahibim?”</li>
-                    <li><strong>C)</strong> “Para gerçekten kasaya girdi mi/çıktı mı?”</li>
-                    <li><strong>D)</strong> “Hisse fiyatı neden değişti?”</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Cash Flow “nakit hareketini” anlatır.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 2: CFO / CFI / CFF sırasıyla neyi temsil eder?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Operations / Investing / Financing</li>
-                    <li><strong>B)</strong> Investing / Financing / Operations</li>
-                    <li><strong>C)</strong> Financing / Operations / Investing</li>
-                    <li><strong>D)</strong> Taxes / Interest / Dividends</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — 3 kutu: operasyon, yatırım, finansman.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 3 (Kara): Net Income pozitifken cash neden artmayabilir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Çünkü Net Income zaten nakittir</li>
-                    <li><strong>B)</strong> Çünkü AR/Inventory/Prepaid gibi kalemlere para bağlanabilir</li>
-                    <li><strong>C)</strong> Çünkü bilanço video gibidir</li>
-                    <li><strong>D)</strong> Çünkü vergiler yoktur</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Tahakkuk ve working capital zamanlama farkı yaratır.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 4: Indirect method’ta CFO genelde hangi kalemle başlar?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Revenue</li>
-                    <li><strong>B)</strong> Gross Profit</li>
-                    <li><strong>C)</strong> Net Income</li>
-                    <li><strong>D)</strong> Cash</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Kârdan başlayıp nakde köprü kurulur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 5: Depreciation & Amortization (D&amp;A) CFO’da neden genelde “+”dır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Çünkü nakit çıkışı yaratır</li>
-                    <li><strong>B)</strong> Çünkü kârı düşürür ama nakit çıkışı değildir</li>
-                    <li><strong>C)</strong> Çünkü vergiyi artırır</li>
-                    <li><strong>D)</strong> Çünkü CFI’da yer alır</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Non-cash gider olduğu için geri eklenir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 6: AR artarsa CFO’ya etkisi genelde nedir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Pozitif (+)</li>
-                    <li><strong>B)</strong> Negatif (-)</li>
-                    <li><strong>C)</strong> Sıfır</li>
-                    <li><strong>D)</strong> CFI’a gider</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Alacak arttıysa nakit henüz gelmedi (asset ^ › cash v).</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 7: AP artarsa CFO’ya etkisi genelde nedir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Negatif (-)</li>
-                    <li><strong>B)</strong> Pozitif (+)</li>
-                    <li><strong>C)</strong> Sıfır</li>
-                    <li><strong>D)</strong> CFF’e gider</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Ödemeyi erteledin; nakit cebinde kaldı (liability ^ › cash ^).</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 8 (Kara): Inventory artarsa CFO’ya etkisi en olası hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Pozitif (+), çünkü stok arttı</li>
-                    <li><strong>B)</strong> Negatif (-), çünkü stok almak nakit bağlar</li>
-                    <li><strong>C)</strong> Sıfır, çünkü stok gider yazılmaz</li>
-                    <li><strong>D)</strong> CFF’e gider</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Stok (asset) artışı çoğu zaman cash outflow’dur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 9: CapEx tipik olarak hangi bölümde görünür?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> CFO</li>
-                    <li><strong>B)</strong> CFI</li>
-                    <li><strong>C)</strong> CFF</li>
-                    <li><strong>D)</strong> Taxes</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Uzun vadeli varlık alımı yatırım faaliyetidir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 10: Borç (Debt) almak nakit akışında genelde nereye yazılır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> CFO</li>
-                    <li><strong>B)</strong> CFI</li>
-                    <li><strong>C)</strong> CFF</li>
-                    <li><strong>D)</strong> Gross Profit</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Finansman faaliyetidir (Debt issuance).</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Statement | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Cash Flow Statement</span>
+        </nav>
+
+        <h1>1.3 Cash Flow Statement (Nakit AkÄ±ÅŸ Tablosu)</h1>
+        <p>
+            Bu sayfayÄ± <strong>Ã§ok yavaÅŸ ve tane tane</strong> okuyacaÄŸÄ±z. AmaÃ§ ÅŸu:
+            <strong>â€œKÃ¢r yazdÄ±m, peki para gerÃ§ekten cÃ¼zdanÄ±ma girdi mi?â€</strong> sorusunu net cevaplamak.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1) â€œCÃ¼zdanâ€ Analojisi (En Basit MantÄ±k)</h2>
+        <div class="mech-box">
+            Gelir Tablosu (Income Statement) diyor ki:
+            <br><strong>â€œBu ay 10.000 TL kazandÄ±n.â€</strong> (KÃ¢r gibi dÃ¼ÅŸÃ¼n).
+            <br>
+            Ama banka hesabÄ±na bakÄ±yorsun:
+            <br><strong>â€œNakit sadece 2.000 TL arttÄ±.â€</strong>
+            <br><br>
+            <strong>Soru:</strong> â€œAradaki fark nerede?â€
+            <br><br>
+            Nakit AkÄ±ÅŸ Tablosu (Cash Flow Statement) bu farkÄ±n hikayesini anlatÄ±r:
+            <ul>
+                <li><strong>Alacak verdin</strong> â€º para Ã§Ä±ktÄ± ama â€œkÃ¢râ€ etkilenmeyebilir. (Accounts Receivable)</li>
+                <li><strong>PeÅŸin Ã¶dedin</strong> â€º para Ã§Ä±ktÄ± ama gideri â€œzamana yayarsÄ±nâ€. (Prepaid)</li>
+                <li><strong>Stok aldÄ±n</strong> â€º para Ã§Ä±ktÄ± ama hemen gider yazmayabilirsin. (Inventory)</li>
+                <li><strong>TedarikÃ§iye Ã¶deme yapmadÄ±n</strong> â€º para Ã§Ä±kmadÄ±, cebinde kaldÄ±. (Accounts Payable)</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2) Tablo YapÄ±sÄ±: Para Nereden Girer / Ã‡Ä±kar?</h2>
+        <p>Para hareketlerini 3 kutuya ayÄ±rÄ±yoruz. Bu 3 kutu, mÃ¼lakatta da ezber sorudur: <strong>CFO / CFI / CFF</strong>.</p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> CFS_Breakdown.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 150px;">
+                <div class="excel-cell header">Category</div>
+                <div class="excel-cell header">AnlamÄ±</div>
+
+                <!-- CFO -->
+                <div class="excel-cell bold" style="background:#f0fdf4;">1. Cash from Operations (CFO)</div>
+                <div class="excel-cell" style="background:#f0fdf4;">GÃ¼nlÃ¼k iÅŸ (satÄ±ÅŸ yap, maaÅŸ Ã¶de, stok yÃ¶net)</div>
+                
+                <div class="excel-cell indent">Net Income</div>
+                <div class="excel-cell">BaÅŸlangÄ±Ã§ noktasÄ±: â€œmuhasebe kÃ¢rÄ±â€</div>
+
+                <div class="excel-cell indent">(+) D&A</div>
+                <div class="excel-cell">Nakit Ã§Ä±kmadÄ± â€º geri ekle</div>
+
+                <div class="excel-cell indent">(-) Change in Working Capital</div>
+                <div class="excel-cell">Zamanlama farkÄ±: alacak/stok/borÃ§</div>
+
+                <!-- CFI -->
+                <div class="excel-cell bold" style="background:#eff6ff;">2. Cash from Investing (CFI)</div>
+                <div class="excel-cell" style="background:#eff6ff;">Uzun vadeli varlÄ±k al/sat (makine, bina)</div>
+
+                <div class="excel-cell indent">(-) CapEx</div>
+                <div class="excel-cell">Yeni makine aldÄ±m â€º nakit Ã§Ä±ktÄ±</div>
+
+                <div class="excel-cell indent">(+) Asset Sales</div>
+                <div class="excel-cell">Eski varlÄ±k sattÄ±m â€º nakit girdi</div>
+
+                <!-- CFF -->
+                <div class="excel-cell bold" style="background:#f5f3ff;">3. Cash from Financing (CFF)</div>
+                <div class="excel-cell" style="background:#f5f3ff;">Para bul / para geri ver (borÃ§, sermaye, temettÃ¼)</div>
+
+                <div class="excel-cell indent">(+) Debt Issuance</div>
+                <div class="excel-cell">Kredi aldÄ±m â€º nakit girdi</div>
+
+                <div class="excel-cell indent">(-) Dividends</div>
+                <div class="excel-cell">Ortaklara nakit verdim â€º nakit Ã§Ä±ktÄ±</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3) En Kritik Kavram: â€œAccrual (Tahakkuk)â€ Nedir?</h2>
+        <p>
+            Kafa karÄ±ÅŸÄ±klÄ±ÄŸÄ±nÄ±n %80â€™i buradan gelir. BasitÃ§e:
+            <strong>Gelir Tablosu â€œne zaman kazandÄ±n/harcadÄ±n?â€ der</strong>,
+            <strong>Nakit AkÄ±ÅŸ â€œpara ne zaman girdi/Ã§Ä±ktÄ±?â€ der</strong>.
+        </p>
+
+        <div class="drill-card">
+            <p class="question"><strong>Tahakkuk (Accrual)</strong> tek cÃ¼mlede ne demek?</p>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                <span class="blur-text"><strong>Ä°ÅŸi yaptÄ±ÄŸÄ±n an</strong> gelir/gider yazarsÄ±n; para o an gelmese bile. (Yani â€œhak ediÅŸâ€ zamanÄ± ile â€œparaâ€ zamanÄ± farklÄ± olabilir.)</span>
+            </div>
+        </div>
+
+        <div class="drill-card" style="margin-top:12px;">
+            <p class="question">Mini Ã¶rnek: MÃ¼ÅŸteriye 100 TLâ€™lik hizmet verdin, para ay sonu gelecek. BugÃ¼n ne olur?</p>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                <span class="blur-text"><strong>Gelir yazarsÄ±n</strong> (IS artar) ama <strong>nakit henÃ¼z gelmez</strong>. BilanÃ§oda <strong>Accounts Receivable (Alacak)</strong> artar.</span>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">4) Indirect Method: CFOâ€™yu AdÄ±m AdÄ±m Kur</h2>
+        <p>
+            CFO (operasyonlardan nakit) genelde <strong>Indirect Method</strong> ile yazÄ±lÄ±r. MantÄ±k:
+            <strong>Net Income</strong> ile baÅŸla, sonra â€œnakit olmayanlarÄ± dÃ¼zeltâ€, sonra â€œzamanlama farklarÄ±nÄ± dÃ¼zeltâ€.
+        </p>
+
+        <div class="content-box-base">
+            <h3 style="margin-top:0;">CFO iÃ§in 3 adÄ±m</h3>
+            <ol style="margin-left:18px; color: var(--text-secondary);">
+                <li><strong>BaÅŸla:</strong> Net Income (muhasebe kÃ¢rÄ±)</li>
+                <li><strong>+ Nakit olmayanlarÄ± geri ekle:</strong> Depreciation & Amortization (D&A) gibi</li>
+                <li><strong>Â± Working Capital deÄŸiÅŸimi:</strong> AR / Inventory / Prepaid / AP vb.</li>
+            </ol>
+            <div class="formula-box" style="margin-top: 12px;">
+                CFO ? Net Income + Non-Cash Items - ?Working Capital
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question"><strong>D&A (Depreciation & Amortization)</strong> neden CFOâ€™da â€œ+â€?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ D&A <strong>kÃ¢rÄ± dÃ¼ÅŸÃ¼rÃ¼r</strong> ama o dÃ¶nemde <strong>nakit Ã§Ä±kÄ±ÅŸÄ± yaratmaz</strong>. Bu yÃ¼zden Net Incomeâ€™dan nakite giderken geri ekleriz.</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">5) Working Capital (Ä°ÅŸletme Sermayesi): Ä°ÅŸaret KurallarÄ±</h2>
+        <p>
+            Working Capitalâ€™Ä± â€œformÃ¼lâ€ gibi deÄŸil, <strong>cÃ¼zdan hareketi</strong> gibi dÃ¼ÅŸÃ¼n.
+            Basit kural: <strong>Asset artarsa nakit azalÄ±r</strong>, <strong>Liability artarsa nakit artar</strong>.
+        </p>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-brain"></i> The Golden Rules</div>
+            <ul>
+                <li><strong>Asset ^ â€º Nakit v</strong> (Ã–r: AR arttÄ± = para henÃ¼z gelmedi)</li>
+                <li><strong>Asset v â€º Nakit ^</strong> (Ã–r: stok azaldÄ± = sattÄ±n/para geldi varsay)</li>
+                <li><strong>Liability ^ â€º Nakit ^</strong> (Ã–r: AP arttÄ± = tedarikÃ§iye Ã¶demedin)</li>
+                <li><strong>Liability v â€º Nakit v</strong> (Ã–r: AP dÃ¼ÅŸtÃ¼ = Ã¶deme yaptÄ±n)</li>
+            </ul>
+        </div>
+
+        <h3>Working Capital kalemlerini tek tek (en Ã§ok Ã§Ä±kanlar)</h3>
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question"><strong>Accounts Receivable (AR / Alacak)</strong> artarsa CFOâ€™da iÅŸaret ne?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Negatif (-).</strong> Ã‡Ã¼nkÃ¼ satÄ±ÅŸ yaptÄ±n/kÃ¢r yazdÄ±n ama para henÃ¼z gelmedi â€º nakit â€œeksikâ€.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Inventory (Stok)</strong> artarsa CFOâ€™da iÅŸaret ne?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Negatif (-).</strong> Stok almak genelde nakit Ã§Ä±kÄ±ÅŸÄ± demektir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Prepaid Expenses (PeÅŸin Ã–denen)</strong> artarsa CFOâ€™da iÅŸaret ne?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Negatif (-).</strong> HenÃ¼z gider yazmasan bile peÅŸin Ã¶deme yaptÄ±n â€º nakit Ã§Ä±ktÄ±.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Accounts Payable (AP / Ticari BorÃ§)</strong> artarsa CFOâ€™da iÅŸaret ne?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Pozitif (+).</strong> TedarikÃ§iye Ã¶deme yapmadÄ±n â€º nakit cebinde kaldÄ±.</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">6) BaÅŸtan Sona Mini Walkthrough (Rakamla)</h2>
+        <p>
+            Åimdi tek bir mini senaryoda hepsini birleÅŸtirelim. AÅŸaÄŸÄ±daki sayÄ±larÄ± â€œsadece iÅŸaret mantÄ±ÄŸÄ±ylaâ€ okuyacaÄŸÄ±z.
+        </p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Mini_CFS_Walkthrough.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 220px;">
+                <div class="excel-cell header">AdÄ±m</div>
+                <div class="excel-cell header">Tutar</div>
+                <div class="excel-cell header">Neden?</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">CFO (Operations)</div>
+                <div class="excel-cell" style="background:#f0fdf4;"></div>
+                <div class="excel-cell" style="background:#f0fdf4;"></div>
+
+                <div class="excel-cell indent">Net Income</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">Muhasebe kÃ¢rÄ± (baÅŸlangÄ±Ã§)</div>
+
+                <div class="excel-cell indent">+ D&amp;A</div>
+                <div class="excel-cell">20</div>
+                <div class="excel-cell">Nakit Ã§Ä±kmadÄ± â€º geri ekle</div>
+
+                <div class="excel-cell indent">- AR ^</div>
+                <div class="excel-cell">10</div>
+                <div class="excel-cell">Para henÃ¼z gelmedi</div>
+
+                <div class="excel-cell indent">+ Inventory v</div>
+                <div class="excel-cell">5</div>
+                <div class="excel-cell">Stok azalmasÄ± nakit rahatlatÄ±r</div>
+
+                <div class="excel-cell indent">+ AP ^</div>
+                <div class="excel-cell">7</div>
+                <div class="excel-cell">Ã–demeyi erteledin â€º nakit kaldÄ±</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">= CFO</div>
+                <div class="excel-cell bold" style="background:#f0fdf4;">112</div>
+                <div class="excel-cell" style="background:#f0fdf4;">100 + 20 - 10 + 5 + 7</div>
+
+                <div class="excel-cell bold" style="background:#eff6ff;">CFI (Investing)</div>
+                <div class="excel-cell" style="background:#eff6ff;"></div>
+                <div class="excel-cell" style="background:#eff6ff;"></div>
+
+                <div class="excel-cell indent">- CapEx</div>
+                <div class="excel-cell">30</div>
+                <div class="excel-cell">Makine aldÄ±n â€º nakit Ã§Ä±ktÄ±</div>
+
+                <div class="excel-cell bold" style="background:#eff6ff;">= CFI</div>
+                <div class="excel-cell bold" style="background:#eff6ff;">-30</div>
+                <div class="excel-cell" style="background:#eff6ff;"></div>
+
+                <div class="excel-cell bold" style="background:#f5f3ff;">CFF (Financing)</div>
+                <div class="excel-cell" style="background:#f5f3ff;"></div>
+                <div class="excel-cell" style="background:#f5f3ff;"></div>
+
+                <div class="excel-cell indent">+ Debt Issuance</div>
+                <div class="excel-cell">50</div>
+                <div class="excel-cell">BorÃ§ aldÄ±n â€º nakit girdi</div>
+
+                <div class="excel-cell indent">- Dividends</div>
+                <div class="excel-cell">10</div>
+                <div class="excel-cell">TemettÃ¼ â€º nakit Ã§Ä±ktÄ±</div>
+
+                <div class="excel-cell bold" style="background:#f5f3ff;">= CFF</div>
+                <div class="excel-cell bold" style="background:#f5f3ff;">40</div>
+                <div class="excel-cell" style="background:#f5f3ff;">50 - 10</div>
+
+                <div class="excel-cell bold" style="background:#f8fafc;">Net Change in Cash</div>
+                <div class="excel-cell bold" style="background:#f8fafc;">122</div>
+                <div class="excel-cell" style="background:#f8fafc;">112 - 30 + 40</div>
+            </div>
+        </div>
+
+        <div class="drill-card" style="margin-top: 16px;">
+            <p class="question">Kontrol sorusu: AR neden â€œ-â€ iken AP neden â€œ+â€?</p>
+            <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                <span class="blur-text"><strong>AR:</strong> para henÃ¼z gelmedi â€º nakit eksik (-). <strong>AP:</strong> para henÃ¼z Ã§Ä±kmadÄ± â€º nakit fazla (+).</span>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="balance-sheet.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Balance Sheet</a>
+            <a href="linkage.html" class="btn-nav">Sonraki: Linkage <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="drill-section mcq-quiz" style="margin-top: 18px;">
+            <h3><i class="fa-solid fa-circle-question"></i> Quiz (Ã‡oktan SeÃ§meli) â€” Cash Flow</h3>
+            <div class="mcq-controls" style="display:flex; gap:10px; align-items:center; margin: 8px 0 14px;">
+                <a href="#" class="btn-nav" data-mcq-shuffle style="padding:10px 12px; font-size:12px;">KarÄ±ÅŸtÄ±r</a>
+                <a href="#" class="btn-nav" data-mcq-reset style="padding:10px 12px; font-size:12px;">SÄ±fÄ±rla</a>
+                <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; color: var(--text-tertiary);">
+                    Skor: <strong data-mcq-score>0 / 0</strong>
+                </span>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 1: Nakit akÄ±ÅŸ tablosunun (Cash Flow Statement) ana sorusu hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> â€œBu dÃ¶nemde kÃ¢r ettim mi?â€</li>
+                    <li><strong>B)</strong> â€œBu an itibarÄ±yla neye sahibim?â€</li>
+                    <li><strong>C)</strong> â€œPara gerÃ§ekten kasaya girdi mi/Ã§Ä±ktÄ± mÄ±?â€</li>
+                    <li><strong>D)</strong> â€œHisse fiyatÄ± neden deÄŸiÅŸti?â€</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” Cash Flow â€œnakit hareketiniâ€ anlatÄ±r.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 2: CFO / CFI / CFF sÄ±rasÄ±yla neyi temsil eder?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Operations / Investing / Financing</li>
+                    <li><strong>B)</strong> Investing / Financing / Operations</li>
+                    <li><strong>C)</strong> Financing / Operations / Investing</li>
+                    <li><strong>D)</strong> Taxes / Interest / Dividends</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” 3 kutu: operasyon, yatÄ±rÄ±m, finansman.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 3 (Kara): Net Income pozitifken cash neden artmayabilir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Ã‡Ã¼nkÃ¼ Net Income zaten nakittir</li>
+                    <li><strong>B)</strong> Ã‡Ã¼nkÃ¼ AR/Inventory/Prepaid gibi kalemlere para baÄŸlanabilir</li>
+                    <li><strong>C)</strong> Ã‡Ã¼nkÃ¼ bilanÃ§o video gibidir</li>
+                    <li><strong>D)</strong> Ã‡Ã¼nkÃ¼ vergiler yoktur</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Tahakkuk ve working capital zamanlama farkÄ± yaratÄ±r.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 4: Indirect methodâ€™ta CFO genelde hangi kalemle baÅŸlar?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Revenue</li>
+                    <li><strong>B)</strong> Gross Profit</li>
+                    <li><strong>C)</strong> Net Income</li>
+                    <li><strong>D)</strong> Cash</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” KÃ¢rdan baÅŸlayÄ±p nakde kÃ¶prÃ¼ kurulur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 5: Depreciation & Amortization (D&amp;A) CFOâ€™da neden genelde â€œ+â€dÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Ã‡Ã¼nkÃ¼ nakit Ã§Ä±kÄ±ÅŸÄ± yaratÄ±r</li>
+                    <li><strong>B)</strong> Ã‡Ã¼nkÃ¼ kÃ¢rÄ± dÃ¼ÅŸÃ¼rÃ¼r ama nakit Ã§Ä±kÄ±ÅŸÄ± deÄŸildir</li>
+                    <li><strong>C)</strong> Ã‡Ã¼nkÃ¼ vergiyi artÄ±rÄ±r</li>
+                    <li><strong>D)</strong> Ã‡Ã¼nkÃ¼ CFIâ€™da yer alÄ±r</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Non-cash gider olduÄŸu iÃ§in geri eklenir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 6: AR artarsa CFOâ€™ya etkisi genelde nedir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Pozitif (+)</li>
+                    <li><strong>B)</strong> Negatif (-)</li>
+                    <li><strong>C)</strong> SÄ±fÄ±r</li>
+                    <li><strong>D)</strong> CFIâ€™a gider</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Alacak arttÄ±ysa nakit henÃ¼z gelmedi (asset ^ â€º cash v).</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 7: AP artarsa CFOâ€™ya etkisi genelde nedir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Negatif (-)</li>
+                    <li><strong>B)</strong> Pozitif (+)</li>
+                    <li><strong>C)</strong> SÄ±fÄ±r</li>
+                    <li><strong>D)</strong> CFFâ€™e gider</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Ã–demeyi erteledin; nakit cebinde kaldÄ± (liability ^ â€º cash ^).</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 8 (Kara): Inventory artarsa CFOâ€™ya etkisi en olasÄ± hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Pozitif (+), Ã§Ã¼nkÃ¼ stok arttÄ±</li>
+                    <li><strong>B)</strong> Negatif (-), Ã§Ã¼nkÃ¼ stok almak nakit baÄŸlar</li>
+                    <li><strong>C)</strong> SÄ±fÄ±r, Ã§Ã¼nkÃ¼ stok gider yazÄ±lmaz</li>
+                    <li><strong>D)</strong> CFFâ€™e gider</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Stok (asset) artÄ±ÅŸÄ± Ã§oÄŸu zaman cash outflowâ€™dur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 9: CapEx tipik olarak hangi bÃ¶lÃ¼mde gÃ¶rÃ¼nÃ¼r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> CFO</li>
+                    <li><strong>B)</strong> CFI</li>
+                    <li><strong>C)</strong> CFF</li>
+                    <li><strong>D)</strong> Taxes</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Uzun vadeli varlÄ±k alÄ±mÄ± yatÄ±rÄ±m faaliyetidir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 10: BorÃ§ (Debt) almak nakit akÄ±ÅŸÄ±nda genelde nereye yazÄ±lÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> CFO</li>
+                    <li><strong>B)</strong> CFI</li>
+                    <li><strong>C)</strong> CFF</li>
+                    <li><strong>D)</strong> Gross Profit</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” Finansman faaliyetidir (Debt issuance).</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

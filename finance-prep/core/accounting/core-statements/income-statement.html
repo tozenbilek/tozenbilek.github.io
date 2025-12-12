@@ -1,957 +1,957 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income Statement | Accounting</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link rel="stylesheet" href="../../../css/style.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="nav-header">
-            <a href="../../../index.html" class="nav-link">Dashboard</a>
-            <span class="nav-sep">/</span>
-            <a href="../index.html" class="nav-link">Accounting</a>
-            <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">Income Statement</span>
-        </nav>
-
-        <h1>1.1 Income Statement (Gelir Tablosu)</h1>
-        <p class="lesson-desc">
-            Bu sayfa "hızlı geçmek" için değil: Gelir Tablosu’nu (P&amp;L) <strong>tek tek</strong>, <strong>tane tane</strong> öğreneceğiz.
-            Her kavramı sırayla inceleyeceğiz ve her adımın sonunda mini kontrol sorusu yapacağız.
-        </p>
-
-        <!-- Slow learning map -->
-        <div class="deep-dive-box">
-            <h3><i class="fa-solid fa-map"></i> Harita (Önce Büyük Resim)</h3>
-            <p style="margin-bottom: 10px;">
-                Gelir tablosu çok basit bir soruya cevap verir:
-                <strong>“Bu dönem ne kadar sattım ve bu satışın sonunda elimde ne kadar kâr kaldı?”</strong>
-            </p>
-            <div class="excel-window" style="margin-top: 10px;">
-                <div class="excel-header"><i class="fa-solid fa-route"></i> Sıralama (en üstten en alta)</div>
-                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div class="excel-cell header">Adım</div>
-                    <div class="excel-cell header">Mantık (1 cümle)</div>
-
-                    <div class="excel-cell"><strong>1) Revenue (Ciro)</strong></div>
-                    <div class="excel-cell">Kaç TL’lik satış yaptın?</div>
-
-                    <div class="excel-cell"><strong>2) COGS (Satış Maliyeti)</strong></div>
-                    <div class="excel-cell">Bu satışı yapmak için zorunlu maliyetin neydi?</div>
-
-                    <div class="excel-cell"><strong>3) Gross Profit (Brüt Kâr)</strong></div>
-                    <div class="excel-cell">Satış - Satış Maliyeti.</div>
-
-                    <div class="excel-cell"><strong>4) OpEx (Faaliyet Giderleri)</strong></div>
-                    <div class="excel-cell">İşi yürütmek için (kira/maaş/reklam) ne harcadın?</div>
-
-                    <div class="excel-cell"><strong>5) EBIT (Faaliyet Kârı)</strong></div>
-                    <div class="excel-cell">Brüt Kâr - OpEx. (Esas işin kârı)</div>
-
-                    <div class="excel-cell"><strong>6) Interest (Faiz)</strong></div>
-                    <div class="excel-cell">Borç varsa, finansman maliyeti.</div>
-
-                    <div class="excel-cell"><strong>7) Taxes (Vergi)</strong></div>
-                    <div class="excel-cell">Devlete pay.</div>
-
-                    <div class="excel-cell"><strong>8) Net Income (Net Kâr)</strong></div>
-                    <div class="excel-cell">Dönemin “en alt satırı”.</div>
-                </div>
-            </div>
-            <p style="margin-top: 12px; font-weight: 500;">
-                İpucu: Gelir tablosu <strong>“basamak basamak”</strong> iner. Her basamak, bir önceki basamağın üstüne kurulur.
-            </p>
-        </div>
-
-        <!-- Zero to Hero: Analogy -->
-        <div class="analogy-box">
-            <h3><i class="fa-solid fa-lemon"></i> The Lemonade Stand (Limonata Tezgahı)</h3>
-            <p>
-                Finansı bir kenara bırakın. Basit bir limonata tezgahı açtınız.
-                Günün sonunda “kâr ettim mi?” sorusunu cevaplayacağız.
-            </p>
-            <ul style="margin-left: 20px; list-style-type: none;">
-                <li><strong>1) Revenue (Ciro):</strong> 100 bardak × 5 TL = <strong>500 TL</strong> satış yaptın.</li>
-                <li><strong>2) COGS (Satışın Maliyeti):</strong> Her bardak için 1 TL limon+şeker = 100 bardak × 1 TL = <strong>100 TL</strong>.</li>
-                <li><strong>3) Gross Profit (Brüt Kâr):</strong> 500 - 100 = <strong>400 TL</strong>. (Sadece ürün/satış üzerinden kalan)</li>
-                <li><strong>4) OpEx (Faaliyet Giderleri):</strong> Kira 50 TL + çalışan 50 TL = <strong>100 TL</strong>. (Dükkânı/işi ayakta tutma)</li>
-                <li><strong>5) EBIT (Faaliyet Kârı):</strong> 400 - 100 = <strong>300 TL</strong>. (Esas işten kâr)</li>
-                <li><strong>6) Interest (Faiz):</strong> Borç için <strong>20 TL</strong> faiz ödedin.</li>
-                <li><strong>7) Taxes (Vergi):</strong> Kârın %20’si ? <strong>60 TL</strong>.</li>
-                <li><strong>8) Net Income (Net Kâr):</strong> 300 - 20 - 60 = <strong>220 TL</strong>. Dönemin “en alt satırı”.</li>
-            </ul>
-            <div class="drill-card" style="margin-top: 12px;">
-                <p class="question">Mini kontrol: COGS ile OpEx farkı bu örnekte hangileri?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>COGS:</strong> limon+şeker (satış oldukça artar). <strong>OpEx:</strong> kira+çalışan (satış olmasa bile ödersin).</span>
-                </div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">1. Resmi Format (Tabloyu Okumayı Öğrenelim)</h2>
-        <p>
-            Şimdi aynı hikâyeyi “şirket diliyle” bir tabloya çevirelim.
-            Aşağıdaki satırları <strong>en üstten en alta</strong> sırayla oku: her satır bir öncekinin devamı.
-        </p>
-        
-        <div class="excel-window">
-            <div class="excel-header"><i class="fa-solid fa-file-invoice-dollar"></i> P&L_Statement.xlsx</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 150px;">
-                <div class="excel-cell header">Line Item</div>
-                <div class="excel-cell header">Türkçesi</div>
-
-                <div class="excel-cell bold"><a href="revenue.html" style="color:inherit; text-decoration:underline;">Revenue (Sales)</a></div>
-                <div class="excel-cell">Ciro (Hasılat)</div>
-
-                <div class="excel-cell indent" style="color:red;">(-) <a href="cogs.html" style="color:inherit; text-decoration:underline;">COGS</a></div>
-                <div class="excel-cell">Satılan Malın Maliyeti</div>
-
-                <div class="excel-cell bold" style="background:#f0fdf4;">= <a href="gross-profit.html" style="color:inherit; text-decoration:underline;">Gross Profit</a></div>
-                <div class="excel-cell" style="background:#f0fdf4;">Brüt Kâr</div>
-
-                <div class="excel-cell indent" style="color:red;">(-) <a href="opex.html" style="color:inherit; text-decoration:underline;">Operating Expenses (SG&A)</a></div>
-                <div class="excel-cell">Faaliyet Giderleri</div>
-
-                <div class="excel-cell bold" style="background:#dcfce7;">= <a href="ebit.html" style="color:inherit; text-decoration:underline;">Operating Income (EBIT)</a></div>
-                <div class="excel-cell" style="background:#dcfce7;">Faaliyet Kârı (Esas İş)</div>
-
-                <div class="excel-cell indent" style="color:red;">(-) <a href="interest-expense.html" style="color:inherit; text-decoration:underline;">Interest Expense</a></div>
-                <div class="excel-cell">Faiz Gideri</div>
-
-                <div class="excel-cell indent" style="color:red;">(-) <a href="taxes.html" style="color:inherit; text-decoration:underline;">Taxes</a></div>
-                <div class="excel-cell">Vergiler</div>
-
-                <div class="excel-cell bold" style="background:#22c55e; color:white;">= <a href="net-income.html" style="color:white; text-decoration:underline;">Net Income</a></div>
-                <div class="excel-cell" style="background:#22c55e; color:white;">Net Dönem Kârı</div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">2. Kavramları Tek Tek Açalım (Sırayla ve Basit)</h2>
-        <p>
-            Bu bölümde her kavramı <strong>1–2 cümle</strong> ile tanımlayacağız.
-            Her kartın altında bir mini soru var: önce kendin cevapla, sonra üstüne tıklayıp kontrol et.
-        </p>
-
-        <div class="drill-section">
-            <div class="drill-card">
-                <p class="question"><strong>Revenue (Ciro)</strong> tam olarak nedir?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Müşteriye ürün/hizmet sattığın için yazdığın <strong>satış tutarıdır</strong>. Kâr değildir; sadece “satışın büyüklüğü”dür.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>COGS (Satılan Malın Maliyeti)</strong> nedir?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">O satışı yapmak için <strong>ürüne doğrudan bağlı</strong> zorunlu maliyetlerdir. Satış artarsa genelde COGS da artar.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>Gross Profit (Brüt Kâr)</strong> nasıl okunur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Revenue - COGS</strong>. Ürün/hizmetin “çekirdek kârlılığını” gösterir: daha OpEx yok.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>OpEx (Faaliyet Giderleri)</strong> nedir?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">İşi yürütmek için yapılan giderlerdir: kira, maaşlar, pazarlama, muhasebe, yazılım abonelikleri… Ürüne birebir “gömülü” olmayabilir.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>EBIT (Faaliyet Kârı)</strong> neyi söyler?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Gross Profit - OpEx</strong>. Faiz ve vergi gelmeden önce, “esas iş” kârın ne?</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>Interest (Faiz)</strong> neden ayrı gösterilir?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Çünkü faiz, şirketin <strong>finansman tercihiyle</strong> ilgilidir (borçlanma). Aynı işi yapan iki şirketten biri borçluysa faizi daha yüksek olur.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>Taxes (Vergi)</strong> nereden gelir?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Kâr üzerinden devlete ödenir. Basitleştirirsek: “kârın bir kısmı devlete gider”. Detaylar ülkeye/kurala göre değişir.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question"><strong>Net Income (Net Kâr)</strong> “neden bu kadar önemli”?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Dönem sonunda şirketin “en altta” bıraktığı kârdır. Büyüme yatırımı, temettü, borç ödeme gibi kararlar bunun etrafında döner.</span>
-                </div>
-            </div>
-        </div>
-
-        <h2 style="color: var(--accent-green);">3. Deep Dive: COGS vs OpEx (Hayat Memat Meselesi)</h2>
-        <div class="deep-dive-box">
-            <h3><i class="fa-solid fa-microscope"></i> Giderler Arasındaki Fark</h3>
-            <p>
-                Her gider aynı değildir. Yatırımcılar bu ayrıma çok dikkat eder.
-            </p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <div>
-                    <h4 style="color: var(--accent-red); margin-top:0;">1. COGS (Değişken)</h4>
-                    <p>
-                        "Cost of Goods Sold". Malı üretmek için <strong>zorunlu</strong> olan harcama.
-                        <br><em>Örnek:</em> Limon, Şeker, Bardak.
-                        <br><strong>Özellik:</strong> Satış artarsa, COGS da artar. (Doğru orantılı).
-                    </p>
-                </div>
-                <div>
-                    <h4 style="color: var(--accent-red); margin-top:0;">2. OpEx (Sabit)</h4>
-                    <p>
-                        "Operating Expenses". Dükkanı açık tutmak için yapılan harcama.
-                        <br><em>Örnek:</em> Kira, Muhasebeci Maaşı, Reklam, Elektrik.
-                        <br><strong>Özellik:</strong> Hiç satış yapmasanız bile kira ödersiniz. Satış artınca kira artmaz (kısa vadede).
-                    </p>
-                </div>
-            </div>
-            <p style="margin-top: 15px; font-weight: 500;">
-                <strong>Operating Leverage (Faaliyet Kaldıracı):</strong> Satış artarken OpEx çok artmıyorsa, kâr daha hızlı büyür. Bu yüzden teknoloji şirketlerinde “ölçeklenme” çok değerlidir.
-            </p>
-        </div>
-
-        <div class="content-box-base" style="margin-top: 14px;">
-            <h3 style="margin-top:0;"><i class="fa-solid fa-sitemap"></i> COGS mi OpEx mi? (3 Soruluk Karar Kuralı)</h3>
-            <ol style="margin-left: 18px;">
-                <li>
-                    <strong>Bu maliyet “satışın/teslimatın” olmazsa olmazı mı?</strong>
-                    <br><span style="color: var(--text-secondary);">Evetse çoğu zaman COGS’a yakındır.</span>
-                </li>
-                <li>
-                    <strong>Müşteriye 1 birim daha satış yapınca bu maliyet de genelde artıyor mu?</strong>
-                    <br><span style="color: var(--text-secondary);">Evetse COGS’a; hayırsa OpEx’e yakındır.</span>
-                </li>
-                <li>
-                    <strong>Ürüne/hizmete doğrudan “iz sürmek” kolay mı?</strong>
-                    <br><span style="color: var(--text-secondary);">Kolaysa COGS; zorsa OpEx eğilimi.</span>
-                </li>
-            </ol>
-            <p style="margin-top: 10px; font-weight: 500;">
-                Not: Bazı kalemler şirketten şirkete değişebilir (özellikle yazılım, kargo, destek). Önemli olan <strong>tutarlı</strong> olmak.
-            </p>
-        </div>
-
-        <div class="excel-window" style="margin-top: 14px;">
-            <div class="excel-header"><i class="fa-solid fa-layer-group"></i> Hızlı Örnekler (Sektöre Göre)</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 1fr 1fr;">
-                <div class="excel-cell header">İş modeli</div>
-                <div class="excel-cell header">COGS’a tipik örnek</div>
-                <div class="excel-cell header">OpEx’e tipik örnek</div>
-
-                <div class="excel-cell bold">Limonata</div>
-                <div class="excel-cell">Limon, şeker, bardak</div>
-                <div class="excel-cell">Kira, çalışan, reklam</div>
-
-                <div class="excel-cell bold">E-ticaret</div>
-                <div class="excel-cell">Ürün maliyeti, paketleme/kargo (çoğu firmada)</div>
-                <div class="excel-cell">Pazarlama, müşteri hizmeti, ofis</div>
-
-                <div class="excel-cell bold">Restoran</div>
-                <div class="excel-cell">Gıda malzemesi</div>
-                <div class="excel-cell">Kira, garson maaşı (çoğu firmada), pazarlama</div>
-
-                <div class="excel-cell bold">Üretim</div>
-                <div class="excel-cell">Hammadde, direkt işçilik</div>
-                <div class="excel-cell">Yönetim, satış ekibi, Ar-Ge</div>
-
-                <div class="excel-cell bold">SaaS (Yazılım)</div>
-                <div class="excel-cell">Sunucu/hosting, müşteri destek ekibi (bazı firmalarda)</div>
-                <div class="excel-cell">Ar-Ge (mühendis), satış-pazarlama</div>
-            </div>
-        </div>
-
-        <div class="drill-section" style="margin-top: 14px;">
-            <h3><i class="fa-solid fa-bullseye"></i> Pratik: COGS mı OpEx mi? (Önce tahmin et)</h3>
-            <div class="drill-card">
-                <p class="question">1) Ürün paketleme malzemesi (kutu, bant)</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Genelde <strong>COGS</strong> (satış/teslimatla direkt ilişkili).</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">2) Instagram reklamı</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Genelde <strong>OpEx</strong> (Sales &amp; Marketing).</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">3) Kargo ücreti (müşteriye teslim)</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Şirkete göre değişebilir; çoğu e-ticarette <strong>COGS</strong> veya “Fulfillment” altında (brüt kârı etkiler).</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">4) Ofis kirası</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Genelde <strong>OpEx</strong>.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">5) SaaS sunucu/hosting maliyeti</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">SaaS’ta çoğu zaman <strong>COGS</strong> (Cost of Revenue) olarak görülür; brüt marjı belirler.</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-box-base" style="margin-top: 14px;">
-            <h3 style="margin-top:0;"><i class="fa-solid fa-key"></i> Cevap Anahtarı (Bu 4 kalem en çok karıştırılanlar)</h3>
-            <ul style="margin-left: 18px;">
-                <li>
-                    <strong>1) E-ticaret kargo ücreti:</strong> Çoğu modelde <strong>COGS</strong> / “Fulfillment” (satışı teslim etmenin maliyeti olduğu için brüt kârı etkiler).
-                </li>
-                <li>
-                    <strong>2) Google/Instagram reklamı:</strong> Genelde <strong>OpEx</strong> (Sales &amp; Marketing; satışla ilişkilidir ama “ürünün maliyeti” değildir).
-                </li>
-                <li>
-                    <strong>3) SaaS sunucu/hosting:</strong> Çoğu SaaS şirketinde <strong>COGS</strong> (Cost of Revenue; müşteriye hizmeti “sunmanın” maliyeti).
-                </li>
-                <li>
-                    <strong>4) Ofis kirası:</strong> Neredeyse her zaman <strong>OpEx</strong> (Genel yönetim / G&amp;A).
-                </li>
-            </ul>
-            <p style="margin-top: 10px; color: var(--text-secondary);">
-                Kısa mantık: <strong>COGS</strong> = “müşteriye ürün/hizmeti üretip teslim etme”; <strong>OpEx</strong> = “şirketi çalışır tutma / satışı büyütme”.
-            </p>
-        </div>
-
-        <h2 style="color: var(--accent-green);">4. Revenue Recognition (Nakit ? Gelir)</h2>
-        <div class="reddit-box">
-            <div class="reddit-title"><i class="fa-solid fa-hand-holding-dollar"></i> Nakit ? Gelir</div>
-            <p>
-                En büyük yanılgı: "Kasamda para var, demek ki kâr ettim." 
-                <br><strong>HAYIR.</strong> Muhasebede "Accrual Basis" (Tahakkuk Esası) geçerlidir.
-            </p>
-            <p>
-                <strong>Kural:</strong> Geliri, parayı aldığında değil, <strong>hizmeti verdiğinde</strong> yazarsın.
-                <br>
-                <em>Örnek:</em> Spor salonu üyeliği sattın (1200 TL peşin aldın).
-                <br>- Ocak ayında kasana 1200 TL girdi (Cash Flow).
-                <br>- Ama Ocak ayında sadece 100 TL Gelir yazabilirsin (Income Statement).
-                <br>- Kalan 1100 TL senin paran değildir, müşteriye borcundur (Deferred Revenue).
-            </p>
-        </div>
-
-        <div class="content-box-base" style="margin-top: 14px;">
-            <h3 style="margin-top:0;"><i class="fa-solid fa-key"></i> Cevap Anahtarı: “Nakit mi?” “Gelir/Gider mi?” (4 Durum)</h3>
-            <p style="margin-bottom: 10px;">
-                Bu 4 durum %90 vakayı çözer. Her seferinde şu soruyu sor:
-                <strong>“Hizmet/teslim oldu mu?”</strong> (Evetse IS’e, hayırsa BS’e yazarsın.)
-            </p>
-            <ul style="margin-left: 18px;">
-                <li>
-                    <strong>A) Satışı yaptın, para sonra gelecek › AR:</strong>
-                    <br><span style="color: var(--text-secondary);"><strong>IS:</strong> Revenue yaz. <strong>BS:</strong> AR artır. <strong>Nakit:</strong> henüz yok.</span>
-                </li>
-                <li>
-                    <strong>B) Parayı aldın, hizmet/teslim sonra › Deferred Revenue:</strong>
-                    <br><span style="color: var(--text-secondary);"><strong>Nakit:</strong> Cash artır. <strong>IS:</strong> gelir yazma (şimdilik). <strong>BS:</strong> Deferred Revenue artır.</span>
-                </li>
-                <li>
-                    <strong>C) Gider oluştu, ödeme sonra › AP / Accrued:</strong>
-                    <br><span style="color: var(--text-secondary);"><strong>IS:</strong> Expense yaz. <strong>BS:</strong> AP/Accrued artır. <strong>Nakit:</strong> henüz çıkmadı.</span>
-                </li>
-                <li>
-                    <strong>D) Ödemeyi yaptın, fayda sonra › Prepaid:</strong>
-                    <br><span style="color: var(--text-secondary);"><strong>Nakit:</strong> Cash azalt. <strong>IS:</strong> gideri zamana yay. <strong>BS:</strong> Prepaid artır.</span>
-                </li>
-            </ul>
-            <p style="margin-top: 10px; font-weight: 500;">
-                Ezber cümlesi: <strong>AR ve Prepaid = Asset</strong> (artarsa nakit sıkışır), <strong>AP ve Deferred = Liability</strong> (artarsa nakit rahatlar).
-            </p>
-        </div>
-
-        <div class="content-box-base" style="margin-top: 14px;">
-            <h3 style="margin-top:0;"><i class="fa-solid fa-code-branch"></i> 2 Soru ile Otomatik Bul (Ezbersiz Mini Karar Ağacı)</h3>
-            <ol style="margin-left: 18px;">
-                <li>
-                    <strong>Para hareket etti mi?</strong> (Cash girdi/çıktı mı?)
-                    <br><span style="color: var(--text-secondary);">Evet/Hayır diye işaretle.</span>
-                </li>
-                <li>
-                    <strong>Hizmet/teslim gerçekleşti mi?</strong> (Yani “hak ediş” oldu mu?)
-                    <br><span style="color: var(--text-secondary);">Evet/Hayır diye işaretle.</span>
-                </li>
-            </ol>
-
-            <div class="excel-window" style="margin-top: 12px;">
-                <div class="excel-header"><i class="fa-solid fa-table"></i> 2×2 Sonuç Tablosu</div>
-                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
-                    <div class="excel-cell header">Durum</div>
-                    <div class="excel-cell header">Tipik sonuç</div>
-
-                    <div class="excel-cell bold">Para yok + Teslim var</div>
-                    <div class="excel-cell"><strong>AR</strong> (Gelir yazılır, alacak doğar)</div>
-
-                    <div class="excel-cell bold">Para var + Teslim yok</div>
-                    <div class="excel-cell"><strong>Deferred Revenue</strong> (Nakit var, gelir henüz yok)</div>
-
-                    <div class="excel-cell bold">Para yok + Gider oluştu</div>
-                    <div class="excel-cell"><strong>AP/Accrued</strong> (Gider yazılır, borç doğar)</div>
-
-                    <div class="excel-cell bold">Para var + Fayda sonra</div>
-                    <div class="excel-cell"><strong>Prepaid</strong> (Nakit çıktı, gider sonra)</div>
-                </div>
-            </div>
-
-            <p style="margin-top: 10px; color: var(--text-secondary);">
-                Not: “Teslim var mı?” sorusu gelir/gideri belirler; “para hareketi var mı?” sorusu bilançoda hangi ara hesabın doğduğunu söyler.
-            </p>
-        </div>
-
-        <div class="excel-window" style="margin-top: 14px;">
-            <div class="excel-header"><i class="fa-solid fa-arrows-left-right"></i> En Net Tablo: “Nakit” ile “Gelir/Gider” Zamanı Ayrı Olabilir</div>
-            <div class="excel-grid" style="grid-template-columns: 1fr 1fr 1fr;">
-                <div class="excel-cell header">Durum</div>
-                <div class="excel-cell header">Gelir tablosu (IS)</div>
-                <div class="excel-cell header">Bilançoda tipik hesap</div>
-
-                <div class="excel-cell bold">A) Satışı yaptın, para sonra gelecek</div>
-                <div class="excel-cell">Gelir <strong>yazılır</strong> (Revenue ^)</div>
-                <div class="excel-cell"><strong>AR (Alacak)</strong> ^</div>
-
-                <div class="excel-cell bold">B) Parayı aldın, hizmet/teslim sonra</div>
-                <div class="excel-cell">Gelir <strong>henüz yazılmaz</strong></div>
-                <div class="excel-cell"><strong>Deferred Revenue</strong> ^ (borç)</div>
-
-                <div class="excel-cell bold">C) Gider oluştu, para sonra ödenecek</div>
-                <div class="excel-cell">Gider <strong>yazılır</strong> (Expense ^)</div>
-                <div class="excel-cell"><strong>AP / Accrued</strong> ^ (borç)</div>
-
-                <div class="excel-cell bold">D) Parayı ödedin, fayda sonra</div>
-                <div class="excel-cell">Gider <strong>henüz yazılmaz</strong></div>
-                <div class="excel-cell"><strong>Prepaid</strong> ^ (varlık)</div>
-            </div>
-        </div>
-
-        <div class="drill-section" style="margin-top: 14px;">
-            <h3><i class="fa-solid fa-square-check"></i> Pratik: 4 Durumu Mini Örnekle Oturtalım</h3>
-            <div class="drill-card">
-                <p class="question">A) Bugün 1.000 TL’lik hizmet verdin, müşteri 30 gün sonra ödeyecek. Bugün ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>IS:</strong> Revenue ^ (gelir yazılır). <strong>BS:</strong> AR ^. <strong>Nakit:</strong> henüz yok.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">B) Müşteri bugün 1.200 TL peşin ödedi, 12 ay hizmet alacak. Bugün ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Nakit:</strong> Cash ^. <strong>IS:</strong> bugün gelir yazmazsın (veya çok küçük kısmı). <strong>BS:</strong> Deferred Revenue ^.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">C) Bu ay elektrik faturası 500 TL “oluştu”, ödeme gelecek ay. Bu ay ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>IS:</strong> Expense ^ (gider yazılır). <strong>BS:</strong> AP/Accrued ^. <strong>Nakit:</strong> bu ay çıkmadı.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">D) 12 aylık sigortayı bugün 1.200 TL peşin ödedin. Bu ay ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Nakit:</strong> Cash v. <strong>BS:</strong> Prepaid ^. <strong>IS:</strong> bu ay sadece 1 aylık kısmı gider yazarsın (ör. 100 TL).</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="drill-section mcq-quiz" style="margin-top: 18px;">
-            <h3><i class="fa-solid fa-circle-question"></i> Quiz (Çoktan Seçmeli) — Tüm Konular</h3>
-            <div class="mcq-controls" style="display:flex; gap:10px; align-items:center; margin: 8px 0 14px;">
-                <a href="#" class="btn-nav" data-mcq-shuffle style="padding:10px 12px; font-size:12px;">Karıştır</a>
-                <a href="#" class="btn-nav" data-mcq-reset style="padding:10px 12px; font-size:12px;">Sıfırla</a>
-                <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; color: var(--text-tertiary);">
-                    Skor: <strong data-mcq-score>0 / 0</strong>
-                </span>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 1: Gelir tablosu en temel olarak neyi cevaplar?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Bu dönemde nakit nereden geldi / nereye gitti</li>
-                    <li><strong>B)</strong> Bu an itibarıyla neye sahibim ve ne borçluyum</li>
-                    <li><strong>C)</strong> Bu dönemde ne kadar sattım ve sonunda ne kadar kâr kaldı</li>
-                    <li><strong>D)</strong> Hisse fiyatı neden yükseldi / düştü</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Gelir tablosu dönemin kârlılık hikayesini anlatır.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 2: Revenue (Ciro) aşağıdakilerden hangisidir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Vergi sonrası net kâr</li>
-                    <li><strong>B)</strong> Müşteriye satıştan yazılan toplam satış tutarı</li>
-                    <li><strong>C)</strong> Satılan malın maliyeti</li>
-                    <li><strong>D)</strong> Faiz gideri</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Revenue kâr değildir; maliyet/gider düşülmeden önceki satış tutarıdır.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 3: Brüt Kâr (Gross Profit) formülü hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Revenue + COGS</li>
-                    <li><strong>B)</strong> Revenue - COGS</li>
-                    <li><strong>C)</strong> Revenue - OpEx</li>
-                    <li><strong>D)</strong> EBIT - Taxes</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Brüt kâr, satıştan satışın maliyeti düşülünce kalanıdır.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 4: EBIT formülü hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Gross Profit - OpEx</li>
-                    <li><strong>B)</strong> Net Income + Taxes</li>
-                    <li><strong>C)</strong> Revenue - Taxes</li>
-                    <li><strong>D)</strong> Gross Profit + Interest</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — EBIT esas iş kârına odaklanır; faiz ve vergi henüz yok.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 5: Gelir tablosunda “en altta” bulunan kalem hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> COGS</li>
-                    <li><strong>B)</strong> OpEx</li>
-                    <li><strong>C)</strong> Gross Profit</li>
-                    <li><strong>D)</strong> Net Income</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> D — Net Income “bottom line”dır.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 6: Aşağıdaki sıralamalardan hangisi doğrudur?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Revenue › OpEx › COGS › Gross Profit › EBIT › Net Income</li>
-                    <li><strong>B)</strong> Revenue › COGS › Gross Profit › OpEx › EBIT › Interest › Taxes › Net Income</li>
-                    <li><strong>C)</strong> Revenue › Taxes › Interest › EBIT › Net Income</li>
-                    <li><strong>D)</strong> Net Income › Taxes › Interest › EBIT › Revenue</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Sayfadaki “basamak” akış budur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 7: Faiz gideri (Interest) neden EBIT’in altında ayrı izlenir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Faiz, ürün maliyetidir</li>
-                    <li><strong>B)</strong> Faiz, şirketin finansman tercihiyle ilgilidir (borçlanma)</li>
-                    <li><strong>C)</strong> Faiz, vergi oranını belirler</li>
-                    <li><strong>D)</strong> Faiz, nakit akış tablosunda hiç görünmez</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Aynı operasyonu yapan iki şirketin borç yapısı farklı olabilir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 8: COGS ile OpEx ayrımında “en doğru” ifade hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> COGS = işi yürütmek için genel giderler</li>
-                    <li><strong>B)</strong> OpEx = satışı yapmak için ürüne doğrudan bağlı maliyet</li>
-                    <li><strong>C)</strong> COGS = ürünü/hizmeti üretip/teslim etmenin doğrudan maliyeti</li>
-                    <li><strong>D)</strong> COGS ve OpEx tamamen aynıdır</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Kısa mantık: COGS “teslim”, OpEx “işi yürütme/satışı büyütme”.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 9: E-ticarette kargo ücreti çoğu modelde nereye yazılır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> COGS / Fulfillment</li>
-                    <li><strong>B)</strong> Taxes</li>
-                    <li><strong>C)</strong> Interest</li>
-                    <li><strong>D)</strong> Equity</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Teslimat maliyeti olduğu için brüt kârı etkiler.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 10: Google/Instagram reklam harcaması tipik olarak nereye yazılır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> COGS</li>
-                    <li><strong>B)</strong> OpEx (Sales &amp; Marketing)</li>
-                    <li><strong>C)</strong> Interest</li>
-                    <li><strong>D)</strong> Taxes</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Ürünün maliyeti değil, satış/pazarlama gideridir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 11: SaaS sunucu/hosting maliyeti çoğu şirkette hangi gruba gider?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> COGS (Cost of Revenue)</li>
-                    <li><strong>B)</strong> Taxes</li>
-                    <li><strong>C)</strong> Dividends</li>
-                    <li><strong>D)</strong> Equity</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Müşteriye hizmeti “sunmanın” maliyeti olduğu için brüt marjı belirler.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 12: Operating Leverage (faaliyet kaldıracı) neyi anlatır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Satış artarken OpEx çok artmıyorsa kârın daha hızlı büyümesi</li>
-                    <li><strong>B)</strong> Faiz oranlarının düşmesi</li>
-                    <li><strong>C)</strong> Vergi oranının artması</li>
-                    <li><strong>D)</strong> AR’nin azalması</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Sabit gider baskısı azsa kârlılık hızlanır.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 13: “Nakit ? Gelir” ifadesinin ana mesajı hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Nakit akışı kârdan daha düşüktür</li>
-                    <li><strong>B)</strong> Gelir, parayı alınca değil; hizmet/teslim olunca yazılır</li>
-                    <li><strong>C)</strong> Gelir tablosu sadece nakiti gösterir</li>
-                    <li><strong>D)</strong> Vergiler hiç önemli değildir</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Tahakkuk (accrual) mantığı budur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 14: Satışı yaptın ama para sonra gelecek; bilançoda hangi hesap artar?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Deferred Revenue</li>
-                    <li><strong>B)</strong> AR (Accounts Receivable)</li>
-                    <li><strong>C)</strong> Prepaid</li>
-                    <li><strong>D)</strong> Taxes Payable</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Gelir yazılır; nakit gelmediği için alacak doğar.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 15: Parayı peşin aldın ama hizmet/teslim sonra; bilançoda hangi hesap artar?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> AR</li>
-                    <li><strong>B)</strong> Inventory</li>
-                    <li><strong>C)</strong> Deferred Revenue</li>
-                    <li><strong>D)</strong> COGS</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Nakit geldi ama “iş yapma yükümlülüğü” (borç) oluşur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 16: Gider oluştu ama ödeme sonra; bilançoda hangi hesap artar?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> AP / Accrued</li>
-                    <li><strong>B)</strong> Prepaid</li>
-                    <li><strong>C)</strong> AR</li>
-                    <li><strong>D)</strong> Revenue</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Gider yazılır; ödeme olmadığı için borç (yükümlülük) doğar.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 17: Parayı ödedin ama fayda sonra; bilançoda hangi hesap artar?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Deferred Revenue</li>
-                    <li><strong>B)</strong> Prepaid</li>
-                    <li><strong>C)</strong> AP</li>
-                    <li><strong>D)</strong> Taxes</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Nakit çıktı; gideri zamana yayacağın için “peşin ödenmiş” varlık oluşur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 18: 2×2 karar ağacında “Para yok + Teslim var” hangisine gider?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Prepaid</li>
-                    <li><strong>B)</strong> Deferred Revenue</li>
-                    <li><strong>C)</strong> AR</li>
-                    <li><strong>D)</strong> AP/Accrued</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Gelir var, nakit yok › alacak doğar.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 19: 2×2 karar ağacında “Para var + Teslim yok” hangisine gider?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> AR</li>
-                    <li><strong>B)</strong> Deferred Revenue</li>
-                    <li><strong>C)</strong> AP/Accrued</li>
-                    <li><strong>D)</strong> Prepaid</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Nakit var, gelir henüz yok › yükümlülük.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 20: EBIT pozitifken Net Income negatif olabilir mi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Hayır, imkânsız</li>
-                    <li><strong>B)</strong> Evet, faiz çok yüksekse veya tek seferlik/vergi etkileri varsa</li>
-                    <li><strong>C)</strong> Sadece Revenue negatife düşerse</li>
-                    <li><strong>D)</strong> Sadece COGS sıfır olursa</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Faiz/vergi/tek seferlik kalemler “altta” sonucu negatife çevirebilir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 21 (Kara): Aşağıdakilerden hangisi yanlıştır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Revenue yüksek olabilir ama şirket zarar edebilir</li>
-                    <li><strong>B)</strong> Gelir tablosu nakit giriş-çıkışını birebir gösterir</li>
-                    <li><strong>C)</strong> Net Income, gelir tablosunun en alt satırıdır</li>
-                    <li><strong>D)</strong> COGS ve OpEx farklı gider türleridir</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Nakit akışı başka tablo; gelir tablosu tahakkuk bazlı kârlılığı gösterir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 22 (Hesap): Revenue 500, COGS 100 ise Gross Profit kaçtır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> 400</li>
-                    <li><strong>B)</strong> 600</li>
-                    <li><strong>C)</strong> 100</li>
-                    <li><strong>D)</strong> 500</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Gross Profit = 500 - 100 = 400.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 23 (Hesap): Gross Profit 400, OpEx 100 ise EBIT kaçtır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> 300</li>
-                    <li><strong>B)</strong> 500</li>
-                    <li><strong>C)</strong> 100</li>
-                    <li><strong>D)</strong> -300</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — EBIT = 400 - 100 = 300.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 24 (Hesap): EBIT 300, Interest 20, Taxes 60 ise Net Income kaçtır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> 220</li>
-                    <li><strong>B)</strong> 240</li>
-                    <li><strong>C)</strong> 320</li>
-                    <li><strong>D)</strong> 180</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Net Income = 300 - 20 - 60 = 220.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 25 (Kara): Brüt marj %40 ise en doğru yorum hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Şirket 100 TL satışta 40 TL brüt kâr bırakır</li>
-                    <li><strong>B)</strong> Şirket 100 TL satışta 40 TL net kâr bırakır</li>
-                    <li><strong>C)</strong> Şirket 100 TL satışta 60 TL brüt kâr bırakır</li>
-                    <li><strong>D)</strong> OpEx her zaman 40 TL’dir</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Brüt marj “Revenue sonrası COGS düşülünce kalan pay”dır; net kâr değildir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 26 (Kara): Aşağıdakilerden hangisi Net Income’ı etkiler ama EBIT’i etkilemez?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> COGS</li>
-                    <li><strong>B)</strong> OpEx</li>
-                    <li><strong>C)</strong> Interest Expense</li>
-                    <li><strong>D)</strong> Revenue</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Faiz, EBIT’in altında yer alır; net kârı etkiler.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 27 (Kara): “Revenue artarsa Net Income kesin artar” ifadesi için en doğru seçenek hangisi?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Doğru; satış artınca kâr her zaman artar</li>
-                    <li><strong>B)</strong> Yanlış; COGS/OpEx daha hızlı artarsa kâr düşebilir</li>
-                    <li><strong>C)</strong> Yanlış; vergi hiç yoktur</li>
-                    <li><strong>D)</strong> Doğru; çünkü faiz sabittir</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Marjlar bozulabilir, OpEx şişebilir; kâr garanti değildir.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 28 (COGS/OpEx): “Ürün paketleme (kutu/bant)” genelde nereye gider?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Interest</li>
-                    <li><strong>B)</strong> COGS</li>
-                    <li><strong>C)</strong> Taxes</li>
-                    <li><strong>D)</strong> Equity</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Satış/teslimle doğrudan ilişkili olduğu için çoğu modelde COGS’tur.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 29 (Kara): Aşağıdakilerden hangisi OpEx’e daha yakındır?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Hammadde maliyeti</li>
-                    <li><strong>B)</strong> Üretimde direkt işçilik (ürün başına)</li>
-                    <li><strong>C)</strong> Ofis kirası</li>
-                    <li><strong>D)</strong> Ürün paketleme</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Ofis kirası tipik olarak şirketi yürütme gideridir (OpEx).</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 30 (Nakit?Gelir): Müşteriden para geldi ama hizmet gelecek ay verilecek; bugün gelir yazılır mı?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> Evet; para geldiyse gelir yazılır</li>
-                    <li><strong>B)</strong> Hayır; Deferred Revenue oluşur</li>
-                    <li><strong>C)</strong> Evet; AR oluşur</li>
-                    <li><strong>D)</strong> Hayır; Prepaid oluşur</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Nakit geldi ama teslim yok; bu yüzden yükümlülük (Deferred Revenue).</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 31 (Nakit?Gelir): Hizmet verildi ama para henüz gelmedi; bilançoda ne oluşur?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> AR</li>
-                    <li><strong>B)</strong> Deferred Revenue</li>
-                    <li><strong>C)</strong> Prepaid</li>
-                    <li><strong>D)</strong> Taxes</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> A — Gelir var, nakit yok › alacak (AR).</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 32 (2×2): “Para var + Teslim yok” kombinasyonu hangisidir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> AR</li>
-                    <li><strong>B)</strong> Deferred Revenue</li>
-                    <li><strong>C)</strong> AP/Accrued</li>
-                    <li><strong>D)</strong> Prepaid</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Nakit var, gelir yok › Deferred Revenue.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 33 (Kara): Aşağıdakilerden hangisi “gelir tablosu” değil “nakit akışı” düşüncesidir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> “Bu dönemde kâr ettim mi?”</li>
-                    <li><strong>B)</strong> “Para kasaya ne zaman girdi?”</li>
-                    <li><strong>C)</strong> “Brüt kârım kaç?”</li>
-                    <li><strong>D)</strong> “EBIT’im kaç?”</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> B — Bu soru cash flow mantığıdır; gelir tablosu “hak ediş”e bakar.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 34 (Kara): Aşağıdakilerden hangisi doğru eşlemedir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> AR = Liability</li>
-                    <li><strong>B)</strong> Prepaid = Liability</li>
-                    <li><strong>C)</strong> Deferred Revenue = Liability</li>
-                    <li><strong>D)</strong> AP/Accrued = Asset</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> C — Deferred Revenue yükümlülüktür; diğer eşleşmeler ters.</span>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">Soru 35 (Kara): “Para çıktı ama gider yazmadım” senaryosu hangisidir?</p>
-                <ul style="margin: 8px 0 0 18px;">
-                    <li><strong>A)</strong> AR</li>
-                    <li><strong>B)</strong> Deferred Revenue</li>
-                    <li><strong>C)</strong> AP/Accrued</li>
-                    <li><strong>D)</strong> Prepaid</li>
-                </ul>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text"><strong>Doğru:</strong> D — Prepaid: nakit çıktı, fayda/gider zamanla yazılır.</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="drill-section">
-            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
-            <div class="drill-card">
-                <p class="question">Soru: Bir şirket hiç satış yapmasa bile hangi giderleri ödemek zorundadır?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">OpEx (Operating Expenses). Kira, sigorta, maaşlar gibi sabit giderler satıştan bağımsızdır. COGS ise satış yoksa sıfırdır.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">Soru: Brüt Kâr Marjı (Gross Margin) %40 ne demektir?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Şirket 100 TL'lik satış yaptığında, bunun 60 TL'si üretim maliyetine (COGS) gidiyor, geriye operasyonel giderleri ödemek için 40 TL kalıyor demektir.</span>
-                </div>
-            </div>
-            <div class="drill-card">
-                <p class="question">Soru: EBIT pozitifken Net Income negatif olabilir mi?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <span class="blur-text">Evet. Örneğin faiz (borç) çok yüksekse veya vergi/tek seferlik giderler varsa, <strong>EBIT&gt;0</strong> olsa bile altta Net Income negatif olabilir.</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="lesson-nav">
-            <span class="btn-nav disabled"><i class="fa-solid fa-arrow-left"></i> Başlangıç</span>
-            <a href="balance-sheet.html" class="btn-nav">Sonraki: Balance Sheet <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </div>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Statement | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Income Statement</span>
+        </nav>
+
+        <h1>1.1 Income Statement (Gelir Tablosu)</h1>
+        <p class="lesson-desc">
+            Bu sayfa "hÄ±zlÄ± geÃ§mek" iÃ§in deÄŸil: Gelir Tablosuâ€™nu (P&amp;L) <strong>tek tek</strong>, <strong>tane tane</strong> Ã¶ÄŸreneceÄŸiz.
+            Her kavramÄ± sÄ±rayla inceleyeceÄŸiz ve her adÄ±mÄ±n sonunda mini kontrol sorusu yapacaÄŸÄ±z.
+        </p>
+
+        <!-- Slow learning map -->
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-map"></i> Harita (Ã–nce BÃ¼yÃ¼k Resim)</h3>
+            <p style="margin-bottom: 10px;">
+                Gelir tablosu Ã§ok basit bir soruya cevap verir:
+                <strong>â€œBu dÃ¶nem ne kadar sattÄ±m ve bu satÄ±ÅŸÄ±n sonunda elimde ne kadar kÃ¢r kaldÄ±?â€</strong>
+            </p>
+            <div class="excel-window" style="margin-top: 10px;">
+                <div class="excel-header"><i class="fa-solid fa-route"></i> SÄ±ralama (en Ã¼stten en alta)</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="excel-cell header">AdÄ±m</div>
+                    <div class="excel-cell header">MantÄ±k (1 cÃ¼mle)</div>
+
+                    <div class="excel-cell"><strong>1) Revenue (Ciro)</strong></div>
+                    <div class="excel-cell">KaÃ§ TLâ€™lik satÄ±ÅŸ yaptÄ±n?</div>
+
+                    <div class="excel-cell"><strong>2) COGS (SatÄ±ÅŸ Maliyeti)</strong></div>
+                    <div class="excel-cell">Bu satÄ±ÅŸÄ± yapmak iÃ§in zorunlu maliyetin neydi?</div>
+
+                    <div class="excel-cell"><strong>3) Gross Profit (BrÃ¼t KÃ¢r)</strong></div>
+                    <div class="excel-cell">SatÄ±ÅŸ - SatÄ±ÅŸ Maliyeti.</div>
+
+                    <div class="excel-cell"><strong>4) OpEx (Faaliyet Giderleri)</strong></div>
+                    <div class="excel-cell">Ä°ÅŸi yÃ¼rÃ¼tmek iÃ§in (kira/maaÅŸ/reklam) ne harcadÄ±n?</div>
+
+                    <div class="excel-cell"><strong>5) EBIT (Faaliyet KÃ¢rÄ±)</strong></div>
+                    <div class="excel-cell">BrÃ¼t KÃ¢r - OpEx. (Esas iÅŸin kÃ¢rÄ±)</div>
+
+                    <div class="excel-cell"><strong>6) Interest (Faiz)</strong></div>
+                    <div class="excel-cell">BorÃ§ varsa, finansman maliyeti.</div>
+
+                    <div class="excel-cell"><strong>7) Taxes (Vergi)</strong></div>
+                    <div class="excel-cell">Devlete pay.</div>
+
+                    <div class="excel-cell"><strong>8) Net Income (Net KÃ¢r)</strong></div>
+                    <div class="excel-cell">DÃ¶nemin â€œen alt satÄ±rÄ±â€.</div>
+                </div>
+            </div>
+            <p style="margin-top: 12px; font-weight: 500;">
+                Ä°pucu: Gelir tablosu <strong>â€œbasamak basamakâ€</strong> iner. Her basamak, bir Ã¶nceki basamaÄŸÄ±n Ã¼stÃ¼ne kurulur.
+            </p>
+        </div>
+
+        <!-- Zero to Hero: Analogy -->
+        <div class="analogy-box">
+            <h3><i class="fa-solid fa-lemon"></i> The Lemonade Stand (Limonata TezgahÄ±)</h3>
+            <p>
+                FinansÄ± bir kenara bÄ±rakÄ±n. Basit bir limonata tezgahÄ± aÃ§tÄ±nÄ±z.
+                GÃ¼nÃ¼n sonunda â€œkÃ¢r ettim mi?â€ sorusunu cevaplayacaÄŸÄ±z.
+            </p>
+            <ul style="margin-left: 20px; list-style-type: none;">
+                <li><strong>1) Revenue (Ciro):</strong> 100 bardak Ã— 5 TL = <strong>500 TL</strong> satÄ±ÅŸ yaptÄ±n.</li>
+                <li><strong>2) COGS (SatÄ±ÅŸÄ±n Maliyeti):</strong> Her bardak iÃ§in 1 TL limon+ÅŸeker = 100 bardak Ã— 1 TL = <strong>100 TL</strong>.</li>
+                <li><strong>3) Gross Profit (BrÃ¼t KÃ¢r):</strong> 500 - 100 = <strong>400 TL</strong>. (Sadece Ã¼rÃ¼n/satÄ±ÅŸ Ã¼zerinden kalan)</li>
+                <li><strong>4) OpEx (Faaliyet Giderleri):</strong> Kira 50 TL + Ã§alÄ±ÅŸan 50 TL = <strong>100 TL</strong>. (DÃ¼kkÃ¢nÄ±/iÅŸi ayakta tutma)</li>
+                <li><strong>5) EBIT (Faaliyet KÃ¢rÄ±):</strong> 400 - 100 = <strong>300 TL</strong>. (Esas iÅŸten kÃ¢r)</li>
+                <li><strong>6) Interest (Faiz):</strong> BorÃ§ iÃ§in <strong>20 TL</strong> faiz Ã¶dedin.</li>
+                <li><strong>7) Taxes (Vergi):</strong> KÃ¢rÄ±n %20â€™si ? <strong>60 TL</strong>.</li>
+                <li><strong>8) Net Income (Net KÃ¢r):</strong> 300 - 20 - 60 = <strong>220 TL</strong>. DÃ¶nemin â€œen alt satÄ±rÄ±â€.</li>
+            </ul>
+            <div class="drill-card" style="margin-top: 12px;">
+                <p class="question">Mini kontrol: COGS ile OpEx farkÄ± bu Ã¶rnekte hangileri?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>COGS:</strong> limon+ÅŸeker (satÄ±ÅŸ oldukÃ§a artar). <strong>OpEx:</strong> kira+Ã§alÄ±ÅŸan (satÄ±ÅŸ olmasa bile Ã¶dersin).</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">1. Resmi Format (Tabloyu OkumayÄ± Ã–ÄŸrenelim)</h2>
+        <p>
+            Åimdi aynÄ± hikÃ¢yeyi â€œÅŸirket diliyleâ€ bir tabloya Ã§evirelim.
+            AÅŸaÄŸÄ±daki satÄ±rlarÄ± <strong>en Ã¼stten en alta</strong> sÄ±rayla oku: her satÄ±r bir Ã¶ncekinin devamÄ±.
+        </p>
+        
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-file-invoice-dollar"></i> P&L_Statement.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 150px;">
+                <div class="excel-cell header">Line Item</div>
+                <div class="excel-cell header">TÃ¼rkÃ§esi</div>
+
+                <div class="excel-cell bold"><a href="revenue.html" style="color:inherit; text-decoration:underline;">Revenue (Sales)</a></div>
+                <div class="excel-cell">Ciro (HasÄ±lat)</div>
+
+                <div class="excel-cell indent" style="color:red;">(-) <a href="cogs.html" style="color:inherit; text-decoration:underline;">COGS</a></div>
+                <div class="excel-cell">SatÄ±lan MalÄ±n Maliyeti</div>
+
+                <div class="excel-cell bold" style="background:#f0fdf4;">= <a href="gross-profit.html" style="color:inherit; text-decoration:underline;">Gross Profit</a></div>
+                <div class="excel-cell" style="background:#f0fdf4;">BrÃ¼t KÃ¢r</div>
+
+                <div class="excel-cell indent" style="color:red;">(-) <a href="opex.html" style="color:inherit; text-decoration:underline;">Operating Expenses (SG&A)</a></div>
+                <div class="excel-cell">Faaliyet Giderleri</div>
+
+                <div class="excel-cell bold" style="background:#dcfce7;">= <a href="ebit.html" style="color:inherit; text-decoration:underline;">Operating Income (EBIT)</a></div>
+                <div class="excel-cell" style="background:#dcfce7;">Faaliyet KÃ¢rÄ± (Esas Ä°ÅŸ)</div>
+
+                <div class="excel-cell indent" style="color:red;">(-) <a href="interest-expense.html" style="color:inherit; text-decoration:underline;">Interest Expense</a></div>
+                <div class="excel-cell">Faiz Gideri</div>
+
+                <div class="excel-cell indent" style="color:red;">(-) <a href="taxes.html" style="color:inherit; text-decoration:underline;">Taxes</a></div>
+                <div class="excel-cell">Vergiler</div>
+
+                <div class="excel-cell bold" style="background:#22c55e; color:white;">= <a href="net-income.html" style="color:white; text-decoration:underline;">Net Income</a></div>
+                <div class="excel-cell" style="background:#22c55e; color:white;">Net DÃ¶nem KÃ¢rÄ±</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. KavramlarÄ± Tek Tek AÃ§alÄ±m (SÄ±rayla ve Basit)</h2>
+        <p>
+            Bu bÃ¶lÃ¼mde her kavramÄ± <strong>1â€“2 cÃ¼mle</strong> ile tanÄ±mlayacaÄŸÄ±z.
+            Her kartÄ±n altÄ±nda bir mini soru var: Ã¶nce kendin cevapla, sonra Ã¼stÃ¼ne tÄ±klayÄ±p kontrol et.
+        </p>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question"><strong>Revenue (Ciro)</strong> tam olarak nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">MÃ¼ÅŸteriye Ã¼rÃ¼n/hizmet sattÄ±ÄŸÄ±n iÃ§in yazdÄ±ÄŸÄ±n <strong>satÄ±ÅŸ tutarÄ±dÄ±r</strong>. KÃ¢r deÄŸildir; sadece â€œsatÄ±ÅŸÄ±n bÃ¼yÃ¼klÃ¼ÄŸÃ¼â€dÃ¼r.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>COGS (SatÄ±lan MalÄ±n Maliyeti)</strong> nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">O satÄ±ÅŸÄ± yapmak iÃ§in <strong>Ã¼rÃ¼ne doÄŸrudan baÄŸlÄ±</strong> zorunlu maliyetlerdir. SatÄ±ÅŸ artarsa genelde COGS da artar.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Gross Profit (BrÃ¼t KÃ¢r)</strong> nasÄ±l okunur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Revenue - COGS</strong>. ÃœrÃ¼n/hizmetin â€œÃ§ekirdek kÃ¢rlÄ±lÄ±ÄŸÄ±nÄ±â€ gÃ¶sterir: daha OpEx yok.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>OpEx (Faaliyet Giderleri)</strong> nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ä°ÅŸi yÃ¼rÃ¼tmek iÃ§in yapÄ±lan giderlerdir: kira, maaÅŸlar, pazarlama, muhasebe, yazÄ±lÄ±m abonelikleriâ€¦ ÃœrÃ¼ne birebir â€œgÃ¶mÃ¼lÃ¼â€ olmayabilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>EBIT (Faaliyet KÃ¢rÄ±)</strong> neyi sÃ¶yler?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Gross Profit - OpEx</strong>. Faiz ve vergi gelmeden Ã¶nce, â€œesas iÅŸâ€ kÃ¢rÄ±n ne?</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Interest (Faiz)</strong> neden ayrÄ± gÃ¶sterilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ã‡Ã¼nkÃ¼ faiz, ÅŸirketin <strong>finansman tercihiyle</strong> ilgilidir (borÃ§lanma). AynÄ± iÅŸi yapan iki ÅŸirketten biri borÃ§luysa faizi daha yÃ¼ksek olur.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Taxes (Vergi)</strong> nereden gelir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">KÃ¢r Ã¼zerinden devlete Ã¶denir. BasitleÅŸtirirsek: â€œkÃ¢rÄ±n bir kÄ±smÄ± devlete giderâ€. Detaylar Ã¼lkeye/kurala gÃ¶re deÄŸiÅŸir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Net Income (Net KÃ¢r)</strong> â€œneden bu kadar Ã¶nemliâ€?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">DÃ¶nem sonunda ÅŸirketin â€œen alttaâ€ bÄ±raktÄ±ÄŸÄ± kÃ¢rdÄ±r. BÃ¼yÃ¼me yatÄ±rÄ±mÄ±, temettÃ¼, borÃ§ Ã¶deme gibi kararlar bunun etrafÄ±nda dÃ¶ner.</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Deep Dive: COGS vs OpEx (Hayat Memat Meselesi)</h2>
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-microscope"></i> Giderler ArasÄ±ndaki Fark</h3>
+            <p>
+                Her gider aynÄ± deÄŸildir. YatÄ±rÄ±mcÄ±lar bu ayrÄ±ma Ã§ok dikkat eder.
+            </p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div>
+                    <h4 style="color: var(--accent-red); margin-top:0;">1. COGS (DeÄŸiÅŸken)</h4>
+                    <p>
+                        "Cost of Goods Sold". MalÄ± Ã¼retmek iÃ§in <strong>zorunlu</strong> olan harcama.
+                        <br><em>Ã–rnek:</em> Limon, Åeker, Bardak.
+                        <br><strong>Ã–zellik:</strong> SatÄ±ÅŸ artarsa, COGS da artar. (DoÄŸru orantÄ±lÄ±).
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-red); margin-top:0;">2. OpEx (Sabit)</h4>
+                    <p>
+                        "Operating Expenses". DÃ¼kkanÄ± aÃ§Ä±k tutmak iÃ§in yapÄ±lan harcama.
+                        <br><em>Ã–rnek:</em> Kira, Muhasebeci MaaÅŸÄ±, Reklam, Elektrik.
+                        <br><strong>Ã–zellik:</strong> HiÃ§ satÄ±ÅŸ yapmasanÄ±z bile kira Ã¶dersiniz. SatÄ±ÅŸ artÄ±nca kira artmaz (kÄ±sa vadede).
+                    </p>
+                </div>
+            </div>
+            <p style="margin-top: 15px; font-weight: 500;">
+                <strong>Operating Leverage (Faaliyet KaldÄ±racÄ±):</strong> SatÄ±ÅŸ artarken OpEx Ã§ok artmÄ±yorsa, kÃ¢r daha hÄ±zlÄ± bÃ¼yÃ¼r. Bu yÃ¼zden teknoloji ÅŸirketlerinde â€œÃ¶lÃ§eklenmeâ€ Ã§ok deÄŸerlidir.
+            </p>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-sitemap"></i> COGS mi OpEx mi? (3 Soruluk Karar KuralÄ±)</h3>
+            <ol style="margin-left: 18px;">
+                <li>
+                    <strong>Bu maliyet â€œsatÄ±ÅŸÄ±n/teslimatÄ±nâ€ olmazsa olmazÄ± mÄ±?</strong>
+                    <br><span style="color: var(--text-secondary);">Evetse Ã§oÄŸu zaman COGSâ€™a yakÄ±ndÄ±r.</span>
+                </li>
+                <li>
+                    <strong>MÃ¼ÅŸteriye 1 birim daha satÄ±ÅŸ yapÄ±nca bu maliyet de genelde artÄ±yor mu?</strong>
+                    <br><span style="color: var(--text-secondary);">Evetse COGSâ€™a; hayÄ±rsa OpExâ€™e yakÄ±ndÄ±r.</span>
+                </li>
+                <li>
+                    <strong>ÃœrÃ¼ne/hizmete doÄŸrudan â€œiz sÃ¼rmekâ€ kolay mÄ±?</strong>
+                    <br><span style="color: var(--text-secondary);">Kolaysa COGS; zorsa OpEx eÄŸilimi.</span>
+                </li>
+            </ol>
+            <p style="margin-top: 10px; font-weight: 500;">
+                Not: BazÄ± kalemler ÅŸirketten ÅŸirkete deÄŸiÅŸebilir (Ã¶zellikle yazÄ±lÄ±m, kargo, destek). Ã–nemli olan <strong>tutarlÄ±</strong> olmak.
+            </p>
+        </div>
+
+        <div class="excel-window" style="margin-top: 14px;">
+            <div class="excel-header"><i class="fa-solid fa-layer-group"></i> HÄ±zlÄ± Ã–rnekler (SektÃ¶re GÃ¶re)</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="excel-cell header">Ä°ÅŸ modeli</div>
+                <div class="excel-cell header">COGSâ€™a tipik Ã¶rnek</div>
+                <div class="excel-cell header">OpExâ€™e tipik Ã¶rnek</div>
+
+                <div class="excel-cell bold">Limonata</div>
+                <div class="excel-cell">Limon, ÅŸeker, bardak</div>
+                <div class="excel-cell">Kira, Ã§alÄ±ÅŸan, reklam</div>
+
+                <div class="excel-cell bold">E-ticaret</div>
+                <div class="excel-cell">ÃœrÃ¼n maliyeti, paketleme/kargo (Ã§oÄŸu firmada)</div>
+                <div class="excel-cell">Pazarlama, mÃ¼ÅŸteri hizmeti, ofis</div>
+
+                <div class="excel-cell bold">Restoran</div>
+                <div class="excel-cell">GÄ±da malzemesi</div>
+                <div class="excel-cell">Kira, garson maaÅŸÄ± (Ã§oÄŸu firmada), pazarlama</div>
+
+                <div class="excel-cell bold">Ãœretim</div>
+                <div class="excel-cell">Hammadde, direkt iÅŸÃ§ilik</div>
+                <div class="excel-cell">YÃ¶netim, satÄ±ÅŸ ekibi, Ar-Ge</div>
+
+                <div class="excel-cell bold">SaaS (YazÄ±lÄ±m)</div>
+                <div class="excel-cell">Sunucu/hosting, mÃ¼ÅŸteri destek ekibi (bazÄ± firmalarda)</div>
+                <div class="excel-cell">Ar-Ge (mÃ¼hendis), satÄ±ÅŸ-pazarlama</div>
+            </div>
+        </div>
+
+        <div class="drill-section" style="margin-top: 14px;">
+            <h3><i class="fa-solid fa-bullseye"></i> Pratik: COGS mÄ± OpEx mi? (Ã–nce tahmin et)</h3>
+            <div class="drill-card">
+                <p class="question">1) ÃœrÃ¼n paketleme malzemesi (kutu, bant)</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Genelde <strong>COGS</strong> (satÄ±ÅŸ/teslimatla direkt iliÅŸkili).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">2) Instagram reklamÄ±</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Genelde <strong>OpEx</strong> (Sales &amp; Marketing).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">3) Kargo Ã¼creti (mÃ¼ÅŸteriye teslim)</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Åirkete gÃ¶re deÄŸiÅŸebilir; Ã§oÄŸu e-ticarette <strong>COGS</strong> veya â€œFulfillmentâ€ altÄ±nda (brÃ¼t kÃ¢rÄ± etkiler).</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">4) Ofis kirasÄ±</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Genelde <strong>OpEx</strong>.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">5) SaaS sunucu/hosting maliyeti</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">SaaSâ€™ta Ã§oÄŸu zaman <strong>COGS</strong> (Cost of Revenue) olarak gÃ¶rÃ¼lÃ¼r; brÃ¼t marjÄ± belirler.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-key"></i> Cevap AnahtarÄ± (Bu 4 kalem en Ã§ok karÄ±ÅŸtÄ±rÄ±lanlar)</h3>
+            <ul style="margin-left: 18px;">
+                <li>
+                    <strong>1) E-ticaret kargo Ã¼creti:</strong> Ã‡oÄŸu modelde <strong>COGS</strong> / â€œFulfillmentâ€ (satÄ±ÅŸÄ± teslim etmenin maliyeti olduÄŸu iÃ§in brÃ¼t kÃ¢rÄ± etkiler).
+                </li>
+                <li>
+                    <strong>2) Google/Instagram reklamÄ±:</strong> Genelde <strong>OpEx</strong> (Sales &amp; Marketing; satÄ±ÅŸla iliÅŸkilidir ama â€œÃ¼rÃ¼nÃ¼n maliyetiâ€ deÄŸildir).
+                </li>
+                <li>
+                    <strong>3) SaaS sunucu/hosting:</strong> Ã‡oÄŸu SaaS ÅŸirketinde <strong>COGS</strong> (Cost of Revenue; mÃ¼ÅŸteriye hizmeti â€œsunmanÄ±nâ€ maliyeti).
+                </li>
+                <li>
+                    <strong>4) Ofis kirasÄ±:</strong> Neredeyse her zaman <strong>OpEx</strong> (Genel yÃ¶netim / G&amp;A).
+                </li>
+            </ul>
+            <p style="margin-top: 10px; color: var(--text-secondary);">
+                KÄ±sa mantÄ±k: <strong>COGS</strong> = â€œmÃ¼ÅŸteriye Ã¼rÃ¼n/hizmeti Ã¼retip teslim etmeâ€; <strong>OpEx</strong> = â€œÅŸirketi Ã§alÄ±ÅŸÄ±r tutma / satÄ±ÅŸÄ± bÃ¼yÃ¼tmeâ€.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">4. Revenue Recognition (Nakit ? Gelir)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-hand-holding-dollar"></i> Nakit ? Gelir</div>
+            <p>
+                En bÃ¼yÃ¼k yanÄ±lgÄ±: "Kasamda para var, demek ki kÃ¢r ettim." 
+                <br><strong>HAYIR.</strong> Muhasebede "Accrual Basis" (Tahakkuk EsasÄ±) geÃ§erlidir.
+            </p>
+            <p>
+                <strong>Kural:</strong> Geliri, parayÄ± aldÄ±ÄŸÄ±nda deÄŸil, <strong>hizmeti verdiÄŸinde</strong> yazarsÄ±n.
+                <br>
+                <em>Ã–rnek:</em> Spor salonu Ã¼yeliÄŸi sattÄ±n (1200 TL peÅŸin aldÄ±n).
+                <br>- Ocak ayÄ±nda kasana 1200 TL girdi (Cash Flow).
+                <br>- Ama Ocak ayÄ±nda sadece 100 TL Gelir yazabilirsin (Income Statement).
+                <br>- Kalan 1100 TL senin paran deÄŸildir, mÃ¼ÅŸteriye borcundur (Deferred Revenue).
+            </p>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-key"></i> Cevap AnahtarÄ±: â€œNakit mi?â€ â€œGelir/Gider mi?â€ (4 Durum)</h3>
+            <p style="margin-bottom: 10px;">
+                Bu 4 durum %90 vakayÄ± Ã§Ã¶zer. Her seferinde ÅŸu soruyu sor:
+                <strong>â€œHizmet/teslim oldu mu?â€</strong> (Evetse ISâ€™e, hayÄ±rsa BSâ€™e yazarsÄ±n.)
+            </p>
+            <ul style="margin-left: 18px;">
+                <li>
+                    <strong>A) SatÄ±ÅŸÄ± yaptÄ±n, para sonra gelecek â€º AR:</strong>
+                    <br><span style="color: var(--text-secondary);"><strong>IS:</strong> Revenue yaz. <strong>BS:</strong> AR artÄ±r. <strong>Nakit:</strong> henÃ¼z yok.</span>
+                </li>
+                <li>
+                    <strong>B) ParayÄ± aldÄ±n, hizmet/teslim sonra â€º Deferred Revenue:</strong>
+                    <br><span style="color: var(--text-secondary);"><strong>Nakit:</strong> Cash artÄ±r. <strong>IS:</strong> gelir yazma (ÅŸimdilik). <strong>BS:</strong> Deferred Revenue artÄ±r.</span>
+                </li>
+                <li>
+                    <strong>C) Gider oluÅŸtu, Ã¶deme sonra â€º AP / Accrued:</strong>
+                    <br><span style="color: var(--text-secondary);"><strong>IS:</strong> Expense yaz. <strong>BS:</strong> AP/Accrued artÄ±r. <strong>Nakit:</strong> henÃ¼z Ã§Ä±kmadÄ±.</span>
+                </li>
+                <li>
+                    <strong>D) Ã–demeyi yaptÄ±n, fayda sonra â€º Prepaid:</strong>
+                    <br><span style="color: var(--text-secondary);"><strong>Nakit:</strong> Cash azalt. <strong>IS:</strong> gideri zamana yay. <strong>BS:</strong> Prepaid artÄ±r.</span>
+                </li>
+            </ul>
+            <p style="margin-top: 10px; font-weight: 500;">
+                Ezber cÃ¼mlesi: <strong>AR ve Prepaid = Asset</strong> (artarsa nakit sÄ±kÄ±ÅŸÄ±r), <strong>AP ve Deferred = Liability</strong> (artarsa nakit rahatlar).
+            </p>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-code-branch"></i> 2 Soru ile Otomatik Bul (Ezbersiz Mini Karar AÄŸacÄ±)</h3>
+            <ol style="margin-left: 18px;">
+                <li>
+                    <strong>Para hareket etti mi?</strong> (Cash girdi/Ã§Ä±ktÄ± mÄ±?)
+                    <br><span style="color: var(--text-secondary);">Evet/HayÄ±r diye iÅŸaretle.</span>
+                </li>
+                <li>
+                    <strong>Hizmet/teslim gerÃ§ekleÅŸti mi?</strong> (Yani â€œhak ediÅŸâ€ oldu mu?)
+                    <br><span style="color: var(--text-secondary);">Evet/HayÄ±r diye iÅŸaretle.</span>
+                </li>
+            </ol>
+
+            <div class="excel-window" style="margin-top: 12px;">
+                <div class="excel-header"><i class="fa-solid fa-table"></i> 2Ã—2 SonuÃ§ Tablosu</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="excel-cell header">Durum</div>
+                    <div class="excel-cell header">Tipik sonuÃ§</div>
+
+                    <div class="excel-cell bold">Para yok + Teslim var</div>
+                    <div class="excel-cell"><strong>AR</strong> (Gelir yazÄ±lÄ±r, alacak doÄŸar)</div>
+
+                    <div class="excel-cell bold">Para var + Teslim yok</div>
+                    <div class="excel-cell"><strong>Deferred Revenue</strong> (Nakit var, gelir henÃ¼z yok)</div>
+
+                    <div class="excel-cell bold">Para yok + Gider oluÅŸtu</div>
+                    <div class="excel-cell"><strong>AP/Accrued</strong> (Gider yazÄ±lÄ±r, borÃ§ doÄŸar)</div>
+
+                    <div class="excel-cell bold">Para var + Fayda sonra</div>
+                    <div class="excel-cell"><strong>Prepaid</strong> (Nakit Ã§Ä±ktÄ±, gider sonra)</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 10px; color: var(--text-secondary);">
+                Not: â€œTeslim var mÄ±?â€ sorusu gelir/gideri belirler; â€œpara hareketi var mÄ±?â€ sorusu bilanÃ§oda hangi ara hesabÄ±n doÄŸduÄŸunu sÃ¶yler.
+            </p>
+        </div>
+
+        <div class="excel-window" style="margin-top: 14px;">
+            <div class="excel-header"><i class="fa-solid fa-arrows-left-right"></i> En Net Tablo: â€œNakitâ€ ile â€œGelir/Giderâ€ ZamanÄ± AyrÄ± Olabilir</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="excel-cell header">Durum</div>
+                <div class="excel-cell header">Gelir tablosu (IS)</div>
+                <div class="excel-cell header">BilanÃ§oda tipik hesap</div>
+
+                <div class="excel-cell bold">A) SatÄ±ÅŸÄ± yaptÄ±n, para sonra gelecek</div>
+                <div class="excel-cell">Gelir <strong>yazÄ±lÄ±r</strong> (Revenue ^)</div>
+                <div class="excel-cell"><strong>AR (Alacak)</strong> ^</div>
+
+                <div class="excel-cell bold">B) ParayÄ± aldÄ±n, hizmet/teslim sonra</div>
+                <div class="excel-cell">Gelir <strong>henÃ¼z yazÄ±lmaz</strong></div>
+                <div class="excel-cell"><strong>Deferred Revenue</strong> ^ (borÃ§)</div>
+
+                <div class="excel-cell bold">C) Gider oluÅŸtu, para sonra Ã¶denecek</div>
+                <div class="excel-cell">Gider <strong>yazÄ±lÄ±r</strong> (Expense ^)</div>
+                <div class="excel-cell"><strong>AP / Accrued</strong> ^ (borÃ§)</div>
+
+                <div class="excel-cell bold">D) ParayÄ± Ã¶dedin, fayda sonra</div>
+                <div class="excel-cell">Gider <strong>henÃ¼z yazÄ±lmaz</strong></div>
+                <div class="excel-cell"><strong>Prepaid</strong> ^ (varlÄ±k)</div>
+            </div>
+        </div>
+
+        <div class="drill-section" style="margin-top: 14px;">
+            <h3><i class="fa-solid fa-square-check"></i> Pratik: 4 Durumu Mini Ã–rnekle OturtalÄ±m</h3>
+            <div class="drill-card">
+                <p class="question">A) BugÃ¼n 1.000 TLâ€™lik hizmet verdin, mÃ¼ÅŸteri 30 gÃ¼n sonra Ã¶deyecek. BugÃ¼n ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>IS:</strong> Revenue ^ (gelir yazÄ±lÄ±r). <strong>BS:</strong> AR ^. <strong>Nakit:</strong> henÃ¼z yok.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">B) MÃ¼ÅŸteri bugÃ¼n 1.200 TL peÅŸin Ã¶dedi, 12 ay hizmet alacak. BugÃ¼n ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Nakit:</strong> Cash ^. <strong>IS:</strong> bugÃ¼n gelir yazmazsÄ±n (veya Ã§ok kÃ¼Ã§Ã¼k kÄ±smÄ±). <strong>BS:</strong> Deferred Revenue ^.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">C) Bu ay elektrik faturasÄ± 500 TL â€œoluÅŸtuâ€, Ã¶deme gelecek ay. Bu ay ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>IS:</strong> Expense ^ (gider yazÄ±lÄ±r). <strong>BS:</strong> AP/Accrued ^. <strong>Nakit:</strong> bu ay Ã§Ä±kmadÄ±.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">D) 12 aylÄ±k sigortayÄ± bugÃ¼n 1.200 TL peÅŸin Ã¶dedin. Bu ay ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Nakit:</strong> Cash v. <strong>BS:</strong> Prepaid ^. <strong>IS:</strong> bu ay sadece 1 aylÄ±k kÄ±smÄ± gider yazarsÄ±n (Ã¶r. 100 TL).</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="drill-section mcq-quiz" style="margin-top: 18px;">
+            <h3><i class="fa-solid fa-circle-question"></i> Quiz (Ã‡oktan SeÃ§meli) â€” TÃ¼m Konular</h3>
+            <div class="mcq-controls" style="display:flex; gap:10px; align-items:center; margin: 8px 0 14px;">
+                <a href="#" class="btn-nav" data-mcq-shuffle style="padding:10px 12px; font-size:12px;">KarÄ±ÅŸtÄ±r</a>
+                <a href="#" class="btn-nav" data-mcq-reset style="padding:10px 12px; font-size:12px;">SÄ±fÄ±rla</a>
+                <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; color: var(--text-tertiary);">
+                    Skor: <strong data-mcq-score>0 / 0</strong>
+                </span>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 1: Gelir tablosu en temel olarak neyi cevaplar?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Bu dÃ¶nemde nakit nereden geldi / nereye gitti</li>
+                    <li><strong>B)</strong> Bu an itibarÄ±yla neye sahibim ve ne borÃ§luyum</li>
+                    <li><strong>C)</strong> Bu dÃ¶nemde ne kadar sattÄ±m ve sonunda ne kadar kÃ¢r kaldÄ±</li>
+                    <li><strong>D)</strong> Hisse fiyatÄ± neden yÃ¼kseldi / dÃ¼ÅŸtÃ¼</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” Gelir tablosu dÃ¶nemin kÃ¢rlÄ±lÄ±k hikayesini anlatÄ±r.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 2: Revenue (Ciro) aÅŸaÄŸÄ±dakilerden hangisidir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Vergi sonrasÄ± net kÃ¢r</li>
+                    <li><strong>B)</strong> MÃ¼ÅŸteriye satÄ±ÅŸtan yazÄ±lan toplam satÄ±ÅŸ tutarÄ±</li>
+                    <li><strong>C)</strong> SatÄ±lan malÄ±n maliyeti</li>
+                    <li><strong>D)</strong> Faiz gideri</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Revenue kÃ¢r deÄŸildir; maliyet/gider dÃ¼ÅŸÃ¼lmeden Ã¶nceki satÄ±ÅŸ tutarÄ±dÄ±r.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 3: BrÃ¼t KÃ¢r (Gross Profit) formÃ¼lÃ¼ hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Revenue + COGS</li>
+                    <li><strong>B)</strong> Revenue - COGS</li>
+                    <li><strong>C)</strong> Revenue - OpEx</li>
+                    <li><strong>D)</strong> EBIT - Taxes</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” BrÃ¼t kÃ¢r, satÄ±ÅŸtan satÄ±ÅŸÄ±n maliyeti dÃ¼ÅŸÃ¼lÃ¼nce kalanÄ±dÄ±r.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 4: EBIT formÃ¼lÃ¼ hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Gross Profit - OpEx</li>
+                    <li><strong>B)</strong> Net Income + Taxes</li>
+                    <li><strong>C)</strong> Revenue - Taxes</li>
+                    <li><strong>D)</strong> Gross Profit + Interest</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” EBIT esas iÅŸ kÃ¢rÄ±na odaklanÄ±r; faiz ve vergi henÃ¼z yok.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 5: Gelir tablosunda â€œen alttaâ€ bulunan kalem hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> COGS</li>
+                    <li><strong>B)</strong> OpEx</li>
+                    <li><strong>C)</strong> Gross Profit</li>
+                    <li><strong>D)</strong> Net Income</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> D â€” Net Income â€œbottom lineâ€dÄ±r.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 6: AÅŸaÄŸÄ±daki sÄ±ralamalardan hangisi doÄŸrudur?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Revenue â€º OpEx â€º COGS â€º Gross Profit â€º EBIT â€º Net Income</li>
+                    <li><strong>B)</strong> Revenue â€º COGS â€º Gross Profit â€º OpEx â€º EBIT â€º Interest â€º Taxes â€º Net Income</li>
+                    <li><strong>C)</strong> Revenue â€º Taxes â€º Interest â€º EBIT â€º Net Income</li>
+                    <li><strong>D)</strong> Net Income â€º Taxes â€º Interest â€º EBIT â€º Revenue</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Sayfadaki â€œbasamakâ€ akÄ±ÅŸ budur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 7: Faiz gideri (Interest) neden EBITâ€™in altÄ±nda ayrÄ± izlenir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Faiz, Ã¼rÃ¼n maliyetidir</li>
+                    <li><strong>B)</strong> Faiz, ÅŸirketin finansman tercihiyle ilgilidir (borÃ§lanma)</li>
+                    <li><strong>C)</strong> Faiz, vergi oranÄ±nÄ± belirler</li>
+                    <li><strong>D)</strong> Faiz, nakit akÄ±ÅŸ tablosunda hiÃ§ gÃ¶rÃ¼nmez</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” AynÄ± operasyonu yapan iki ÅŸirketin borÃ§ yapÄ±sÄ± farklÄ± olabilir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 8: COGS ile OpEx ayrÄ±mÄ±nda â€œen doÄŸruâ€ ifade hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> COGS = iÅŸi yÃ¼rÃ¼tmek iÃ§in genel giderler</li>
+                    <li><strong>B)</strong> OpEx = satÄ±ÅŸÄ± yapmak iÃ§in Ã¼rÃ¼ne doÄŸrudan baÄŸlÄ± maliyet</li>
+                    <li><strong>C)</strong> COGS = Ã¼rÃ¼nÃ¼/hizmeti Ã¼retip/teslim etmenin doÄŸrudan maliyeti</li>
+                    <li><strong>D)</strong> COGS ve OpEx tamamen aynÄ±dÄ±r</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” KÄ±sa mantÄ±k: COGS â€œteslimâ€, OpEx â€œiÅŸi yÃ¼rÃ¼tme/satÄ±ÅŸÄ± bÃ¼yÃ¼tmeâ€.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 9: E-ticarette kargo Ã¼creti Ã§oÄŸu modelde nereye yazÄ±lÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> COGS / Fulfillment</li>
+                    <li><strong>B)</strong> Taxes</li>
+                    <li><strong>C)</strong> Interest</li>
+                    <li><strong>D)</strong> Equity</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” Teslimat maliyeti olduÄŸu iÃ§in brÃ¼t kÃ¢rÄ± etkiler.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 10: Google/Instagram reklam harcamasÄ± tipik olarak nereye yazÄ±lÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> COGS</li>
+                    <li><strong>B)</strong> OpEx (Sales &amp; Marketing)</li>
+                    <li><strong>C)</strong> Interest</li>
+                    <li><strong>D)</strong> Taxes</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” ÃœrÃ¼nÃ¼n maliyeti deÄŸil, satÄ±ÅŸ/pazarlama gideridir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 11: SaaS sunucu/hosting maliyeti Ã§oÄŸu ÅŸirkette hangi gruba gider?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> COGS (Cost of Revenue)</li>
+                    <li><strong>B)</strong> Taxes</li>
+                    <li><strong>C)</strong> Dividends</li>
+                    <li><strong>D)</strong> Equity</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” MÃ¼ÅŸteriye hizmeti â€œsunmanÄ±nâ€ maliyeti olduÄŸu iÃ§in brÃ¼t marjÄ± belirler.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 12: Operating Leverage (faaliyet kaldÄ±racÄ±) neyi anlatÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> SatÄ±ÅŸ artarken OpEx Ã§ok artmÄ±yorsa kÃ¢rÄ±n daha hÄ±zlÄ± bÃ¼yÃ¼mesi</li>
+                    <li><strong>B)</strong> Faiz oranlarÄ±nÄ±n dÃ¼ÅŸmesi</li>
+                    <li><strong>C)</strong> Vergi oranÄ±nÄ±n artmasÄ±</li>
+                    <li><strong>D)</strong> ARâ€™nin azalmasÄ±</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” Sabit gider baskÄ±sÄ± azsa kÃ¢rlÄ±lÄ±k hÄ±zlanÄ±r.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 13: â€œNakit ? Gelirâ€ ifadesinin ana mesajÄ± hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Nakit akÄ±ÅŸÄ± kÃ¢rdan daha dÃ¼ÅŸÃ¼ktÃ¼r</li>
+                    <li><strong>B)</strong> Gelir, parayÄ± alÄ±nca deÄŸil; hizmet/teslim olunca yazÄ±lÄ±r</li>
+                    <li><strong>C)</strong> Gelir tablosu sadece nakiti gÃ¶sterir</li>
+                    <li><strong>D)</strong> Vergiler hiÃ§ Ã¶nemli deÄŸildir</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Tahakkuk (accrual) mantÄ±ÄŸÄ± budur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 14: SatÄ±ÅŸÄ± yaptÄ±n ama para sonra gelecek; bilanÃ§oda hangi hesap artar?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Deferred Revenue</li>
+                    <li><strong>B)</strong> AR (Accounts Receivable)</li>
+                    <li><strong>C)</strong> Prepaid</li>
+                    <li><strong>D)</strong> Taxes Payable</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Gelir yazÄ±lÄ±r; nakit gelmediÄŸi iÃ§in alacak doÄŸar.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 15: ParayÄ± peÅŸin aldÄ±n ama hizmet/teslim sonra; bilanÃ§oda hangi hesap artar?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> AR</li>
+                    <li><strong>B)</strong> Inventory</li>
+                    <li><strong>C)</strong> Deferred Revenue</li>
+                    <li><strong>D)</strong> COGS</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” Nakit geldi ama â€œiÅŸ yapma yÃ¼kÃ¼mlÃ¼lÃ¼ÄŸÃ¼â€ (borÃ§) oluÅŸur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 16: Gider oluÅŸtu ama Ã¶deme sonra; bilanÃ§oda hangi hesap artar?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> AP / Accrued</li>
+                    <li><strong>B)</strong> Prepaid</li>
+                    <li><strong>C)</strong> AR</li>
+                    <li><strong>D)</strong> Revenue</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” Gider yazÄ±lÄ±r; Ã¶deme olmadÄ±ÄŸÄ± iÃ§in borÃ§ (yÃ¼kÃ¼mlÃ¼lÃ¼k) doÄŸar.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 17: ParayÄ± Ã¶dedin ama fayda sonra; bilanÃ§oda hangi hesap artar?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Deferred Revenue</li>
+                    <li><strong>B)</strong> Prepaid</li>
+                    <li><strong>C)</strong> AP</li>
+                    <li><strong>D)</strong> Taxes</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Nakit Ã§Ä±ktÄ±; gideri zamana yayacaÄŸÄ±n iÃ§in â€œpeÅŸin Ã¶denmiÅŸâ€ varlÄ±k oluÅŸur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 18: 2Ã—2 karar aÄŸacÄ±nda â€œPara yok + Teslim varâ€ hangisine gider?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Prepaid</li>
+                    <li><strong>B)</strong> Deferred Revenue</li>
+                    <li><strong>C)</strong> AR</li>
+                    <li><strong>D)</strong> AP/Accrued</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” Gelir var, nakit yok â€º alacak doÄŸar.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 19: 2Ã—2 karar aÄŸacÄ±nda â€œPara var + Teslim yokâ€ hangisine gider?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> AR</li>
+                    <li><strong>B)</strong> Deferred Revenue</li>
+                    <li><strong>C)</strong> AP/Accrued</li>
+                    <li><strong>D)</strong> Prepaid</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Nakit var, gelir henÃ¼z yok â€º yÃ¼kÃ¼mlÃ¼lÃ¼k.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 20: EBIT pozitifken Net Income negatif olabilir mi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> HayÄ±r, imkÃ¢nsÄ±z</li>
+                    <li><strong>B)</strong> Evet, faiz Ã§ok yÃ¼ksekse veya tek seferlik/vergi etkileri varsa</li>
+                    <li><strong>C)</strong> Sadece Revenue negatife dÃ¼ÅŸerse</li>
+                    <li><strong>D)</strong> Sadece COGS sÄ±fÄ±r olursa</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Faiz/vergi/tek seferlik kalemler â€œalttaâ€ sonucu negatife Ã§evirebilir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 21 (Kara): AÅŸaÄŸÄ±dakilerden hangisi yanlÄ±ÅŸtÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Revenue yÃ¼ksek olabilir ama ÅŸirket zarar edebilir</li>
+                    <li><strong>B)</strong> Gelir tablosu nakit giriÅŸ-Ã§Ä±kÄ±ÅŸÄ±nÄ± birebir gÃ¶sterir</li>
+                    <li><strong>C)</strong> Net Income, gelir tablosunun en alt satÄ±rÄ±dÄ±r</li>
+                    <li><strong>D)</strong> COGS ve OpEx farklÄ± gider tÃ¼rleridir</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Nakit akÄ±ÅŸÄ± baÅŸka tablo; gelir tablosu tahakkuk bazlÄ± kÃ¢rlÄ±lÄ±ÄŸÄ± gÃ¶sterir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 22 (Hesap): Revenue 500, COGS 100 ise Gross Profit kaÃ§tÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> 400</li>
+                    <li><strong>B)</strong> 600</li>
+                    <li><strong>C)</strong> 100</li>
+                    <li><strong>D)</strong> 500</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” Gross Profit = 500 - 100 = 400.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 23 (Hesap): Gross Profit 400, OpEx 100 ise EBIT kaÃ§tÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> 300</li>
+                    <li><strong>B)</strong> 500</li>
+                    <li><strong>C)</strong> 100</li>
+                    <li><strong>D)</strong> -300</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” EBIT = 400 - 100 = 300.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 24 (Hesap): EBIT 300, Interest 20, Taxes 60 ise Net Income kaÃ§tÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> 220</li>
+                    <li><strong>B)</strong> 240</li>
+                    <li><strong>C)</strong> 320</li>
+                    <li><strong>D)</strong> 180</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” Net Income = 300 - 20 - 60 = 220.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 25 (Kara): BrÃ¼t marj %40 ise en doÄŸru yorum hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Åirket 100 TL satÄ±ÅŸta 40 TL brÃ¼t kÃ¢r bÄ±rakÄ±r</li>
+                    <li><strong>B)</strong> Åirket 100 TL satÄ±ÅŸta 40 TL net kÃ¢r bÄ±rakÄ±r</li>
+                    <li><strong>C)</strong> Åirket 100 TL satÄ±ÅŸta 60 TL brÃ¼t kÃ¢r bÄ±rakÄ±r</li>
+                    <li><strong>D)</strong> OpEx her zaman 40 TLâ€™dir</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” BrÃ¼t marj â€œRevenue sonrasÄ± COGS dÃ¼ÅŸÃ¼lÃ¼nce kalan payâ€dÄ±r; net kÃ¢r deÄŸildir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 26 (Kara): AÅŸaÄŸÄ±dakilerden hangisi Net Incomeâ€™Ä± etkiler ama EBITâ€™i etkilemez?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> COGS</li>
+                    <li><strong>B)</strong> OpEx</li>
+                    <li><strong>C)</strong> Interest Expense</li>
+                    <li><strong>D)</strong> Revenue</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” Faiz, EBITâ€™in altÄ±nda yer alÄ±r; net kÃ¢rÄ± etkiler.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 27 (Kara): â€œRevenue artarsa Net Income kesin artarâ€ ifadesi iÃ§in en doÄŸru seÃ§enek hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> DoÄŸru; satÄ±ÅŸ artÄ±nca kÃ¢r her zaman artar</li>
+                    <li><strong>B)</strong> YanlÄ±ÅŸ; COGS/OpEx daha hÄ±zlÄ± artarsa kÃ¢r dÃ¼ÅŸebilir</li>
+                    <li><strong>C)</strong> YanlÄ±ÅŸ; vergi hiÃ§ yoktur</li>
+                    <li><strong>D)</strong> DoÄŸru; Ã§Ã¼nkÃ¼ faiz sabittir</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Marjlar bozulabilir, OpEx ÅŸiÅŸebilir; kÃ¢r garanti deÄŸildir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 28 (COGS/OpEx): â€œÃœrÃ¼n paketleme (kutu/bant)â€ genelde nereye gider?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Interest</li>
+                    <li><strong>B)</strong> COGS</li>
+                    <li><strong>C)</strong> Taxes</li>
+                    <li><strong>D)</strong> Equity</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” SatÄ±ÅŸ/teslimle doÄŸrudan iliÅŸkili olduÄŸu iÃ§in Ã§oÄŸu modelde COGSâ€™tur.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 29 (Kara): AÅŸaÄŸÄ±dakilerden hangisi OpExâ€™e daha yakÄ±ndÄ±r?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Hammadde maliyeti</li>
+                    <li><strong>B)</strong> Ãœretimde direkt iÅŸÃ§ilik (Ã¼rÃ¼n baÅŸÄ±na)</li>
+                    <li><strong>C)</strong> Ofis kirasÄ±</li>
+                    <li><strong>D)</strong> ÃœrÃ¼n paketleme</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” Ofis kirasÄ± tipik olarak ÅŸirketi yÃ¼rÃ¼tme gideridir (OpEx).</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 30 (Nakit?Gelir): MÃ¼ÅŸteriden para geldi ama hizmet gelecek ay verilecek; bugÃ¼n gelir yazÄ±lÄ±r mÄ±?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Evet; para geldiyse gelir yazÄ±lÄ±r</li>
+                    <li><strong>B)</strong> HayÄ±r; Deferred Revenue oluÅŸur</li>
+                    <li><strong>C)</strong> Evet; AR oluÅŸur</li>
+                    <li><strong>D)</strong> HayÄ±r; Prepaid oluÅŸur</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Nakit geldi ama teslim yok; bu yÃ¼zden yÃ¼kÃ¼mlÃ¼lÃ¼k (Deferred Revenue).</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 31 (Nakit?Gelir): Hizmet verildi ama para henÃ¼z gelmedi; bilanÃ§oda ne oluÅŸur?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> AR</li>
+                    <li><strong>B)</strong> Deferred Revenue</li>
+                    <li><strong>C)</strong> Prepaid</li>
+                    <li><strong>D)</strong> Taxes</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> A â€” Gelir var, nakit yok â€º alacak (AR).</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 32 (2Ã—2): â€œPara var + Teslim yokâ€ kombinasyonu hangisidir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> AR</li>
+                    <li><strong>B)</strong> Deferred Revenue</li>
+                    <li><strong>C)</strong> AP/Accrued</li>
+                    <li><strong>D)</strong> Prepaid</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Nakit var, gelir yok â€º Deferred Revenue.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 33 (Kara): AÅŸaÄŸÄ±dakilerden hangisi â€œgelir tablosuâ€ deÄŸil â€œnakit akÄ±ÅŸÄ±â€ dÃ¼ÅŸÃ¼ncesidir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> â€œBu dÃ¶nemde kÃ¢r ettim mi?â€</li>
+                    <li><strong>B)</strong> â€œPara kasaya ne zaman girdi?â€</li>
+                    <li><strong>C)</strong> â€œBrÃ¼t kÃ¢rÄ±m kaÃ§?â€</li>
+                    <li><strong>D)</strong> â€œEBITâ€™im kaÃ§?â€</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> B â€” Bu soru cash flow mantÄ±ÄŸÄ±dÄ±r; gelir tablosu â€œhak ediÅŸâ€e bakar.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 34 (Kara): AÅŸaÄŸÄ±dakilerden hangisi doÄŸru eÅŸlemedir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> AR = Liability</li>
+                    <li><strong>B)</strong> Prepaid = Liability</li>
+                    <li><strong>C)</strong> Deferred Revenue = Liability</li>
+                    <li><strong>D)</strong> AP/Accrued = Asset</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> C â€” Deferred Revenue yÃ¼kÃ¼mlÃ¼lÃ¼ktÃ¼r; diÄŸer eÅŸleÅŸmeler ters.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 35 (Kara): â€œPara Ã§Ä±ktÄ± ama gider yazmadÄ±mâ€ senaryosu hangisidir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> AR</li>
+                    <li><strong>B)</strong> Deferred Revenue</li>
+                    <li><strong>C)</strong> AP/Accrued</li>
+                    <li><strong>D)</strong> Prepaid</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>DoÄŸru:</strong> D â€” Prepaid: nakit Ã§Ä±ktÄ±, fayda/gider zamanla yazÄ±lÄ±r.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Bir ÅŸirket hiÃ§ satÄ±ÅŸ yapmasa bile hangi giderleri Ã¶demek zorundadÄ±r?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">OpEx (Operating Expenses). Kira, sigorta, maaÅŸlar gibi sabit giderler satÄ±ÅŸtan baÄŸÄ±msÄ±zdÄ±r. COGS ise satÄ±ÅŸ yoksa sÄ±fÄ±rdÄ±r.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: BrÃ¼t KÃ¢r MarjÄ± (Gross Margin) %40 ne demektir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Åirket 100 TL'lik satÄ±ÅŸ yaptÄ±ÄŸÄ±nda, bunun 60 TL'si Ã¼retim maliyetine (COGS) gidiyor, geriye operasyonel giderleri Ã¶demek iÃ§in 40 TL kalÄ±yor demektir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: EBIT pozitifken Net Income negatif olabilir mi?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Evet. Ã–rneÄŸin faiz (borÃ§) Ã§ok yÃ¼ksekse veya vergi/tek seferlik giderler varsa, <strong>EBIT&gt;0</strong> olsa bile altta Net Income negatif olabilir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <span class="btn-nav disabled"><i class="fa-solid fa-arrow-left"></i> BaÅŸlangÄ±Ã§</span>
+            <a href="balance-sheet.html" class="btn-nav">Sonraki: Balance Sheet <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

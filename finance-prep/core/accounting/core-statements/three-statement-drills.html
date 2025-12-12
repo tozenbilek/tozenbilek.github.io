@@ -1,168 +1,168 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3-Statement Drills | Accounting</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../../../css/style.css">
-</head>
-<body>
-    <div class="container">
-        <nav class="nav-header">
-            <a href="../../../index.html" class="nav-link">Dashboard</a>
-            <span class="nav-sep">/</span>
-            <a href="../index.html" class="nav-link">Accounting</a>
-            <span class="nav-sep">/</span>
-            <span style="color: var(--text-primary);">3-Statement Drills</span>
-        </nav>
-
-        <h1>3-Statement Drills (Olay › 3 Tablo Etkisi)</h1>
-        <p class="lesson-desc">
-            Bu sayfa “ezber” değil, <strong>refleks</strong> kazandırır. Her kartta soruyu oku, cevabı tıklayıp aç,
-            sonra 20 saniye içinde <strong>kendin anlat</strong> (mülakat simülasyonu).
-        </p>
-
-        <div class="content-box-base">
-            <h3 style="margin-top:0;"><i class="fa-solid fa-stopwatch"></i> Uygulama (15 dk)</h3>
-            <ul class="check-list">
-                <li><strong>3 tur:</strong> 1) Oku 2) Aç 3) Kapatıp anlat</li>
-                <li><strong>Kural:</strong> Önce “Cash?” diye sor, sonra “IS mi BS mi?”</li>
-                <li><strong>Hedef:</strong> 10 kartın 7’sini doğru anlatabiliyorsan temelin oturdu.</li>
-            </ul>
-        </div>
-
-        <div class="deep-dive-box">
-            <h3><i class="fa-solid fa-book"></i> Takılırsan</h3>
-            <p style="margin-bottom:0;">
-                Terimlerde zorlanıyorsan önce
-                <a href="glossary.html" class="nav-link" style="display:inline-block; margin-left:8px;">Glossary</a>
-                sayfasına dön.
-            </p>
-        </div>
-
-        <div class="drill-section">
-            <h3><i class="fa-solid fa-bolt"></i> 10 Drill</h3>
-
-            <div class="drill-card">
-                <p class="question">1) Şirket 1.000 TL’lik stok aldı ve nakit ödedi. 3 tabloda ne olur?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> Etki yok (henüz satılmadı, COGS oluşmaz).
-                        <br><strong>Balance Sheet:</strong> Cash v 1.000, Inventory ^ 1.000 (Assets içinde yer değişir).
-                        <br><strong>Cash Flow:</strong> CFO’da genelde <em>Inventory artışı</em> nedeniyle cash v 1.000 (working capital outflow).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">2) Şirket 1.000 TL’lik stoku 1.500 TL’ye vadeli sattı (para sonra gelecek). 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> Revenue ^ 1.500, COGS ^ 1.000, Gross Profit ^ 500, Net Income ^ 500 (vergi yok varsay).
-                        <br><strong>Balance Sheet:</strong> Inventory v 1.000, AR ^ 1.500, Equity (Retained Earnings) ^ 500.
-                        <br><strong>Cash Flow:</strong> Net Income ^ 500; AR ^ 1.500 (cash v), Inventory v 1.000 (cash ^) ? net CFO ? 0 (basit senaryo).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">3) Müşteri 1.200 TL yıllık üyelik parasını peşin ödedi (hizmet 12 ay). 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> İlk anda gelir yok (hizmet verilmedi).
-                        <br><strong>Balance Sheet:</strong> Cash ^ 1.200, Deferred Revenue ^ 1.200 (liability).
-                        <br><strong>Cash Flow:</strong> CFO ^ 1.200 (cash girişi). Sonraki aylarda Deferred Revenue v, Revenue ^ (IS etkisi gelir).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">4) Ay sonunda 100 TL’lik hizmet verdin (üyelikten). Cash yok. 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> Revenue ^ 100, Net Income ^ 100 (basit varsayım).
-                        <br><strong>Balance Sheet:</strong> Deferred Revenue v 100, Equity ^ 100.
-                        <br><strong>Cash Flow:</strong> Net Income ^ 100; Deferred Revenue v 100 (CFO’da ters işaretle düzeltme) ? net CFO ? 0 (cash yok).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">5) Şirket 10.000 TL’lik makine aldı (CapEx), nakit ödedi. 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> İlk anda etki yok (giderleşmez, varlıklaşır).
-                        <br><strong>Balance Sheet:</strong> Cash v 10.000, PP&amp;E ^ 10.000.
-                        <br><strong>Cash Flow:</strong> CFI v 10.000 (CapEx outflow).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">6) Makine için bu ay 1.000 TL amortisman yazıldı (cash çıkışı yok). 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> Depreciation expense ^ 1.000 ? EBIT/Net Income v 1.000.
-                        <br><strong>Balance Sheet:</strong> PP&amp;E (net) v 1.000, Equity v 1.000.
-                        <br><strong>Cash Flow:</strong> Net Income v 1.000; Depreciation geri eklenir (+1.000) ? net CFO ? 0 (vergi yok varsay).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">7) Şirket çalışan maaşını (500 TL) ödedi. 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> OpEx ^ 500 ? Net Income v 500.
-                        <br><strong>Balance Sheet:</strong> Cash v 500, Equity v 500.
-                        <br><strong>Cash Flow:</strong> CFO v 500 (operating cash outflow).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">8) Şirket tedarikçiden 800 TL mal aldı ama ödemeyi sonra yapacak (AP). 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> Etki yok (satılmadıysa COGS yok).
-                        <br><strong>Balance Sheet:</strong> Inventory ^ 800, Accounts Payable ^ 800 (Assets ^, Liabilities ^).
-                        <br><strong>Cash Flow:</strong> Cash yok; CFO’da AP artışı “cash source” gibi davranır (ödemeyi erteledin).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">9) Şirket banka kredisi çekti: 5.000 TL cash geldi. 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> İlk anda etki yok (faiz sonra).
-                        <br><strong>Balance Sheet:</strong> Cash ^ 5.000, Debt ^ 5.000.
-                        <br><strong>Cash Flow:</strong> CFF ^ 5.000 (financing inflow).
-                    </div>
-                </div>
-            </div>
-
-            <div class="drill-card">
-                <p class="question">10) Şirket temettü ödedi: 300 TL. 3 tablo?</p>
-                <div class="answer-box" onclick="this.classList.toggle('revealed')">
-                    <div class="blur-text">
-                        <strong>Income Statement:</strong> Etki yok (temettü gider değildir).
-                        <br><strong>Balance Sheet:</strong> Cash v 300, Equity (Retained Earnings) v 300.
-                        <br><strong>Cash Flow:</strong> CFF v 300 (financing outflow).
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="lesson-nav">
-            <a href="glossary.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Glossary</a>
-            <a href="income-statement.html" class="btn-nav">Sonraki: Income Statement <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </div>
-</body>
-</html>
-
-
-
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Statement Drills | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">3-Statement Drills</span>
+        </nav>
+
+        <h1>3-Statement Drills (Olay â€º 3 Tablo Etkisi)</h1>
+        <p class="lesson-desc">
+            Bu sayfa â€œezberâ€ deÄŸil, <strong>refleks</strong> kazandÄ±rÄ±r. Her kartta soruyu oku, cevabÄ± tÄ±klayÄ±p aÃ§,
+            sonra 20 saniye iÃ§inde <strong>kendin anlat</strong> (mÃ¼lakat simÃ¼lasyonu).
+        </p>
+
+        <div class="content-box-base">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-stopwatch"></i> Uygulama (15 dk)</h3>
+            <ul class="check-list">
+                <li><strong>3 tur:</strong> 1) Oku 2) AÃ§ 3) KapatÄ±p anlat</li>
+                <li><strong>Kural:</strong> Ã–nce â€œCash?â€ diye sor, sonra â€œIS mi BS mi?â€</li>
+                <li><strong>Hedef:</strong> 10 kartÄ±n 7â€™sini doÄŸru anlatabiliyorsan temelin oturdu.</li>
+            </ul>
+        </div>
+
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-book"></i> TakÄ±lÄ±rsan</h3>
+            <p style="margin-bottom:0;">
+                Terimlerde zorlanÄ±yorsan Ã¶nce
+                <a href="glossary.html" class="nav-link" style="display:inline-block; margin-left:8px;">Glossary</a>
+                sayfasÄ±na dÃ¶n.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> 10 Drill</h3>
+
+            <div class="drill-card">
+                <p class="question">1) Åirket 1.000 TLâ€™lik stok aldÄ± ve nakit Ã¶dedi. 3 tabloda ne olur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Etki yok (henÃ¼z satÄ±lmadÄ±, COGS oluÅŸmaz).
+                        <br><strong>Balance Sheet:</strong> Cash v 1.000, Inventory ^ 1.000 (Assets iÃ§inde yer deÄŸiÅŸir).
+                        <br><strong>Cash Flow:</strong> CFOâ€™da genelde <em>Inventory artÄ±ÅŸÄ±</em> nedeniyle cash v 1.000 (working capital outflow).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">2) Åirket 1.000 TLâ€™lik stoku 1.500 TLâ€™ye vadeli sattÄ± (para sonra gelecek). 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Revenue ^ 1.500, COGS ^ 1.000, Gross Profit ^ 500, Net Income ^ 500 (vergi yok varsay).
+                        <br><strong>Balance Sheet:</strong> Inventory v 1.000, AR ^ 1.500, Equity (Retained Earnings) ^ 500.
+                        <br><strong>Cash Flow:</strong> Net Income ^ 500; AR ^ 1.500 (cash v), Inventory v 1.000 (cash ^) ? net CFO ? 0 (basit senaryo).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">3) MÃ¼ÅŸteri 1.200 TL yÄ±llÄ±k Ã¼yelik parasÄ±nÄ± peÅŸin Ã¶dedi (hizmet 12 ay). 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Ä°lk anda gelir yok (hizmet verilmedi).
+                        <br><strong>Balance Sheet:</strong> Cash ^ 1.200, Deferred Revenue ^ 1.200 (liability).
+                        <br><strong>Cash Flow:</strong> CFO ^ 1.200 (cash giriÅŸi). Sonraki aylarda Deferred Revenue v, Revenue ^ (IS etkisi gelir).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">4) Ay sonunda 100 TLâ€™lik hizmet verdin (Ã¼yelikten). Cash yok. 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Revenue ^ 100, Net Income ^ 100 (basit varsayÄ±m).
+                        <br><strong>Balance Sheet:</strong> Deferred Revenue v 100, Equity ^ 100.
+                        <br><strong>Cash Flow:</strong> Net Income ^ 100; Deferred Revenue v 100 (CFOâ€™da ters iÅŸaretle dÃ¼zeltme) ? net CFO ? 0 (cash yok).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">5) Åirket 10.000 TLâ€™lik makine aldÄ± (CapEx), nakit Ã¶dedi. 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Ä°lk anda etki yok (giderleÅŸmez, varlÄ±klaÅŸÄ±r).
+                        <br><strong>Balance Sheet:</strong> Cash v 10.000, PP&amp;E ^ 10.000.
+                        <br><strong>Cash Flow:</strong> CFI v 10.000 (CapEx outflow).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">6) Makine iÃ§in bu ay 1.000 TL amortisman yazÄ±ldÄ± (cash Ã§Ä±kÄ±ÅŸÄ± yok). 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Depreciation expense ^ 1.000 ? EBIT/Net Income v 1.000.
+                        <br><strong>Balance Sheet:</strong> PP&amp;E (net) v 1.000, Equity v 1.000.
+                        <br><strong>Cash Flow:</strong> Net Income v 1.000; Depreciation geri eklenir (+1.000) ? net CFO ? 0 (vergi yok varsay).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">7) Åirket Ã§alÄ±ÅŸan maaÅŸÄ±nÄ± (500 TL) Ã¶dedi. 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> OpEx ^ 500 ? Net Income v 500.
+                        <br><strong>Balance Sheet:</strong> Cash v 500, Equity v 500.
+                        <br><strong>Cash Flow:</strong> CFO v 500 (operating cash outflow).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">8) Åirket tedarikÃ§iden 800 TL mal aldÄ± ama Ã¶demeyi sonra yapacak (AP). 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Etki yok (satÄ±lmadÄ±ysa COGS yok).
+                        <br><strong>Balance Sheet:</strong> Inventory ^ 800, Accounts Payable ^ 800 (Assets ^, Liabilities ^).
+                        <br><strong>Cash Flow:</strong> Cash yok; CFOâ€™da AP artÄ±ÅŸÄ± â€œcash sourceâ€ gibi davranÄ±r (Ã¶demeyi erteledin).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">9) Åirket banka kredisi Ã§ekti: 5.000 TL cash geldi. 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Ä°lk anda etki yok (faiz sonra).
+                        <br><strong>Balance Sheet:</strong> Cash ^ 5.000, Debt ^ 5.000.
+                        <br><strong>Cash Flow:</strong> CFF ^ 5.000 (financing inflow).
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">10) Åirket temettÃ¼ Ã¶dedi: 300 TL. 3 tablo?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <div class="blur-text">
+                        <strong>Income Statement:</strong> Etki yok (temettÃ¼ gider deÄŸildir).
+                        <br><strong>Balance Sheet:</strong> Cash v 300, Equity (Retained Earnings) v 300.
+                        <br><strong>Cash Flow:</strong> CFF v 300 (financing outflow).
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="glossary.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Ã–nceki: Glossary</a>
+            <a href="income-statement.html" class="btn-nav">Sonraki: Income Statement <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
