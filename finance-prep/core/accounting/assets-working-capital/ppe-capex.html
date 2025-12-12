@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PP&E and CapEx | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">PP&E</span>
+        </nav>
+
+        <h1>3.1 PP&E & CapEx</h1>
+        <p>
+            Property, Plant & Equipment (Maddi Duran Varlýklar).
+            Þirketin "Kaslarýdýr". Fabrikalar, makineler, kamyonlar, sunucular.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. CapEx vs OpEx Decision</h2>
+        <div class="content-box-base">
+            <p>Harcamayý nereye yazacaðýz? Gelir Tablosuna mý (Gider), Bilançoya mý (Varlýk)?</p>
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Harcama</th>
+                        <th>Tür</th>
+                        <th>Neden?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fabrika Duvarýný Boyamak</td>
+                        <td><strong>OpEx</strong></td>
+                        <td>Binanýn ömrünü uzatmaz. Bakýmdýr. Hemen gider yazýlýr.</td>
+                    </tr>
+                    <tr>
+                        <td>Fabrikaya Yeni Çatý Yapmak</td>
+                        <td><strong>CapEx</strong></td>
+                        <td>Binanýn ömrünü 10 yýl uzatýr. Varlýk olarak yazýlýr, amorti edilir.</td>
+                    </tr>
+                    <tr>
+                        <td>Yazýlým Lisansý (Yýllýk)</td>
+                        <td><strong>OpEx</strong></td>
+                        <td>1 yýl fayda saðlar.</td>
+                    </tr>
+                    <tr>
+                        <td>Özel Yazýlým Geliþtirmek</td>
+                        <td><strong>CapEx</strong></td>
+                        <td>Yýllarca kullanýlacak bir varlýktýr (Capitalized Software).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Maintenance vs Growth CapEx</h2>
+        <div class="mech-box">
+            <strong>Analist Ýçin Altýn Kural:</strong>
+            <br>
+            Free Cash Flow hesaplarken, sadece Maintenance CapEx'i düþmek daha doðru olabilir (Teorik olarak).
+            <br><br>
+            <ul>
+                <li><strong>Maintenance CapEx:</strong> Þirketi olduðu yerde tutmak için gereken para. (Amortisman'a yakýn bir rakamdýr).</li>
+                <li><strong>Growth CapEx:</strong> Þirketi büyütmek için harcanan para. (Ýsteðe baðlýdýr).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. The Roll-Forward Schedule</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-calculator"></i> PP&E_Schedule.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 100px;">
+                <div class="excel-cell header">Kalem</div>
+                <div class="excel-cell header">Tutar</div>
+
+                <div class="excel-cell">Beginning PP&E Balance</div>
+                <div class="excel-cell">1,000</div>
+
+                <div class="excel-cell">(+) Capital Expenditures (CapEx)</div>
+                <div class="excel-cell" style="color:green;">+200</div>
+
+                <div class="excel-cell">(-) Depreciation Expense</div>
+                <div class="excel-cell" style="color:red;">(150)</div>
+
+                <div class="excel-cell">(-) Asset Sales / Write-downs</div>
+                <div class="excel-cell" style="color:red;">(50)</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #ccc;">= Ending PP&E Balance</div>
+                <div class="excel-cell bold" style="border-top:2px solid #ccc;">1,000</div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="ccc.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: CCC</a>
+            <a href="depreciation.html" class="btn-nav">Sonraki: Depreciation <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

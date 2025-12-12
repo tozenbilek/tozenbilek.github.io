@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linkage (3 Tablo Baðlantýsý) | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Linkage</span>
+        </nav>
+
+        <h1>1.4 Linkage (3 Tablo Baðlantýsý)</h1>
+        <p class="lesson-desc">
+            Bu sayfa “hýzlý geçmek” için deðil: 3 tabloyu (Income Statement, Cash Flow Statement, Balance Sheet)
+            <strong>tek tek</strong> tanýmlayacaðýz; sonra baðlantýyý <strong>adým adým</strong> kuracaðýz.
+            En sonda da 10 TL amortisman örneðini <strong>neden–sonuç</strong> þeklinde çözeceðiz.
+        </p>
+
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-map"></i> Harita (Büyük Resim)</h3>
+            <p style="margin-bottom: 10px;">
+                3 tablo aslýnda ayný þirketin 3 farklý “kamerasý” gibi:
+            </p>
+            <div class="excel-window" style="margin-top: 10px;">
+                <div class="excel-header"><i class="fa-solid fa-route"></i> 3 Tablo Ne Sorar?</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="excel-cell header">Tablo</div>
+                    <div class="excel-cell header">Cevapladýðý soru (tek cümle)</div>
+
+                    <div class="excel-cell"><strong>Income Statement (Gelir Tablosu)</strong></div>
+                    <div class="excel-cell">Bu dönemde <strong>kâr ettim mi</strong>?</div>
+
+                    <div class="excel-cell"><strong>Cash Flow Statement (Nakit Akýþ Tablosu)</strong></div>
+                    <div class="excel-cell">Bu dönemde <strong>nakit nereden geldi / nereye gitti</strong>?</div>
+
+                    <div class="excel-cell"><strong>Balance Sheet (Bilanço)</strong></div>
+                    <div class="excel-cell">Bu dönemin sonunda <strong>neye sahibim</strong> (varlýk) ve <strong>kime borçluyum</strong> (kaynak)?</div>
+                </div>
+            </div>
+            <p style="margin-top: 12px; font-weight: 500;">
+                Linkage demek: Bu üç kameranýn <strong>ayný hikâyeyi</strong> tutarlý anlatmasý demek.
+            </p>
+        </div>
+
+        <div class="analogy-box">
+            <h3><i class="fa-solid fa-wallet"></i> Mini Analoji: Maaþ Bordrosu, Banka, “Net Servet”</h3>
+            <p>
+                Çok basit düþün:
+            </p>
+            <ul style="margin-left: 20px; list-style-type: none;">
+                <li><strong>Income Statement</strong>: “Bu ay gelir–gider sonucu <strong>net</strong> ne kaldý?” (bordro mantýðý)</li>
+                <li><strong>Cash Flow Statement</strong>: “Bu ay bankadaki para <strong>neden</strong> arttý/azaldý?”</li>
+                <li><strong>Balance Sheet</strong>: “Ay sonunda toplam varlýðým ve borcum ne? Netim kaç?”</li>
+            </ul>
+            <p style="margin-top: 10px;">
+                Þimdi bu üçü arasýnda <strong>hangi rakamlar taþýnýr</strong> onu tane tane kuracaðýz.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">0) Mini Sözlük (Önce Kavramlar)</h2>
+        <p>
+            Linkage’ý anlamanýn %80’i þu kavramlarý netleþtirmek:
+        </p>
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question"><strong>Net Income (Net Kâr)</strong> nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Gelir tablosunun en alt satýrý. “Bu dönemin kârý”dýr. <strong>Kâr</strong> ile <strong>nakit</strong> ayný þey deðildir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Retained Earnings (Geçmiþ Yýl Kârlarý)</strong> nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Þirketin yýllar içinde biriktirdiði kârlarýn (daðýtýlmayan kýsmýn) bilançodaki “özsermaye” hesabýdýr. Her yýl <strong>Net Income</strong> burayý etkiler.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Dividends (Temettü)</strong> ne yapar?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Ortaklara nakit daðýtýrsýn. Bu, bilançoda <strong>Cash azalýr</strong> ve <strong>Retained Earnings azalýr</strong>.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Depreciation &amp; Amortization (D&amp;A / Amortisman)</strong> neden “kafa karýþtýrýr”?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Gelir tablosunda gider yazýlýr (kârý düþürür) ama o yýl gerçekten kasadan para çýkmayabilir. Bu yüzden CFS’te CFO bölümünde genelde <strong>geri eklenir</strong>.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Net Change in Cash (Nakitte Net Deðiþim)</strong> nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Cash Flow Statement’in en altýndaki “bu dönemde nakit toplamda ne kadar arttý/azaldý” satýrý. Bu rakam, bilançodaki <strong>Cash</strong> hesabýný deðiþtirir.</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">0.5) Linkage’ý Kolaylaþtýran 4 “Ara Hesap” (En Çok Takýlan Yer)</h2>
+        <p>
+            Çoðu kiþinin Linkage’ta koptuðu yer þu: <strong>kâr baþka, nakit baþka</strong>.
+            Bu farký genelde 4 ara hesap taþýr. Bunlarý oturtursan Linkage “otomatik” çalýþýr.
+        </p>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-layer-group"></i> 4 Ara Hesap: Nerede durur?</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="excel-cell header">Hesap</div>
+                <div class="excel-cell header">Balance Sheet’te</div>
+                <div class="excel-cell header">Basit Türkçe</div>
+
+                <div class="excel-cell bold">Accounts Receivable (AR)</div>
+                <div class="excel-cell">Asset</div>
+                <div class="excel-cell">Satýþý yaptým, parasý gelecek</div>
+
+                <div class="excel-cell bold">Deferred Revenue</div>
+                <div class="excel-cell">Liability</div>
+                <div class="excel-cell">Para geldi, hizmet/teslim sonra</div>
+
+                <div class="excel-cell bold">Accounts Payable / Accrued</div>
+                <div class="excel-cell">Liability</div>
+                <div class="excel-cell">Gider oluþtu, ödeme sonra</div>
+
+                <div class="excel-cell bold">Prepaid Expenses</div>
+                <div class="excel-cell">Asset</div>
+                <div class="excel-cell">Para gitti, fayda sonra</div>
+            </div>
+        </div>
+
+        <div class="content-box-base" style="margin-top: 14px;">
+            <h3 style="margin-top:0;"><i class="fa-solid fa-code-branch"></i> 2 Soru ile “Hangi Hesap Doðdu?” Bul</h3>
+            <ol style="margin-left: 18px;">
+                <li><strong>Para hareket etti mi?</strong> (Cash girdi/çýktý mý?)</li>
+                <li><strong>Hizmet/teslim gerçekleþti mi?</strong> (Hak ediþ oldu mu?)</li>
+            </ol>
+            <div class="excel-window" style="margin-top: 12px;">
+                <div class="excel-header"><i class="fa-solid fa-table"></i> 2×2 Sonuç</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="excel-cell header">Durum</div>
+                    <div class="excel-cell header">Tipik sonuç</div>
+
+                    <div class="excel-cell bold">Para yok + Teslim var</div>
+                    <div class="excel-cell"><strong>AR</strong> (Gelir yazýlýr, nakit yok)</div>
+
+                    <div class="excel-cell bold">Para var + Teslim yok</div>
+                    <div class="excel-cell"><strong>Deferred Revenue</strong> (Nakit var, gelir henüz yok)</div>
+
+                    <div class="excel-cell bold">Para yok + Gider oluþtu</div>
+                    <div class="excel-cell"><strong>AP/Accrued</strong> (Gider yazýlýr, nakit yok)</div>
+
+                    <div class="excel-cell bold">Para var + Fayda sonra</div>
+                    <div class="excel-cell"><strong>Prepaid</strong> (Nakit çýktý, gider sonra)</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">0.6) En Basit Linkage Refleksi (1 Ýþlem › 3 Tablo)</h2>
+        <p>
+            Linkage’ý ezberleme. Þu refleksi kur:
+            <strong>Her iþlemde</strong> (a) IS’te gelir/gider var mý? (b) Nakit var mý? (c) Bilançoda hangi hesaplar oynadý?
+        </p>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question">Örnek 1: Bugün 1.000 TL’lik hizmet verdin, müþteri ay sonu ödeyecek.</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">
+                        <strong>IS:</strong> Revenue +1.000 (kâr artar).
+                        <br><strong>CFS:</strong> CFO’da AR artýþý yüzünden bu satýþýn nakdi gelmez (AR ^ › cash v etkisi).
+                        <br><strong>BS:</strong> AR +1.000 (Asset ^), Cash yok.
+                    </span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Örnek 2: Müþteri bugün 1.200 TL peþin ödedi, hizmeti 12 ayda vereceksin.</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">
+                        <strong>IS:</strong> Bugün gelir yazmazsýn (veya sadece 1 aylýk kýsmý).
+                        <br><strong>CFS:</strong> Cash +1.200 (CFO’da/operasyonda nakit giriþi).
+                        <br><strong>BS:</strong> Cash +1.200 (Asset ^), Deferred Revenue +1.200 (Liability ^).
+                    </span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Örnek 3: Bu ay 500 TL elektrik gideri oluþtu, ödemeyi gelecek ay yapacaksýn.</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">
+                        <strong>IS:</strong> Expense +500 (kâr düþer).
+                        <br><strong>CFS:</strong> Nakit çýkýþý yok; CFO’da AP/Accrued artýþý nakdi “korur” (Liability ^ › cash ^ etkisi).
+                        <br><strong>BS:</strong> AP/Accrued +500 (Liability ^).
+                    </span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Örnek 4: 12 aylýk sigortayý bugün 1.200 TL peþin ödedin.</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">
+                        <strong>IS:</strong> Bugün 1.200 gider yazmazsýn; aylýk parça parça yazarsýn.
+                        <br><strong>CFS:</strong> Cash -1.200 (nakit çýktý).
+                        <br><strong>BS:</strong> Prepaid +1.200 (Asset ^), Cash -1.200.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">1) Adým 1: Net Income, Cash Flow’a “Baþlangýç” Olur (IS › CFS)</h2>
+        <p>
+            Cash Flow Statement (CFO bölümü) çoðu zaman <strong>Net Income ile baþlar</strong>. Çünkü “kâr”dan yola çýkýp “nakit”e köprü kurarýz.
+        </p>
+        <div class="content-box-base">
+            <p style="margin-bottom: 10px;">
+                Basit mantýk:
+            </p>
+            <ul style="margin-left: 20px;">
+                <li><strong>Net Income</strong>: muhasebe kârý (tahakkuk bazlý)</li>
+                <li><strong>(+) Non-cash giderler</strong>: D&amp;A gibi (kârý düþürür ama nakit çýkmadý) › bu yüzden eklenir</li>
+                <li><strong>(±) Working Capital deðiþimleri</strong>: stok/alýcýlardan alacak/borçlar zamanlama farký yaratýr</li>
+            </ul>
+            <p style="margin-top: 10px;">
+                Sonuç: <strong>Cash from Operations (CFO)</strong> yani “esas iþten gelen nakit”.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2) Adým 2: Net Income, Bilançoda Retained Earnings’i Günceller (IS › BS)</h2>
+        <p>
+            Net Income sadece bir “rapor satýrý” deðil; bilançoda özsermaye içinde bir yere “akar”.
+            Bu akýþýn adý: <strong>Retained Earnings</strong>.
+        </p>
+        <div class="math-block">
+            Ending Retained Earnings = Beginning R.E. + Net Income - Dividends
+        </div>
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question">Mini kontrol: Þirket temettü daðýtmazsa Retained Earnings nasýl deðiþir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Sadece Net Income kadar artar/azalýr.</strong> (Pozitif net kâr › artar; zarar › azalýr.)</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3) Adým 3: Cash Flow’un Sonucu Bilançodaki Cash’i Deðiþtirir (CFS › BS)</h2>
+        <p>
+            Cash Flow Statement’in en alt satýrý (Net Change in Cash) bilançodaki Cash hesabýnýn “bu yýl ne kadar deðiþtiðini” söyler.
+        </p>
+        <div class="math-block">
+            Ending Cash = Beginning Cash + Net Change in Cash
+        </div>
+
+        <h2 style="color: var(--accent-green);">4) “Neden Her Þey Oturuyor?” (Denge Kontrolü)</h2>
+        <p>
+            Bilanço her zaman þu eþitliði saðlamalý:
+        </p>
+        <div class="math-block">
+            Assets = Liabilities + Equity
+        </div>
+        <div class="content-box-base">
+            <p style="margin-bottom: 10px;">
+                Linkage’ý anlamak için pratik bir refleks:
+            </p>
+            <ul class="check-list">
+                <li><strong>Bir kalem Assets’i deðiþtiriyorsa</strong>, mutlaka Liabilities veya Equity’de bir þey deðiþmeli (ya da baþka bir asset ters yönde oynar).</li>
+                <li><strong>Cash Flow’da gördüðün her nakit hareketi</strong>, bilançoda bir hesabý deðiþtirir (Cash ve/veya borç, PP&amp;E, vb.).</li>
+                <li><strong>Income Statement’deki Net Income</strong>, bilançoda Retained Earnings üzerinden iz býrakýr.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">5) Örnek: “Amortisman 10 TL Artsa Ne Olur?” (Vergi %40)</h2>
+        <p>
+            Bu örnek linkage mülakatlarýnda klasik. Yavaþ gidelim: önce <strong>kâr</strong> etkisi, sonra <strong>nakit</strong> etkisi, sonra bilançoda <strong>hesaplar</strong>.
+        </p>
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-puzzle-piece"></i> Parçalayalým: Neden Net Income -6 Oluyor?</h3>
+            <p style="margin-bottom: 10px;">
+                Amortisman 10 TL artarsa:
+            </p>
+            <ul style="margin-left: 20px;">
+                <li>Gelir tablosunda <strong>gider +10</strong> olur › Vergi öncesi kâr <strong>-10</strong> düþer.</li>
+                <li>Vergi oraný %40 ise, daha az kâr › daha az vergi ödersin: vergi <strong>4 TL azalýr</strong>.</li>
+                <li>Net etki: \(-10 + 4 = -6\) › <strong>Net Income 6 TL düþer</strong>.</li>
+            </ul>
+        </div>
+
+        <div class="content-box-base">
+            <h3 style="margin-top: 0;">Adým adým sonuçlar</h3>
+            <ol>
+                <li>
+                    <strong>Income Statement (IS):</strong>
+                    <ul style="margin-left: 20px;">
+                        <li>Amortisman gideri: <strong>+10</strong></li>
+                        <li>Vergi etkisi (%40): <strong>+4</strong> (daha az vergi)</li>
+                        <li><strong>Net Income: -6</strong></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Cash Flow Statement (CFS, CFO):</strong>
+                    <ul style="margin-left: 20px;">
+                        <li>Baþlangýç: Net Income <strong>-6</strong></li>
+                        <li>Non-cash olduðu için amortismaný geri ekle: <strong>+10</strong></li>
+                        <li><strong>Net Change in Cash (bu etki): +4</strong></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Balance Sheet (BS):</strong>
+                    <ul style="margin-left: 20px;">
+                        <li>Cash: <strong>+4</strong> (CFS’ten gelir)</li>
+                        <li>PP&amp;E (net): <strong>-10</strong> (amortisman birikimi artar › net PP&amp;E düþer)</li>
+                        <li><strong>Toplam Assets net: -6</strong> (çünkü +4 - 10 = -6)</li>
+                        <li>Retained Earnings: <strong>-6</strong> (Net Income düþtüðü için)</li>
+                        <li><strong>Toplam Liabilities+Equity net: -6</strong></li>
+                    </ul>
+                </li>
+            </ol>
+            <strong>Denge Saðlandý! (-6 = -6)</strong>
+        </div>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question">Mini kontrol: “Net Income düþtü ama Cash arttý” nasýl mümkün?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü amortisman <strong>nakit olmayan</strong> bir gider. Kârý düþürür ama o yýl kasadan para çýkarmayabilir; CFS’te geri eklenir.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="cash-flow-statement.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Cash Flow</a>
+            <a href="revenue-recognition.html" class="btn-nav">Sonraki: Revenue Recognition <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="drill-section mcq-quiz" style="margin-top: 18px;">
+            <h3><i class="fa-solid fa-circle-question"></i> Quiz (Çoktan Seçmeli) — Linkage</h3>
+            <div class="mcq-controls" style="display:flex; gap:10px; align-items:center; margin: 8px 0 14px;">
+                <a href="#" class="btn-nav" data-mcq-shuffle style="padding:10px 12px; font-size:12px;">Karýþtýr</a>
+                <a href="#" class="btn-nav" data-mcq-reset style="padding:10px 12px; font-size:12px;">Sýfýrla</a>
+                <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; color: var(--text-tertiary);">
+                    Skor: <strong data-mcq-score>0 / 0</strong>
+                </span>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 1: Linkage en doðru tanýmýyla nedir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Tek bir tabloda kâr hesaplama</li>
+                    <li><strong>B)</strong> IS/BS/CFS’nin ayný hikâyeyi tutarlý anlatmasý</li>
+                    <li><strong>C)</strong> Sadece bilançoyu dengelemek</li>
+                    <li><strong>D)</strong> Sadece gelir tanýma kurallarý</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> B — Linkage = 3 tablonun baðlantý refleksi.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 2: Net Income en tipik olarak Cash Flow’da nerede “baþlangýç” olur?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> CFI</li>
+                    <li><strong>B)</strong> CFO</li>
+                    <li><strong>C)</strong> CFF</li>
+                    <li><strong>D)</strong> Net Change in Cash</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> B — Indirect method’ta CFO Net Income ile baþlar.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 3: Net Income bilançoda en doðrudan hangi hesabý etkiler?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Cash</li>
+                    <li><strong>B)</strong> Retained Earnings</li>
+                    <li><strong>C)</strong> Accounts Payable</li>
+                    <li><strong>D)</strong> Inventory</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> B — Net Income, Retained Earnings üzerinden Equity’yi günceller.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 4: Cash Flow’daki “Net Change in Cash” en doðrudan bilançoda neyi deðiþtirir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Inventory</li>
+                    <li><strong>B)</strong> Cash</li>
+                    <li><strong>C)</strong> Revenue</li>
+                    <li><strong>D)</strong> Gross Profit</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> B — Ending Cash = Beginning Cash + Net Change in Cash.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 5 (Kara): “Net Income düþtü ama Cash arttý” hangi durumda klasik olarak mümkündür?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Depreciation artýþý</li>
+                    <li><strong>B)</strong> Revenue artýþý</li>
+                    <li><strong>C)</strong> Inventory artýþý</li>
+                    <li><strong>D)</strong> AR artýþý</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> A — Depreciation non-cash giderdir; vergi azaltýp cash’i artýrabilir.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 6: Amortisman +10 (vergi %40) senaryosunda Net Income etkisi nedir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> +10</li>
+                    <li><strong>B)</strong> -10</li>
+                    <li><strong>C)</strong> -6</li>
+                    <li><strong>D)</strong> +4</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> C — Gider +10, vergi 4 azalýr › net -6.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 7: Ayný senaryoda Cash (CFO üzerinden) net etki nedir?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> -6</li>
+                    <li><strong>B)</strong> +10</li>
+                    <li><strong>C)</strong> +4</li>
+                    <li><strong>D)</strong> 0</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> C — Net Income -6, D&amp;A +10 geri eklenir › +4 cash.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 8: “Satýþ yaptýn, para sonra” vakasýnda 3 tabloda en doðru özet hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> IS: Gelir yok; BS: Cash artar; CFS: CFO artar</li>
+                    <li><strong>B)</strong> IS: Gelir yazar; BS: AR artar; CFS: CFO’da AR artýþý nakdi düþürür</li>
+                    <li><strong>C)</strong> IS: Gider yazar; BS: AP artar; CFS: CFF artar</li>
+                    <li><strong>D)</strong> IS: Gelir yazar; BS: Deferred Revenue artar; CFS: Cash artar</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> B — Gelir var, nakit yok › AR.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 9: “Para geldi, teslim sonra” vakasýnda en doðru ara hesap hangisi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> AR</li>
+                    <li><strong>B)</strong> Deferred Revenue</li>
+                    <li><strong>C)</strong> AP</li>
+                    <li><strong>D)</strong> Prepaid</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> B — Nakit var, gelir yok › yükümlülük.</span>
+                </div>
+            </div>
+
+            <div class="drill-card">
+                <p class="question">Soru 10 (Kara): “Bir kalem Assets’i artýrýyorsa mutlaka Liabilities+Equity de artar” ifadesi?</p>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li><strong>A)</strong> Her zaman doðru</li>
+                    <li><strong>B)</strong> Yanlýþ; Assets içi yer deðiþimi olabilir (Cash v, Inventory ^)</li>
+                    <li><strong>C)</strong> Doðru; çünkü equity sabittir</li>
+                    <li><strong>D)</strong> Yanlýþ; çünkü CFS yoktur</li>
+                </ul>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Doðru:</strong> B — Assets içinde swap olursa toplam assets deðiþmez; L+E de deðiþmez.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

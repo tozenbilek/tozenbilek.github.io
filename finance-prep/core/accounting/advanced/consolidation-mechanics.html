@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consolidation Mechanics | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Consolidation</span>
+        </nav>
+
+        <h1>5.1 Consolidation Mechanics</h1>
+        <p>
+            Büyük balýk (Parent) küçük balýðý (Subsidiary) yuttuðunda ne olur?
+            Ýki bilançoyu toplarken yapýlan en büyük hata: "Sadece aldýðým kýsmý eklerim" demektir.
+            <strong>Yanlýþ!</strong> Kontrol gücü kimdeyse, her þeyi o yönetir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. The "Apartment Building" Analogy</h2>
+        <div class="mech-box">
+            Bir apartmanýn %60 dairesini satýn aldýnýz.
+            <br>
+            <ul>
+                <li><strong>Yönetim:</strong> Apartman yöneticisi siz olursunuz. Binanýn rengine, kapýsýna siz karar verirsiniz.</li>
+                <li><strong>Görünüm (Consolidation):</strong> Dýþarýdan bakan biri "Bu bina sizin" der. Binanýn %60'ý deðil, <strong>TAMAMI</strong> sizin yönetiminizdedir.</li>
+                <li><strong>Azýnlýk (NCI):</strong> Ama diðer %40 daire sahiplerinin de hakký vardýr. Onlarý yok sayamazsýnýz (Non-Controlling Interest).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. The 3 Golden Rules</h2>
+        <div class="content-box-base">
+            <ol>
+                <li><strong>Rule 1 (%100 Consolidation):</strong> Satýn alýnan þirketin (Sub) varlýklarýný (Cash, Inventory, PP&E) ve borçlarýný (Debt) <strong>%100 oranýnda</strong> kendi bilançonuza eklersiniz. (%60'ýný almýþ olsanýz bile).</li>
+                
+                <li><strong>Rule 2 (Wipe Out Equity):</strong> Sub'ýn eski Özsermayesi (Common Stock + Retained Earnings) tamamen silinir. Çünkü artýk o eski þirket yoktur, sizin bir parçanýzdýr.</li>
+                
+                <li><strong>Rule 3 (Create Goodwill):</strong> Ödediðiniz Para ile Þirketin Defter Deðeri arasýndaki fark <strong>Goodwill</strong> (Þerefiye) olarak Assets tarafýna yazýlýr.</li>
+            </ol>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Visual Walkthrough</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Consolidation.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 100px 100px 100px 100px 100px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Parent</div>
+                <div class="excel-cell header">Sub</div>
+                <div class="excel-cell header">Adj.</div>
+                <div class="excel-cell header">Consolidated</div>
+
+                <div class="excel-cell">Cash</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">20</div>
+                <div class="excel-cell" style="color:red;">(50)*</div>
+                <div class="excel-cell bold">70</div>
+
+                <div class="excel-cell">Assets</div>
+                <div class="excel-cell">500</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell bold">600</div>
+
+                <div class="excel-cell" style="background:#e6fffa;">Goodwill</div>
+                <div class="excel-cell" style="background:#e6fffa;">0</div>
+                <div class="excel-cell" style="background:#e6fffa;">0</div>
+                <div class="excel-cell bold" style="color:green; background:#e6fffa;">30</div>
+                <div class="excel-cell bold" style="background:#e6fffa;">30</div>
+
+                <div class="excel-cell" style="border-top: 2px solid #ccc;"><strong>Total</strong></div>
+                <div class="excel-cell" style="border-top: 2px solid #ccc;"><strong>600</strong></div>
+                <div class="excel-cell" style="border-top: 2px solid #ccc;"><strong>120</strong></div>
+                <div class="excel-cell" style="border-top: 2px solid #ccc;"></div>
+                <div class="excel-cell bold" style="border-top: 2px solid #ccc;"><strong>700</strong></div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                *Parent, Sub'ý almak için 50 nakit ödedi. Sub'ýn defter deðeri (Equity) 20 idi. Aradaki 30 fark Goodwill oldu.
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="pik-interest.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: PIK Interest</a>
+            <a href="nci.html" class="btn-nav">Sonraki: NCI <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

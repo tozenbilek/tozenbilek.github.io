@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue (Ciro) | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <a href="income-statement.html" class="nav-link">Income Statement</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Revenue</span>
+        </nav>
+
+        <h1>Revenue / Sales (Ciro / Hasýlat)</h1>
+        <p>
+            Gelir Tablosunun en üst satýrý (Top Line). Bir þirketin ana faaliyetlerinden elde ettiði brüt para giriþi.
+            Henüz hiçbir masraf düþülmemiþtir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. Nedir?</h2>
+        <div class="content-box-base">
+            <p>
+                <strong>Revenue</strong>, þirketin ürün veya hizmet satýþýndan kazandýðý toplam tutardýr. 
+                Muhasebede "tahakkuk esasý" (accrual basis) geçerli olduðu için, kasaya giren nakit ile Revenue ayný þey olmayabilir.
+            </p>
+            <ul class="check-list">
+                <li>Ürün satýldýðýnda veya hizmet verildiðinde kaydedilir.</li>
+                <li>Ýadeler ve indirimler düþüldükten sonra "Net Revenue" olarak raporlanýr.</li>
+                <li>Varlýk satýþý gibi bir defalýk kazançlar buraya dahil <strong>edilmez</strong> (Onlar "Other Income" kalemine gider).</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Formül & Hesaplama</h2>
+        <div class="formula-box">
+            Revenue = Fiyat (P) × Satýlan Miktar (Q)
+        </div>
+        <p>
+            Analistler ciro büyümesini ikiye ayýrýr:
+            <br>1. <strong>Volume Growth:</strong> Daha fazla adet satmak.
+            <br>2. <strong>Pricing Growth:</strong> Zam yapmak.
+        </p>
+
+        <h2 style="color: var(--accent-green);">3. Revenue Recognition Detaylarý</h2>
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-clock"></i> Revenue ? Cash (Tahakkuk Esasý)</h3>
+            <p>
+                Revenue "müþteriye ürün verdiðim/hizmet ettiðim anda" yazýlýr. Nakit daha sonra gelebilir.
+            </p>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-calendar"></i> Revenue vs Cash Timing</div>
+                <div class="excel-grid" style="grid-template-columns: 120px 100px 100px 100px;">
+                    <div class="excel-cell header">Ay</div>
+                    <div class="excel-cell header">Hizmet Verdi</div>
+                    <div class="excel-cell header">Revenue</div>
+                    <div class="excel-cell header">Cash</div>
+
+                    <div class="excel-cell">Ocak</div>
+                    <div class="excel-cell">?</div>
+                    <div class="excel-cell bold">100</div>
+                    <div class="excel-cell">0</div>
+
+                    <div class="excel-cell">Þubat</div>
+                    <div class="excel-cell">?</div>
+                    <div class="excel-cell">0</div>
+                    <div class="excel-cell bold">100</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">4. Gerçek Þirket Örnekleri</h2>
+
+        <h3>?? Apple: Product Revenue vs Services Revenue</h3>
+        <div class="content-box-base">
+            <p>
+                Apple'ýn cirosu iki ana kategoride: <strong>Products</strong> (iPhone, Mac, iPad) ve <strong>Services</strong> (App Store, Apple Music, iCloud).
+            </p>
+            <div class="excel-window">
+                <div class="excel-header"><i class="fa-solid fa-apple-whole"></i> Apple Revenue Breakdown (2023)</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px;">
+                    <div class="excel-cell header">Kategori</div>
+                    <div class="excel-cell header">Revenue ($M)</div>
+                    <div class="excel-cell header">Growth YoY</div>
+
+                    <div class="excel-cell">Products</div>
+                    <div class="excel-cell">298,085</div>
+                    <div class="excel-cell">-3%</div>
+
+                    <div class="excel-cell">Services</div>
+                    <div class="excel-cell">85,776</div>
+                    <div class="excel-cell">+9%</div>
+
+                    <div class="excel-cell bold">Total Revenue</div>
+                    <div class="excel-cell bold">383,285</div>
+                    <div class="excel-cell bold">+3%</div>
+                </div>
+            </div>
+            <p><strong>Analiz:</strong> Services daha hýzlý büyüyor çünkü recurring (tekrarlayan) gelir. Products ise ekonomik döngüye daha duyarlý.</p>
+        </div>
+
+        <h3>?? Netflix: Subscription Revenue Model</h3>
+        <div class="content-box-base">
+            <p>
+                Netflix'in tüm cirosu <strong>subscription</strong> gelirinden gelir. Film/série baþýna deðil, aylýk abonelik baþýna.
+            </p>
+            <ul class="check-list">
+                <li><strong>Deferred Revenue:</strong> Müþteri yýllýk abonelik öder (1200 TL), ama Netflix bunu 12 ay boyunca gelir olarak daðýtýr.</li>
+                <li><strong>Churn:</strong> Müþteriler ayrýldýðýnda revenue durur, deferred revenue kalýr.</li>
+                <li><strong>International Growth:</strong> Yeni ülkeler revenue'yi hýzla artýrýr.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">5. Sektörel Farklýlýklar</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th>Sektör</th>
+                        <th>Revenue Özelliði</th>
+                        <th>Örnek Metrik</th>
+                        <th>Dikkat Edilecek Nokta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SaaS/Tech</strong></td>
+                        <td>ARR (Annual Recurring Revenue)</td>
+                        <td>MRR (Monthly Recurring)</td>
+                        <td>Churn rate yüksek olabilir</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perakende</strong></td>
+                        <td>Same-store sales</td>
+                        <td>YoY growth</td>
+                        <td>Online vs offline ayrýmý</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pharma</strong></td>
+                        <td>Patent expiration</td>
+                        <td>Generic competition</td>
+                        <td>Biosimilar etkisi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enerji</strong></td>
+                        <td>Commodity prices</td>
+                        <td>Volume vs Price</td>
+                        <td>Hedging etkisi</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-green);">6. Growth Analysis Pratikleri</h2>
+        <div class="content-box-base">
+            <h4>Revenue Growth Hesaplamasý</h4>
+            <div class="math-block">
+                \[ \text{Revenue Growth} = \frac{\text{Revenue}_{t} - \text{Revenue}_{t-1}}{\text{Revenue}_{t-1}} \]
+            </div>
+
+            <h4>Compound Annual Growth Rate (CAGR)</h4>
+            <div class="math-block">
+                \[ \text{CAGR} = \left( \frac{\text{Revenue}_{t}}{\text{Revenue}_{t-n}} \right)^{\frac{1}{n}} - 1 \]
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Revenue Quiz</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Þirket yýllýk 1200 TL abonelik ücreti alýyor. Müþteri peþin ödedi. Ýlk ayda ne kadar revenue yazýlýr?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">100 TL (12 ayda daðýtýlýr). Deferred Revenue 1100 TL olur. Bu SaaS þirketlerinin neden yüksek deferred revenue'sý olduðunu açýklar.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Apple Products revenue'si düþtü ama Services büyüdü. Bu ne anlama gelir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Þirket olgunlaþýyor. Hardware satýþlarý doymuþ, services recurring gelire dönüþüyor. Daha stabil ve predictable revenue stream.</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">7. Önemli Terimler</h2>
+        <div class="grid-modules" style="grid-template-columns: 1fr 1fr;">
+            <div class="module-card">
+                <h4 style="margin-top:0;">Organic Growth</h4>
+                <p style="font-size:13px;">Þirketin kendi faaliyetleriyle büyümesi. En saðlýklý büyüme türüdür.</p>
+            </div>
+            <div class="module-card">
+                <h4 style="margin-top:0;">Inorganic Growth</h4>
+                <p style="font-size:13px;">Baþka bir þirketi satýn alarak (M&A) ciroyu artýrmak.</p>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="income-statement.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Geri: Income Statement</a>
+            <a href="cogs.html" class="btn-nav">Sonraki: COGS <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Expense | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <a href="income-statement.html" class="nav-link">Income Statement</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Interest</span>
+        </nav>
+
+        <h1>Interest Expense (Faiz Gideri)</h1>
+        <p>
+            Þirketin kullandýðý borçlar için ödediði kira bedeli.
+            Borcun maliyeti (Cost of Debt) ve Vergi Kalkaný (Tax Shield).
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. Tax Shield Calculation</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-shield-halved"></i> Borcun Güzelliði</div>
+            <p>
+                Faiz gideri vergiden düþülür. Temettü (Dividend) düþülmez.
+                Bu yüzden þirketler borçlanmayý sever.
+            </p>
+            <div class="excel-window">
+                <div class="excel-grid" style="grid-template-columns: 100px 100px 100px;">
+                    <div class="excel-cell header">Item</div>
+                    <div class="excel-cell header">No Debt</div>
+                    <div class="excel-cell header">With Debt</div>
+
+                    <div class="excel-cell">EBIT</div>
+                    <div class="excel-cell">100</div>
+                    <div class="excel-cell">100</div>
+
+                    <div class="excel-cell">(-) Interest</div>
+                    <div class="excel-cell">0</div>
+                    <div class="excel-cell">(20)</div>
+
+                    <div class="excel-cell">Pre-Tax</div>
+                    <div class="excel-cell">100</div>
+                    <div class="excel-cell">80</div>
+
+                    <div class="excel-cell">Tax (%20)</div>
+                    <div class="excel-cell">(20)</div>
+                    <div class="excel-cell">(16)</div>
+
+                    <div class="excel-cell bold">Net Income</div>
+                    <div class="excel-cell bold">80</div>
+                    <div class="excel-cell bold">64</div>
+                </div>
+            </div>
+            <p>
+                <strong>Dikkat:</strong> Borçlu þirket 4 TL daha az vergi ödedi (20 vs 16). 
+                Bu 4 TL, devletin sübvanse ettiði kýsýmdýr. 
+                (Faiz 20 TL * %20 Vergi = 4 TL Tax Shield).
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Cash vs Non-Cash Interest</h2>
+        <div class="content-box-base">
+            Her faiz gideri nakit deðildir.
+            <ul>
+                <li><strong>Cash Interest:</strong> Bankaya her ay ödenen kupon faizi.</li>
+                <li><strong>Non-Cash (PIK) Interest:</strong> Borcun anaparasýný artýran faiz. (Cash Flow'da geri eklenir).</li>
+                <li><strong>Amortization of Fees:</strong> Kredi masraflarýnýn zamana yayýlmasý. (Cash Flow'da geri eklenir).</li>
+            </ul>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="ebit.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: EBIT</a>
+            <a href="taxes.html" class="btn-nav">Sonraki: Taxes <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

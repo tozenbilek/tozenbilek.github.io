@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assumptions & Drivers | Modeling Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Modeling</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Drivers</span>
+        </nav>
+
+        <h1>1.2 Assumptions (Drivers)</h1>
+        <p>
+            Modelin beyni burasýdýr. Tüm tahminler (Projections) tek bir sayfada, "Assumptions" sekmesinde toplanýr.
+            Diðer sayfalarda (IS, BS, CFS) asla elle sayý girilmez, hepsi buraya referans verir.
+        </p>
+
+        <h2 style="color: #047857;">The Logic: Historical vs Projected</h2>
+        <p>
+            Geçmiþ (Historical) veriler þirketin raporlarýndan alýnýr. Gelecek (Projected) veriler ise "Driver"lar (Sürücüler) ile hesaplanýr.
+        </p>
+        
+        <div class="mech-box">
+            <strong>Örnek: Revenue (Ciro) Tahmini</strong>
+            <br>
+            Yanlýþ Yöntem: 2024 cirosunu doðrudan "100 Milyon" olarak girmek.
+            <br>
+            Doðru Yöntem (Driver): 
+            <br>1. <strong>Volume Growth:</strong> %5 büyüyecek.
+            <br>2. <strong>Price Growth:</strong> %2 zam yapacaðýz.
+            <br>3. <strong>Sonuç:</strong> Ciro = (Geçen Yýlki Ciro) * (1 + %5) * (1 + %2).
+        </div>
+
+        <h2 style="color: #047857;">Key Drivers List</h2>
+        <div class="content-box-base">
+            <ul>
+                <li><strong>Revenue:</strong> % Growth Rate (Büyüme Oraný).</li>
+                <li><strong>COGS:</strong> % of Sales (Cironun yüzdesi olarak maliyet).</li>
+                <li><strong>SG&A (Giderler):</strong> % of Sales veya % Growth (Sabit giderler enflasyonla büyür).</li>
+                <li><strong>D&A:</strong> % of PP&E (Varlýklarýn ne kadarýný eskitiyoruz).</li>
+                <li><strong>Tax Rate:</strong> % Effective Tax Rate.</li>
+                <li><strong>Interest Rate:</strong> Borç faiz oranlarý (LIBOR + Spread).</li>
+            </ul>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="setup.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Setup</a>
+            <a href="income-statement.html" class="btn-nav">Sonraki: Income Statement <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+

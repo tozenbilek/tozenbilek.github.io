@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Statements Exam | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Core Statements Exam</span>
+        </nav>
+
+        <h1>Core Statements: Sınav Modu (Tek Sayfa)</h1>
+        <p class="lesson-desc">
+            Income Statement + Balance Sheet + Cash Flow + Linkage soruları bu sayfada birleşir.
+            Şıkları seçince doğru/yanlış anında görünür; üstte skor güncellenir.
+        </p>
+
+        <div class="drill-section mcq-quiz" data-exam="core-statements"
+             data-exam-pages="income-statement.html,balance-sheet.html,cash-flow-statement.html,linkage.html">
+            <h3><i class="fa-solid fa-clipboard-list"></i> Tek Deneme</h3>
+            <div class="mcq-controls" style="display:flex; gap:10px; align-items:center; margin: 8px 0 14px;">
+                <a href="#" class="btn-nav" data-mcq-shuffle style="padding:10px 12px; font-size:12px;">Karıştır</a>
+                <a href="#" class="btn-nav" data-mcq-reset style="padding:10px 12px; font-size:12px;">Sıfırla</a>
+                <span style="margin-left:auto; font-family:'JetBrains Mono', monospace; color: var(--text-tertiary);">
+                    Skor: <strong data-mcq-score>0 / 0</strong>
+                </span>
+            </div>
+
+            <div data-exam-cards></div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="../index.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Geri: Accounting</a>
+            <a href="three-statement-drills.html" class="btn-nav">Ek Pratik: 3-Statement Drills <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comps & Calendarization | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Relative Valuation</span>
+        </nav>
+
+        <h1>Comps Analysis: The Art of Multiples</h1>
+        <p>
+            Herkes "Apple 30x P/E ile işlem görüyor" der. Ama profesyonel değerlemede işler bu kadar basit değildir. 
+            Burada <strong>Calendarization</strong> ve <strong>LTM (Last Twelve Months)</strong> gibi profesyonel düzeltmeleri öğreneceksiniz.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">1. Calendarization (Takvim Uyarlaması)</h2>
+        <p>
+            Şirket A'nın mali yılı Aralık'ta biter. Şirket B'nin Mart'ta biter. Bu ikisini doğrudan kıyaslayamazsınız.
+            Hepsini aynı zaman dilimine (LTM) çekmeniz gerekir.
+        </p>
+        
+        <div class="mech-box">
+            <strong>LTM Formula:</strong>
+            <br>
+            <span style="font-family:'JetBrains Mono'; color:#2563eb;">LTM = Current Year Q3 YTD + Prior Year Full Year - Prior Year Q3 YTD</span>
+        </div>
+
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> LTM_Calculation.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 150px 100px 100px;">
+                <div class="excel-cell header">Period</div>
+                <div class="excel-cell header">Revenue ($)</div>
+                <div class="excel-cell header">Formula</div>
+
+                <div class="excel-cell">2022 Full Year</div>
+                <div class="excel-cell">1,000</div>
+                <div class="excel-cell">(+)</div>
+
+                <div class="excel-cell">2022 Q1-Q3 (9M)</div>
+                <div class="excel-cell">700</div>
+                <div class="excel-cell">(-)</div>
+
+                <div class="excel-cell">2023 Q1-Q3 (9M)</div>
+                <div class="excel-cell">800</div>
+                <div class="excel-cell">(+)</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid black;">LTM Revenue</div>
+                <div class="excel-cell bold">1,100</div>
+                <div class="excel-cell bold">= 1000 - 700 + 800</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray;">
+                Mantık: 2022'nin son çeyreğini (300) alır, üstüne 2023'ün ilk üç çeyreğini (800) ekler. Toplam 1100.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">2. EV/EBITDA vs P/E</h2>
+        <table class="financial-table">
+            <thead>
+                <tr>
+                    <th>Özellik</th>
+                    <th>EV / EBITDA</th>
+                    <th>P / E (Price to Earnings)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Kapsam</strong></td>
+                    <td>Tüm Şirket (Enterprise)</td>
+                    <td>Sadece Hissedar (Equity)</td>
+                </tr>
+                <tr>
+                    <td><strong>Borç Etkisi</strong></td>
+                    <td><span style="color:green;">Nötr</span> (Borç yapısından etkilenmez)</td>
+                    <td><span style="color:red;">Etkilenir</span> (Borç artarsa P/E düşebilir)</td>
+                </tr>
+                <tr>
+                    <td><strong>Kullanım</strong></td>
+                    <td>M&A, LBO, Çoğu Sektör</td>
+                    <td>Bankalar, Bireysel Yatırımcı</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 style="color: var(--accent-blue);">3. Adjustments: Non-Recurring & Accounting</h2>
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> "Reported" ≠ "Comparable"</h3>
+            <p>
+                Çarpan analizi, çoğu zaman "düzeltme" işidir. İki şirketin EBITDA'sı aynı görünür ama biri tek seferlik gelir/gider taşır.
+                Amaç: <strong>Recurring</strong> (devam eden) performansı kıyaslamak.
+            </p>
+            <ul class="check-list">
+                <li><strong>Non-Recurring Items:</strong> Restructuring, impairment, lawsuit, one-time gains/losses.</li>
+                <li><strong>Accounting Differences:</strong> Lease muhasebesi (IFRS 16), SBC (stock comp), revenue recognition farklılıkları.</li>
+                <li><strong>Capital Structure Noise:</strong> P/E yerine EV-multiple kullanmak bazen bunu azaltır.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">4. Output: Implied Valuation Range</h2>
+        <p>
+            Comps çıktısı genellikle tek rakam değil, bir aralıktır. Bu aralık "Football Field" grafiğine gider.
+        </p>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Implied_Range.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 120px 120px 120px;">
+                <div class="excel-cell header">Multiple</div>
+                <div class="excel-cell header">Low</div>
+                <div class="excel-cell header">Median</div>
+                <div class="excel-cell header">High</div>
+
+                <div class="excel-cell">EV / EBITDA</div>
+                <div class="excel-cell">8.0x</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">10.0x</div>
+                <div class="excel-cell">12.0x</div>
+
+                <div class="excel-cell">Target EBITDA</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">100</div>
+
+                <div class="excel-cell bold" style="border-top:2px solid #111;">Implied EV</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">800</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">1,000</div>
+                <div class="excel-cell bold" style="border-top:2px solid #111;">1,200</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray;">
+                Median çarpan (10.0x) genelde sunumlarda "Base" olarak kullanılır; Low/High aralık verir.
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Neden LTM kullanırız, gelecek yıl (NTM) kullanmak daha doğru değil mi?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">NTM daha "forward-looking" olabilir ama tahmin (consensus) hatası ve analist bias'ı taşır. LTM ise gerçekleşmiş (actual) veri olduğu için daha güvenilirdir. Pratikte her ikisi de kullanılır ve birlikte yorumlanır.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Peer set'in median EV/EBITDA'sı yüksek ama target büyümesi düşükse ne yaparsın?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Median'ı körlemesine uygulamam. Growth ve margin farklarına göre target'a discount uygularım veya daha iyi eşleşen bir peer set kurarım (re-screening).</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="enterprise-value.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: EV</a>
+            <a href="precedent-transactions.html" class="btn-nav">Sonraki: Precedent Transactions <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

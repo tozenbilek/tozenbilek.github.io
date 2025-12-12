@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deferred Tax Asset | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">DTA</span>
+        </nav>
+
+        <h1>4.2 Deferred Tax Asset (DTA)</h1>
+        <p>
+            Devletten alacaklý olduðunuz durumdur. "Vergi Ýndirim Kuponu" gibidir.
+            Genellikle þirket zarar ettiðinde veya erken ödeme yaptýðýnda oluþur.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. NOLs (Net Operating Losses)</h2>
+        <div class="mech-box">
+            <strong>Senaryo:</strong> Bu yýl 100 Milyon $ zarar ettiniz. Vergi ödemezsiniz (0 TL).
+            <br>
+            Devlet der ki: "Üzülme. Bu zararý bir kenara yaz. Seneye 100 Milyon $ kâr edersen, bu zararý düþersin ve yine vergi ödemezsin."
+            <br><br>
+            Ýþte bu "Gelecekte vergi ödememe hakký", bilançoda <strong>Deferred Tax Asset</strong> olarak görünür.
+            <br>
+            <em>Deðeri = Zarar Miktarý x Vergi Oraný</em>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Real World Example (Amazon)</h2>
+        <div class="content-box-base">
+            Amazon yýllarca zarar etti (Bilinçli olarak).
+            <br>Bu sayede devasa bir DTA (NOL) biriktirdi.
+            <br>Daha sonra milyarlarca dolar kâr etmeye baþladýðýnda, yýllarca <strong>neredeyse hiç vergi ödemedi</strong>.
+            <br>Çünkü geçmiþteki "Zarar Kuponlarýný" kullandý.
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. The Catch: Valuation Allowance</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-trash-can"></i> Kuponu Çöpe Atmak</div>
+            <p>
+                DTA bir "Ýndirim Kuponu"dur. Ama kuponu kullanmak için markete gidip alýþveriþ yapmanýz (Kâr etmeniz) gerekir.
+                <br><br>
+                Eðer denetçiler (Auditors), þirketin <strong>gelecekte asla kâr edemeyeceðine</strong> kanaat getirirse (Sürekli batýk þirket); 
+                "Bu kupon deðersizdir" derler ve DTA'yý silerler. 
+                <br><br>
+                Buna <strong>Valuation Allowance</strong> denir.
+                <br><em>Etkisi: Net Income düþer, Equity düþer. Çok kötü bir sinyaldir.</em>
+            </p>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="dtl.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: DTL</a>
+            <a href="debt.html" class="btn-nav">Sonraki: Debt <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

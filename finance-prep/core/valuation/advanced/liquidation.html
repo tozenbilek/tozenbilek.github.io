@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquidation Valuation | IB Prep</title>
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Liquidation</span>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>3.3 Liquidation Valuation</h1>
+            <p class="lesson-desc">
+                Şirket öldüğünde ne kadar eder? "Kelepir" değerleme ve İflas Şelalesi (Waterfall).
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-gavel"></i> The Garage Sale Analogy</h3>
+                <p>
+                    Şirket batıyor (Going Concern değil). Artık "Gelecek Nakit Akışı" yok.
+                    Sadece eldeki malları (Masa, sandalye, stok) "hemen şimdi" satarsak ne kadar ederiz?
+                    Garaj satışında eşyalarınızı değerinin çok altına (örn. %50) satarsınız.
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-calculator"></i> Step 1: Asset Recovery</h3>
+                <p>
+                    Varlıkların defter değeri (Book Value) ile satış değeri (Liquidation Value) aynı değildir.
+                </p>
+                <div class="table-container">
+                    <table class="financial-table">
+                        <thead>
+                            <tr>
+                                <th>Asset</th>
+                                <th>Book Value</th>
+                                <th>Recovery Rate</th>
+                                <th>Liquid. Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cash</td>
+                                <td>$100</td>
+                                <td>100%</td>
+                                <td>$100</td>
+                            </tr>
+                            <tr>
+                                <td>Accounts Receivable</td>
+                                <td>$200</td>
+                                <td>80%</td>
+                                <td>$160</td>
+                            </tr>
+                            <tr>
+                                <td>Inventory</td>
+                                <td>$300</td>
+                                <td>50%</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr>
+                                <td>PP&E (Makine)</td>
+                                <td>$500</td>
+                                <td>30%</td>
+                                <td>$150</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>Total Proceeds</strong></td>
+                                <td><strong>$1,100</strong></td>
+                                <td></td>
+                                <td><strong>$560</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="deep-dive-box" style="border-top: 4px solid #ef4444;">
+                <h3><i class="fa-solid fa-water"></i> Step 2: The Waterfall (Who gets paid?)</h3>
+                <p>
+                    Kasada sadece 560$ toplandı. Ama toplam borç 800$. Para kime gidecek?
+                    İflas kanununa (Chapter 7) göre kesin bir sıra vardır.
+                </p>
+                
+                <div class="excel-window">
+                    <div class="excel-header"><i class="fa-solid fa-layer-group"></i> Bankruptcy_Waterfall.xlsx</div>
+                    <div class="excel-grid" style="grid-template-columns: 200px 100px 100px 100px;">
+                        <div class="excel-cell header">Claimant (Alacaklı)</div>
+                        <div class="excel-cell header">Claim Amount</div>
+                        <div class="excel-cell header">Paid</div>
+                        <div class="excel-cell header">Recovery %</div>
+
+                        <div class="excel-cell bold">1. Secured Debt (Bank)</div>
+                        <div class="excel-cell">300</div>
+                        <div class="excel-cell" style="color:green;">300</div>
+                        <div class="excel-cell">100%</div>
+
+                        <div class="excel-cell bold">2. Administrative (Lawyers)</div>
+                        <div class="excel-cell">60</div>
+                        <div class="excel-cell" style="color:green;">60</div>
+                        <div class="excel-cell">100%</div>
+
+                        <div class="excel-cell bold">3. Unsecured Debt (Bond)</div>
+                        <div class="excel-cell">440</div>
+                        <div class="excel-cell" style="color:orange;">200</div>
+                        <div class="excel-cell">45%</div>
+
+                        <div class="excel-cell bold" style="color:gray;">4. Equity (Hissedar)</div>
+                        <div class="excel-cell">Infinite</div>
+                        <div class="excel-cell" style="color:red;">0</div>
+                        <div class="excel-cell">0%</div>
+                        
+                        <div class="excel-cell bold" style="border-top:2px solid black;">Total Distributed</div>
+                        <div class="excel-cell"></div>
+                        <div class="excel-cell bold">560</div>
+                        <div class="excel-cell"></div>
+                    </div>
+                    <div style="padding: 10px; font-size: 12px; color: gray;">
+                        <strong>Sonuç:</strong> Para Unsecured Debt sırasında bitti. Hissedarlar (Equity) SIFIR aldı.
+                    </div>
+                </div>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: Liquidation değerleme neden genelde "taban" (floor) değer kabul edilir?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Çünkü şirketin "going concern" değeri yok sayılır; sadece varlıkları hızlı ve iskontolu satma varsayımı vardır. Normal bir satışta (going concern) müşteri ilişkileri, marka, know-how gibi soyut değerler de fiyata girer.</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: Neden Equity neredeyse her zaman sıfır alır?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Equity en sonda (residual claimant) yer alır. Önce secured borçlar, idari masraflar ve diğer borçlar ödenir. Tasfiye proceeds çoğu zaman borçları bile tam karşılamaz.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="football-field.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: Football Field</a>
+                <a href="ddm.html" class="btn-nav next">Sonraki: DDM <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Controlling Interest | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">NCI</span>
+        </nav>
+
+        <h1>5.2 Non-Controlling Interest (NCI)</h1>
+        <p>
+            Diðer adýyla "Minority Interest".
+            Þirketin %60'ýna sahipsiniz, ama bilançosunun %100'ünü birleþtirdiniz (Consolidate). 
+            Kalan %40'ýn "Sizin Olmadýðýný" belirtmeniz gerekir.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. The Logic (Neden Var?)</h2>
+        <div class="mech-box">
+            <strong>Senaryo:</strong> Apple, küçük bir yapay zeka þirketi olan "AI Corp"un %80 hissesini aldý.
+            <br>
+            <ul>
+                <li>Apple bu þirketi <strong>yönetir</strong> (Kontrol gücü var).</li>
+                <li>Bu yüzden AI Corp'un <strong>TÜM</strong> nakdini, borcunu ve gelirini kendi tablolarýna ekler.</li>
+                <li>Ama bu varlýklarýn %20'si yasal olarak diðer hissedarlarýndýr.</li>
+                <li>Apple bu borcu bilançosunda <strong>NCI</strong> (Equity altýnda) olarak gösterir. "Bu kýsmýn sahibi ben deðilim" der.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Calculation Example</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-calculator"></i> NCI_Calc.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 100px;">
+                <div class="excel-cell header">Item</div>
+                <div class="excel-cell header">Value</div>
+
+                <div class="excel-cell">AI Corp Book Value (Equity)</div>
+                <div class="excel-cell">100 M$</div>
+
+                <div class="excel-cell">Apple's Stake</div>
+                <div class="excel-cell">80%</div>
+
+                <div class="excel-cell">Minority Stake</div>
+                <div class="excel-cell">20%</div>
+
+                <div class="excel-cell bold" style="border-top: 2px solid #ccc;">NCI Value on Apple's BS</div>
+                <div class="excel-cell bold" style="border-top: 2px solid #ccc;">20 M$</div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Enterprise Value Etkisi</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-scale-unbalanced"></i> Neden Ekleriz?</div>
+            <p>
+                Enterprise Value hesaplarken Equity Value'ya <strong>NCI eklenir.</strong>
+                <br><br>
+                <strong>Sebep:</strong> EV (Enterprise Value), þirketin "Tüm" operasyonlarýnýn deðeridir. 
+                Satýþlar (Sales) ve FAVÖK (EBITDA) konsolidasyon yüzünden %100 görünür. 
+                Payda (EBITDA) %100 ise, Pay (EV) de %100'ü temsil etmelidir.
+                Bu yüzden Equity (%80) + NCI (%20) + Debt (%100) yaparýz.
+            </p>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="consolidation-mechanics.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Consolidation</a>
+            <a href="earnings-management.html" class="btn-nav">Sonraki: Earnings Mgmt <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

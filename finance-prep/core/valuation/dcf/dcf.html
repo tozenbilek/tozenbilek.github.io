@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCF Masterclass | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">DCF Masterclass</span>
+        </nav>
+
+        <h1>DCF: The Intrinsic Value Engine</h1>
+        <p>
+            Discounted Cash Flow (DCF), bir varlýðýn deðerinin, üreteceði nakit akýþlarýnýn bugünkü deðeri olduðu ilkesine dayanýr. 
+            Bu sayfada, sadece formülleri deðil, Wall Street'te yapýlan hatalarý ve <strong>"Mid-Year Convention"</strong> gibi ince ayarlarý öðreneceksiniz.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">1. The Projection Phase (UFCF)</h2>
+        <p>
+            Amaç "Unlevered Free Cash Flow" (UFCF) üretmektir. Bu, borç ödemeleri yapýlmadan <strong>önce</strong> þirketin elinde kalan nakittir (Tüm sermaye sahiplerine aittir).
+        </p>
+        
+        <div class="mech-box">
+            <strong>EBIT</strong> (Operating Income)
+            <br> (-) Taxes on EBIT (EBIT * Tax Rate) --> <em>Gerçek ödenen vergi deðil, teorik vergi</em>
+            <br> <strong>= NOPAT (Net Operating Profit After Tax)</strong>
+            <br> (+) D&A (Non-Cash Giderleri Ekle)
+            <br> (-) Change in Net Working Capital (Ýþletme Sermayesi Artýþý Nakit Yer)
+            <br> (-) CapEx (Yatýrým Harcamasý Nakit Yer)
+            <br> <strong>= Unlevered Free Cash Flow</strong>
+        </div>
+
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-brands fa-reddit-alien"></i> "Why Unlevered?"</div>
+            <p style="color: #1f2933; margin: 0;">
+                Neden faiz giderini düþmüyoruz? Çünkü DCF, bir evi mortgage ile de alsan, peþin de alsan evin deðerinin (Enterprise Value) deðiþmeyeceði mantýðýna dayanýr.
+                Biz evin (þirketin) deðerini buluyoruz, senin onu nasýl finanse ettiðin (Borç vs Özkaynak) sonraki iþ.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">2. The Discount Rate (WACC)</h2>
+        <p>
+            Gelecekteki parayý bugüne getirmek için bir "Ceza Oraný" (Discount Rate) belirlemeliyiz. Bu oran WACC'tir.
+        </p>
+        <div class="math-block">
+            \[ WACC = (K_e \times W_e) + (K_d \times W_d \times (1-t)) \]
+            <br>
+            <strong>Kilit Soru:</strong> Neden Borç maliyetini (1-t) ile çarpýyoruz da Hisse maliyetini çarpmýyoruz?
+            <br><strong>Cevap:</strong> Çünkü faiz vergiden düþer (Tax Shield), temettü düþmez. Devlet borçlanmayý sübvanse eder.
+        </div>
+
+        <h2 style="color: var(--accent-blue);">3. Mid-Year Convention (Ýnce Ayar)</h2>
+        <p>
+            Standart formül \( \frac{CF}{(1+r)^1} \) paranýn yýl sonunda (31 Aralýk 23:59) geldiðini varsayar. 
+            Oysa þirketler parayý yýl boyunca kazanýr (Ocak, Þubat...). 
+            Ortalamada para yýlýn ortasýnda (30 Haziran) gelir. Bu yüzden üs olarak \( 0.5, 1.5, 2.5 \) kullanýrýz.
+        </p>
+        <div class="proof-box">
+            <div class="proof-title"><i class="fa-solid fa-calculator"></i> The Math Impact</div>
+            <p style="color: #1e3a8a; margin: 0;">
+                Normal: \( \frac{100}{(1.10)^1} = 90.90 \)
+                <br>
+                Mid-Year: \( \frac{100}{(1.10)^{0.5}} = 95.34 \)
+                <br>
+                <strong>Sonuç:</strong> Mid-Year kullanmak þirket deðerini %5-10 artýrýr. Satýcý tarafý (Sell-side) bunu sever, alýcý tarafý sevmez.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">4. Terminal Value (The 70% Chunk)</h2>
+        <p>
+            5 yýl tahmin yaptýk, peki þirket 6. yýl ölüyor mu? Hayýr. Sonsuza kadar (Going Concern) yaþadýðýný varsayarýz. Ýki yöntem vardýr:
+        </p>
+        <ul>
+            <li><strong>Exit Multiple Method:</strong> "5 yýl sonra bu þirketi 10x EBITDA'ya satarýz" deriz. (Piyasa odaklý).</li>
+            <li><strong>Gordon Growth Method:</strong> "Þirket sonsuza kadar enflasyon oranýnda (%2-3) büyür" deriz. (Akademik).</li>
+        </ul>
+
+        <h2 style="color: var(--accent-blue);">5. Sensitivity Analysis (Football Field)</h2>
+        <p>
+            Tek bir deðer (100 Milyon $) vermek amatörlüktür. "Deðer Aralýðý" (Range) vermelisiniz. 
+            WACC ve Terminal Growth oranlarýný deðiþtirerek bir matris oluþtururuz.
+        </p>
+        <table style="width:100%; text-align:center; border-collapse:collapse; font-family:'JetBrains Mono'; font-size:12px; margin: 24px 0;">
+            <tr style="background:#f1f5f9;">
+                <td style="padding:8px; border:1px solid #e2e8f0;">WACC / Growth</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">2.0%</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">2.5%</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">3.0%</td>
+            </tr>
+            <tr>
+                <td style="padding:8px; border:1px solid #e2e8f0; font-weight:bold;">8.0%</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$150</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$165</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$185</td>
+            </tr>
+            <tr>
+                <td style="padding:8px; border:1px solid #e2e8f0; font-weight:bold;">10.0%</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$120</td>
+                <td style="padding:8px; border:1px solid #e2e8f0; background:#dbeafe; font-weight:bold;">$130</td>
+                <td style="padding:8px; border:1px solid #e2e8f0;">$140</td>
+            </tr>
+        </table>
+
+        <div class="drill-section">
+            <h3>Interview Pitfalls</h3>
+            
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Levered FCF kullanýp WACC ile iskonto edersem ne olur?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    <strong>Felaket olur.</strong> "Double Counting" yapmýþ olursun. 
+                    Levered FCF zaten faiz ödenmiþ (borç düþülmüþ) halidir. WACC ise borç maliyetini de içerir. 
+                    Hem paydan hem paydadan düþmüþ olursun.
+                </div>
+            </div>
+
+            <div class="drill-item" tabindex="0">
+                <div class="drill-q">
+                    <span>Hangi þirkete DCF yapýlmaz?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="drill-a">
+                    1) Bankalar (Nakit akýþý tanýmlanamaz, iþletme sermayesi yoktur. DDM kullanýlýr).
+                    2) Erken aþama start-up'lar (Nakit akýþlarý tahmin edilemez, negatiftir).
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

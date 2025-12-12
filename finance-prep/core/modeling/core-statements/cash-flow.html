@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cash Flow Statement | Modeling Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Modeling</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">CFS</span>
+        </nav>
+
+        <h1>2.3 Cash Flow Statement</h1>
+        <p>
+            Nakit kraldýr. IS ve BS'deki verileri kullanarak þirketin kasasýna giren/çýkan <strong>gerçek parayý</strong> hesaplarýz.
+            Dolaylý Yöntem (Indirect Method) kullanýlýr.
+        </p>
+
+        <h2 style="color: #047857;">Step 1: CFO (Operating Activities)</h2>
+        <div class="algo-box">
+            <strong>Baþlangýç:</strong> Net Income (IS'den gelir).
+            <br><br>
+            <strong>Adjustments (Düzeltmeler):</strong>
+            <br>+ Depreciation & Amortization (Nakit çýkýþý deðil, geri ekle).
+            <br>+ Stock Based Comp (Nakit deðil, geri ekle).
+            <br><br>
+            <strong>Changes in Working Capital:</strong>
+            <br>- Increase in Receivables (Alacak artarsa nakit azalýr).
+            <br>+ Increase in Payables (Borç artarsa nakit artar - cebinde kaldý).
+            <br>- Increase in Inventory (Stok almak nakit yer).
+        </div>
+
+        <h2 style="color: #047857;">Step 2: CFI (Investing Activities)</h2>
+        <p>
+            Yatýrým harcamalarý.
+            <br><strong>- CapEx:</strong> (Fabrika/Makine alýmý). Negatiftir.
+            <br><strong>- Asset Sales:</strong> (Varlýk satýþý). Pozitiftir.
+        </p>
+
+        <h2 style="color: #047857;">Step 3: CFF (Financing Activities)</h2>
+        <p>
+            Borç ve Hisse hareketleri.
+            <br><strong>+ Debt Issuance:</strong> Borç alýnca para girer.
+            <br><strong>- Debt Repayment:</strong> Borç ödeyince para çýkar.
+            <br><strong>- Dividends:</strong> Temettü ödemesi.
+        </p>
+
+        <div class="mech-box">
+            <strong>Net Change in Cash = CFO + CFI + CFF</strong>
+            <br>
+            Ending Cash Balance = Beginning Cash + Net Change.
+            <br>
+            (Bu Ending Cash, Bilançodaki "Cash" kalemine baðlanýr ve döngü tamamlanýr).
+        </div>
+
+        <div class="lesson-nav">
+            <a href="balance-sheet.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: BS</a>
+            <a href="debt-schedule.html" class="btn-nav">Sonraki: Debt & Interest <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

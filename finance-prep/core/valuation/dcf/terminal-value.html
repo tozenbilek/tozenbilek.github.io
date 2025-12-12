@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Value | Valuation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Valuation</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Terminal Value</span>
+        </nav>
+
+        <h1>1.3 Terminal Value (TV)</h1>
+        <p>
+            DCF değerinin %70-80'i buradan gelir. Şirketin 5 yıl sonrasından sonsuza kadar olan değeridir.
+            İki yöntemle hesaplanır.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">1. Gordon Growth Method (Perpetuity Growth)</h2>
+        <p>Şirketin sonsuza kadar sabit bir hızla (g) büyüyeceği varsayılır.</p>
+        <div class="math-block">
+            \[ TV = \frac{\text{Final Year FCF} \times (1+g)}{WACC - g} \]
+        </div>
+        <p>
+            <strong>Kural:</strong> "g" büyüme oranı, ülke ekonomisinin büyüme hızından (GDP Growth) yüksek olamaz. Yoksa şirket dünyadan büyük olur.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">2. Exit Multiple Method</h2>
+        <p>Şirketin 5. yılın sonunda bir başkasına satılacağı varsayılır.</p>
+        <div class="math-block">
+            \[ TV = \text{Final Year EBITDA} \times \text{Exit Multiple} \]
+        </div>
+        <p>
+            Genellikle benzer şirketlerin (Comps) ortalama çarpanı (Örn: 10x EV/EBITDA) kullanılır.
+        </p>
+
+        <h2 style="color: var(--accent-blue);">Gordon Growth vs Exit Multiple (Ne Zaman Hangisi?)</h2>
+        <div class="table-container">
+            <table class="financial-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Gordon Growth (Perpetuity)</th>
+                        <th>Exit Multiple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Doğası</strong></td>
+                        <td>Akademik / temel finans</td>
+                        <td>Piyasa odaklı / göreceli</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Input</strong></td>
+                        <td>WACC ve g</td>
+                        <td>Çarpan (EV/EBITDA) ve EBITDA</td>
+                    </tr>
+                    <tr>
+                        <td><strong>En iyi kullanım</strong></td>
+                        <td>Olgun, stabil şirketler</td>
+                        <td>Peer set güçlü ve piyasaya yakınsan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Risk</strong></td>
+                        <td>g yanlış seçilirse TV patlar</td>
+                        <td>Çarpan rejimi değişirse TV sapar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 style="color: var(--accent-blue);">Mini Example (İki Yöntem Karşılaştırma)</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> TV_Compare.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Input</div>
+                <div class="excel-cell header">GGM</div>
+                <div class="excel-cell header">Exit</div>
+
+                <div class="excel-cell">Final Year FCF</div>
+                <div class="excel-cell">100</div>
+                <div class="excel-cell">-</div>
+
+                <div class="excel-cell">WACC</div>
+                <div class="excel-cell">10%</div>
+                <div class="excel-cell">-</div>
+
+                <div class="excel-cell">g</div>
+                <div class="excel-cell">3%</div>
+                <div class="excel-cell">-</div>
+
+                <div class="excel-cell bold">TV (as of Year 5)</div>
+                <div class="excel-cell bold" style="background:#dcfce7;">1,471</div>
+                <div class="excel-cell">-</div>
+
+                <div class="excel-cell">Final Year EBITDA</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">150</div>
+
+                <div class="excel-cell">Exit Multiple</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">10.0x</div>
+
+                <div class="excel-cell bold">TV (as of Year 5)</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell bold" style="background:#dbeafe;">1,500</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray;">
+                Bu örnekte iki yöntem yakın sonuç verdi. Pratikte büyük fark görürsen input'ları yeniden kontrol et (g, WACC, multiple).
+            </div>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: g neden WACC'ye yakın seçilemez?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü \(WACC - g\) paydası çok küçülür ve TV astronomik büyür (matematiksel patlama). g genelde uzun vadeli enflasyon/GDP büyümesine yakın (örn. %2-%3) seçilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Exit multiple'ı nereden alırsın?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Trading comps median EV/EBITDA gibi güncel piyasa çarpanlarından. Ayrıca sektör döngüsünü ve target'ın büyüme/marj profilini dikkate alıp +/- ayarlama yapabilirsin.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="wacc.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: WACC</a>
+            <a href="dcf-mechanics.html" class="btn-nav">Sonraki: DCF Mechanics <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

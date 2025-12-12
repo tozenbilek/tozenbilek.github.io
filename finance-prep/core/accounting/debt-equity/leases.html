@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leases IFRS 16 | Accounting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Accounting</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Leases</span>
+        </nav>
+
+        <h1>4.4 Leases (IFRS 16 / ASC 842)</h1>
+        <p>
+            Eskiden havayollarý ve perakendeciler maðaza/uçak kiralayýp "Borcum yok" derdi (Off-Balance Sheet). 
+            2019'da gelen yeni kuralla bu oyun bitti. Artýk her kira sözleþmesi bir borçtur.
+        </p>
+
+        <h2 style="color: var(--accent-green);">1. Balance Sheet Impact (Bilanço Þiþiyor)</h2>
+        <div class="mech-box">
+            Bir maðazayý 10 yýllýðýna kiraladýnýz. Toplam kira 10 Milyon TL.
+            <br><br>
+            <strong>Eski Kural:</strong> Bilançoda hiçbir þey görünmezdi.
+            <br>
+            <strong>Yeni Kural:</strong>
+            <ul>
+                <li><strong>Asset (Varlýk):</strong> "Kullaným Hakký Varlýðý" (ROU Asset) eklenir. (~8 Milyon TL)</li>
+                <li><strong>Liability (Borç):</strong> "Kira Yükümlülüðü" (Lease Liability) eklenir. (~8 Milyon TL)</li>
+            </ul>
+            <em>Sonuç: Þirketin borçluluk oraný (Leverage) bir gecede arttý!</em>
+        </div>
+
+        <h2 style="color: var(--accent-green);">2. Income Statement Impact (EBITDA Hilesi)</h2>
+        <div class="reddit-box">
+            <div class="reddit-title"><i class="fa-solid fa-magic"></i> EBITDA Neden Artar?</div>
+            <p>
+                Þirket operasyonel olarak AYNI iþi yapýyor, ayný kirayý ödüyor. Ama EBITDA'sý artýyor. Nasýl?
+                <br><br>
+                <strong>Eski:</strong> 100 TL "Kira Gideri" (Rent Expense) vardý. EBITDA'dan düþülürdü.
+                <br>
+                <strong>Yeni:</strong> Kira gideri yok oldu! Yerine iki þey geldi:
+                <br>1. <strong>Amortisman</strong> (ROU Asset eskiyor) -> EBITDA'nýn altýnda.
+                <br>2. <strong>Faiz</strong> (Kira borcunun faizi) -> EBITDA'nýn altýnda.
+                <br><br>
+                <strong>Sonuç:</strong> Giderler EBITDA'nýn altýna (Aþaðýya) kaydýrýldýðý için, EBITDA yapay olarak yükselir.
+                Deðerleme yaparken (EV/EBITDA) buna çok dikkat edilmelidir.
+            </p>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Visual Walkthrough</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Lease_Amortization.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 50px 100px 100px 100px 100px;">
+                <div class="excel-cell header">Yýl</div>
+                <div class="excel-cell header">Kira Ödemesi</div>
+                <div class="excel-cell header">Faiz (%5)</div>
+                <div class="excel-cell header">Anapara</div>
+                <div class="excel-cell header">Liability</div>
+
+                <div class="excel-cell">0</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">-</div>
+                <div class="excel-cell">1,000</div>
+
+                <div class="excel-cell">1</div>
+                <div class="excel-cell">(120)</div>
+                <div class="excel-cell" style="color:red;">(50)</div>
+                <div class="excel-cell">(70)</div>
+                <div class="excel-cell">930</div>
+
+                <div class="excel-cell">2</div>
+                <div class="excel-cell">(120)</div>
+                <div class="excel-cell" style="color:red;">(46.5)</div>
+                <div class="excel-cell">(73.5)</div>
+                <div class="excel-cell">856.5</div>
+            </div>
+            <div style="padding: 10px; font-size: 12px; color: gray;">
+                Nakit çýkýþý her yýl 120 (Sabit). Ama Gelir Tablosunda Faiz Gideri her yýl azalýr (Front-loaded).
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="debt.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Debt</a>
+            <a href="equity-mechanics.html" class="btn-nav">Sonraki: Equity Mechanics <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

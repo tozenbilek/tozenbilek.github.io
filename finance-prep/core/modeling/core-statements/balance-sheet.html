@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balance Sheet Logic | Modeling Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">Modeling</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">BS</span>
+        </nav>
+
+        <h1>2.2 Balance Sheet Construction</h1>
+        <p>
+            Bilanço "Fotoðraf"týr. Belirli bir andaki varlýk ve borçlarý gösterir.
+            Modelin en zor kýsmý burasýdýr çünkü <strong>Asset = Liability + Equity</strong> denklemiminin tutmasý gerekir.
+        </p>
+
+        <h2 style="color: #047857;">Step 1: Working Capital (Dönen Varlýklar)</h2>
+        <p>Bu kalemler genellikle "Drivers" sayfasýndaki "Gün Sayýsý" (Days) varsayýmlarýyla hesaplanýr.</p>
+        <div class="content-box-base">
+            <ul>
+                <li><strong>Accounts Receivable (Alacaklar):</strong> (DSO / 365) * Revenue.</li>
+                <li><strong>Inventory (Stoklar):</strong> (DIO / 365) * COGS.</li>
+                <li><strong>Accounts Payable (Borçlar):</strong> (DPO / 365) * COGS.</li>
+            </ul>
+        </div>
+
+        <h2 style="color: #047857;">Step 2: Long Term Assets (PP&E)</h2>
+        <p>
+            Maddi duran varlýklar (Fabrika, Makine).
+            <br>
+            Formül: <strong>Last Year PP&E + CapEx - Depreciation.</strong>
+            <br>
+            (Bu hesaplama genellikle ayrý bir "PP&E Schedule" sayfasýnda yapýlýr ve buraya linklenir).
+        </p>
+
+        <h2 style="color: #047857;">Step 3: Equity (Özsermaye)</h2>
+        <p>
+            En önemli kýsým "Retained Earnings" (Daðýtýlmamýþ Kârlar) kalemidir.
+            <br>
+            Formül: <strong>Last Year Retained Earnings + Net Income (from IS) - Dividends.</strong>
+            <br>
+            Ýþte "Income Statement" ile "Balance Sheet" arasýndaki ana baðlantý (Linkage) budur!
+        </p>
+
+        <div class="lesson-nav">
+            <a href="income-statement.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: IS</a>
+            <a href="cash-flow.html" class="btn-nav">Sonraki: Cash Flow <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

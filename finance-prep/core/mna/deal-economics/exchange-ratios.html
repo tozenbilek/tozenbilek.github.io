@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Ratios | M&A</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../../../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../../../../index.html" class="nav-link">Dashboard</a>
+            <span class="nav-sep">/</span>
+            <a href="../index.html" class="nav-link">M&A</a>
+            <span class="nav-sep">/</span>
+            <span style="color: var(--text-primary);">Exchange Ratios</span>
+        </nav>
+
+        <h1>1.4 Exchange Ratios</h1>
+        <p>
+            Hisse takası ile yapılan işlemlerde (Stock Swap), satıcıya kaç hisse verileceği pazarlığıdır.
+        </p>
+
+        <h2 style="color: var(--accent-teal);">Fixed Exchange Ratio</h2>
+        <p>
+            <strong>"Senin 1 hissene karşılık, benim 1.5 hissemi veririm."</strong>
+        </p>
+        <ul>
+            <li><strong>Mekanizma:</strong> Oran sabittir. Hisse sayısı değişmez.</li>
+            <li><strong>Risk:</strong> Alıcının hisse fiyatı düşerse, Satıcı daha az değer (Dolar) alır. Risk paylaşılır.</li>
+            <li><strong>En yaygın yöntemdir.</strong></li>
+        </ul>
+
+        <h2 style="color: var(--accent-teal);">Fixed Value (Floating Ratio)</h2>
+        <p>
+            <strong>"Sana hisse başına tam 50$ değerinde hisse veririm."</strong>
+        </p>
+        <ul>
+            <li><strong>Mekanizma:</strong> Değer sabittir. Alıcının hissesi düşerse, tamamlamak için <strong>daha fazla hisse</strong> basmak zorunda kalır.</li>
+            <li><strong>Risk:</strong> Tüm risk Alıcıdadır (Dilution riski). Alıcının hissesi çakılırsa, korkunç derecede fazla hisse basması gerekebilir.</li>
+        </ul>
+
+        <h2 style="color: var(--accent-teal);">Mini Example (Sayısal): Ratio vs Value</h2>
+        <div class="excel-window">
+            <div class="excel-header"><i class="fa-solid fa-table"></i> Exchange_Ratio.xlsx</div>
+            <div class="excel-grid" style="grid-template-columns: 1fr 140px 140px;">
+                <div class="excel-cell header">Case</div>
+                <div class="excel-cell header">Acquirer Px</div>
+                <div class="excel-cell header">Shares to Target</div>
+
+                <div class="excel-cell">Fixed Ratio (1.5x)</div>
+                <div class="excel-cell">40</div>
+                <div class="excel-cell">1.5</div>
+
+                <div class="excel-cell">Fixed Ratio (1.5x) - Px Drops</div>
+                <div class="excel-cell">30</div>
+                <div class="excel-cell">1.5</div>
+
+                <div class="excel-cell">Fixed Value (50$)</div>
+                <div class="excel-cell">40</div>
+                <div class="excel-cell">50/40 = 1.25</div>
+
+                <div class="excel-cell">Fixed Value (50$) - Px Drops</div>
+                <div class="excel-cell">30</div>
+                <div class="excel-cell">50/30 = 1.67</div>
+            </div>
+            <div style="padding:10px; font-size:12px; color:gray; border-top:1px solid #ddd;">
+                Fixed value’de alıcı fiyatı düşerse oran “float” eder ve dilution artar. Fixed ratio’da satıcının aldığı $ değeri düşer.
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-teal);">Collar (Koridor) Nedir?</h2>
+        <div class="content-box-base">
+            <p>
+                Collar: Acquirer fiyatı belli bantta kalırsa fixed ratio çalışır; bant dışına çıkarsa oran veya değer ayarlanır.
+                Amaç: hem satıcıyı hem alıcıyı “uç fiyat hareketine” karşı korumak.
+            </p>
+        </div>
+
+        <div class="drill-section">
+            <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+            <div class="drill-card">
+                <p class="question">Soru: Fixed ratio’da risk kimde?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Satıcıda. Çünkü alıcı hissesi düşerse satıcının aldığı toplam $ değer düşer; hisse sayısı sabit kalır.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: Fixed value’de risk kimde?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Alıcıda. Çünkü $ değeri garanti etmek için fiyat düşerse daha fazla hisse basar ve dilution riski büyür.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="lesson-nav">
+            <a href="structuring.html" class="btn-nav"><i class="fa-solid fa-arrow-left"></i> Önceki: Structuring</a>
+            <a href="ppa.html" class="btn-nav">Sonraki: PPA & Goodwill <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</body>
+</html>

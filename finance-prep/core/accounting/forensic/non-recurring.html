@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Non-Recurring Items & Adjustments | IB Prep</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>6.3 Non-Recurring Items (The Dark Arts of Adjustments)</h1>
+            <p class="lesson-desc">
+                Finansal tablolarý "temizleme" sanatý. Gürültüyü (Noise) sinyalden (Signal) ayýrmak.
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-filter"></i> The Signal Processing Analogy</h3>
+                <p>
+                    Bir ses mühendisi olduðunuzu düþünün. Bir þarký kaydettiniz ama arkada köpek havlamasý ve korna sesi var. 
+                    Þarkýnýn "gerçek" kalitesini duymak için bu sesleri (Noise) silersiniz.
+                </p>
+                <p>
+                    <strong>Finansta da durum aynýdýr:</strong>
+                    Þirket o yýl fabrikasýnda yangýn çýkmýþ olabilir, büyük bir dava kaybetmiþ olabilir veya CEO'yu kovup tazminat ödemiþ olabilir.
+                    Bu olaylar "Tek Seferliktir" (Non-Recurring). Þirketin "gerçek" operasyonel performansýný (Recurring) yansýtmaz.
+                    Analist olarak biz bu giderleri "Geri Ekleriz" (Add-back).
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-magic-wand-sparkles"></i> Adjusted EBITDA'ya Giden Yol</h3>
+                <p>
+                    Yatýrýmcýlar GAAP/IFRS Net Income ile ilgilenmez. Onlar "Adjusted EBITDA"ya bakar. Çünkü bu rakam þirketin devam eden nakit üretme gücünü gösterir.
+                </p>
+
+                <div class="table-container">
+                    <table class="financial-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Tutar ($M)</th>
+                                <th>Notlar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Reported EBITDA</strong></td>
+                                <td><strong>100</strong></td>
+                                <td>Muhasebe defterindeki ham rakam.</td>
+                            </tr>
+                            <tr>
+                                <td>(+) Restructuring Charges</td>
+                                <td>+20</td>
+                                <td>Fabrika kapatma, iþten çýkarma maliyetleri. (Bir daha olmayacak)</td>
+                            </tr>
+                            <tr>
+                                <td>(+) Litigation Expenses</td>
+                                <td>+10</td>
+                                <td>Kaybedilen bir dava cezasý. (Tek seferlik)</td>
+                            </tr>
+                            <tr>
+                                <td>(+) Asset Impairments</td>
+                                <td>+15</td>
+                                <td>Varlýk deðer düþüklüðü. (Nakit çýkýþý yok)</td>
+                            </tr>
+                            <tr>
+                                <td>(+) Stock-Based Compensation</td>
+                                <td>+30</td>
+                                <td>(Tartýþmalý) Nakit çýkýþý yok diye eklenir.</td>
+                            </tr>
+                            <tr>
+                                <td>(-) Gain on Sale of Asset</td>
+                                <td>-5</td>
+                                <td>Dikkat! Tek seferlik "Gelirler" çýkarýlmalýdýr. Sadece giderleri eklemeyin.</td>
+                            </tr>
+                            <tr class="total-row">
+                                <td><strong>= Adjusted EBITDA</strong></td>
+                                <td><strong>170</strong></td>
+                                <td>Bankanýn kredi verirken baktýðý rakam budur.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>The Trap: "Recurring" Non-Recurring Items</h4>
+                <p style="color: var(--accent-red);">
+                    <strong>Uyarý:</strong> Bazý þirketler her yýl "Yeniden Yapýlanma" (Restructuring) gideri yazar. 
+                    Eðer bir gider 5 yýldýr her sene varsa, o artýk "Tek Seferlik" deðil, "Operasyonel" bir giderdir. 
+                    Bunu geri eklemelerine izin vermemelisiniz. (Analist burada devreye girer).
+                </p>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: Bir þirket fabrika sattý ve 50 Milyon $ kâr (Gain) elde etti. Bu Adjusted EBITDA'yý nasýl etkiler?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Etkilememeli. Bu "Tek Seferlik" bir gelirdir. Reported EBITDA'nýn içinde bu 50 Milyon vardýr, Adjusted EBITDA'ya ulaþmak için bu rakamý ÇIKARMALISINIZ (Deduct).</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: Pro-Forma Adjustments ile Non-Recurring Adjustments farký nedir?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Non-Recurring: "Geçmiþte olan kötü bir olayý temizlemek". Pro-Forma: "Gelecekte olmasý beklenen bir durumu (örn. Synergies, birleþme sonrasý maliyet tasarrufu) sanki bugünden olmuþ gibi yansýtmak".</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="sbc.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: SBC</a>
+                <a href="fig-banking.html" class="btn-nav next">Sonraki: FIG / Bank Accounting <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

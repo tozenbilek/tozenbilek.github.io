@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOLs & Section 382 | IB Prep</title>
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="nav-header">
+            <a href="../index.html" class="nav-link"><i class="fa-solid fa-arrow-left"></i> Accounting Module</a>
+        </nav>
+
+        <div class="lesson-content">
+            <h1>8.1 Net Operating Losses (NOLs) & Section 382</h1>
+            <p class="lesson-desc">
+                Zarar eden bir þirketin en büyük hazinesi: Vergi Ýndirimi. Ve devletin buna koyduðu sýnýr (Section 382).
+            </p>
+
+            <div class="analogy-box">
+                <h3><i class="fa-solid fa-file-contract"></i> The Discount Coupon Analogy</h3>
+                <p>
+                    Bir maðazadan alýþveriþ yaptýnýz ama ürün bozuk çýktý. Maðaza size para iadesi yapmadý ama "Sonraki alýþveriþinde 100 TL indirim" kuponu verdi.
+                    Bu kupon sizin için bir "Varlýk"týr (Asset). Gelecekte cebinizden 100 TL daha az çýkmasýný saðlar.
+                </p>
+                <p>
+                    <strong>Þirketlerde:</strong> Eðer þirket zarar ederse, devlete "Vergi Ödemem". 
+                    Hatta devlet der ki: "Bu zararý cebine koy, gelecekte kâr ettiðinde verginden düþersin."
+                    Ýþte buna <strong>NOL (Net Operating Loss)</strong> denir ve bilançoda <strong>DTA (Deferred Tax Asset)</strong> olarak durur.
+                </p>
+            </div>
+
+            <div class="deep-dive-box">
+                <h3><i class="fa-solid fa-scale-balanced"></i> Section 382 Limitation</h3>
+                <p>
+                    Peki kârlý bir þirket (örn. Google), sadece NOL'leri (Vergi Kuponlarý) var diye batýk bir þirketi satýn alýp vergisini sýfýrlayabilir mi?
+                    <br><strong>HAYIR.</strong> ABD Vergi Kanunu (IRS) buna <strong>Section 382</strong> ile engel olur.
+                </p>
+
+                <h4>Formül: Yýllýk Kullaným Limiti</h4>
+                <p>
+                    Eðer bir þirketin sahibi deðiþirse (Change of Control), o þirketin NOL'lerini kullanma hakký kýsýtlanýr.
+                </p>
+                <div class="formula-box">
+                    \[ \text{Annual NOL Usage Cap} = \text{Equity Purchase Price} \times \text{Long-Term Tax Exempt Rate} \]
+                </div>
+                <p>
+                    <strong>Örnek:</strong>
+                    <br>Google, Batýk A.Þ.'yi 100 Milyon $'a satýn aldý.
+                    <br>Batýk A.Þ.'nin 500 Milyon $ NOL'ü (Vergi Kuponu) var.
+                    <br>Devletin belirlediði faiz oraný %4.
+                    <br>
+                    <strong>Limit:</strong> 100 Milyon $ * %4 = <strong>4 Milyon $ / Yýl.</strong>
+                </p>
+                <p>
+                    Yani Google, o 500 Milyon $'lýk kuponu kullanabilir ama yýlda sadece 4 Milyon $ harcayabilir. Hepsini bitirmesi 125 yýl sürer! (NOL'lerin ömrü yetmeyebilir).
+                    Bu yüzden M&A deðerlemesinde NOL'lerin deðeri düþer.
+                </p>
+            </div>
+
+            <div class="drill-section">
+                <h3><i class="fa-solid fa-bolt"></i> Rapid Fire Drills</h3>
+                <div class="drill-card">
+                    <p class="question">Soru: Bir þirketin 100 Milyon $ NOL'ü var ama gelecekte hiç kâr etmesi beklenmiyor. Bu NOL'ün deðeri nedir?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">SIFIR. Vergi indirimi kuponunu kullanmak için vergi ödeyecek kadar kâr etmeniz gerekir. Bu durumda þirket "Valuation Allowance" ayýrarak DTA'yý bilançodan siler.</span>
+                    </div>
+                </div>
+                <div class="drill-card">
+                    <p class="question">Soru: Section 382 limiti ne zaman devreye girer?</p>
+                    <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                        <span class="blur-text">Þirketin %5'ten büyük hissedarlarýnýn toplam payý, son 3 yýl içinde %50'den fazla deðiþirse (Ownership Change). Yani sadece %100 satýn almalarda deðil, büyük blok satýþlarýnda da tetiklenebilir.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lesson-nav">
+                <a href="oil-gas.html" class="btn-nav prev"><i class="fa-solid fa-chevron-left"></i> Önceki: Oil & Gas</a>
+                <a href="section-338.html" class="btn-nav next">Sonraki: Section 338(h)(10) <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
