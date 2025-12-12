@@ -22,30 +22,83 @@
 
         <h1>1.1 Income Statement (Gelir Tablosu)</h1>
         <p class="lesson-desc">
-            Sıfırdan Zirveye. Bir şirketin kârlılık hikayesi. Limonata tezgahından Holding'e.
+            Bu sayfa "hızlı geçmek" için değil: Gelir Tablosu’nu (P&amp;L) <strong>tek tek</strong>, <strong>tane tane</strong> öğreneceğiz.
+            Her kavramı sırayla inceleyeceğiz ve her adımın sonunda mini kontrol sorusu yapacağız.
         </p>
+
+        <!-- Slow learning map -->
+        <div class="deep-dive-box">
+            <h3><i class="fa-solid fa-map"></i> Harita (Önce Büyük Resim)</h3>
+            <p style="margin-bottom: 10px;">
+                Gelir tablosu çok basit bir soruya cevap verir:
+                <strong>“Bu dönem ne kadar sattım ve bu satışın sonunda elimde ne kadar kâr kaldı?”</strong>
+            </p>
+            <div class="excel-window" style="margin-top: 10px;">
+                <div class="excel-header"><i class="fa-solid fa-route"></i> Sıralama (en üstten en alta)</div>
+                <div class="excel-grid" style="grid-template-columns: 1fr 1fr;">
+                    <div class="excel-cell header">Adım</div>
+                    <div class="excel-cell header">Mantık (1 cümle)</div>
+
+                    <div class="excel-cell"><strong>1) Revenue (Ciro)</strong></div>
+                    <div class="excel-cell">Kaç TL’lik satış yaptın?</div>
+
+                    <div class="excel-cell"><strong>2) COGS (Satış Maliyeti)</strong></div>
+                    <div class="excel-cell">Bu satışı yapmak için zorunlu maliyetin neydi?</div>
+
+                    <div class="excel-cell"><strong>3) Gross Profit (Brüt Kâr)</strong></div>
+                    <div class="excel-cell">Satış − Satış Maliyeti.</div>
+
+                    <div class="excel-cell"><strong>4) OpEx (Faaliyet Giderleri)</strong></div>
+                    <div class="excel-cell">İşi yürütmek için (kira/maaş/reklam) ne harcadın?</div>
+
+                    <div class="excel-cell"><strong>5) EBIT (Faaliyet Kârı)</strong></div>
+                    <div class="excel-cell">Brüt Kâr − OpEx. (Esas işin kârı)</div>
+
+                    <div class="excel-cell"><strong>6) Interest (Faiz)</strong></div>
+                    <div class="excel-cell">Borç varsa, finansman maliyeti.</div>
+
+                    <div class="excel-cell"><strong>7) Taxes (Vergi)</strong></div>
+                    <div class="excel-cell">Devlete pay.</div>
+
+                    <div class="excel-cell"><strong>8) Net Income (Net Kâr)</strong></div>
+                    <div class="excel-cell">Dönemin “en alt satırı”.</div>
+                </div>
+            </div>
+            <p style="margin-top: 12px; font-weight: 500;">
+                İpucu: Gelir tablosu <strong>“basamak basamak”</strong> iner. Her basamak, bir önceki basamağın üstüne kurulur.
+            </p>
+        </div>
 
         <!-- Zero to Hero: Analogy -->
         <div class="analogy-box">
             <h3><i class="fa-solid fa-lemon"></i> The Lemonade Stand (Limonata Tezgahı)</h3>
             <p>
-                Finansı unutun. Basit bir limonata tezgahı açtınız.
-                Günün sonunda cebinizde kalan parayı (Net Kâr) hesaplamak istiyorsunuz.
+                Finansı bir kenara bırakın. Basit bir limonata tezgahı açtınız.
+                Günün sonunda “kâr ettim mi?” sorusunu cevaplayacağız.
             </p>
             <ul style="margin-left: 20px; list-style-type: none;">
-                <li>🍋 <strong>Revenue (Ciro):</strong> 100 bardak sattınız x 5 TL = <strong>500 TL</strong> ciro yaptınız.</li>
-                <li>🧊 <strong>COGS (Maliyet):</strong> Her bardak için 1 TL limon ve şeker harcadınız = <strong>100 TL</strong> maliyet.</li>
-                <li>💰 <strong>Gross Profit (Brüt Kâr):</strong> 500 - 100 = <strong>400 TL</strong> kazandınız (Sadece üründen).</li>
-                <li>🎪 <strong>OpEx (Giderler):</strong> Tezgahı kurduğunuz yere günlük <strong>50 TL</strong> kira ödediniz. Yanınızda çalışan kardeşe <strong>50 TL</strong> harçlık verdiniz.</li>
-                <li>📉 <strong>EBIT (Faaliyet Kârı):</strong> 400 - 100 = <strong>300 TL</strong> operasyonel kâr.</li>
-                <li>🏦 <strong>Interest (Faiz):</strong> Tezgahı kurmak için babanızdan borç almıştınız, ona <strong>20 TL</strong> faiz ödediniz.</li>
-                <li>🏛️ <strong>Tax (Vergi):</strong> Devlet geldi ve kazancınızın %20'sini istedi (yaklaşık <strong>60 TL</strong>).</li>
-                <li>💵 <strong>Net Income (Net Kâr):</strong> 300 - 20 - 60 = <strong>220 TL</strong>. İşte günün sonunda cebinize giren (veya şirkette kalan) para budur.</li>
+                <li><strong>1) Revenue (Ciro):</strong> 100 bardak × 5 TL = <strong>500 TL</strong> satış yaptın.</li>
+                <li><strong>2) COGS (Satışın Maliyeti):</strong> Her bardak için 1 TL limon+şeker = 100 bardak × 1 TL = <strong>100 TL</strong>.</li>
+                <li><strong>3) Gross Profit (Brüt Kâr):</strong> 500 − 100 = <strong>400 TL</strong>. (Sadece ürün/satış üzerinden kalan)</li>
+                <li><strong>4) OpEx (Faaliyet Giderleri):</strong> Kira 50 TL + çalışan 50 TL = <strong>100 TL</strong>. (Dükkânı/işi ayakta tutma)</li>
+                <li><strong>5) EBIT (Faaliyet Kârı):</strong> 400 − 100 = <strong>300 TL</strong>. (Esas işten kâr)</li>
+                <li><strong>6) Interest (Faiz):</strong> Borç için <strong>20 TL</strong> faiz ödedin.</li>
+                <li><strong>7) Taxes (Vergi):</strong> Kârın %20’si ≈ <strong>60 TL</strong>.</li>
+                <li><strong>8) Net Income (Net Kâr):</strong> 300 − 20 − 60 = <strong>220 TL</strong>. Dönemin “en alt satırı”.</li>
             </ul>
+            <div class="drill-card" style="margin-top: 12px;">
+                <p class="question">Mini kontrol: COGS ile OpEx farkı bu örnekte hangileri?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>COGS:</strong> limon+şeker (satış oldukça artar). <strong>OpEx:</strong> kira+çalışan (satış olmasa bile ödersin).</span>
+                </div>
+            </div>
         </div>
 
-        <h2 style="color: var(--accent-green);">1. The Structure (Resmi Format)</h2>
-        <p>Limonata tezgahı örneğini profesyonel bir tabloya dökersek:</p>
+        <h2 style="color: var(--accent-green);">1. Resmi Format (Tabloyu Okumayı Öğrenelim)</h2>
+        <p>
+            Şimdi aynı hikâyeyi “şirket diliyle” bir tabloya çevirelim.
+            Aşağıdaki satırları <strong>en üstten en alta</strong> sırayla oku: her satır bir öncekinin devamı.
+        </p>
         
         <div class="excel-window">
             <div class="excel-header"><i class="fa-solid fa-file-invoice-dollar"></i> P&L_Statement.xlsx</div>
@@ -79,7 +132,64 @@
             </div>
         </div>
 
-        <h2 style="color: var(--accent-green);">2. Deep Dive: COGS vs OpEx (Hayat Memat Meselesi)</h2>
+        <h2 style="color: var(--accent-green);">2. Kavramları Tek Tek Açalım (Sırayla ve Basit)</h2>
+        <p>
+            Bu bölümde her kavramı <strong>1–2 cümle</strong> ile tanımlayacağız.
+            Her kartın altında bir mini soru var: önce kendin cevapla, sonra üstüne tıklayıp kontrol et.
+        </p>
+
+        <div class="drill-section">
+            <div class="drill-card">
+                <p class="question"><strong>Revenue (Ciro)</strong> tam olarak nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Müşteriye ürün/hizmet sattığın için yazdığın <strong>satış tutarıdır</strong>. Kâr değildir; sadece “satışın büyüklüğü”dür.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>COGS (Satılan Malın Maliyeti)</strong> nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">O satışı yapmak için <strong>ürüne doğrudan bağlı</strong> zorunlu maliyetlerdir. Satış artarsa genelde COGS da artar.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Gross Profit (Brüt Kâr)</strong> nasıl okunur?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Revenue − COGS</strong>. Ürün/hizmetin “çekirdek kârlılığını” gösterir: daha OpEx yok.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>OpEx (Faaliyet Giderleri)</strong> nedir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">İşi yürütmek için yapılan giderlerdir: kira, maaşlar, pazarlama, muhasebe, yazılım abonelikleri… Ürüne birebir “gömülü” olmayabilir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>EBIT (Faaliyet Kârı)</strong> neyi söyler?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text"><strong>Gross Profit − OpEx</strong>. Faiz ve vergi gelmeden önce, “esas iş” kârın ne?</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Interest (Faiz)</strong> neden ayrı gösterilir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Çünkü faiz, şirketin <strong>finansman tercihiyle</strong> ilgilidir (borçlanma). Aynı işi yapan iki şirketten biri borçluysa faizi daha yüksek olur.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Taxes (Vergi)</strong> nereden gelir?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Kâr üzerinden devlete ödenir. Basitleştirirsek: “kârın bir kısmı devlete gider”. Detaylar ülkeye/kurala göre değişir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question"><strong>Net Income (Net Kâr)</strong> “neden bu kadar önemli”?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Dönem sonunda şirketin “en altta” bıraktığı kârdır. Büyüme yatırımı, temettü, borç ödeme gibi kararlar bunun etrafında döner.</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: var(--accent-green);">3. Deep Dive: COGS vs OpEx (Hayat Memat Meselesi)</h2>
         <div class="deep-dive-box">
             <h3><i class="fa-solid fa-microscope"></i> Giderler Arasındaki Fark</h3>
             <p>
@@ -104,11 +214,11 @@
                 </div>
             </div>
             <p style="margin-top: 15px; font-weight: 500;">
-                🚀 <strong>Operating Leverage (Kaldıraç):</strong> Eğer satışlarınızı artırıp, OpEx'inizi sabit tutabilirseniz, kârınız roket gibi artar. Teknoloji şirketlerinin sırrı budur (Yazılımı bir kere yap, milyon kişiye sat, maliyet artmaz).
+                <strong>Operating Leverage (Faaliyet Kaldıracı):</strong> Satış artarken OpEx çok artmıyorsa, kâr daha hızlı büyür. Bu yüzden teknoloji şirketlerinde “ölçeklenme” çok değerlidir.
             </p>
         </div>
 
-        <h2 style="color: var(--accent-green);">3. Revenue Recognition (Hile Yapma!)</h2>
+        <h2 style="color: var(--accent-green);">4. Revenue Recognition (Nakit ≠ Gelir)</h2>
         <div class="reddit-box">
             <div class="reddit-title"><i class="fa-solid fa-hand-holding-dollar"></i> Nakit ≠ Gelir</div>
             <p>
@@ -137,6 +247,12 @@
                 <p class="question">Soru: Brüt Kâr Marjı (Gross Margin) %40 ne demektir?</p>
                 <div class="answer-box" onclick="this.classList.toggle('revealed')">
                     <span class="blur-text">Şirket 100 TL'lik satış yaptığında, bunun 60 TL'si üretim maliyetine (COGS) gidiyor, geriye operasyonel giderleri ödemek için 40 TL kalıyor demektir.</span>
+                </div>
+            </div>
+            <div class="drill-card">
+                <p class="question">Soru: EBIT pozitifken Net Income negatif olabilir mi?</p>
+                <div class="answer-box" onclick="this.classList.toggle('revealed')">
+                    <span class="blur-text">Evet. Örneğin faiz (borç) çok yüksekse veya vergi/tek seferlik giderler varsa, <strong>EBIT&gt;0</strong> olsa bile altta Net Income negatif olabilir.</span>
                 </div>
             </div>
         </div>
